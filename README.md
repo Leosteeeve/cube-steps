@@ -2,7 +2,9 @@
 
 Learn to solve the 3×3 cube with step-by-step animations and explained algorithms, starting with the beginner's method.
 
-**Status: V1 local preview. Not yet published as a release. Physical-cube teaching acceptance is pending.**
+**Status: V1 preview. Physical-cube teaching acceptance is pending before a stable release.**
+
+[Open CubeSteps](https://leosteeeve.github.io/cube-steps/) — use it directly in your browser, with no account or installation.
 
 ## Learn the method
 
@@ -32,7 +34,11 @@ npm run build
 npm run preview
 ```
 
-The production output is `dist/`, configured for the GitHub Pages path `/cube-steps/`. Serve it over HTTP; opening `index.html` directly does not support module workers. The Pages workflow is manual and requires teaching acceptance; no site is published by a local build.
+The production output is `dist/`, configured for the GitHub Pages path `/cube-steps/`. Serve it over HTTP; opening `index.html` directly does not support module workers. A local build does not publish the site.
+
+## Publish to GitHub Pages
+
+Pages uses GitHub Actions. Run **Publish CubeSteps to Pages** manually on `main` after changes pass validation. Select **publish_preview** to publish a club preview while teaching acceptance is pending; select **teaching_accepted** only after a club member has completed the physical-cube check. The workflow runs all automated checks before deployment. Updating `main` alone does not publish a new version.
 
 ## Validate and contribute
 

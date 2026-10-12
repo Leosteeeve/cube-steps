@@ -1,7 +1,12 @@
-name: Publish accepted preview to Pages
+name: Publish CubeSteps to Pages
 on:
   workflow_dispatch:
     inputs:
+      publish_preview:
+        description: 'Publish a preview while physical-cube teaching acceptance is pending'
+        type: boolean
+        required: true
+        default: false
       teaching_accepted:
         description: 'Physical-cube teaching acceptance has been completed'
         type: boolean
@@ -16,7 +21,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   deploy:
-    if: inputs.teaching_accepted
+    if: inputs.publish_preview || inputs.teaching_accepted
     runs-on: ubuntu-latest
     environment:
       name: github-pages
