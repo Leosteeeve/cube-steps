@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
-import type { CubeEngine, SolveSession, StageId } from '../core/types';
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import type { CubeEngine, SolveSession, StageId, MethodId } from '../core/types';
 import { parseScramble } from '../core/notation';
 import { CubePlayer } from '../player/CubePlayer';
 import { createSolveClient } from './solve-client';
@@ -10,7 +10,11 @@ import { FaceOverview } from './color-entry/FaceOverview';
 import { createDraftState, reduceDraft, type DraftAction } from './color-entry/draft';
 import { createDraftStore } from './color-entry/draft-storage';
 import { FACE_ENTRY_ORDER } from '../core/facelet-layout';
-export function SolvePage({ engine }: { engine: CubeEngine }) {
+import { getMethod } from '../methods/registry';
+import { MethodSelector } from './MethodSelector';
+export function SolvePage({ engine, method = 'lbl' }: { engine: CubeEngine; method?: MethodId }) {
+  const presentation = getMethod(method), firstStage = presentation.stages[0].id;
+  const methodRef = useRef(method); methodRef.current = method;
   const client = useMemo(() => createSolveClient(), []),
     epoch = useRef(0);
   const store = useMemo(() => createDraftStore(() => window.sessionStorage), []);
@@ -24,14 +28,18 @@ export function SolvePage({ engine }: { engine: CubeEngine }) {
   } | null>(null);
   const checked = validation?.revision === draft.revision ? validation.result : null;
   const [text, setText] = useState(''),
-    [session, setSession] = useState<SolveSession | null>(null),
+    [storedSession, setSession] = useState<SolveSession | null>(null),
     [error, setError] = useState(''),
     [busy, setBusy] = useState(false),
     [randomizing, setRandomizing] = useState(false),
-    [stage, setStage] = useState<StageId>('white-cross'),
+    [stage, setStage] = useState<StageId>(firstStage),
     [stageRequestId, setStageRequestId] = useState(0),
-    [active, setActive] = useState<StageId>('white-cross');
+    [active, setActive] = useState<StageId>(firstStage);
+  useLayoutEffect(() => {
+    epoch.current++; client.cancel(); setBusy(false); setRandomizing(false); setError(''); setSession(null); setStage(firstStage); setActive(firstStage);
+  }, [client, method, firstStage]);
   const parsedDraft = mode === 'scramble' ? parseScramble(text) : null;
+  const session = storedSession?.trace.method === method ? storedSession : null;
   const recordedInput = session?.input;
   const inputMatches =
     recordedInput &&
@@ -93,14 +101,14 @@ export function SolvePage({ engine }: { engine: CubeEngine }) {
     setError('');
     const result =
       mode === 'colors' && checked?.ok
-        ? await client.solveFacelets(checked.facelets, 'lbl')
-        : await client.solveScramble(text, 'lbl');
-    if (token !== epoch.current) return;
+        ? await client.solveFacelets(checked.facelets, method)
+        : await client.solveScramble(text, method);
+    if (token !== epoch.current || methodRef.current !== method) return;
     setBusy(false);
     if (result.ok) {
       setSession(result.session);
-      setStage('white-cross');
-      setActive('white-cross');
+      setStage(firstStage);
+      setActive(firstStage);
     } else if (result.error.kind !== 'cancelled') {
       if (mode === 'colors' && result.error.kind === 'input' && result.error.issues)
         setValidation({
@@ -109,7 +117,7 @@ export function SolvePage({ engine }: { engine: CubeEngine }) {
         });
       else
         setError(
-          `${result.error.offset === undefined ? '' : `At character ${result.error.offset + 1}: `}${result.error.message}`,
+          `${result.error.stageId ? `${presentation.stages.find(s => s.id === result.error.stageId)?.label ?? result.error.stageId}: ` : ''}${result.error.offset === undefined ? '' : `At character ${result.error.offset + 1}: `}${result.error.message}`,
         );
     }
   }
@@ -122,7 +130,7 @@ export function SolvePage({ engine }: { engine: CubeEngine }) {
     try {
       const { generateScramble } = await import('../core/scramble');
       const alg = await generateScramble();
-      if (token !== epoch.current) return;
+      if (token !== epoch.current || methodRef.current !== method) return;
       const parsed = parseScramble(alg);
       if (!parsed.ok)
         throw new Error('The generated scramble contains unsupported notation. Please try again.');
@@ -137,6 +145,7 @@ export function SolvePage({ engine }: { engine: CubeEngine }) {
   return (
     <LessonLayout
       free
+      method={method}
       selected={active}
       onSelect={(id) => {
         setStage(id);
@@ -144,6 +153,7 @@ export function SolvePage({ engine }: { engine: CubeEngine }) {
         setActive(id);
       }}
     >
+      <MethodSelector method={method} kind="solve" />
       <div className="lesson-heading">
         <span className="eyebrow">YOUR CUBE. THE SAME METHOD.</span>
         <h1>A clear path for your cube.</h1>
@@ -171,6 +181,7 @@ export function SolvePage({ engine }: { engine: CubeEngine }) {
             onSolve={() => void solve()}
             busy={busy}
             storageAvailable={storageAvailable}
+            solveLabel={`Explain with ${presentation.label}`}
           />
           {busy && (
             <button type="button" onClick={cancelPending}>
@@ -240,7 +251,7 @@ export function SolvePage({ engine }: { engine: CubeEngine }) {
       {session ? (
         <>
           <div className="solution-summary">
-            <span className="success-dot" /> Verified LBL solution{' '}
+            <span className="success-dot" /> Verified {getMethod(session.trace.method).label} solution{' '}
             <details>
               <summary>
                 {session.input.kind === 'scramble'

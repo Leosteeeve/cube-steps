@@ -3,19 +3,21 @@ import { createCubeEngine } from '../core/cube';
 import type { CubeEngine } from '../core/types';
 import { LearnPage } from './LearnPage';
 import { SolvePage } from './SolvePage';
+import { parseRoute, methodRoute } from './routes';
+import { getMethod } from '../methods/registry';
 export function App() {
-  const [route, setRoute] = useState(location.hash || '#/learn/notation'),
+  const [route, setRoute] = useState(() => parseRoute(location.hash)),
     [engine, setEngine] = useState<CubeEngine | null>(null),
     [error, setError] = useState('');
   useEffect(() => {
-    const change = () => setRoute(location.hash || '#/learn/notation');
+    const change = () => setRoute(parseRoute(location.hash));
     addEventListener('hashchange', change);
     void createCubeEngine()
       .then(setEngine)
       .catch((e) => setError(String(e)));
     return () => removeEventListener('hashchange', change);
   }, []);
-  const free = route.startsWith('#/solve');
+  const free = route.kind === 'solve', method = getMethod(route.method);
   return (
     <>
       <a
@@ -42,7 +44,7 @@ export function App() {
           <a href="#/learn/notation" className={!free ? 'selected' : ''}>
             Learn the method
           </a>
-          <a href="#/solve" className={free ? 'selected' : ''}>
+          <a href={methodRoute(route.method, 'solve')} className={free ? 'selected' : ''}>
             Solve your cube
           </a>
         </nav>
@@ -57,9 +59,9 @@ export function App() {
       </header>
       <main id="main" tabIndex={-1}>
         <div className="course-banner">
-          <span className="pill">BEGINNER’S METHOD</span>
+          <span className="pill">{route.method === 'lbl' ? 'BEGINNER’S METHOD' : 'CROSS · F2L · OLL · PLL'}</span>
           <p>Understand the moves. Enjoy the solve.</p>
-          <span className="preview-label">LBL · Preview</span>
+          <span className="preview-label">{method.label} · Preview</span>
         </div>
         {error ? (
           <p className="error" role="alert">
@@ -67,9 +69,9 @@ export function App() {
           </p>
         ) : engine ? (
           free ? (
-            <SolvePage engine={engine} />
+            <SolvePage engine={engine} method={route.method} />
           ) : (
-            <LearnPage key={route} engine={engine} lessonId={route.split('/')[2] ?? 'notation'} />
+            route.kind === 'learn' && (route.method === 'lbl' ? <LearnPage key={route.lessonId} engine={engine} lessonId={route.lessonId} /> : <p>Beginner CFOP lessons are being prepared.</p>)
           )
         ) : (
           <p className="loading-panel" role="status">

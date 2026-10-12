@@ -1,17 +1,21 @@
 import type { ReactNode } from 'react';
 import { LBL_COURSE } from '../content/lbl-course';
-import type { StageId } from '../core/types';
+import type { StageId, MethodId } from '../core/types';
+import { getMethod } from '../methods/registry';
 export function LessonLayout({
   selected,
   children,
   free = false,
   onSelect,
+  method = 'lbl',
 }: {
   selected: string;
   children: ReactNode;
   free?: boolean;
   onSelect?: (id: StageId) => void;
+  method?: MethodId;
 }) {
+  const lessons = free ? getMethod(method).stages.map(s => ({ id: s.id, stageId: s.id, shortTitle: s.label })) : LBL_COURSE;
   return (
     <div className="lesson-layout">
       <nav className="stage-nav" aria-label={free ? 'Solution stages' : 'Learning path'}>
@@ -20,7 +24,7 @@ export function LessonLayout({
           <h2>{free ? 'Seven clear stages' : 'A little progress.\nEvery step.'}</h2>
         </div>
         <ol>
-          {LBL_COURSE.filter((l) => !free || l.stageId).map((lesson, index) => (
+          {lessons.map((lesson, index) => (
             <li key={lesson.id}>
               {free ? (
                 <button

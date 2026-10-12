@@ -230,13 +230,13 @@ interface MethodRuntime {
 
 This task activates method selection for free solving. Keep learning navigation on its existing LBL links until Task 9 connects the CFOP course; do not advertise a CFOP lesson link that still renders LBL content.
 
-- [ ] **Write failing tests.** Cover old routes, CFOP paths, unknown lesson fallback, and backward/forward navigation. Enter a scramble and a partially painted color draft, validate a complete draft, switch methods, and assert all specified input state remains. Assert the old result is removed, no automatic solve begins, and the new button is correctly named. Simulate a switch during worker work and random generation; late completions cannot alter draft/result/busy state.
+- [x] **Write failing tests.** Cover old routes, CFOP paths, unknown lesson fallback, and backward/forward navigation. Enter a scramble and a partially painted color draft, validate a complete draft, switch methods, and assert all specified input state remains. Assert the old result is removed, no automatic solve begins, and the new button is correctly named. Simulate a switch during worker work and random generation; late completions cannot alter draft/result/busy state.
 
   Pin `it('preserves input and clears the result on a history-driven method change')` with `expect(textarea).toHaveValue(originalScramble)`, `expect(screen.queryByText(oldFormulaName)).not.toBeInTheDocument()`, and `expect(solveMock).toHaveBeenCalledTimes(callsBeforeSwitch)` after dispatching the real hashchange event. Assert the next explicit request passes `'cfop-beginner'` and the preserved input.
-- [ ] **Run red checks:** `npx.cmd vitest run src/app/routes.test.ts src/app/SolvePage.test.tsx src/app/color-entry/ColorEntry.test.tsx`.
-- [ ] **Implement method routing and cancellation.** Parse the route once in `App`; make banner/navigation reflect the actual selected method. Keep input state owned by the stable solve page and invalidate its epoch on method changes before accepting any result. Retain validation when the color draft is unchanged. Update stage navigation from method metadata. For unknown solve suffixes, fall back to the LBL solve route; do not guess an unsupported method. Preserve existing within-method stale-input notices.
-- [ ] **Run green checks, typecheck, and browser switching checks.** Use actual hash/back/forward transitions and fake delayed worker/random responses at the component layer. Verify focus, accessible selector names, a 390px viewport, and no horizontal page overflow.
-- [ ] **Commit:** `feat: switch teaching methods while preserving cube input`.
+- [x] **Run red checks:** `npx.cmd vitest run src/app/routes.test.ts src/app/SolvePage.test.tsx src/app/color-entry/ColorEntry.test.tsx`.
+- [x] **Implement method routing and cancellation.** Parse the route once in `App`; make banner/navigation reflect the actual selected method. Keep input state owned by the stable solve page and invalidate its epoch on method changes before accepting any result. Retain validation when the color draft is unchanged. Update stage navigation from method metadata. For unknown solve suffixes, fall back to the LBL solve route; do not guess an unsupported method. Preserve existing within-method stale-input notices.
+- [x] **Run green checks, typecheck, and browser switching checks.** Use actual hash/back/forward transitions and fake delayed worker/random responses at the component layer. Verify focus, accessible selector names, a 390px viewport, and no horizontal page overflow.
+- [x] **Commit:** `feat: switch teaching methods while preserving cube input`.
 
 ## Task 9: Deliver the CFOP Course and Validated Case Examples
 
