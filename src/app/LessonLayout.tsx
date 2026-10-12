@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { LBL_COURSE } from '../content/lbl-course';
+import { getCourse } from '../content/courses';
 import type { StageId, MethodId } from '../core/types';
 import { getMethod } from '../methods/registry';
 export function LessonLayout({
@@ -15,7 +15,7 @@ export function LessonLayout({
   onSelect?: (id: StageId) => void;
   method?: MethodId;
 }) {
-  const lessons = free ? getMethod(method).stages.map(s => ({ id: s.id, stageId: s.id, shortTitle: s.label })) : LBL_COURSE;
+  const lessons = free ? getMethod(method).stages.map(s => ({ id: s.id, stageId: s.id, shortTitle: s.label })) : getCourse(method);
   return (
     <div className="lesson-layout">
       <nav className="stage-nav" aria-label={free ? 'Solution stages' : 'Learning path'}>
@@ -38,7 +38,7 @@ export function LessonLayout({
               ) : (
                 <a
                   className={selected === lesson.id ? 'stage-link active' : 'stage-link'}
-                  href={`#/learn/${lesson.id}`}
+                  href={`#/learn/${method === 'lbl' ? '' : 'cfop/'}${lesson.id}`}
                   aria-current={selected === lesson.id ? 'page' : undefined}
                 >
                   <span className="stage-index">

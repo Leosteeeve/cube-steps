@@ -41,7 +41,7 @@ export function App() {
           CubeSteps<span className="brand-dot">.</span>
         </a>
         <nav aria-label="Main navigation">
-          <a href="#/learn/notation" className={!free ? 'selected' : ''}>
+          <a href={methodRoute(route.method, 'learn')} className={!free ? 'selected' : ''}>
             Learn the method
           </a>
           <a href={methodRoute(route.method, 'solve')} className={free ? 'selected' : ''}>
@@ -71,7 +71,7 @@ export function App() {
           free ? (
             <SolvePage engine={engine} method={route.method} />
           ) : (
-            route.kind === 'learn' && (route.method === 'lbl' ? <LearnPage key={route.lessonId} engine={engine} lessonId={route.lessonId} /> : <p>Beginner CFOP lessons are being prepared.</p>)
+            route.kind === 'learn' && <LearnPage key={`${route.method}/${route.lessonId}`} engine={engine} method={route.method} lessonId={route.lessonId} />
           )
         ) : (
           <p className="loading-panel" role="status">

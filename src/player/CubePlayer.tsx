@@ -18,8 +18,9 @@ interface Props {
   stage?: StageId;
   stageRequestId?: number;
   onStageChange?: (id: StageId) => void;
+  caseId?: string;
 }
-export function CubePlayer({ engine, session, stage, stageRequestId, onStageChange }: Props) {
+export function CubePlayer({ engine, session, stage, stageRequestId, onStageChange, caseId }: Props) {
   const method = getMethod(session.trace.method);
   const host = useRef<HTMLDivElement>(null),
     controller = useRef<PlaybackController | null>(null);
@@ -84,7 +85,11 @@ export function CubePlayer({ engine, session, stage, stageRequestId, onStageChan
   }, [engine, session]);
   useEffect(() => {
     if (stage) controller.current?.seekStage(stage);
-  }, [stage, stageRequestId, ready]);
+    if (caseId) {
+      const action = controller.current?.timeline.actions.find(item => item.stageId === stage && item.action.caseId === caseId);
+      if (action) controller.current?.seekMove(action.start);
+    }
+  }, [stage, stageRequestId, ready, caseId]);
   useEffect(() => {
     const p = controller.current;
     if (p) p.setSpeed(p.snapshot().speed);
@@ -229,7 +234,7 @@ export function CubePlayer({ engine, session, stage, stageRequestId, onStageChan
                 <p>{action.explanation}</p>
               </div>
             </div>
-            <div className="algorithm-card" data-algorithm-id={action.algorithmId} data-action-start={range?.start} data-action-end={range?.end}>
+            <div className="algorithm-card" data-case-id={action.caseId} data-algorithm-id={action.algorithmId} data-action-start={range?.start} data-action-end={range?.end}>
               <span>
                 {alg?.name ?? (action.kind === 'regrip' ? 'Whole-cube rotation' : 'Setup moves')}
                 {repetitions ? ` · ${action.repetition!.index} of ${repetitions}` : ''}
