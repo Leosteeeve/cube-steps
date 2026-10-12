@@ -2,7 +2,7 @@
 
 Learn to solve the 3×3 cube with step-by-step animations and explained algorithms, starting with the beginner's method.
 
-**Status: V1 preview. Physical-cube teaching acceptance is pending before a stable release.**
+**Status: LBL is available online. Physical-cube teaching acceptance was confirmed by the project owner on October 12, 2026.**
 
 [Open CubeSteps](https://leosteeeve.github.io/cube-steps/) — use it directly in your browser, with no account or installation.
 
@@ -60,7 +60,7 @@ Cube state, teaching rules, course content, and playback are separate modules. S
 
 | Version track | Planned work |
 | --- | --- |
-| V1 | Complete LBL lessons and formula-based solving; finish club acceptance before release |
+| V1 | LBL lessons and formula-based solving are available; physical-cube teaching acceptance is complete |
 | Later methods | CFOP → Roux → ZZ, each with lessons and generated solutions |
 | Later inputs | Manual six-face colors with legality checks, then camera scanning with correction |
 
