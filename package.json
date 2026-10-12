@@ -14,7 +14,10 @@
     "test:corpus": "vitest run tests/solver-corpus.test.ts",
     "test:e2e": "playwright test",
     "build": "tsc --noEmit && vite build",
-    "preview": "vite preview --host 127.0.0.1"
+    "preview": "vite preview --host 127.0.0.1",
+    "test:production": "node scripts/test-production.mjs",
+    "notices": "node scripts/collect-notices.mjs",
+    "format": "prettier --write src tests e2e scripts *.ts *.json .github/workflows"
   },
   "dependencies": {
     "cubing": "0.65.1",
@@ -31,6 +34,7 @@
     "@types/react-dom": "19.3.0",
     "@vitejs/plugin-react": "6.1.2",
     "jsdom": "30.1.2",
+    "prettier": "3.9.10",
     "typescript": "7.0.2",
     "vite": "8.3.4",
     "vitest": "5.0.3"
