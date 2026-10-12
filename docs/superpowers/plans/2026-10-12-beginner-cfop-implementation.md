@@ -214,13 +214,13 @@ interface MethodRuntime {
 
 **Interfaces:** Preserve the public player/session props; resolve stage labels and algorithms from `session.trace.method` through `getMethod`. Consume `TraceAction.pair` and algorithm `segments`; do not parse rule-name strings for CFOP phases. The controller's completed/empty fallback comes from the trace's ordered stages, never a hard-coded LBL stage.
 
-- [ ] **Write failing tests.** Assert a CFOP result shows the CFOP label, pair targets/progress, correct formula and segment, and CFOP completion stage. Reject a mismatched algorithm reference. Verify solved zero-move input, stage skips sharing the same timeline offset, backward stepping into M, and formula replay endpoints. Compare color-input renderer setup to the exact initial state for a trace containing H/Z.
+- [x] **Write failing tests.** Assert a CFOP result shows the CFOP label, pair targets/progress, correct formula and segment, and CFOP completion stage. Reject a mismatched algorithm reference. Verify solved zero-move input, stage skips sharing the same timeline offset, backward stepping into M, and formula replay endpoints. Compare color-input renderer setup to the exact initial state for a trace containing H/Z.
 
   Pin `it('keeps an empty CFOP player on its own final stage')` with `expect(controller.snapshot().stageId).toBe('cfop-auf')` and `expect(controller.snapshot().total).toBe(0)`. The fixture uses Task 6's solved CFOP session; selecting a skipped stage must then yield that explicitly selected stage instead.
-- [ ] **Run red checks:** `npx.cmd vitest run src/player` and the new browser spec against the fixture after its method selector is added.
-- [ ] **Implement metadata-driven playback.** Retain LBL daisy phases and existing controls. Show `prepare`, `pair`, and `insert` from structured CFOP metadata, keeping full algorithm and current turn visible. Render M as a slice move with its textual definition, not as a regrip. Use shared flattening/inversion and continue to exclude private renderer setup from the teaching timeline.
-- [ ] **Run green checks and typecheck.** In Chromium and WebKit, compare the rendered puzzle model with independent engine states at every boundary of representative H/Z traces, including reverse stepping, replay, and colored starting state. Verify `replayAction` stops at the formula end and camera orbit does not change state. Also cover renderer failure with usable textual steps.
-- [ ] **Commit:** `feat: play CFOP pairs and slice algorithms with synchronized explanations`.
+- [x] **Run red checks:** `npx.cmd vitest run src/player` and the new browser spec against the fixture after its method selector is added.
+- [x] **Implement metadata-driven playback.** Retain LBL daisy phases and existing controls. Show `prepare`, `pair`, and `insert` from structured CFOP metadata, keeping full algorithm and current turn visible. Render M as a slice move with its textual definition, not as a regrip. Use shared flattening/inversion and continue to exclude private renderer setup from the teaching timeline.
+- [x] **Run green checks and typecheck.** In Chromium and WebKit, compare the rendered puzzle model with independent engine states at every boundary of representative H/Z traces, including reverse stepping, replay, and colored starting state. Verify `replayAction` stops at the formula end and camera orbit does not change state. Also cover renderer failure with usable textual steps.
+- [x] **Commit:** `feat: play CFOP pairs and slice algorithms with synchronized explanations`.
 
 ## Task 8: Add Method Selection Without Losing Input
 

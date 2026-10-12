@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import type { CubeEngine, SolveSession, StageId } from '../core/types';
-import { LBL_ALGORITHMS, type AlgorithmId } from '../methods/lbl/catalog';
+import { getMethod } from '../methods/registry';
 import {
   createPlaybackController,
   type PlaybackController,
@@ -20,6 +20,7 @@ interface Props {
   onStageChange?: (id: StageId) => void;
 }
 export function CubePlayer({ engine, session, stage, stageRequestId, onStageChange }: Props) {
+  const method = getMethod(session.trace.method);
   const host = useRef<HTMLDivElement>(null),
     controller = useRef<PlaybackController | null>(null);
   const [snapshot, setSnapshot] = useState<PlaybackSnapshot | null>(null),
@@ -93,7 +94,8 @@ export function CubePlayer({ engine, session, stage, stageRequestId, onStageChan
   const currentStage = session.trace.stages.find((item) => item.id === s?.stageId);
   const range = player?.timeline.actions[s?.actionIndex ?? -1],
     action = currentStage?.status === 'skipped' ? undefined : range?.action;
-  const alg = action?.algorithmId ? LBL_ALGORITHMS[action.algorithmId as AlgorithmId] : undefined;
+  const alg = action?.algorithmId ? method.algorithms[action.algorithmId] : undefined;
+  const segment = alg?.segments?.find(part => s && range && s.moveIndex - range.start >= part.start && s.moveIndex - range.start < part.end);
   const repetitions = action?.repetition
     ? player?.timeline.actions.filter(
         (a) => a.action.repetition?.group === action.repetition?.group,
@@ -108,7 +110,7 @@ export function CubePlayer({ engine, session, stage, stageRequestId, onStageChan
         data-boundary-state={s ? JSON.stringify(s.boundaryState.data) : undefined}
       >
         <div className="cube-meta">
-          <span className="pill">3 × 3 · LBL</span>
+          <span className="pill">3 × 3 · {method.label}</span>
           <span className="muted" data-testid="move-position">
             Move {s?.moveIndex ?? 0} of {s?.total ?? 0}
           </span>
@@ -190,7 +192,7 @@ export function CubePlayer({ engine, session, stage, stageRequestId, onStageChan
       </section>
       <aside className="explanation" aria-label="Step explanation">
         <span className="eyebrow">YOUR NEXT STEP</span>
-        <h2>{currentStage ? stageTitle(currentStage.id) : 'Preparing your solve'}</h2>
+        <h2>{currentStage ? method.stages.find(item => item.id === currentStage.id)?.label ?? stageTitle(currentStage.id) : 'Preparing your solve'}</h2>
         {currentStage?.status === 'skipped' ? (
           <div className="notice">
             <h3>Already complete</h3>
@@ -199,6 +201,7 @@ export function CubePlayer({ engine, session, stage, stageRequestId, onStageChan
           </div>
         ) : action ? (
           <>
+            {action.pair && <div className="notice"><h3>Pair {action.pair.ordinal} of 4 · {stageTitle(action.pair.phase)}</h3><p>Target slot: {action.pair.slot} · {action.pair.solvedBefore} complete before this action; {action.pair.solvedAfter} after.</p></div>}
             {currentStage?.id === 'white-cross' && (
               <h3 className="notice">
                 {action.ruleId.startsWith('cross-')
@@ -226,7 +229,7 @@ export function CubePlayer({ engine, session, stage, stageRequestId, onStageChan
                 <p>{action.explanation}</p>
               </div>
             </div>
-            <div className="algorithm-card">
+            <div className="algorithm-card" data-algorithm-id={action.algorithmId} data-action-start={range?.start} data-action-end={range?.end}>
               <span>
                 {alg?.name ?? (action.kind === 'regrip' ? 'Whole-cube rotation' : 'Setup moves')}
                 {repetitions ? ` · ${action.repetition!.index} of ${repetitions}` : ''}
@@ -241,6 +244,8 @@ export function CubePlayer({ engine, session, stage, stageRequestId, onStageChan
               <small>
                 Current move: <strong>{s?.currentMove ?? 'Complete'}</strong>
               </small>
+              {segment && <p>Segment: {segment.label}</p>}
+              {action.moves.some(move => move.startsWith('M')) && <p>M turns the middle slice between L and R in the same direction as L. M′ reverses it; M2 is a half turn. Keep the outer faces still.</p>}
             </div>
             <div className="step-section">
               <span className="step-number">03</span>
