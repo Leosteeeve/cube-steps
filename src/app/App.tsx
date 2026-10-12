@@ -43,7 +43,7 @@ export function App() {
             Learn the method
           </a>
           <a href="#/solve" className={free ? 'selected' : ''}>
-            Solve a scramble
+            Solve your cube
           </a>
         </nav>
         <a
