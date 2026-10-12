@@ -2,7 +2,7 @@
 
 Date: October 12, 2026 (America/Los_Angeles).
 
-**Status: Written design for owner review. The owner requested the first CFOP version and selected a direct white cross on the bottom. This document has not yet received written-spec approval. No CFOP implementation or validation is complete.**
+**Status: Written design approved by the owner on October 12, 2026. The owner requested the first CFOP version and selected a direct white cross on the bottom. The implementation plan is the next review artifact. No CFOP implementation or validation is complete.**
 
 ## 1. Purpose and established direction
 
