@@ -69,6 +69,7 @@ export function createPlaybackController(engine: CubeEngine, session: SolveSessi
   function play() {
     if (disposed || count === 0 || playing) return;
     if (timestamp >= boundaries[count]) seekMove(0);
+    if (timestamp >= boundaries[stopAt]) stopAt = count;
     selectedStage = undefined;
     playing = true;
     const token = ++generation;

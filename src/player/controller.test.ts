@@ -51,6 +51,23 @@ it('replays one complete action and cancels obsolete animation after seeking', (
   vi.advanceTimersByTime(2000);
   expect(player.snapshot()).toEqual(end);
 });
+it('continues the full solution when Play follows a completed action replay', () => {
+  const player = createPlaybackController(engine, session);
+  const index = player.timeline.actions.findIndex((item) => item.action.kind === 'algorithm');
+  const action = player.timeline.actions[index];
+  player.replayAction(index);
+  vi.advanceTimersByTime(500);
+  player.pause();
+  player.play();
+  vi.advanceTimersByTime(20000);
+  expect(player.snapshot().moveIndex).toBe(action.end);
+  expect(player.snapshot().playing).toBe(false);
+  player.play();
+  vi.advanceTimersByTime(2100);
+  expect(player.snapshot().moveIndex).toBeGreaterThan(action.end);
+  expect(player.snapshot().playing).toBe(true);
+  player.dispose();
+});
 it('uses renderer timing, limits speeds and rejects a mismatched initial setup', () => {
   const player = createPlaybackController(engine, session),
     count = flattenTrace(session.trace).moves.length;

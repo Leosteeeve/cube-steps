@@ -13,6 +13,7 @@ export function SolvePage({ engine }: { engine: CubeEngine }) {
     [busy, setBusy] = useState(false),
     [randomizing, setRandomizing] = useState(false),
     [stage, setStage] = useState<StageId>('white-cross'),
+    [stageRequestId, setStageRequestId] = useState(0),
     [active, setActive] = useState<StageId>('white-cross');
   useEffect(
     () => () => {
@@ -72,6 +73,7 @@ export function SolvePage({ engine }: { engine: CubeEngine }) {
       selected={active}
       onSelect={(id) => {
         setStage(id);
+        setStageRequestId((value) => value + 1);
         setActive(id);
       }}
     >
@@ -145,7 +147,13 @@ export function SolvePage({ engine }: { engine: CubeEngine }) {
               <code>{session.scrambleMoves.join(' ') || 'Solved cube — no scramble'}</code>
             </details>
           </div>
-          <CubePlayer engine={engine} session={session} stage={stage} onStageChange={setActive} />
+          <CubePlayer
+            engine={engine}
+            session={session}
+            stage={stage}
+            stageRequestId={stageRequestId}
+            onStageChange={setActive}
+          />
         </>
       ) : (
         <div className="empty-solve">

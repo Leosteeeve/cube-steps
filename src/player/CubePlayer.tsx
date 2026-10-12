@@ -16,9 +16,10 @@ interface Props {
   engine: CubeEngine;
   session: SolveSession;
   stage?: StageId;
+  stageRequestId?: number;
   onStageChange?: (id: StageId) => void;
 }
-export function CubePlayer({ engine, session, stage, onStageChange }: Props) {
+export function CubePlayer({ engine, session, stage, stageRequestId, onStageChange }: Props) {
   const host = useRef<HTMLDivElement>(null),
     controller = useRef<PlaybackController | null>(null);
   const [snapshot, setSnapshot] = useState<PlaybackSnapshot | null>(null),
@@ -55,7 +56,6 @@ export function CubePlayer({ engine, session, stage, onStageChange }: Props) {
         }
         adapter = result;
         player.setBoundaries(result.boundaries);
-        if (stage) player.seekStage(stage);
         setReady(true);
       })
       .catch((e) => {
@@ -74,7 +74,7 @@ export function CubePlayer({ engine, session, stage, onStageChange }: Props) {
   }, [engine, session]);
   useEffect(() => {
     if (stage) controller.current?.seekStage(stage);
-  }, [stage]);
+  }, [stage, stageRequestId, ready]);
   useEffect(() => {
     const p = controller.current;
     if (p) p.setSpeed(p.snapshot().speed);
