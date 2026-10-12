@@ -1,5 +1,5 @@
 import type { CubeEngine, SolveTrace } from '../core/types';
-import { flattenTrace } from '../methods/lbl/trace';
+import { flattenTrace } from '../methods/shared/trace';
 export function createTimeline(engine: CubeEngine, trace: SolveTrace) {
   const flat = flattenTrace(trace),
     states = [trace.initial];

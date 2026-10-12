@@ -1,6 +1,6 @@
 import type { CubeEngine, SolveSession, TeachingMove } from '../core/types';
 import { assertSessionInput } from '../core/solve-input';
-import { flattenTrace } from '../methods/lbl/trace';
+import { flattenTrace } from '../methods/shared/trace';
 export function buildInitialSetup(engine: CubeEngine, session: SolveSession): TeachingMove[] {
   assertSessionInput(engine, session);
   const moves = flattenTrace(session.trace).moves;

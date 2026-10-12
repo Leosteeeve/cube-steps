@@ -1,6 +1,7 @@
 export type Face = 'U' | 'D' | 'L' | 'R' | 'F' | 'B';
 export type FaceMove = `${Face}${'' | "'" | '2'}`;
-export type TeachingMove = FaceMove | `${'x' | 'y' | 'z'}${'' | "'" | '2'}`;
+export type TeachingMove = FaceMove | `${'x' | 'y' | 'z' | 'M'}${'' | "'" | '2'}`;
+export type MethodId = 'lbl' | 'cfop-beginner';
 export type Color = 'white' | 'yellow' | 'green' | 'blue' | 'red' | 'orange';
 export type Facelets = Readonly<Record<Face, readonly (Color | null)[]>>;
 export type FaceletSnapshot = Readonly<Record<Face, readonly Color[]>>;
@@ -25,7 +26,7 @@ export interface CubeEngine {
   isSolved(state: CubeState): boolean;
   equals(a: CubeState, b: CubeState): boolean;
 }
-export type StageId =
+export type LBLStageId =
   | 'white-cross'
   | 'first-layer'
   | 'middle-layer'
@@ -33,6 +34,24 @@ export type StageId =
   | 'top-edges'
   | 'top-corners'
   | 'corner-orientation';
+export type CFOPStageId =
+  | 'cfop-cross'
+  | 'cfop-f2l'
+  | 'cfop-oll-edges'
+  | 'cfop-oll-corners'
+  | 'cfop-pll-corners'
+  | 'cfop-pll-edges'
+  | 'cfop-auf';
+export type StageId = LBLStageId | CFOPStageId;
+export interface PairTrace {
+  cornerId: string;
+  edgeId: string;
+  slot: string;
+  phase: 'prepare' | 'pair' | 'insert';
+  ordinal: number;
+  solvedBefore: number;
+  solvedAfter: number;
+}
 export interface Checkpoint {
   id: string;
   description: string;
@@ -48,6 +67,7 @@ export interface TraceAction {
   moves: TeachingMove[];
   algorithmId?: string;
   repetition?: { group: string; index: number };
+  pair?: PairTrace;
   before: CubeState;
   after: CubeState;
   checkpoint: Checkpoint;
@@ -62,7 +82,7 @@ export interface TraceStage {
   skipReason?: string;
 }
 export interface SolveTrace {
-  method: 'lbl';
+  method: MethodId;
   initial: CubeState;
   stages: TraceStage[];
   final: CubeState;

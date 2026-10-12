@@ -10,7 +10,7 @@
 
 **Spec:** [Approved Beginner CFOP design](../specs/2026-10-12-beginner-cfop-design.md), approved October 12, 2026.
 
-**Status:** Plan prepared for owner review. Implementation has not started. Preserve the previously selected Native execution approach after plan approval.
+**Status:** Approved by the owner on October 12, 2026. Native implementation is in progress; checked steps have recorded verification in the execution ledger.
 
 ## Global Constraints
 
@@ -107,7 +107,7 @@ interface MethodRuntime {
 
 **Interfaces:** Produces the Shared Contracts, `invertTeachingMoves(moves: readonly TeachingMove[]): TeachingMove[]`, and `isTeachingMove(value: unknown): value is TeachingMove`. LBL `solveLBL` and stage-rule signatures stay unchanged. Add runtime verification for LBL action eligibility and existing preservation conditions without altering its selected moves.
 
-- [ ] **Write failing tests.** Preserve a literal trace fixture from the current guided example; assert its moves, case IDs, stage order, and daisy checkpoints remain identical after extraction. Add tampered-stage, mismatched-method/catalog, false-precondition, corrupted before/after/final, and forged `checkpoint.passed` cases, all rejected by `verifyTrace`. Assert `invertTeachingMoves(['M', 'U2', "M'"])` equals `['M', 'U2', "M'"]` and that applying a sequence followed by its inverse restores the state.
+- [x] **Write failing tests.** Preserve a literal trace fixture from the current guided example; assert its moves, case IDs, stage order, and daisy checkpoints remain identical after extraction. Add tampered-stage, mismatched-method/catalog, false-precondition, corrupted before/after/final, and forged `checkpoint.passed` cases, all rejected by `verifyTrace`. Assert `invertTeachingMoves(['M', 'U2', "M'"])` equals `['M', 'U2', "M'"]` and that applying a sequence followed by its inverse restores the state.
 
   ```ts
   it('rejects a forged passed checkpoint whose effect is false', () => {
@@ -116,10 +116,10 @@ interface MethodRuntime {
   ```
 
   `forgedTrace` is the valid guided-example fixture with one actual preservation effect broken while keeping `passed: true`; define it in this test. Export `LBL_RUNTIME: MethodRuntime` from `lbl/definition.ts`.
-- [ ] **Run red checks:** `npx.cmd vitest run src/methods/shared src/core/teaching-moves.test.ts`. Confirm the failures exercise the proposed behavior after exports exist.
-- [ ] **Implement the contracts and adapters.** Validate exact stage count/order, reject unknown stages instead of the current `indexOf(-1)` slice trap, and resolve every algorithm through the selected method. Replay state transitions and evaluate runtime predicates independently of the serialized passed flag. Keep 512/4096 budget behavior. Add M to teaching tokens without widening `FaceMove` or `parseScramble`.
-- [ ] **Run green checks:** the red-check command, `npm.cmd run test:unit`, `npm.cmd run test:corpus`, and typecheck. Test M/M'/M2 center observations and four M turns; keep parser rejection of M.
-- [ ] **Commit:** `refactor: share method trace verification while preserving LBL`.
+- [x] **Run red checks:** `npx.cmd vitest run src/methods/shared src/core/teaching-moves.test.ts`. Confirm the failures exercise the proposed behavior after exports exist.
+- [x] **Implement the contracts and adapters.** Validate exact stage count/order, reject unknown stages instead of the current `indexOf(-1)` slice trap, and resolve every algorithm through the selected method. Replay state transitions and evaluate runtime predicates independently of the serialized passed flag. Keep 512/4096 budget behavior. Add M to teaching tokens without widening `FaceMove` or `parseScramble`.
+- [x] **Run green checks:** the red-check command, `npm.cmd run test:unit`, `npm.cmd run test:corpus`, and typecheck. Test M/M'/M2 center observations and four M turns; keep parser rejection of M.
+- [x] **Commit:** `refactor: share method trace verification while preserving LBL`.
 
 ## Task 2: Define CFOP Goals and Last-Layer Cases
 
