@@ -15,7 +15,9 @@ export function LessonLayout({
   onSelect?: (id: StageId) => void;
   method?: MethodId;
 }) {
-  const lessons = free ? getMethod(method).stages.map(s => ({ id: s.id, stageId: s.id, shortTitle: s.label })) : getCourse(method);
+  const lessons = free
+    ? getMethod(method).stages.map((s) => ({ id: s.id, stageId: s.id, shortTitle: s.label }))
+    : getCourse(method);
   return (
     <div className="lesson-layout">
       <nav className="stage-nav" aria-label={free ? 'Solution stages' : 'Learning path'}>

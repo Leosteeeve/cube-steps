@@ -1,7 +1,9 @@
 import type { MethodPresentation } from '../contracts';
 import { CFOP_ALGORITHMS } from './catalog';
 export const CFOP_PRESENTATION: MethodPresentation = {
-  id: 'cfop-beginner', label: 'Beginner CFOP', algorithms: CFOP_ALGORITHMS,
+  id: 'cfop-beginner',
+  label: 'Beginner CFOP',
+  algorithms: CFOP_ALGORITHMS,
   stages: [
     { id: 'cfop-cross', label: 'Direct white cross', group: 'Cross' },
     { id: 'cfop-f2l', label: 'First two layers', group: 'F2L' },

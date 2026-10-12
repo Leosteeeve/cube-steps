@@ -17,24 +17,52 @@ export default function PlayerFixture() {
     let live = true;
     setData(null);
     void createCubeEngine().then((engine) => {
-      const scrambleMoves = fixture === 'cfop-solved' ? [] : ['R', 'U2', "F'"] as const;
+      const scrambleMoves = fixture === 'cfop-solved' ? [] : (['R', 'U2', "F'"] as const);
       const slice = fixture === 'pll-h' || fixture === 'pll-z';
-      const initial = slice ? engine.apply(engine.solved(), ['x2', ...invertTeachingMoves(CFOP_ALGORITHMS[fixture].moves), 'x2']) : engine.apply(engine.solved(), scrambleMoves);
+      const initial = slice
+        ? engine.apply(engine.solved(), [
+            'x2',
+            ...invertTeachingMoves(CFOP_ALGORITHMS[fixture].moves),
+            'x2',
+          ])
+        : engine.apply(engine.solved(), scrambleMoves);
       const result = fixture === 'lbl' ? solveLBL(engine, initial) : solveCFOP(engine, initial);
       if (result.ok && live) {
-        setStage(fixture === 'lbl' ? 'white-cross' : slice ? 'cfop-pll-edges' : fixture === 'cfop-solved' ? 'cfop-auf' : 'cfop-f2l');
+        setStage(
+          fixture === 'lbl'
+            ? 'white-cross'
+            : slice
+              ? 'cfop-pll-edges'
+              : fixture === 'cfop-solved'
+                ? 'cfop-auf'
+                : 'cfop-f2l',
+        );
         setData({
           engine,
-          session: { input: slice ? { kind: 'facelets', facelets: stateToFacelets(initial) } : { kind: 'scramble', moves: [...scrambleMoves] }, trace: result.trace },
+          session: {
+            input: slice
+              ? { kind: 'facelets', facelets: stateToFacelets(initial) }
+              : { kind: 'scramble', moves: [...scrambleMoves] },
+            trace: result.trace,
+          },
         });
       }
     });
-    return () => { live = false; };
+    return () => {
+      live = false;
+    };
   }, [fixture]);
   return (
     <main style={{ maxWidth: 1100, margin: 'auto', fontFamily: 'system-ui' }}>
       <h1>CubeSteps playback check</h1>
-      <label>Fixture <select aria-label="Fixture" value={fixture} onChange={e => setFixture(e.target.value)}>{['lbl', 'cfop-scramble', 'cfop-solved', 'pll-h', 'pll-z'].map(id => <option key={id}>{id}</option>)}</select></label>
+      <label>
+        Fixture{' '}
+        <select aria-label="Fixture" value={fixture} onChange={(e) => setFixture(e.target.value)}>
+          {['lbl', 'cfop-scramble', 'cfop-solved', 'pll-h', 'pll-z'].map((id) => (
+            <option key={id}>{id}</option>
+          ))}
+        </select>
+      </label>
       <label>
         Stage
         <select

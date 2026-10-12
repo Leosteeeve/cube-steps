@@ -11,5 +11,13 @@ export interface WorkerReply {
   requestId: number;
   result:
     | { ok: true; session: SolveSession }
-    | { ok: false; error: { kind: 'input' | 'solver'; message: string; issues?: FaceletIssue[]; stageId?: StageId } };
+    | {
+        ok: false;
+        error: {
+          kind: 'input' | 'solver';
+          message: string;
+          issues?: FaceletIssue[];
+          stageId?: StageId;
+        };
+      };
 }

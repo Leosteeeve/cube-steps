@@ -39,7 +39,8 @@ beforeEach(() => {
           error: { kind: 'parse', offset: parsed.offset, message: parsed.message },
         };
       return handleSolveRequest(engine, {
-        requestId: 1, method,
+        requestId: 1,
+        method,
         input: { kind: 'scramble', moves: parsed.moves },
       })!.result;
     }),
@@ -52,8 +53,11 @@ afterEach(() => {
   vi.restoreAllMocks();
 });
 function colorResult(facelets: Facelets = GOLDEN_CASES[7].facelets): SessionResult {
-  return handleSolveRequest(engine, { requestId: 1, method: 'lbl', input: { kind: 'facelets', facelets } })!
-    .result;
+  return handleSolveRequest(engine, {
+    requestId: 1,
+    method: 'lbl',
+    input: { kind: 'facelets', facelets },
+  })!.result;
 }
 function seed() {
   sessionStorage.setItem(
@@ -72,24 +76,35 @@ function deferred<T>() {
   return { promise, resolve };
 }
 it('preserves input and clears the result on a history-driven method change', async () => {
-  render(<App />); const user = userEvent.setup();
+  render(<App />);
+  const user = userEvent.setup();
   const textarea = await screen.findByLabelText('Scramble sequence');
-  await user.type(textarea, 'R U'); await user.click(screen.getByRole('button', { name: 'Explain this solve' }));
+  await user.type(textarea, 'R U');
+  await user.click(screen.getByRole('button', { name: 'Explain this solve' }));
   expect(await screen.findByText('Verified LBL solution')).toBeVisible();
   const calls = client.solveScramble.mock.calls.length;
-  act(() => { location.hash = '#/solve/cfop'; window.dispatchEvent(new Event('hashchange')); });
-  expect(textarea).toHaveValue('R U'); expect(screen.queryByText('Verified LBL solution')).not.toBeInTheDocument();
+  act(() => {
+    location.hash = '#/solve/cfop';
+    window.dispatchEvent(new Event('hashchange'));
+  });
+  expect(textarea).toHaveValue('R U');
+  expect(screen.queryByText('Verified LBL solution')).not.toBeInTheDocument();
   expect(client.solveScramble).toHaveBeenCalledTimes(calls);
   await user.click(screen.getByRole('button', { name: 'Explain this solve' }));
   expect(client.solveScramble).toHaveBeenLastCalledWith('R U', 'cfop-beginner');
   expect(await screen.findByText('Verified Beginner CFOP solution')).toBeVisible();
 });
 it('preserves checked colors, selected face and an incomplete draft when switching methods', async () => {
-  seed(); const view = render(<SolvePage engine={engine} method="lbl" />), user = await showColors();
+  seed();
+  const view = render(<SolvePage engine={engine} method="lbl" />),
+    user = await showColors();
   await user.click(screen.getByRole('button', { name: 'Check colors' }));
   view.rerender(<SolvePage engine={engine} method="cfop-beginner" />);
   expect(screen.getByRole('button', { name: 'Explain with Beginner CFOP' })).toBeEnabled();
-  expect(screen.getByRole('button', { name: 'Front face' })).toHaveAttribute('aria-current', 'step');
+  expect(screen.getByRole('button', { name: 'Front face' })).toHaveAttribute(
+    'aria-current',
+    'step',
+  );
   expect(client.solveFacelets).not.toHaveBeenCalled();
   await user.click(screen.getByRole('button', { name: 'Eraser' }));
   await user.click(screen.getByRole('button', { name: /^Front, row 1, column 1,/ }));
@@ -98,9 +113,14 @@ it('preserves checked colors, selected face and an incomplete draft when switchi
   expect(screen.getByRole('button', { name: 'Explain with LBL' })).toBeDisabled();
 });
 it('cancels late work across methods without changing the new draft or busy state', async () => {
-  const old = deferred<SessionResult>(), current = deferred<SessionResult>(), random = deferred<string>();
-  client.solveScramble.mockImplementationOnce(() => old.promise).mockImplementationOnce(() => current.promise);
-  const view = render(<SolvePage engine={engine} method="lbl" />), user = userEvent.setup();
+  const old = deferred<SessionResult>(),
+    current = deferred<SessionResult>(),
+    random = deferred<string>();
+  client.solveScramble
+    .mockImplementationOnce(() => old.promise)
+    .mockImplementationOnce(() => current.promise);
+  const view = render(<SolvePage engine={engine} method="lbl" />),
+    user = userEvent.setup();
   await user.type(screen.getByLabelText('Scramble sequence'), 'R');
   await user.click(screen.getByRole('button', { name: 'Explain this solve' }));
   view.rerender(<SolvePage engine={engine} method="cfop-beginner" />);
@@ -108,7 +128,9 @@ it('cancels late work across methods without changing the new draft or busy stat
   await act(async () => old.resolve(colorResult()));
   expect(screen.getByRole('button', { name: 'Finding your steps…' })).toBeDisabled();
   expect(screen.queryByText('Verified LBL solution')).not.toBeInTheDocument();
-  await act(async () => current.resolve({ ok: false, error: { kind: 'cancelled', message: 'Test cleanup' } }));
+  await act(async () =>
+    current.resolve({ ok: false, error: { kind: 'cancelled', message: 'Test cleanup' } }),
+  );
   mocked.random.mockImplementationOnce(() => random.promise);
   await user.click(screen.getByRole('button', { name: 'Random scramble' }));
   view.rerender(<SolvePage engine={engine} method="lbl" />);

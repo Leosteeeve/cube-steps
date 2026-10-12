@@ -39,7 +39,8 @@ export function createPlaybackController(engine: CubeEngine, session: SolveSessi
           ? (timestamp - boundaries[index]) / (boundaries[index + 1] - boundaries[index])
           : 0,
       actionIndex,
-      stageId: selectedStage ?? timeline.actions[actionIndex]?.stageId ?? session.trace.stages.at(-1)!.id,
+      stageId:
+        selectedStage ?? timeline.actions[actionIndex]?.stageId ?? session.trace.stages.at(-1)!.id,
       boundaryState: timeline.states[index],
       timestamp,
       speed,

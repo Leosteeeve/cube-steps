@@ -17,7 +17,8 @@ export function App() {
       .catch((e) => setError(String(e)));
     return () => removeEventListener('hashchange', change);
   }, []);
-  const free = route.kind === 'solve', method = getMethod(route.method);
+  const free = route.kind === 'solve',
+    method = getMethod(route.method);
   return (
     <>
       <a
@@ -59,7 +60,9 @@ export function App() {
       </header>
       <main id="main" tabIndex={-1}>
         <div className="course-banner">
-          <span className="pill">{route.method === 'lbl' ? 'BEGINNER’S METHOD' : 'CROSS · F2L · OLL · PLL'}</span>
+          <span className="pill">
+            {route.method === 'lbl' ? 'BEGINNER’S METHOD' : 'CROSS · F2L · OLL · PLL'}
+          </span>
           <p>Understand the moves. Enjoy the solve.</p>
           <span className="preview-label">{method.label} · Preview</span>
         </div>
@@ -71,7 +74,14 @@ export function App() {
           free ? (
             <SolvePage engine={engine} method={route.method} />
           ) : (
-            route.kind === 'learn' && <LearnPage key={`${route.method}/${route.lessonId}`} engine={engine} method={route.method} lessonId={route.lessonId} />
+            route.kind === 'learn' && (
+              <LearnPage
+                key={`${route.method}/${route.lessonId}`}
+                engine={engine}
+                method={route.method}
+                lessonId={route.lessonId}
+              />
+            )
           )
         ) : (
           <p className="loading-panel" role="status">

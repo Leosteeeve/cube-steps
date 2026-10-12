@@ -62,7 +62,13 @@ export function createSolveClient(
         worker.onmessage = ({ data }) => {
           if (data.requestId !== id) return;
           if (data.result.ok && data.result.session?.trace?.method !== method) {
-            finish({ ok: false, error: { kind: 'worker', message: 'The worker returned a solution for the wrong method. Please solve again.' } });
+            finish({
+              ok: false,
+              error: {
+                kind: 'worker',
+                message: 'The worker returned a solution for the wrong method. Please solve again.',
+              },
+            });
             return;
           }
           finish(

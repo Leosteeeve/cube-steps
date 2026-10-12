@@ -19,7 +19,8 @@ export function handleSolveRequest(engine: CubeEngine, request: unknown): Worker
     requestId,
     result: { ok: false, error: { kind: 'input', message } },
   });
-  if (!('method' in request) || (request.method !== 'lbl' && request.method !== 'cfop-beginner')) return fail('Choose a supported teaching method: LBL or Beginner CFOP.');
+  if (!('method' in request) || (request.method !== 'lbl' && request.method !== 'cfop-beginner'))
+    return fail('Choose a supported teaching method: LBL or Beginner CFOP.');
   if (
     !('input' in request) ||
     !request.input ||

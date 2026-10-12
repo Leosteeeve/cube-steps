@@ -8,7 +8,9 @@ it.each([
   ['#/learn/cfop/cfop-f2l', { kind: 'learn', method: 'cfop-beginner', lessonId: 'cfop-f2l' }],
   ['#/learn/cfop/unknown', { kind: 'learn', method: 'cfop-beginner', lessonId: 'intro' }],
   ['#/learn/unknown', { kind: 'learn', method: 'lbl', lessonId: 'notation' }],
-])('parses %s without guessing a method', (hash, route) => expect(parseRoute(hash as string)).toEqual(route));
+])('parses %s without guessing a method', (hash, route) =>
+  expect(parseRoute(hash as string)).toEqual(route),
+);
 it('builds stable method entry links', () => {
   expect(methodRoute('lbl', 'learn')).toBe('#/learn/notation');
   expect(methodRoute('lbl', 'solve')).toBe('#/solve');

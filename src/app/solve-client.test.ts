@@ -16,23 +16,35 @@ class ControlledWorker implements WorkerPort {
   }
 }
 it('rejects a current reply for another method and settles its promise', async () => {
-  const worker = new ControlledWorker(), client = createSolveClient(() => worker);
+  const worker = new ControlledWorker(),
+    client = createSolveClient(() => worker);
   const pending = client.solveScramble('', 'cfop-beginner');
   const reply = handleSolveRequest(await createCubeEngine(), { ...worker.request, method: 'lbl' });
   if (!reply) throw new Error('Missing reply');
   worker.onmessage?.(new MessageEvent('message', { data: reply }));
-  expect(await pending).toMatchObject({ ok: false, error: { kind: 'worker', message: expect.stringContaining('method') } });
+  expect(await pending).toMatchObject({
+    ok: false,
+    error: { kind: 'worker', message: expect.stringContaining('method') },
+  });
   expect(worker.terminated).toBe(true);
 });
 it('cancels an old method and ignores its late successful result', async () => {
-  const workers: ControlledWorker[] = [], client = createSolveClient(() => { const w = new ControlledWorker(); workers.push(w); return w; });
-  const first = client.solveScramble('R', 'lbl'), late = workers[0].onmessage;
+  const workers: ControlledWorker[] = [],
+    client = createSolveClient(() => {
+      const w = new ControlledWorker();
+      workers.push(w);
+      return w;
+    });
+  const first = client.solveScramble('R', 'lbl'),
+    late = workers[0].onmessage;
   const second = client.solveScramble('U', 'cfop-beginner');
   expect(await first).toMatchObject({ ok: false, error: { kind: 'cancelled' } });
   const engine = await createCubeEngine();
   late?.(new MessageEvent('message', { data: handleSolveRequest(engine, workers[0].request)! }));
   expect(workers[1].terminated).toBe(false);
-  workers[1].onmessage?.(new MessageEvent('message', { data: handleSolveRequest(engine, workers[1].request)! }));
+  workers[1].onmessage?.(
+    new MessageEvent('message', { data: handleSolveRequest(engine, workers[1].request)! }),
+  );
   expect(await second).toMatchObject({ ok: true, session: { trace: { method: 'cfop-beginner' } } });
 });
 it('returns positioned parse errors without starting a worker', async () => {

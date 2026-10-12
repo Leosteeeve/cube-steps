@@ -13,8 +13,10 @@ import { FACE_ENTRY_ORDER } from '../core/facelet-layout';
 import { getMethod } from '../methods/registry';
 import { MethodSelector } from './MethodSelector';
 export function SolvePage({ engine, method = 'lbl' }: { engine: CubeEngine; method?: MethodId }) {
-  const presentation = getMethod(method), firstStage = presentation.stages[0].id;
-  const methodRef = useRef(method); methodRef.current = method;
+  const presentation = getMethod(method),
+    firstStage = presentation.stages[0].id;
+  const methodRef = useRef(method);
+  methodRef.current = method;
   const client = useMemo(() => createSolveClient(), []),
     epoch = useRef(0);
   const store = useMemo(() => createDraftStore(() => window.sessionStorage), []);
@@ -36,7 +38,14 @@ export function SolvePage({ engine, method = 'lbl' }: { engine: CubeEngine; meth
     [stageRequestId, setStageRequestId] = useState(0),
     [active, setActive] = useState<StageId>(firstStage);
   useLayoutEffect(() => {
-    epoch.current++; client.cancel(); setBusy(false); setRandomizing(false); setError(''); setSession(null); setStage(firstStage); setActive(firstStage);
+    epoch.current++;
+    client.cancel();
+    setBusy(false);
+    setRandomizing(false);
+    setError('');
+    setSession(null);
+    setStage(firstStage);
+    setActive(firstStage);
   }, [client, method, firstStage]);
   const parsedDraft = mode === 'scramble' ? parseScramble(text) : null;
   const session = storedSession?.trace.method === method ? storedSession : null;
@@ -117,7 +126,7 @@ export function SolvePage({ engine, method = 'lbl' }: { engine: CubeEngine; meth
         });
       else
         setError(
-          `${result.error.stageId ? `${presentation.stages.find(s => s.id === result.error.stageId)?.label ?? result.error.stageId}: ` : ''}${result.error.offset === undefined ? '' : `At character ${result.error.offset + 1}: `}${result.error.message}`,
+          `${result.error.stageId ? `${presentation.stages.find((s) => s.id === result.error.stageId)?.label ?? result.error.stageId}: ` : ''}${result.error.offset === undefined ? '' : `At character ${result.error.offset + 1}: `}${result.error.message}`,
         );
     }
   }
@@ -251,7 +260,8 @@ export function SolvePage({ engine, method = 'lbl' }: { engine: CubeEngine; meth
       {session ? (
         <>
           <div className="solution-summary">
-            <span className="success-dot" /> Verified {getMethod(session.trace.method).label} solution{' '}
+            <span className="success-dot" /> Verified {getMethod(session.trace.method).label}{' '}
+            solution{' '}
             <details>
               <summary>
                 {session.input.kind === 'scramble'

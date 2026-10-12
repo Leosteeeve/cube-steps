@@ -9,16 +9,31 @@ beforeAll(async () => {
   engine = await createCubeEngine();
 });
 afterEach(() => vi.restoreAllMocks());
-it.each([undefined, 'roux', null, 1])('rejects an invalid or missing method: %s', method => {
-  expect(handleSolveRequest(engine, { requestId: 5, method, input: { kind: 'scramble', moves: [] } })).toMatchObject({ result: { ok: false, error: { kind: 'input', message: expect.stringContaining('method') } } });
+it.each([undefined, 'roux', null, 1])('rejects an invalid or missing method: %s', (method) => {
+  expect(
+    handleSolveRequest(engine, { requestId: 5, method, input: { kind: 'scramble', moves: [] } }),
+  ).toMatchObject({
+    result: { ok: false, error: { kind: 'input', message: expect.stringContaining('method') } },
+  });
 });
 it('dispatches CFOP for scramble and color inputs with exact provenance', () => {
   const example = GOLDEN_CASES[7];
-  for (const input of [{ kind: 'scramble', moves: example.moves }, { kind: 'facelets', facelets: example.facelets }]) {
+  for (const input of [
+    { kind: 'scramble', moves: example.moves },
+    { kind: 'facelets', facelets: example.facelets },
+  ]) {
     const reply = handleSolveRequest(engine, { requestId: 12, method: 'cfop-beginner', input });
-    expect(reply?.result).toMatchObject({ ok: true, session: { input, trace: { method: 'cfop-beginner' } } });
+    expect(reply?.result).toMatchObject({
+      ok: true,
+      session: { input, trace: { method: 'cfop-beginner' } },
+    });
     if (!reply?.result.ok) throw new Error('Missing CFOP session');
-    expect(engine.equals(reply.result.session.trace.initial, engine.apply(engine.solved(), example.moves))).toBe(true);
+    expect(
+      engine.equals(
+        reply.result.session.trace.initial,
+        engine.apply(engine.solved(), example.moves),
+      ),
+    ).toBe(true);
   }
 });
 it('returns complete sessions for both input kinds with copied provenance', () => {
@@ -67,7 +82,11 @@ it('returns facelet issues and preserves the invalid payload', () => {
   facelets.F[0] = null;
   const before = structuredClone(facelets);
   expect(
-    handleSolveRequest(engine, { requestId: 4, method: 'lbl', input: { kind: 'facelets', facelets } }),
+    handleSolveRequest(engine, {
+      requestId: 4,
+      method: 'lbl',
+      input: { kind: 'facelets', facelets },
+    }),
   ).toMatchObject({
     result: { ok: false, error: { kind: 'input', issues: [{ code: 'unfilled' }] } },
   });
@@ -81,7 +100,11 @@ it('reports a bounded solver failure without claiming a verified session', () =>
     message: 'Bound reached',
   });
   expect(
-    handleSolveRequest(engine, { requestId: 8, method: 'lbl', input: { kind: 'scramble', moves: [] } }),
+    handleSolveRequest(engine, {
+      requestId: 8,
+      method: 'lbl',
+      input: { kind: 'scramble', moves: [] },
+    }),
   ).toMatchObject({
     result: {
       ok: false,

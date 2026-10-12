@@ -15,7 +15,8 @@ beforeAll(async () => {
 function verify(initial: CubeState, seed: number) {
   const facelets = stateToFacelets(initial);
   const reply = handleSolveRequest(engine, {
-    requestId: seed, method: 'lbl',
+    requestId: seed,
+    method: 'lbl',
     input: { kind: 'facelets', facelets },
   });
   if (!reply?.result.ok) throw new Error(`Color seed ${seed}: ${JSON.stringify(reply)}`);
