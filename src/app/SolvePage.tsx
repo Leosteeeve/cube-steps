@@ -93,8 +93,8 @@ export function SolvePage({ engine }: { engine: CubeEngine }) {
     setError('');
     const result =
       mode === 'colors' && checked?.ok
-        ? await client.solveFacelets(checked.facelets)
-        : await client.solveScramble(text);
+        ? await client.solveFacelets(checked.facelets, 'lbl')
+        : await client.solveScramble(text, 'lbl');
     if (token !== epoch.current) return;
     setBusy(false);
     if (result.ok) {

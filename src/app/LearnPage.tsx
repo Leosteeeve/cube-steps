@@ -16,7 +16,7 @@ export function LearnPage({ engine, lessonId }: { engine: CubeEngine; lessonId: 
     setSession(null);
     setError('');
     if (lesson.stageId)
-      void client.solveScramble(lesson.exampleScramble).then((result) => {
+      void client.solveScramble(lesson.exampleScramble, 'lbl').then((result) => {
         if (!live) return;
         if (result.ok) setSession(result.session);
         else if (result.error.kind !== 'cancelled') setError(result.error.message);

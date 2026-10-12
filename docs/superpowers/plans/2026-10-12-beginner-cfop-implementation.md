@@ -190,7 +190,7 @@ interface MethodRuntime {
 
 **Interfaces:** `solveCFOP(engine: CubeEngine, initial: CubeState, limits?: SolveLimits): SolveResult`. Add `method: MethodId` to `SolveRequest`. Change client methods to `solveScramble(text: string, method: MethodId): Promise<SessionResult>` and `solveFacelets(facelets: Facelets, method: MethodId): Promise<SessionResult>`; update every existing LBL caller/test atomically to pass `'lbl'`. Retain requestId/input/session shape and defensive freezing. Extend solver errors with optional `stageId` for phase-specific UI messages.
 
-- [ ] **Write failing tests.** Assert complete stage order and replay, exact input provenance, solved input with no moves, partial-stage skips, invalid/missing method rejection, and returned-method mismatch rejection. Race two different method requests and simulate a late old reply. A current request with the wrong method must fail as an invalid worker result rather than display it or hang.
+- [x] **Write failing tests.** Assert complete stage order and replay, exact input provenance, solved input with no moves, partial-stage skips, invalid/missing method rejection, and returned-method mismatch rejection. Race two different method requests and simulate a late old reply. A current request with the wrong method must fail as an invalid worker result rather than display it or hang.
 
   ```ts
   it('returns an empty complete CFOP trace for a solved input', () => {
@@ -203,10 +203,10 @@ interface MethodRuntime {
     expect(flattenTrace(result.trace).moves).toEqual([]);
   });
   ```
-- [ ] **Run red checks:** `npx.cmd vitest run src/methods/cfop/solve.test.ts src/workers/solve-request.test.ts src/app/solve-client.test.ts`.
-- [ ] **Implement orchestration and method dispatch.** Run all seven CFOP rules using `CFOP_RUNTIME`; call `verifyTrace` before returning success. Validate raw worker inputs as before and select the explicit runtime/solver inside the worker. Capture requested method with request identity in the client. Preserve cancellation, error recovery, and immutable input snapshots. Do not expose a partial trace on failure.
-- [ ] **Add and run the full corpus:** `npx.cmd vitest run tests/cfop-corpus.test.ts`. For seeds 1–1,000, solve twice and compare traces, independently replay all states and runtime predicates, then submit equivalent canonical facelets through the real worker handler with `cfop-beginner`. Assert exact initial state, case/formula equality, pair protections, and solved endpoint. Use deterministic seeds from `tests/fixtures/lbl-cases.ts`; failures print the seed and reproducing scramble. Add representative traces under all 24 orientations. Extend `test:corpus` to include this file, then run all corpora, client/worker tests, and typecheck.
-- [ ] **Commit:** `feat: dispatch and verify complete beginner CFOP solves`.
+- [x] **Run red checks:** `npx.cmd vitest run src/methods/cfop/solve.test.ts src/workers/solve-request.test.ts src/app/solve-client.test.ts`.
+- [x] **Implement orchestration and method dispatch.** Run all seven CFOP rules using `CFOP_RUNTIME`; call `verifyTrace` before returning success. Validate raw worker inputs as before and select the explicit runtime/solver inside the worker. Capture requested method with request identity in the client. Preserve cancellation, error recovery, and immutable input snapshots. Do not expose a partial trace on failure.
+- [x] **Add and run the full corpus:** `npx.cmd vitest run tests/cfop-corpus.test.ts`. For seeds 1–1,000, solve twice and compare traces, independently replay all states and runtime predicates, then submit equivalent canonical facelets through the real worker handler with `cfop-beginner`. Assert exact initial state, case/formula equality, pair protections, and solved endpoint. Use deterministic seeds from `tests/fixtures/lbl-cases.ts`; failures print the seed and reproducing scramble. Add representative traces under all 24 orientations. Extend `test:corpus` to include this file, then run all corpora, client/worker tests, and typecheck.
+- [x] **Commit:** `feat: dispatch and verify complete beginner CFOP solves`.
 
 ## Task 7: Make Playback Method-Aware and Verify M Rendering
 

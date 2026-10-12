@@ -37,7 +37,7 @@ beforeEach(() => {
           error: { kind: 'parse', offset: parsed.offset, message: parsed.message },
         };
       return handleSolveRequest(engine, {
-        requestId: 1,
+        requestId: 1, method: 'lbl',
         input: { kind: 'scramble', moves: parsed.moves },
       })!.result;
     }),
@@ -50,7 +50,7 @@ afterEach(() => {
   vi.restoreAllMocks();
 });
 function colorResult(facelets: Facelets = GOLDEN_CASES[7].facelets): SessionResult {
-  return handleSolveRequest(engine, { requestId: 1, input: { kind: 'facelets', facelets } })!
+  return handleSolveRequest(engine, { requestId: 1, method: 'lbl', input: { kind: 'facelets', facelets } })!
     .result;
 }
 function seed() {

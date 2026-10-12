@@ -1,5 +1,5 @@
 import { parseScramble } from '../core/notation';
-import type { Facelets, SolveSession } from '../core/types';
+import type { Facelets, SolveSession, MethodId, StageId } from '../core/types';
 import type { FaceletIssue } from '../core/facelets';
 import type { SolveRequest, SolveRequestInput, WorkerReply } from '../workers/solve-protocol';
 export type { WorkerReply } from '../workers/solve-protocol';
@@ -18,6 +18,7 @@ export type SessionResult =
         message: string;
         offset?: number;
         issues?: FaceletIssue[];
+        stageId?: StageId;
       };
     };
 // Worker messages are cloned by the browser, which removes Object.freeze.
@@ -46,7 +47,7 @@ export function createSolveClient(
       });
     }
   }
-  function send(input: SolveRequestInput): Promise<SessionResult> {
+  function send(input: SolveRequestInput, method: MethodId): Promise<SessionResult> {
     return new Promise((resolve) => {
       try {
         const worker = factory(),
@@ -60,6 +61,10 @@ export function createSolveClient(
         };
         worker.onmessage = ({ data }) => {
           if (data.requestId !== id) return;
+          if (data.result.ok && data.result.session?.trace?.method !== method) {
+            finish({ ok: false, error: { kind: 'worker', message: 'The worker returned a solution for the wrong method. Please solve again.' } });
+            return;
+          }
           finish(
             data.result.ok
               ? { ok: true, session: freezeReceived(data.result.session) }
@@ -73,7 +78,7 @@ export function createSolveClient(
             error: { kind: 'worker', message: `The solver could not start: ${event.message}` },
           });
         };
-        worker.postMessage({ requestId: id, input: structuredClone(input) });
+        worker.postMessage({ requestId: id, method, input: structuredClone(input) });
       } catch (error) {
         active?.worker.terminate();
         active = undefined;
@@ -89,7 +94,7 @@ export function createSolveClient(
   }
   return {
     cancel,
-    solveScramble(text: string): Promise<SessionResult> {
+    solveScramble(text: string, method: MethodId): Promise<SessionResult> {
       cancel();
       const parsed = parseScramble(text);
       if (!parsed.ok)
@@ -97,11 +102,11 @@ export function createSolveClient(
           ok: false,
           error: { kind: 'parse', offset: parsed.offset, message: parsed.message },
         });
-      return send({ kind: 'scramble', moves: parsed.moves });
+      return send({ kind: 'scramble', moves: parsed.moves }, method);
     },
-    solveFacelets(facelets: Facelets): Promise<SessionResult> {
+    solveFacelets(facelets: Facelets, method: MethodId): Promise<SessionResult> {
       cancel();
-      return send({ kind: 'facelets', facelets });
+      return send({ kind: 'facelets', facelets }, method);
     },
   };
 }

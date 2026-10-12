@@ -15,13 +15,33 @@ class ControlledWorker implements WorkerPort {
     this.terminated = true;
   }
 }
+it('rejects a current reply for another method and settles its promise', async () => {
+  const worker = new ControlledWorker(), client = createSolveClient(() => worker);
+  const pending = client.solveScramble('', 'cfop-beginner');
+  const reply = handleSolveRequest(await createCubeEngine(), { ...worker.request, method: 'lbl' });
+  if (!reply) throw new Error('Missing reply');
+  worker.onmessage?.(new MessageEvent('message', { data: reply }));
+  expect(await pending).toMatchObject({ ok: false, error: { kind: 'worker', message: expect.stringContaining('method') } });
+  expect(worker.terminated).toBe(true);
+});
+it('cancels an old method and ignores its late successful result', async () => {
+  const workers: ControlledWorker[] = [], client = createSolveClient(() => { const w = new ControlledWorker(); workers.push(w); return w; });
+  const first = client.solveScramble('R', 'lbl'), late = workers[0].onmessage;
+  const second = client.solveScramble('U', 'cfop-beginner');
+  expect(await first).toMatchObject({ ok: false, error: { kind: 'cancelled' } });
+  const engine = await createCubeEngine();
+  late?.(new MessageEvent('message', { data: handleSolveRequest(engine, workers[0].request)! }));
+  expect(workers[1].terminated).toBe(false);
+  workers[1].onmessage?.(new MessageEvent('message', { data: handleSolveRequest(engine, workers[1].request)! }));
+  expect(await second).toMatchObject({ ok: true, session: { trace: { method: 'cfop-beginner' } } });
+});
 it('returns positioned parse errors without starting a worker', async () => {
   let created = 0;
   const client = createSolveClient(() => {
     created++;
     return new ControlledWorker();
   });
-  expect(await client.solveScramble('R M')).toMatchObject({
+  expect(await client.solveScramble('R M', 'lbl')).toMatchObject({
     ok: false,
     error: { kind: 'parse', offset: 2 },
   });
@@ -30,7 +50,7 @@ it('returns positioned parse errors without starting a worker', async () => {
 it('handles worker errors without an unhandled browser error', async () => {
   const worker = new ControlledWorker(),
     client = createSolveClient(() => worker),
-    pending = client.solveScramble('R');
+    pending = client.solveScramble('R', 'lbl');
   const event = Object.assign(new Event('error', { cancelable: true }), {
     message: 'worker unavailable',
   }) as ErrorEvent;
@@ -48,9 +68,9 @@ it('settles cancellation and prevents late replies replacing a newer solve', asy
     workers.push(w);
     return w;
   });
-  const first = client.solveScramble('R'),
+  const first = client.solveScramble('R', 'lbl'),
     late = workers[0].onmessage;
-  const second = client.solveScramble('U');
+  const second = client.solveScramble('U', 'lbl');
   expect(await first).toMatchObject({ ok: false, error: { kind: 'cancelled' } });
   expect(workers[0].terminated).toBe(true);
   late?.(
@@ -73,7 +93,7 @@ it('settles cancellation and prevents late replies replacing a newer solve', asy
     ok: false,
     error: { kind: 'solver', message: expect.stringContaining('new') },
   });
-  const third = client.solveScramble('');
+  const third = client.solveScramble('', 'lbl');
   client.cancel();
   expect(await third).toMatchObject({ ok: false, error: { kind: 'cancelled' } });
 });
@@ -81,7 +101,7 @@ it('solves copied color input and restores immutable snapshots after a worker me
   const worker = new ControlledWorker(),
     client = createSolveClient(() => worker);
   const facelets = structuredClone(GOLDEN_CASES[7].facelets) as any;
-  const pending = client.solveFacelets(facelets);
+  const pending = client.solveFacelets(facelets, 'lbl');
   facelets.F[0] = null;
   const engine = await createCubeEngine();
   const reply = handleSolveRequest(engine, worker.request);
@@ -103,9 +123,9 @@ it('cancels across input kinds and ignores a reply with the wrong request id', a
       workers.push(worker);
       return worker;
     });
-  const first = client.solveFacelets(GOLDEN_CASES[0].facelets);
+  const first = client.solveFacelets(GOLDEN_CASES[0].facelets, 'lbl');
   const late = workers[0].onmessage;
-  const second = client.solveScramble('R');
+  const second = client.solveScramble('R', 'lbl');
   expect(await first).toMatchObject({ ok: false, error: { kind: 'cancelled' } });
   late?.(
     new MessageEvent('message', {
@@ -132,13 +152,13 @@ it('settles factory failures and passes structured input issues to the editor', 
   const broken = createSolveClient(() => {
     throw new Error('Blocked worker');
   });
-  expect(await broken.solveScramble('')).toMatchObject({
+  expect(await broken.solveScramble('', 'lbl')).toMatchObject({
     ok: false,
     error: { kind: 'worker', message: 'Blocked worker' },
   });
   const worker = new ControlledWorker(),
     client = createSolveClient(() => worker);
-  const pending = client.solveFacelets({} as never);
+  const pending = client.solveFacelets({} as never, 'lbl');
   const reply = handleSolveRequest(await createCubeEngine(), worker.request);
   if (!reply) throw new Error('Worker request id missing');
   worker.onmessage?.(new MessageEvent('message', { data: reply }));
