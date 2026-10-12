@@ -13,7 +13,7 @@ for (const entry of ['lesson', 'scramble']) {
     await page.goto(entry === 'lesson' ? '#/learn/white-cross' : '#/solve');
     if (entry === 'scramble') {
       await page.getByLabel('Scramble sequence').fill(GUIDED_SCRAMBLE);
-      await page.getByRole('button', { name: 'Explain this solve', exact: true }).click();
+      await page.getByRole('button', { name: 'Explain with LBL', exact: true }).click();
     }
     const next = page.getByRole('button', { name: 'Next move', exact: true });
     await expect(next).toBeEnabled();

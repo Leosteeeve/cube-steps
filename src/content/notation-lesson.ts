@@ -13,3 +13,7 @@ export const HOLDING_BASICS = [
   'Face letters refer to your current grip. U is always the top face, even after the yellow side moves there. UF means the edge between up and front; UFR means the corner between up, front and right.',
   'x, y and z rotate the whole cube in the direction of R, U and F. A prime reverses the rotation and 2 turns it halfway. These regrips appear explicitly in lessons. Dragging the view is only for looking around.',
 ];
+export const CFOP_NOTATION = [
+  'M turns only the middle slice between L and R, in the same direction as L. M′ reverses that direction; M2 is a half turn. Keep the two outer faces still. This is a slice move, not a whole-cube regrip.',
+  'AUF means adjust the upper face: use U, U′ or U2 to align the top layer’s side colors with their centers after the last-layer formula. If they already match, no AUF is needed.',
+];

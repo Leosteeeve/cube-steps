@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import type { CubeEngine, SolveSession, StageId, MethodId } from '../core/types';
 import { getCourse } from '../content/courses';
-import { HOLDING_BASICS, NOTATION_FACES } from '../content/notation-lesson';
+import { CFOP_NOTATION, HOLDING_BASICS, NOTATION_FACES } from '../content/notation-lesson';
 import { LBL_ALGORITHMS } from '../methods/lbl/catalog';
 import { CubePlayer } from '../player/CubePlayer';
 import { createSolveClient } from './solve-client';
@@ -94,6 +94,15 @@ export function LearnPage({
               ),
             )}
           </div>
+          {method === 'cfop-beginner' && (
+            <div className="notation-example">
+              <span className="eyebrow">BEFORE THE LAST LAYER</span>
+              <h2>M turns and AUF.</h2>
+              {CFOP_NOTATION.map((text) => (
+                <p key={text}>{text}</p>
+              ))}
+            </div>
+          )}
           <div className="notation-example">
             <span className="eyebrow">YOUR FIRST PATTERN</span>
             <h2>{method === 'lbl' ? 'Meet the right-hand trigger.' : 'Keep the pair together.'}</h2>
