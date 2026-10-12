@@ -31,3 +31,18 @@ export function permutationFixtures(engine: CubeEngine): CubeState[] {
   }
   return states;
 }
+export function upperPairFixtures(engine: CubeEngine): CubeState[] {
+  const states: CubeState[] = [];
+  for (let corner = 0; corner < 4; corner++) for (let twist = 0; twist < 3; twist++) for (let edge = 0; edge < 4; edge++) for (let flip = 0; flip < 2; flip++) {
+    const state = structuredClone(engine.apply(engine.solved(), ['x2']));
+    const c = state.data.CORNERS, e = state.data.EDGES;
+    [c.pieces[4], c.pieces[corner]] = [c.pieces[corner], c.pieces[4]];
+    [e.pieces[8], e.pieces[edge]] = [e.pieces[edge], e.pieces[8]];
+    c.orientation[corner] = twist;
+    c.orientation[(corner + 1) % 4] = (3 - twist) % 3;
+    e.orientation[edge] = flip;
+    e.orientation[(edge + 1) % 4] = flip;
+    states.push(state);
+  }
+  return states;
+}
