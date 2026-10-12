@@ -6,7 +6,7 @@ import {
 import type { CubeEngine, SolveSession } from '../core/types';
 import { buildInitialSetup } from './initial-setup';
 import { EDGE_SLOTS, CORNER_SLOTS } from '../core/observations';
-import { flattenTrace } from '../methods/lbl/trace';
+import { flattenTrace } from '../methods/shared/trace';
 export async function createCubingAdapter(
   host: HTMLElement,
   engine: CubeEngine,

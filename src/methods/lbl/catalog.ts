@@ -1,10 +1,6 @@
 import type { TeachingMove } from '../../core/types';
-export interface TeachingAlgorithm {
-  name: string;
-  moves: TeachingMove[];
-  precondition: string;
-  effect: string;
-}
+import type { TeachingAlgorithm } from '../contracts';
+export type { TeachingAlgorithm } from '../contracts';
 const entry = (
   name: string,
   moves: string,

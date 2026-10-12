@@ -15,6 +15,7 @@ interface Props {
   onSolve: () => void;
   busy: boolean;
   storageAvailable: boolean;
+  solveLabel?: string;
 }
 export function ColorEntry({
   state,
@@ -24,6 +25,7 @@ export function ColorEntry({
   onSolve,
   busy,
   storageAvailable,
+  solveLabel = 'Explain with LBL',
 }: Props) {
   const [review, setReview] = useState(false);
   const { facelets, face, selection } = state.draft;
@@ -240,7 +242,7 @@ export function ColorEntry({
             disabled={!validation?.ok || busy}
             onClick={onSolve}
           >
-            {busy ? 'Finding your steps…' : 'Explain with LBL'}
+            {busy ? 'Finding your steps…' : solveLabel}
           </button>
         </div>
       </div>

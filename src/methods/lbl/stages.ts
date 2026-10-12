@@ -1,11 +1,12 @@
 import type {
   CubeEngine,
   CubeState,
-  CubeObservation,
   PieceObservation,
   StageId,
+  LBLStageId,
 } from '../../core/types';
-export const LBL_STAGE_IDS: StageId[] = [
+import { pieceSolved, piecePositioned } from '../shared/pieces';
+export const LBL_STAGE_IDS: LBLStageId[] = [
   'white-cross',
   'first-layer',
   'middle-layer',
@@ -14,19 +15,9 @@ export const LBL_STAGE_IDS: StageId[] = [
   'top-corners',
   'corner-orientation',
 ];
-export function pieceSolved(piece: PieceObservation, observation: CubeObservation): boolean {
-  return Object.entries(piece.stickers).every(
-    ([face, color]) => observation.centers[face as keyof typeof observation.centers] === color,
-  );
-}
-export function piecePositioned(piece: PieceObservation, observation: CubeObservation): boolean {
-  return Object.values(piece.stickers).every((color) =>
-    [...piece.slot].some(
-      (face) => observation.centers[face as keyof typeof observation.centers] === color,
-    ),
-  );
-}
+export { pieceSolved, piecePositioned } from '../shared/pieces';
 export function checkStage(engine: CubeEngine, state: CubeState, id: StageId): boolean {
+  if (!LBL_STAGE_IDS.includes(id as LBLStageId)) return false;
   const obs = engine.observe(state);
   const has = (piece: PieceObservation, color: string) =>
     Object.values(piece.stickers).includes(color as never);
@@ -48,5 +39,5 @@ export function checkStage(engine: CubeEngine, state: CubeState, id: StageId): b
     obs.corners.every((p) => piecePositioned(p, obs)),
     engine.isSolved(state),
   ];
-  return checks.slice(0, LBL_STAGE_IDS.indexOf(id) + 1).every(Boolean);
+  return checks.slice(0, LBL_STAGE_IDS.indexOf(id as LBLStageId) + 1).every(Boolean);
 }

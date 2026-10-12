@@ -1,20 +1,9 @@
 import type { StageId } from '../core/types';
 import type { AlgorithmId } from '../methods/lbl/catalog';
+import type { Lesson as CourseLesson } from './course-types';
 export const GUIDED_SCRAMBLE =
   "D' B2 L' U2 L B' F2 D' U R2 B' U' R' U2 L2 F L F' B2 R D' F R U' L'";
-export interface Lesson {
-  id: 'notation' | StageId;
-  stageId?: StageId;
-  title: string;
-  shortTitle: string;
-  goal: string;
-  observe: string;
-  prepare: string;
-  check: string;
-  tip: string;
-  algorithmIds: AlgorithmId[];
-  exampleScramble: string;
-}
+export type Lesson = CourseLesson<AlgorithmId>;
 const stage = (
   id: StageId,
   title: string,

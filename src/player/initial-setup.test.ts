@@ -6,7 +6,31 @@ import { solveLBL } from '../methods/lbl/solve';
 import { flattenTrace } from '../methods/lbl/trace';
 import { buildInitialSetup } from './initial-setup';
 import { createPlaybackController } from './controller';
+import { solveCFOP } from '../methods/cfop/solve';
+import { CFOP_ALGORITHMS } from '../methods/cfop/catalog';
+import { invertTeachingMoves } from '../core/teaching-moves';
+import { stateToFacelets } from '../core/facelets';
 let engine: CubeEngine, session: SolveSession;
+it.each(['pll-h', 'pll-z'])(
+  'initializes exact entered colors for %s without counting the hidden setup',
+  (id) => {
+    const initial = engine.apply(engine.solved(), [
+      'x2',
+      ...invertTeachingMoves(CFOP_ALGORITHMS[id].moves),
+      'x2',
+    ]);
+    const result = solveCFOP(engine, initial);
+    if (!result.ok) throw new Error(result.message);
+    const session: SolveSession = {
+      input: { kind: 'facelets', facelets: stateToFacelets(initial) },
+      trace: result.trace,
+    };
+    expect(
+      engine.equals(engine.apply(engine.solved(), buildInitialSetup(engine, session)), initial),
+    ).toBe(true);
+    expect(flattenTrace(session.trace).moves.some((m) => m.startsWith('M'))).toBe(true);
+  },
+);
 beforeAll(async () => {
   engine = await createCubeEngine();
   const example = GOLDEN_CASES[7],

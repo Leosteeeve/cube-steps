@@ -1,6 +1,7 @@
 import type { CubeEngine, SolveSession, TeachingMove } from '../core/types';
 import { assertSessionInput } from '../core/solve-input';
-import { flattenTrace } from '../methods/lbl/trace';
+import { flattenTrace } from '../methods/shared/trace';
+import { invertTeachingMoves } from '../core/teaching-moves';
 export function buildInitialSetup(engine: CubeEngine, session: SolveSession): TeachingMove[] {
   assertSessionInput(engine, session);
   const moves = flattenTrace(session.trace).moves;
@@ -21,16 +22,7 @@ export function buildInitialSetup(engine: CubeEngine, session: SolveSession): Te
   const orientation = orientations.find((candidate) => engine.equals(candidate.state, end));
   if (!orientation)
     throw new Error('Unable to initialize the cube: no matching solved holding orientation.');
-  const inverse = [...moves]
-    .reverse()
-    .map(
-      (move) =>
-        (move.endsWith('2')
-          ? move
-          : move.endsWith("'")
-            ? move.slice(0, -1)
-            : `${move}'`) as TeachingMove,
-    );
+  const inverse = invertTeachingMoves(moves);
   const setup = [...orientation.moves, ...inverse];
   if (!engine.equals(engine.apply(engine.solved(), setup), session.trace.initial))
     throw new Error('Unable to initialize the cube: the starting colors do not match.');

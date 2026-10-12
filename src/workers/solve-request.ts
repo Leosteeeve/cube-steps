@@ -2,6 +2,7 @@ import type { CubeEngine, CubeState, SolveInput } from '../core/types';
 import { validateFacelets } from '../core/facelets';
 import { resolveSolveInput } from '../core/solve-input';
 import { solveLBL } from '../methods/lbl/solve';
+import { solveCFOP } from '../methods/cfop/solve';
 import type { WorkerReply } from './solve-protocol';
 export function handleSolveRequest(engine: CubeEngine, request: unknown): WorkerReply | null {
   if (
@@ -18,6 +19,8 @@ export function handleSolveRequest(engine: CubeEngine, request: unknown): Worker
     requestId,
     result: { ok: false, error: { kind: 'input', message } },
   });
+  if (!('method' in request) || (request.method !== 'lbl' && request.method !== 'cfop-beginner'))
+    return fail('Choose a supported teaching method: LBL or Beginner CFOP.');
   if (
     !('input' in request) ||
     !request.input ||
@@ -50,7 +53,7 @@ export function handleSolveRequest(engine: CubeEngine, request: unknown): Worker
       return fail(error instanceof Error ? error.message : 'Invalid scramble input.');
     }
   } else return fail('This input mode is not supported.');
-  const result = solveLBL(engine, initial);
+  const result = request.method === 'lbl' ? solveLBL(engine, initial) : solveCFOP(engine, initial);
   return {
     requestId,
     result: result.ok
@@ -59,6 +62,7 @@ export function handleSolveRequest(engine: CubeEngine, request: unknown): Worker
           ok: false,
           error: {
             kind: 'solver',
+            stageId: result.stageId,
             message: `No verified solution was produced: ${result.message}`,
           },
         },
