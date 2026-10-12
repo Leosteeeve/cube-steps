@@ -1,0 +1,43 @@
+name: Publish accepted preview to Pages
+on:
+  workflow_dispatch:
+    inputs:
+      teaching_accepted:
+        description: 'Physical-cube teaching acceptance has been completed'
+        type: boolean
+        required: true
+        default: false
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  deploy:
+    if: inputs.teaching_accepted
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium webkit
+      - run: npm run typecheck
+      - run: npm run test:unit
+      - run: npm run test:corpus
+      - run: npm run build
+      - run: npm run test:e2e
+      - run: npm run test:production
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+      - id: deployment
+        uses: actions/deploy-pages@v4
