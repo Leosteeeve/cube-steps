@@ -59,7 +59,7 @@ export function App() {
         <div className="course-banner">
           <span className="pill">BEGINNER’S METHOD</span>
           <p>Understand the moves. Enjoy the solve.</p>
-          <span className="preview-label">LBL · Local preview</span>
+          <span className="preview-label">LBL · Preview</span>
         </div>
         {error ? (
           <p className="error" role="alert">
