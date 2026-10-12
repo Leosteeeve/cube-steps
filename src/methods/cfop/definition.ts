@@ -4,6 +4,9 @@ import { checkCFOPStage } from './stages';
 import { whiteDownMoves } from './stages';
 import { preservesCrossEdges, recognizeCross } from './cross-cases';
 import { observeF2LPairs, preservesF2L, recognizeF2L, U_SETUPS } from './f2l-cases';
+import { recognizeLastLayer } from './cases';
+import { aufMoves, lastLayerTargets } from './last-layer';
+import type { CFOPStageId } from '../../core/types';
 export const CFOP_RUNTIME: MethodRuntime = {
   presentation: CFOP_PRESENTATION, checkStage: checkCFOPStage,
   checkAction(engine, action, stage) {
@@ -35,6 +38,13 @@ export const CFOP_RUNTIME: MethodRuntime = {
         return c.slot.includes('U') && e.slot.includes('U') && [...e.slot].every(f => c.stickers[f as 'U'] === e.stickers[f as 'U']);
       }
       return true;
+    }
+    if (stage === 'cfop-auf') return action.ruleId === 'cfop-auf' && action.caseId === 'auf' && action.kind === 'setup' && !engine.isSolved(action.before) && action.moves.join(' ') === aufMoves(engine, action.before)?.join(' ') && engine.isSolved(action.after);
+    if (['cfop-oll-edges', 'cfop-oll-corners', 'cfop-pll-corners', 'cfop-pll-edges'].includes(stage)) {
+      const match = recognizeLastLayer(engine, action.before, stage as CFOPStageId);
+      if (!match || action.caseId !== match.caseId || action.targets.join(' ') !== lastLayerTargets(engine, action.before, stage as CFOPStageId).join(' ')) return false;
+      if (action.ruleId === 'cfop-last-layer-setup' && action.kind !== 'algorithm') return action.moves.join(' ') === match.setup.filter(m => action.kind === 'regrip' ? m.startsWith('y') : m.startsWith('U')).join(' ');
+      return action.kind === 'algorithm' && action.ruleId === 'cfop-last-layer-formula' && action.algorithmId === match.algorithmId && match.setup.length === 0 && checkCFOPStage(engine, action.after, stage);
     }
     return false;
   },

@@ -35,7 +35,7 @@ export function recognizeLastLayer(engine: CubeEngine, state: CubeState, stage: 
     const entry = LAST_LAYER_CASES.find(c => c.stage === stage && patterns.get(c.id) === signature);
     if (entry) {
       const o = engine.observe(state);
-      const evidence = (stage === 'cfop-oll-edges' ? o.edges : o.corners).filter(p => p.slot.includes('U')).map(p => `${p.slot}: ${Object.entries(p.stickers).map(([f, c]) => `${f} ${c}`).join(', ')}`).join('; ');
+      const evidence = (stage.endsWith('edges') ? o.edges : o.corners).filter(p => p.slot.includes('U')).map(p => `${p.slot}: ${Object.entries(p.stickers).map(([f, c]) => `${f} ${c}`).join(', ')}`).join('; ');
       return { caseId: entry.id, algorithmId: entry.id, setup, recognition: `${CFOP_ALGORITHMS[entry.id].name}. Observed ${evidence}. Prepared pattern: ${signature}.` };
     }
   }

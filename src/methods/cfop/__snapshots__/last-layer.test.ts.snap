@@ -1,0 +1,139 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`allows temporary M-center motion and restores centers at the formula boundary > pll-h 1`] = `
+[
+  {
+    "B": "blue",
+    "D": "yellow",
+    "F": "green",
+    "L": "orange",
+    "R": "red",
+    "U": "white",
+  },
+  {
+    "B": "blue",
+    "D": "yellow",
+    "F": "green",
+    "L": "orange",
+    "R": "red",
+    "U": "white",
+  },
+  {
+    "B": "green",
+    "D": "white",
+    "F": "blue",
+    "L": "orange",
+    "R": "red",
+    "U": "yellow",
+  },
+  {
+    "B": "green",
+    "D": "white",
+    "F": "blue",
+    "L": "orange",
+    "R": "red",
+    "U": "yellow",
+  },
+  {
+    "B": "blue",
+    "D": "yellow",
+    "F": "green",
+    "L": "orange",
+    "R": "red",
+    "U": "white",
+  },
+  {
+    "B": "blue",
+    "D": "yellow",
+    "F": "green",
+    "L": "orange",
+    "R": "red",
+    "U": "white",
+  },
+  {
+    "B": "green",
+    "D": "white",
+    "F": "blue",
+    "L": "orange",
+    "R": "red",
+    "U": "yellow",
+  },
+]
+`;
+
+exports[`allows temporary M-center motion and restores centers at the formula boundary > pll-z 1`] = `
+[
+  {
+    "B": "blue",
+    "D": "yellow",
+    "F": "green",
+    "L": "orange",
+    "R": "red",
+    "U": "white",
+  },
+  {
+    "B": "blue",
+    "D": "yellow",
+    "F": "green",
+    "L": "orange",
+    "R": "red",
+    "U": "white",
+  },
+  {
+    "B": "green",
+    "D": "white",
+    "F": "blue",
+    "L": "orange",
+    "R": "red",
+    "U": "yellow",
+  },
+  {
+    "B": "green",
+    "D": "white",
+    "F": "blue",
+    "L": "orange",
+    "R": "red",
+    "U": "yellow",
+  },
+  {
+    "B": "yellow",
+    "D": "green",
+    "F": "white",
+    "L": "orange",
+    "R": "red",
+    "U": "blue",
+  },
+  {
+    "B": "yellow",
+    "D": "green",
+    "F": "white",
+    "L": "orange",
+    "R": "red",
+    "U": "blue",
+  },
+  {
+    "B": "white",
+    "D": "blue",
+    "F": "yellow",
+    "L": "orange",
+    "R": "red",
+    "U": "green",
+  },
+  {
+    "B": "white",
+    "D": "blue",
+    "F": "yellow",
+    "L": "orange",
+    "R": "red",
+    "U": "green",
+  },
+  {
+    "B": "green",
+    "D": "white",
+    "F": "blue",
+    "L": "orange",
+    "R": "red",
+    "U": "yellow",
+  },
+]
+`;
