@@ -24,11 +24,11 @@ export const LBL_ALGORITHMS = {
     'Place the working corner at front-left.',
     'Cycle the working corner with the left hand.',
   ),
-  'cross-flip': entry(
-    'White edge flip',
-    "F U' R U",
-    'White is up; the flipped white edge is at UF.',
-    'Orient the front white edge while restoring the other cross edges.',
+  'daisy-to-cross': entry(
+    'Lower a matched daisy petal',
+    'F2',
+    'Yellow is up; white faces up at UF and its other sticker matches the front center.',
+    'Send the white petal to the bottom cross while preserving the other petals and matched cross edges.',
   ),
   'middle-right': entry(
     'Insert edge to the right',

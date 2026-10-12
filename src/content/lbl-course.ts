@@ -1,6 +1,7 @@
 import type { StageId } from '../core/types';
 import type { AlgorithmId } from '../methods/lbl/catalog';
-export const GUIDED_SCRAMBLE = "R U2 F' L2 D B2 R' F2 U L' D2 B U2 R2 F D' L2 B' U";
+export const GUIDED_SCRAMBLE =
+  "D' B2 L' U2 L B' F2 D' U R2 B' U' R' U2 L2 F L F' B2 R D' F R U' L'";
 export interface Lesson {
   id: 'notation' | StageId;
   stageId?: StageId;
@@ -54,12 +55,12 @@ export const LBL_COURSE: Lesson[] = [
     'white-cross',
     'Build the white cross',
     'White cross',
-    'Four white edges. Four matching side colors. A foundation for everything next.',
-    'Find an edge with a white sticker. Its other color tells you which side center it belongs beside. Ignore the corners for now.',
-    'Keep white up. Move an unsolved edge into the bottom working layer, line it up below its matching center, then lift it with a half turn. When extracting from the middle, move the edge away and undo the side turn to protect finished edges.',
-    'All four white edge stickers face up, and their side stickers match the adjacent centers. A white plus alone is not enough.',
-    'If an inserted edge is flipped, the short edge-flip formula fixes it. Watch the player identify which edge it is working on.',
-    ['cross-flip'],
+    'Build a white daisy around yellow, then turn its petals into a matched white cross.',
+    'Hold yellow up and find the four edges with white stickers. These will be the petals around the yellow center. Ignore the corners and side-color alignment while building the flower.',
+    "First collect all four white petals on top. If a petal blocks the next lift, turn U to move it away first. A sideways white sticker needs a middle-layer position before it can face up. Once the daisy is complete, match one petal's side color with its center, hold that match at the front, and turn F2 to send it down. Repeat for all four petals.",
+    'First checkpoint: four white petals surround the yellow center. Final checkpoint: white is down, and every white-cross side sticker matches its adjacent center.',
+    'Daisy first. Then match a side color and turn that face 180°. Keep yellow up and white down for the next lesson.',
+    ['daisy-to-cross'],
   ),
   stage(
     'first-layer',
@@ -67,7 +68,7 @@ export const LBL_COURSE: Lesson[] = [
     'First-layer corners',
     'Place the four white corners without losing your cross.',
     'Choose a white corner and locate the two centers matching its other colors. Those three colors identify its home.',
-    'Turn white down. Bring the destination to bottom front-right and the corner directly above it. If the corner is trapped below, use a right-hand trigger to take it out first.',
+    'Keep white down after the daisy-to-cross step. Bring the destination to bottom front-right and the corner directly above it. If the corner is trapped below, use a right-hand trigger to take it out first.',
     'White forms one complete face, and the bottom row of every side matches its center. Finish the full trigger before checking.',
     'Repeat the same four-move trigger until the corner is solved. Different starting twists need different numbers of repetitions.',
     ['right-trigger'],
