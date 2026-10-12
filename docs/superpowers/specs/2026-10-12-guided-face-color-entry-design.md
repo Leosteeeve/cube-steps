@@ -2,7 +2,7 @@
 
 Date: October 12, 2026 (America/Los_Angeles).
 
-**Status: Proposed design, awaiting owner review. No V1.1 product code has been implemented.**
+**Status: Approved by the owner on October 12, 2026. Implementation awaits review of the implementation plan. No V1.1 product code has been implemented.**
 
 ## 1. Intent and decisions
 
@@ -174,4 +174,4 @@ Deliver through a reviewed development branch, passing GitHub validation, and th
 
 ## 8. Handoff
 
-The selected interaction is recorded and this design has been checked against the existing input, solver, worker, and renderer boundaries. The next gate is owner review of this written specification. After approval, produce the V1.1 implementation plan with concrete tasks, interfaces, tests, and execution-method selection. Do not begin product implementation from this document's draft status alone.
+The owner approved this written specification on October 12, 2026. The next gate is owner review of the V1.1 implementation plan, with concrete tasks, interfaces, and tests. Preserve the previously selected native execution approach: implementation in this session followed by an independent final review. Begin product implementation after the implementation plan is approved.
