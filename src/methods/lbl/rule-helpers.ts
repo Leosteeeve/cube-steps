@@ -1,6 +1,6 @@
 import type {Color,CubeObservation,CubeState,Face,PieceObservation,TeachingMove} from '../../core/types';
 import {LBL_ALGORITHMS,type AlgorithmId} from './catalog';
-import {pieceSolved} from './stages';
+import {checkStage,piecePositioned,pieceSolved} from './stages';
 import {RuleError,type LBLContext,type StageResult} from './trace';
 export const observation=(c:LBLContext)=>c.engine.observe(c.trace.current);
 export function target(c:LBLContext,id:string):PieceObservation {
@@ -9,7 +9,7 @@ export function target(c:LBLContext,id:string):PieceObservation {
 }
 export const solvedTarget=(c:LBLContext,id:string)=>pieceSolved(target(c,id),observation(c));
 export function describe(c:LBLContext,id?:string):string {
-  if(!id)return 'Inspect the current center colors and working layer.';
+  if(!id){const o=observation(c);return `Yellow faces up on edges: ${o.edges.filter(p=>p.stickers.U==='yellow').map(p=>p.slot).join(', ')||'none'}. Matched upper edges: ${o.edges.filter(p=>p.slot.includes('U')&&pieceSolved(p,o)).map(p=>p.slot).join(', ')||'none'}. Correctly positioned upper corners: ${o.corners.filter(p=>p.slot.includes('U')&&piecePositioned(p,o)).map(p=>p.slot).join(', ')||'none'}.`;}
   const p=target(c,id);return `The ${Object.values(p.stickers).join('–')} piece is at ${p.slot}: ${Object.entries(p.stickers).map(([f,col])=>`${col} on ${f}`).join(', ')}.`;
 }
 export function setup(c:LBLContext,moves:TeachingMove[],ruleId:string,explanation:string,id?:string):void {
@@ -19,7 +19,12 @@ export function setup(c:LBLContext,moves:TeachingMove[],ruleId:string,explanatio
 }
 export function algorithm(c:LBLContext,algorithmId:AlgorithmId,ruleId:string,explanation:string,id?:string,repetition?:{group:string;index:number}):void {
   const p=id?target(c,id):undefined;
-  c.trace.append({kind:'algorithm',algorithmId,ruleId,caseId:p?.slot??ruleId,targets:id?[id]:[],recognition:describe(c,id),explanation,moves:[...LBL_ALGORITHMS[algorithmId].moves],repetition});
+  const stage=c.trace.stageId;
+  const preserve=stage==='first-layer'?'white-cross':stage==='middle-layer'?'first-layer':['top-cross','top-edges','top-corners'].includes(stage)?'middle-layer':undefined;
+  const o=observation(c);
+  const targets=id?[id]:(stage==='top-corners'?o.corners:o.edges).filter(p=>p.slot.includes('U')).map(p=>p.id);
+  c.trace.append({kind:'algorithm',algorithmId,ruleId,caseId:p?.slot??ruleId,targets,recognition:describe(c,id),explanation,moves:[...LBL_ALGORITHMS[algorithmId].moves],repetition,
+    check:preserve?{id:`preserve-${preserve}`,description:`The ${preserve.replaceAll('-',' ')} is restored after the complete formula.`,test:state=>checkStage(c.engine,state,preserve)}:undefined});
 }
 export function chooseTurn(c:LBLContext,axis:Face|'y',condition:(o:CubeObservation)=>boolean):TeachingMove[] {
   const choices:TeachingMove[][]=[[],[axis],[`${axis}2`],[`${axis}'`]];
