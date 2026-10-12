@@ -2,7 +2,7 @@
 
 Date: October 12, 2026 (America/Los_Angeles).
 
-**Status: Approved by the owner on October 12, 2026. Implementation awaits review of the implementation plan. No V1.1 product code has been implemented.**
+**Status: Design and implementation plan approved by the owner on October 12, 2026. V1.1 implementation and automated checks are complete; independent review and delivery are in progress. New physical-input acceptance remains pending.**
 
 ## 1. Intent and decisions
 
@@ -174,4 +174,4 @@ Deliver through a reviewed development branch, passing GitHub validation, and th
 
 ## 8. Handoff
 
-The owner approved this written specification on October 12, 2026. The next gate is owner review of the V1.1 implementation plan, with concrete tasks, interfaces, and tests. Preserve the previously selected native execution approach: implementation in this session followed by an independent final review. Begin product implementation after the implementation plan is approved.
+The owner approved this written specification and its implementation plan on October 12, 2026. Native implementation is recorded in the implementation plan; automated evidence and the separate physical-input checklist are in [V1.1 validation](../../validation/v1.1.md). Independent review and delivery follow the approved plan.

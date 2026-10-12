@@ -1,4 +1,6 @@
 import { test, expect } from '@playwright/test';
+import { GOLDEN_CASES } from '../tests/fixtures/facelet-cases';
+import { enterFacelets, renderedColors } from './helpers/color-entry';
 test('production base path loads worker, 3D renderer, random scrambles and refreshed routes', async ({
   page,
 }) => {
@@ -38,4 +40,29 @@ test('production base path loads worker, 3D renderer, random scrambles and refre
   await expect(page.getByRole('button', { name: 'Next move', exact: true })).toBeEnabled();
   expect(errors).toEqual([]);
   expect(badAssets).toEqual([]);
+});
+test('production color entry uses the deployed worker and exact initial renderer state after refresh', async ({
+  page,
+}) => {
+  test.setTimeout(60000);
+  const errors: string[] = [],
+    failures: string[] = [];
+  page.on('pageerror', (error) => errors.push(error.message));
+  page.on('response', (response) => {
+    if (response.status() >= 400) failures.push(response.url());
+  });
+  await page.goto('#/solve');
+  await enterFacelets(page, GOLDEN_CASES[7].facelets);
+  await page.reload();
+  await page.getByRole('button', { name: 'Enter colors', exact: true }).click();
+  await expect(page.getByText('48 / 48 stickers entered')).toBeVisible();
+  await page.getByRole('button', { name: 'Check colors', exact: true }).click();
+  await page.getByRole('button', { name: 'Explain with LBL', exact: true }).click();
+  await expect(page.getByRole('button', { name: 'Next move', exact: true })).toBeEnabled();
+  await expect.poll(() => renderedColors(page)).toEqual(GOLDEN_CASES[7].facelets);
+  await page.getByLabel('Move position').focus();
+  await page.keyboard.press('End');
+  await expect(page.getByRole('heading', { name: 'Cube solved.', exact: true })).toBeVisible();
+  expect(errors).toEqual([]);
+  expect(failures).toEqual([]);
 });

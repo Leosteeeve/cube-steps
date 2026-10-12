@@ -11,7 +11,7 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:unit": "vitest run src",
-    "test:corpus": "vitest run tests/solver-corpus.test.ts",
+    "test:corpus": "vitest run tests/solver-corpus.test.ts tests/color-input-corpus.test.ts",
     "test:e2e": "playwright test",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview --host 127.0.0.1",

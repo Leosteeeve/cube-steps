@@ -87,6 +87,9 @@ it('checks invalid drafts and enables only a verified snapshot, retaining the pr
   await user.click(screen.getByRole('button', { name: 'Eraser' }));
   await user.click(screen.getByRole('button', { name: /^Front, row 1, column 1,/ }));
   expect(summary.innerHTML).toBe(old);
+  expect(
+    screen.getByText('The draft has changed. The solution below still uses its saved input.'),
+  ).toBeVisible();
   expect(screen.getByRole('button', { name: 'Explain with LBL' })).toBeDisabled();
   await user.click(screen.getByRole('button', { name: 'Check colors' }));
   expect(screen.getByRole('alert')).toHaveTextContent('remaining 1 stickers');

@@ -9,6 +9,7 @@ import { ColorEntry } from './color-entry/ColorEntry';
 import { FaceOverview } from './color-entry/FaceOverview';
 import { createDraftState, reduceDraft, type DraftAction } from './color-entry/draft';
 import { createDraftStore } from './color-entry/draft-storage';
+import { FACE_ENTRY_ORDER } from '../core/facelet-layout';
 export function SolvePage({ engine }: { engine: CubeEngine }) {
   const client = useMemo(() => createSolveClient(), []),
     epoch = useRef(0);
@@ -30,6 +31,20 @@ export function SolvePage({ engine }: { engine: CubeEngine }) {
     [stage, setStage] = useState<StageId>('white-cross'),
     [stageRequestId, setStageRequestId] = useState(0),
     [active, setActive] = useState<StageId>('white-cross');
+  const parsedDraft = mode === 'scramble' ? parseScramble(text) : null;
+  const recordedInput = session?.input;
+  const inputMatches =
+    recordedInput &&
+    (mode === 'colors'
+      ? recordedInput.kind === 'facelets' &&
+        FACE_ENTRY_ORDER.every((face) =>
+          draft.draft.facelets[face].every(
+            (color, index) => color === recordedInput.facelets[face][index],
+          ),
+        )
+      : recordedInput.kind === 'scramble' &&
+        parsedDraft?.ok &&
+        parsedDraft.moves.join(' ') === recordedInput.moves.join(' '));
   useEffect(() => {
     setStorageAvailable(store.save(draft.draft));
   }, [store, draft.draft]);
@@ -239,6 +254,11 @@ export function SolvePage({ engine }: { engine: CubeEngine }) {
               )}
             </details>
           </div>
+          {!inputMatches && (
+            <p className="notice" role="status">
+              The draft has changed. The solution below still uses its saved input.
+            </p>
+          )}
           <CubePlayer
             engine={engine}
             session={session}

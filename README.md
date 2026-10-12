@@ -2,19 +2,30 @@
 
 Learn to solve the 3×3 cube with step-by-step animations and explained algorithms, starting with the beginner's method.
 
-**Status: LBL is available online. Physical-cube teaching acceptance was confirmed by the project owner on October 12, 2026.**
+**Status: V1.1 adds guided color entry to LBL. The new physical-input check is pending; the owner confirmed the original LBL teaching acceptance on October 12, 2026.**
 
 [Open CubeSteps](https://leosteeeve.github.io/cube-steps/) — use it directly in your browser, with no account or installation.
 
 ## Learn the method
 
 - Eight English lessons: notation, then the seven LBL stages.
-- A complete teaching solution for random or pasted six-face scrambles.
+- A complete teaching solution for entered face colors, random scrambles, or pasted six-face moves.
 - The same fixed formulas in lessons and generated solutions, with recognition, setup, repetition counts, and result checks.
 - An interactive 3D cube: orbit, play/pause, single-step backward/forward, replay, speed, stage navigation, and target highlighting.
 - Browser-only computation, no account, responsive layouts, and keyboard controls.
 
 Begin with white up and green front. Camera orbit only changes your view; explicit x, y, and z regrips change the holding frame. The final corner stage can temporarily disturb solved pieces: finish each complete trigger and keep the prescribed grip.
+
+## Enter your cube
+
+Choose **Solve your cube → Enter colors**. Follow the center-based holding guide for Front, Right, Back, Left, Up, and Down. Pick a named color and paint each sticker, review all six faces, then choose **Check colors** and **Explain with LBL**.
+
+- Standard centers only: white up, yellow down, green front, blue back, red right, orange left. Centers are locked; the other 48 stickers start blank.
+- Undo, erase, reset, and return to any face. Counts and legality checks help identify entry errors without automatically changing your colors.
+- Your draft stays in this tab's sessionStorage for refresh and lesson return. No colors are uploaded. If storage is blocked, the page still works and shows a recovery notice.
+- Each verified solution keeps its own **Colors used for this solution** snapshot. Editing a draft does not change an earlier solution.
+
+Before following the animation, return to **white up, green front**. Custom color schemes, picture cubes, and camera scanning are not supported in V1.1.
 
 ## Run locally
 
@@ -52,7 +63,7 @@ npm run build
 npm run test:production
 ```
 
-The corpus replays seeds 1–1,000, checks all teaching checkpoints, and repeats every solve for deterministic output. Passing it is coverage evidence, not a proof over every legal cube state. See [validation and remaining acceptance](docs/validation/v1.md).
+Two corpora replay seeds 1–1,000 through scramble and color input, checking teaching checkpoints and final states. The original scramble corpus also repeats each solve for deterministic output. Passing them is coverage evidence, not a proof over every legal cube state. See [V1.1 validation and physical-input acceptance](docs/validation/v1.1.md) and the [original LBL validation](docs/validation/v1.md).
 
 Cube state, teaching rules, course content, and playback are separate modules. Start with the [design](docs/superpowers/specs/2026-10-11-cubesteps-design.md) and [implementation plan](docs/superpowers/plans/2026-10-11-cubesteps-v1-implementation.md). For rule changes, include a reproducing scramble and test its trace as well as the final state. Use `npm run format` for source formatting.
 
@@ -61,10 +72,12 @@ Cube state, teaching rules, course content, and playback are separate modules. S
 | Version track | Planned work |
 | --- | --- |
 | V1 | LBL lessons and formula-based solving are available; physical-cube teaching acceptance is complete |
-| Later methods | CFOP → Roux → ZZ, each with lessons and generated solutions |
-| Later inputs | Manual six-face colors with legality checks, then camera scanning with correction |
+| V1.1 | Guided six-face colors, legality checks, and LBL playback; new physical-input acceptance pending |
+| Next method | Beginner CFOP: intuitive F2L, two-look OLL and PLL, with lessons and generated solutions |
+| Later CFOP versions | Full PLL, then full OLL |
+| Later methods and inputs | Roux → ZZ, then camera scanning with correction, in separate versions |
 
-V1 does not include color entry, scanning, user-turn scoring, offline installation, or desktop packages. Its 3D view needs WebGL; textual steps remain available if rendering is unavailable.
+Future roadmap items are not available yet. V1.1 does not include scanning, user-turn scoring, offline installation, or desktop packages. Its 3D view needs WebGL; color entry, validation, and textual steps remain available if rendering is unavailable.
 
 ## References and license
 
