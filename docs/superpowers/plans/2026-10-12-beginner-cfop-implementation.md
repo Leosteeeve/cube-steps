@@ -147,13 +147,13 @@ interface MethodRuntime {
 
 **Interfaces:** `solveCFOPCross(c: CFOPContext): StageResult`, with `StageResult` shared from Task 1. `ensureWhiteDown(c): void` records a needed regrip only when a rule actually needs work. `cross-cases.ts` exports a finite location/orientation rule catalog consumed by this stage and its tests.
 
-- [ ] **Write failing tests.** Cover a white edge in every slot and both orientations, with valid previously solved edges protected. Assert each completed edge maneuver increases or preserves the protected set and that completion has four matched edges. A solved cross emits no moves; an unsolved cross records white-down regripping before the first edge maneuver. Assert no daisy case or LBL `daisy-to-cross` reference occurs.
+- [x] **Write failing tests.** Cover a white edge in every slot and both orientations, with valid previously solved edges protected. Assert each completed edge maneuver increases or preserves the protected set and that completion has four matched edges. A solved cross emits no moves; an unsolved cross records white-down regripping before the first edge maneuver. Assert no daisy case or LBL `daisy-to-cross` reference occurs.
 
   Pin `it('skips a solved cross without changing grip')` with `expect(solveCFOPCross(c).ok).toBe(true)` and `expect(c.trace.current).toEqual(initial)`. For the recorded stage assert `expect(stage.actions).toHaveLength(0)`; the fixture has a solved cross but unsolved later pieces.
-- [ ] **Run red check:** `npx.cmd vitest run src/methods/cfop/cross.test.ts`.
-- [ ] **Implement stable edge selection and finite cases.** Select white edges by the existing immutable piece ordering. Normalize the selected edge's home to front using explicit y regrips. Branch by layer, sticker direction, and whether extraction is required; express extraction, alignment, and insertion separately. Each case declares its protected-edge restoration checkpoint. Match actual observations, not trial sequences chosen solely because they solve the target.
-- [ ] **Run green check and typecheck.** Include wrong bottom position, flipped bottom edge, zero to three initially correct edges, and 24 starting orientations. Replay every recorded action and independently check protected edge colors at each complete-maneuver boundary.
-- [ ] **Commit:** `feat: teach a direct bottom cross for CFOP`.
+- [x] **Run red check:** `npx.cmd vitest run src/methods/cfop/cross.test.ts`.
+- [x] **Implement stable edge selection and finite cases.** Select white edges by the existing immutable piece ordering. Normalize the selected edge's home to front using explicit y regrips. Branch by layer, sticker direction, and whether extraction is required; express extraction, alignment, and insertion separately. Each case declares its protected-edge restoration checkpoint. Match actual observations, not trial sequences chosen solely because they solve the target.
+- [x] **Run green check and typecheck.** Include wrong bottom position, flipped bottom edge, zero to three initially correct edges, and 24 starting orientations. Replay every recorded action and independently check protected edge colors at each complete-maneuver boundary.
+- [x] **Commit:** `feat: teach a direct bottom cross for CFOP`.
 
 ## Task 4: Teach and Solve Intuitive F2L Pairs
 
