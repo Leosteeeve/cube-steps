@@ -2,19 +2,22 @@
 
 Learn to solve the 3×3 cube with step-by-step animations and explained algorithms, starting with the beginner's method.
 
-**Status: V1.1 adds guided color entry to LBL. The new physical-input check is pending; the owner confirmed the original LBL teaching acceptance on October 12, 2026.**
+**Status: V1.1 includes guided color entry and a daisy-first white cross. Physical acceptance of color entry and the new daisy route is pending; the owner confirmed the original LBL teaching acceptance on October 12, 2026.**
 
 [Open CubeSteps](https://leosteeeve.github.io/cube-steps/) — use it directly in your browser, with no account or installation.
 
 ## Learn the method
 
 - Eight English lessons: notation, then the seven LBL stages.
+- A daisy-first white cross: collect four white petals around yellow, match each petal's side color to its center, then turn that face 180° to send it down to white.
 - A complete teaching solution for entered face colors, random scrambles, or pasted six-face moves.
 - The same fixed formulas in lessons and generated solutions, with recognition, setup, repetition counts, and result checks.
 - An interactive 3D cube: orbit, play/pause, single-step backward/forward, replay, speed, stage navigation, and target highlighting.
 - Browser-only computation, no account, responsive layouts, and keyboard controls.
 
 Begin with white up and green front. Camera orbit only changes your view; explicit x, y, and z regrips change the holding frame. The final corner stage can temporarily disturb solved pieces: finish each complete trigger and keep the prescribed grip.
+
+For the white cross, follow the player's regrip to **yellow up, white down**. Build the complete daisy before lowering any petals. White stays down for the first-layer corners. An already matched white cross is skipped. The shared lesson scramble has changed so every stage still demonstrates real moves with this teaching route.
 
 ## Enter your cube
 

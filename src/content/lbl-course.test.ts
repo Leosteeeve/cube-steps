@@ -17,6 +17,7 @@ it('provides notation and seven checked teaching examples using the shared catal
     if (lesson.stageId)
       expect(
         result.trace.stages.find((s) => s.id === lesson.stageId)?.actions.length,
+        `${lesson.stageId} must demonstrate real moves in the shared course example`,
       ).toBeGreaterThan(0);
   }
 });

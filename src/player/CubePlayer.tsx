@@ -199,6 +199,13 @@ export function CubePlayer({ engine, session, stage, stageRequestId, onStageChan
           </div>
         ) : action ? (
           <>
+            {currentStage?.id === 'white-cross' && (
+              <h3 className="notice">
+                {action.ruleId.startsWith('cross-')
+                  ? '2 · Match and lower each petal'
+                  : '1 · Build the daisy'}
+              </h3>
+            )}
             <div className="step-section">
               <span className="step-number">01</span>
               <div>
