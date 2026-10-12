@@ -1,19 +1,32 @@
 import { createCubeEngine } from '../core/cube';
-import type { FaceMove, SolveResult } from '../core/types';
-import { solveLBL } from '../methods/lbl/solve';
-self.onmessage = async (event: MessageEvent<{ requestId: number; moves: FaceMove[] }>) => {
-  const { requestId, moves } = event.data;
-  let result: SolveResult;
+import { handleSolveRequest } from './solve-request';
+import type { WorkerReply } from './solve-protocol';
+self.onmessage = async (event: MessageEvent<unknown>) => {
   try {
     const engine = await createCubeEngine();
-    result = solveLBL(engine, engine.apply(engine.solved(), moves));
+    const reply = handleSolveRequest(engine, event.data);
+    if (reply) self.postMessage(reply);
   } catch (error) {
-    result = {
-      ok: false,
-      code: 'verification',
-      stageId: 'white-cross',
-      message: error instanceof Error ? error.message : 'Unexpected solver error.',
+    const request = event.data;
+    if (
+      !request ||
+      typeof request !== 'object' ||
+      !('requestId' in request) ||
+      typeof request.requestId !== 'number' ||
+      !Number.isSafeInteger(request.requestId) ||
+      request.requestId < 0
+    )
+      return;
+    const reply: WorkerReply = {
+      requestId: request.requestId,
+      result: {
+        ok: false,
+        error: {
+          kind: 'solver',
+          message: `No verified solution was produced: ${error instanceof Error ? error.message : 'Unexpected solver error.'}`,
+        },
+      },
     };
+    self.postMessage(reply);
   }
-  self.postMessage({ requestId, result });
 };

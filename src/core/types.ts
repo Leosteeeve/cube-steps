@@ -79,6 +79,9 @@ export interface SolveFailure {
 }
 export type SolveResult = { ok: true; trace: SolveTrace } | SolveFailure;
 export interface SolveSession {
-  scrambleMoves: FaceMove[];
+  input: SolveInput;
   trace: SolveTrace;
 }
+export type SolveInput =
+  | { kind: 'scramble'; moves: readonly FaceMove[] }
+  | { kind: 'facelets'; facelets: FaceletSnapshot };

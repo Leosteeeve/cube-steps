@@ -1,5 +1,8 @@
 import { expect, it } from 'vitest';
 import { createSolveClient, type WorkerPort } from './solve-client';
+import { createCubeEngine } from '../core/cube';
+import { handleSolveRequest } from '../workers/solve-request';
+import { GOLDEN_CASES } from '../../tests/fixtures/facelet-cases';
 class ControlledWorker implements WorkerPort {
   onmessage: WorkerPort['onmessage'] = null;
   onerror: WorkerPort['onerror'] = null;
@@ -54,7 +57,7 @@ it('settles cancellation and prevents late replies replacing a newer solve', asy
     new MessageEvent('message', {
       data: {
         requestId: workers[0].request.requestId,
-        result: { ok: false, code: 'verification', stageId: 'white-cross', message: 'old' },
+        result: { ok: false, error: { kind: 'solver', message: 'old' } },
       },
     }),
   );
@@ -62,7 +65,7 @@ it('settles cancellation and prevents late replies replacing a newer solve', asy
     new MessageEvent('message', {
       data: {
         requestId: workers[1].request.requestId,
-        result: { ok: false, code: 'budget', stageId: 'white-cross', message: 'new' },
+        result: { ok: false, error: { kind: 'solver', message: 'new' } },
       },
     }),
   );
@@ -73,4 +76,74 @@ it('settles cancellation and prevents late replies replacing a newer solve', asy
   const third = client.solveScramble('');
   client.cancel();
   expect(await third).toMatchObject({ ok: false, error: { kind: 'cancelled' } });
+});
+it('solves copied color input and restores immutable snapshots after a worker message', async () => {
+  const worker = new ControlledWorker(),
+    client = createSolveClient(() => worker);
+  const facelets = structuredClone(GOLDEN_CASES[7].facelets) as any;
+  const pending = client.solveFacelets(facelets);
+  facelets.F[0] = null;
+  const engine = await createCubeEngine();
+  const reply = handleSolveRequest(engine, worker.request);
+  if (!reply) throw new Error('Worker request id missing');
+  worker.onmessage?.(new MessageEvent('message', { data: structuredClone(reply) }));
+  const result = await pending;
+  expect(result.ok).toBe(true);
+  if (!result.ok) throw new Error(result.error.message);
+  expect(result.session.input).toEqual({ kind: 'facelets', facelets: GOLDEN_CASES[7].facelets });
+  expect(Object.isFrozen(result.session.trace.initial.data.EDGES.pieces)).toBe(true);
+  if (result.session.input.kind === 'facelets')
+    expect(Object.isFrozen(result.session.input.facelets.F)).toBe(true);
+  expect(worker.terminated).toBe(true);
+});
+it('cancels across input kinds and ignores a reply with the wrong request id', async () => {
+  const workers: ControlledWorker[] = [],
+    client = createSolveClient(() => {
+      const worker = new ControlledWorker();
+      workers.push(worker);
+      return worker;
+    });
+  const first = client.solveFacelets(GOLDEN_CASES[0].facelets);
+  const late = workers[0].onmessage;
+  const second = client.solveScramble('R');
+  expect(await first).toMatchObject({ ok: false, error: { kind: 'cancelled' } });
+  late?.(
+    new MessageEvent('message', {
+      data: {
+        requestId: workers[0].request.requestId,
+        result: { ok: false, error: { kind: 'input', message: 'old' } },
+      },
+    }),
+  );
+  workers[1].onmessage?.(
+    new MessageEvent('message', {
+      data: { requestId: -1, result: { ok: false, error: { kind: 'input', message: 'wrong' } } },
+    }),
+  );
+  const reply = handleSolveRequest(await createCubeEngine(), workers[1].request);
+  if (!reply) throw new Error('Worker request id missing');
+  workers[1].onmessage?.(new MessageEvent('message', { data: structuredClone(reply) }));
+  expect(await second).toMatchObject({
+    ok: true,
+    session: { input: { kind: 'scramble', moves: ['R'] } },
+  });
+});
+it('settles factory failures and passes structured input issues to the editor', async () => {
+  const broken = createSolveClient(() => {
+    throw new Error('Blocked worker');
+  });
+  expect(await broken.solveScramble('')).toMatchObject({
+    ok: false,
+    error: { kind: 'worker', message: 'Blocked worker' },
+  });
+  const worker = new ControlledWorker(),
+    client = createSolveClient(() => worker);
+  const pending = client.solveFacelets({} as never);
+  const reply = handleSolveRequest(await createCubeEngine(), worker.request);
+  if (!reply) throw new Error('Worker request id missing');
+  worker.onmessage?.(new MessageEvent('message', { data: reply }));
+  expect(await pending).toMatchObject({
+    ok: false,
+    error: { kind: 'input', issues: [{ code: 'shape' }] },
+  });
 });

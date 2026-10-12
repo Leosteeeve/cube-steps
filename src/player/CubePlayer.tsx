@@ -31,7 +31,16 @@ export function CubePlayer({ engine, session, stage, stageRequestId, onStageChan
   stageCallback.current = onStageChange;
   focusRef.current = focused;
   useEffect(() => {
-    const player = createPlaybackController(engine, session);
+    let player: PlaybackController;
+    try {
+      player = createPlaybackController(engine, session);
+    } catch (e) {
+      controller.current = null;
+      setSnapshot(null);
+      setReady(false);
+      setError(e instanceof Error ? e.message : 'Unable to initialize this solution.');
+      return;
+    }
     controller.current = player;
     let cancelled = false,
       adapter: Awaited<ReturnType<typeof createCubingAdapter>> | undefined;
@@ -48,7 +57,7 @@ export function CubePlayer({ engine, session, stage, stageRequestId, onStageChan
       }
       stageCallback.current?.(s.stageId);
     });
-    createCubingAdapter(host.current!, session)
+    createCubingAdapter(host.current!, engine, session)
       .then((result) => {
         if (cancelled) {
           result.dispose();
@@ -110,7 +119,7 @@ export function CubePlayer({ engine, session, stage, stageRequestId, onStageChan
             {error}
           </p>
         )}
-        {!ready && <p role="status">Preparing the cube…</p>}
+        {!ready && !error && <p role="status">Preparing the cube…</p>}
         <p className="orbit-note">Drag to look around · View changes do not turn the cube</p>
         <div className="playback-controls">
           <button

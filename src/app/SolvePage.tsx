@@ -143,8 +143,16 @@ export function SolvePage({ engine }: { engine: CubeEngine }) {
           <div className="solution-summary">
             <span className="success-dot" /> Verified LBL solution{' '}
             <details>
-              <summary>Scramble for this solution</summary>
-              <code>{session.scrambleMoves.join(' ') || 'Solved cube — no scramble'}</code>
+              <summary>
+                {session.input.kind === 'scramble'
+                  ? 'Scramble for this solution'
+                  : 'Colors used for this solution'}
+              </summary>
+              <code>
+                {session.input.kind === 'scramble'
+                  ? session.input.moves.join(' ') || 'Solved cube — no scramble'
+                  : JSON.stringify(session.input.facelets)}
+              </code>
             </details>
           </div>
           <CubePlayer
