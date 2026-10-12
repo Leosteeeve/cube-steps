@@ -2,7 +2,7 @@
 
 Date: October 12, 2026 (America/Los_Angeles).
 
-**Status: Design and implementation plan approved by the owner on October 12, 2026. V1.1 implementation and automated checks are complete; independent review and delivery are in progress. New physical-input acceptance remains pending.**
+**Status: Design and implementation plan approved by the owner on October 12, 2026. V1.1 implementation, automated checks, and independent review are complete. Delivery evidence is tracked in [PR #3](https://github.com/Leosteeeve/cube-steps/pull/3). New physical-input acceptance remains pending.**
 
 ## 1. Intent and decisions
 
