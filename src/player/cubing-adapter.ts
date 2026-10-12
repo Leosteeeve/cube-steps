@@ -3,10 +3,16 @@ import {
   type ExperimentalLeafIndex,
   type ExperimentalMillisecondTimestamp,
 } from 'cubing/twisty';
-import type { SolveSession } from '../core/types';
+import type { CubeEngine, SolveSession } from '../core/types';
+import { buildInitialSetup } from './initial-setup';
 import { EDGE_SLOTS, CORNER_SLOTS } from '../core/observations';
 import { flattenTrace } from '../methods/lbl/trace';
-export async function createCubingAdapter(host: HTMLElement, session: SolveSession) {
+export async function createCubingAdapter(
+  host: HTMLElement,
+  engine: CubeEngine,
+  session: SolveSession,
+) {
+  const setup = buildInitialSetup(engine, session);
   const probe = document.createElement('canvas');
   const gl = probe.getContext('webgl2');
   if (!gl)
@@ -16,7 +22,7 @@ export async function createCubingAdapter(host: HTMLElement, session: SolveSessi
   const player = new TwistyPlayer({
     puzzle: '3x3x3',
     alg: flat.moves.join(' '),
-    experimentalSetupAlg: session.scrambleMoves.join(' '),
+    experimentalSetupAlg: setup.join(' '),
     experimentalSetupAnchor: 'start',
     controlPanel: 'none',
     background: 'none',

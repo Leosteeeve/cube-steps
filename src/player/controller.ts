@@ -1,5 +1,6 @@
 import type { CubeEngine, CubeState, SolveSession, StageId, TeachingMove } from '../core/types';
 import { createTimeline } from './timeline';
+import { assertSessionInput } from '../core/solve-input';
 export interface PlaybackSnapshot {
   moveIndex: number;
   currentMove: TeachingMove | null;
@@ -13,8 +14,7 @@ export interface PlaybackSnapshot {
   total: number;
 }
 export function createPlaybackController(engine: CubeEngine, session: SolveSession) {
-  if (!engine.equals(engine.apply(engine.solved(), session.scrambleMoves), session.trace.initial))
-    throw new Error('The initial scramble does not match this trace.');
+  assertSessionInput(engine, session);
   const timeline = createTimeline(engine, session.trace),
     count = timeline.moves.length;
   let boundaries = Array.from({ length: count + 1 }, (_, i) => i * 1000),

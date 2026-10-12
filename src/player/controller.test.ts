@@ -10,7 +10,7 @@ beforeAll(async () => {
   const moves = ['R', 'U2', "F'"] as const;
   const result = solveLBL(engine, engine.apply(engine.solved(), moves));
   if (!result.ok) throw new Error(result.message);
-  session = { scrambleMoves: [...moves], trace: result.trace };
+  session = { input: { kind: 'scramble', moves: [...moves] }, trace: result.trace };
 });
 beforeEach(() => {
   vi.useFakeTimers();
@@ -75,15 +75,18 @@ it('uses renderer timing, limits speeds and rejects a mismatched initial setup',
   player.seekMove(2);
   expect(player.snapshot().timestamp).toBe(1600);
   expect(() => player.setSpeed(0)).toThrow();
-  expect(() => createPlaybackController(engine, { ...session, scrambleMoves: [] })).toThrow(
-    /initial/i,
-  );
+  expect(() =>
+    createPlaybackController(engine, { ...session, input: { kind: 'scramble', moves: [] } }),
+  ).toThrow(/initial/i);
   player.dispose();
 });
 it('stays complete when there are no moves', () => {
   const result = solveLBL(engine, engine.solved());
   if (!result.ok) throw new Error(result.message);
-  const player = createPlaybackController(engine, { scrambleMoves: [], trace: result.trace });
+  const player = createPlaybackController(engine, {
+    input: { kind: 'scramble', moves: [] },
+    trace: result.trace,
+  });
   player.play();
   expect(player.snapshot().currentMove).toBeNull();
   expect(player.snapshot().playing).toBe(false);

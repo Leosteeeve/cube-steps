@@ -1,13 +1,12 @@
 import { parseScramble } from '../core/notation';
-import type { FaceMove, SolveResult, SolveSession } from '../core/types';
-export interface WorkerReply {
-  requestId: number;
-  result: SolveResult;
-}
+import type { Facelets, SolveSession } from '../core/types';
+import type { FaceletIssue } from '../core/facelets';
+import type { SolveRequest, SolveRequestInput, WorkerReply } from '../workers/solve-protocol';
+export type { WorkerReply } from '../workers/solve-protocol';
 export interface WorkerPort {
   onmessage: ((e: MessageEvent<WorkerReply>) => void) | null;
   onerror: ((e: ErrorEvent) => void) | null;
-  postMessage(value: { requestId: number; moves: FaceMove[] }): void;
+  postMessage(value: SolveRequest): void;
   terminate(): void;
 }
 export type SessionResult =
@@ -15,11 +14,20 @@ export type SessionResult =
   | {
       ok: false;
       error: {
-        kind: 'parse' | 'solver' | 'worker' | 'cancelled';
+        kind: 'parse' | 'input' | 'solver' | 'worker' | 'cancelled';
         message: string;
         offset?: number;
+        issues?: FaceletIssue[];
       };
     };
+// Worker messages are cloned by the browser, which removes Object.freeze.
+function freezeReceived<T>(value: T): T {
+  if (value && typeof value === 'object') {
+    for (const child of Object.values(value)) freezeReceived(child);
+    Object.freeze(value);
+  }
+  return value;
+}
 export function createSolveClient(
   factory: () => WorkerPort = () =>
     new Worker(new URL('../workers/solve.worker.ts', import.meta.url), { type: 'module' }),
@@ -38,6 +46,47 @@ export function createSolveClient(
       });
     }
   }
+  function send(input: SolveRequestInput): Promise<SessionResult> {
+    return new Promise((resolve) => {
+      try {
+        const worker = factory(),
+          id = ++requestId;
+        active = { id, worker, resolve };
+        const finish = (result: SessionResult) => {
+          if (active?.id !== id) return;
+          active = undefined;
+          worker.terminate();
+          resolve(result);
+        };
+        worker.onmessage = ({ data }) => {
+          if (data.requestId !== id) return;
+          finish(
+            data.result.ok
+              ? { ok: true, session: freezeReceived(data.result.session) }
+              : data.result,
+          );
+        };
+        worker.onerror = (event) => {
+          event.preventDefault();
+          finish({
+            ok: false,
+            error: { kind: 'worker', message: `The solver could not start: ${event.message}` },
+          });
+        };
+        worker.postMessage({ requestId: id, input: structuredClone(input) });
+      } catch (error) {
+        active?.worker.terminate();
+        active = undefined;
+        resolve({
+          ok: false,
+          error: {
+            kind: 'worker',
+            message: error instanceof Error ? error.message : 'Unable to create the solver worker.',
+          },
+        });
+      }
+    });
+  }
   return {
     cancel,
     solveScramble(text: string): Promise<SessionResult> {
@@ -48,52 +97,11 @@ export function createSolveClient(
           ok: false,
           error: { kind: 'parse', offset: parsed.offset, message: parsed.message },
         });
-      return new Promise((resolve) => {
-        try {
-          const worker = factory(),
-            id = ++requestId;
-          active = { id, worker, resolve };
-          const finish = (result: SessionResult) => {
-            if (active?.id !== id) return;
-            active = undefined;
-            worker.terminate();
-            resolve(result);
-          };
-          worker.onmessage = ({ data }) => {
-            if (data.requestId !== id) return;
-            finish(
-              data.result.ok
-                ? { ok: true, session: { scrambleMoves: parsed.moves, trace: data.result.trace } }
-                : {
-                    ok: false,
-                    error: {
-                      kind: 'solver',
-                      message: `No verified solution was produced: ${data.result.message}`,
-                    },
-                  },
-            );
-          };
-          worker.onerror = (event) => {
-            event.preventDefault();
-            finish({
-              ok: false,
-              error: { kind: 'worker', message: `The solver could not start: ${event.message}` },
-            });
-          };
-          worker.postMessage({ requestId: id, moves: parsed.moves });
-        } catch (error) {
-          active?.worker.terminate();
-          active = undefined;
-          resolve({
-            ok: false,
-            error: {
-              kind: 'worker',
-              message:
-                error instanceof Error ? error.message : 'Unable to create the solver worker.',
-            },
-          });
-        }
-      });
+      return send({ kind: 'scramble', moves: parsed.moves });
+    },
+    solveFacelets(facelets: Facelets): Promise<SessionResult> {
+      cancel();
+      return send({ kind: 'facelets', facelets });
     },
   };
 }

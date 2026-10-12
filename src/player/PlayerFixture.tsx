@@ -12,7 +12,10 @@ export default function PlayerFixture() {
       const scrambleMoves = ['R', 'U2', "F'"] as const;
       const result = solveLBL(engine, engine.apply(engine.solved(), scrambleMoves));
       if (result.ok)
-        setData({ engine, session: { scrambleMoves: [...scrambleMoves], trace: result.trace } });
+        setData({
+          engine,
+          session: { input: { kind: 'scramble', moves: [...scrambleMoves] }, trace: result.trace },
+        });
     });
   }, []);
   return (

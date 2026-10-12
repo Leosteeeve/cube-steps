@@ -1,6 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
 const production = process.env.CUBESTEPS_PRODUCTION === '1';
-const port = production ? 4173 : 5173;
+const port = Number(process.env.CUBESTEPS_TEST_PORT ?? (production ? 4173 : 5173));
 const npm = process.platform === 'win32' ? 'npm.cmd' : 'npm';
 export default defineConfig({
   testDir: './e2e',

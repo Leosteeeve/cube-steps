@@ -2,6 +2,9 @@ export type Face = 'U' | 'D' | 'L' | 'R' | 'F' | 'B';
 export type FaceMove = `${Face}${'' | "'" | '2'}`;
 export type TeachingMove = FaceMove | `${'x' | 'y' | 'z'}${'' | "'" | '2'}`;
 export type Color = 'white' | 'yellow' | 'green' | 'blue' | 'red' | 'orange';
+export type Facelets = Readonly<Record<Face, readonly (Color | null)[]>>;
+export type FaceletSnapshot = Readonly<Record<Face, readonly Color[]>>;
+export type FaceletRef = { face: Face; index: number };
 export interface CubeState {
   data: Record<string, { pieces: number[]; orientation: number[]; orientationMod?: number[] }>;
 }
@@ -76,6 +79,9 @@ export interface SolveFailure {
 }
 export type SolveResult = { ok: true; trace: SolveTrace } | SolveFailure;
 export interface SolveSession {
-  scrambleMoves: FaceMove[];
+  input: SolveInput;
   trace: SolveTrace;
 }
+export type SolveInput =
+  | { kind: 'scramble'; moves: readonly FaceMove[] }
+  | { kind: 'facelets'; facelets: FaceletSnapshot };
