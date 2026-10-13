@@ -78,6 +78,23 @@ try {
       if (++count % 20 === 0) console.log(`Physical setups ${count}/${placements.length}`);
     }
     console.log(`Saved ${Object.keys(existing).length} independently verified physical setups.`);
+    const { fixtureStateKey } = (await server.ssrLoadModule(
+      '/src/algorithms/fixture-contract.ts',
+    )) as typeof import('../src/algorithms/fixture-contract.ts');
+    const identities = Object.fromEntries(
+      Object.values(existing).map((f) => [
+        f.id,
+        {
+          stateKey: fixtureStateKey(f.initial),
+          ...(f.target ? { target: f.target } : {}),
+          protectedIds: f.protectedIds,
+        },
+      ]),
+    );
+    await writeFile(
+      new URL('../src/algorithms/data/fixture-index.json', import.meta.url),
+      JSON.stringify(identities) + '\n',
+    );
   }
 } finally {
   await server.close();

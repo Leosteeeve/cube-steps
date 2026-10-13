@@ -42,3 +42,11 @@ Expanded teaching notation uses `Rw/Lw/Uw/Dw/Fw/Bw`, `M/E/S`, outer-face moves a
 Advanced solves return all five stages, including explicit skips. Each cross turn carries its before/after distance and the actual change to every affected white edge. `createAdvancedRuntime(verifiedCrossTable)` checks those claims against the recorded cube coordinates; the unbound runtime rejects cross actions because it has no distance asset. F2L and last-layer checks validate actual case, target and formula identities and their completed effects. Full traces must replay to a solved cube.
 
 The worker validates a request before fetching Advanced assets. Missing or corrupt assets produce a failure instead of a different method. Cancelling terminates the worker, and a 30-second watchdog settles stalled requests. A successful response must match both the requested method and the input snapshot taken when the request was sent.
+
+## Partial demonstrations
+
+An algorithm demonstration records a verified physical setup, its exact fixture identity, the requested variant and any U alignment or physical y regrip. At most four U alignments in four y frames are considered. Its checkpoint belongs to F2L, OLL or PLL; it never claims that a partial exercise is a complete solve. Full solves and partial demonstrations share playback controls, while complete solve traces still require a solved endpoint.
+
+The compact fixture identity index validates case, target and starting-state identity without eagerly importing every physical setup. Full fixture records are loaded by the library or practice consumer. The additional `f2l-01/fr/mixed/u0..u3` examples exchange two non-target middle edges and two yellow upper edges, preserving legal parity independently of the formula. They demonstrate one pair completing while other pairs remain unfinished. There are 972 verified physical variations across the same 119 cases.
+
+Advanced full-solve playback receives the verified distance asset through an optional third argument to `createPlaybackTimeline` / `createSourcePlaybackController`; the shared view loads it before enabling playback. This lets playback verify full traces without substituting a weaker cross check. Other methods and partial demonstrations need no cross asset.

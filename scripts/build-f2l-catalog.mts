@@ -30,6 +30,12 @@ try {
   )) as typeof import('../src/algorithms/admission.ts');
   const engine: CubeEngine = await createCubeEngine(),
     targets = canonicalTargets(engine);
+  const { EDGE_SLOTS } = (await server.ssrLoadModule(
+    '/src/core/observations.ts',
+  )) as typeof import('../src/core/observations.ts');
+  const { stateToFacelets, validateFacelets } = (await server.ssrLoadModule(
+    '/src/core/facelets.ts',
+  )) as typeof import('../src/core/facelets.ts');
   const states = new Map(targets.map((t) => [t.slot, admissiblePairPlacements(engine, t)]));
   const front = targets.find((t) => t.slot === 'FR')!;
   const source = JSON.parse(
@@ -106,10 +112,14 @@ try {
         .get(target.slot)!
         .find((s) => f2lSignature(engine, s, target) === startSignature)!;
       if (!initial) throw new Error(`${id}/${slot}: missing independent legal placement.`);
-      const observed=engine.observe(initial),observedCorner=observed.corners.find(p=>p.id===target.cornerId)!,observedEdge=observed.edges.find(p=>p.id===target.edgeId)!;
-      const referenceFace=rotate('F',slotPower[target.slot]) as Face;
-      const whiteFace=Object.entries(observedCorner.stickers).find(([,c])=>c==='white')![0];
-      const referenceStickerFace=Object.entries(observedEdge.stickers).find(([,c])=>c===observed.centers[referenceFace])![0];
+      const observed = engine.observe(initial),
+        observedCorner = observed.corners.find((p) => p.id === target.cornerId)!,
+        observedEdge = observed.edges.find((p) => p.id === target.edgeId)!;
+      const referenceFace = rotate('F', slotPower[target.slot]) as Face;
+      const whiteFace = Object.entries(observedCorner.stickers).find(([, c]) => c === 'white')![0];
+      const referenceStickerFace = Object.entries(observedEdge.stickers).find(
+        ([, c]) => c === observed.centers[referenceFace],
+      )![0];
       const options: [string, TeachingMove[], 0 | 1][] = [
         ['main', moves.map((m) => rotate(m, slotPower[target.slot])), 0],
       ];
@@ -134,7 +144,7 @@ try {
           name: `F2L ${String(index + 1).padStart(2, '0')} · ${target.slot}${name === 'no-regrip' ? ' · no regrip' : ''}`,
           moves: oriented,
           precondition: `White down. Target slot ${target.slot}. Corner ${observedCorner.slot}, white facing ${whiteFace}; edge ${observedEdge.slot}, ${referenceFace}-center sticker facing ${referenceStickerFace}. Keep this grip when starting the formula.`,
-          effect: `Complete the target pair and restore the cross and all previously completed pairs.${executionPenalty ? ' This alternative avoids the regrip but uses a less comfortable front/back face grip (execution penalty 1).' : ''}`,
+          effect: `Complete the target pair and restore the cross and all previously completed pairs.${executionPenalty ? ' This alternative avoids the regrip but uses a less comfortable front/back face grip.' : ''}`,
           segments: [{ label: 'Pair and insert', start: 0, end: oriented.length }],
         };
         variantIds.push(variantId);
@@ -177,6 +187,49 @@ try {
         segments: [{ label: 'Open, lift, restore', start: 0, end: 3 }],
       };
     }
+  // A partial-pair example independent of the formula: exchange two non-target
+  // middle edges and two yellow upper edges. Two swaps preserve legal parity.
+  const base = fixtures.find((f) => f.id === 'f2l-01/fr/u0')!,
+    mixed = structuredClone(base.initial);
+  const observation = engine.observe(mixed),
+    otherEdges = observeF2LPairs(engine, mixed)
+      .filter((p) => p.solved)
+      .slice(0, 2)
+      .map((p) => observation.edges.find((e) => e.id === p.edgeId)!);
+  const yellowEdges = observation.edges
+    .filter((p) => p.slot.includes('U') && Object.values(p.stickers).includes('yellow'))
+    .slice(0, 2);
+  for (const pair of [otherEdges, yellowEdges]) {
+    const [a, b] = pair.map((p) => EDGE_SLOTS.indexOf(p.slot));
+    [mixed.data.EDGES.pieces[a], mixed.data.EDGES.pieces[b]] = [
+      mixed.data.EDGES.pieces[b],
+      mixed.data.EDGES.pieces[a],
+    ];
+  }
+  if (
+    !validateFacelets(stateToFacelets(engine.apply(mixed, ['z2'])), engine.solved()).ok ||
+    canonicalF2LSignature(engine, mixed, base.target!) !== cases['f2l-01'].canonicalSignature
+  )
+    throw new Error('Invalid independent mixed F2L fixture.');
+  const mixedAfter = engine.apply(mixed, variants['f2l-01/main/fr'].moves);
+  if (
+    !observeF2LPairs(engine, mixedAfter).find((p) => p.cornerId === base.target!.cornerId)
+      ?.solved ||
+    !preservesF2L(engine, mixed, mixedAfter)
+  )
+    throw new Error('Mixed F2L fixture does not preserve completed work.');
+  cases['f2l-01'].fixtureIds = [
+    ...cases['f2l-01'].fixtureIds,
+    ...Array.from({ length: 4 }, (_, u) => 'f2l-01/fr/mixed/u' + u),
+  ];
+  fixtures.push({
+    ...base,
+    id: 'f2l-01/fr/mixed/u0',
+    initial: mixed,
+    protectedIds: observeF2LPairs(engine, mixed)
+      .filter((p) => p.solved)
+      .map((p) => p.cornerId),
+  });
   const catalog = { cases, variants, preparations };
   admitRegistry(catalog);
   await writeFile(

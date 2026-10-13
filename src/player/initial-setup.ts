@@ -2,6 +2,16 @@ import type { CubeEngine, SolveSession, TeachingMove } from '../core/types';
 import { assertSessionInput } from '../core/solve-input';
 import { flattenTrace } from '../methods/shared/trace';
 import { invertTeachingMoves } from '../core/teaching-moves';
+import type { PlaybackSource } from './playback-source';
+import { verifyDemonstration } from '../algorithms/demonstration';
+export function buildPlaybackInitialSetup(
+  engine: CubeEngine,
+  source: PlaybackSource,
+): TeachingMove[] {
+  if (source.kind === 'solve') return buildInitialSetup(engine, source.session);
+  verifyDemonstration(engine, source.demonstration);
+  return [...source.demonstration.setup, ...source.demonstration.holdingMoves];
+}
 export function buildInitialSetup(engine: CubeEngine, session: SolveSession): TeachingMove[] {
   assertSessionInput(engine, session);
   const moves = flattenTrace(session.trace).moves;

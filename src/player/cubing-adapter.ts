@@ -4,21 +4,26 @@ import {
   type ExperimentalMillisecondTimestamp,
 } from 'cubing/twisty';
 import type { CubeEngine, SolveSession } from '../core/types';
-import { buildInitialSetup } from './initial-setup';
+import { buildPlaybackInitialSetup } from './initial-setup';
+import type { PlaybackSource } from './playback-source';
 import { EDGE_SLOTS, CORNER_SLOTS } from '../core/observations';
 import { flattenTrace } from '../methods/shared/trace';
 export async function createCubingAdapter(
   host: HTMLElement,
   engine: CubeEngine,
-  session: SolveSession,
+  input: SolveSession | PlaybackSource,
 ) {
-  const setup = buildInitialSetup(engine, session);
+  const source: PlaybackSource = 'kind' in input ? input : { kind: 'solve', session: input };
+  const setup = buildPlaybackInitialSetup(engine, source);
   const probe = document.createElement('canvas');
   const gl = probe.getContext('webgl2');
   if (!gl)
     throw new Error('3D rendering is unavailable. You can still read and step through every move.');
   gl.getExtension('WEBGL_lose_context')?.loseContext();
-  const flat = flattenTrace(session.trace);
+  const flat =
+    source.kind === 'solve'
+      ? flattenTrace(source.session.trace)
+      : { moves: source.demonstration.actions.flatMap((a) => a.moves) };
   const player = new TwistyPlayer({
     puzzle: '3x3x3',
     alg: flat.moves.join(' '),
