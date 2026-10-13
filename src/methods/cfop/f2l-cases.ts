@@ -25,9 +25,13 @@ export interface F2LMatch {
 }
 export const U_SETUPS: TeachingMove[][] = [[], ['U'], ['U2'], ["U'"]];
 const Y_SETUPS: TeachingMove[][] = [[], ['y'], ['y2'], ["y'"]];
-export function observeF2LPairs(engine: CubeEngine, state: CubeState): F2LPair[] {
+const pairObservations = new WeakMap<CubeEngine, WeakMap<CubeState, readonly F2LPair[]>>();
+export function observeF2LPairs(engine: CubeEngine, state: CubeState): readonly F2LPair[] {
+  let cache = pairObservations.get(engine);
+  const cached = cache?.get(state);
+  if (cached) return cached;
   const o = engine.observe(state);
-  return CORNER_SLOTS.slice(0, 4).map((id) => {
+  const pairs = CORNER_SLOTS.slice(0, 4).map((id) => {
     const corner = o.corners.find((p) => p.id === id)!;
     const colors: Color[] = Object.values(corner.stickers).filter((c) => c !== 'white');
     const edge = o.edges.find((p) => Object.values(p.stickers).every((c) => colors.includes(c)))!;
@@ -41,6 +45,28 @@ export function observeF2LPairs(engine: CubeEngine, state: CubeState): F2LPair[]
       solved: pieceSolved(corner, o) && pieceSolved(edge, o),
     };
   });
+  // Only deeply frozen engine states are safe to memoize. Face-entry fixtures
+  // and callers can still supply mutable states and get a fresh observation.
+  if (
+    Object.isFrozen(state) &&
+    Object.isFrozen(state.data) &&
+    Object.values(state.data).every(
+      (orbit) =>
+        Object.isFrozen(orbit) &&
+        Object.isFrozen(orbit.pieces) &&
+        Object.isFrozen(orbit.orientation) &&
+        (!orbit.orientationMod || Object.isFrozen(orbit.orientationMod)),
+    )
+  ) {
+    if (!cache) {
+      cache = new WeakMap();
+      pairObservations.set(engine, cache);
+    }
+    pairs.forEach(Object.freeze);
+    Object.freeze(pairs);
+    cache.set(state, pairs);
+  }
+  return pairs;
 }
 function pieces(o: CubeObservation, pair: F2LPair): [PieceObservation, PieceObservation] {
   return [

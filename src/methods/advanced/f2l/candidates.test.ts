@@ -52,9 +52,9 @@ it('chooses_pair_from_actual_state', () => {
             );
         }
         rotations += regrips;
-        expect(candidate.immediateCost).toBe(
-          turns + 2 * regrips + ALGORITHM_REGISTRY.variants[candidate.variantId].executionPenalty,
-        );
+        expect(candidate.metrics.faceTurns).toBe(turns);
+        expect(candidate.metrics.rotations).toBe(regrips);
+        expect(candidate.metrics.effort).toBe(turns + regrips);
       }
     }
   expect(slots.size).toBe(4);

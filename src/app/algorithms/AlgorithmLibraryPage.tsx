@@ -5,8 +5,10 @@ import { CaseDiagram } from './CaseDiagram';
 import { useFixtures } from './use-fixtures';
 import './algorithm-library.css';
 import '../practice/practice.css';
-import { practiceStore, normalizePracticeSelection } from '../../practice/storage';
+import { normalizePracticeSelection } from '../../practice/storage';
+import { usePracticeStore } from '../practice/use-practice-store';
 export function AlgorithmLibraryPage({ engine }: { engine: CubeEngine }) {
+  const practiceStore = usePracticeStore();
   const [family, setFamily] = useState('all'),
     [group, setGroup] = useState('all'),
     [search, setSearch] = useState(''),

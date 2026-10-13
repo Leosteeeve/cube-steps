@@ -41,6 +41,10 @@ it('restores_cross_and_prior_pairs', () => {
     expect(firstTwoLayersSolved(engine, trace.current)).toBe(true);
     trace.endStage();
     const stage = trace.finish().stages[0];
+    const firstInsertion = stage.actions.findIndex((a) => a.pair?.phase === 'insert');
+    expect(
+      stage.actions.slice(firstInsertion + 1).some((a) => a.ruleId === 'advanced-holding'),
+    ).toBe(false);
     for (const action of stage.actions) {
       expect(preservesF2L(engine, action.before, action.after)).toBe(true);
       if (action.kind === 'regrip') continue;
@@ -52,7 +56,7 @@ it('restores_cross_and_prior_pairs', () => {
           observeF2LPairs(engine, action.after).find((p) => p.cornerId === action.pair!.cornerId)
             ?.solved,
         ).toBe(true);
-        expect(action.selection?.policyVersion).toBe('f2l-v1');
+        expect(action.selection?.policyVersion).toBe('f2l-human-v2');
       }
     }
   }

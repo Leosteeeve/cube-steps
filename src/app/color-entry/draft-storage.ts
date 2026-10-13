@@ -23,12 +23,18 @@ function validDraft(value: unknown): value is ColorDraft {
     )
   );
 }
-export function createDraftStore(open: () => Pick<Storage, 'getItem' | 'setItem'>) {
-  return {
+export function createDraftStore(
+  open: () => Pick<Storage, 'getItem' | 'setItem'>,
+  key = STORAGE_KEY,
+) {
+  let protectedData = false,
+    loaded = false;
+  const store = {
     load(): { draft: ColorDraft; available: boolean } {
+      loaded = true;
       let raw: string | null;
       try {
-        raw = open().getItem(STORAGE_KEY);
+        raw = open().getItem(key);
       } catch {
         return { draft: createBlankDraft(), available: false };
       }
@@ -48,19 +54,31 @@ export function createDraftStore(open: () => Pick<Storage, 'getItem' | 'setItem'
       } catch {
         /* An invalid stored draft is recoverable by starting blank. */
       }
-      return { draft: createBlankDraft(), available: true };
+      protectedData = key !== STORAGE_KEY && raw !== null;
+      return { draft: createBlankDraft(), available: !protectedData };
     },
     save(draft: ColorDraft): boolean {
+      if (!loaded) store.load();
+      if (protectedData) return false;
       try {
         const { facelets, face, selection } = draft;
-        open().setItem(
-          STORAGE_KEY,
-          JSON.stringify({ version: 1, draft: { facelets, face, selection } }),
-        );
+        open().setItem(key, JSON.stringify({ version: 1, draft: { facelets, face, selection } }));
+        return true;
+      } catch {
+        return false;
+      }
+    },
+    isProtected: () => protectedData,
+    reset(): boolean {
+      try {
+        open().setItem(key, JSON.stringify({ version: 1, draft: createBlankDraft() }));
+        protectedData = false;
+        loaded = true;
         return true;
       } catch {
         return false;
       }
     },
   };
+  return store;
 }

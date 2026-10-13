@@ -1,5 +1,24 @@
 import { expect, it } from 'vitest';
 import { createPracticeStore, PRACTICE_STORAGE_KEY } from './storage';
+it('isolates club data and preserves an unsupported selection until explicit reset', () => {
+  const data = new Map<string, string>([
+    [PRACTICE_STORAGE_KEY, 'global'],
+    ['cubesteps.club.practice-selection.v1', '{"version":9}'],
+  ]);
+  const backing = {
+    getItem: (k: string) => data.get(k) ?? null,
+    setItem: (k: string, v: string) => {
+      data.set(k, v);
+    },
+  } as Storage;
+  const store = createPracticeStore(() => backing, 'cubesteps.club.practice-selection.v1');
+  store.load();
+  expect(store.save({ version: 1, caseIds: ['pll-z'], groupIds: [] })).toBe(false);
+  expect(data.get('cubesteps.club.practice-selection.v1')).toBe('{"version":9}');
+  expect(store.reset()).toBe(true);
+  expect(store.save({ version: 1, caseIds: ['pll-z'], groupIds: [] })).toBe(true);
+  expect(data.get(PRACTICE_STORAGE_KEY)).toBe('global');
+});
 function memory(initial: string | null = null) {
   let value = initial;
   return {

@@ -4,7 +4,8 @@ import { ALGORITHM_REGISTRY as registry } from '../../algorithms/registry';
 import { verifyDemonstration } from '../../algorithms/demonstration';
 import { describeCaseRecognition } from '../../algorithms/recognition-evidence';
 import { createPracticePool } from '../../practice/pool';
-import { practiceStore, PRACTICE_GROUPS, normalizePracticeSelection } from '../../practice/storage';
+import { PRACTICE_GROUPS, normalizePracticeSelection } from '../../practice/storage';
+import { usePracticeStore } from './use-practice-store';
 import type { PracticeExercise } from '../../practice/types';
 import { createPracticeClient } from './practice-client';
 import { CaseDiagram } from '../algorithms/CaseDiagram';
@@ -12,6 +13,7 @@ import { AlgorithmPlayer } from '../../player/AlgorithmPlayer';
 import '../algorithms/algorithm-library.css';
 import './practice.css';
 export function PracticePage({ engine }: { engine: CubeEngine }) {
+  const practiceStore = usePracticeStore();
   const [loaded] = useState(() => practiceStore.load()),
     [selection, setSelection] = useState(loaded.selection),
     [available, setAvailable] = useState(loaded.available);
@@ -78,6 +80,20 @@ export function PracticePage({ engine }: { engine: CubeEngine }) {
     targets = demo?.actions[0]?.targets ?? [];
   return (
     <section className="algorithm-library practice-page">
+      {practiceStore.isProtected() && (
+        <p role="status">
+          Saved practice data could not be read. Changes stay in this page.{' '}
+          <button
+            onClick={() => {
+              const ok = practiceStore.reset();
+              if (ok) setSelection(practiceStore.load().selection);
+              setAvailable(ok);
+            }}
+          >
+            Reset saved practice selection
+          </button>
+        </p>
+      )}
       <header className="library-heading">
         <p className="eyebrow">CFOP PRACTICE · PREVIEW</p>
         <h1>Look first. Then turn.</h1>

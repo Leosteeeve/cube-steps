@@ -1,29 +1,15 @@
-import { lazy, Suspense, useEffect, useState } from 'react';
-import { createCubeEngine } from '../core/cube';
-import type { CubeEngine } from '../core/types';
-import { LearnPage } from './LearnPage';
-import { SolvePage } from './SolvePage';
+import { useEffect, useState } from 'react';
+import { useCubeEngine } from './use-cube-engine';
+import { SharedFeaturePage } from './SharedFeaturePage';
 import { parseRoute, methodRoute } from './routes';
 import { getMethod } from '../methods/registry';
-const AlgorithmLibraryPage = lazy(() =>
-  import('./algorithms/AlgorithmLibraryPage').then((m) => ({ default: m.AlgorithmLibraryPage })),
-);
-const AlgorithmDetailPage = lazy(() =>
-  import('./algorithms/AlgorithmDetailPage').then((m) => ({ default: m.AlgorithmDetailPage })),
-);
-const PracticePage = lazy(() =>
-  import('./practice/PracticePage').then((m) => ({ default: m.PracticePage })),
-);
+import { MotionPreference } from '../ui/motion';
 export function App() {
-  const [route, setRoute] = useState(() => parseRoute(location.hash)),
-    [engine, setEngine] = useState<CubeEngine | null>(null),
-    [error, setError] = useState('');
+  const [route, setRoute] = useState(() => parseRoute(location.hash));
+  const { engine, error, retry } = useCubeEngine(true);
   useEffect(() => {
     const change = () => setRoute(parseRoute(location.hash));
     addEventListener('hashchange', change);
-    void createCubeEngine()
-      .then(setEngine)
-      .catch((e) => setError(String(e)));
     return () => removeEventListener('hashchange', change);
   }, []);
   const methodId = 'method' in route ? route.method : 'lbl',
@@ -107,43 +93,10 @@ export function App() {
           </section>
         ) : error ? (
           <p className="error" role="alert">
-            {error}
+            {error} <button onClick={retry}>Retry loading cube</button>
           </p>
         ) : engine ? (
-          route.kind === 'practice' ? (
-            <Suspense
-              fallback={
-                <p className="loading-panel" role="status">
-                  Loading practice…
-                </p>
-              }
-            >
-              <PracticePage engine={engine} />
-            </Suspense>
-          ) : route.kind === 'algorithms' || route.kind === 'algorithm' ? (
-            <Suspense
-              fallback={
-                <p className="loading-panel" role="status">
-                  Loading the algorithm library…
-                </p>
-              }
-            >
-              {route.kind === 'algorithms' ? (
-                <AlgorithmLibraryPage engine={engine} />
-              ) : (
-                <AlgorithmDetailPage engine={engine} caseId={route.caseId} />
-              )}
-            </Suspense>
-          ) : route.kind === 'solve' ? (
-            <SolvePage engine={engine} method={route.method} />
-          ) : (
-            <LearnPage
-              key={route.method + '/' + route.lessonId}
-              engine={engine}
-              method={route.method}
-              lessonId={route.lessonId}
-            />
-          )
+          <SharedFeaturePage route={route} engine={engine} />
         ) : (
           <p className="loading-panel" role="status">
             Getting your cube ready…
@@ -151,6 +104,7 @@ export function App() {
         )}
       </main>
       <footer className="site-footer">
+        <MotionPreference />
         <p>Small steps. A whole new way to see the cube.</p>
         <span>
           CubeSteps · MIT ·{' '}

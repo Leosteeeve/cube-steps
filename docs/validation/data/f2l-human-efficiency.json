@@ -1,0 +1,162 @@
+{
+  "policyVersion": "f2l-human-v2",
+  "qualityCategories": {
+    "visibleComfortable": 3784,
+    "otherQuality": 208
+  },
+  "baseline": {
+    "commit": "7dc0fec5527dbfa490d60ba030c7cb1cda054e26",
+    "policyVersion": "f2l-v1",
+    "seeds": {
+      "from": 1,
+      "to": 1000,
+      "source": "seededScramble in tests/fixtures/lbl-cases.ts"
+    },
+    "percentile": "nearest rank",
+    "environment": {
+      "node": "v24.18.0",
+      "platform": "win32",
+      "cpu": "AMD Ryzen 9 8945HX with Radeon Graphics        "
+    },
+    "elapsedMs": 84673.14259999999,
+    "advancedF2L": {
+      "turns": {
+        "mean": 30.458,
+        "median": 31,
+        "p95": 36
+      },
+      "rotations": {
+        "mean": 0,
+        "median": 0,
+        "p95": 0
+      }
+    },
+    "beginnerF2L": {
+      "turns": {
+        "mean": 45.527,
+        "median": 46,
+        "p95": 56
+      },
+      "rotations": {
+        "mean": 5.494,
+        "median": 5,
+        "p95": 7
+      }
+    },
+    "advancedFull": {
+      "turns": {
+        "mean": 61.677,
+        "median": 62,
+        "p95": 70
+      },
+      "rotations": {
+        "mean": 1.535,
+        "median": 1,
+        "p95": 3
+      }
+    },
+    "beginnerFull": {
+      "turns": {
+        "mean": 109.733,
+        "median": 111,
+        "p95": 129
+      },
+      "rotations": {
+        "mean": 10.228,
+        "median": 10,
+        "p95": 12
+      }
+    }
+  },
+  "seeds": {
+    "from": 1,
+    "to": 1000,
+    "source": "seededScramble in tests/fixtures/lbl-cases.ts"
+  },
+  "percentile": "nearest rank",
+  "environment": {
+    "node": "v24.18.0",
+    "platform": "win32",
+    "cpu": "AMD Ryzen 9 8945HX with Radeon Graphics        "
+  },
+  "elapsedMs": 161897.4819,
+  "advancedF2L": {
+    "turns": {
+      "mean": 31.949,
+      "median": 32,
+      "p95": 39
+    },
+    "rotations": {
+      "mean": 3.31,
+      "median": 3,
+      "p95": 6
+    }
+  },
+  "beginnerF2L": {
+    "turns": {
+      "mean": 45.527,
+      "median": 46,
+      "p95": 56
+    },
+    "rotations": {
+      "mean": 5.494,
+      "median": 5,
+      "p95": 7
+    }
+  },
+  "advancedFull": {
+    "turns": {
+      "mean": 63.068,
+      "median": 63,
+      "p95": 72
+    },
+    "rotations": {
+      "mean": 5.494,
+      "median": 5,
+      "p95": 8
+    }
+  },
+  "beginnerFull": {
+    "turns": {
+      "mean": 109.733,
+      "median": 111,
+      "p95": 129
+    },
+    "rotations": {
+      "mean": 10.228,
+      "median": 10,
+      "p95": 12
+    }
+  },
+  "diagnostics": {
+    "meanAtMost90PercentBeginner": true,
+    "medianNoGreaterThanBeginner": true,
+    "rotationsNoGreaterThanBeginner": true
+  },
+  "ergonomics": {
+    "usefulRegrip": {
+      "fixture": "f2l-20/br/u0",
+      "metrics": {
+        "quality": 0,
+        "faceTurns": 7,
+        "rotations": 1,
+        "effort": 8,
+        "reasons": [
+          "f2l-20/main/bl: Recognition stickers are visible from a front view. Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: L U2 L' U' L U L'. Recognition visibility is checked from the actual starting state."
+        ]
+      }
+    },
+    "easyRear": {
+      "fixture": "f2l-02/br/u0",
+      "metrics": {
+        "quality": 0,
+        "faceTurns": 3,
+        "rotations": 0,
+        "effort": 3,
+        "reasons": [
+          "f2l-02/no-regrip/br: Recognition stickers are visible from a front view. Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: R' U' R. Recognition visibility is checked from the actual starting state."
+        ]
+      }
+    }
+  }
+}

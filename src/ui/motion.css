@@ -1,0 +1,54 @@
+.motion-preference {
+  font-size: 11px;
+  color: var(--muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+.motion-preference label {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.motion-preference select {
+  min-height: 36px;
+  padding: 5px 8px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  color: var(--ink);
+  background: white;
+  font-size: 11px;
+}
+.motion-preference button {
+  padding: 5px 8px;
+  font-size: 11px;
+}
+[data-motion='full'] :is(button, a, input, select) {
+  transition:
+    background-color 150ms ease,
+    color 150ms ease,
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+}
+[data-motion='full'] :is(.club-hero-copy, .club-panel, .lesson-heading, .library-heading) {
+  animation: panel-arrive 200ms ease-out;
+}
+@keyframes panel-arrive {
+  from {
+    transform: translateY(6px);
+    opacity: 0.98;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+[data-motion='reduced'] :is(button, a, input, select),
+[data-timing='active'] :is(button, a, input, select) {
+  transition: none;
+}
+[data-motion='reduced'] :is(.club-hero-copy, .club-panel, .lesson-heading, .library-heading),
+[data-timing='active'] :is(.club-hero-copy, .club-panel, .lesson-heading, .library-heading) {
+  animation: none;
+}

@@ -33,6 +33,7 @@ function check(initial: CubeState, trace: SolveTrace) {
       expect(stage.actions.filter((a) => a.kind === 'algorithm').length).toBeLessThanOrEqual(1);
     for (const action of stage.actions) {
       expect(action.checkpoint.passed).toBe(true);
+      if (action.selection) expect(action.selection.policyVersion).toBe('f2l-human-v2');
       if (action.kind === 'algorithm')
         expect(action.moves).toEqual(
           (
@@ -71,4 +72,6 @@ it('replays_1000_advanced_inputs_twice_and_as_colors', () => {
       });
     }
   }
-}, 600000);
+// Shared CI runners take about 630 seconds for all 1,000 seeds and three solves
+// per seed. This is a corpus scheduling limit, not a single-solve time budget.
+}, 900000);

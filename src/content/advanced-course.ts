@@ -56,9 +56,9 @@ export const ADVANCED_COURSE: readonly Lesson[] = [
     'Choose a pair that sets up the next.',
     'Recognize one of 41 F2L cases and insert its corner-edge pair while protecting the cross and completed pairs.',
     'Find a white corner and the edge with the same two side colors. Read their positions and sticker directions, then identify the slot between the matching centers. A trapped piece must leave an unsolved slot before its insertion case applies.',
-    'Follow any separate U alignment or complete extraction maneuver. The solver compares practical registered formulas in all four slots and considers the next available pair. Keep the displayed grip; a back-slot formula is already written for that slot.',
+    'Follow the displayed whole-cube regrip, U alignment or complete extraction before the formula. The solver prioritizes visible target stickers and comfortable formulas, then reduces unnecessary moves and rotations while considering the next pair. Keep white down and continue from the resulting front color; do not rotate back after every pair.',
     'The selected pair matches its centers, the white cross remains matched, and every earlier completed pair is restored. The pair count increases at the insertion checkpoint.',
-    'The best next pair can change after every insertion. Choose a case below to isolate it, and use the library to compare its registered alternatives without changing the solver preferences.',
+    'A useful rotation can make a pair easier to see and execute. An easy rear insertion can also keep its hold. Dragging the view is only for observation; perform the explicit y turns on your real cube. Choose a case below to practice it separately.',
     ['f2l-01/main/fr', 'f2l-17/main/fr', 'f2l-41/main/fr'],
   ),
   lesson(

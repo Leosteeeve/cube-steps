@@ -1,8 +1,18 @@
-import type { AlgorithmRegistry } from './types';
+import type { AlgorithmRegistry, F2LExecutionProfile } from './types';
 import type { TeachingAlgorithm } from '../methods/contracts';
 import { isTeachingMove } from '../core/teaching-moves';
 function require(condition: unknown, message: string): asserts condition {
   if (!condition) throw new Error(`Algorithm admission: ${message}`);
+}
+function admitExecution(profile: F2LExecutionProfile | undefined, id: string) {
+  require(profile &&
+    [0, 1, 2].includes(profile.gripPenalty) &&
+    ['sticker-directions', 'connected-pair'].includes(profile.recognition) &&
+    typeof profile.easyRearInsertion === 'boolean' &&
+    typeof profile.rationale === 'string' &&
+    profile.rationale.trim().length > 0 &&
+    (!profile.easyRearInsertion ||
+      profile.gripPenalty === 0), `${id} needs a valid F2L execution profile.`);
 }
 function admitAlgorithm(algorithm: TeachingAlgorithm, id: string): void {
   require(algorithm.name &&
@@ -64,10 +74,12 @@ export function admitRegistry(registry: AlgorithmRegistry): void {
     require(v.targetSlot === undefined ||
       ['FR', 'FL', 'BR', 'BL'].includes(v.targetSlot), `${v.id} has an invalid target slot.`);
     admitAlgorithm(v, v.id);
+    if (registry.cases[v.caseId].family === 'f2l') admitExecution(v.f2lExecution, v.id);
   }
   for (const [id, alg] of Object.entries(registry.preparations)) {
     require(!registry.variants[id] &&
       !registry.cases[id], `Preparation ${id} overlaps a case or variant.`);
     admitAlgorithm(alg, id);
+    if (id.startsWith('advanced-extract/')) admitExecution(alg.f2lExecution, id);
   }
 }

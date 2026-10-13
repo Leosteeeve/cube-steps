@@ -93,8 +93,7 @@ export function createDemonstration(
         targets: targets(),
         moves: setup.y,
         recognition: describeCaseRecognition(engine, state, c, targets()),
-        explanation:
-          'Rotate the whole cube to the formula holding frame. This is a physical regrip; dragging the view does not perform it.',
+        explanation: `Rotate the whole cube to put ${engine.observe(engine.apply(state, setup.y)).centers.F} in front, keeping white down. Continue from this hold after the formula. This is a physical regrip; dragging the view does not perform it.`,
       },
       'White stays down; the completed pairs and cross are preserved.',
       (s) => preservesF2L(engine, fixture.initial, s),

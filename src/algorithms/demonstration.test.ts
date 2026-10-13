@@ -20,6 +20,13 @@ it('completes_one_f2l_pair_while_other_pairs_remain_unsolved', () => {
   expect(demo.checkpoint.passed).toBe(true);
   expect(firstTwoLayersSolved(engine, demo.final)).toBe(false);
 });
+it('names the resulting physical hold without rotating back after the formula', () => {
+  const demo = createDemonstration(engine, getCaseFixture('f2l-20/br/u0')!, 'f2l-20/main/fr');
+  const regrip = demo.actions.find((a) => a.kind === 'regrip')!;
+  expect(regrip.explanation).toContain(engine.observe(regrip.after).centers.F + ' in front');
+  expect(regrip.explanation).toContain('Continue');
+  expect(demo.actions.at(-1)!.algorithmId).toBe('f2l-20/main/fr');
+});
 it('plays_oll_without_claiming_cube_solved', () => {
   const demo = createDemonstration(engine, getCaseFixture('oll-45/u0')!, 'oll-45/main');
   expect(demo.checkpoint.passed).toBe(true);

@@ -1728,6 +1728,12 @@
       "startSignature": "FL|UFR:F:UR:U",
       "targetSlot": "FL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U F U' F'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -1758,6 +1764,12 @@
       "startSignature": "BL|UFR:F:UR:U",
       "targetSlot": "BL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": true,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U L U' L'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -1788,6 +1800,12 @@
       "startSignature": "BR|UFR:F:UR:U",
       "targetSlot": "BR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U B U' B'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -1818,6 +1836,12 @@
       "startSignature": "FR|UFR:F:UR:U",
       "targetSlot": "FR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U R U' R'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -1848,6 +1872,12 @@
       "startSignature": "FL|UFR:F:UL:L",
       "targetSlot": "FL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: y' F' U' F. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -1878,6 +1908,12 @@
       "startSignature": "FL|UFR:F:UL:L",
       "targetSlot": "FL",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: L' U' L. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -1892,7 +1928,7 @@
         "L"
       ],
       "precondition": "White down. Target slot FL. Corner ULF, white facing L; edge UB, L-center sticker facing B. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -1907,6 +1943,12 @@
       "startSignature": "BL|UFR:F:UL:L",
       "targetSlot": "BL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: y' L' U' L. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -1937,6 +1979,12 @@
       "startSignature": "BL|UFR:F:UL:L",
       "targetSlot": "BL",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: B' U' B. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -1951,7 +1999,7 @@
         "B"
       ],
       "precondition": "White down. Target slot BL. Corner UBL, white facing B; edge UR, B-center sticker facing R. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -1966,6 +2014,12 @@
       "startSignature": "BR|UFR:F:UL:L",
       "targetSlot": "BR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: y' B' U' B. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -1996,6 +2050,12 @@
       "startSignature": "BR|UFR:F:UL:L",
       "targetSlot": "BR",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": true,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: R' U' R. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -2010,7 +2070,7 @@
         "R"
       ],
       "precondition": "White down. Target slot BR. Corner URB, white facing R; edge UF, R-center sticker facing F. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -2025,6 +2085,12 @@
       "startSignature": "FR|UFR:F:UL:L",
       "targetSlot": "FR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: y' R' U' R. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -2055,6 +2121,12 @@
       "startSignature": "FR|UFR:F:UL:L",
       "targetSlot": "FR",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: F' U' F. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -2069,7 +2141,7 @@
         "F"
       ],
       "precondition": "White down. Target slot FR. Corner UFR, white facing F; edge UL, F-center sticker facing L. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -2084,6 +2156,12 @@
       "startSignature": "FL|UFR:F:UB:B",
       "targetSlot": "FL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U' F U' F' U y' F' U' F. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -2119,6 +2197,12 @@
       "startSignature": "FL|UFR:F:UB:B",
       "targetSlot": "FL",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U' F U' F' U L' U' L. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -2138,7 +2222,7 @@
         "L"
       ],
       "precondition": "White down. Target slot FL. Corner ULF, white facing L; edge UR, L-center sticker facing R. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -2153,6 +2237,12 @@
       "startSignature": "BL|UFR:F:UB:B",
       "targetSlot": "BL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U' L U' L' U y' L' U' L. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -2188,6 +2278,12 @@
       "startSignature": "BL|UFR:F:UB:B",
       "targetSlot": "BL",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U' L U' L' U B' U' B. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -2207,7 +2303,7 @@
         "B"
       ],
       "precondition": "White down. Target slot BL. Corner UBL, white facing B; edge UF, B-center sticker facing F. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -2222,6 +2318,12 @@
       "startSignature": "BR|UFR:F:UB:B",
       "targetSlot": "BR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U' B U' B' U y' B' U' B. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -2257,6 +2359,12 @@
       "startSignature": "BR|UFR:F:UB:B",
       "targetSlot": "BR",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U' B U' B' U R' U' R. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -2276,7 +2384,7 @@
         "R"
       ],
       "precondition": "White down. Target slot BR. Corner URB, white facing R; edge UL, R-center sticker facing L. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -2291,6 +2399,12 @@
       "startSignature": "FR|UFR:F:UB:B",
       "targetSlot": "FR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U' R U' R' U y' R' U' R. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -2326,6 +2440,12 @@
       "startSignature": "FR|UFR:F:UB:B",
       "targetSlot": "FR",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U' R U' R' U F' U' F. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -2345,7 +2465,7 @@
         "F"
       ],
       "precondition": "White down. Target slot FR. Corner UFR, white facing F; edge UB, F-center sticker facing B. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -2360,6 +2480,12 @@
       "startSignature": "FL|UFR:F:UR:R",
       "targetSlot": "FL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U' F U2 F' U y' F' U' F. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -2395,6 +2521,12 @@
       "startSignature": "FL|UFR:F:UR:R",
       "targetSlot": "FL",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U' F U2 F' U L' U' L. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -2414,7 +2546,7 @@
         "L"
       ],
       "precondition": "White down. Target slot FL. Corner ULF, white facing L; edge UF, L-center sticker facing F. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -2429,6 +2561,12 @@
       "startSignature": "BL|UFR:F:UR:R",
       "targetSlot": "BL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U' L U2 L' U y' L' U' L. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -2464,6 +2602,12 @@
       "startSignature": "BL|UFR:F:UR:R",
       "targetSlot": "BL",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U' L U2 L' U B' U' B. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -2483,7 +2627,7 @@
         "B"
       ],
       "precondition": "White down. Target slot BL. Corner UBL, white facing B; edge UL, B-center sticker facing L. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -2498,6 +2642,12 @@
       "startSignature": "BR|UFR:F:UR:R",
       "targetSlot": "BR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U' B U2 B' U y' B' U' B. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -2533,6 +2683,12 @@
       "startSignature": "BR|UFR:F:UR:R",
       "targetSlot": "BR",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U' B U2 B' U R' U' R. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -2552,7 +2708,7 @@
         "R"
       ],
       "precondition": "White down. Target slot BR. Corner URB, white facing R; edge UB, R-center sticker facing B. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -2567,6 +2723,12 @@
       "startSignature": "FR|UFR:F:UR:R",
       "targetSlot": "FR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U' R U2 R' U y' R' U' R. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -2602,6 +2764,12 @@
       "startSignature": "FR|UFR:F:UR:R",
       "targetSlot": "FR",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U' R U2 R' U F' U' F. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -2621,7 +2789,7 @@
         "F"
       ],
       "precondition": "White down. Target slot FR. Corner UFR, white facing F; edge UR, F-center sticker facing R. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -2636,6 +2804,12 @@
       "startSignature": "FL|UFR:F:UF:F",
       "targetSlot": "FL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: y' U F' U F U' F' U' F. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -2671,6 +2845,12 @@
       "startSignature": "FL|UFR:F:UF:F",
       "targetSlot": "FL",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U L' U L U' L' U' L. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -2690,7 +2870,7 @@
         "L"
       ],
       "precondition": "White down. Target slot FL. Corner ULF, white facing L; edge UL, L-center sticker facing L. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -2705,6 +2885,12 @@
       "startSignature": "BL|UFR:F:UF:F",
       "targetSlot": "BL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: y' U L' U L U' L' U' L. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -2740,6 +2926,12 @@
       "startSignature": "BL|UFR:F:UF:F",
       "targetSlot": "BL",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U B' U B U' B' U' B. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -2759,7 +2951,7 @@
         "B"
       ],
       "precondition": "White down. Target slot BL. Corner UBL, white facing B; edge UB, B-center sticker facing B. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -2774,6 +2966,12 @@
       "startSignature": "BR|UFR:F:UF:F",
       "targetSlot": "BR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: y' U B' U B U' B' U' B. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -2809,6 +3007,12 @@
       "startSignature": "BR|UFR:F:UF:F",
       "targetSlot": "BR",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U R' U R U' R' U' R. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -2828,7 +3032,7 @@
         "R"
       ],
       "precondition": "White down. Target slot BR. Corner URB, white facing R; edge UR, R-center sticker facing R. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -2843,6 +3047,12 @@
       "startSignature": "FR|UFR:F:UF:F",
       "targetSlot": "FR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: y' U R' U R U' R' U' R. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -2878,6 +3088,12 @@
       "startSignature": "FR|UFR:F:UF:F",
       "targetSlot": "FR",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U F' U F U' F' U' F. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -2897,7 +3113,7 @@
         "F"
       ],
       "precondition": "White down. Target slot FR. Corner UFR, white facing F; edge UF, F-center sticker facing F. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -2912,6 +3128,12 @@
       "startSignature": "FL|UFR:F:UB:U",
       "targetSlot": "FL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U' F U F' U2 F U' F'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -2946,6 +3168,12 @@
       "startSignature": "BL|UFR:F:UB:U",
       "targetSlot": "BL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U' L U L' U2 L U' L'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -2980,6 +3208,12 @@
       "startSignature": "BR|UFR:F:UB:U",
       "targetSlot": "BR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U' B U B' U2 B U' B'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -3014,6 +3248,12 @@
       "startSignature": "FR|UFR:F:UB:U",
       "targetSlot": "FR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U' R U R' U2 R U' R'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -3048,6 +3288,12 @@
       "startSignature": "FL|UFR:F:UL:U",
       "targetSlot": "FL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U' F U2 F' U2 F U' F'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -3082,6 +3328,12 @@
       "startSignature": "BL|UFR:F:UL:U",
       "targetSlot": "BL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U' L U2 L' U2 L U' L'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -3116,6 +3368,12 @@
       "startSignature": "BR|UFR:F:UL:U",
       "targetSlot": "BR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U' B U2 B' U2 B U' B'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -3150,6 +3408,12 @@
       "startSignature": "FR|UFR:F:UL:U",
       "targetSlot": "FR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U' R U2 R' U2 R U' R'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -3184,6 +3448,12 @@
       "startSignature": "FL|UFR:U:UB:U",
       "targetSlot": "FL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U F U2 F' U F U' F'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -3218,6 +3488,12 @@
       "startSignature": "BL|UFR:U:UB:U",
       "targetSlot": "BL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U L U2 L' U L U' L'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -3252,6 +3528,12 @@
       "startSignature": "BR|UFR:U:UB:U",
       "targetSlot": "BR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U B U2 B' U B U' B'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -3286,6 +3568,12 @@
       "startSignature": "FR|UFR:U:UB:U",
       "targetSlot": "FR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U R U2 R' U R U' R'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -3320,6 +3608,12 @@
       "startSignature": "FL|UFR:U:UL:U",
       "targetSlot": "FL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U2 F U F' U F U' F'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -3354,6 +3648,12 @@
       "startSignature": "BL|UFR:U:UL:U",
       "targetSlot": "BL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U2 L U L' U L U' L'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -3388,6 +3688,12 @@
       "startSignature": "BR|UFR:U:UL:U",
       "targetSlot": "BR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U2 B U B' U B U' B'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -3422,6 +3728,12 @@
       "startSignature": "FR|UFR:U:UL:U",
       "targetSlot": "FR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U2 R U R' U R U' R'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -3456,6 +3768,12 @@
       "startSignature": "FL|UFR:R:UF:F",
       "targetSlot": "FL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: y' U' F' U F. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -3487,6 +3805,12 @@
       "startSignature": "FL|UFR:R:UF:F",
       "targetSlot": "FL",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U' L' U L. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -3502,7 +3826,7 @@
         "L"
       ],
       "precondition": "White down. Target slot FL. Corner ULF, white facing F; edge UL, L-center sticker facing L. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -3517,6 +3841,12 @@
       "startSignature": "BL|UFR:R:UF:F",
       "targetSlot": "BL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: y' U' L' U L. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -3548,6 +3878,12 @@
       "startSignature": "BL|UFR:R:UF:F",
       "targetSlot": "BL",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U' B' U B. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -3563,7 +3899,7 @@
         "B"
       ],
       "precondition": "White down. Target slot BL. Corner UBL, white facing L; edge UB, B-center sticker facing B. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -3578,6 +3914,12 @@
       "startSignature": "BR|UFR:R:UF:F",
       "targetSlot": "BR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: y' U' B' U B. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -3609,6 +3951,12 @@
       "startSignature": "BR|UFR:R:UF:F",
       "targetSlot": "BR",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": true,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U' R' U R. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -3624,7 +3972,7 @@
         "R"
       ],
       "precondition": "White down. Target slot BR. Corner URB, white facing B; edge UR, R-center sticker facing R. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -3639,6 +3987,12 @@
       "startSignature": "FR|UFR:R:UF:F",
       "targetSlot": "FR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: y' U' R' U R. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -3670,6 +4024,12 @@
       "startSignature": "FR|UFR:R:UF:F",
       "targetSlot": "FR",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U' F' U F. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -3685,7 +4045,7 @@
         "F"
       ],
       "precondition": "White down. Target slot FR. Corner UFR, white facing R; edge UF, F-center sticker facing F. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -3700,6 +4060,12 @@
       "startSignature": "FL|UFR:R:UB:U",
       "targetSlot": "FL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: F U F'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -3729,6 +4095,12 @@
       "startSignature": "BL|UFR:R:UB:U",
       "targetSlot": "BL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": true,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: L U L'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -3758,6 +4130,12 @@
       "startSignature": "BR|UFR:R:UB:U",
       "targetSlot": "BR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: B U B'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -3787,6 +4165,12 @@
       "startSignature": "FR|UFR:R:UB:U",
       "targetSlot": "FR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: R U R'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -3816,6 +4200,12 @@
       "startSignature": "FL|UFR:R:UL:U",
       "targetSlot": "FL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U' F U F' U F U F'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -3850,6 +4240,12 @@
       "startSignature": "BL|UFR:R:UL:U",
       "targetSlot": "BL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U' L U L' U L U L'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -3884,6 +4280,12 @@
       "startSignature": "BR|UFR:R:UL:U",
       "targetSlot": "BR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U' B U B' U B U B'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -3918,6 +4320,12 @@
       "startSignature": "FR|UFR:R:UL:U",
       "targetSlot": "FR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U' R U R' U R U R'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -3952,6 +4360,12 @@
       "startSignature": "FL|UFR:R:UF:U",
       "targetSlot": "FL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: F' U2 F2 U F2 U F. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -3985,6 +4399,12 @@
       "startSignature": "BL|UFR:R:UF:U",
       "targetSlot": "BL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated side-face half turns require a grip adjustment. Reviewed sequence: L' U2 L2 U L2 U L. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -4018,6 +4438,12 @@
       "startSignature": "BR|UFR:R:UF:U",
       "targetSlot": "BR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: B' U2 B2 U B2 U B. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -4051,6 +4477,12 @@
       "startSignature": "FR|UFR:R:UF:U",
       "targetSlot": "FR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated side-face half turns require a grip adjustment. Reviewed sequence: R' U2 R2 U R2 U R. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -4084,6 +4516,12 @@
       "startSignature": "FL|UFR:R:UR:U",
       "targetSlot": "FL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U' F U' F' U F U F'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -4118,6 +4556,12 @@
       "startSignature": "BL|UFR:R:UR:U",
       "targetSlot": "BL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U' L U' L' U L U L'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -4152,6 +4596,12 @@
       "startSignature": "BR|UFR:R:UR:U",
       "targetSlot": "BR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U' B U' B' U B U B'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -4186,6 +4636,12 @@
       "startSignature": "FR|UFR:R:UR:U",
       "targetSlot": "FR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U' R U' R' U R U R'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -4220,6 +4676,12 @@
       "startSignature": "FL|UFR:R:UL:L",
       "targetSlot": "FL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: y' U F' U' F U2 F' U F. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -4255,6 +4717,12 @@
       "startSignature": "FL|UFR:R:UL:L",
       "targetSlot": "FL",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U L' U' L U2 L' U L. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -4274,7 +4742,7 @@
         "L"
       ],
       "precondition": "White down. Target slot FL. Corner ULF, white facing F; edge UB, L-center sticker facing B. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -4289,6 +4757,12 @@
       "startSignature": "BL|UFR:R:UL:L",
       "targetSlot": "BL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: y' U L' U' L U2 L' U L. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -4324,6 +4798,12 @@
       "startSignature": "BL|UFR:R:UL:L",
       "targetSlot": "BL",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U B' U' B U2 B' U B. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -4343,7 +4823,7 @@
         "B"
       ],
       "precondition": "White down. Target slot BL. Corner UBL, white facing L; edge UR, B-center sticker facing R. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -4358,6 +4838,12 @@
       "startSignature": "BR|UFR:R:UL:L",
       "targetSlot": "BR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: y' U B' U' B U2 B' U B. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -4393,6 +4879,12 @@
       "startSignature": "BR|UFR:R:UL:L",
       "targetSlot": "BR",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U R' U' R U2 R' U R. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -4412,7 +4904,7 @@
         "R"
       ],
       "precondition": "White down. Target slot BR. Corner URB, white facing B; edge UF, R-center sticker facing F. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -4427,6 +4919,12 @@
       "startSignature": "FR|UFR:R:UL:L",
       "targetSlot": "FR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: y' U R' U' R U2 R' U R. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -4462,6 +4960,12 @@
       "startSignature": "FR|UFR:R:UL:L",
       "targetSlot": "FR",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U F' U' F U2 F' U F. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -4481,7 +4985,7 @@
         "F"
       ],
       "precondition": "White down. Target slot FR. Corner UFR, white facing R; edge UL, F-center sticker facing L. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -4496,6 +5000,12 @@
       "startSignature": "FL|UFR:R:UB:B",
       "targetSlot": "FL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: y' U F' U2 F U2 F' U F. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -4531,6 +5041,12 @@
       "startSignature": "FL|UFR:R:UB:B",
       "targetSlot": "FL",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U L' U2 L U2 L' U L. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -4550,7 +5066,7 @@
         "L"
       ],
       "precondition": "White down. Target slot FL. Corner ULF, white facing F; edge UR, L-center sticker facing R. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -4565,6 +5081,12 @@
       "startSignature": "BL|UFR:R:UB:B",
       "targetSlot": "BL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: y' U L' U2 L U2 L' U L. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -4600,6 +5122,12 @@
       "startSignature": "BL|UFR:R:UB:B",
       "targetSlot": "BL",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U B' U2 B U2 B' U B. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -4619,7 +5147,7 @@
         "B"
       ],
       "precondition": "White down. Target slot BL. Corner UBL, white facing L; edge UF, B-center sticker facing F. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -4634,6 +5162,12 @@
       "startSignature": "BR|UFR:R:UB:B",
       "targetSlot": "BR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: y' U B' U2 B U2 B' U B. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -4669,6 +5203,12 @@
       "startSignature": "BR|UFR:R:UB:B",
       "targetSlot": "BR",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U R' U2 R U2 R' U R. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -4688,7 +5228,7 @@
         "R"
       ],
       "precondition": "White down. Target slot BR. Corner URB, white facing B; edge UL, R-center sticker facing L. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -4703,6 +5243,12 @@
       "startSignature": "FR|UFR:R:UB:B",
       "targetSlot": "FR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: y' U R' U2 R U2 R' U R. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -4738,6 +5284,12 @@
       "startSignature": "FR|UFR:R:UB:B",
       "targetSlot": "FR",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U F' U2 F U2 F' U F. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -4757,7 +5309,7 @@
         "F"
       ],
       "precondition": "White down. Target slot FR. Corner UFR, white facing R; edge UB, F-center sticker facing B. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -4772,6 +5324,12 @@
       "startSignature": "FL|UFR:U:UL:L",
       "targetSlot": "FL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: y' U' F' U2 F U' F' U F. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -4807,6 +5365,12 @@
       "startSignature": "FL|UFR:U:UL:L",
       "targetSlot": "FL",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U' L' U2 L U' L' U L. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -4826,7 +5390,7 @@
         "L"
       ],
       "precondition": "White down. Target slot FL. Corner ULF, white facing U; edge UB, L-center sticker facing B. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -4841,6 +5405,12 @@
       "startSignature": "BL|UFR:U:UL:L",
       "targetSlot": "BL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: y' U' L' U2 L U' L' U L. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -4876,6 +5446,12 @@
       "startSignature": "BL|UFR:U:UL:L",
       "targetSlot": "BL",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U' B' U2 B U' B' U B. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -4895,7 +5471,7 @@
         "B"
       ],
       "precondition": "White down. Target slot BL. Corner UBL, white facing U; edge UR, B-center sticker facing R. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -4910,6 +5486,12 @@
       "startSignature": "BR|UFR:U:UL:L",
       "targetSlot": "BR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: y' U' B' U2 B U' B' U B. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -4945,6 +5527,12 @@
       "startSignature": "BR|UFR:U:UL:L",
       "targetSlot": "BR",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U' R' U2 R U' R' U R. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -4964,7 +5552,7 @@
         "R"
       ],
       "precondition": "White down. Target slot BR. Corner URB, white facing U; edge UF, R-center sticker facing F. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -4979,6 +5567,12 @@
       "startSignature": "FR|UFR:U:UL:L",
       "targetSlot": "FR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: y' U' R' U2 R U' R' U R. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -5014,6 +5608,12 @@
       "startSignature": "FR|UFR:U:UL:L",
       "targetSlot": "FR",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U' F' U2 F U' F' U F. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -5033,7 +5633,7 @@
         "F"
       ],
       "precondition": "White down. Target slot FR. Corner UFR, white facing U; edge UL, F-center sticker facing L. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -5048,6 +5648,12 @@
       "startSignature": "FL|UFR:U:UB:B",
       "targetSlot": "FL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: y' U2 F' U' F U' F' U F. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -5083,6 +5689,12 @@
       "startSignature": "FL|UFR:U:UB:B",
       "targetSlot": "FL",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U2 L' U' L U' L' U L. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -5102,7 +5714,7 @@
         "L"
       ],
       "precondition": "White down. Target slot FL. Corner ULF, white facing U; edge UR, L-center sticker facing R. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -5117,6 +5729,12 @@
       "startSignature": "BL|UFR:U:UB:B",
       "targetSlot": "BL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: y' U2 L' U' L U' L' U L. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -5152,6 +5770,12 @@
       "startSignature": "BL|UFR:U:UB:B",
       "targetSlot": "BL",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U2 B' U' B U' B' U B. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -5171,7 +5795,7 @@
         "B"
       ],
       "precondition": "White down. Target slot BL. Corner UBL, white facing U; edge UF, B-center sticker facing F. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -5186,6 +5810,12 @@
       "startSignature": "BR|UFR:U:UB:B",
       "targetSlot": "BR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: y' U2 B' U' B U' B' U B. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -5221,6 +5851,12 @@
       "startSignature": "BR|UFR:U:UB:B",
       "targetSlot": "BR",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U2 R' U' R U' R' U R. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -5240,7 +5876,7 @@
         "R"
       ],
       "precondition": "White down. Target slot BR. Corner URB, white facing U; edge UL, R-center sticker facing L. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -5255,6 +5891,12 @@
       "startSignature": "FR|UFR:U:UB:B",
       "targetSlot": "FR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: y' U2 R' U' R U' R' U R. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -5290,6 +5932,12 @@
       "startSignature": "FR|UFR:U:UB:B",
       "targetSlot": "FR",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U2 F' U' F U' F' U F. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -5309,7 +5957,7 @@
         "F"
       ],
       "precondition": "White down. Target slot FR. Corner UFR, white facing U; edge UB, F-center sticker facing B. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -5324,6 +5972,12 @@
       "startSignature": "FL|UFR:F:UF:U",
       "targetSlot": "FL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: y' F' U F U2 y F U F'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -5359,6 +6013,12 @@
       "startSignature": "FL|UFR:F:UF:U",
       "targetSlot": "FL",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: L' U L U2 F U F'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -5377,7 +6037,7 @@
         "F'"
       ],
       "precondition": "White down. Target slot FL. Corner ULF, white facing L; edge UL, L-center sticker facing U. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -5392,6 +6052,12 @@
       "startSignature": "BL|UFR:F:UF:U",
       "targetSlot": "BL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: y' L' U L U2 y L U L'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -5427,6 +6093,12 @@
       "startSignature": "BL|UFR:F:UF:U",
       "targetSlot": "BL",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: B' U B U2 L U L'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -5445,7 +6117,7 @@
         "L'"
       ],
       "precondition": "White down. Target slot BL. Corner UBL, white facing B; edge UB, B-center sticker facing U. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -5460,6 +6132,12 @@
       "startSignature": "BR|UFR:F:UF:U",
       "targetSlot": "BR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: y' B' U B U2 y B U B'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -5495,6 +6173,12 @@
       "startSignature": "BR|UFR:F:UF:U",
       "targetSlot": "BR",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: R' U R U2 B U B'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -5513,7 +6197,7 @@
         "B'"
       ],
       "precondition": "White down. Target slot BR. Corner URB, white facing R; edge UR, R-center sticker facing U. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -5528,6 +6212,12 @@
       "startSignature": "FR|UFR:F:UF:U",
       "targetSlot": "FR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: y' R' U R U2 y R U R'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -5563,6 +6253,12 @@
       "startSignature": "FR|UFR:F:UF:U",
       "targetSlot": "FR",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: F' U F U2 R U R'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -5581,7 +6277,7 @@
         "R'"
       ],
       "precondition": "White down. Target slot FR. Corner UFR, white facing F; edge UF, F-center sticker facing U. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -5596,6 +6292,12 @@
       "startSignature": "FL|UFR:U:UR:U",
       "targetSlot": "FL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: F U2 F' U' F U F'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -5629,6 +6331,12 @@
       "startSignature": "BL|UFR:U:UR:U",
       "targetSlot": "BL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: L U2 L' U' L U L'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -5662,6 +6370,12 @@
       "startSignature": "BR|UFR:U:UR:U",
       "targetSlot": "BR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: B U2 B' U' B U B'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -5695,6 +6409,12 @@
       "startSignature": "FR|UFR:U:UR:U",
       "targetSlot": "FR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: R U2 R' U' R U R'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -5728,6 +6448,12 @@
       "startSignature": "FL|UFR:U:UF:U",
       "targetSlot": "FL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U F U' F' U' F U' F' U F U' F'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -5766,6 +6492,12 @@
       "startSignature": "BL|UFR:U:UF:U",
       "targetSlot": "BL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U L U' L' U' L U' L' U L U' L'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -5804,6 +6536,12 @@
       "startSignature": "BR|UFR:U:UF:U",
       "targetSlot": "BR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U B U' B' U' B U' B' U B U' B'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -5842,6 +6580,12 @@
       "startSignature": "FR|UFR:U:UF:U",
       "targetSlot": "FR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U R U' R' U' R U' R' U R U' R'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -5880,6 +6624,12 @@
       "startSignature": "FL|DRF:D:UR:U",
       "targetSlot": "FL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U' L' F U F' U' F' L F. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -5915,6 +6665,12 @@
       "startSignature": "BL|DRF:D:UR:U",
       "targetSlot": "BL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U' B' L U L' U' L' B L. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -5950,6 +6706,12 @@
       "startSignature": "BR|DRF:D:UR:U",
       "targetSlot": "BR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U' R' B U B' U' B' R B. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -5985,6 +6747,12 @@
       "startSignature": "FR|DRF:D:UR:U",
       "targetSlot": "FR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U' F' R U R' U' R' F R. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -6020,6 +6788,12 @@
       "startSignature": "FL|DRF:F:UR:U",
       "targetSlot": "FL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: F U' F' U F U' F'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -6053,6 +6827,12 @@
       "startSignature": "BL|DRF:F:UR:U",
       "targetSlot": "BL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: L U' L' U L U' L'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -6086,6 +6866,12 @@
       "startSignature": "BR|DRF:F:UR:U",
       "targetSlot": "BR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: B U' B' U B U' B'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -6119,6 +6905,12 @@
       "startSignature": "FR|DRF:F:UR:U",
       "targetSlot": "FR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: R U' R' U R U' R'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -6152,6 +6944,12 @@
       "startSignature": "FL|DRF:F:UF:F",
       "targetSlot": "FL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: y' F' U' F U F' U' F. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -6186,6 +6984,12 @@
       "startSignature": "FL|DRF:F:UF:F",
       "targetSlot": "FL",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: L' U' L U L' U' L. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -6204,7 +7008,7 @@
         "L"
       ],
       "precondition": "White down. Target slot FL. Corner DFL, white facing L; edge UL, L-center sticker facing L. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -6219,6 +7023,12 @@
       "startSignature": "BL|DRF:F:UF:F",
       "targetSlot": "BL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: y' L' U' L U L' U' L. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -6253,6 +7063,12 @@
       "startSignature": "BL|DRF:F:UF:F",
       "targetSlot": "BL",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: B' U' B U B' U' B. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -6271,7 +7087,7 @@
         "B"
       ],
       "precondition": "White down. Target slot BL. Corner DLB, white facing B; edge UB, B-center sticker facing B. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -6286,6 +7102,12 @@
       "startSignature": "BR|DRF:F:UF:F",
       "targetSlot": "BR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: y' B' U' B U B' U' B. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -6320,6 +7142,12 @@
       "startSignature": "BR|DRF:F:UF:F",
       "targetSlot": "BR",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: R' U' R U R' U' R. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -6338,7 +7166,7 @@
         "R"
       ],
       "precondition": "White down. Target slot BR. Corner DBR, white facing R; edge UR, R-center sticker facing R. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -6353,6 +7181,12 @@
       "startSignature": "FR|DRF:F:UF:F",
       "targetSlot": "FR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: y' R' U' R U R' U' R. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -6387,6 +7221,12 @@
       "startSignature": "FR|DRF:F:UF:F",
       "targetSlot": "FR",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: F' U' F U F' U' F. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -6405,7 +7245,7 @@
         "F"
       ],
       "precondition": "White down. Target slot FR. Corner DRF, white facing F; edge UF, F-center sticker facing F. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -6420,6 +7260,12 @@
       "startSignature": "FL|UFR:U:FR:R",
       "targetSlot": "FL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: F U' F' U y' F' U F. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -6454,6 +7300,12 @@
       "startSignature": "FL|UFR:U:FR:R",
       "targetSlot": "FL",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: F U' F' U L' U L. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -6472,7 +7324,7 @@
         "L"
       ],
       "precondition": "White down. Target slot FL. Corner ULF, white facing U; edge FL, L-center sticker facing F. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -6487,6 +7339,12 @@
       "startSignature": "BL|UFR:U:FR:R",
       "targetSlot": "BL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: L U' L' U y' L' U L. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -6521,6 +7379,12 @@
       "startSignature": "BL|UFR:U:FR:R",
       "targetSlot": "BL",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: L U' L' U B' U B. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -6539,7 +7403,7 @@
         "B"
       ],
       "precondition": "White down. Target slot BL. Corner UBL, white facing U; edge BL, B-center sticker facing L. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -6554,6 +7418,12 @@
       "startSignature": "BR|UFR:U:FR:R",
       "targetSlot": "BR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: B U' B' U y' B' U B. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -6588,6 +7458,12 @@
       "startSignature": "BR|UFR:U:FR:R",
       "targetSlot": "BR",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: B U' B' U R' U R. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -6606,7 +7482,7 @@
         "R"
       ],
       "precondition": "White down. Target slot BR. Corner URB, white facing U; edge BR, R-center sticker facing B. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -6621,6 +7497,12 @@
       "startSignature": "FR|UFR:U:FR:R",
       "targetSlot": "FR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: R U' R' U y' R' U R. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -6655,6 +7537,12 @@
       "startSignature": "FR|UFR:U:FR:R",
       "targetSlot": "FR",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: R U' R' U F' U F. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -6673,7 +7561,7 @@
         "F"
       ],
       "precondition": "White down. Target slot FR. Corner UFR, white facing U; edge FR, F-center sticker facing R. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -6688,6 +7576,12 @@
       "startSignature": "FL|UFR:F:FR:F",
       "targetSlot": "FL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U' F U' F' U2 F U' F'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -6722,6 +7616,12 @@
       "startSignature": "BL|UFR:F:FR:F",
       "targetSlot": "BL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U' L U' L' U2 L U' L'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -6756,6 +7656,12 @@
       "startSignature": "BR|UFR:F:FR:F",
       "targetSlot": "BR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U' B U' B' U2 B U' B'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -6790,6 +7696,12 @@
       "startSignature": "FR|UFR:F:FR:F",
       "targetSlot": "FR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U' R U' R' U2 R U' R'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -6824,6 +7736,12 @@
       "startSignature": "FL|UFR:F:FR:R",
       "targetSlot": "FL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U' F U F' U y' F' U' F. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -6859,6 +7777,12 @@
       "startSignature": "FL|UFR:F:FR:R",
       "targetSlot": "FL",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U' F U F' U L' U' L. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -6878,7 +7802,7 @@
         "L"
       ],
       "precondition": "White down. Target slot FL. Corner ULF, white facing L; edge FL, L-center sticker facing F. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -6893,6 +7817,12 @@
       "startSignature": "BL|UFR:F:FR:R",
       "targetSlot": "BL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U' L U L' U y' L' U' L. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -6928,6 +7858,12 @@
       "startSignature": "BL|UFR:F:FR:R",
       "targetSlot": "BL",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U' L U L' U B' U' B. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -6947,7 +7883,7 @@
         "B"
       ],
       "precondition": "White down. Target slot BL. Corner UBL, white facing B; edge BL, B-center sticker facing L. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -6962,6 +7898,12 @@
       "startSignature": "BR|UFR:F:FR:R",
       "targetSlot": "BR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U' B U B' U y' B' U' B. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -6997,6 +7939,12 @@
       "startSignature": "BR|UFR:F:FR:R",
       "targetSlot": "BR",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U' B U B' U R' U' R. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -7016,7 +7964,7 @@
         "R"
       ],
       "precondition": "White down. Target slot BR. Corner URB, white facing R; edge BR, R-center sticker facing B. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -7031,6 +7979,12 @@
       "startSignature": "FR|UFR:F:FR:R",
       "targetSlot": "FR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U' R U R' U y' R' U' R. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -7066,6 +8020,12 @@
       "startSignature": "FR|UFR:F:FR:R",
       "targetSlot": "FR",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U' R U R' U F' U' F. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -7085,7 +8045,7 @@
         "F"
       ],
       "precondition": "White down. Target slot FR. Corner UFR, white facing F; edge FR, F-center sticker facing R. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -7100,6 +8060,12 @@
       "startSignature": "FL|DRF:F:FR:F",
       "targetSlot": "FL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: F U' F' U' F U F' U2 F U' F'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -7137,6 +8103,12 @@
       "startSignature": "BL|DRF:F:FR:F",
       "targetSlot": "BL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: L U' L' U' L U L' U2 L U' L'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -7174,6 +8146,12 @@
       "startSignature": "BR|DRF:F:FR:F",
       "targetSlot": "BR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: B U' B' U' B U B' U2 B U' B'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -7211,6 +8189,12 @@
       "startSignature": "FR|DRF:F:FR:F",
       "targetSlot": "FR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: R U' R' U' R U R' U2 R U' R'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -7248,6 +8232,12 @@
       "startSignature": "FL|DRF:F:FR:R",
       "targetSlot": "FL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: L' U L U2 F U F' U F U' F'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -7285,6 +8275,12 @@
       "startSignature": "BL|DRF:F:FR:R",
       "targetSlot": "BL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: B' U B U2 L U L' U L U' L'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -7322,6 +8318,12 @@
       "startSignature": "BR|DRF:F:FR:R",
       "targetSlot": "BR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: R' U R U2 B U B' U B U' B'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -7359,6 +8361,12 @@
       "startSignature": "FR|DRF:F:FR:R",
       "targetSlot": "FR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: F' U F U2 R U R' U R U' R'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -7396,6 +8404,12 @@
       "startSignature": "FL|UFR:R:UR:R",
       "targetSlot": "FL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: F U' F' U2 y' F' U' F. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -7430,6 +8444,12 @@
       "startSignature": "FL|UFR:R:UR:R",
       "targetSlot": "FL",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: F U' F' U2 L' U' L. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -7448,7 +8468,7 @@
         "L"
       ],
       "precondition": "White down. Target slot FL. Corner ULF, white facing F; edge UF, L-center sticker facing F. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -7463,6 +8483,12 @@
       "startSignature": "BL|UFR:R:UR:R",
       "targetSlot": "BL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: L U' L' U2 y' L' U' L. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -7497,6 +8523,12 @@
       "startSignature": "BL|UFR:R:UR:R",
       "targetSlot": "BL",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: L U' L' U2 B' U' B. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -7515,7 +8547,7 @@
         "B"
       ],
       "precondition": "White down. Target slot BL. Corner UBL, white facing L; edge UL, B-center sticker facing L. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -7530,6 +8562,12 @@
       "startSignature": "BR|UFR:R:UR:R",
       "targetSlot": "BR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: B U' B' U2 y' B' U' B. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -7564,6 +8602,12 @@
       "startSignature": "BR|UFR:R:UR:R",
       "targetSlot": "BR",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: B U' B' U2 R' U' R. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -7582,7 +8626,7 @@
         "R"
       ],
       "precondition": "White down. Target slot BR. Corner URB, white facing B; edge UB, R-center sticker facing B. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -7597,6 +8641,12 @@
       "startSignature": "FR|UFR:R:UR:R",
       "targetSlot": "FR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: R U' R' U2 y' R' U' R. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -7631,6 +8681,12 @@
       "startSignature": "FR|UFR:R:UR:R",
       "targetSlot": "FR",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: R U' R' U2 F' U' F. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -7649,7 +8705,7 @@
         "F"
       ],
       "precondition": "White down. Target slot FR. Corner UFR, white facing R; edge UR, F-center sticker facing R. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -7664,6 +8720,12 @@
       "startSignature": "FL|UFR:U:UF:F",
       "targetSlot": "FL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: y' F' U2 F U F' U' F. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -7698,6 +8760,12 @@
       "startSignature": "FL|UFR:U:UF:F",
       "targetSlot": "FL",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: L' U2 L U L' U' L. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -7716,7 +8784,7 @@
         "L"
       ],
       "precondition": "White down. Target slot FL. Corner ULF, white facing U; edge UL, L-center sticker facing L. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -7731,6 +8799,12 @@
       "startSignature": "BL|UFR:U:UF:F",
       "targetSlot": "BL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: y' L' U2 L U L' U' L. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -7765,6 +8839,12 @@
       "startSignature": "BL|UFR:U:UF:F",
       "targetSlot": "BL",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: B' U2 B U B' U' B. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -7783,7 +8863,7 @@
         "B"
       ],
       "precondition": "White down. Target slot BL. Corner UBL, white facing U; edge UB, B-center sticker facing B. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -7798,6 +8878,12 @@
       "startSignature": "BR|UFR:U:UF:F",
       "targetSlot": "BR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: y' B' U2 B U B' U' B. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -7832,6 +8918,12 @@
       "startSignature": "BR|UFR:U:UF:F",
       "targetSlot": "BR",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: R' U2 R U R' U' R. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -7850,7 +8942,7 @@
         "R"
       ],
       "precondition": "White down. Target slot BR. Corner URB, white facing U; edge UR, R-center sticker facing R. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -7865,6 +8957,12 @@
       "startSignature": "FR|UFR:U:UF:F",
       "targetSlot": "FR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: y' R' U2 R U R' U' R. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -7899,6 +8997,12 @@
       "startSignature": "FR|UFR:U:UF:F",
       "targetSlot": "FR",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: F' U2 F U F' U' F. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -7917,7 +9021,7 @@
         "F"
       ],
       "precondition": "White down. Target slot FR. Corner UFR, white facing U; edge UF, F-center sticker facing F. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -7932,6 +9036,12 @@
       "startSignature": "FL|UFR:U:UR:R",
       "targetSlot": "FL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: y' U' F' U F U F' U F U' F' U F. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -7971,6 +9081,12 @@
       "startSignature": "FL|UFR:U:UR:R",
       "targetSlot": "FL",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U' L' U L U L' U L U' L' U L. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -7994,7 +9110,7 @@
         "L"
       ],
       "precondition": "White down. Target slot FL. Corner ULF, white facing U; edge UF, L-center sticker facing F. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -8009,6 +9125,12 @@
       "startSignature": "BL|UFR:U:UR:R",
       "targetSlot": "BL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: y' U' L' U L U L' U L U' L' U L. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -8048,6 +9170,12 @@
       "startSignature": "BL|UFR:U:UR:R",
       "targetSlot": "BL",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U' B' U B U B' U B U' B' U B. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -8071,7 +9199,7 @@
         "B"
       ],
       "precondition": "White down. Target slot BL. Corner UBL, white facing U; edge UL, B-center sticker facing L. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -8086,6 +9214,12 @@
       "startSignature": "BR|UFR:U:UR:R",
       "targetSlot": "BR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: y' U' B' U B U B' U B U' B' U B. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -8125,6 +9259,12 @@
       "startSignature": "BR|UFR:U:UR:R",
       "targetSlot": "BR",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U' R' U R U R' U R U' R' U R. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -8148,7 +9288,7 @@
         "R"
       ],
       "precondition": "White down. Target slot BR. Corner URB, white facing U; edge UB, R-center sticker facing B. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -8163,6 +9303,12 @@
       "startSignature": "FR|UFR:U:UR:R",
       "targetSlot": "FR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: y' U' R' U R U R' U R U' R' U R. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -8202,6 +9348,12 @@
       "startSignature": "FR|UFR:U:UR:R",
       "targetSlot": "FR",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U' F' U F U F' U F U' F' U F. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -8225,7 +9377,7 @@
         "F"
       ],
       "precondition": "White down. Target slot FR. Corner UFR, white facing U; edge UR, F-center sticker facing R. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -8240,6 +9392,12 @@
       "startSignature": "FL|DRF:D:UF:F",
       "targetSlot": "FL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U F U' F' U' L' U L. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -8274,6 +9432,12 @@
       "startSignature": "BL|DRF:D:UF:F",
       "targetSlot": "BL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U L U' L' U' B' U B. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -8308,6 +9472,12 @@
       "startSignature": "BR|DRF:D:UF:F",
       "targetSlot": "BR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U B U' B' U' R' U R. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -8342,6 +9512,12 @@
       "startSignature": "FR|DRF:D:UF:F",
       "targetSlot": "FR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U R U' R' U' F' U F. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -8376,6 +9552,12 @@
       "startSignature": "FL|DRF:R:UF:F",
       "targetSlot": "FL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: y' F' U F U' F' U F. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -8410,6 +9592,12 @@
       "startSignature": "FL|DRF:R:UF:F",
       "targetSlot": "FL",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: L' U L U' L' U L. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -8428,7 +9616,7 @@
         "L"
       ],
       "precondition": "White down. Target slot FL. Corner DFL, white facing F; edge UL, L-center sticker facing L. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -8443,6 +9631,12 @@
       "startSignature": "BL|DRF:R:UF:F",
       "targetSlot": "BL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: y' L' U L U' L' U L. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -8477,6 +9671,12 @@
       "startSignature": "BL|DRF:R:UF:F",
       "targetSlot": "BL",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: B' U B U' B' U B. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -8495,7 +9695,7 @@
         "B"
       ],
       "precondition": "White down. Target slot BL. Corner DLB, white facing L; edge UB, B-center sticker facing B. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -8510,6 +9710,12 @@
       "startSignature": "BR|DRF:R:UF:F",
       "targetSlot": "BR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: y' B' U B U' B' U B. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -8544,6 +9750,12 @@
       "startSignature": "BR|DRF:R:UF:F",
       "targetSlot": "BR",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: R' U R U' R' U R. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -8562,7 +9774,7 @@
         "R"
       ],
       "precondition": "White down. Target slot BR. Corner DBR, white facing B; edge UR, R-center sticker facing R. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -8577,6 +9789,12 @@
       "startSignature": "FR|DRF:R:UF:F",
       "targetSlot": "FR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: y' R' U R U' R' U R. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -8611,6 +9829,12 @@
       "startSignature": "FR|DRF:R:UF:F",
       "targetSlot": "FR",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: F' U F U' F' U F. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -8629,7 +9853,7 @@
         "F"
       ],
       "precondition": "White down. Target slot FR. Corner DRF, white facing R; edge UF, F-center sticker facing F. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -8644,6 +9868,12 @@
       "startSignature": "FL|DRF:R:UR:U",
       "targetSlot": "FL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: F U F' U' F U F'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -8677,6 +9907,12 @@
       "startSignature": "BL|DRF:R:UR:U",
       "targetSlot": "BL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: L U L' U' L U L'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -8710,6 +9946,12 @@
       "startSignature": "BR|DRF:R:UR:U",
       "targetSlot": "BR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: B U B' U' B U B'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -8743,6 +9985,12 @@
       "startSignature": "FR|DRF:R:UR:U",
       "targetSlot": "FR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: R U R' U' R U R'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -8776,6 +10024,12 @@
       "startSignature": "FL|UFR:U:FR:F",
       "targetSlot": "FL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U F U' F' U F U' F' U F U' F'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -8814,6 +10068,12 @@
       "startSignature": "BL|UFR:U:FR:F",
       "targetSlot": "BL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U L U' L' U L U' L' U L U' L'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -8852,6 +10112,12 @@
       "startSignature": "BR|UFR:U:FR:F",
       "targetSlot": "BR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U B U' B' U B U' B' U B U' B'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -8890,6 +10156,12 @@
       "startSignature": "FR|UFR:U:FR:F",
       "targetSlot": "FR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U R U' R' U R U' R' U R U' R'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -8928,6 +10200,12 @@
       "startSignature": "FL|UFR:R:FR:F",
       "targetSlot": "FL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U F U F' U2 F U F'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -8962,6 +10240,12 @@
       "startSignature": "BL|UFR:R:FR:F",
       "targetSlot": "BL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U L U L' U2 L U L'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -8996,6 +10280,12 @@
       "startSignature": "BR|UFR:R:FR:F",
       "targetSlot": "BR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U B U B' U2 B U B'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -9030,6 +10320,12 @@
       "startSignature": "FR|UFR:R:FR:F",
       "targetSlot": "FR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U R U R' U2 R U R'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -9064,6 +10360,12 @@
       "startSignature": "FL|UFR:R:FR:R",
       "targetSlot": "FL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U L' U' L U' F U F'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -9098,6 +10400,12 @@
       "startSignature": "BL|UFR:R:FR:R",
       "targetSlot": "BL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U B' U' B U' L U L'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -9132,6 +10440,12 @@
       "startSignature": "BR|UFR:R:FR:R",
       "targetSlot": "BR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U R' U' R U' B U B'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -9166,6 +10480,12 @@
       "startSignature": "FR|UFR:R:FR:R",
       "targetSlot": "FR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U F' U' F U' R U R'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -9200,6 +10520,12 @@
       "startSignature": "FL|DRF:D:FR:R",
       "targetSlot": "FL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: F U' F' Dw F' U2 F U2 F' U F. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -9237,6 +10563,12 @@
       "startSignature": "FL|DRF:D:FR:R",
       "targetSlot": "FL",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: F U' F' U L' U2 L U2 L' U L. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -9259,7 +10591,7 @@
         "L"
       ],
       "precondition": "White down. Target slot FL. Corner DFL, white facing D; edge FL, L-center sticker facing F. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -9274,6 +10606,12 @@
       "startSignature": "BL|DRF:D:FR:R",
       "targetSlot": "BL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: L U' L' Dw L' U2 L U2 L' U L. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -9311,6 +10649,12 @@
       "startSignature": "BL|DRF:D:FR:R",
       "targetSlot": "BL",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: L U' L' U B' U2 B U2 B' U B. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -9333,7 +10677,7 @@
         "B"
       ],
       "precondition": "White down. Target slot BL. Corner DLB, white facing D; edge BL, B-center sticker facing L. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -9348,6 +10692,12 @@
       "startSignature": "BR|DRF:D:FR:R",
       "targetSlot": "BR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: B U' B' Dw B' U2 B U2 B' U B. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -9385,6 +10735,12 @@
       "startSignature": "BR|DRF:D:FR:R",
       "targetSlot": "BR",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: B U' B' U R' U2 R U2 R' U R. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -9407,7 +10763,7 @@
         "R"
       ],
       "precondition": "White down. Target slot BR. Corner DBR, white facing D; edge BR, R-center sticker facing B. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -9422,6 +10778,12 @@
       "startSignature": "FR|DRF:D:FR:R",
       "targetSlot": "FR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: R U' R' Dw R' U2 R U2 R' U R. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -9459,6 +10821,12 @@
       "startSignature": "FR|DRF:D:FR:R",
       "targetSlot": "FR",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: R U' R' U F' U2 F U2 F' U F. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -9481,7 +10849,7 @@
         "F"
       ],
       "precondition": "White down. Target slot FR. Corner DRF, white facing D; edge FR, F-center sticker facing R. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -9496,6 +10864,12 @@
       "startSignature": "FL|DRF:R:FR:F",
       "targetSlot": "FL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: F U' F' U F U2 F' U F U' F'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -9533,6 +10907,12 @@
       "startSignature": "BL|DRF:R:FR:F",
       "targetSlot": "BL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: L U' L' U L U2 L' U L U' L'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -9570,6 +10950,12 @@
       "startSignature": "BR|DRF:R:FR:F",
       "targetSlot": "BR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: B U' B' U B U2 B' U B U' B'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -9607,6 +10993,12 @@
       "startSignature": "FR|DRF:R:FR:F",
       "targetSlot": "FR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: R U' R' U R U2 R' U R U' R'. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -9644,6 +11036,12 @@
       "startSignature": "FL|DRF:R:FR:R",
       "targetSlot": "FL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: F U F' U' F U' F' U2 y' F' U' F. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -9682,6 +11080,12 @@
       "startSignature": "FL|DRF:R:FR:R",
       "targetSlot": "FL",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: F U F' U' F U' F' U2 L' U' L. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -9704,7 +11108,7 @@
         "L"
       ],
       "precondition": "White down. Target slot FL. Corner DFL, white facing F; edge FL, L-center sticker facing F. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -9719,6 +11123,12 @@
       "startSignature": "BL|DRF:R:FR:R",
       "targetSlot": "BL",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: L U L' U' L U' L' U2 y' L' U' L. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -9757,6 +11167,12 @@
       "startSignature": "BL|DRF:R:FR:R",
       "targetSlot": "BL",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: L U L' U' L U' L' U2 B' U' B. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -9779,7 +11195,7 @@
         "B"
       ],
       "precondition": "White down. Target slot BL. Corner DLB, white facing L; edge BL, B-center sticker facing L. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -9794,6 +11210,12 @@
       "startSignature": "BR|DRF:R:FR:R",
       "targetSlot": "BR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: B U B' U' B U' B' U2 y' B' U' B. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -9832,6 +11254,12 @@
       "startSignature": "BR|DRF:R:FR:R",
       "targetSlot": "BR",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: B U B' U' B U' B' U2 R' U' R. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -9854,7 +11282,7 @@
         "R"
       ],
       "precondition": "White down. Target slot BR. Corner DBR, white facing B; edge BR, R-center sticker facing B. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -9869,6 +11297,12 @@
       "startSignature": "FR|DRF:R:FR:R",
       "targetSlot": "FR",
       "executionPenalty": 0,
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: R U R' U' R U' R' U2 y' R' U' R. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -9907,6 +11341,12 @@
       "startSignature": "FR|DRF:R:FR:R",
       "targetSlot": "FR",
       "executionPenalty": 1,
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: R U R' U' R U' R' U2 F' U' F. Recognition visibility is checked from the actual starting state."
+      },
       "sourceRefs": [
         {
           "title": "CubeSkills F2L",
@@ -9929,7 +11369,7 @@
         "F"
       ],
       "precondition": "White down. Target slot FR. Corner DRF, white facing R; edge FR, F-center sticker facing R. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -9941,6 +11381,12 @@
   },
   "preparations": {
     "advanced-extract/fl/toward": {
+      "f2lExecution": {
+        "gripPenalty": 1,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: F U F'. Recognition visibility is checked from the actual starting state."
+      },
       "name": "Lift from FL",
       "moves": [
         "F",
@@ -9958,6 +11404,12 @@
       ]
     },
     "advanced-extract/bl/toward": {
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: L U L'. Recognition visibility is checked from the actual starting state."
+      },
       "name": "Lift from BL",
       "moves": [
         "L",
@@ -9975,6 +11427,12 @@
       ]
     },
     "advanced-extract/br/toward": {
+      "f2lExecution": {
+        "gripPenalty": 2,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: B U B'. Recognition visibility is checked from the actual starting state."
+      },
       "name": "Lift from BR",
       "moves": [
         "B",
@@ -9992,6 +11450,12 @@
       ]
     },
     "advanced-extract/fr/toward": {
+      "f2lExecution": {
+        "gripPenalty": 0,
+        "recognition": "sticker-directions",
+        "easyRearInsertion": false,
+        "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: R U R'. Recognition visibility is checked from the actual starting state."
+      },
       "name": "Lift from FR",
       "moves": [
         "R",

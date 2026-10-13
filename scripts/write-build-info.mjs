@@ -7,7 +7,12 @@ writeFileSync(
   JSON.stringify(
     {
       commit,
-      release: 'V1.3 Advanced CFOP preview',
+      dirty:
+        execFileSync('git', ['status', '--porcelain', '--untracked-files=no'], {
+          encoding: 'utf8',
+        }).trim().length > 0,
+      release: 'CubeSteps club edition and human-friendly F2L preview',
+      entries: { global: './', club: './club/' },
       teachingStatus: { lbl: 'accepted', 'cfop-beginner': 'accepted', 'cfop-advanced': 'preview' },
     },
     null,

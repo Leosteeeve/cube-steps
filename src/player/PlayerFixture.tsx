@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { createCubeEngine } from '../core/cube';
-import type { CubeEngine, StageId } from '../core/types';
+import type { CubeEngine, StageId, FaceMove } from '../core/types';
 import { solveLBL } from '../methods/lbl/solve';
 import { LBL_STAGE_IDS } from '../methods/lbl/stages';
 import { solveCFOP } from '../methods/cfop/solve';
@@ -25,6 +25,7 @@ const DEMOS: Record<string, [string, string]> = {
   'demo-pll-aa': ['pll-aa/u0', 'pll-aa/main'],
   'demo-f2l-mixed': ['f2l-01/fr/mixed/u0', 'f2l-01/main/fr'],
   'demo-f2l-back': ['f2l-01/fr/u0', 'f2l-01/main/br'],
+  'demo-f2l-rotation': ['f2l-03/fr/u0', 'f2l-03/main/fr'],
 };
 export default function PlayerFixture() {
   const [data, setData] = useState<{ engine: CubeEngine; source: PlaybackSource } | null>(null),
@@ -52,7 +53,11 @@ export default function PlayerFixture() {
         }
         const advanced = fixture.startsWith('advanced-'),
           solved = fixture.endsWith('-solved');
-        const scrambleMoves = solved ? [] : (['R', 'U2', "F'"] as const);
+        const scrambleMoves: readonly FaceMove[] = solved
+          ? []
+          : fixture === 'advanced-colors'
+            ? ("R U R' F2 D L2 U' B R2 D' F U2 L' B2 R F' D2 L U B'".split(' ') as FaceMove[])
+            : ['R', 'U2', "F'"];
         const slice = fixture === 'pll-h' || fixture === 'pll-z';
         const initial = slice
           ? engine.apply(engine.solved(), [

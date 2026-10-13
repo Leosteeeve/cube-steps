@@ -31,31 +31,45 @@ export function normalizePracticeSelection(raw: unknown): PracticeSelection {
     ),
   };
 }
-export function createPracticeStore(storage: () => Storage) {
+export function createPracticeStore(storage: () => Storage, key = PRACTICE_STORAGE_KEY) {
   let memory = normalizePracticeSelection(null),
-    memoryOnly = false;
-  return {
+    memoryOnly = false,
+    protectedData = false,
+    loaded = false;
+  const store = {
     load(): { selection: PracticeSelection; available: boolean } {
-      if (memoryOnly) return { selection: structuredClone(memory), available: false };
+      if (memoryOnly || protectedData)
+        return { selection: structuredClone(memory), available: false };
+      loaded = true;
       try {
-        const text = storage().getItem(PRACTICE_STORAGE_KEY);
+        const text = storage().getItem(key);
         let raw: unknown = null;
         try {
           raw = text ? JSON.parse(text) : null;
         } catch {
           /* Invalid local data resets only this selection. */
         }
+        if (key !== PRACTICE_STORAGE_KEY && text !== null) {
+          const r = raw as PracticeSelection | null;
+          protectedData =
+            !r ||
+            r.version !== 1 ||
+            !Array.isArray(r.caseIds) ||
+            r.caseIds.some((id) => typeof id !== 'string' || !Object.hasOwn(registry.cases, id));
+        }
         memory = normalizePracticeSelection(raw);
-        return { selection: structuredClone(memory), available: true };
+        return { selection: structuredClone(memory), available: !protectedData };
       } catch {
         memoryOnly = true;
         return { selection: structuredClone(memory), available: false };
       }
     },
     save(selection: PracticeSelection): boolean {
+      if (!loaded) store.load();
       memory = normalizePracticeSelection(selection);
+      if (protectedData) return false;
       try {
-        storage().setItem(PRACTICE_STORAGE_KEY, JSON.stringify(memory));
+        storage().setItem(key, JSON.stringify(memory));
         memoryOnly = false;
         return true;
       } catch {
@@ -63,6 +77,20 @@ export function createPracticeStore(storage: () => Storage) {
         return false;
       }
     },
+    isProtected: () => protectedData,
+    reset(): boolean {
+      try {
+        storage().setItem(key, JSON.stringify(normalizePracticeSelection(null)));
+        protectedData = false;
+        memoryOnly = false;
+        memory = normalizePracticeSelection(null);
+        loaded = true;
+        return true;
+      } catch {
+        return false;
+      }
+    },
   };
+  return store;
 }
 export const practiceStore = createPracticeStore(() => localStorage);

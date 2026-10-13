@@ -2,6 +2,19 @@ import { expect, it } from 'vitest';
 import { createBlankDraft, createDraftState, reduceDraft } from './draft';
 import { createDraftStore } from './draft-storage';
 import { GOLDEN_CASES } from '../../../tests/fixtures/facelet-cases';
+it('isolates club colors and preserves invalid data until explicit reset', () => {
+  const backing = storage(),
+    key = 'cubesteps.club.color-draft.v1';
+  backing.setItem(key, '{');
+  backing.setItem('cubesteps.color-draft.v1', 'global');
+  const store = createDraftStore(() => backing, key);
+  store.load();
+  expect(store.save(createBlankDraft())).toBe(false);
+  expect(backing.getItem(key)).toBe('{');
+  expect(store.reset()).toBe(true);
+  expect(store.save(createBlankDraft())).toBe(true);
+  expect(backing.getItem('cubesteps.color-draft.v1')).toBe('global');
+});
 function storage() {
   const data = new Map<string, string>();
   return {

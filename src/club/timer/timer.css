@@ -1,0 +1,527 @@
+[data-edition='club'] .club-timer {
+  background: #f6f8fc;
+  padding: 42px max(24px, calc((100vw - 1170px) / 2)) 56px;
+}
+[data-edition='club'] .timer-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 28px;
+}
+[data-edition='club'] .timer-title h1 {
+  font:
+    normal clamp(36px, 4vw, 48px)/1.13 Georgia,
+    serif;
+  letter-spacing: -1.8px;
+  margin: 16px 0 0;
+}
+[data-edition='club'] .timer-title em {
+  color: #245da6;
+  font-weight: normal;
+}
+[data-edition='club'] .timer-badge {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  padding: 12px 18px;
+  text-align: center;
+  line-height: 1.6;
+}
+[data-edition='club'] .timer-badge small {
+  color: var(--muted);
+}
+[data-edition='club'] .timer-workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(240px, 1fr);
+  gap: 18px;
+}
+[data-edition='club']
+  :is(.timer-main-card, .timer-net-card, .timer-stats > div, .timer-history, .timer-trend) {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  min-width: 0;
+}
+[data-edition='club'] .timer-scramble {
+  padding: 20px 26px;
+  border-bottom: 1px solid #eef1f6;
+}
+[data-edition='club'] .timer-card-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+}
+[data-edition='club'] .timer-card-heading > span {
+  font-size: 11px;
+  letter-spacing: 1.2px;
+  color: var(--muted);
+}
+[data-edition='club'] .club-timer button {
+  min-height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  color: var(--ink);
+  background: #f2f6fc;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+[data-edition='club'] .club-timer button:disabled {
+  cursor: default;
+  opacity: 0.6;
+}
+[data-edition='club'] .timer-scramble-text {
+  font:
+    17px/1.9 Consolas,
+    monospace;
+  word-spacing: 4px;
+  overflow-wrap: anywhere;
+  margin: 20px 0 6px;
+  min-height: 64px;
+}
+[data-edition='club'] .timer-surface-wrap {
+  text-align: center;
+  padding: 22px 18px 4px;
+}
+[data-edition='club'] .timer-instruction {
+  font-size: 12px;
+  min-height: 2.4em;
+  color: var(--muted);
+}
+[data-edition='club'] button.timer-surface {
+  display: block;
+  width: 100%;
+  min-height: 144px;
+  background: transparent;
+  border: 0;
+  color: var(--ink);
+  padding: 4px;
+  font:
+    normal clamp(64px, 7.5vw, 104px)/1.4 Consolas,
+    monospace;
+  letter-spacing: -5px;
+  touch-action: none;
+  user-select: none;
+  transition: none;
+}
+[data-edition='club'] button.timer-surface[data-ready='true'] {
+  color: #127145;
+}
+[data-edition='club'] button.timer-surface[data-phase='arming'][data-ready='false'] {
+  color: #9f3926;
+}
+[data-edition='club'] .timer-surface-wrap :is(#timer-help, .timer-gentle) {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+[data-edition='club'] .timer-gentle {
+  margin: 8px 0;
+}
+[data-edition='club'] .timer-options {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  gap: 22px;
+  padding: 8px 24px 24px;
+  flex-wrap: wrap;
+  font-size: 13px;
+  color: var(--muted);
+}
+[data-edition='club'] .timer-options label {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 44px;
+  cursor: pointer;
+}
+[data-edition='club'] .timer-options input {
+  width: 18px;
+  height: 18px;
+  accent-color: #165dde;
+}
+[data-edition='club'] .timer-options details {
+  max-width: 430px;
+}
+[data-edition='club'] .timer-options summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  text-decoration: underline;
+}
+[data-edition='club'] .timer-options details p {
+  line-height: 1.65;
+}
+[data-edition='club'] .timer-net-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding: 22px;
+}
+[data-edition='club'] .timer-net-card h2 {
+  font-size: 17px;
+  margin: 0 0 8px;
+}
+[data-edition='club'] .timer-net-card > p {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+[data-edition='club'] .timer-net {
+  width: 100%;
+  max-width: 280px;
+  margin: 20px auto 0;
+}
+[data-edition='club'] .timer-net svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+[data-edition='club'] .timer-net figcaption {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 8px;
+}
+[data-edition='club'] .timer-net-wait {
+  min-height: 170px;
+  display: grid;
+  place-content: center;
+}
+[data-edition='club'] .timer-last {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 16px 0;
+}
+[data-edition='club'] .timer-notice {
+  border: 1px solid #e6b971;
+  background: #fff8e9;
+  border-radius: 8px;
+  padding: 12px 18px;
+  margin: 12px 0;
+  color: #694717;
+  font-size: 13px;
+}
+[data-edition='club'] .timer-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  margin: 20px 0;
+}
+[data-edition='club'] .timer-stats > div {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+[data-edition='club'] .timer-stats small {
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--muted);
+}
+[data-edition='club'] .timer-stats strong {
+  font:
+    normal 28px/1.2 Consolas,
+    monospace;
+}
+[data-edition='club'] .timer-stats span {
+  font-size: 11px;
+  color: var(--muted);
+}
+[data-edition='club'] .timer-stats .timer-best {
+  background: #165dde;
+  color: #fff;
+  border-color: #165dde;
+}
+[data-edition='club'] .timer-best small {
+  color: #fff;
+}
+@media (max-width: 850px) {
+  [data-edition='club'] .timer-workspace {
+    grid-template-columns: 1fr;
+  }
+  [data-edition='club'] .timer-net-card {
+    padding: 22px;
+  }
+  [data-edition='club'] .timer-net {
+    max-width: 250px;
+  }
+  [data-edition='club'] .timer-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+}
+@media (max-width: 480px) {
+  [data-edition='club'] .club-timer {
+    padding: 26px 16px 36px;
+  }
+  [data-edition='club'] .timer-scramble {
+    padding: 14px 16px;
+  }
+  [data-edition='club'] .timer-scramble-text {
+    font-size: 15px;
+    word-spacing: 1px;
+  }
+  [data-edition='club'] .timer-title {
+    gap: 8px;
+  }
+  [data-edition='club'] .timer-title .club-kicker {
+    font-size: 9px;
+  }
+  [data-edition='club'] .timer-badge {
+    padding: 10px;
+    font-size: 12px;
+  }
+  [data-edition='club'] .timer-options {
+    gap: 8px;
+    padding: 4px 12px 18px;
+  }
+  [data-edition='club'] .timer-stats > div {
+    padding: 16px 13px;
+  }
+  [data-edition='club'] .timer-stats strong {
+    font-size: 26px;
+  }
+}
+[data-edition='club'] .timer-bottom-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+[data-edition='club'] :is(.timer-trend, .timer-history) {
+  padding: 24px;
+}
+[data-edition='club'] :is(.timer-trend, .timer-history) h2 {
+  font-size: 17px;
+  margin: 0;
+}
+[data-edition='club'] .timer-series {
+  display: flex;
+  gap: 7px;
+  margin: 18px 0 10px;
+}
+[data-edition='club'] .timer-series button[aria-pressed='true'] {
+  background: #165dde;
+  border-color: #165dde;
+  color: #fff;
+}
+[data-edition='club'] .timer-chart {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 12px 0;
+  overflow: visible;
+}
+[data-edition='club'] .timer-chart text {
+  font:
+    11px 'Segoe UI',
+    Arial,
+    sans-serif;
+  fill: #52647a;
+}
+[data-edition='club'] .timer-point-picker {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 12px;
+  color: var(--muted);
+}
+[data-edition='club'] .club-timer select {
+  min-height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  background: #fff;
+  color: var(--ink);
+  padding: 8px;
+  font: inherit;
+  max-width: 100%;
+}
+[data-edition='club'] .timer-point-detail {
+  font-size: 13px;
+  color: var(--ink);
+}
+[data-edition='club'] .timer-chart-note {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+[data-edition='club'] .timer-history table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 18px;
+  font-size: 13px;
+}
+[data-edition='club'] .timer-history th {
+  text-align: left;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  font-weight: normal;
+  color: var(--muted);
+  padding: 12px 4px;
+}
+[data-edition='club'] .timer-history td {
+  border-top: 1px solid #edf1f6;
+  padding: 5px 4px;
+}
+[data-edition='club'] .timer-history td:first-child {
+  width: 28px;
+  color: var(--muted);
+}
+[data-edition='club'] button.timer-result-button {
+  background: transparent;
+  border-color: transparent;
+  padding: 8px 4px;
+  font-family: Consolas, monospace;
+  font-size: 16px;
+  text-decoration: underline;
+  text-decoration-color: #c4d3e8;
+  text-underline-offset: 4px;
+}
+[data-edition='club'] button.timer-delete {
+  width: 44px;
+  background: transparent;
+  font-size: 20px;
+}
+[data-edition='club'] .timer-unsaved {
+  display: block;
+  color: #855419;
+  font-size: 10px;
+}
+[data-edition='club'] .timer-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 16px 0;
+  font-size: 12px;
+}
+[data-edition='club'] .timer-pagination span {
+  white-space: nowrap;
+}
+[data-edition='club'] .timer-undo {
+  font-size: 13px;
+  padding: 10px;
+  background: #f0f5ff;
+  border-radius: 8px;
+}
+[data-edition='club'] .timer-record-details {
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+  font-size: 13px;
+}
+[data-edition='club'] .timer-record-details h3 {
+  font-size: 15px;
+}
+[data-edition='club'] .timer-record-details .timer-scramble-text {
+  font-size: 14px;
+  min-height: 0;
+}
+[data-edition='club'] .timer-record-details dl > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 6px 0;
+}
+[data-edition='club'] .timer-record-details dd {
+  margin: 0;
+  text-align: right;
+}
+[data-edition='club'] .timer-empty {
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--muted);
+  gap: 8px;
+  padding: 20px;
+}
+[data-edition='club'] .timer-empty strong {
+  font:
+    normal 23px Georgia,
+    serif;
+  color: var(--ink);
+}
+[data-edition='club'] .timer-empty p {
+  font-size: 13px;
+}
+[data-edition='club'] .timer-export {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  margin-top: 26px;
+  font-size: 13px;
+}
+[data-edition='club'] .timer-export p {
+  max-width: 650px;
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--muted);
+  margin-bottom: 0;
+}
+[data-edition='club'] .timer-export-actions {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+@media (max-width: 850px) {
+  [data-edition='club'] .timer-bottom-grid {
+    grid-template-columns: 1fr;
+  }
+  [data-edition='club'] .timer-export {
+    align-items: start;
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+@media (max-width: 480px) {
+  [data-edition='club'] :is(.timer-trend, .timer-history) {
+    padding: 18px 12px;
+  }
+  [data-edition='club'] .timer-card-heading > span {
+    font-size: 9px;
+  }
+  [data-edition='club'] .timer-history td {
+    padding: 5px 2px;
+  }
+  [data-edition='club'] .timer-history select {
+    padding: 5px;
+  }
+  [data-edition='club'] .timer-chart text {
+    font-size: 14px;
+  }
+  [data-edition='club'] .timer-pagination button {
+    padding: 8px;
+    font-size: 12px;
+  }
+}
+[data-edition='club'] .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+[data-edition='club'] .club-timer[data-phase='running'] .timer-best {
+  background: #edf4ff;
+  color: #08264a;
+  border-color: #dde5f0;
+}
+[data-edition='club'] .club-timer[data-phase='running'] .timer-best small,
+[data-edition='club']
+  .club-timer[data-phase='running']
+  :is(.timer-net-card h2, .timer-bottom-grid h2, .timer-export strong) {
+  color: #52647a;
+}
