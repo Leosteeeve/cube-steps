@@ -36,12 +36,12 @@ export function solveAdvancedF2L(context: AdvancedContext): StageResult {
         ...(insertion
           ? {
               selection: {
-                policyVersion: 'f2l-v1' as const,
-                immediateCost: selected.immediateCost,
-                nextCost: selected.nextCost,
+                policyVersion: 'f2l-human-v2' as const,
+                current: selected.metrics,
+                next: selected.nextMetrics,
                 compared: selected.compared,
               },
-              explanation: `Selected to balance this insertion with the next available pair. ${input.explanation}`,
+              explanation: `Selected for visible recognition and comfortable execution, then fewer moves and regrips with the next pair. ${input.explanation}`,
             }
           : {}),
         check: {

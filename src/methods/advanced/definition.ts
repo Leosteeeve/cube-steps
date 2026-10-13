@@ -12,9 +12,19 @@ import type { F2LTarget } from './f2l/types';
 import type { CrossTable } from './cross/table';
 import { extractCross, rankCross, CROSS_MOVES } from './cross/coordinates';
 import { crossMoveEvidence } from './cross/solve';
-import type { FaceMove } from '../../core/types';
+import type { FaceMove, ExecutionMetrics } from '../../core/types';
+import { describeF2LHold } from './f2l/holding';
 import { describeCaseRecognition } from '../../algorithms/recognition-evidence';
 const same = (a: readonly string[], b: readonly string[]) => a.join(' ') === b.join(' ');
+function validMetrics(m: ExecutionMetrics): boolean {
+  return (
+    !!m &&
+    [m.quality, m.faceTurns, m.rotations, m.effort].every((n) => Number.isInteger(n) && n >= 0) &&
+    m.effort === m.faceTurns + m.rotations &&
+    Array.isArray(m.reasons) &&
+    m.reasons.every((r) => typeof r === 'string')
+  );
+}
 // Cross validation requires the integrity-checked distance asset. The unbound
 // runtime fails closed for cross actions and is sufficient for partial demos.
 export function createAdvancedRuntime(table: CrossTable): MethodRuntime {
@@ -91,6 +101,22 @@ export const ADVANCED_RUNTIME: MethodRuntime = {
           action.moves.length === 1 &&
           /^U(?:2|')?$/.test(action.moves[0])
         );
+      if (action.ruleId === 'advanced-f2l-regrip') {
+        const evidence = describeF2LHold(engine, action.before, action.after, pair as F2LTarget);
+        return (
+          action.kind === 'regrip' &&
+          action.caseId === 'f2l-working-hold' &&
+          m.phase === 'prepare' &&
+          !action.algorithmId &&
+          !action.selection &&
+          action.moves.length === 1 &&
+          /^y(?:2|')?$/.test(action.moves[0]) &&
+          engine.observe(action.before).centers.D === 'white' &&
+          engine.observe(action.after).centers.D === 'white' &&
+          action.recognition === evidence.recognition &&
+          action.explanation === evidence.explanation
+        );
+      }
       if (action.ruleId === 'advanced-f2l-extract') {
         const o = engine.observe(action.before),
           c = o.corners.find((p) => p.id === pair.cornerId)!,
@@ -130,11 +156,14 @@ export const ADVANCED_RUNTIME: MethodRuntime = {
         same(variant.moves, action.moves) &&
         after.find((p) => p.cornerId === pair.cornerId)!.solved &&
         !!s &&
-        s.policyVersion === 'f2l-v1' &&
-        Number.isFinite(s.immediateCost) &&
-        s.immediateCost >= 0 &&
-        Number.isFinite(s.nextCost) &&
-        s.nextCost >= 0 &&
+        ((s.policyVersion === 'f2l-v1' &&
+          Number.isFinite(s.immediateCost) &&
+          s.immediateCost >= 0 &&
+          Number.isFinite(s.nextCost) &&
+          s.nextCost >= 0) ||
+          (s.policyVersion === 'f2l-human-v2' &&
+            validMetrics(s.current) &&
+            validMetrics(s.next))) &&
         Number.isInteger(s.compared) &&
         s.compared >= 1 &&
         s.compared <= 32

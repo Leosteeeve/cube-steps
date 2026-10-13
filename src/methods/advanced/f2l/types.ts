@@ -12,10 +12,10 @@ export interface F2LLimits {
   maxSimulations: number;
 }
 export const DEFAULT_F2L_LIMITS: F2LLimits = {
-  maxPreparationStates: 256,
+  maxPreparationStates: 1024,
   maxExtractionMacros: 2,
-  maxCandidatesPerTarget: 256,
-  maxSimulations: 32768,
+  maxCandidatesPerTarget: 1024,
+  maxSimulations: 262144,
 };
 export interface F2LPreparation {
   actions: ActionInput[];

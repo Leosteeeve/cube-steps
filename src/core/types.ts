@@ -79,12 +79,19 @@ export interface TraceAction {
   repetition?: { group: string; index: number };
   pair?: PairTrace;
   cross?: { distanceBefore: number; distanceAfter: number };
-  selection?: {
-    policyVersion: 'f2l-v1';
-    immediateCost: number;
-    nextCost: number;
-    compared: number;
-  };
+  selection?:
+    | {
+        policyVersion: 'f2l-v1';
+        immediateCost: number;
+        nextCost: number;
+        compared: number;
+      }
+    | {
+        policyVersion: 'f2l-human-v2';
+        current: ExecutionMetrics;
+        next: ExecutionMetrics;
+        compared: number;
+      };
   before: CubeState;
   after: CubeState;
   checkpoint: Checkpoint;

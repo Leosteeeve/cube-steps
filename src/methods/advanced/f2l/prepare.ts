@@ -1,10 +1,13 @@
-import type { CubeEngine, CubeState } from '../../../core/types';
+import type { CubeEngine, CubeState, ExecutionMetrics } from '../../../core/types';
 import { DEFAULT_F2L_LIMITS, type F2LTarget, type F2LLimits, type F2LPreparation } from './types';
 import { observeF2LPairs, preservesF2L } from '../../cfop/f2l-cases';
 import { whiteCrossSolved } from '../../shared/pieces';
 import { RuleError, type ActionInput } from '../../shared/trace';
 import { isAdmissibleF2L, U_ALIGNMENTS } from './recognize';
 import { F2L_CATALOG } from '../../../algorithms/data/f2l';
+import { enumerateF2LHolds } from './holding';
+import { measureF2LExecution, compareExecution, compareText, zeroExecution } from './execution';
+type Path = F2LPreparation & { metrics: ExecutionMetrics };
 export function enumerateF2LPreparations(
   engine: CubeEngine,
   state: CubeState,
@@ -21,75 +24,98 @@ export function enumerateF2LPreparations(
       'Pair preparation requires a valid target and a matched white bottom cross.',
     );
   if (current.solved) return [];
-  const queue = [{ state, actions: [] as ActionInput[], depth: 0 }],
-    seen = new Set<string>(),
-    results: F2LPreparation[] = [];
-  function register(s: CubeState): boolean {
-    const key = JSON.stringify([target.cornerId, target.edgeId, s.data]);
-    if (seen.has(key)) return false;
-    if (seen.size >= limits.maxPreparationStates)
-      throw new RuleError('budget', 'advanced-f2l', 'F2L preparation state budget exceeded.');
-    seen.add(key);
-    return true;
+  const seen = new Set<string>();
+  const key = (s: CubeState) => JSON.stringify(s.data);
+  function register(s: CubeState) {
+    const k = key(s);
+    if (!seen.has(k)) {
+      if (seen.size >= limits.maxPreparationStates)
+        throw new RuleError('budget', 'advanced-f2l', 'F2L preparation state budget exceeded.');
+      seen.add(k);
+    }
+    return k;
   }
-  register(state);
-  let reachedDepth = Infinity,
-    exhausted = false;
-  for (let head = 0; head < queue.length; head++) {
-    const entry = queue[head];
-    if (entry.depth > reachedDepth) continue;
-    const admissible = isAdmissibleF2L(engine, entry.state, target);
-    if (admissible) reachedDepth = entry.depth;
-    const o = engine.observe(entry.state),
-      pair = observeF2LPairs(engine, entry.state).find((p) => p.cornerId === target.cornerId)!;
-    const corner = o.corners.find((p) => p.id === target.cornerId)!,
-      edge = o.edges.find((p) => p.id === target.edgeId)!;
-    // Extract the trapped corner first, otherwise the trapped edge. Other slots are irrelevant.
-    const wrongCorner =
-      !corner.slot.includes('U') && ![...pair.slot].every((f) => corner.slot.includes(f));
-    const workingSlot = wrongCorner
-      ? corner.slot.replace('D', '').split('').sort().join('')
-      : edge.slot;
-    const slot = ['FR', 'FL', 'BR', 'BL'].find(
-      (s) => [...s].sort().join('') === workingSlot.split('').sort().join(''),
-    );
-    for (const u of U_ALIGNMENTS) {
-      const aligned = u.length ? engine.apply(entry.state, u) : entry.state;
-      if (u.length) register(aligned);
-      const actions = [...entry.actions];
-      if (u.length)
-        actions.push({
-          kind: 'setup',
-          ruleId: 'advanced-f2l-align',
-          caseId: 'f2l-preparation',
-          targets: [target.cornerId, target.edgeId],
-          recognition: `Target corner at ${corner.slot}; target edge at ${edge.slot}.`,
-          explanation:
-            'Align the upper layer for the next complete maneuver; the cross and completed pairs stay in place.',
-          moves: [...u],
+  function prefer(paths: Map<string, Path>, candidate: Path) {
+    const k = register(candidate.state),
+      old = paths.get(k);
+    const comparison = old
+      ? compareExecution(candidate.metrics, old.metrics) ||
+        compareText(
+          candidate.actions.flatMap((a) => a.moves).join(' '),
+          old.actions.flatMap((a) => a.moves).join(' '),
+        )
+      : -1;
+    if (comparison < 0) paths.set(k, candidate);
+  }
+  let frontier = new Map<string, Path>([
+    [register(state), { state, actions: [], metrics: zeroExecution() }],
+  ]);
+  for (let depth = 0; depth <= limits.maxExtractionMacros; depth++) {
+    const heldPaths = new Map<string, Path>(),
+      results = new Map<string, Path>(),
+      next = new Map<string, Path>();
+    for (const entry of frontier.values())
+      for (const hold of enumerateF2LHolds(engine, entry.state, target)) {
+        const actions = [...entry.actions, ...hold.actions],
+          rotations = hold.actions.length;
+        prefer(heldPaths, {
+          state: hold.state,
+          actions,
+          metrics: {
+            ...entry.metrics,
+            effort: entry.metrics.effort + rotations,
+            rotations: entry.metrics.rotations + rotations,
+          },
         });
-      if (admissible) {
-        results.push({ state: aligned, actions });
-        continue;
       }
-      if (entry.depth >= limits.maxExtractionMacros) {
-        exhausted = true;
-        continue;
-      }
-      if (!slot) continue;
-      // One complete lift per slot, with four U alignments, covers all trapped
-      // targets while leaving room for the second lift in the 256-state budget.
-      for (const direction of ['toward']) {
-        const algorithmId = `advanced-extract/${slot.toLowerCase()}/${direction}`,
+    for (const entry of heldPaths.values()) {
+      const admissible = isAdmissibleF2L(engine, entry.state, target),
+        o = engine.observe(entry.state);
+      const pair = observeF2LPairs(engine, entry.state).find(
+        (p) => p.cornerId === target.cornerId,
+      )!;
+      const corner = o.corners.find((p) => p.id === target.cornerId)!,
+        edge = o.edges.find((p) => p.id === target.edgeId)!;
+      const wrongCorner =
+        !corner.slot.includes('U') && ![...pair.slot].every((f) => corner.slot.includes(f));
+      const occupied = wrongCorner ? corner.slot.replace('D', '') : edge.slot;
+      const slot = ['FR', 'FL', 'BR', 'BL'].find(
+        (s) => [...s].sort().join('') === [...occupied].sort().join(''),
+      );
+      for (const u of U_ALIGNMENTS) {
+        const aligned = u.length ? engine.apply(entry.state, u) : entry.state;
+        register(aligned);
+        const actions = [...entry.actions];
+        if (u.length)
+          actions.push({
+            kind: 'setup',
+            ruleId: 'advanced-f2l-align',
+            caseId: 'f2l-preparation',
+            targets: [target.cornerId, target.edgeId],
+            recognition: `Target corner at ${corner.slot}; target edge at ${edge.slot}.`,
+            explanation:
+              'Align the upper layer for the next complete maneuver; the cross and completed pairs stay in place.',
+            moves: [...u],
+          });
+        const alignedMetrics = {
+          ...entry.metrics,
+          faceTurns: entry.metrics.faceTurns + u.length,
+          effort: entry.metrics.effort + u.length,
+        };
+        if (admissible) {
+          prefer(results, { state: aligned, actions, metrics: alignedMetrics });
+          continue;
+        }
+        if (depth === limits.maxExtractionMacros || !slot) continue;
+        const algorithmId = `advanced-extract/${slot.toLowerCase()}/toward`,
           algorithm = F2L_CATALOG.preparations[algorithmId];
         const after = engine.apply(aligned, algorithm.moves);
         if (!preservesF2L(engine, entry.state, after)) continue;
         const afterO = engine.observe(after),
-          c = afterO.corners.find((p) => p.id === target.cornerId)!,
-          e = afterO.edges.find((p) => p.id === target.edgeId)!;
-        // The named trapped piece must actually leave its occupied slot.
-        if (wrongCorner ? !c.slot.includes('U') : !e.slot.includes('U')) continue;
-        if (!register(after)) continue;
+          lifted = wrongCorner
+            ? afterO.corners.find((p) => p.id === target.cornerId)!
+            : afterO.edges.find((p) => p.id === target.edgeId)!;
+        if (!lifted.slot.includes('U')) continue;
         const action: ActionInput = {
           kind: 'algorithm',
           ruleId: 'advanced-f2l-extract',
@@ -105,22 +131,27 @@ export function enumerateF2LPreparations(
             test: (s) => preservesF2L(engine, aligned, s),
           },
         };
-        queue.push({ state: after, actions: [...actions, action], depth: entry.depth + 1 });
+        const m = measureF2LExecution(engine, aligned, target, [action]);
+        prefer(next, {
+          state: after,
+          actions: [...actions, action],
+          metrics: {
+            quality: alignedMetrics.quality + m.quality,
+            faceTurns: alignedMetrics.faceTurns + m.faceTurns,
+            rotations: alignedMetrics.rotations + m.rotations,
+            effort: alignedMetrics.effort + m.effort,
+            reasons: [...alignedMetrics.reasons, ...m.reasons],
+          },
+        });
       }
     }
+    if (results.size) return [...results.values()].map(({ metrics: _, ...p }) => p);
+    frontier = next;
+    if (!frontier.size) break;
   }
-  if (!results.length)
-    throw new RuleError(
-      exhausted ? 'budget' : 'unsupported-case',
-      'advanced-f2l',
-      exhausted
-        ? 'F2L extraction depth budget exceeded.'
-        : 'No protected preparation reaches an admitted F2L case.',
-    );
-  const unique = new Map<string, F2LPreparation>();
-  for (const result of results) {
-    const key = JSON.stringify(result.state.data);
-    if (!unique.has(key)) unique.set(key, result);
-  }
-  return [...unique.values()];
+  throw new RuleError(
+    'budget',
+    'advanced-f2l',
+    'No protected preparation within the F2L extraction depth budget.',
+  );
 }

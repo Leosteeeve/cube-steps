@@ -10,6 +10,7 @@ import { handleSolveRequest } from '../../workers/solve-request';
 import { getMethod } from '../registry';
 import { createAdvancedRuntime } from './definition';
 import { verifyTrace } from '../shared/verification';
+import { getCaseFixture } from '../../algorithms/fixtures';
 let engine: CubeEngine;
 const assets = {
   crossTable: {
@@ -20,6 +21,38 @@ const assets = {
 };
 beforeAll(async () => {
   engine = await createCubeEngine();
+});
+it('rejects forged physical holding instructions and v2 metrics', () => {
+  const fixture = getCaseFixture('f2l-20/br/u0')!;
+  const result = solveAdvancedCFOP(engine, fixture.initial, assets);
+  expect(result.ok).toBe(true);
+  if (!result.ok) throw Error(result.message);
+  const action = result.trace.stages[1].actions.find((a) => a.ruleId === 'advanced-f2l-regrip');
+  expect(action).toBeDefined();
+  const runtime = createAdvancedRuntime(assets.crossTable);
+  for (const mutate of [
+    (a: typeof action) => {
+      a!.moves = ['y2'];
+    },
+    (a: typeof action) => {
+      a!.targets = [];
+    },
+    (a: typeof action) => {
+      a!.pair!.slot = 'invalid';
+    },
+    (a: typeof action) => {
+      a!.explanation = 'Keep white down. Red front.';
+    },
+  ]) {
+    const a = structuredClone(action!);
+    mutate(a);
+    expect(runtime.checkAction(engine, a, 'advanced-f2l')).toBe(false);
+  }
+  const insertion = result.trace.stages[1].actions.find((a) => a.selection)!;
+  expect(insertion.selection?.policyVersion).toBe('f2l-human-v2');
+  const forged = structuredClone(insertion);
+  (forged.selection as { current: { effort: number } }).current.effort = -1;
+  expect(runtime.checkAction(engine, forged, 'advanced-f2l')).toBe(false);
 });
 it('returns_five_verified_stages', () => {
   expect(getMethod('cfop-advanced').stages.map((s) => s.id)).toEqual(ADVANCED_STAGE_IDS);
