@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import type { CubeEngine } from '../../core/types';
 import { ALGORITHM_REGISTRY as registry } from '../../algorithms/registry';
 import { verifyDemonstration } from '../../algorithms/demonstration';
+import { describeCaseRecognition } from '../../algorithms/recognition-evidence';
 import { createPracticePool } from '../../practice/pool';
 import { practiceStore, PRACTICE_GROUPS, normalizePracticeSelection } from '../../practice/storage';
 import type { PracticeExercise } from '../../practice/types';
@@ -204,7 +205,14 @@ export function PracticePage({ engine }: { engine: CubeEngine }) {
                   </button>
                 ) : (
                   <div className="practice-answer">
-                    <p>{registry.cases[exercise!.caseId].recognition}</p>
+                    <p>
+                      {describeCaseRecognition(
+                        engine,
+                        demo.initial,
+                        registry.cases[exercise!.caseId],
+                        targets,
+                      )}
+                    </p>
                     <AlgorithmPlayer engine={engine} demonstration={demo} />
                     <a href={'#/algorithms/' + exercise!.caseId}>
                       Explore this case in the library →

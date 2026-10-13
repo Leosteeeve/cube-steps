@@ -69,3 +69,31 @@ it('rejects_tampered_recognition_metadata', () => {
   wrong.targets = [];
   expect(ADVANCED_RUNTIME.checkAction(engine, wrong, stage.id)).toBe(false);
 });
+
+it.each(['oll-26/u1', 'pll-ua/u1'])('describes actual pre-setup stickers for %s', (id) => {
+  const action = run(getCaseFixture(id)!.initial)
+    .flatMap((s) => s.actions)
+    .find((a) => a.ruleId === 'advanced-last-layer-setup')!;
+  expect(action.moves).toEqual(["U'"]);
+  const observed = engine.observe(action.before);
+  for (const piece of [...observed.edges, ...observed.corners].filter((p) =>
+    p.slot.startsWith('U'),
+  )) {
+    const stickers = Object.entries(piece.stickers).filter(([face, color]) =>
+      id.startsWith('oll') ? color === 'yellow' : face !== 'U',
+    );
+    for (const [face, color] of stickers)
+      expect(action.recognition).toContain(`${piece.slot}: ${color} on ${face}`);
+  }
+  if (id.startsWith('oll')) {
+    expect(action.recognition).toContain('UFR: yellow on U');
+    expect(action.recognition).toContain('URB: yellow on B');
+  }
+  expect(
+    ADVANCED_RUNTIME.checkAction(
+      engine,
+      { ...action, recognition: 'Wrong stickers.' },
+      id.startsWith('oll') ? 'advanced-oll' : 'advanced-pll',
+    ),
+  ).toBe(false);
+});

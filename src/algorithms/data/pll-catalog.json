@@ -6,7 +6,7 @@
       "label": "Ub perm",
       "group": "Edges only",
       "canonicalSignature": "0123|0312",
-      "recognition": "Edges only. Compare matching side-color blocks, headlights and edge order around the yellow layer. Relative corners and edges: 0123|3021.",
+      "recognition": "Edges only. Compare matching side-color blocks, headlights and edge order around the yellow layer.",
       "defaultVariantId": "pll-ub/main",
       "variantIds": [
         "pll-ub/main"
@@ -31,7 +31,7 @@
       "label": "Z perm",
       "group": "Edges only",
       "canonicalSignature": "0123|1032",
-      "recognition": "Edges only. Compare matching side-color blocks, headlights and edge order around the yellow layer. Relative corners and edges: 0123|1032.",
+      "recognition": "Edges only. Compare matching side-color blocks, headlights and edge order around the yellow layer.",
       "defaultVariantId": "pll-z/main",
       "variantIds": [
         "pll-z/main"
@@ -56,7 +56,7 @@
       "label": "Aa perm",
       "group": "Corners only",
       "canonicalSignature": "0132|1230",
-      "recognition": "Corners only. Compare matching side-color blocks, headlights and edge order around the yellow layer. Relative corners and edges: 0231|2301.",
+      "recognition": "Corners only. Compare matching side-color blocks, headlights and edge order around the yellow layer.",
       "defaultVariantId": "pll-aa/main",
       "variantIds": [
         "pll-aa/main"
@@ -81,7 +81,7 @@
       "label": "E perm",
       "group": "Corners only",
       "canonicalSignature": "0321|1230",
-      "recognition": "Corners only. Compare matching side-color blocks, headlights and edge order around the yellow layer. Relative corners and edges: 0321|3012.",
+      "recognition": "Corners only. Compare matching side-color blocks, headlights and edge order around the yellow layer.",
       "defaultVariantId": "pll-e/main",
       "variantIds": [
         "pll-e/main"
@@ -106,7 +106,7 @@
       "label": "Ua perm",
       "group": "Edges only",
       "canonicalSignature": "0123|0231",
-      "recognition": "Edges only. Compare matching side-color blocks, headlights and edge order around the yellow layer. Relative corners and edges: 0123|1320.",
+      "recognition": "Edges only. Compare matching side-color blocks, headlights and edge order around the yellow layer.",
       "defaultVariantId": "pll-ua/main",
       "variantIds": [
         "pll-ua/main"
@@ -131,7 +131,7 @@
       "label": "H perm",
       "group": "Edges only",
       "canonicalSignature": "0123|2301",
-      "recognition": "Edges only. Compare matching side-color blocks, headlights and edge order around the yellow layer. Relative corners and edges: 0123|2301.",
+      "recognition": "Edges only. Compare matching side-color blocks, headlights and edge order around the yellow layer.",
       "defaultVariantId": "pll-h/main",
       "variantIds": [
         "pll-h/main"
@@ -156,7 +156,7 @@
       "label": "Ab perm",
       "group": "Corners only",
       "canonicalSignature": "0132|3012",
-      "recognition": "Corners only. Compare matching side-color blocks, headlights and edge order around the yellow layer. Relative corners and edges: 0132|3012.",
+      "recognition": "Corners only. Compare matching side-color blocks, headlights and edge order around the yellow layer.",
       "defaultVariantId": "pll-ab/main",
       "variantIds": [
         "pll-ab/main"
@@ -181,7 +181,7 @@
       "label": "Ra perm",
       "group": "Corners and edges",
       "canonicalSignature": "0132|1023",
-      "recognition": "Corners and edges. Compare matching side-color blocks, headlights and edge order around the yellow layer. Relative corners and edges: 0312|3021.",
+      "recognition": "Corners and edges. Compare matching side-color blocks, headlights and edge order around the yellow layer.",
       "defaultVariantId": "pll-ra/main",
       "variantIds": [
         "pll-ra/main"
@@ -206,7 +206,7 @@
       "label": "Ja perm",
       "group": "Corners and edges",
       "canonicalSignature": "0132|3120",
-      "recognition": "Corners and edges. Compare matching side-color blocks, headlights and edge order around the yellow layer. Relative corners and edges: 0213|0132.",
+      "recognition": "Corners and edges. Compare matching side-color blocks, headlights and edge order around the yellow layer.",
       "defaultVariantId": "pll-ja/main",
       "variantIds": [
         "pll-ja/main"
@@ -231,7 +231,7 @@
       "label": "T perm",
       "group": "Corners and edges",
       "canonicalSignature": "0132|0321",
-      "recognition": "Corners and edges. Compare matching side-color blocks, headlights and edge order around the yellow layer. Relative corners and edges: 0312|3210.",
+      "recognition": "Corners and edges. Compare matching side-color blocks, headlights and edge order around the yellow layer.",
       "defaultVariantId": "pll-t/main",
       "variantIds": [
         "pll-t/main"
@@ -256,7 +256,7 @@
       "label": "V perm",
       "group": "Corners and edges",
       "canonicalSignature": "0321|0132",
-      "recognition": "Corners and edges. Compare matching side-color blocks, headlights and edge order around the yellow layer. Relative corners and edges: 0321|2031.",
+      "recognition": "Corners and edges. Compare matching side-color blocks, headlights and edge order around the yellow layer.",
       "defaultVariantId": "pll-v/main",
       "variantIds": [
         "pll-v/main"
@@ -281,7 +281,7 @@
       "label": "Na perm",
       "group": "Corners and edges",
       "canonicalSignature": "0321|0321",
-      "recognition": "Corners and edges. Compare matching side-color blocks, headlights and edge order around the yellow layer. Relative corners and edges: 0321|0321.",
+      "recognition": "Corners and edges. Compare matching side-color blocks, headlights and edge order around the yellow layer.",
       "defaultVariantId": "pll-na/main",
       "variantIds": [
         "pll-na/main"
@@ -306,7 +306,7 @@
       "label": "Ga perm",
       "group": "Corners and edges",
       "canonicalSignature": "0132|2031",
-      "recognition": "Corners and edges. Compare matching side-color blocks, headlights and edge order around the yellow layer. Relative corners and edges: 0312|0231.",
+      "recognition": "Corners and edges. Compare matching side-color blocks, headlights and edge order around the yellow layer.",
       "defaultVariantId": "pll-ga/main",
       "variantIds": [
         "pll-ga/main"
@@ -331,7 +331,7 @@
       "label": "Gc perm",
       "group": "Corners and edges",
       "canonicalSignature": "0132|3201",
-      "recognition": "Corners and edges. Compare matching side-color blocks, headlights and edge order around the yellow layer. Relative corners and edges: 0312|1203.",
+      "recognition": "Corners and edges. Compare matching side-color blocks, headlights and edge order around the yellow layer.",
       "defaultVariantId": "pll-gc/main",
       "variantIds": [
         "pll-gc/main"
@@ -356,7 +356,7 @@
       "label": "Rb perm",
       "group": "Corners and edges",
       "canonicalSignature": "0132|0213",
-      "recognition": "Corners and edges. Compare matching side-color blocks, headlights and edge order around the yellow layer. Relative corners and edges: 0213|1023.",
+      "recognition": "Corners and edges. Compare matching side-color blocks, headlights and edge order around the yellow layer.",
       "defaultVariantId": "pll-rb/main",
       "variantIds": [
         "pll-rb/main"
@@ -381,7 +381,7 @@
       "label": "Jb perm",
       "group": "Corners and edges",
       "canonicalSignature": "0132|0132",
-      "recognition": "Corners and edges. Compare matching side-color blocks, headlights and edge order around the yellow layer. Relative corners and edges: 0312|0312.",
+      "recognition": "Corners and edges. Compare matching side-color blocks, headlights and edge order around the yellow layer.",
       "defaultVariantId": "pll-jb/main",
       "variantIds": [
         "pll-jb/main"
@@ -406,7 +406,7 @@
       "label": "F perm",
       "group": "Corners and edges",
       "canonicalSignature": "0132|2103",
-      "recognition": "Corners and edges. Compare matching side-color blocks, headlights and edge order around the yellow layer. Relative corners and edges: 0312|1032.",
+      "recognition": "Corners and edges. Compare matching side-color blocks, headlights and edge order around the yellow layer.",
       "defaultVariantId": "pll-f/main",
       "variantIds": [
         "pll-f/main"
@@ -431,7 +431,7 @@
       "label": "Y perm",
       "group": "Corners and edges",
       "canonicalSignature": "0321|0213",
-      "recognition": "Corners and edges. Compare matching side-color blocks, headlights and edge order around the yellow layer. Relative corners and edges: 0321|2310.",
+      "recognition": "Corners and edges. Compare matching side-color blocks, headlights and edge order around the yellow layer.",
       "defaultVariantId": "pll-y/main",
       "variantIds": [
         "pll-y/main"
@@ -456,7 +456,7 @@
       "label": "Nb perm",
       "group": "Corners and edges",
       "canonicalSignature": "0321|2103",
-      "recognition": "Corners and edges. Compare matching side-color blocks, headlights and edge order around the yellow layer. Relative corners and edges: 0321|2103.",
+      "recognition": "Corners and edges. Compare matching side-color blocks, headlights and edge order around the yellow layer.",
       "defaultVariantId": "pll-nb/main",
       "variantIds": [
         "pll-nb/main"
@@ -481,7 +481,7 @@
       "label": "Gb perm",
       "group": "Corners and edges",
       "canonicalSignature": "0132|1302",
-      "recognition": "Corners and edges. Compare matching side-color blocks, headlights and edge order around the yellow layer. Relative corners and edges: 0231|0312.",
+      "recognition": "Corners and edges. Compare matching side-color blocks, headlights and edge order around the yellow layer.",
       "defaultVariantId": "pll-gb/main",
       "variantIds": [
         "pll-gb/main"
@@ -506,7 +506,7 @@
       "label": "Gd perm",
       "group": "Corners and edges",
       "canonicalSignature": "0132|2310",
-      "recognition": "Corners and edges. Compare matching side-color blocks, headlights and edge order around the yellow layer. Relative corners and edges: 0312|2130.",
+      "recognition": "Corners and edges. Compare matching side-color blocks, headlights and edge order around the yellow layer.",
       "defaultVariantId": "pll-gd/main",
       "variantIds": [
         "pll-gd/main"

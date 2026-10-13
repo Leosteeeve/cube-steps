@@ -130,7 +130,7 @@ try {
       label,
       group,
       canonicalSignature,
-      recognition: `${group}. Before setup, yellow faces ${ref.yellowFaces.join(', ')} at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.`,
+      recognition: `${group}. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.`,
       defaultVariantId: variantId,
       variantIds: [variantId],
       fixtureIds,

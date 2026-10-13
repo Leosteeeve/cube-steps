@@ -55,6 +55,26 @@ it('hides_answer_until_explicit_reveal', async () => {
     'version',
   ]);
 });
+it('reveals the actual rotated exercise recognition', async () => {
+  practiceStore.save({ version: 1, caseIds: ['oll-26'], groupIds: [] });
+  mock.generate.mockImplementationOnce(async () => ({
+    ok: true,
+    exercise: generatePracticeExercise(engine, {
+      requestId: 1,
+      caseId: 'oll-26',
+      fixtureId: 'oll-26/u1',
+      variantId: 'oll-26/main',
+    }),
+  }));
+  render(<PracticePage engine={engine} />);
+  const user = userEvent.setup();
+  await user.click(screen.getByRole('button', { name: 'Start practice' }));
+  await user.click(await screen.findByRole('button', { name: 'Show solution' }));
+  const text = document.querySelector('.practice-answer')!.textContent!;
+  expect(text).toContain('UFR: yellow on U');
+  expect(text).toContain('URB: yellow on B');
+  expect(text).not.toContain('Before setup');
+});
 it('cancels old work on selection changes and unmount', async () => {
   let resolve!: (r: PracticeReply['result']) => void;
   mock.generate.mockImplementationOnce(

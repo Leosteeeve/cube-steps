@@ -12,6 +12,7 @@ import { AlgorithmDetailPage } from './AlgorithmDetailPage';
 import { CaseDiagram } from './CaseDiagram';
 import { parseRoute } from '../routes';
 import { practiceStore } from '../../practice/storage';
+import { createDemonstration } from '../../algorithms/demonstration';
 vi.mock('../../player/AlgorithmPlayer', () => ({
   AlgorithmPlayer: ({ demonstration }: any) => (
     <output data-testid="clip">{demonstration.variantId}</output>
@@ -80,6 +81,25 @@ it('links_recognition_to_matching_variant', async () => {
     first.sourceRefs[0].url,
   );
   expect(c.defaultVariantId).toBe(first.id);
+});
+it('updates observed sticker guidance with the selected holding frame', async () => {
+  render(<AlgorithmDetailPage engine={engine} caseId="f2l-01" />);
+  await screen.findByTestId('clip');
+  await userEvent.setup().selectOptions(screen.getByLabelText('Formula variant'), 'f2l-01/main/br');
+  const demo = createDemonstration(
+    engine,
+    getCaseFixture(registry.cases['f2l-01'].fixtureIds[0])!,
+    'f2l-01/main/br',
+  );
+  const action = demo.actions.find((a) => a.kind === 'algorithm')!;
+  const text = document.querySelector('.library-heading')!.textContent!;
+  const observed = engine.observe(action.before);
+  for (const p of [...observed.edges, ...observed.corners].filter((p) =>
+    action.targets.includes(p.id),
+  ))
+    for (const [face, color] of Object.entries(p.stickers))
+      expect(text).toContain(`${p.slot}: ${color} on ${face}`);
+  expect(text).not.toContain('Before setup');
 });
 it('renders_diagram_from_fixture', () => {
   const f = getCaseFixture('f2l-01/fr/u0')!;

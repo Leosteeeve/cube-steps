@@ -84,3 +84,25 @@ it('matches_each_variant_in_its_actual_holding_frame', () => {
     }
   }
 }, 120000);
+
+it.each(['oll-26/u1', 'pll-ua/u1', 'f2l-01/fr/u1'])(
+  'grounds demonstration preparation in its actual state for %s',
+  (id) => {
+    const fixture = getCaseFixture(id)!;
+    const c = ALGORITHM_REGISTRY.cases[fixture.caseId];
+    const variant = c.family === 'f2l' ? 'f2l-01/main/br' : c.defaultVariantId;
+    const demo = createDemonstration(engine, fixture, variant);
+    const preparations = demo.actions.filter((a) => a.kind !== 'algorithm');
+    expect(preparations.length).toBeGreaterThan(0);
+    for (const action of preparations) {
+      const o = engine.observe(action.before);
+      for (const p of [...o.edges, ...o.corners].filter((p) => action.targets.includes(p.id))) {
+        for (const [face, color] of Object.entries(p.stickers)) {
+          if (c.family === 'oll' && color !== 'yellow') continue;
+          if (c.family === 'pll' && face === 'U') continue;
+          expect(action.recognition).toContain(`${p.slot}: ${color} on ${face}`);
+        }
+      }
+    }
+  },
+);

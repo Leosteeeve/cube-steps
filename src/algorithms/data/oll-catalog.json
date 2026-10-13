@@ -6,7 +6,7 @@
       "label": "OLL 26",
       "group": "All edges oriented",
       "canonicalSignature": "UUUURBLU",
-      "recognition": "All edges oriented. Before setup, yellow faces U, U, U, U, R, U, L, F at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
+      "recognition": "All edges oriented. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
       "defaultVariantId": "oll-26/main",
       "variantIds": [
         "oll-26/main"
@@ -31,7 +31,7 @@
       "label": "OLL 21",
       "group": "All edges oriented",
       "canonicalSignature": "UUUUFBBF",
-      "recognition": "All edges oriented. Before setup, yellow faces U, U, U, U, F, B, B, F at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
+      "recognition": "All edges oriented. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
       "defaultVariantId": "oll-21/main",
       "variantIds": [
         "oll-21/main"
@@ -56,7 +56,7 @@
       "label": "OLL 24",
       "group": "All edges oriented",
       "canonicalSignature": "UUUUFBUU",
-      "recognition": "All edges oriented. Before setup, yellow faces U, U, U, U, U, U, B, F at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
+      "recognition": "All edges oriented. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
       "defaultVariantId": "oll-24/main",
       "variantIds": [
         "oll-24/main"
@@ -81,7 +81,7 @@
       "label": "OLL 23",
       "group": "All edges oriented",
       "canonicalSignature": "UUUUFUUF",
-      "recognition": "All edges oriented. Before setup, yellow faces U, U, U, U, F, U, U, F at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
+      "recognition": "All edges oriented. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
       "defaultVariantId": "oll-23/main",
       "variantIds": [
         "oll-23/main"
@@ -106,7 +106,7 @@
       "label": "OLL 33",
       "group": "T shapes",
       "canonicalSignature": "FUBUFBUU",
-      "recognition": "T shapes. Before setup, yellow faces F, U, B, U, U, U, B, F at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
+      "recognition": "T shapes. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
       "defaultVariantId": "oll-33/main",
       "variantIds": [
         "oll-33/main"
@@ -131,7 +131,7 @@
       "label": "OLL 27",
       "group": "All edges oriented",
       "canonicalSignature": "UUUUFRBU",
-      "recognition": "All edges oriented. Before setup, yellow faces U, U, U, U, F, R, B, U at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
+      "recognition": "All edges oriented. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
       "defaultVariantId": "oll-27/main",
       "variantIds": [
         "oll-27/main"
@@ -156,7 +156,7 @@
       "label": "OLL 22",
       "group": "All edges oriented",
       "canonicalSignature": "UUUUFBLL",
-      "recognition": "All edges oriented. Before setup, yellow faces U, U, U, U, F, B, L, L at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
+      "recognition": "All edges oriented. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
       "defaultVariantId": "oll-22/main",
       "variantIds": [
         "oll-22/main"
@@ -181,7 +181,7 @@
       "label": "OLL 25",
       "group": "All edges oriented",
       "canonicalSignature": "UUUUFULU",
-      "recognition": "All edges oriented. Before setup, yellow faces U, U, U, U, U, R, U, F at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
+      "recognition": "All edges oriented. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
       "defaultVariantId": "oll-25/main",
       "variantIds": [
         "oll-25/main"
@@ -206,7 +206,7 @@
       "label": "OLL 45",
       "group": "T shapes",
       "canonicalSignature": "FUBURRUU",
-      "recognition": "T shapes. Before setup, yellow faces F, U, B, U, U, U, L, L at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
+      "recognition": "T shapes. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
       "defaultVariantId": "oll-45/main",
       "variantIds": [
         "oll-45/main"
@@ -231,7 +231,7 @@
       "label": "OLL 5",
       "group": "Squares",
       "canonicalSignature": "FRUUFRUL",
-      "recognition": "Squares. Before setup, yellow faces U, U, B, L, U, R, B, L at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
+      "recognition": "Squares. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
       "defaultVariantId": "oll-05/main",
       "variantIds": [
         "oll-05/main"
@@ -256,7 +256,7 @@
       "label": "OLL 34",
       "group": "C shapes",
       "canonicalSignature": "FUBURUUL",
-      "recognition": "C shapes. Before setup, yellow faces F, U, B, U, U, R, L, U at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
+      "recognition": "C shapes. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
       "defaultVariantId": "oll-34/main",
       "variantIds": [
         "oll-34/main"
@@ -281,7 +281,7 @@
       "label": "OLL 36",
       "group": "W shapes",
       "canonicalSignature": "FRUUFULU",
-      "recognition": "W shapes. Before setup, yellow faces U, R, B, U, U, R, U, F at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
+      "recognition": "W shapes. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
       "defaultVariantId": "oll-36/main",
       "variantIds": [
         "oll-36/main"
@@ -306,7 +306,7 @@
       "label": "OLL 28",
       "group": "Corners oriented",
       "canonicalSignature": "FRUUUUUU",
-      "recognition": "Corners oriented. Before setup, yellow faces F, R, U, U, U, U, U, U at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
+      "recognition": "Corners oriented. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
       "defaultVariantId": "oll-28/main",
       "variantIds": [
         "oll-28/main"
@@ -331,7 +331,7 @@
       "label": "OLL 31",
       "group": "P shapes",
       "canonicalSignature": "FRUURUUL",
-      "recognition": "P shapes. Before setup, yellow faces F, U, U, L, U, U, B, F at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
+      "recognition": "P shapes. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
       "defaultVariantId": "oll-31/main",
       "variantIds": [
         "oll-31/main"
@@ -356,7 +356,7 @@
       "label": "OLL 43",
       "group": "P shapes",
       "canonicalSignature": "FRUUFUUF",
-      "recognition": "P shapes. Before setup, yellow faces U, R, B, U, R, R, U, U at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
+      "recognition": "P shapes. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
       "defaultVariantId": "oll-43/main",
       "variantIds": [
         "oll-43/main"
@@ -381,7 +381,7 @@
       "label": "OLL 6",
       "group": "Squares",
       "canonicalSignature": "FRUURBUF",
-      "recognition": "Squares. Before setup, yellow faces F, U, U, L, R, U, L, F at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
+      "recognition": "Squares. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
       "defaultVariantId": "oll-06/main",
       "variantIds": [
         "oll-06/main"
@@ -406,7 +406,7 @@
       "label": "OLL 46",
       "group": "C shapes",
       "canonicalSignature": "FUBUFUUF",
-      "recognition": "C shapes. Before setup, yellow faces U, R, U, L, R, R, U, U at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
+      "recognition": "C shapes. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
       "defaultVariantId": "oll-46/main",
       "variantIds": [
         "oll-46/main"
@@ -431,7 +431,7 @@
       "label": "OLL 38",
       "group": "W shapes",
       "canonicalSignature": "FRUURUBU",
-      "recognition": "W shapes. Before setup, yellow faces F, R, U, U, R, U, B, U at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
+      "recognition": "W shapes. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
       "defaultVariantId": "oll-38/main",
       "variantIds": [
         "oll-38/main"
@@ -456,7 +456,7 @@
       "label": "OLL 57",
       "group": "Corners oriented",
       "canonicalSignature": "FUBUUUUU",
-      "recognition": "Corners oriented. Before setup, yellow faces F, U, B, U, U, U, U, U at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
+      "recognition": "Corners oriented. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
       "defaultVariantId": "oll-57/main",
       "variantIds": [
         "oll-57/main"
@@ -481,7 +481,7 @@
       "label": "OLL 32",
       "group": "P shapes",
       "canonicalSignature": "FRUUFBUU",
-      "recognition": "P shapes. Before setup, yellow faces U, U, B, L, U, U, B, F at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
+      "recognition": "P shapes. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
       "defaultVariantId": "oll-32/main",
       "variantIds": [
         "oll-32/main"
@@ -506,7 +506,7 @@
       "label": "OLL 44",
       "group": "P shapes",
       "canonicalSignature": "FRUURRUU",
-      "recognition": "P shapes. Before setup, yellow faces U, U, B, L, U, U, L, L at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
+      "recognition": "P shapes. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
       "defaultVariantId": "oll-44/main",
       "variantIds": [
         "oll-44/main"
@@ -531,7 +531,7 @@
       "label": "OLL 51",
       "group": "Lines",
       "canonicalSignature": "FUBUFBLL",
-      "recognition": "Lines. Before setup, yellow faces F, U, B, U, F, B, L, L at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
+      "recognition": "Lines. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
       "defaultVariantId": "oll-51/main",
       "variantIds": [
         "oll-51/main"
@@ -556,7 +556,7 @@
       "label": "OLL 52",
       "group": "Lines",
       "canonicalSignature": "FUBUFRLF",
-      "recognition": "Lines. Before setup, yellow faces U, R, U, L, R, R, B, F at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
+      "recognition": "Lines. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
       "defaultVariantId": "oll-52/main",
       "variantIds": [
         "oll-52/main"
@@ -581,7 +581,7 @@
       "label": "OLL 9",
       "group": "Fish shapes",
       "canonicalSignature": "FRUUUBLF",
-      "recognition": "Fish shapes. Before setup, yellow faces F, R, U, U, U, B, L, F at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
+      "recognition": "Fish shapes. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
       "defaultVariantId": "oll-09/main",
       "variantIds": [
         "oll-09/main"
@@ -606,7 +606,7 @@
       "label": "OLL 35",
       "group": "Fish shapes",
       "canonicalSignature": "FRUUUBUL",
-      "recognition": "Fish shapes. Before setup, yellow faces U, U, B, L, U, R, U, F at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
+      "recognition": "Fish shapes. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
       "defaultVariantId": "oll-35/main",
       "variantIds": [
         "oll-35/main"
@@ -631,7 +631,7 @@
       "label": "OLL 13",
       "group": "Knight moves",
       "canonicalSignature": "FUBUFRBU",
-      "recognition": "Knight moves. Before setup, yellow faces F, U, B, U, F, R, B, U at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
+      "recognition": "Knight moves. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
       "defaultVariantId": "oll-13/main",
       "variantIds": [
         "oll-13/main"
@@ -656,7 +656,7 @@
       "label": "OLL 16",
       "group": "Knight moves",
       "canonicalSignature": "FUBURBLU",
-      "recognition": "Knight moves. Before setup, yellow faces F, U, B, U, R, U, L, F at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
+      "recognition": "Knight moves. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
       "defaultVariantId": "oll-16/main",
       "variantIds": [
         "oll-16/main"
@@ -681,7 +681,7 @@
       "label": "OLL 29",
       "group": "Awkward shapes",
       "canonicalSignature": "FRUUUUBF",
-      "recognition": "Awkward shapes. Before setup, yellow faces U, R, B, U, R, U, U, L at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
+      "recognition": "Awkward shapes. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
       "defaultVariantId": "oll-29/main",
       "variantIds": [
         "oll-29/main"
@@ -706,7 +706,7 @@
       "label": "OLL 41",
       "group": "Awkward shapes",
       "canonicalSignature": "FRUUUBBU",
-      "recognition": "Awkward shapes. Before setup, yellow faces F, R, U, U, U, B, B, U at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
+      "recognition": "Awkward shapes. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
       "defaultVariantId": "oll-41/main",
       "variantIds": [
         "oll-41/main"
@@ -731,7 +731,7 @@
       "label": "OLL 56",
       "group": "Lines",
       "canonicalSignature": "FUBURRLL",
-      "recognition": "Lines. Before setup, yellow faces F, U, B, U, R, R, L, L at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
+      "recognition": "Lines. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
       "defaultVariantId": "oll-56/main",
       "variantIds": [
         "oll-56/main"
@@ -756,7 +756,7 @@
       "label": "OLL 55",
       "group": "Lines",
       "canonicalSignature": "FUBUFBBF",
-      "recognition": "Lines. Before setup, yellow faces U, R, U, L, R, R, L, L at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
+      "recognition": "Lines. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
       "defaultVariantId": "oll-55/main",
       "variantIds": [
         "oll-55/main"
@@ -781,7 +781,7 @@
       "label": "OLL 10",
       "group": "Fish shapes",
       "canonicalSignature": "FRUUURBL",
-      "recognition": "Fish shapes. Before setup, yellow faces U, R, B, U, F, U, B, L at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
+      "recognition": "Fish shapes. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
       "defaultVariantId": "oll-10/main",
       "variantIds": [
         "oll-10/main"
@@ -806,7 +806,7 @@
       "label": "OLL 37",
       "group": "Fish shapes",
       "canonicalSignature": "FRUUURUF",
-      "recognition": "Fish shapes. Before setup, yellow faces F, R, U, U, U, R, U, F at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
+      "recognition": "Fish shapes. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
       "defaultVariantId": "oll-37/main",
       "variantIds": [
         "oll-37/main"
@@ -831,7 +831,7 @@
       "label": "OLL 14",
       "group": "Knight moves",
       "canonicalSignature": "FUBURBUF",
-      "recognition": "Knight moves. Before setup, yellow faces F, U, B, U, U, B, L, F at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
+      "recognition": "Knight moves. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
       "defaultVariantId": "oll-14/main",
       "variantIds": [
         "oll-14/main"
@@ -856,7 +856,7 @@
       "label": "OLL 15",
       "group": "Knight moves",
       "canonicalSignature": "FUBUFRUL",
-      "recognition": "Knight moves. Before setup, yellow faces F, U, B, U, U, R, B, L at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
+      "recognition": "Knight moves. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
       "defaultVariantId": "oll-15/main",
       "variantIds": [
         "oll-15/main"
@@ -881,7 +881,7 @@
       "label": "OLL 30",
       "group": "Awkward shapes",
       "canonicalSignature": "FRUUURLU",
-      "recognition": "Awkward shapes. Before setup, yellow faces F, U, U, L, F, B, U, U at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
+      "recognition": "Awkward shapes. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
       "defaultVariantId": "oll-30/main",
       "variantIds": [
         "oll-30/main"
@@ -906,7 +906,7 @@
       "label": "OLL 42",
       "group": "Awkward shapes",
       "canonicalSignature": "FRUUUULL",
-      "recognition": "Awkward shapes. Before setup, yellow faces U, R, B, U, F, U, U, F at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
+      "recognition": "Awkward shapes. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
       "defaultVariantId": "oll-42/main",
       "variantIds": [
         "oll-42/main"
@@ -931,7 +931,7 @@
       "label": "OLL 48",
       "group": "L shapes",
       "canonicalSignature": "FRUUFBLL",
-      "recognition": "L shapes. Before setup, yellow faces F, R, U, U, F, B, L, L at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
+      "recognition": "L shapes. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
       "defaultVariantId": "oll-48/main",
       "variantIds": [
         "oll-48/main"
@@ -956,7 +956,7 @@
       "label": "OLL 49",
       "group": "L shapes",
       "canonicalSignature": "FRUUFRLF",
-      "recognition": "L shapes. Before setup, yellow faces F, U, U, L, F, B, L, L at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
+      "recognition": "L shapes. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
       "defaultVariantId": "oll-49/main",
       "variantIds": [
         "oll-49/main"
@@ -981,7 +981,7 @@
       "label": "OLL 53",
       "group": "L shapes",
       "canonicalSignature": "FRUURRLL",
-      "recognition": "L shapes. Before setup, yellow faces U, U, B, L, R, R, L, L at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
+      "recognition": "L shapes. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
       "defaultVariantId": "oll-53/main",
       "variantIds": [
         "oll-53/main"
@@ -1006,7 +1006,7 @@
       "label": "OLL 7",
       "group": "Lightning bolts",
       "canonicalSignature": "FRUUFRBU",
-      "recognition": "Lightning bolts. Before setup, yellow faces F, R, U, U, F, R, B, U at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
+      "recognition": "Lightning bolts. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
       "defaultVariantId": "oll-07/main",
       "variantIds": [
         "oll-07/main"
@@ -1031,7 +1031,7 @@
       "label": "OLL 11",
       "group": "Lightning bolts",
       "canonicalSignature": "FRUUFUBL",
-      "recognition": "Lightning bolts. Before setup, yellow faces U, U, B, L, F, R, B, U at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
+      "recognition": "Lightning bolts. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
       "defaultVariantId": "oll-11/main",
       "variantIds": [
         "oll-11/main"
@@ -1056,7 +1056,7 @@
       "label": "OLL 39",
       "group": "Lightning bolts",
       "canonicalSignature": "FUBUFULU",
-      "recognition": "Lightning bolts. Before setup, yellow faces F, U, B, U, R, U, B, U at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
+      "recognition": "Lightning bolts. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
       "defaultVariantId": "oll-39/main",
       "variantIds": [
         "oll-39/main"
@@ -1081,7 +1081,7 @@
       "label": "OLL 1",
       "group": "No edges oriented",
       "canonicalSignature": "FRBLFBBF",
-      "recognition": "No edges oriented. Before setup, yellow faces F, R, B, L, R, R, L, L at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
+      "recognition": "No edges oriented. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
       "defaultVariantId": "oll-01/main",
       "variantIds": [
         "oll-01/main"
@@ -1106,7 +1106,7 @@
       "label": "OLL 3",
       "group": "No edges oriented",
       "canonicalSignature": "FRBLFRBU",
-      "recognition": "No edges oriented. Before setup, yellow faces F, R, B, L, U, R, B, L at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
+      "recognition": "No edges oriented. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
       "defaultVariantId": "oll-03/main",
       "variantIds": [
         "oll-03/main"
@@ -1131,7 +1131,7 @@
       "label": "OLL 18",
       "group": "No edges oriented",
       "canonicalSignature": "FRBLFUUF",
-      "recognition": "No edges oriented. Before setup, yellow faces F, R, B, L, F, U, U, F at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
+      "recognition": "No edges oriented. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
       "defaultVariantId": "oll-18/main",
       "variantIds": [
         "oll-18/main"
@@ -1156,7 +1156,7 @@
       "label": "OLL 17",
       "group": "No edges oriented",
       "canonicalSignature": "FRBLFULU",
-      "recognition": "No edges oriented. Before setup, yellow faces F, R, B, L, U, B, U, L at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
+      "recognition": "No edges oriented. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
       "defaultVariantId": "oll-17/main",
       "variantIds": [
         "oll-17/main"
@@ -1181,7 +1181,7 @@
       "label": "OLL 47",
       "group": "L shapes",
       "canonicalSignature": "FRUURBBL",
-      "recognition": "L shapes. Before setup, yellow faces F, U, U, L, R, R, B, F at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
+      "recognition": "L shapes. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
       "defaultVariantId": "oll-47/main",
       "variantIds": [
         "oll-47/main"
@@ -1206,7 +1206,7 @@
       "label": "OLL 50",
       "group": "L shapes",
       "canonicalSignature": "FRUURRBF",
-      "recognition": "L shapes. Before setup, yellow faces U, U, B, L, F, B, L, L at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
+      "recognition": "L shapes. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
       "defaultVariantId": "oll-50/main",
       "variantIds": [
         "oll-50/main"
@@ -1231,7 +1231,7 @@
       "label": "OLL 54",
       "group": "L shapes",
       "canonicalSignature": "FRUUFBBF",
-      "recognition": "L shapes. Before setup, yellow faces F, U, U, L, R, R, L, L at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
+      "recognition": "L shapes. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
       "defaultVariantId": "oll-54/main",
       "variantIds": [
         "oll-54/main"
@@ -1256,7 +1256,7 @@
       "label": "OLL 8",
       "group": "Lightning bolts",
       "canonicalSignature": "FRUURULF",
-      "recognition": "Lightning bolts. Before setup, yellow faces U, R, B, U, R, B, U, F at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
+      "recognition": "Lightning bolts. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
       "defaultVariantId": "oll-08/main",
       "variantIds": [
         "oll-08/main"
@@ -1281,7 +1281,7 @@
       "label": "OLL 12",
       "group": "Lightning bolts",
       "canonicalSignature": "FRUURBLU",
-      "recognition": "Lightning bolts. Before setup, yellow faces F, U, U, L, R, B, U, F at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
+      "recognition": "Lightning bolts. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
       "defaultVariantId": "oll-12/main",
       "variantIds": [
         "oll-12/main"
@@ -1306,7 +1306,7 @@
       "label": "OLL 40",
       "group": "Lightning bolts",
       "canonicalSignature": "FUBUUBUL",
-      "recognition": "Lightning bolts. Before setup, yellow faces F, U, B, U, U, B, U, L at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
+      "recognition": "Lightning bolts. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
       "defaultVariantId": "oll-40/main",
       "variantIds": [
         "oll-40/main"
@@ -1331,7 +1331,7 @@
       "label": "OLL 2",
       "group": "No edges oriented",
       "canonicalSignature": "FRBLFBLL",
-      "recognition": "No edges oriented. Before setup, yellow faces F, R, B, L, F, B, L, L at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
+      "recognition": "No edges oriented. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
       "defaultVariantId": "oll-02/main",
       "variantIds": [
         "oll-02/main"
@@ -1356,7 +1356,7 @@
       "label": "OLL 4",
       "group": "No edges oriented",
       "canonicalSignature": "FRBLRBLU",
-      "recognition": "No edges oriented. Before setup, yellow faces F, R, B, L, R, U, L, F at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
+      "recognition": "No edges oriented. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
       "defaultVariantId": "oll-04/main",
       "variantIds": [
         "oll-04/main"
@@ -1381,7 +1381,7 @@
       "label": "OLL 19",
       "group": "No edges oriented",
       "canonicalSignature": "FRBLFBUU",
-      "recognition": "No edges oriented. Before setup, yellow faces F, R, B, L, R, U, U, L at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
+      "recognition": "No edges oriented. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
       "defaultVariantId": "oll-19/main",
       "variantIds": [
         "oll-19/main"
@@ -1406,7 +1406,7 @@
       "label": "OLL 20",
       "group": "No edges oriented",
       "canonicalSignature": "FRBLUUUU",
-      "recognition": "No edges oriented. Before setup, yellow faces F, R, B, L, U, U, U, U at UF, UR, UB, UL, UFR, URB, UBL, ULF. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
+      "recognition": "No edges oriented. Compare the side-facing yellow stickers as well as the top. Ignore piece permutation.",
       "defaultVariantId": "oll-20/main",
       "variantIds": [
         "oll-20/main"

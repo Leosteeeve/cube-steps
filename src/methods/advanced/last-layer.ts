@@ -6,6 +6,7 @@ import { recognizeAdvancedOLL } from './recognize-oll';
 import { recognizeAdvancedPLL } from './recognize-pll';
 import { ALGORITHM_REGISTRY } from '../../algorithms/registry';
 import { RuleError } from '../shared/trace';
+import { describeCaseRecognition } from '../../algorithms/recognition-evidence';
 export function advancedLastLayerTargets(engine: CubeEngine, state: CubeState): string[] {
   const o = engine.observe(state);
   return [...o.edges, ...o.corners]
@@ -41,7 +42,7 @@ function solveLastLayer(
       caseId: c.id,
       targets: advancedLastLayerTargets(engine, trace.current),
       moves: [...match.setup],
-      recognition: c.recognition,
+      recognition: describeCaseRecognition(engine, trace.current, c),
       explanation:
         'Turn the upper layer to match the formula holding pattern. Keep the first two layers complete.',
     });

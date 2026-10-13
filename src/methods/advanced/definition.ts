@@ -13,6 +13,7 @@ import type { CrossTable } from './cross/table';
 import { extractCross, rankCross, CROSS_MOVES } from './cross/coordinates';
 import { crossMoveEvidence } from './cross/solve';
 import type { FaceMove } from '../../core/types';
+import { describeCaseRecognition } from '../../algorithms/recognition-evidence';
 const same = (a: readonly string[], b: readonly string[]) => a.join(' ') === b.join(' ');
 // Cross validation requires the integrity-checked distance asset. The unbound
 // runtime fails closed for cross actions and is sufficient for partial demos.
@@ -161,13 +162,20 @@ export const ADVANCED_RUNTIME: MethodRuntime = {
       )
         return false;
       if (action.ruleId === 'advanced-last-layer-setup')
-        return action.kind === 'setup' && match.setup.length > 0 && same(action.moves, match.setup);
+        return (
+          action.kind === 'setup' &&
+          match.setup.length > 0 &&
+          same(action.moves, match.setup) &&
+          action.recognition ===
+            describeCaseRecognition(engine, action.before, ALGORITHM_REGISTRY.cases[match.caseId])
+        );
       const variant = ALGORITHM_REGISTRY.variants[match.variantId];
       return (
         action.kind === 'algorithm' &&
         action.ruleId === 'advanced-last-layer-formula' &&
         action.algorithmId === match.variantId &&
         match.setup.length === 0 &&
+        action.recognition === variant.precondition &&
         same(action.moves, variant.moves) &&
         checkAdvancedStage(engine, action.after, stage)
       );

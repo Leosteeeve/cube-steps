@@ -3,6 +3,7 @@ import type { CubeEngine } from '../../core/types';
 import { getAlgorithmCase, ALGORITHM_REGISTRY as registry } from '../../algorithms/registry';
 import type { AlgorithmCase } from '../../algorithms/types';
 import { createDemonstration } from '../../algorithms/demonstration';
+import { describeCaseRecognition } from '../../algorithms/recognition-evidence';
 import { AlgorithmPlayer } from '../../player/AlgorithmPlayer';
 import { CaseDiagram } from './CaseDiagram';
 import { useFixtures } from './use-fixtures';
@@ -42,7 +43,11 @@ function CaseDetail({ engine, entry: c }: { engine: CubeEngine; entry: Algorithm
           {c.family.toUpperCase()} · {c.group} · PREVIEW
         </p>
         <h1>{c.label}</h1>
-        <p>{c.recognition}</p>
+        <p>
+          {formulaAction
+            ? describeCaseRecognition(engine, formulaAction.before, c, formulaAction.targets)
+            : c.recognition}
+        </p>
       </header>
       <div className="case-detail-intro">
         {formulaAction && (

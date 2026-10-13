@@ -123,9 +123,7 @@ try {
       canonicalSignature,
       recognition:
         group +
-        '. Compare matching side-color blocks, headlights and edge order around the yellow layer. Relative corners and edges: ' +
-        startSignature +
-        '.',
+        '. Compare matching side-color blocks, headlights and edge order around the yellow layer.',
       defaultVariantId: variantId,
       variantIds: [variantId],
       fixtureIds,

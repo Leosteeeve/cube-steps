@@ -15,7 +15,7 @@
     "verify:cases": "node scripts/generate-case-setups.mts --verify",
     "test": "vitest run",
     "test:unit": "vitest run src",
-    "test:corpus": "vitest run tests/solver-corpus.test.ts tests/color-input-corpus.test.ts tests/cfop-corpus.test.ts tests/advanced-cfop-corpus.test.ts",
+    "test:corpus": "vitest run tests/solver-corpus.test.ts tests/color-input-corpus.test.ts tests/cfop-corpus.test.ts tests/advanced-cfop-corpus.test.ts --maxWorkers=1",
     "test:advanced": "vitest run src/methods/advanced src/algorithms src/practice tests/advanced-cross-table.test.ts tests/advanced-cfop-corpus.test.ts",
     "test:efficiency": "vitest run tests/advanced-efficiency.test.ts",
     "test:e2e": "playwright test",

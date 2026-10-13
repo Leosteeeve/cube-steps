@@ -15,6 +15,7 @@ import { ollSignature } from '../methods/advanced/recognize-oll';
 import { pllSignature } from '../methods/advanced/recognize-pll';
 import { checkAdvancedStage } from '../methods/advanced/stages';
 import { advancedLastLayerTargets } from '../methods/advanced/last-layer';
+import { describeCaseRecognition } from './recognition-evidence';
 export interface AlgorithmDemonstration {
   caseId: CaseId;
   variantId: VariantId;
@@ -91,7 +92,7 @@ export function createDemonstration(
         caseId: c.id,
         targets: targets(),
         moves: setup.y,
-        recognition: c.recognition,
+        recognition: describeCaseRecognition(engine, state, c, targets()),
         explanation:
           'Rotate the whole cube to the formula holding frame. This is a physical regrip; dragging the view does not perform it.',
       },
@@ -106,7 +107,7 @@ export function createDemonstration(
         caseId: c.id,
         targets: targets(),
         moves: setup.u,
-        recognition: c.recognition,
+        recognition: describeCaseRecognition(engine, state, c, targets()),
         explanation:
           'Turn the upper layer until the shown stickers match the formula starting pattern.',
       },
