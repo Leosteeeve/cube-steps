@@ -10,6 +10,7 @@ import {
   type SourcePlaybackSnapshot,
 } from './controller';
 import { createCubingAdapter } from './cubing-adapter';
+import { RegripGuide } from './RegripGuide';
 const stageTitle = (id: string) =>
   id
     .split('-')
@@ -159,7 +160,6 @@ export function PlaybackView({
         (a) => a.action.repetition?.group === action.repetition?.group,
       ).length
     : undefined;
-  const targets = s ? engine.observe(s.boundaryState) : null;
   return (
     <div className="player-area">
       <section
@@ -249,6 +249,14 @@ export function PlaybackView({
         </div>
       </section>
       <aside className="explanation" aria-label="Step explanation">
+        {s && (
+          <RegripGuide
+            engine={engine}
+            boundaryState={s.boundaryState}
+            action={action}
+            moving={s.progress > 0}
+          />
+        )}
         <span className="eyebrow">YOUR NEXT STEP</span>
         <h2>{currentStage ? currentStage.label : 'Preparing your solve'}</h2>
         {currentStage?.skipReason ? (
@@ -385,11 +393,6 @@ export function PlaybackView({
           </div>
         ) : (
           <p>Choose a stage or press Play.</p>
-        )}
-        {targets && (
-          <p className="holding-note">
-            Holding now: {targets.centers.U} up · {targets.centers.F} front
-          </p>
         )}
       </aside>
     </div>
