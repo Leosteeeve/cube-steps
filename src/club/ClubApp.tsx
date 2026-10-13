@@ -3,6 +3,9 @@ import { parseClubRoute } from './routes';
 import { SharedFeaturePage } from '../app/SharedFeaturePage';
 import { useCubeEngine } from '../app/use-cube-engine';
 import { getMethod } from '../methods/registry';
+import { ClubHeader } from './components/ClubHeader';
+import { ClubFooter } from './components/ClubFooter';
+import { HomePage } from './HomePage';
 export function ClubApp() {
   const [route, setRoute] = useState(() => parseClubRoute(location.hash));
   useEffect(() => {
@@ -25,21 +28,13 @@ export function ClubApp() {
       >
         Skip to content
       </a>
-      <header className="site-header">
-        <a href="#/" aria-label="Webb Cubing Club home">
-          Webb Cubing Club
-        </a>
-        <nav aria-label="Main navigation">
-          <a href="#/">Home</a>
-          <a href="#/learn/notation">Learn</a>
-        </nav>
-      </header>
+      <ClubHeader
+        active={route.kind === 'home' ? 'home' : route.kind === 'timer' ? 'timer' : 'learn'}
+        timerAvailable={false}
+      />
       <main id="main" tabIndex={-1}>
         {route.kind === 'home' ? (
-          <section>
-            <h1>One turn. A new possibility.</h1>
-            <a href="#/find-your-route">Start learning</a>
-          </section>
+          <HomePage />
         ) : route.kind === 'quiz' ? (
           <section>
             <h1>Find your route</h1>
@@ -76,9 +71,7 @@ export function ClubApp() {
           </p>
         )}
       </main>
-      <footer className="site-footer">
-        <a href={import.meta.env.BASE_URL}>CubeSteps</a>
-      </footer>
+      <ClubFooter />
     </>
   );
 }
