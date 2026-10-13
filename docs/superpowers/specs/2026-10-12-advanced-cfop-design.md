@@ -1,6 +1,6 @@
 # CubeSteps V1.3: Advanced CFOP and Algorithm Practice
 
-Status: written design approved by the owner on October 12, 2026. The next deliverable is an implementation plan for review; Advanced CFOP implementation has not started.
+Status: written design and implementation plan approved by the owner on October 12, 2026. Native implementation is in progress; Advanced CFOP physical acceptance remains pending.
 
 ## 1. Intent and confirmed choices
 

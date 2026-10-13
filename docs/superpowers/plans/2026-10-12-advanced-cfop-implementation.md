@@ -10,7 +10,7 @@
 
 **Spec:** [Approved Advanced CFOP design](../specs/2026-10-12-advanced-cfop-design.md), approved October 12, 2026.
 
-**Status:** Implementation plan proposed for owner review. Product implementation has not started. Preserve the previously selected **Native** execution approach once this plan is approved.
+**Status:** Approved by the owner on October 12, 2026. Native implementation is in progress, after publishing the accepted player readiness fix. Checkboxes below record verified task progress.
 
 ## Global Constraints
 
@@ -235,6 +235,6 @@ Paths in task blocks resolve the `.ts`/`.tsx` shorthand above. New scripts that 
 
 Spec coverage: intent/status/routes (Tasks 7, 9, 13); shortest cross (2); formula-based F2L (3–4); full OLL/PLL and notation (1, 5–6); shared library/practice (8, 10–12); provenance, workers and failures (7–8, 11); correctness, efficiency, browser and physical verification (all focused gates plus 13). Each Review Focus item has an owning test. No new dependency, unrelated refactor, extra method, timer or score system is included.
 
-Contracts distinguish whole solves from partial clips, case IDs from variant IDs, physical setup from holding moves, and exact cross distance from heuristic F2L cost. Asset/scripts stay out of the main UI runtime; data are independently admitted before being shared. All checkboxes remain unselected because this is a proposed implementation plan, not execution evidence.
+Contracts distinguish whole solves from partial clips, case IDs from variant IDs, physical setup from holding moves, and exact cross distance from heuristic F2L cost. Asset/scripts stay out of the main UI runtime; data are independently admitted before being shared. Checkboxes are selected only after verification.
 
-Next: the owner reviews this written plan. On approval, execute with the preserved Native method; do not reopen the already approved product choices. If implementation uncovers a contradiction in the approved spec, state it and resolve that specific conflict before dependent work.
+Execute with the approved Native method; do not reopen the already approved product choices. If implementation uncovers a contradiction in the approved spec, record and resolve that specific conflict before dependent work.
