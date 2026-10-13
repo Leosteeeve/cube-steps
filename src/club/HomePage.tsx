@@ -1,3 +1,4 @@
+import { ProgressStatus } from './learning/use-club-progress';
 function DecorativeCube() {
   const faces = [
     { origin: [68, 128], u: [164, 52], v: [0, 181], fill: '#2869CA' },
@@ -72,6 +73,9 @@ export function HomePage({ resumeHref }: { resumeHref?: string }) {
         </div>
         <DecorativeCube />
       </section>
+      <div className="club-home-progress">
+        <ProgressStatus />
+      </div>
       <section className="club-together">
         <div>
           <small>LEARN IT. PRACTICE IT. SHARE IT.</small>

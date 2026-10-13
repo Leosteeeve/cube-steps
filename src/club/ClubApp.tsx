@@ -6,7 +6,11 @@ import { getMethod } from '../methods/registry';
 import { ClubHeader } from './components/ClubHeader';
 import { ClubFooter } from './components/ClubFooter';
 import { HomePage } from './HomePage';
+import { RouteQuiz } from './learning/RouteQuiz';
+import { useClubProgress } from './learning/use-club-progress';
+import { lessonRoute } from '../app/routes';
 export function ClubApp() {
+  const { progress } = useClubProgress();
   const [route, setRoute] = useState(() => parseClubRoute(location.hash));
   useEffect(() => {
     const change = () => setRoute(parseClubRoute(location.hash));
@@ -34,12 +38,15 @@ export function ClubApp() {
       />
       <main id="main" tabIndex={-1}>
         {route.kind === 'home' ? (
-          <HomePage />
+          <HomePage
+            resumeHref={
+              progress.lastLesson
+                ? lessonRoute(progress.lastLesson.method, progress.lastLesson.lessonId)
+                : undefined
+            }
+          />
         ) : route.kind === 'quiz' ? (
-          <section>
-            <h1>Find your route</h1>
-            <a href="#/learn/notation">Choose a course</a>
-          </section>
+          <RouteQuiz />
         ) : route.kind === 'timer' ? (
           <section>
             <h1>Timer is being prepared</h1>

@@ -9,6 +9,7 @@ import { ColorEntry } from './color-entry/ColorEntry';
 import { FaceOverview } from './color-entry/FaceOverview';
 import { createDraftState, reduceDraft, type DraftAction } from './color-entry/draft';
 import { createDraftStore } from './color-entry/draft-storage';
+import { useEdition } from './edition';
 import { FACE_ENTRY_ORDER } from '../core/facelet-layout';
 import { getMethod } from '../methods/registry';
 import { MethodSelector } from './MethodSelector';
@@ -19,7 +20,15 @@ export function SolvePage({ engine, method = 'lbl' }: { engine: CubeEngine; meth
   methodRef.current = method;
   const client = useMemo(() => createSolveClient(), []),
     epoch = useRef(0);
-  const store = useMemo(() => createDraftStore(() => window.sessionStorage), []);
+  const edition = useEdition();
+  const store = useMemo(
+    () =>
+      createDraftStore(
+        () => window.sessionStorage,
+        edition === 'club' ? 'cubesteps.club.color-draft.v1' : undefined,
+      ),
+    [edition],
+  );
   const [recovered] = useState(() => store.load());
   const [draft, setDraft] = useState(() => createDraftState(recovered.draft));
   const [storageAvailable, setStorageAvailable] = useState(recovered.available);
@@ -163,6 +172,19 @@ export function SolvePage({ engine, method = 'lbl' }: { engine: CubeEngine; meth
       }}
     >
       <MethodSelector method={method} kind="solve" />
+      {store.isProtected() && (
+        <p role="status">
+          Saved color data could not be read. This draft stays in this page.{' '}
+          <button
+            onClick={() => {
+              const ok = store.reset();
+              setStorageAvailable(ok && store.save(draft.draft));
+            }}
+          >
+            Reset saved color data
+          </button>
+        </p>
+      )}
       <div className="lesson-heading">
         <span className="eyebrow">YOUR CUBE. THE SAME METHOD.</span>
         <h1>A clear path for your cube.</h1>

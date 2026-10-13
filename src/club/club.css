@@ -384,3 +384,115 @@
     gap: 8px;
   }
 }
+[data-edition='club'] .club-panel {
+  max-width: 760px;
+  margin: 48px auto;
+  padding: 36px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fff;
+}
+[data-edition='club'] .club-panel h1 {
+  font-family: Georgia, serif;
+  font-weight: 400;
+  font-size: 38px;
+}
+[data-edition='club'] .club-quiz fieldset {
+  border: 0;
+  padding: 0;
+  margin: 28px 0;
+  display: grid;
+  gap: 10px;
+}
+[data-edition='club'] .club-quiz legend {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+[data-edition='club'] .club-answer {
+  display: flex;
+  gap: 13px;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 16px;
+  cursor: pointer;
+}
+[data-edition='club'] .club-answer:has(input:checked) {
+  background: var(--soft);
+  border-color: var(--green);
+}
+[data-edition='club'] .club-answer input {
+  accent-color: var(--green);
+  width: 18px;
+  height: 18px;
+  flex: none;
+}
+[data-edition='club'] .club-quiz-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+[data-edition='club'] .club-text-button {
+  border: 0;
+  text-decoration: underline;
+  background: none;
+}
+[data-edition='club'] .club-route-choices {
+  display: grid;
+  gap: 12px;
+  margin-block: 28px;
+}
+[data-edition='club'] .club-route-choices button {
+  text-align: left;
+  display: grid;
+  gap: 6px;
+  padding: 20px;
+}
+[data-edition='club'] .club-route-choices span {
+  color: var(--muted);
+}
+[data-edition='club'] .club-save-status {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 28px;
+}
+[data-edition='club'] .club-home-progress {
+  max-width: 1170px;
+  margin: 0 auto 22px;
+}
+[data-edition='club'] .club-home-progress .club-save-status {
+  margin-top: 0;
+}
+[data-edition='club'] .club-result-label {
+  display: inline-block;
+  border-radius: 6px;
+  background: var(--soft);
+  color: var(--ink);
+  padding: 8px 12px;
+  font-weight: 650;
+}
+[data-edition='club'] .club-quiz li {
+  margin-bottom: 12px;
+}
+@media (max-width: 1250px) {
+  [data-edition='club'] .club-home-progress {
+    margin-inline: 24px;
+  }
+}
+@media (max-width: 800px) {
+  [data-edition='club'] .club-panel {
+    margin: 24px 16px;
+    padding: 24px;
+  }
+  [data-edition='club'] .club-panel h1 {
+    font-size: 32px;
+  }
+}
