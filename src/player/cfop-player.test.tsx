@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import '@testing-library/jest-dom/vitest';
-import { render, screen, cleanup, fireEvent } from '@testing-library/react';
+import { render, screen, cleanup, fireEvent, waitFor } from '@testing-library/react';
 import { afterEach, beforeEach, expect, it, vi } from 'vitest';
 import { createCubeEngine } from '../core/cube';
 import { solveCFOP } from '../methods/cfop/solve';
@@ -11,6 +11,7 @@ import { flattenTrace } from '../methods/shared/trace';
 import { CubePlayer } from './CubePlayer';
 import { createCubingAdapter } from './cubing-adapter';
 import { seededScramble } from '../../tests/fixtures/lbl-cases';
+import type { CFOPStageId, SolveSession } from '../core/types';
 vi.mock('./cubing-adapter', () => ({ createCubingAdapter: vi.fn() }));
 beforeEach(() => {
   vi.stubGlobal('matchMedia', () => ({ matches: true }));
@@ -23,6 +24,28 @@ afterEach(() => {
   cleanup();
   vi.unstubAllGlobals();
 });
+it.each(['cfop-cross', 'cfop-f2l'] as CFOPStageId[])(
+  'positions a replacement session at %s when the renderer rejects immediately',
+  async (firstStage) => {
+    const engine = await createCubeEngine();
+    const sessions: SolveSession[] = [1, 2].map((seed) => {
+      const moves = seededScramble(seed);
+      const result = solveCFOP(engine, engine.apply(engine.solved(), moves));
+      if (!result.ok) throw new Error(result.message);
+      return { input: { kind: 'scramble', moves }, trace: result.trace };
+    });
+    const view = render(<CubePlayer engine={engine} session={sessions[0]} stage={firstStage} />);
+    await screen.findByRole('alert');
+    await waitFor(() => expect(screen.getByRole('button', { name: 'Next move' })).toBeEnabled());
+    view.rerender(<CubePlayer engine={engine} session={sessions[1]} stage="cfop-f2l" />);
+    const start = flattenTrace(sessions[1].trace).stages.find(
+      (stage) => stage.id === 'cfop-f2l',
+    )!.start;
+    await waitFor(() => expect(screen.getByLabelText('Move position')).toHaveValue(String(start)));
+    expect(screen.getByRole('heading', { name: 'First two layers' })).toBeVisible();
+    expect(screen.getByRole('heading', { name: /Pair \d of 4/ })).toBeVisible();
+  },
+);
 it('shows CFOP pair targets, progress and the actual named maneuver', async () => {
   const engine = await createCubeEngine(),
     result = solveCFOP(engine, engine.apply(engine.solved(), seededScramble(1)));
