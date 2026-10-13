@@ -1,4 +1,15 @@
 import type { TeachingAlgorithm } from '../methods/contracts';
+import type { CubeState, FaceMove, TeachingMove } from '../core/types';
+import type { F2LTarget } from '../methods/advanced/f2l/types';
+export interface CaseFixture {
+  id: string;
+  caseId: CaseId;
+  setup: readonly FaceMove[];
+  holdingMoves: readonly TeachingMove[];
+  initial: CubeState;
+  target?: F2LTarget;
+  protectedIds: readonly string[];
+}
 export type AlgorithmFamily = 'f2l' | 'oll' | 'pll';
 export type CaseId = string;
 export type VariantId = string;
