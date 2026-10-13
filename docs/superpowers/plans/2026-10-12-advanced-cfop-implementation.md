@@ -123,11 +123,11 @@ Paths in task blocks resolve the `.ts`/`.tsx` shorthand above. New scripts that 
 
 **Interfaces:** `LastLayerMatch = { caseId: CaseId; variantId: VariantId; setup: TeachingMove[] }` in `src/algorithms/types.ts`; `recognizeAdvancedOLL(engine: CubeEngine,state: CubeState): LastLayerMatch | null`, where null means the orientation goal is already met; non-F2L states throw verification failure. Recognition keys use yellow sticker orientation, ignoring permutation, under allowed U alignment/y regrip.
 
-- [ ] Write `recognizes_all_216_legal_oll_orientations` and `each_oll_formula_preserves_f2l`. Assert 57 unsolved case IDs, all `2^3 * 3^3 = 216` legal orientation patterns recognized as a case or the solved orientation, arbitrary legal last-layer permutations do not change case identity, and one admitted formula after setup orients all last-layer pieces.
-- [ ] Run `npx.cmd vitest run src/methods/advanced/recognize-oll.test.ts src/algorithms/oll-admission.test.ts`; record failures.
-- [ ] Admit one practical formula per OLL case, source references, original recognition text and contiguous trigger segments. Build a signature-to-case/setup map from independently declared canonical patterns; detect ambiguous entries at admission. Prefer fewer setup rotations then fewer U turns then stable variant ID. Keep all 57 cases distinct and reject a composed two-look substitute.
-- [ ] Verify every formula/fixture/setup orientation and legal pattern through the cube engine, including wide/slice algorithms and nontrivial permutation parity. Run focused checks and `npm.cmd run verify:cases`; all pass.
-- [ ] Commit as `feat: add complete one-look OLL teaching cases`.
+- [x] Write `recognizes_all_216_legal_oll_orientations` and `each_oll_formula_preserves_f2l`. Assert 57 unsolved case IDs, all `2^3 * 3^3 = 216` legal orientation patterns recognized as a case or the solved orientation, arbitrary legal last-layer permutations do not change case identity, and one admitted formula after setup orients all last-layer pieces.
+- [x] Run `npx.cmd vitest run src/methods/advanced/recognize-oll.test.ts src/algorithms/oll-admission.test.ts`; record failures.
+- [x] Admit one practical formula per OLL case, source references, original recognition text and contiguous trigger segments. Build a signature-to-case/setup map from independently declared canonical patterns; detect ambiguous entries at admission. Prefer fewer setup rotations then fewer U turns then stable variant ID. Keep all 57 cases distinct and reject a composed two-look substitute.
+- [x] Verify every formula/fixture/setup orientation and legal pattern through the cube engine, including wide/slice algorithms and nontrivial permutation parity. Run focused checks and `npm.cmd run verify:cases`; all pass.
+- [x] Commit as `feat: add complete one-look OLL teaching cases`.
 
 ## Task 6: Full PLL catalog, stage checks and final alignment
 

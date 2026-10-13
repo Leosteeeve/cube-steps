@@ -1,0 +1,1028 @@
+[
+  {
+    "page": 1,
+    "column": 1,
+    "y": 425.9,
+    "formula": "R U2 R' U' R U' R'",
+    "sourceName": "OCLL6",
+    "id": "oll-26",
+    "yellowFaces": [
+      "U",
+      "U",
+      "U",
+      "U",
+      "R",
+      "U",
+      "L",
+      "F"
+    ]
+  },
+  {
+    "page": 1,
+    "column": 1,
+    "y": 484.5,
+    "formula": "(R U2 R') (U' R U R') (U' R U' R')",
+    "sourceName": "OCLL1",
+    "id": "oll-21",
+    "yellowFaces": [
+      "U",
+      "U",
+      "U",
+      "U",
+      "F",
+      "B",
+      "B",
+      "F"
+    ]
+  },
+  {
+    "page": 1,
+    "column": 1,
+    "y": 542.9,
+    "formula": "(r U R' U') (r' F R F')",
+    "sourceName": "OCLL4",
+    "id": "oll-24",
+    "yellowFaces": [
+      "U",
+      "U",
+      "U",
+      "U",
+      "U",
+      "U",
+      "B",
+      "F"
+    ]
+  },
+  {
+    "page": 1,
+    "column": 1,
+    "y": 601.5,
+    "formula": "R2 D (R' U2 R) D' (R' U2 R')",
+    "sourceName": "OCLL3",
+    "id": "oll-23",
+    "yellowFaces": [
+      "U",
+      "U",
+      "U",
+      "U",
+      "F",
+      "U",
+      "U",
+      "F"
+    ]
+  },
+  {
+    "page": 1,
+    "column": 1,
+    "y": 723.1,
+    "formula": "(R U R' U') (R' F R F')",
+    "sourceName": "T1",
+    "id": "oll-33",
+    "yellowFaces": [
+      "F",
+      "U",
+      "B",
+      "U",
+      "U",
+      "U",
+      "B",
+      "F"
+    ]
+  },
+  {
+    "page": 1,
+    "column": 2,
+    "y": 426.5,
+    "formula": "R U R' U R U2 R'",
+    "sourceName": "OCLL7",
+    "id": "oll-27",
+    "yellowFaces": [
+      "U",
+      "U",
+      "U",
+      "U",
+      "F",
+      "R",
+      "B",
+      "U"
+    ]
+  },
+  {
+    "page": 1,
+    "column": 2,
+    "y": 490.7,
+    "formula": "R U2 R2 U' R2 U' R2 U2 R",
+    "sourceName": "OCLL2",
+    "id": "oll-22",
+    "yellowFaces": [
+      "U",
+      "U",
+      "U",
+      "U",
+      "F",
+      "B",
+      "L",
+      "L"
+    ]
+  },
+  {
+    "page": 1,
+    "column": 2,
+    "y": 542.1,
+    "formula": "y F' (r U R' U') r' F R",
+    "sourceName": "OCLL5",
+    "id": "oll-25",
+    "yellowFaces": [
+      "U",
+      "U",
+      "U",
+      "U",
+      "U",
+      "R",
+      "U",
+      "F"
+    ]
+  },
+  {
+    "page": 1,
+    "column": 2,
+    "y": 723.1,
+    "formula": "F (R U R' U') F'",
+    "sourceName": "T2",
+    "id": "oll-45",
+    "yellowFaces": [
+      "F",
+      "U",
+      "B",
+      "U",
+      "U",
+      "U",
+      "L",
+      "L"
+    ]
+  },
+  {
+    "page": 2,
+    "column": 1,
+    "y": 141.4,
+    "formula": "(r' U2 R U R' U r)",
+    "sourceName": "S1",
+    "id": "oll-05",
+    "yellowFaces": [
+      "U",
+      "U",
+      "B",
+      "L",
+      "U",
+      "R",
+      "B",
+      "L"
+    ]
+  },
+  {
+    "page": 2,
+    "column": 1,
+    "y": 255.9,
+    "formula": "(R U R2 U') (R' F R U) R U' F'",
+    "sourceName": "C1",
+    "id": "oll-34",
+    "yellowFaces": [
+      "F",
+      "U",
+      "B",
+      "U",
+      "U",
+      "R",
+      "L",
+      "U"
+    ]
+  },
+  {
+    "page": 2,
+    "column": 1,
+    "y": 365.6,
+    "formula": "(R' U' R U') (R' U R U) l U' R' U x",
+    "sourceName": "W1",
+    "id": "oll-36",
+    "yellowFaces": [
+      "U",
+      "R",
+      "B",
+      "U",
+      "U",
+      "R",
+      "U",
+      "F"
+    ]
+  },
+  {
+    "page": 2,
+    "column": 1,
+    "y": 488.0,
+    "formula": "(r U R' U') M (U R U' R')",
+    "sourceName": "E1",
+    "id": "oll-28",
+    "yellowFaces": [
+      "F",
+      "R",
+      "U",
+      "U",
+      "U",
+      "U",
+      "U",
+      "U"
+    ]
+  },
+  {
+    "page": 2,
+    "column": 1,
+    "y": 603.2,
+    "formula": "(R' U' F) (U R U' R') F' R",
+    "sourceName": "P1",
+    "id": "oll-31",
+    "yellowFaces": [
+      "F",
+      "U",
+      "U",
+      "L",
+      "U",
+      "U",
+      "B",
+      "F"
+    ]
+  },
+  {
+    "page": 2,
+    "column": 1,
+    "y": 655.4,
+    "formula": "y R' U' F' U F R",
+    "sourceName": "P3",
+    "id": "oll-43",
+    "yellowFaces": [
+      "U",
+      "R",
+      "B",
+      "U",
+      "R",
+      "R",
+      "U",
+      "U"
+    ]
+  },
+  {
+    "page": 2,
+    "column": 2,
+    "y": 141.4,
+    "formula": "(r U2 R' U' R U' r')",
+    "sourceName": "S2",
+    "id": "oll-06",
+    "yellowFaces": [
+      "F",
+      "U",
+      "U",
+      "L",
+      "R",
+      "U",
+      "L",
+      "F"
+    ]
+  },
+  {
+    "page": 2,
+    "column": 2,
+    "y": 255.9,
+    "formula": "R' U' (R' F R F') U R",
+    "sourceName": "C2",
+    "id": "oll-46",
+    "yellowFaces": [
+      "U",
+      "R",
+      "U",
+      "L",
+      "R",
+      "R",
+      "U",
+      "U"
+    ]
+  },
+  {
+    "page": 2,
+    "column": 2,
+    "y": 371.9,
+    "formula": "(R U R' U) (R U' R' U') (R' F R F')",
+    "sourceName": "W2",
+    "id": "oll-38",
+    "yellowFaces": [
+      "F",
+      "R",
+      "U",
+      "U",
+      "R",
+      "U",
+      "B",
+      "U"
+    ]
+  },
+  {
+    "page": 2,
+    "column": 2,
+    "y": 488.0,
+    "formula": "(R U R' U') M' (U R U' r')",
+    "sourceName": "E2",
+    "id": "oll-57",
+    "yellowFaces": [
+      "F",
+      "U",
+      "B",
+      "U",
+      "U",
+      "U",
+      "U",
+      "U"
+    ]
+  },
+  {
+    "page": 2,
+    "column": 2,
+    "y": 597.0,
+    "formula": "R U B' (U' R' U) (R B R')",
+    "sourceName": "P2",
+    "id": "oll-32",
+    "yellowFaces": [
+      "U",
+      "U",
+      "B",
+      "L",
+      "U",
+      "U",
+      "B",
+      "F"
+    ]
+  },
+  {
+    "page": 2,
+    "column": 2,
+    "y": 655.4,
+    "formula": "f (R U R' U') f'",
+    "sourceName": "P4",
+    "id": "oll-44",
+    "yellowFaces": [
+      "U",
+      "U",
+      "B",
+      "L",
+      "U",
+      "U",
+      "L",
+      "L"
+    ]
+  },
+  {
+    "page": 3,
+    "column": 1,
+    "y": 105.8,
+    "formula": "f (R U R' U') (R U R' U') f'",
+    "sourceName": "I1",
+    "id": "oll-51",
+    "yellowFaces": [
+      "F",
+      "U",
+      "B",
+      "U",
+      "F",
+      "B",
+      "L",
+      "L"
+    ]
+  },
+  {
+    "page": 3,
+    "column": 1,
+    "y": 164.4,
+    "formula": "(R' U' R U' R' U) y' (R' U R) B",
+    "sourceName": "I2",
+    "id": "oll-52",
+    "yellowFaces": [
+      "U",
+      "R",
+      "U",
+      "L",
+      "R",
+      "R",
+      "B",
+      "F"
+    ]
+  },
+  {
+    "page": 3,
+    "column": 1,
+    "y": 280.5,
+    "formula": "(R U R' U') R' F (R2 U R' U') F'",
+    "sourceName": "F1",
+    "id": "oll-09",
+    "yellowFaces": [
+      "F",
+      "R",
+      "U",
+      "U",
+      "U",
+      "B",
+      "L",
+      "F"
+    ]
+  },
+  {
+    "page": 3,
+    "column": 1,
+    "y": 345.3,
+    "formula": "(R U2) (R2 F R F') (R U2 R')",
+    "sourceName": "F3",
+    "id": "oll-35",
+    "yellowFaces": [
+      "U",
+      "U",
+      "B",
+      "L",
+      "U",
+      "R",
+      "U",
+      "F"
+    ]
+  },
+  {
+    "page": 3,
+    "column": 1,
+    "y": 455.0,
+    "formula": "(r U' r') (U' r U r') y' (R' U R)",
+    "sourceName": "K1",
+    "id": "oll-13",
+    "yellowFaces": [
+      "F",
+      "U",
+      "B",
+      "U",
+      "F",
+      "R",
+      "B",
+      "U"
+    ]
+  },
+  {
+    "page": 3,
+    "column": 1,
+    "y": 519.8,
+    "formula": "(r U r') (R U R' U') (r U' r')",
+    "sourceName": "K4",
+    "id": "oll-16",
+    "yellowFaces": [
+      "F",
+      "U",
+      "B",
+      "U",
+      "R",
+      "U",
+      "L",
+      "F"
+    ]
+  },
+  {
+    "page": 3,
+    "column": 1,
+    "y": 629.4,
+    "formula": "y (R U R' U') (R U' R') (F' U' F) (R U R')",
+    "sourceName": "A1",
+    "id": "oll-29",
+    "yellowFaces": [
+      "U",
+      "R",
+      "B",
+      "U",
+      "R",
+      "U",
+      "U",
+      "L"
+    ]
+  },
+  {
+    "page": 3,
+    "column": 1,
+    "y": 696.3,
+    "formula": "(R U R' U R U2 R') F (R U R' U') F'",
+    "sourceName": "A3",
+    "id": "oll-41",
+    "yellowFaces": [
+      "F",
+      "R",
+      "U",
+      "U",
+      "U",
+      "B",
+      "B",
+      "U"
+    ]
+  },
+  {
+    "page": 3,
+    "column": 2,
+    "y": 112.2,
+    "formula": "r' U' r (U' R' U R) (U' R' U R) r' U r",
+    "sourceName": "I4",
+    "id": "oll-56",
+    "yellowFaces": [
+      "F",
+      "U",
+      "B",
+      "U",
+      "R",
+      "R",
+      "L",
+      "L"
+    ]
+  },
+  {
+    "page": 3,
+    "column": 2,
+    "y": 170.6,
+    "formula": "y (R' F R U) (R U' R2 F') R2 U' R' (U R U R')",
+    "sourceName": "I3",
+    "id": "oll-55",
+    "yellowFaces": [
+      "U",
+      "R",
+      "U",
+      "L",
+      "R",
+      "R",
+      "L",
+      "L"
+    ]
+  },
+  {
+    "page": 3,
+    "column": 2,
+    "y": 280.5,
+    "formula": "(R U R' U) (R' F R F') (R U2 R')",
+    "sourceName": "F2",
+    "id": "oll-10",
+    "yellowFaces": [
+      "U",
+      "R",
+      "B",
+      "U",
+      "F",
+      "U",
+      "B",
+      "L"
+    ]
+  },
+  {
+    "page": 3,
+    "column": 2,
+    "y": 345.3,
+    "formula": "F (R U' R' U') (R U R' F')",
+    "sourceName": "F4",
+    "id": "oll-37",
+    "yellowFaces": [
+      "F",
+      "R",
+      "U",
+      "U",
+      "U",
+      "R",
+      "U",
+      "F"
+    ]
+  },
+  {
+    "page": 3,
+    "column": 2,
+    "y": 461.3,
+    "formula": "(R' F R) (U R' F' R) (F U' F')",
+    "sourceName": "K2",
+    "id": "oll-14",
+    "yellowFaces": [
+      "F",
+      "U",
+      "B",
+      "U",
+      "U",
+      "B",
+      "L",
+      "F"
+    ]
+  },
+  {
+    "page": 3,
+    "column": 2,
+    "y": 519.8,
+    "formula": "(r' U' r) (R' U' R U) (r' U r)",
+    "sourceName": "K3",
+    "id": "oll-15",
+    "yellowFaces": [
+      "F",
+      "U",
+      "B",
+      "U",
+      "U",
+      "R",
+      "B",
+      "L"
+    ]
+  },
+  {
+    "page": 3,
+    "column": 2,
+    "y": 629.4,
+    "formula": "y' F U (R U2 R' U') (R U2 R' U') F'",
+    "sourceName": "A2",
+    "id": "oll-30",
+    "yellowFaces": [
+      "F",
+      "U",
+      "U",
+      "L",
+      "F",
+      "B",
+      "U",
+      "U"
+    ]
+  },
+  {
+    "page": 3,
+    "column": 2,
+    "y": 688.9,
+    "formula": "(R' U' R U' R' U2 R) F (R U R' U') F'",
+    "sourceName": "A4",
+    "id": "oll-42",
+    "yellowFaces": [
+      "U",
+      "R",
+      "B",
+      "U",
+      "F",
+      "U",
+      "U",
+      "F"
+    ]
+  },
+  {
+    "page": 4,
+    "column": 1,
+    "y": 83.0,
+    "formula": "F (R U R' U') (R U R' U') F'",
+    "sourceName": "L2",
+    "id": "oll-48",
+    "yellowFaces": [
+      "F",
+      "R",
+      "U",
+      "U",
+      "F",
+      "B",
+      "L",
+      "L"
+    ]
+  },
+  {
+    "page": 4,
+    "column": 1,
+    "y": 142.6,
+    "formula": "r U' r2 U r2 U r2 U' r",
+    "sourceName": "L3",
+    "id": "oll-49",
+    "yellowFaces": [
+      "F",
+      "U",
+      "U",
+      "L",
+      "F",
+      "B",
+      "L",
+      "L"
+    ]
+  },
+  {
+    "page": 4,
+    "column": 1,
+    "y": 193.7,
+    "formula": "(r' U' R U') (R' U R U') R' U2 r",
+    "sourceName": "L5",
+    "id": "oll-53",
+    "yellowFaces": [
+      "U",
+      "U",
+      "B",
+      "L",
+      "R",
+      "R",
+      "L",
+      "L"
+    ]
+  },
+  {
+    "page": 4,
+    "column": 1,
+    "y": 313.0,
+    "formula": "(r U R' U R U2 r')",
+    "sourceName": "B1",
+    "id": "oll-07",
+    "yellowFaces": [
+      "F",
+      "R",
+      "U",
+      "U",
+      "F",
+      "R",
+      "B",
+      "U"
+    ]
+  },
+  {
+    "page": 4,
+    "column": 1,
+    "y": 371.9,
+    "formula": "r' (R2 U R' U R U2 R') U M'",
+    "sourceName": "B3",
+    "id": "oll-11",
+    "yellowFaces": [
+      "U",
+      "U",
+      "B",
+      "L",
+      "F",
+      "R",
+      "B",
+      "U"
+    ]
+  },
+  {
+    "page": 4,
+    "column": 1,
+    "y": 425.7,
+    "formula": "(L F') (L' U' L U) F U' L'",
+    "sourceName": "B5",
+    "id": "oll-39",
+    "yellowFaces": [
+      "F",
+      "U",
+      "B",
+      "U",
+      "R",
+      "U",
+      "B",
+      "U"
+    ]
+  },
+  {
+    "page": 4,
+    "column": 1,
+    "y": 567.1,
+    "formula": "(R U2) (R2 F R F') U2 (R' F R F')",
+    "sourceName": "O1",
+    "id": "oll-01",
+    "yellowFaces": [
+      "F",
+      "R",
+      "B",
+      "L",
+      "R",
+      "R",
+      "L",
+      "L"
+    ]
+  },
+  {
+    "page": 4,
+    "column": 1,
+    "y": 625.6,
+    "formula": "f (R U R' U') f' U' F (R U R' U') F'",
+    "sourceName": "O3",
+    "id": "oll-03",
+    "yellowFaces": [
+      "F",
+      "R",
+      "B",
+      "L",
+      "U",
+      "R",
+      "B",
+      "L"
+    ]
+  },
+  {
+    "page": 4,
+    "column": 1,
+    "y": 684.6,
+    "formula": "y R U2 (R2 F R F') U2 M' (U R U' r')",
+    "sourceName": "O6",
+    "id": "oll-18",
+    "yellowFaces": [
+      "F",
+      "R",
+      "B",
+      "L",
+      "F",
+      "U",
+      "U",
+      "F"
+    ]
+  },
+  {
+    "page": 4,
+    "column": 1,
+    "y": 745.4,
+    "formula": "(R U R' U) (R' F R F') U2 (R' F R F')",
+    "sourceName": "O5",
+    "id": "oll-17",
+    "yellowFaces": [
+      "F",
+      "R",
+      "B",
+      "L",
+      "U",
+      "B",
+      "U",
+      "L"
+    ]
+  },
+  {
+    "page": 4,
+    "column": 2,
+    "y": 76.7,
+    "formula": "F' (L' U' L U) (L' U' L U) F",
+    "sourceName": "L1",
+    "id": "oll-47",
+    "yellowFaces": [
+      "F",
+      "U",
+      "U",
+      "L",
+      "R",
+      "R",
+      "B",
+      "F"
+    ]
+  },
+  {
+    "page": 4,
+    "column": 2,
+    "y": 135.1,
+    "formula": "r' U r2 U' r2 U' r2 U r'",
+    "sourceName": "L4",
+    "id": "oll-50",
+    "yellowFaces": [
+      "U",
+      "U",
+      "B",
+      "L",
+      "F",
+      "B",
+      "L",
+      "L"
+    ]
+  },
+  {
+    "page": 4,
+    "column": 2,
+    "y": 193.7,
+    "formula": "(r U R' U) (R U' R' U) R U2 r'",
+    "sourceName": "L6",
+    "id": "oll-54",
+    "yellowFaces": [
+      "F",
+      "U",
+      "U",
+      "L",
+      "R",
+      "R",
+      "L",
+      "L"
+    ]
+  },
+  {
+    "page": 4,
+    "column": 2,
+    "y": 306.6,
+    "formula": "(r' U' R U' R' U2 r)",
+    "sourceName": "B2",
+    "id": "oll-08",
+    "yellowFaces": [
+      "U",
+      "R",
+      "B",
+      "U",
+      "R",
+      "B",
+      "U",
+      "F"
+    ]
+  },
+  {
+    "page": 4,
+    "column": 2,
+    "y": 371.9,
+    "formula": "M' (R' U' R U' R' U2 R) U' M",
+    "sourceName": "B4",
+    "id": "oll-12",
+    "yellowFaces": [
+      "F",
+      "U",
+      "U",
+      "L",
+      "R",
+      "B",
+      "U",
+      "F"
+    ]
+  },
+  {
+    "page": 4,
+    "column": 2,
+    "y": 430.9,
+    "formula": "(R' F) (R U R' U') F' U R",
+    "sourceName": "B6",
+    "id": "oll-40",
+    "yellowFaces": [
+      "F",
+      "U",
+      "B",
+      "U",
+      "U",
+      "B",
+      "U",
+      "L"
+    ]
+  },
+  {
+    "page": 4,
+    "column": 2,
+    "y": 560.8,
+    "formula": "F (R U R' U') F' f (R U R' U') f'",
+    "sourceName": "O2",
+    "id": "oll-02",
+    "yellowFaces": [
+      "F",
+      "R",
+      "B",
+      "L",
+      "F",
+      "B",
+      "L",
+      "L"
+    ]
+  },
+  {
+    "page": 4,
+    "column": 2,
+    "y": 625.6,
+    "formula": "f (R U R' U') f' U F (R U R' U') F'",
+    "sourceName": "O4",
+    "id": "oll-04",
+    "yellowFaces": [
+      "F",
+      "R",
+      "B",
+      "L",
+      "R",
+      "U",
+      "L",
+      "F"
+    ]
+  },
+  {
+    "page": 4,
+    "column": 2,
+    "y": 684.6,
+    "formula": "M U (R U R' U') M' (R' F R F')",
+    "sourceName": "O7",
+    "id": "oll-19",
+    "yellowFaces": [
+      "F",
+      "R",
+      "B",
+      "L",
+      "R",
+      "U",
+      "U",
+      "L"
+    ]
+  },
+  {
+    "page": 4,
+    "column": 2,
+    "y": 737.3,
+    "formula": "M U (R U R' U') M2 (U R U' r')",
+    "sourceName": "O8",
+    "id": "oll-20",
+    "yellowFaces": [
+      "F",
+      "R",
+      "B",
+      "L",
+      "U",
+      "U",
+      "U",
+      "U"
+    ]
+  }
+]

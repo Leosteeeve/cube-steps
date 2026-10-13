@@ -35,9 +35,17 @@ try {
     const { puzzles } = await import('cubing/puzzles');
     const { KPattern } = await import('cubing/kpuzzle');
     const kpuzzle = await puzzles['3x3x3'].kpuzzle();
-    const placements = JSON.parse(
-      await readFile(new URL('./data/f2l-placements.json', import.meta.url), 'utf8'),
-    ) as Omit<CaseFixture, 'setup' | 'holdingMoves'>[];
+    const placements: Omit<CaseFixture, 'setup' | 'holdingMoves'>[] = [];
+    for (const family of ['f2l', 'oll', 'pll']) {
+      const text = await readFile(
+        new URL(`./data/${family}-placements.json`, import.meta.url),
+        'utf8',
+      ).catch((error: NodeJS.ErrnoException) => {
+        if (error.code === 'ENOENT') return '[]';
+        throw error;
+      });
+      placements.push(...JSON.parse(text));
+    }
     let count = 0;
     for (const fixture of placements) {
       let setup = existing[fixture.id]?.setup;

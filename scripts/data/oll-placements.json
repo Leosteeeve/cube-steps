@@ -1,0 +1,5246 @@
+[
+  {
+    "id": "oll-26/u0",
+    "caseId": "oll-26",
+    "initial": {
+      "data": {
+        "EDGES": {
+          "pieces": [
+            4,
+            7,
+            6,
+            5,
+            0,
+            3,
+            2,
+            1,
+            9,
+            8,
+            11,
+            10
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CORNERS": {
+          "pieces": [
+            5,
+            6,
+            7,
+            4,
+            3,
+            0,
+            1,
+            2
+          ],
+          "orientation": [
+            1,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CENTERS": {
+          "pieces": [
+            5,
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "orientationMod": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "protectedIds": [
+      "UFR",
+      "URB",
+      "UBL",
+      "ULF"
+    ]
+  },
+  {
+    "id": "oll-21/u0",
+    "caseId": "oll-21",
+    "initial": {
+      "data": {
+        "EDGES": {
+          "pieces": [
+            4,
+            7,
+            6,
+            5,
+            0,
+            3,
+            2,
+            1,
+            9,
+            8,
+            11,
+            10
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CORNERS": {
+          "pieces": [
+            5,
+            6,
+            7,
+            4,
+            3,
+            0,
+            1,
+            2
+          ],
+          "orientation": [
+            2,
+            1,
+            2,
+            1,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CENTERS": {
+          "pieces": [
+            5,
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "orientationMod": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "protectedIds": [
+      "UFR",
+      "URB",
+      "UBL",
+      "ULF"
+    ]
+  },
+  {
+    "id": "oll-24/u0",
+    "caseId": "oll-24",
+    "initial": {
+      "data": {
+        "EDGES": {
+          "pieces": [
+            4,
+            7,
+            6,
+            5,
+            0,
+            3,
+            2,
+            1,
+            9,
+            8,
+            11,
+            10
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CORNERS": {
+          "pieces": [
+            5,
+            6,
+            7,
+            4,
+            3,
+            0,
+            1,
+            2
+          ],
+          "orientation": [
+            0,
+            0,
+            2,
+            1,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CENTERS": {
+          "pieces": [
+            5,
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "orientationMod": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "protectedIds": [
+      "UFR",
+      "URB",
+      "UBL",
+      "ULF"
+    ]
+  },
+  {
+    "id": "oll-23/u0",
+    "caseId": "oll-23",
+    "initial": {
+      "data": {
+        "EDGES": {
+          "pieces": [
+            4,
+            7,
+            6,
+            5,
+            0,
+            3,
+            2,
+            1,
+            9,
+            8,
+            11,
+            10
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CORNERS": {
+          "pieces": [
+            5,
+            6,
+            7,
+            4,
+            3,
+            0,
+            1,
+            2
+          ],
+          "orientation": [
+            2,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CENTERS": {
+          "pieces": [
+            5,
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "orientationMod": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "protectedIds": [
+      "UFR",
+      "URB",
+      "UBL",
+      "ULF"
+    ]
+  },
+  {
+    "id": "oll-33/u0",
+    "caseId": "oll-33",
+    "initial": {
+      "data": {
+        "EDGES": {
+          "pieces": [
+            4,
+            7,
+            6,
+            5,
+            0,
+            3,
+            2,
+            1,
+            9,
+            8,
+            11,
+            10
+          ],
+          "orientation": [
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CORNERS": {
+          "pieces": [
+            5,
+            6,
+            7,
+            4,
+            3,
+            0,
+            1,
+            2
+          ],
+          "orientation": [
+            0,
+            0,
+            2,
+            1,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CENTERS": {
+          "pieces": [
+            5,
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "orientationMod": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "protectedIds": [
+      "UFR",
+      "URB",
+      "UBL",
+      "ULF"
+    ]
+  },
+  {
+    "id": "oll-27/u0",
+    "caseId": "oll-27",
+    "initial": {
+      "data": {
+        "EDGES": {
+          "pieces": [
+            4,
+            7,
+            6,
+            5,
+            0,
+            3,
+            2,
+            1,
+            9,
+            8,
+            11,
+            10
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CORNERS": {
+          "pieces": [
+            5,
+            6,
+            7,
+            4,
+            3,
+            0,
+            1,
+            2
+          ],
+          "orientation": [
+            2,
+            2,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CENTERS": {
+          "pieces": [
+            5,
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "orientationMod": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "protectedIds": [
+      "UFR",
+      "URB",
+      "UBL",
+      "ULF"
+    ]
+  },
+  {
+    "id": "oll-22/u0",
+    "caseId": "oll-22",
+    "initial": {
+      "data": {
+        "EDGES": {
+          "pieces": [
+            4,
+            7,
+            6,
+            5,
+            0,
+            3,
+            2,
+            1,
+            9,
+            8,
+            11,
+            10
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CORNERS": {
+          "pieces": [
+            5,
+            6,
+            7,
+            4,
+            3,
+            0,
+            1,
+            2
+          ],
+          "orientation": [
+            2,
+            1,
+            1,
+            2,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CENTERS": {
+          "pieces": [
+            5,
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "orientationMod": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "protectedIds": [
+      "UFR",
+      "URB",
+      "UBL",
+      "ULF"
+    ]
+  },
+  {
+    "id": "oll-25/u0",
+    "caseId": "oll-25",
+    "initial": {
+      "data": {
+        "EDGES": {
+          "pieces": [
+            4,
+            7,
+            6,
+            5,
+            0,
+            3,
+            2,
+            1,
+            9,
+            8,
+            11,
+            10
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CORNERS": {
+          "pieces": [
+            5,
+            6,
+            7,
+            4,
+            3,
+            0,
+            1,
+            2
+          ],
+          "orientation": [
+            0,
+            2,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CENTERS": {
+          "pieces": [
+            5,
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "orientationMod": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "protectedIds": [
+      "UFR",
+      "URB",
+      "UBL",
+      "ULF"
+    ]
+  },
+  {
+    "id": "oll-45/u0",
+    "caseId": "oll-45",
+    "initial": {
+      "data": {
+        "EDGES": {
+          "pieces": [
+            4,
+            7,
+            6,
+            5,
+            0,
+            3,
+            2,
+            1,
+            9,
+            8,
+            11,
+            10
+          ],
+          "orientation": [
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CORNERS": {
+          "pieces": [
+            5,
+            6,
+            7,
+            4,
+            3,
+            0,
+            1,
+            2
+          ],
+          "orientation": [
+            0,
+            0,
+            1,
+            2,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CENTERS": {
+          "pieces": [
+            5,
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "orientationMod": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "protectedIds": [
+      "UFR",
+      "URB",
+      "UBL",
+      "ULF"
+    ]
+  },
+  {
+    "id": "oll-05/u0",
+    "caseId": "oll-05",
+    "initial": {
+      "data": {
+        "EDGES": {
+          "pieces": [
+            4,
+            7,
+            6,
+            5,
+            0,
+            3,
+            2,
+            1,
+            9,
+            8,
+            11,
+            10
+          ],
+          "orientation": [
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CORNERS": {
+          "pieces": [
+            5,
+            6,
+            7,
+            4,
+            3,
+            0,
+            1,
+            2
+          ],
+          "orientation": [
+            0,
+            2,
+            2,
+            2,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CENTERS": {
+          "pieces": [
+            5,
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "orientationMod": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "protectedIds": [
+      "UFR",
+      "URB",
+      "UBL",
+      "ULF"
+    ]
+  },
+  {
+    "id": "oll-34/u0",
+    "caseId": "oll-34",
+    "initial": {
+      "data": {
+        "EDGES": {
+          "pieces": [
+            4,
+            7,
+            6,
+            5,
+            0,
+            3,
+            2,
+            1,
+            9,
+            8,
+            11,
+            10
+          ],
+          "orientation": [
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CORNERS": {
+          "pieces": [
+            5,
+            6,
+            7,
+            4,
+            3,
+            0,
+            1,
+            2
+          ],
+          "orientation": [
+            0,
+            2,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CENTERS": {
+          "pieces": [
+            5,
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "orientationMod": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "protectedIds": [
+      "UFR",
+      "URB",
+      "UBL",
+      "ULF"
+    ]
+  },
+  {
+    "id": "oll-36/u0",
+    "caseId": "oll-36",
+    "initial": {
+      "data": {
+        "EDGES": {
+          "pieces": [
+            4,
+            7,
+            6,
+            5,
+            0,
+            3,
+            2,
+            1,
+            9,
+            8,
+            11,
+            10
+          ],
+          "orientation": [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CORNERS": {
+          "pieces": [
+            5,
+            6,
+            7,
+            4,
+            3,
+            0,
+            1,
+            2
+          ],
+          "orientation": [
+            0,
+            2,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CENTERS": {
+          "pieces": [
+            5,
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "orientationMod": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "protectedIds": [
+      "UFR",
+      "URB",
+      "UBL",
+      "ULF"
+    ]
+  },
+  {
+    "id": "oll-28/u0",
+    "caseId": "oll-28",
+    "initial": {
+      "data": {
+        "EDGES": {
+          "pieces": [
+            4,
+            7,
+            6,
+            5,
+            0,
+            3,
+            2,
+            1,
+            9,
+            8,
+            11,
+            10
+          ],
+          "orientation": [
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CORNERS": {
+          "pieces": [
+            5,
+            6,
+            7,
+            4,
+            3,
+            0,
+            1,
+            2
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CENTERS": {
+          "pieces": [
+            5,
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "orientationMod": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "protectedIds": [
+      "UFR",
+      "URB",
+      "UBL",
+      "ULF"
+    ]
+  },
+  {
+    "id": "oll-31/u0",
+    "caseId": "oll-31",
+    "initial": {
+      "data": {
+        "EDGES": {
+          "pieces": [
+            4,
+            7,
+            6,
+            5,
+            0,
+            3,
+            2,
+            1,
+            9,
+            8,
+            11,
+            10
+          ],
+          "orientation": [
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CORNERS": {
+          "pieces": [
+            5,
+            6,
+            7,
+            4,
+            3,
+            0,
+            1,
+            2
+          ],
+          "orientation": [
+            0,
+            0,
+            2,
+            1,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CENTERS": {
+          "pieces": [
+            5,
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "orientationMod": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "protectedIds": [
+      "UFR",
+      "URB",
+      "UBL",
+      "ULF"
+    ]
+  },
+  {
+    "id": "oll-43/u0",
+    "caseId": "oll-43",
+    "initial": {
+      "data": {
+        "EDGES": {
+          "pieces": [
+            4,
+            7,
+            6,
+            5,
+            0,
+            3,
+            2,
+            1,
+            9,
+            8,
+            11,
+            10
+          ],
+          "orientation": [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CORNERS": {
+          "pieces": [
+            5,
+            6,
+            7,
+            4,
+            3,
+            0,
+            1,
+            2
+          ],
+          "orientation": [
+            1,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CENTERS": {
+          "pieces": [
+            5,
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "orientationMod": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "protectedIds": [
+      "UFR",
+      "URB",
+      "UBL",
+      "ULF"
+    ]
+  },
+  {
+    "id": "oll-06/u0",
+    "caseId": "oll-06",
+    "initial": {
+      "data": {
+        "EDGES": {
+          "pieces": [
+            4,
+            7,
+            6,
+            5,
+            0,
+            3,
+            2,
+            1,
+            9,
+            8,
+            11,
+            10
+          ],
+          "orientation": [
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CORNERS": {
+          "pieces": [
+            5,
+            6,
+            7,
+            4,
+            3,
+            0,
+            1,
+            2
+          ],
+          "orientation": [
+            1,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CENTERS": {
+          "pieces": [
+            5,
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "orientationMod": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "protectedIds": [
+      "UFR",
+      "URB",
+      "UBL",
+      "ULF"
+    ]
+  },
+  {
+    "id": "oll-46/u0",
+    "caseId": "oll-46",
+    "initial": {
+      "data": {
+        "EDGES": {
+          "pieces": [
+            4,
+            7,
+            6,
+            5,
+            0,
+            3,
+            2,
+            1,
+            9,
+            8,
+            11,
+            10
+          ],
+          "orientation": [
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CORNERS": {
+          "pieces": [
+            5,
+            6,
+            7,
+            4,
+            3,
+            0,
+            1,
+            2
+          ],
+          "orientation": [
+            1,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CENTERS": {
+          "pieces": [
+            5,
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "orientationMod": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "protectedIds": [
+      "UFR",
+      "URB",
+      "UBL",
+      "ULF"
+    ]
+  },
+  {
+    "id": "oll-38/u0",
+    "caseId": "oll-38",
+    "initial": {
+      "data": {
+        "EDGES": {
+          "pieces": [
+            4,
+            7,
+            6,
+            5,
+            0,
+            3,
+            2,
+            1,
+            9,
+            8,
+            11,
+            10
+          ],
+          "orientation": [
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CORNERS": {
+          "pieces": [
+            5,
+            6,
+            7,
+            4,
+            3,
+            0,
+            1,
+            2
+          ],
+          "orientation": [
+            1,
+            0,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CENTERS": {
+          "pieces": [
+            5,
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "orientationMod": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "protectedIds": [
+      "UFR",
+      "URB",
+      "UBL",
+      "ULF"
+    ]
+  },
+  {
+    "id": "oll-57/u0",
+    "caseId": "oll-57",
+    "initial": {
+      "data": {
+        "EDGES": {
+          "pieces": [
+            4,
+            7,
+            6,
+            5,
+            0,
+            3,
+            2,
+            1,
+            9,
+            8,
+            11,
+            10
+          ],
+          "orientation": [
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CORNERS": {
+          "pieces": [
+            5,
+            6,
+            7,
+            4,
+            3,
+            0,
+            1,
+            2
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CENTERS": {
+          "pieces": [
+            5,
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "orientationMod": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "protectedIds": [
+      "UFR",
+      "URB",
+      "UBL",
+      "ULF"
+    ]
+  },
+  {
+    "id": "oll-32/u0",
+    "caseId": "oll-32",
+    "initial": {
+      "data": {
+        "EDGES": {
+          "pieces": [
+            4,
+            7,
+            6,
+            5,
+            0,
+            3,
+            2,
+            1,
+            9,
+            8,
+            11,
+            10
+          ],
+          "orientation": [
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CORNERS": {
+          "pieces": [
+            5,
+            6,
+            7,
+            4,
+            3,
+            0,
+            1,
+            2
+          ],
+          "orientation": [
+            0,
+            0,
+            2,
+            1,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CENTERS": {
+          "pieces": [
+            5,
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "orientationMod": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "protectedIds": [
+      "UFR",
+      "URB",
+      "UBL",
+      "ULF"
+    ]
+  },
+  {
+    "id": "oll-44/u0",
+    "caseId": "oll-44",
+    "initial": {
+      "data": {
+        "EDGES": {
+          "pieces": [
+            4,
+            7,
+            6,
+            5,
+            0,
+            3,
+            2,
+            1,
+            9,
+            8,
+            11,
+            10
+          ],
+          "orientation": [
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CORNERS": {
+          "pieces": [
+            5,
+            6,
+            7,
+            4,
+            3,
+            0,
+            1,
+            2
+          ],
+          "orientation": [
+            0,
+            0,
+            1,
+            2,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CENTERS": {
+          "pieces": [
+            5,
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "orientationMod": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "protectedIds": [
+      "UFR",
+      "URB",
+      "UBL",
+      "ULF"
+    ]
+  },
+  {
+    "id": "oll-51/u0",
+    "caseId": "oll-51",
+    "initial": {
+      "data": {
+        "EDGES": {
+          "pieces": [
+            4,
+            7,
+            6,
+            5,
+            0,
+            3,
+            2,
+            1,
+            9,
+            8,
+            11,
+            10
+          ],
+          "orientation": [
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CORNERS": {
+          "pieces": [
+            5,
+            6,
+            7,
+            4,
+            3,
+            0,
+            1,
+            2
+          ],
+          "orientation": [
+            2,
+            1,
+            1,
+            2,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CENTERS": {
+          "pieces": [
+            5,
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "orientationMod": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "protectedIds": [
+      "UFR",
+      "URB",
+      "UBL",
+      "ULF"
+    ]
+  },
+  {
+    "id": "oll-52/u0",
+    "caseId": "oll-52",
+    "initial": {
+      "data": {
+        "EDGES": {
+          "pieces": [
+            4,
+            7,
+            6,
+            5,
+            0,
+            3,
+            2,
+            1,
+            9,
+            8,
+            11,
+            10
+          ],
+          "orientation": [
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CORNERS": {
+          "pieces": [
+            5,
+            6,
+            7,
+            4,
+            3,
+            0,
+            1,
+            2
+          ],
+          "orientation": [
+            1,
+            2,
+            2,
+            1,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CENTERS": {
+          "pieces": [
+            5,
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "orientationMod": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "protectedIds": [
+      "UFR",
+      "URB",
+      "UBL",
+      "ULF"
+    ]
+  },
+  {
+    "id": "oll-09/u0",
+    "caseId": "oll-09",
+    "initial": {
+      "data": {
+        "EDGES": {
+          "pieces": [
+            4,
+            7,
+            6,
+            5,
+            0,
+            3,
+            2,
+            1,
+            9,
+            8,
+            11,
+            10
+          ],
+          "orientation": [
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CORNERS": {
+          "pieces": [
+            5,
+            6,
+            7,
+            4,
+            3,
+            0,
+            1,
+            2
+          ],
+          "orientation": [
+            0,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CENTERS": {
+          "pieces": [
+            5,
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "orientationMod": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "protectedIds": [
+      "UFR",
+      "URB",
+      "UBL",
+      "ULF"
+    ]
+  },
+  {
+    "id": "oll-35/u0",
+    "caseId": "oll-35",
+    "initial": {
+      "data": {
+        "EDGES": {
+          "pieces": [
+            4,
+            7,
+            6,
+            5,
+            0,
+            3,
+            2,
+            1,
+            9,
+            8,
+            11,
+            10
+          ],
+          "orientation": [
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CORNERS": {
+          "pieces": [
+            5,
+            6,
+            7,
+            4,
+            3,
+            0,
+            1,
+            2
+          ],
+          "orientation": [
+            0,
+            2,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CENTERS": {
+          "pieces": [
+            5,
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "orientationMod": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "protectedIds": [
+      "UFR",
+      "URB",
+      "UBL",
+      "ULF"
+    ]
+  },
+  {
+    "id": "oll-13/u0",
+    "caseId": "oll-13",
+    "initial": {
+      "data": {
+        "EDGES": {
+          "pieces": [
+            4,
+            7,
+            6,
+            5,
+            0,
+            3,
+            2,
+            1,
+            9,
+            8,
+            11,
+            10
+          ],
+          "orientation": [
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CORNERS": {
+          "pieces": [
+            5,
+            6,
+            7,
+            4,
+            3,
+            0,
+            1,
+            2
+          ],
+          "orientation": [
+            2,
+            2,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CENTERS": {
+          "pieces": [
+            5,
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "orientationMod": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "protectedIds": [
+      "UFR",
+      "URB",
+      "UBL",
+      "ULF"
+    ]
+  },
+  {
+    "id": "oll-16/u0",
+    "caseId": "oll-16",
+    "initial": {
+      "data": {
+        "EDGES": {
+          "pieces": [
+            4,
+            7,
+            6,
+            5,
+            0,
+            3,
+            2,
+            1,
+            9,
+            8,
+            11,
+            10
+          ],
+          "orientation": [
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CORNERS": {
+          "pieces": [
+            5,
+            6,
+            7,
+            4,
+            3,
+            0,
+            1,
+            2
+          ],
+          "orientation": [
+            1,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CENTERS": {
+          "pieces": [
+            5,
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "orientationMod": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "protectedIds": [
+      "UFR",
+      "URB",
+      "UBL",
+      "ULF"
+    ]
+  },
+  {
+    "id": "oll-29/u0",
+    "caseId": "oll-29",
+    "initial": {
+      "data": {
+        "EDGES": {
+          "pieces": [
+            4,
+            7,
+            6,
+            5,
+            0,
+            3,
+            2,
+            1,
+            9,
+            8,
+            11,
+            10
+          ],
+          "orientation": [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CORNERS": {
+          "pieces": [
+            5,
+            6,
+            7,
+            4,
+            3,
+            0,
+            1,
+            2
+          ],
+          "orientation": [
+            1,
+            0,
+            0,
+            2,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CENTERS": {
+          "pieces": [
+            5,
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "orientationMod": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "protectedIds": [
+      "UFR",
+      "URB",
+      "UBL",
+      "ULF"
+    ]
+  },
+  {
+    "id": "oll-41/u0",
+    "caseId": "oll-41",
+    "initial": {
+      "data": {
+        "EDGES": {
+          "pieces": [
+            4,
+            7,
+            6,
+            5,
+            0,
+            3,
+            2,
+            1,
+            9,
+            8,
+            11,
+            10
+          ],
+          "orientation": [
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CORNERS": {
+          "pieces": [
+            5,
+            6,
+            7,
+            4,
+            3,
+            0,
+            1,
+            2
+          ],
+          "orientation": [
+            0,
+            1,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CENTERS": {
+          "pieces": [
+            5,
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "orientationMod": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "protectedIds": [
+      "UFR",
+      "URB",
+      "UBL",
+      "ULF"
+    ]
+  },
+  {
+    "id": "oll-56/u0",
+    "caseId": "oll-56",
+    "initial": {
+      "data": {
+        "EDGES": {
+          "pieces": [
+            4,
+            7,
+            6,
+            5,
+            0,
+            3,
+            2,
+            1,
+            9,
+            8,
+            11,
+            10
+          ],
+          "orientation": [
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CORNERS": {
+          "pieces": [
+            5,
+            6,
+            7,
+            4,
+            3,
+            0,
+            1,
+            2
+          ],
+          "orientation": [
+            1,
+            2,
+            1,
+            2,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CENTERS": {
+          "pieces": [
+            5,
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "orientationMod": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "protectedIds": [
+      "UFR",
+      "URB",
+      "UBL",
+      "ULF"
+    ]
+  },
+  {
+    "id": "oll-55/u0",
+    "caseId": "oll-55",
+    "initial": {
+      "data": {
+        "EDGES": {
+          "pieces": [
+            4,
+            7,
+            6,
+            5,
+            0,
+            3,
+            2,
+            1,
+            9,
+            8,
+            11,
+            10
+          ],
+          "orientation": [
+            0,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CORNERS": {
+          "pieces": [
+            5,
+            6,
+            7,
+            4,
+            3,
+            0,
+            1,
+            2
+          ],
+          "orientation": [
+            1,
+            2,
+            1,
+            2,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CENTERS": {
+          "pieces": [
+            5,
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "orientationMod": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "protectedIds": [
+      "UFR",
+      "URB",
+      "UBL",
+      "ULF"
+    ]
+  },
+  {
+    "id": "oll-10/u0",
+    "caseId": "oll-10",
+    "initial": {
+      "data": {
+        "EDGES": {
+          "pieces": [
+            4,
+            7,
+            6,
+            5,
+            0,
+            3,
+            2,
+            1,
+            9,
+            8,
+            11,
+            10
+          ],
+          "orientation": [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CORNERS": {
+          "pieces": [
+            5,
+            6,
+            7,
+            4,
+            3,
+            0,
+            1,
+            2
+          ],
+          "orientation": [
+            2,
+            0,
+            2,
+            2,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CENTERS": {
+          "pieces": [
+            5,
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "orientationMod": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "protectedIds": [
+      "UFR",
+      "URB",
+      "UBL",
+      "ULF"
+    ]
+  },
+  {
+    "id": "oll-37/u0",
+    "caseId": "oll-37",
+    "initial": {
+      "data": {
+        "EDGES": {
+          "pieces": [
+            4,
+            7,
+            6,
+            5,
+            0,
+            3,
+            2,
+            1,
+            9,
+            8,
+            11,
+            10
+          ],
+          "orientation": [
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CORNERS": {
+          "pieces": [
+            5,
+            6,
+            7,
+            4,
+            3,
+            0,
+            1,
+            2
+          ],
+          "orientation": [
+            0,
+            2,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CENTERS": {
+          "pieces": [
+            5,
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "orientationMod": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "protectedIds": [
+      "UFR",
+      "URB",
+      "UBL",
+      "ULF"
+    ]
+  },
+  {
+    "id": "oll-14/u0",
+    "caseId": "oll-14",
+    "initial": {
+      "data": {
+        "EDGES": {
+          "pieces": [
+            4,
+            7,
+            6,
+            5,
+            0,
+            3,
+            2,
+            1,
+            9,
+            8,
+            11,
+            10
+          ],
+          "orientation": [
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CORNERS": {
+          "pieces": [
+            5,
+            6,
+            7,
+            4,
+            3,
+            0,
+            1,
+            2
+          ],
+          "orientation": [
+            0,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CENTERS": {
+          "pieces": [
+            5,
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "orientationMod": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "protectedIds": [
+      "UFR",
+      "URB",
+      "UBL",
+      "ULF"
+    ]
+  },
+  {
+    "id": "oll-15/u0",
+    "caseId": "oll-15",
+    "initial": {
+      "data": {
+        "EDGES": {
+          "pieces": [
+            4,
+            7,
+            6,
+            5,
+            0,
+            3,
+            2,
+            1,
+            9,
+            8,
+            11,
+            10
+          ],
+          "orientation": [
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CORNERS": {
+          "pieces": [
+            5,
+            6,
+            7,
+            4,
+            3,
+            0,
+            1,
+            2
+          ],
+          "orientation": [
+            0,
+            2,
+            2,
+            2,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CENTERS": {
+          "pieces": [
+            5,
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "orientationMod": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "protectedIds": [
+      "UFR",
+      "URB",
+      "UBL",
+      "ULF"
+    ]
+  },
+  {
+    "id": "oll-30/u0",
+    "caseId": "oll-30",
+    "initial": {
+      "data": {
+        "EDGES": {
+          "pieces": [
+            4,
+            7,
+            6,
+            5,
+            0,
+            3,
+            2,
+            1,
+            9,
+            8,
+            11,
+            10
+          ],
+          "orientation": [
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CORNERS": {
+          "pieces": [
+            5,
+            6,
+            7,
+            4,
+            3,
+            0,
+            1,
+            2
+          ],
+          "orientation": [
+            2,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CENTERS": {
+          "pieces": [
+            5,
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "orientationMod": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "protectedIds": [
+      "UFR",
+      "URB",
+      "UBL",
+      "ULF"
+    ]
+  },
+  {
+    "id": "oll-42/u0",
+    "caseId": "oll-42",
+    "initial": {
+      "data": {
+        "EDGES": {
+          "pieces": [
+            4,
+            7,
+            6,
+            5,
+            0,
+            3,
+            2,
+            1,
+            9,
+            8,
+            11,
+            10
+          ],
+          "orientation": [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CORNERS": {
+          "pieces": [
+            5,
+            6,
+            7,
+            4,
+            3,
+            0,
+            1,
+            2
+          ],
+          "orientation": [
+            2,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CENTERS": {
+          "pieces": [
+            5,
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "orientationMod": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "protectedIds": [
+      "UFR",
+      "URB",
+      "UBL",
+      "ULF"
+    ]
+  },
+  {
+    "id": "oll-48/u0",
+    "caseId": "oll-48",
+    "initial": {
+      "data": {
+        "EDGES": {
+          "pieces": [
+            4,
+            7,
+            6,
+            5,
+            0,
+            3,
+            2,
+            1,
+            9,
+            8,
+            11,
+            10
+          ],
+          "orientation": [
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CORNERS": {
+          "pieces": [
+            5,
+            6,
+            7,
+            4,
+            3,
+            0,
+            1,
+            2
+          ],
+          "orientation": [
+            2,
+            1,
+            1,
+            2,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CENTERS": {
+          "pieces": [
+            5,
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "orientationMod": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "protectedIds": [
+      "UFR",
+      "URB",
+      "UBL",
+      "ULF"
+    ]
+  },
+  {
+    "id": "oll-49/u0",
+    "caseId": "oll-49",
+    "initial": {
+      "data": {
+        "EDGES": {
+          "pieces": [
+            4,
+            7,
+            6,
+            5,
+            0,
+            3,
+            2,
+            1,
+            9,
+            8,
+            11,
+            10
+          ],
+          "orientation": [
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CORNERS": {
+          "pieces": [
+            5,
+            6,
+            7,
+            4,
+            3,
+            0,
+            1,
+            2
+          ],
+          "orientation": [
+            2,
+            1,
+            1,
+            2,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CENTERS": {
+          "pieces": [
+            5,
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "orientationMod": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "protectedIds": [
+      "UFR",
+      "URB",
+      "UBL",
+      "ULF"
+    ]
+  },
+  {
+    "id": "oll-53/u0",
+    "caseId": "oll-53",
+    "initial": {
+      "data": {
+        "EDGES": {
+          "pieces": [
+            4,
+            7,
+            6,
+            5,
+            0,
+            3,
+            2,
+            1,
+            9,
+            8,
+            11,
+            10
+          ],
+          "orientation": [
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CORNERS": {
+          "pieces": [
+            5,
+            6,
+            7,
+            4,
+            3,
+            0,
+            1,
+            2
+          ],
+          "orientation": [
+            1,
+            2,
+            1,
+            2,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CENTERS": {
+          "pieces": [
+            5,
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "orientationMod": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "protectedIds": [
+      "UFR",
+      "URB",
+      "UBL",
+      "ULF"
+    ]
+  },
+  {
+    "id": "oll-07/u0",
+    "caseId": "oll-07",
+    "initial": {
+      "data": {
+        "EDGES": {
+          "pieces": [
+            4,
+            7,
+            6,
+            5,
+            0,
+            3,
+            2,
+            1,
+            9,
+            8,
+            11,
+            10
+          ],
+          "orientation": [
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CORNERS": {
+          "pieces": [
+            5,
+            6,
+            7,
+            4,
+            3,
+            0,
+            1,
+            2
+          ],
+          "orientation": [
+            2,
+            2,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CENTERS": {
+          "pieces": [
+            5,
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "orientationMod": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "protectedIds": [
+      "UFR",
+      "URB",
+      "UBL",
+      "ULF"
+    ]
+  },
+  {
+    "id": "oll-11/u0",
+    "caseId": "oll-11",
+    "initial": {
+      "data": {
+        "EDGES": {
+          "pieces": [
+            4,
+            7,
+            6,
+            5,
+            0,
+            3,
+            2,
+            1,
+            9,
+            8,
+            11,
+            10
+          ],
+          "orientation": [
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CORNERS": {
+          "pieces": [
+            5,
+            6,
+            7,
+            4,
+            3,
+            0,
+            1,
+            2
+          ],
+          "orientation": [
+            2,
+            2,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CENTERS": {
+          "pieces": [
+            5,
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "orientationMod": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "protectedIds": [
+      "UFR",
+      "URB",
+      "UBL",
+      "ULF"
+    ]
+  },
+  {
+    "id": "oll-39/u0",
+    "caseId": "oll-39",
+    "initial": {
+      "data": {
+        "EDGES": {
+          "pieces": [
+            4,
+            7,
+            6,
+            5,
+            0,
+            3,
+            2,
+            1,
+            9,
+            8,
+            11,
+            10
+          ],
+          "orientation": [
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CORNERS": {
+          "pieces": [
+            5,
+            6,
+            7,
+            4,
+            3,
+            0,
+            1,
+            2
+          ],
+          "orientation": [
+            1,
+            0,
+            2,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CENTERS": {
+          "pieces": [
+            5,
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "orientationMod": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "protectedIds": [
+      "UFR",
+      "URB",
+      "UBL",
+      "ULF"
+    ]
+  },
+  {
+    "id": "oll-01/u0",
+    "caseId": "oll-01",
+    "initial": {
+      "data": {
+        "EDGES": {
+          "pieces": [
+            4,
+            7,
+            6,
+            5,
+            0,
+            3,
+            2,
+            1,
+            9,
+            8,
+            11,
+            10
+          ],
+          "orientation": [
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CORNERS": {
+          "pieces": [
+            5,
+            6,
+            7,
+            4,
+            3,
+            0,
+            1,
+            2
+          ],
+          "orientation": [
+            1,
+            2,
+            1,
+            2,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CENTERS": {
+          "pieces": [
+            5,
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "orientationMod": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "protectedIds": [
+      "UFR",
+      "URB",
+      "UBL",
+      "ULF"
+    ]
+  },
+  {
+    "id": "oll-03/u0",
+    "caseId": "oll-03",
+    "initial": {
+      "data": {
+        "EDGES": {
+          "pieces": [
+            4,
+            7,
+            6,
+            5,
+            0,
+            3,
+            2,
+            1,
+            9,
+            8,
+            11,
+            10
+          ],
+          "orientation": [
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CORNERS": {
+          "pieces": [
+            5,
+            6,
+            7,
+            4,
+            3,
+            0,
+            1,
+            2
+          ],
+          "orientation": [
+            0,
+            2,
+            2,
+            2,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CENTERS": {
+          "pieces": [
+            5,
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "orientationMod": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "protectedIds": [
+      "UFR",
+      "URB",
+      "UBL",
+      "ULF"
+    ]
+  },
+  {
+    "id": "oll-18/u0",
+    "caseId": "oll-18",
+    "initial": {
+      "data": {
+        "EDGES": {
+          "pieces": [
+            4,
+            7,
+            6,
+            5,
+            0,
+            3,
+            2,
+            1,
+            9,
+            8,
+            11,
+            10
+          ],
+          "orientation": [
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CORNERS": {
+          "pieces": [
+            5,
+            6,
+            7,
+            4,
+            3,
+            0,
+            1,
+            2
+          ],
+          "orientation": [
+            2,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CENTERS": {
+          "pieces": [
+            5,
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "orientationMod": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "protectedIds": [
+      "UFR",
+      "URB",
+      "UBL",
+      "ULF"
+    ]
+  },
+  {
+    "id": "oll-17/u0",
+    "caseId": "oll-17",
+    "initial": {
+      "data": {
+        "EDGES": {
+          "pieces": [
+            4,
+            7,
+            6,
+            5,
+            0,
+            3,
+            2,
+            1,
+            9,
+            8,
+            11,
+            10
+          ],
+          "orientation": [
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CORNERS": {
+          "pieces": [
+            5,
+            6,
+            7,
+            4,
+            3,
+            0,
+            1,
+            2
+          ],
+          "orientation": [
+            0,
+            1,
+            0,
+            2,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CENTERS": {
+          "pieces": [
+            5,
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "orientationMod": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "protectedIds": [
+      "UFR",
+      "URB",
+      "UBL",
+      "ULF"
+    ]
+  },
+  {
+    "id": "oll-47/u0",
+    "caseId": "oll-47",
+    "initial": {
+      "data": {
+        "EDGES": {
+          "pieces": [
+            4,
+            7,
+            6,
+            5,
+            0,
+            3,
+            2,
+            1,
+            9,
+            8,
+            11,
+            10
+          ],
+          "orientation": [
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CORNERS": {
+          "pieces": [
+            5,
+            6,
+            7,
+            4,
+            3,
+            0,
+            1,
+            2
+          ],
+          "orientation": [
+            1,
+            2,
+            2,
+            1,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CENTERS": {
+          "pieces": [
+            5,
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "orientationMod": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "protectedIds": [
+      "UFR",
+      "URB",
+      "UBL",
+      "ULF"
+    ]
+  },
+  {
+    "id": "oll-50/u0",
+    "caseId": "oll-50",
+    "initial": {
+      "data": {
+        "EDGES": {
+          "pieces": [
+            4,
+            7,
+            6,
+            5,
+            0,
+            3,
+            2,
+            1,
+            9,
+            8,
+            11,
+            10
+          ],
+          "orientation": [
+            0,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CORNERS": {
+          "pieces": [
+            5,
+            6,
+            7,
+            4,
+            3,
+            0,
+            1,
+            2
+          ],
+          "orientation": [
+            2,
+            1,
+            1,
+            2,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CENTERS": {
+          "pieces": [
+            5,
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "orientationMod": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "protectedIds": [
+      "UFR",
+      "URB",
+      "UBL",
+      "ULF"
+    ]
+  },
+  {
+    "id": "oll-54/u0",
+    "caseId": "oll-54",
+    "initial": {
+      "data": {
+        "EDGES": {
+          "pieces": [
+            4,
+            7,
+            6,
+            5,
+            0,
+            3,
+            2,
+            1,
+            9,
+            8,
+            11,
+            10
+          ],
+          "orientation": [
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CORNERS": {
+          "pieces": [
+            5,
+            6,
+            7,
+            4,
+            3,
+            0,
+            1,
+            2
+          ],
+          "orientation": [
+            1,
+            2,
+            1,
+            2,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CENTERS": {
+          "pieces": [
+            5,
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "orientationMod": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "protectedIds": [
+      "UFR",
+      "URB",
+      "UBL",
+      "ULF"
+    ]
+  },
+  {
+    "id": "oll-08/u0",
+    "caseId": "oll-08",
+    "initial": {
+      "data": {
+        "EDGES": {
+          "pieces": [
+            4,
+            7,
+            6,
+            5,
+            0,
+            3,
+            2,
+            1,
+            9,
+            8,
+            11,
+            10
+          ],
+          "orientation": [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CORNERS": {
+          "pieces": [
+            5,
+            6,
+            7,
+            4,
+            3,
+            0,
+            1,
+            2
+          ],
+          "orientation": [
+            1,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CENTERS": {
+          "pieces": [
+            5,
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "orientationMod": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "protectedIds": [
+      "UFR",
+      "URB",
+      "UBL",
+      "ULF"
+    ]
+  },
+  {
+    "id": "oll-12/u0",
+    "caseId": "oll-12",
+    "initial": {
+      "data": {
+        "EDGES": {
+          "pieces": [
+            4,
+            7,
+            6,
+            5,
+            0,
+            3,
+            2,
+            1,
+            9,
+            8,
+            11,
+            10
+          ],
+          "orientation": [
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CORNERS": {
+          "pieces": [
+            5,
+            6,
+            7,
+            4,
+            3,
+            0,
+            1,
+            2
+          ],
+          "orientation": [
+            1,
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CENTERS": {
+          "pieces": [
+            5,
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "orientationMod": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "protectedIds": [
+      "UFR",
+      "URB",
+      "UBL",
+      "ULF"
+    ]
+  },
+  {
+    "id": "oll-40/u0",
+    "caseId": "oll-40",
+    "initial": {
+      "data": {
+        "EDGES": {
+          "pieces": [
+            4,
+            7,
+            6,
+            5,
+            0,
+            3,
+            2,
+            1,
+            9,
+            8,
+            11,
+            10
+          ],
+          "orientation": [
+            1,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CORNERS": {
+          "pieces": [
+            5,
+            6,
+            7,
+            4,
+            3,
+            0,
+            1,
+            2
+          ],
+          "orientation": [
+            0,
+            1,
+            0,
+            2,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CENTERS": {
+          "pieces": [
+            5,
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "orientationMod": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "protectedIds": [
+      "UFR",
+      "URB",
+      "UBL",
+      "ULF"
+    ]
+  },
+  {
+    "id": "oll-02/u0",
+    "caseId": "oll-02",
+    "initial": {
+      "data": {
+        "EDGES": {
+          "pieces": [
+            4,
+            7,
+            6,
+            5,
+            0,
+            3,
+            2,
+            1,
+            9,
+            8,
+            11,
+            10
+          ],
+          "orientation": [
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CORNERS": {
+          "pieces": [
+            5,
+            6,
+            7,
+            4,
+            3,
+            0,
+            1,
+            2
+          ],
+          "orientation": [
+            2,
+            1,
+            1,
+            2,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CENTERS": {
+          "pieces": [
+            5,
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "orientationMod": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "protectedIds": [
+      "UFR",
+      "URB",
+      "UBL",
+      "ULF"
+    ]
+  },
+  {
+    "id": "oll-04/u0",
+    "caseId": "oll-04",
+    "initial": {
+      "data": {
+        "EDGES": {
+          "pieces": [
+            4,
+            7,
+            6,
+            5,
+            0,
+            3,
+            2,
+            1,
+            9,
+            8,
+            11,
+            10
+          ],
+          "orientation": [
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CORNERS": {
+          "pieces": [
+            5,
+            6,
+            7,
+            4,
+            3,
+            0,
+            1,
+            2
+          ],
+          "orientation": [
+            1,
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CENTERS": {
+          "pieces": [
+            5,
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "orientationMod": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "protectedIds": [
+      "UFR",
+      "URB",
+      "UBL",
+      "ULF"
+    ]
+  },
+  {
+    "id": "oll-19/u0",
+    "caseId": "oll-19",
+    "initial": {
+      "data": {
+        "EDGES": {
+          "pieces": [
+            4,
+            7,
+            6,
+            5,
+            0,
+            3,
+            2,
+            1,
+            9,
+            8,
+            11,
+            10
+          ],
+          "orientation": [
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CORNERS": {
+          "pieces": [
+            5,
+            6,
+            7,
+            4,
+            3,
+            0,
+            1,
+            2
+          ],
+          "orientation": [
+            1,
+            0,
+            0,
+            2,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CENTERS": {
+          "pieces": [
+            5,
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "orientationMod": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "protectedIds": [
+      "UFR",
+      "URB",
+      "UBL",
+      "ULF"
+    ]
+  },
+  {
+    "id": "oll-20/u0",
+    "caseId": "oll-20",
+    "initial": {
+      "data": {
+        "EDGES": {
+          "pieces": [
+            4,
+            7,
+            6,
+            5,
+            0,
+            3,
+            2,
+            1,
+            9,
+            8,
+            11,
+            10
+          ],
+          "orientation": [
+            1,
+            1,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CORNERS": {
+          "pieces": [
+            5,
+            6,
+            7,
+            4,
+            3,
+            0,
+            1,
+            2
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "CENTERS": {
+          "pieces": [
+            5,
+            3,
+            2,
+            1,
+            4,
+            0
+          ],
+          "orientation": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "orientationMod": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        }
+      }
+    },
+    "protectedIds": [
+      "UFR",
+      "URB",
+      "UBL",
+      "ULF"
+    ]
+  }
+]

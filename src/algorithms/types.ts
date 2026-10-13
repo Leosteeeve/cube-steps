@@ -13,6 +13,11 @@ export interface CaseFixture {
 export type AlgorithmFamily = 'f2l' | 'oll' | 'pll';
 export type CaseId = string;
 export type VariantId = string;
+export interface LastLayerMatch {
+  caseId: CaseId;
+  variantId: VariantId;
+  setup: TeachingMove[];
+}
 export interface SourceReference {
   title: string;
   url: string;

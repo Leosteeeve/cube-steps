@@ -3,6 +3,7 @@ import type { CaseFixture } from './types';
 import { CASE_FIXTURES } from './data/fixtures';
 import { getAlgorithmCase } from './registry';
 import { recognizeAdvancedF2L } from '../methods/advanced/f2l/recognize';
+import { recognizeAdvancedOLL } from '../methods/advanced/recognize-oll';
 import { observeF2LPairs } from '../methods/cfop/f2l-cases';
 export function getCaseFixture(id: string): CaseFixture | undefined {
   return CASE_FIXTURES[id];
@@ -32,4 +33,11 @@ export function verifyCaseFixture(engine: CubeEngine, fixture: CaseFixture): voi
     if (!fixture.protectedIds.every((id) => pairs.some((p) => p.cornerId === id && p.solved)))
       throw new Error('Fixture does not preserve its declared completed pairs.');
   }
+  if (c.family === 'oll' && recognizeAdvancedOLL(engine, fixture.initial)?.caseId !== c.id)
+    throw new Error('Fixture does not match the selected OLL case.');
+  const protectedPairs = observeF2LPairs(engine, fixture.initial);
+  if (
+    !fixture.protectedIds.every((id) => protectedPairs.some((p) => p.cornerId === id && p.solved))
+  )
+    throw new Error('Fixture has an invalid protected pair.');
 }
