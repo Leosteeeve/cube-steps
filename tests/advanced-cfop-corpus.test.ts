@@ -33,6 +33,7 @@ function check(initial: CubeState, trace: SolveTrace) {
       expect(stage.actions.filter((a) => a.kind === 'algorithm').length).toBeLessThanOrEqual(1);
     for (const action of stage.actions) {
       expect(action.checkpoint.passed).toBe(true);
+      if (action.selection) expect(action.selection.policyVersion).toBe('f2l-human-v2');
       if (action.kind === 'algorithm')
         expect(action.moves).toEqual(
           (

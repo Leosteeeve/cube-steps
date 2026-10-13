@@ -154,7 +154,7 @@ try {
           name: `F2L ${String(index + 1).padStart(2, '0')} · ${target.slot}${name === 'no-regrip' ? ' · no regrip' : ''}`,
           moves: oriented,
           precondition: `White down. Target slot ${target.slot}. Corner ${observedCorner.slot}, white facing ${whiteFace}; edge ${observedEdge.slot}, ${referenceFace}-center sticker facing ${referenceStickerFace}. Keep this grip when starting the formula.`,
-          effect: `Complete the target pair and restore the cross and all previously completed pairs.${executionPenalty ? ' This alternative avoids the regrip but uses a less comfortable front/back face grip.' : ''}`,
+          effect: 'Complete the target pair and restore the cross and all previously completed pairs.',
           segments: [{ label: 'Pair and insert', start: 0, end: oriented.length }],
         };
         variantIds.push(variantId);

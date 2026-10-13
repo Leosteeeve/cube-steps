@@ -50,7 +50,7 @@ export function pairPlacement(
   return state;
 }
 export function canonicalTargets(engine: CubeEngine): F2LTarget[] {
-  return observeF2LPairs(engine, engine.apply(engine.solved(), ['z2'])) as F2LTarget[];
+  return [...observeF2LPairs(engine, engine.apply(engine.solved(), ['z2']))] as F2LTarget[];
 }
 export function admissiblePairPlacements(engine: CubeEngine, target: F2LTarget): CubeState[] {
   const home = CORNER_SLOTS.find(

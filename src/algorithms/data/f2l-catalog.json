@@ -1928,7 +1928,7 @@
         "L"
       ],
       "precondition": "White down. Target slot FL. Corner ULF, white facing L; edge UB, L-center sticker facing B. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -1999,7 +1999,7 @@
         "B"
       ],
       "precondition": "White down. Target slot BL. Corner UBL, white facing B; edge UR, B-center sticker facing R. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -2070,7 +2070,7 @@
         "R"
       ],
       "precondition": "White down. Target slot BR. Corner URB, white facing R; edge UF, R-center sticker facing F. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -2141,7 +2141,7 @@
         "F"
       ],
       "precondition": "White down. Target slot FR. Corner UFR, white facing F; edge UL, F-center sticker facing L. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -2222,7 +2222,7 @@
         "L"
       ],
       "precondition": "White down. Target slot FL. Corner ULF, white facing L; edge UR, L-center sticker facing R. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -2303,7 +2303,7 @@
         "B"
       ],
       "precondition": "White down. Target slot BL. Corner UBL, white facing B; edge UF, B-center sticker facing F. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -2384,7 +2384,7 @@
         "R"
       ],
       "precondition": "White down. Target slot BR. Corner URB, white facing R; edge UL, R-center sticker facing L. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -2465,7 +2465,7 @@
         "F"
       ],
       "precondition": "White down. Target slot FR. Corner UFR, white facing F; edge UB, F-center sticker facing B. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -2546,7 +2546,7 @@
         "L"
       ],
       "precondition": "White down. Target slot FL. Corner ULF, white facing L; edge UF, L-center sticker facing F. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -2627,7 +2627,7 @@
         "B"
       ],
       "precondition": "White down. Target slot BL. Corner UBL, white facing B; edge UL, B-center sticker facing L. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -2708,7 +2708,7 @@
         "R"
       ],
       "precondition": "White down. Target slot BR. Corner URB, white facing R; edge UB, R-center sticker facing B. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -2789,7 +2789,7 @@
         "F"
       ],
       "precondition": "White down. Target slot FR. Corner UFR, white facing F; edge UR, F-center sticker facing R. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -2870,7 +2870,7 @@
         "L"
       ],
       "precondition": "White down. Target slot FL. Corner ULF, white facing L; edge UL, L-center sticker facing L. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -2951,7 +2951,7 @@
         "B"
       ],
       "precondition": "White down. Target slot BL. Corner UBL, white facing B; edge UB, B-center sticker facing B. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -3032,7 +3032,7 @@
         "R"
       ],
       "precondition": "White down. Target slot BR. Corner URB, white facing R; edge UR, R-center sticker facing R. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -3113,7 +3113,7 @@
         "F"
       ],
       "precondition": "White down. Target slot FR. Corner UFR, white facing F; edge UF, F-center sticker facing F. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -3826,7 +3826,7 @@
         "L"
       ],
       "precondition": "White down. Target slot FL. Corner ULF, white facing F; edge UL, L-center sticker facing L. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -3899,7 +3899,7 @@
         "B"
       ],
       "precondition": "White down. Target slot BL. Corner UBL, white facing L; edge UB, B-center sticker facing B. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -3972,7 +3972,7 @@
         "R"
       ],
       "precondition": "White down. Target slot BR. Corner URB, white facing B; edge UR, R-center sticker facing R. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -4045,7 +4045,7 @@
         "F"
       ],
       "precondition": "White down. Target slot FR. Corner UFR, white facing R; edge UF, F-center sticker facing F. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -4742,7 +4742,7 @@
         "L"
       ],
       "precondition": "White down. Target slot FL. Corner ULF, white facing F; edge UB, L-center sticker facing B. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -4823,7 +4823,7 @@
         "B"
       ],
       "precondition": "White down. Target slot BL. Corner UBL, white facing L; edge UR, B-center sticker facing R. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -4904,7 +4904,7 @@
         "R"
       ],
       "precondition": "White down. Target slot BR. Corner URB, white facing B; edge UF, R-center sticker facing F. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -4985,7 +4985,7 @@
         "F"
       ],
       "precondition": "White down. Target slot FR. Corner UFR, white facing R; edge UL, F-center sticker facing L. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -5066,7 +5066,7 @@
         "L"
       ],
       "precondition": "White down. Target slot FL. Corner ULF, white facing F; edge UR, L-center sticker facing R. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -5147,7 +5147,7 @@
         "B"
       ],
       "precondition": "White down. Target slot BL. Corner UBL, white facing L; edge UF, B-center sticker facing F. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -5228,7 +5228,7 @@
         "R"
       ],
       "precondition": "White down. Target slot BR. Corner URB, white facing B; edge UL, R-center sticker facing L. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -5309,7 +5309,7 @@
         "F"
       ],
       "precondition": "White down. Target slot FR. Corner UFR, white facing R; edge UB, F-center sticker facing B. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -5390,7 +5390,7 @@
         "L"
       ],
       "precondition": "White down. Target slot FL. Corner ULF, white facing U; edge UB, L-center sticker facing B. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -5471,7 +5471,7 @@
         "B"
       ],
       "precondition": "White down. Target slot BL. Corner UBL, white facing U; edge UR, B-center sticker facing R. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -5552,7 +5552,7 @@
         "R"
       ],
       "precondition": "White down. Target slot BR. Corner URB, white facing U; edge UF, R-center sticker facing F. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -5633,7 +5633,7 @@
         "F"
       ],
       "precondition": "White down. Target slot FR. Corner UFR, white facing U; edge UL, F-center sticker facing L. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -5714,7 +5714,7 @@
         "L"
       ],
       "precondition": "White down. Target slot FL. Corner ULF, white facing U; edge UR, L-center sticker facing R. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -5795,7 +5795,7 @@
         "B"
       ],
       "precondition": "White down. Target slot BL. Corner UBL, white facing U; edge UF, B-center sticker facing F. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -5876,7 +5876,7 @@
         "R"
       ],
       "precondition": "White down. Target slot BR. Corner URB, white facing U; edge UL, R-center sticker facing L. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -5957,7 +5957,7 @@
         "F"
       ],
       "precondition": "White down. Target slot FR. Corner UFR, white facing U; edge UB, F-center sticker facing B. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -6037,7 +6037,7 @@
         "F'"
       ],
       "precondition": "White down. Target slot FL. Corner ULF, white facing L; edge UL, L-center sticker facing U. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -6117,7 +6117,7 @@
         "L'"
       ],
       "precondition": "White down. Target slot BL. Corner UBL, white facing B; edge UB, B-center sticker facing U. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -6197,7 +6197,7 @@
         "B'"
       ],
       "precondition": "White down. Target slot BR. Corner URB, white facing R; edge UR, R-center sticker facing U. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -6277,7 +6277,7 @@
         "R'"
       ],
       "precondition": "White down. Target slot FR. Corner UFR, white facing F; edge UF, F-center sticker facing U. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -7008,7 +7008,7 @@
         "L"
       ],
       "precondition": "White down. Target slot FL. Corner DFL, white facing L; edge UL, L-center sticker facing L. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -7087,7 +7087,7 @@
         "B"
       ],
       "precondition": "White down. Target slot BL. Corner DLB, white facing B; edge UB, B-center sticker facing B. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -7166,7 +7166,7 @@
         "R"
       ],
       "precondition": "White down. Target slot BR. Corner DBR, white facing R; edge UR, R-center sticker facing R. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -7245,7 +7245,7 @@
         "F"
       ],
       "precondition": "White down. Target slot FR. Corner DRF, white facing F; edge UF, F-center sticker facing F. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -7324,7 +7324,7 @@
         "L"
       ],
       "precondition": "White down. Target slot FL. Corner ULF, white facing U; edge FL, L-center sticker facing F. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -7403,7 +7403,7 @@
         "B"
       ],
       "precondition": "White down. Target slot BL. Corner UBL, white facing U; edge BL, B-center sticker facing L. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -7482,7 +7482,7 @@
         "R"
       ],
       "precondition": "White down. Target slot BR. Corner URB, white facing U; edge BR, R-center sticker facing B. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -7561,7 +7561,7 @@
         "F"
       ],
       "precondition": "White down. Target slot FR. Corner UFR, white facing U; edge FR, F-center sticker facing R. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -7802,7 +7802,7 @@
         "L"
       ],
       "precondition": "White down. Target slot FL. Corner ULF, white facing L; edge FL, L-center sticker facing F. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -7883,7 +7883,7 @@
         "B"
       ],
       "precondition": "White down. Target slot BL. Corner UBL, white facing B; edge BL, B-center sticker facing L. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -7964,7 +7964,7 @@
         "R"
       ],
       "precondition": "White down. Target slot BR. Corner URB, white facing R; edge BR, R-center sticker facing B. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -8045,7 +8045,7 @@
         "F"
       ],
       "precondition": "White down. Target slot FR. Corner UFR, white facing F; edge FR, F-center sticker facing R. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -8468,7 +8468,7 @@
         "L"
       ],
       "precondition": "White down. Target slot FL. Corner ULF, white facing F; edge UF, L-center sticker facing F. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -8547,7 +8547,7 @@
         "B"
       ],
       "precondition": "White down. Target slot BL. Corner UBL, white facing L; edge UL, B-center sticker facing L. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -8626,7 +8626,7 @@
         "R"
       ],
       "precondition": "White down. Target slot BR. Corner URB, white facing B; edge UB, R-center sticker facing B. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -8705,7 +8705,7 @@
         "F"
       ],
       "precondition": "White down. Target slot FR. Corner UFR, white facing R; edge UR, F-center sticker facing R. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -8784,7 +8784,7 @@
         "L"
       ],
       "precondition": "White down. Target slot FL. Corner ULF, white facing U; edge UL, L-center sticker facing L. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -8863,7 +8863,7 @@
         "B"
       ],
       "precondition": "White down. Target slot BL. Corner UBL, white facing U; edge UB, B-center sticker facing B. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -8942,7 +8942,7 @@
         "R"
       ],
       "precondition": "White down. Target slot BR. Corner URB, white facing U; edge UR, R-center sticker facing R. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -9021,7 +9021,7 @@
         "F"
       ],
       "precondition": "White down. Target slot FR. Corner UFR, white facing U; edge UF, F-center sticker facing F. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -9110,7 +9110,7 @@
         "L"
       ],
       "precondition": "White down. Target slot FL. Corner ULF, white facing U; edge UF, L-center sticker facing F. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -9199,7 +9199,7 @@
         "B"
       ],
       "precondition": "White down. Target slot BL. Corner UBL, white facing U; edge UL, B-center sticker facing L. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -9288,7 +9288,7 @@
         "R"
       ],
       "precondition": "White down. Target slot BR. Corner URB, white facing U; edge UB, R-center sticker facing B. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -9377,7 +9377,7 @@
         "F"
       ],
       "precondition": "White down. Target slot FR. Corner UFR, white facing U; edge UR, F-center sticker facing R. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -9616,7 +9616,7 @@
         "L"
       ],
       "precondition": "White down. Target slot FL. Corner DFL, white facing F; edge UL, L-center sticker facing L. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -9695,7 +9695,7 @@
         "B"
       ],
       "precondition": "White down. Target slot BL. Corner DLB, white facing L; edge UB, B-center sticker facing B. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -9774,7 +9774,7 @@
         "R"
       ],
       "precondition": "White down. Target slot BR. Corner DBR, white facing B; edge UR, R-center sticker facing R. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -9853,7 +9853,7 @@
         "F"
       ],
       "precondition": "White down. Target slot FR. Corner DRF, white facing R; edge UF, F-center sticker facing F. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -10591,7 +10591,7 @@
         "L"
       ],
       "precondition": "White down. Target slot FL. Corner DFL, white facing D; edge FL, L-center sticker facing F. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -10677,7 +10677,7 @@
         "B"
       ],
       "precondition": "White down. Target slot BL. Corner DLB, white facing D; edge BL, B-center sticker facing L. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -10763,7 +10763,7 @@
         "R"
       ],
       "precondition": "White down. Target slot BR. Corner DBR, white facing D; edge BR, R-center sticker facing B. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -10849,7 +10849,7 @@
         "F"
       ],
       "precondition": "White down. Target slot FR. Corner DRF, white facing D; edge FR, F-center sticker facing R. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -11108,7 +11108,7 @@
         "L"
       ],
       "precondition": "White down. Target slot FL. Corner DFL, white facing F; edge FL, L-center sticker facing F. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -11195,7 +11195,7 @@
         "B"
       ],
       "precondition": "White down. Target slot BL. Corner DLB, white facing L; edge BL, B-center sticker facing L. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -11282,7 +11282,7 @@
         "R"
       ],
       "precondition": "White down. Target slot BR. Corner DBR, white facing B; edge BR, R-center sticker facing B. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",
@@ -11369,7 +11369,7 @@
         "F"
       ],
       "precondition": "White down. Target slot FR. Corner DRF, white facing R; edge FR, F-center sticker facing R. Keep this grip when starting the formula.",
-      "effect": "Complete the target pair and restore the cross and all previously completed pairs. This alternative avoids the regrip but uses a less comfortable front/back face grip.",
+      "effect": "Complete the target pair and restore the cross and all previously completed pairs.",
       "segments": [
         {
           "label": "Pair and insert",

@@ -25,7 +25,15 @@ export function enumerateF2LPreparations(
     );
   if (current.solved) return [];
   const seen = new Set<string>();
-  const key = (s: CubeState) => JSON.stringify(s.data);
+  const keys = new WeakMap<CubeState, string>();
+  const key = (s: CubeState) => {
+    let k = keys.get(s);
+    if (!k) {
+      k = JSON.stringify(s.data);
+      keys.set(s, k);
+    }
+    return k;
+  };
   function register(s: CubeState) {
     const k = key(s);
     if (!seen.has(k)) {

@@ -1,0 +1,49 @@
+{
+  "build": {
+    "commit": "1a7e797aadc4a39f3df40bcfc1e932c27449246c",
+    "release": "V1.3 Advanced CFOP preview",
+    "teachingStatus": {
+      "lbl": "accepted",
+      "cfop-beginner": "accepted",
+      "cfop-advanced": "preview"
+    }
+  },
+  "environment": {
+    "browser": "156.0.8078.4",
+    "cpu": "AMD Ryzen 9 8945HX with Radeon Graphics",
+    "platform": "win32",
+    "release": "10.0.26200",
+    "node": "v24.18.0",
+    "device": "Windows development desktop; no mobile performance inference"
+  },
+  "definitions": {
+    "cold": "Fresh Chromium context, navigation performance origin to successful worker reply; includes entering the fixed scramble and clicking Explain.",
+    "warm": "Worker postMessage to its successful reply, reusing browser HTTP cache; each request still uses a disposable worker.",
+    "cancellation": "Immediate method switch to worker termination."
+  },
+  "coldNavigationMs": {
+    "mean": 339.93000000119207,
+    "median": 316.80000001192093,
+    "p95": 416.89999997615814
+  },
+  "coldWorkerMs": {
+    "mean": 167.6800000011921,
+    "median": 148.5,
+    "p95": 249.80000001192093
+  },
+  "warmWorkerMs": {
+    "mean": 154.65599999904632,
+    "median": 150.69999998807907,
+    "p95": 240.19999998807907
+  },
+  "cancellationMs": {
+    "mean": 0.6400000035762787,
+    "median": 0.6000000238418579,
+    "p95": 0.800000011920929
+  },
+  "targets": {
+    "coldP95Ms": 5000,
+    "warmP95Ms": 2000
+  },
+  "sourceNote": "Local production build of Task 4 changes based on 1a7e797; build metadata predates the uncommitted changes. Final deployed commit is verified separately."
+}
