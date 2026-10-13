@@ -9,10 +9,14 @@ import { HomePage } from './HomePage';
 import { RouteQuiz } from './learning/RouteQuiz';
 import { useClubProgress } from './learning/use-club-progress';
 import { lessonRoute, methodRoute } from '../app/routes';
+import { createTimerRepository } from './timer/repository';
+const TimerPage = lazy(() => import('./timer/TimerPage').then((m) => ({ default: m.TimerPage })));
 const ClubLearnPage = lazy(() =>
   import('./learning/ClubLearnPage').then((m) => ({ default: m.ClubLearnPage })),
 );
 export function ClubApp() {
+  const [timerRepository] = useState(() => createTimerRepository());
+  useEffect(() => () => timerRepository.dispose(), [timerRepository]);
   const { progress } = useClubProgress();
   const [route, setRoute] = useState(() => parseClubRoute(location.hash));
   useEffect(() => {
@@ -21,7 +25,7 @@ export function ClubApp() {
     return () => removeEventListener('hashchange', change);
   }, []);
   const { engine, error, retry } = useCubeEngine(
-    !['home', 'quiz', 'timer', 'not-found'].includes(route.kind),
+    !['home', 'quiz', 'not-found'].includes(route.kind),
   );
   return (
     <>
@@ -37,7 +41,7 @@ export function ClubApp() {
       </a>
       <ClubHeader
         active={route.kind === 'home' ? 'home' : route.kind === 'timer' ? 'timer' : 'learn'}
-        timerAvailable={false}
+        timerAvailable={true}
       />
       <main id="main" tabIndex={-1}>
         {!['home', 'quiz', 'timer'].includes(route.kind) && (
@@ -73,11 +77,6 @@ export function ClubApp() {
           />
         ) : route.kind === 'quiz' ? (
           <RouteQuiz />
-        ) : route.kind === 'timer' ? (
-          <section>
-            <h1>Timer is being prepared</h1>
-            <a href="#/">Back home</a>
-          </section>
         ) : route.kind === 'not-found' ? (
           <section>
             <h1>Page not found.</h1>
@@ -96,7 +95,11 @@ export function ClubApp() {
                 {getMethod(route.method).teachingStatus === 'preview' ? ' · Preview' : ''}
               </p>
             )}
-            {route.kind === 'learn' ? (
+            {route.kind === 'timer' ? (
+              <Suspense fallback={<p role="status">Loading your practice space…</p>}>
+                <TimerPage engine={engine} repository={timerRepository} />
+              </Suspense>
+            ) : route.kind === 'learn' ? (
               <Suspense
                 fallback={
                   <p role="status" className="loading-panel">

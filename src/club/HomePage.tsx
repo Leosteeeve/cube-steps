@@ -119,14 +119,14 @@ export function HomePage({ resumeHref }: { resumeHref?: string }) {
               through each turn together.
             </p>
           </a>
-          <a href="#/practice">
+          <a href="#/timer">
             <small>03 / PRACTICE</small>
             <span aria-hidden="true">↗</span>
             <h3>A little better, each time</h3>
             <p>
-              Choose a small group of formulas.
+              Scramble, time, and see your progress.
               <br />
-              Recognize, reveal, and try again.
+              Your own space to keep practicing.
             </p>
           </a>
         </div>
