@@ -26,7 +26,7 @@ export function TimerPage({
     active = ['inspection', 'arming', 'running', 'stopped'].includes(state.phase);
   const last = useMemo(() => orderedAttempts(history.attempts).at(-1), [history.attempts]);
   return (
-    <div className="club-timer">
+    <div className="club-timer" data-phase={state.phase}>
       <div className="timer-title">
         <div>
           <p className="club-kicker">● YOUR PERSONAL PRACTICE SPACE</p>

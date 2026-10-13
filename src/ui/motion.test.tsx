@@ -31,6 +31,20 @@ function Probe() {
     </>
   );
 }
+it('resynchronizes a device preference that changes between initial render and subscription', () => {
+  let calls = 0;
+  vi.stubGlobal('matchMedia', () => ({
+    matches: ++calls > 1,
+    addEventListener() {},
+    removeEventListener() {},
+  }));
+  render(
+    <MotionProvider edition="club">
+      <Probe />
+    </MotionProvider>,
+  );
+  expect(screen.getByRole('status')).toHaveTextContent('reduced');
+});
 it('follows the system while local Off persists independently for each edition', () => {
   const first = render(
     <MotionProvider edition="club">

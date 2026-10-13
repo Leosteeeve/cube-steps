@@ -2,7 +2,7 @@
 
 Learn to solve the 3×3 cube with step-by-step animations and explained algorithms, starting with the beginner's method.
 
-**Status: V1.3 adds Advanced CFOP and selected-case practice as a preview. Advanced physical-cube teaching acceptance is pending. LBL and Beginner CFOP retain their existing acceptance.**
+**Status: Advanced CFOP and its revised F2L holding strategy are a preview pending renewed physical-cube acceptance. LBL and Beginner CFOP retain their existing acceptance. A separate club edition adds guided learning and a personal timer.**
 
 [Open CubeSteps](https://leosteeeve.github.io/cube-steps/) — use it directly in your browser, with no account or installation.
 
@@ -12,7 +12,7 @@ Learn to solve the 3×3 cube with step-by-step animations and explained algorith
 - A daisy-first white cross: collect four white petals around yellow, match each petal's side color to its center, then turn that face 180° to send it down to white.
 - A complete teaching solution for entered face colors, random scrambles, or pasted six-face moves.
 - Beginner CFOP: a direct bottom cross, intuitive corner-edge pairing, two-look OLL, two-look PLL, and final upper-face alignment (AUF).
-- Advanced CFOP: a guaranteed shortest white cross, 41 formula-based F2L cases with pair selection, all 57 OLL cases, all 21 PLL cases, and final AUF. F2L selection considers turns, rotations and the next pair; it does not promise a globally shortest F2L.
+- Advanced CFOP: a guaranteed shortest white cross, 41 formula-based F2L cases with pair selection, all 57 OLL cases, all 21 PLL cases, and final AUF. F2L prioritizes visible target pairs and comfortable formulas, using explicit physical regrips when helpful, then reduces unnecessary turns and rotations. It does not promise a globally shortest F2L.
 - 23 verified Beginner CFOP practice examples, including five F2L families, ten OLL cases and six PLL cases. Each unsolved last-layer look uses one recognized formula.
 - A shared library with recognition diagrams, holding instructions, formula segments, references and alternative demonstrations. Practice selected cases without a timer or scores; reveal the answer when ready.
 - Switch methods without losing the scramble, painted draft, selected face, or current color validation. Switching clears the old solution and cancels pending work; solve again explicitly.
@@ -66,6 +66,18 @@ npm run preview
 ```
 
 The production output is `dist/`, configured for the GitHub Pages path `/cube-steps/`. Serve it over HTTP; opening `index.html` directly does not support module workers. A local build does not publish the site.
+
+## Community edition
+
+[Club member entrance](https://leosteeeve.github.io/cube-steps/club/) · [Personal timer](https://leosteeeve.github.io/cube-steps/club/#/timer)
+
+This separate edition is intended for our club members. Please share the link within the club rather than promote it publicly. Anyone with the link can open it without a GitHub account; it is public, not access-controlled. The club entry requests search engines not to index it, but that is not a privacy guarantee. The main CubeSteps homepage does not advertise this entrance.
+
+The club edition shares the same courses, formulas, solvers and player. It adds a blue-and-white layout, a short route questionnaire, self-reported lesson progress, and an independent timer with real scrambles, matching six-face diagrams, optional inspection, ao5/ao12, corrections, history, trends, and CSV/JSON export. All quiz recommendations use available methods. No questionnaire answers are saved.
+
+Progress and preferences use separate club storage keys; timer history stays in this browser's IndexedDB. There are no accounts or cross-device synchronization. Export a backup before clearing browser data. Unsaved attempts remain visible and exportable with a **Not saved** label. Leaving, hiding or losing focus during a timed solve records an interrupted DNF; a hard browser close can prevent an unfinished save. Manual +2 adds to inspection +2; DNF overrides numeric time. Each average discards one best and one worst result, and two DNFs make the window DNF.
+
+For local development, open `/cube-steps/club/`. Both entries are built and deployed from this repository. See the [club validation record](docs/validation/webb-club.md).
 
 ## Publish to GitHub Pages
 

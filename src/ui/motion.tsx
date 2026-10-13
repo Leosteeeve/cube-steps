@@ -49,6 +49,9 @@ export function MotionProvider({ edition, children }: { edition: Edition; childr
       visibility = () => setHidden(document.hidden);
     media?.addEventListener('change', change);
     document.addEventListener('visibilitychange', visibility);
+    // Cover a preference/visibility change between render and subscription.
+    change();
+    visibility();
     return () => {
       media?.removeEventListener('change', change);
       document.removeEventListener('visibilitychange', visibility);
