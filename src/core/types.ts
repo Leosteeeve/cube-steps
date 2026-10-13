@@ -71,6 +71,7 @@ export interface TraceAction {
   algorithmId?: string;
   repetition?: { group: string; index: number };
   pair?: PairTrace;
+  cross?: { distanceBefore: number; distanceAfter: number };
   before: CubeState;
   after: CubeState;
   checkpoint: Checkpoint;

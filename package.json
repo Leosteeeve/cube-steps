@@ -9,6 +9,8 @@
   "scripts": {
     "dev": "vite --host 127.0.0.1",
     "typecheck": "tsc --noEmit",
+    "generate:cross": "node scripts/generate-cross-table.mts",
+    "verify:cross": "node scripts/generate-cross-table.mts --verify",
     "test": "vitest run",
     "test:unit": "vitest run src",
     "test:corpus": "vitest run tests/solver-corpus.test.ts tests/color-input-corpus.test.ts tests/cfop-corpus.test.ts",
