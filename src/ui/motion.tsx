@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
 import type { Edition } from '../app/edition';
+import { useSystemReducedMotion } from './use-system-reduced-motion';
 import './motion.css';
 type Preference = 'system' | 'off';
 const keyFor = (edition: Edition) =>
@@ -37,23 +38,14 @@ const Context = createContext<Motion>({
 export function MotionProvider({ edition, children }: { edition: Edition; children: ReactNode }) {
   const key = keyFor(edition),
     [stored, setStored] = useState(() => load(key));
-  const [systemReduced, setSystemReduced] = useState(
-    () =>
-      typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches,
-  );
+  const systemReduced = useSystemReducedMotion();
   const [hidden, setHidden] = useState(() => document.hidden);
   useEffect(() => {
-    const media =
-      typeof matchMedia === 'function' ? matchMedia('(prefers-reduced-motion: reduce)') : null;
-    const change = () => setSystemReduced(media?.matches ?? false),
-      visibility = () => setHidden(document.hidden);
-    media?.addEventListener('change', change);
+    const visibility = () => setHidden(document.hidden);
     document.addEventListener('visibilitychange', visibility);
     // Cover a preference/visibility change between render and subscription.
-    change();
     visibility();
     return () => {
-      media?.removeEventListener('change', change);
       document.removeEventListener('visibilitychange', visibility);
     };
   }, []);

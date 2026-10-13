@@ -1,7 +1,7 @@
 import type { Lesson } from './course-types';
 import type { AdvancedStageId } from '../core/types';
 import { ADVANCED_GUIDED_SCRAMBLE, ADVANCED_EXAMPLES } from './advanced-examples';
-import { ADVANCED_PRESENTATION } from '../methods/advanced/presentation';
+import { ADVANCED_INFO as ADVANCED_PRESENTATION } from '../methods/info';
 const lesson = (
   id: AdvancedStageId,
   title: string,

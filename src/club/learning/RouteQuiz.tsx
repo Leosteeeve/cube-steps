@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { getMethod } from '../../methods/registry';
+import { getMethodInfo as getMethod } from '../../methods/info';
 import { methodRoute } from '../../app/routes';
 import type { MethodId } from '../../core/types';
 import { CLUB_METHODS, type QuizAnswers } from './types';

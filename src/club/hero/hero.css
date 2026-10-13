@@ -1,0 +1,56 @@
+[data-edition='club'] .hero-motion {
+  aspect-ratio: auto;
+  max-width: 520px;
+}
+[data-edition='club'] .hero-illustration {
+  position: relative;
+  aspect-ratio: 1;
+}
+[data-edition='club'] .hero-canvas {
+  position: absolute;
+  inset: 6%;
+  display: block;
+  width: 88%;
+  height: auto;
+  aspect-ratio: 1;
+  filter: drop-shadow(0 22px 22px #b3c6e52b);
+}
+[data-edition='club'] .hero-motion .club-orbit {
+  inset: 5%;
+  width: 90%;
+}
+[data-edition='club'] .hero-motion .club-note-top {
+  top: -3%;
+  right: 0;
+}
+[data-edition='club'] .hero-motion .club-note-bottom {
+  bottom: -3%;
+  left: 0;
+}
+[data-edition='club'] .hero-motion-control {
+  min-height: 44px;
+  text-align: right;
+  color: var(--muted);
+  font-size: 12px;
+}
+[data-edition='club'] .hero-motion-control button {
+  min-height: 44px;
+  padding: 10px 16px;
+  background: transparent;
+  border: 1px solid #dce6f3;
+  color: var(--ink);
+  border-radius: 99px;
+  cursor: pointer;
+}
+[data-edition='club'] .hero-motion-control > span {
+  display: inline-block;
+  padding-block: 12px;
+}
+@media (max-width: 600px) {
+  [data-edition='club'] .hero-motion .club-art-note {
+    padding: 10px 12px;
+  }
+  [data-edition='club'] .hero-motion .club-art-note strong {
+    font-size: 11px;
+  }
+}

@@ -1,50 +1,5 @@
+import { HeroCube } from './hero/HeroCube';
 import { ProgressStatus } from './learning/use-club-progress';
-function DecorativeCube() {
-  const faces = [
-    { origin: [68, 128], u: [164, 52], v: [0, 181], fill: '#2869CA' },
-    { origin: [232, 180], u: [101, -57], v: [0, 181], fill: '#174C94' },
-    { origin: [68, 128], u: [101, -57], v: [164, 52], fill: '#F8FBFF' },
-  ];
-  return (
-    <div className="club-hero-art" aria-hidden="true">
-      <div className="club-orbit" />
-      <svg viewBox="0 0 410 420">
-        <g stroke="#08264A" strokeWidth="3" strokeLinejoin="round">
-          {faces.flatMap((f, k) =>
-            Array.from({ length: 9 }, (_, i) => {
-              const point = (x: number, y: number) =>
-                [f.origin[0] + f.u[0] * x + f.v[0] * y, f.origin[1] + f.u[1] * x + f.v[1] * y].join(
-                  ',',
-                );
-              const x = (i % 3) / 3,
-                y = Math.floor(i / 3) / 3;
-              return (
-                <polygon
-                  key={k + '-' + i}
-                  points={[
-                    point(x + 0.009, y + 0.009),
-                    point(x + 1 / 3 - 0.009, y + 0.009),
-                    point(x + 1 / 3 - 0.009, y + 1 / 3 - 0.009),
-                    point(x + 0.009, y + 1 / 3 - 0.009),
-                  ].join(' ')}
-                  fill={k === 0 && i % 3 === 1 ? '#75A4E7' : f.fill}
-                />
-              );
-            }),
-          )}
-        </g>
-      </svg>
-      <span className="club-art-note club-note-top">
-        <small>A LITTLE CURIOSITY</small>
-        <strong>A whole new skill.</strong>
-      </span>
-      <span className="club-art-note club-note-bottom">
-        <small>YOUR FIRST MILESTONE</small>
-        <strong>✦ Build a white daisy</strong>
-      </span>
-    </div>
-  );
-}
 export function HomePage({ resumeHref }: { resumeHref?: string }) {
   return (
     <div className="club-home">
@@ -71,7 +26,7 @@ export function HomePage({ resumeHref }: { resumeHref?: string }) {
           </div>
           <small>New to cubing? You’re in exactly the right place.</small>
         </div>
-        <DecorativeCube />
+        <HeroCube />
       </section>
       <div className="club-home-progress">
         <ProgressStatus />

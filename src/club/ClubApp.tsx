@@ -2,7 +2,7 @@ import { lazy, Suspense, useEffect, useState } from 'react';
 import { parseClubRoute } from './routes';
 import { SharedFeaturePage } from '../app/SharedFeaturePage';
 import { useCubeEngine } from '../app/use-cube-engine';
-import { getMethod } from '../methods/registry';
+import { getMethodInfo as getMethod } from '../methods/info';
 import { ClubHeader } from './components/ClubHeader';
 import { ClubFooter } from './components/ClubFooter';
 import { HomePage } from './HomePage';
