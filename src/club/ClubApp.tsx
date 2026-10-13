@@ -2,7 +2,7 @@ import { lazy, Suspense, useEffect, useState } from 'react';
 import { parseClubRoute } from './routes';
 import { SharedFeaturePage } from '../app/SharedFeaturePage';
 import { useCubeEngine } from '../app/use-cube-engine';
-import { getMethod } from '../methods/registry';
+import { getMethodInfo as getMethod } from '../methods/info';
 import { ClubHeader } from './components/ClubHeader';
 import { ClubFooter } from './components/ClubFooter';
 import { HomePage } from './HomePage';
@@ -10,6 +10,7 @@ import { RouteQuiz } from './learning/RouteQuiz';
 import { useClubProgress } from './learning/use-club-progress';
 import { lessonRoute, methodRoute } from '../app/routes';
 import { createTimerRepository } from './timer/repository';
+import { MoveExplorerRoute } from './moves/MoveExplorerRoute';
 const TimerPage = lazy(() => import('./timer/TimerPage').then((m) => ({ default: m.TimerPage })));
 const ClubLearnPage = lazy(() =>
   import('./learning/ClubLearnPage').then((m) => ({ default: m.ClubLearnPage })),
@@ -40,11 +41,19 @@ export function ClubApp() {
         Skip to content
       </a>
       <ClubHeader
-        active={route.kind === 'home' ? 'home' : route.kind === 'timer' ? 'timer' : 'learn'}
+        active={
+          route.kind === 'home'
+            ? 'home'
+            : route.kind === 'timer'
+              ? 'timer'
+              : route.kind === 'moves'
+                ? 'moves'
+                : 'learn'
+        }
         timerAvailable={true}
       />
       <main id="main" tabIndex={-1}>
-        {!['home', 'quiz', 'timer'].includes(route.kind) && (
+        {!['home', 'quiz', 'timer', 'moves'].includes(route.kind) && (
           <nav className="club-tools" aria-label="Learning tools">
             <a
               href={methodRoute(
@@ -64,6 +73,7 @@ export function ClubApp() {
             </a>
             <a href="#/algorithms">Algorithms</a>
             <a href="#/practice">Formula practice</a>
+            <a href="#/moves">Move explorer</a>
             <a href="#/find-your-route">Find your route</a>
           </nav>
         )}
@@ -95,7 +105,9 @@ export function ClubApp() {
                 {getMethod(route.method).teachingStatus === 'preview' ? ' · Preview' : ''}
               </p>
             )}
-            {route.kind === 'timer' ? (
+            {route.kind === 'moves' ? (
+              <MoveExplorerRoute engine={engine} />
+            ) : route.kind === 'timer' ? (
               <Suspense fallback={<p role="status">Loading your practice space…</p>}>
                 <TimerPage engine={engine} repository={timerRepository} />
               </Suspense>

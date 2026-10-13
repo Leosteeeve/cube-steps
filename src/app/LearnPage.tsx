@@ -96,6 +96,12 @@ export function LearnPage({
               </div>
             ))}
           </div>
+          {layoutPresentation === 'club' && (
+            <p className="notation-explorer-link">
+              <a href="#/moves">Explore moves in 3D</a> — see each letter turn, then try it in your
+              hands.
+            </p>
+          )}
           <div className="notation-rules">
             {(method === 'lbl' ? HOLDING_BASICS : [...HOLDING_BASICS, lesson.check]).map(
               (text, i) => (

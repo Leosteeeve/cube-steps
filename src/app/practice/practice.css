@@ -181,3 +181,30 @@
     padding: 12px;
   }
 }
+[data-edition='global'] :is(.practice-selection, .practice-prompt figure) {
+  border-color: var(--global-line);
+  border-radius: var(--global-radius);
+  padding: 24px;
+}
+[data-edition='global'] .practice-selection > summary {
+  min-height: 44px;
+}
+[data-edition='global'] .practice-groups fieldset {
+  background: #f8faf6;
+  border-radius: 12px;
+}
+[data-edition='global'] .practice-family label {
+  min-height: 44px;
+}
+[data-edition='global'] .practice-setup code {
+  background: var(--global-soft);
+}
+[data-edition='global'] .library-practice-bar button {
+  min-height: 44px;
+  border-radius: 10px;
+}
+@media (max-width: 620px) {
+  [data-edition='global'] .practice-selection {
+    padding: 16px;
+  }
+}

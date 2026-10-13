@@ -40,22 +40,33 @@ export function App() {
           <a
             href={methodRoute(methodId, 'learn')}
             className={route.kind === 'learn' ? 'selected' : ''}
+            aria-current={route.kind === 'learn' ? 'page' : undefined}
+            aria-label="Learn the method"
           >
-            Learn the method
+            Learn
           </a>
           <a
             href={methodRoute(methodId, 'solve')}
             className={route.kind === 'solve' ? 'selected' : ''}
+            aria-current={route.kind === 'solve' ? 'page' : undefined}
+            aria-label="Solve your cube"
           >
-            Solve your cube
+            Solve
           </a>
           <a
             href="#/algorithms"
             className={route.kind === 'algorithms' || route.kind === 'algorithm' ? 'selected' : ''}
+            aria-current={
+              route.kind === 'algorithms' || route.kind === 'algorithm' ? 'page' : undefined
+            }
           >
             Algorithms
           </a>
-          <a href="#/practice" className={route.kind === 'practice' ? 'selected' : ''}>
+          <a
+            href="#/practice"
+            className={route.kind === 'practice' ? 'selected' : ''}
+            aria-current={route.kind === 'practice' ? 'page' : undefined}
+          >
             Practice
           </a>
         </nav>
@@ -71,10 +82,10 @@ export function App() {
       <main id="main" tabIndex={-1}>
         {'method' in route && (
           <div className="course-banner">
-            <span className="pill">
-              {methodId === 'lbl' ? 'BEGINNER’S METHOD' : 'CROSS · F2L · OLL · PLL'}
+            <span className="course-context">
+              {route.kind === 'solve' ? 'Solve your cube' : 'Learn'}{' '}
+              <span aria-hidden="true">/</span>
             </span>
-            <p>Understand the moves. Enjoy the solve.</p>
             <span className="preview-label" data-preview={method.teachingStatus === 'preview'}>
               {method.label}
               {method.teachingStatus === 'preview' ? ' · Preview' : ''}

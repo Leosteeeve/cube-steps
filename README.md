@@ -17,6 +17,7 @@ Learn to solve the 3×3 cube with step-by-step animations and explained algorith
 - A shared library with recognition diagrams, holding instructions, formula segments, references and alternative demonstrations. Practice selected cases without a timer or scores; reveal the answer when ready.
 - Switch methods without losing the scramble, painted draft, selected face, or current color validation. Switching clears the old solution and cancels pending work; solve again explicitly.
 - The same fixed formulas in lessons and generated solutions, with recognition, setup, repetition counts, and result checks.
+- A refreshed green-and-white learning workspace with a complete expandable phone lesson path, a clear current-turn display and the full teaching formula.
 - An interactive 3D cube: orbit, play/pause, single-step backward/forward, replay, speed, stage navigation, and target highlighting.
 - Browser-only computation, no account, responsive layouts, and keyboard controls.
 
@@ -75,9 +76,11 @@ This separate edition is intended for our club members. Please share the link wi
 
 The club edition shares the same courses, formulas, solvers and player. It adds a blue-and-white layout, a short route questionnaire, self-reported lesson progress, and an independent timer with real scrambles, matching six-face diagrams, optional inspection, ao5/ao12, corrections, history, trends, and CSV/JSON export. All quiz recommendations use available methods. No questionnaire answers are saved.
 
+The homepage cube now has equal-sized pieces, gentle motion and occasional layer turns. Pause it locally or turn decorative motion off. **Moves** opens a separate notation workbench: choose from 54 face, wide, slice and whole-cube turns; read the direction from the relevant face; then play, pause or replay one move. Holding and Direction views change only the camera. Reduced motion or unavailable 3D rendering provides static Before/After diagrams. The new notation workbench is a preview pending physical-cube follow-along acceptance.
+
 Progress and preferences use separate club storage keys; timer history stays in this browser's IndexedDB. There are no accounts or cross-device synchronization. Export a backup before clearing browser data. Unsaved attempts remain visible and exportable with a **Not saved** label. Leaving, hiding or losing focus during a timed solve records an interrupted DNF; a hard browser close can prevent an unfinished save. Manual +2 adds to inspection +2; DNF overrides numeric time. Each average discards one best and one worst result, and two DNFs make the window DNF.
 
-For local development, open `/cube-steps/club/`. Both entries are built and deployed from this repository. See the [club validation record](docs/validation/webb-club.md).
+For local development, open `/cube-steps/club/`. Both entries are built and deployed from this repository. See the [club validation record](docs/validation/webb-club.md) and [notation/UI validation](docs/validation/notation-ui-refresh.md).
 
 ## Publish to GitHub Pages
 

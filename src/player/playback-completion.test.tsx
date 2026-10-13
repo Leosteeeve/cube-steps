@@ -9,7 +9,7 @@ import { solveLBL } from '../methods/lbl/solve';
 import { loadAdvancedAssets } from '../methods/advanced/assets';
 import { CubePlayer } from './CubePlayer';
 import { createCubingAdapter } from './cubing-adapter';
-import type {FaceMove} from '../core/types';
+import type { FaceMove } from '../core/types';
 vi.mock('./cubing-adapter', () => ({ createCubingAdapter: vi.fn() }));
 vi.mock('../methods/advanced/assets', () => ({ loadAdvancedAssets: vi.fn() }));
 beforeEach(() => {
@@ -33,7 +33,7 @@ it('announces full completion when the final AUF stage is skipped', async () => 
   vi.mocked(loadAdvancedAssets).mockResolvedValue(assets);
   // A one-turn input has a nonempty solve and an already solved final layer,
   // independent of which F2L strategy happens to win on a longer scramble.
-  const moves:FaceMove[] = ['R'],
+  const moves: FaceMove[] = ['R'],
     r = solveAdvancedCFOP(engine, engine.apply(engine.solved(), moves), assets);
   if (!r.ok) throw Error(r.message);
   expect(r.trace.stages.at(-1)?.status).toBe('skipped');
@@ -45,6 +45,7 @@ it('announces full completion when the final AUF stage is skipped', async () => 
   fireEvent.change(range, { target: { value: range.getAttribute('max') } });
   expect(screen.getByRole('heading', { name: 'Cube solved.' })).toBeVisible();
   expect(screen.getByRole('heading', { name: 'Already complete' })).toBeVisible();
+  expect(screen.queryByLabelText('Current turn')).not.toBeInTheDocument();
 });
 it('announces a zero-move solve while retaining skipped-stage teaching', async () => {
   const engine = await createCubeEngine(),
@@ -59,4 +60,5 @@ it('announces a zero-move solve while retaining skipped-stage teaching', async (
   await screen.findByRole('alert');
   expect(screen.getByRole('heading', { name: 'Cube solved.' })).toBeVisible();
   expect(screen.getByRole('heading', { name: 'Already complete' })).toBeVisible();
+  expect(screen.queryByLabelText('Current turn')).not.toBeInTheDocument();
 });

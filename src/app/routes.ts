@@ -1,5 +1,5 @@
 import type { MethodId } from '../core/types';
-import { getMethod } from '../methods/registry';
+import { getMethodInfo as getMethod } from '../methods/info';
 export type AppRoute =
   | { kind: 'practice' }
   | { kind: 'algorithms' }
