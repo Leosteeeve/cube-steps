@@ -2,6 +2,7 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { App } from './app/App';
 import './styles.css';
+document.documentElement.dataset.edition = 'global';
 const PlayerFixture = import.meta.env.DEV
   ? React.lazy(() => import('./player/PlayerFixture'))
   : null;

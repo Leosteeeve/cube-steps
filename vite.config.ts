@@ -10,6 +10,7 @@ export default defineConfig({
     modulePreload: false,
     cssCodeSplit: false,
     rolldownOptions: {
+      input: { global: 'index.html', club: 'club/index.html' },
       output: {
         codeSplitting: {
           groups: [{ name: 'cubing', test: /node_modules[\\/]cubing[\\/]/, entriesAware: true }],
