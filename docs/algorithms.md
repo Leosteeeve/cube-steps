@@ -1,6 +1,6 @@
 # Algorithm catalog and verification
 
-CubeSteps keeps case identities separate from formula variants and named preparation maneuvers. Courses, generated solutions, library clips and practice consume these same definitions. The catalog is being implemented as part of Advanced CFOP; the method is not released yet.
+CubeSteps keeps case identities separate from formula variants and named preparation maneuvers. Courses, generated solutions, library clips and practice consume these same definitions. The V1.3 Advanced CFOP catalog is available as a preview; its physical-cube acceptance remains pending.
 
 ## F2L references and identities
 

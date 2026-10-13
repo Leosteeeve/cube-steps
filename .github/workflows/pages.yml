@@ -35,8 +35,12 @@ jobs:
       - run: npm ci
       - run: npx playwright install --with-deps chromium webkit
       - run: npm run typecheck
+      - run: npm run verify:cross
+      - run: npm run verify:cases
       - run: npm run test:unit
       - run: npm run test:corpus
+      - run: npx vitest run tests/advanced-cross-table.test.ts
+      - run: npm run test:efficiency
       - run: npm run build
       - run: npm run test:e2e
       - run: npm run test:production

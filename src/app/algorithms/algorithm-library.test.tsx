@@ -97,8 +97,11 @@ it('renders_diagram_from_fixture', () => {
       ).toHaveAttribute('data-color', color);
   expect(container.querySelectorAll('[data-color="hidden"]').length).toBeGreaterThan(0);
 });
-it('shows_unknown_case_fallback', () => {
-  render(<AlgorithmDetailPage engine={engine} caseId="not-a-case" />);
-  expect(screen.getByRole('heading', { name: 'Case not found.' })).toBeVisible();
-  expect(screen.queryByTestId('clip')).not.toBeInTheDocument();
-});
+it.each(['not-a-case', 'constructor', 'toString', '__proto__'])(
+  'shows_unknown_case_fallback for %s',
+  (caseId) => {
+    render(<AlgorithmDetailPage engine={engine} caseId={caseId} />);
+    expect(screen.getByRole('heading', { name: 'Case not found.' })).toBeVisible();
+    expect(screen.queryByTestId('clip')).not.toBeInTheDocument();
+  },
+);

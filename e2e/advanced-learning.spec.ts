@@ -24,6 +24,7 @@ for (const width of [1440, 390])
     for (const id of lessons) {
       await page.goto('#/learn/advanced-cfop/' + id);
       await expect(page.locator('.preview-label')).toHaveText('Advanced CFOP · Preview');
+      await expect(page.locator('.preview-label')).toBeVisible();
       await expect(
         page.getByRole('navigation', { name: 'Learning path' }).getByRole('link'),
       ).toHaveCount(6);

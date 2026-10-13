@@ -89,7 +89,7 @@ export function App() {
               {methodId === 'lbl' ? 'BEGINNER’S METHOD' : 'CROSS · F2L · OLL · PLL'}
             </span>
             <p>Understand the moves. Enjoy the solve.</p>
-            <span className="preview-label">
+            <span className="preview-label" data-preview={method.teachingStatus === 'preview'}>
               {method.label}
               {method.teachingStatus === 'preview' ? ' · Preview' : ''}
             </span>

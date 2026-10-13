@@ -256,6 +256,12 @@ export function PlaybackView({
             <h3>Already complete</h3>
             <p>{currentStage.skipReason}</p>
             <p>No turns are needed for this stage.</p>
+            {s?.currentMove === null && (
+              <>
+                <h3>{player?.timeline.completion.title}</h3>
+                <p>{player?.timeline.completion.description}</p>
+              </>
+            )}
           </div>
         ) : action ? (
           <>

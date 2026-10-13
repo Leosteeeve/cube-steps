@@ -11,8 +11,10 @@ export const ALGORITHM_REGISTRY: AlgorithmRegistry = {
 };
 admitRegistry(ALGORITHM_REGISTRY);
 export function getAlgorithmCase(id: string): AlgorithmCase | undefined {
-  return ALGORITHM_REGISTRY.cases[id];
+  return Object.hasOwn(ALGORITHM_REGISTRY.cases, id) ? ALGORITHM_REGISTRY.cases[id] : undefined;
 }
 export function getAlgorithmVariant(id: string): AlgorithmVariant | undefined {
-  return ALGORITHM_REGISTRY.variants[id];
+  return Object.hasOwn(ALGORITHM_REGISTRY.variants, id)
+    ? ALGORITHM_REGISTRY.variants[id]
+    : undefined;
 }
