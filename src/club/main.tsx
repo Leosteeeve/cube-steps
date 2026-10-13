@@ -4,11 +4,14 @@ import { ClubApp } from './ClubApp';
 import { ClubProgressProvider } from './learning/use-club-progress';
 import '../styles.css';
 import './club.css';
+import { MotionProvider } from '../ui/motion';
 document.documentElement.dataset.edition = 'club';
 createRoot(document.getElementById('root')!).render(
   <EditionProvider edition="club">
-    <ClubProgressProvider>
-      <ClubApp />
-    </ClubProgressProvider>
+    <MotionProvider edition="club">
+      <ClubProgressProvider>
+        <ClubApp />
+      </ClubProgressProvider>
+    </MotionProvider>
   </EditionProvider>,
 );

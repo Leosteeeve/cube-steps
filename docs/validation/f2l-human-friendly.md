@@ -1,6 +1,6 @@
 # Human-friendly F2L validation
 
-Status: implementation and automated validation in progress. Revised Advanced CFOP remains Preview pending physical-cube follow-along acceptance. The owner authorized publishing the preview together with the club edition.
+Status: implementation and local automated validation completed. The independent review will cover the complete integration branch. Revised Advanced CFOP remains Preview pending physical-cube follow-along acceptance. The owner authorized publishing the preview together with the club edition.
 
 ## Policy and regression evidence
 

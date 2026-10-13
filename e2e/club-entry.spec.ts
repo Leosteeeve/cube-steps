@@ -40,13 +40,38 @@ test('club home and deep lesson reload preserve their entry and shared player', 
   await expect(page.locator('html')).toHaveAttribute('data-edition', 'club');
   await page.goto('club/#/learn/white-cross');
   await expect(page.getByRole('button', { name: 'Next move', exact: true })).toBeEnabled();
+  await page.locator('twisty-player').evaluate(async (p: any) => {
+    const vantages = await p.experimentalCurrentVantages();
+    await Promise.all(
+      [...vantages].map(
+        (v) =>
+          new Promise<void>((resolve) => {
+            v.experimentalNextRenderFinishedCallback(resolve);
+            v.scheduleRender();
+          }),
+      ),
+    );
+  });
   await page.reload();
   await expect(
     page.getByRole('heading', { name: 'Build the white cross', exact: true }),
   ).toBeVisible();
   await expect(page.getByRole('button', { name: 'Next move', exact: true })).toBeEnabled();
+  await page.locator('twisty-player').evaluate(async (p: any) => {
+    const vantages = await p.experimentalCurrentVantages();
+    await Promise.all(
+      [...vantages].map(
+        (v) =>
+          new Promise<void>((resolve) => {
+            v.experimentalNextRenderFinishedCallback(resolve);
+            v.scheduleRender();
+          }),
+      ),
+    );
+  });
   await expect(page).toHaveURL(/\/club\/#\/learn\/white-cross$/);
   await page.goto('./');
   await expect(page.locator('html')).toHaveAttribute('data-edition', 'global');
+  await expect(page.getByRole('heading', { name: 'Meet your cube', exact: true })).toBeVisible();
   expect(errors).toEqual([]);
 });

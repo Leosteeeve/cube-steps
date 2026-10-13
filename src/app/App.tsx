@@ -3,6 +3,7 @@ import { useCubeEngine } from './use-cube-engine';
 import { SharedFeaturePage } from './SharedFeaturePage';
 import { parseRoute, methodRoute } from './routes';
 import { getMethod } from '../methods/registry';
+import { MotionPreference } from '../ui/motion';
 export function App() {
   const [route, setRoute] = useState(() => parseRoute(location.hash));
   const { engine, error, retry } = useCubeEngine(true);
@@ -103,6 +104,7 @@ export function App() {
         )}
       </main>
       <footer className="site-footer">
+        <MotionPreference />
         <p>Small steps. A whole new way to see the cube.</p>
         <span>
           CubeSteps · MIT ·{' '}
