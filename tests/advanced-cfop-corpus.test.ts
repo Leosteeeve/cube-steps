@@ -72,4 +72,6 @@ it('replays_1000_advanced_inputs_twice_and_as_colors', () => {
       });
     }
   }
-}, 600000);
+// Shared CI runners take about 630 seconds for all 1,000 seeds and three solves
+// per seed. This is a corpus scheduling limit, not a single-solve time budget.
+}, 900000);

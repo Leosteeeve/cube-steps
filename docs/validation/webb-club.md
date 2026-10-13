@@ -38,6 +38,7 @@ Status: all planned local functionality is implemented. Independent review ident
 - An additional lifecycle check reproduced a disabled Timer after a persisted `pagehide`/`pageshow` sequence interrupted a solve. Restoration now refreshes history and prepares a new scramble when needed. The browser regression uses explicit persisted page-transition events; it does not claim every browser's real back-forward-cache eligibility was tested.
 - TypeScript and the full unit suite passed after these fixes: 94 files, 391 tests. The earlier integrated development run passed 114 browser checks and production passed 16. The added restoration case brings the complete development suite to 116; final remote CI runs the full suites again before publication.
 - No review findings were deferred. Revised F2L physical-cube acceptance remains pending and is not replaced by this review.
+- The first exact-commit CI run failed only because the Advanced 1,000-seed corpus took 629.6 seconds against a 600-second test timeout on the shared Linux runner. The corpus timeout was raised to 900 seconds with all seeds, repeated solves, color inputs and assertions unchanged. Product simulation limits and interactive performance targets were not relaxed. A new complete CI run is required for that commit.
 
 ## Execution decisions
 
@@ -53,6 +54,7 @@ The Native workflow used one sequential implementer and one fresh final reviewer
 8. Preserve unsupported club practice/draft bytes until explicit Reset, with global defaults unchanged. Cost if wrong: incompatible data can require a user reset instead of automatic migration.
 9. Include the edition-aware practice hook and algorithm-library consumer omitted from the file map. Cost if wrong: a broader shared consumer change; tests cover namespace separation and memory-only handoff.
 10. Add an explicit scramble-loading machine input for atomic New/Retry behavior. Cost if wrong: an extra state transition could disable timing incorrectly; controller and browser tests cover readiness and failures.
+11. Allow 900 seconds for the complete Advanced corpus after the shared-runner timeout. Cost if wrong: a stuck batch takes up to five additional minutes to fail; every seed/assertion and the product's bounded solver remain unchanged.
 
 ## Release constraints
 
