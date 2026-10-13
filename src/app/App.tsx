@@ -11,6 +11,9 @@ const AlgorithmLibraryPage = lazy(() =>
 const AlgorithmDetailPage = lazy(() =>
   import('./algorithms/AlgorithmDetailPage').then((m) => ({ default: m.AlgorithmDetailPage })),
 );
+const PracticePage = lazy(() =>
+  import('./practice/PracticePage').then((m) => ({ default: m.PracticePage })),
+);
 export function App() {
   const [route, setRoute] = useState(() => parseRoute(location.hash)),
     [engine, setEngine] = useState<CubeEngine | null>(null),
@@ -66,6 +69,9 @@ export function App() {
           >
             Algorithms
           </a>
+          <a href="#/practice" className={route.kind === 'practice' ? 'selected' : ''}>
+            Practice
+          </a>
         </nav>
         <a
           className="github-link"
@@ -104,7 +110,17 @@ export function App() {
             {error}
           </p>
         ) : engine ? (
-          route.kind === 'algorithms' || route.kind === 'algorithm' ? (
+          route.kind === 'practice' ? (
+            <Suspense
+              fallback={
+                <p className="loading-panel" role="status">
+                  Loading practice…
+                </p>
+              }
+            >
+              <PracticePage engine={engine} />
+            </Suspense>
+          ) : route.kind === 'algorithms' || route.kind === 'algorithm' ? (
             <Suspense
               fallback={
                 <p className="loading-panel" role="status">

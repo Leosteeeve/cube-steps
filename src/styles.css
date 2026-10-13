@@ -145,6 +145,8 @@ button:hover:not(:disabled) {
 }
 .site-header nav {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 8px;
 }
 .site-header nav a {

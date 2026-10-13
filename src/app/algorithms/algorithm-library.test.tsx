@@ -11,6 +11,7 @@ import { AlgorithmLibraryPage } from './AlgorithmLibraryPage';
 import { AlgorithmDetailPage } from './AlgorithmDetailPage';
 import { CaseDiagram } from './CaseDiagram';
 import { parseRoute } from '../routes';
+import { practiceStore } from '../../practice/storage';
 vi.mock('../../player/AlgorithmPlayer', () => ({
   AlgorithmPlayer: ({ demonstration }: any) => (
     <output data-testid="clip">{demonstration.variantId}</output>
@@ -21,6 +22,17 @@ beforeAll(async () => {
   engine = await createCubeEngine();
 });
 afterEach(cleanup);
+it('passes library preselection into the shared practice selection', async () => {
+  practiceStore.save({ version: 1, caseIds: [], groupIds: [] });
+  render(<AlgorithmLibraryPage engine={engine} />);
+  const user = userEvent.setup();
+  await user.click(await screen.findByRole('checkbox', { name: 'Select OLL 20' }));
+  await user.click(screen.getByRole('button', { name: 'Practice selected cases' }));
+  expect(location.hash).toBe('#/practice');
+  expect(practiceStore.load().selection.caseIds).toEqual(['oll-20']);
+  expect(parseRoute('#/practice')).toEqual({ kind: 'practice' });
+  practiceStore.save({ version: 1, caseIds: [], groupIds: [] });
+});
 it('filters_all_119_cases', async () => {
   render(<AlgorithmLibraryPage engine={engine} />);
   expect(await screen.findAllByRole('link', { name: /Explore / })).toHaveLength(119);

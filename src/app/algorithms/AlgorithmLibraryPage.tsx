@@ -4,10 +4,22 @@ import { ALGORITHM_REGISTRY as registry } from '../../algorithms/registry';
 import { CaseDiagram } from './CaseDiagram';
 import { useFixtures } from './use-fixtures';
 import './algorithm-library.css';
+import '../practice/practice.css';
+import { practiceStore, normalizePracticeSelection } from '../../practice/storage';
 export function AlgorithmLibraryPage({ engine }: { engine: CubeEngine }) {
   const [family, setFamily] = useState('all'),
     [group, setGroup] = useState('all'),
-    [search, setSearch] = useState('');
+    [search, setSearch] = useState(''),
+    [selected, setSelected] = useState(() => practiceStore.load().selection.caseIds);
+  function choose(ids: string[], checked: boolean) {
+    setSelected(
+      checked ? [...new Set([...selected, ...ids])] : selected.filter((id) => !ids.includes(id)),
+    );
+  }
+  function practice() {
+    practiceStore.save(normalizePracticeSelection({ version: 1, caseIds: selected }));
+    location.hash = '#/practice';
+  }
   const fixtures = useFixtures(),
     cases = Object.values(registry.cases);
   const groups = [
@@ -65,6 +77,25 @@ export function AlgorithmLibraryPage({ engine }: { engine: CubeEngine }) {
         </label>
       </div>
       <p role="status">{filtered.length} cases</p>
+      <div className="library-practice-bar">
+        <div>
+          <button
+            onClick={() =>
+              choose(
+                filtered.map((c) => c.id),
+                true,
+              )
+            }
+          >
+            Select filtered cases
+          </button>{' '}
+          <button onClick={() => choose(selected, false)}>Clear selection</button>
+        </div>
+        <span>{selected.length} selected for practice</span>
+        <button className="primary-button" disabled={!selected.length} onClick={practice}>
+          Practice selected cases
+        </button>
+      </div>
       {fixtures.error ? (
         <p role="alert" className="error">
           {fixtures.error}
@@ -88,6 +119,15 @@ export function AlgorithmLibraryPage({ engine }: { engine: CubeEngine }) {
                 </div>
                 <CaseDiagram state={f.initial} targets={targets} />
                 <p>{c.group}</p>
+                <label>
+                  <input
+                    type="checkbox"
+                    aria-label={'Select ' + c.label}
+                    checked={selected.includes(c.id)}
+                    onChange={(e) => choose([c.id], e.target.checked)}
+                  />
+                  Practice this case
+                </label>
                 <a href={'#/algorithms/' + c.id}>Explore {c.label} →</a>
               </article>
             );

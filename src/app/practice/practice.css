@@ -1,0 +1,183 @@
+.practice-selection {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 18px;
+}
+.practice-selection > summary {
+  font-weight: 600;
+  cursor: pointer;
+  padding: 8px;
+}
+.practice-selection-actions {
+  display: flex;
+  gap: 12px;
+  margin: 14px 0;
+}
+.practice-selection button {
+  border: 1px solid #b5c8bd;
+  border-radius: 7px;
+  background: white;
+  padding: 10px;
+  color: var(--ink);
+  font: inherit;
+}
+.practice-family {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 24px 0;
+  padding: 12px 0;
+}
+.practice-family > legend {
+  font-weight: 700;
+  padding: 0 12px 0 0;
+}
+.practice-family label {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 34px;
+  font-size: 13px;
+}
+.practice-groups {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
+  margin-top: 18px;
+}
+.practice-groups fieldset {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px;
+}
+.practice-groups legend {
+  font-weight: 600;
+  padding: 0 6px;
+  font-size: 12px;
+}
+.practice-case-choices {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px;
+}
+.practice-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin: 22px 0;
+}
+.practice-toolbar p {
+  font-size: 14px;
+}
+.practice-toolbar button,
+.reveal-button {
+  min-height: 44px;
+  padding: 12px 22px;
+  border: 0;
+  border-radius: 8px;
+  font: inherit;
+  cursor: pointer;
+}
+.practice-exercise {
+  border-top: 1px solid var(--line);
+  padding-top: 20px;
+}
+.practice-prompt {
+  display: grid;
+  grid-template-columns: minmax(240px, 0.8fr) minmax(320px, 1.3fr);
+  gap: 24px;
+}
+.practice-prompt figure {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 18px;
+  margin: 0;
+}
+.practice-prompt figcaption {
+  font-size: 12px;
+  line-height: 1.6;
+}
+.practice-prompt .case-diagram {
+  max-height: 280px;
+}
+.practice-setup {
+  font-size: 14px;
+  line-height: 1.7;
+}
+.practice-setup code {
+  display: block;
+  background: #edf3e8;
+  border-radius: 8px;
+  padding: 14px;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+.practice-setup h3 {
+  margin-top: 0;
+}
+.reveal-button {
+  margin-top: 22px;
+}
+.practice-answer {
+  margin-top: 24px;
+}
+.practice-answer > a {
+  display: inline-block;
+  margin-top: 20px;
+}
+.practice-page input[type='checkbox'] {
+  accent-color: #176e5a;
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+}
+.library-practice-bar {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+.library-practice-bar button {
+  min-height: 40px;
+  padding: 8px 14px;
+  border: 1px solid #b5c8bd;
+  border-radius: 7px;
+  font: inherit;
+}
+.case-tile > label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  margin: 12px 0;
+}
+.case-tile > label input {
+  accent-color: #176e5a;
+}
+@media (max-width: 700px) {
+  .practice-prompt {
+    display: block;
+  }
+  .practice-setup {
+    margin-top: 20px;
+  }
+  .practice-groups {
+    display: block;
+  }
+  .practice-groups fieldset {
+    margin: 14px 0;
+  }
+  .practice-toolbar {
+    align-items: stretch;
+  }
+  .practice-toolbar button {
+    max-width: 60%;
+  }
+  .practice-selection {
+    padding: 12px;
+  }
+}
