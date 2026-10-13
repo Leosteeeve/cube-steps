@@ -468,3 +468,24 @@ button.sticker:hover:not(:disabled) {
     padding: 9px;
   }
 }
+[data-edition='global'] .color-entry {
+  border-color: var(--global-line);
+  border-radius: var(--global-radius);
+}
+[data-edition='global'] .color-entry-intro h2 {
+  font:
+    400 28px/1.25 Georgia,
+    serif;
+}
+[data-edition='global'] .entry-progress {
+  color: var(--global-accent);
+  background: var(--global-soft);
+}
+[data-edition='global'] .center-scheme summary {
+  min-height: 44px;
+  display: list-item;
+  padding-block: 10px;
+}
+[data-edition='global'] .color-solve-actions {
+  gap: 14px;
+}
