@@ -1,12 +1,15 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import type { CubeEngine } from '../../core/types';
 import type { TimerRepository } from './repository';
 import { useTimer } from './use-timer';
 import { loadTimerSettings, saveTimerSettings, resetTimerSettings } from './settings';
 import { TimerSurface } from './TimerSurface';
 import { ScrambleNet } from './ScrambleNet';
-import { effectiveResult, summarizeHistory } from './statistics';
+import { effectiveResult, summarizeHistory, orderedAttempts } from './statistics';
 import { formatResult } from './format';
+import { TimerHistory } from './TimerHistory';
+import { TimerTrend } from './TimerTrend';
+import { downloadTimerExport, exportTimerCsv, exportTimerJson } from './export';
 import './timer.css';
 export function TimerPage({
   engine,
@@ -19,14 +22,9 @@ export function TimerPage({
   const [settingsSaved, setSettingsSaved] = useState(initial.available && initial.writable);
   const [protectedSettings, setProtectedSettings] = useState(!initial.writable);
   const { state, controller, history } = useTimer({ engine, repository, settings: initial.value });
-  const stats = summarizeHistory(history.attempts),
+  const stats = useMemo(() => summarizeHistory(history.attempts), [history.attempts]),
     active = ['inspection', 'arming', 'running', 'stopped'].includes(state.phase);
-  const last =
-    state.lastAttempt ??
-    history.attempts
-      .filter((a) => a.deletedAt === null)
-      .sort((a, b) => a.createdAt.localeCompare(b.createdAt))
-      .at(-1);
+  const last = useMemo(() => orderedAttempts(history.attempts).at(-1), [history.attempts]);
   return (
     <div className="club-timer">
       <div className="timer-title">
@@ -69,7 +67,7 @@ export function TimerPage({
               </div>
             )}
           </div>
-          <TimerSurface state={state} dispatch={controller.dispatch} />
+          <TimerSurface state={{ ...state, lastAttempt: last }} dispatch={controller.dispatch} />
           <div className="timer-options">
             <label>
               <input
@@ -142,6 +140,9 @@ export function TimerPage({
           {last.inspectionPenalty !== 'none'
             ? ` · Inspection ${last.inspectionPenalty === 'plus2' ? '+2' : 'DNF'}`
             : ''}{' '}
+          {last.manualPenalty !== 'none'
+            ? ` · Manual ${last.manualPenalty === 'plus2' ? '+2' : 'DNF'}`
+            : ''}{' '}
           · {history.pendingIds.includes(last.id) ? 'Not saved' : 'Saved on this device'}
         </p>
       )}
@@ -181,6 +182,38 @@ export function TimerPage({
           {stats.count < 12 && <span>{12 - stats.count} more solves needed</span>}
         </div>
       </section>
+      <div className="timer-bottom-grid">
+        <TimerTrend attempts={history.attempts} />
+        <TimerHistory repository={repository} engine={engine} />
+      </div>
+      <div className="timer-export">
+        <div>
+          <strong>Your practice, on this device.</strong>
+          <p>
+            History stays in this browser. Export a backup before clearing browser data or changing
+            devices. Unsaved results are included and labeled.
+          </p>
+        </div>
+        <div className="timer-export-actions">
+          <button
+            onClick={() =>
+              downloadTimerExport(exportTimerCsv(history.attempts, history.pendingIds), 'csv')
+            }
+          >
+            Export CSV
+          </button>
+          <button
+            onClick={() =>
+              downloadTimerExport(
+                exportTimerJson(history.attempts, new Date().toISOString(), history.pendingIds),
+                'json',
+              )
+            }
+          >
+            Export JSON
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

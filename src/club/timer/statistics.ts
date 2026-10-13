@@ -52,3 +52,17 @@ export function summarizeHistory(attempts: readonly TimerAttempt[]) {
       : { kind: 'insufficient' };
   return { count: active.length, best, ao5: averageOf(active, 5), ao12: averageOf(active, 12) };
 }
+export function buildTrend(attempts: readonly TimerAttempt[]) {
+  const active = orderedAttempts(attempts),
+    start = Math.max(0, active.length - 50);
+  return active.slice(start).map((a, i) => {
+    const index = start + i;
+    return {
+      id: a.id,
+      index: index + 1,
+      single: effectiveResult(a),
+      ao5: averageOf(active.slice(Math.max(0, index - 4), index + 1), 5),
+      ao12: averageOf(active.slice(Math.max(0, index - 11), index + 1), 12),
+    };
+  });
+}
