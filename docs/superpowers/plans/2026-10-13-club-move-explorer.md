@@ -10,7 +10,7 @@
 
 **Spec:** [Approved design](../specs/2026-10-13-notation-and-ui-refresh-design.md), sections 4 and 6–9.
 
-**Status and order:** Awaiting implementation-plan review; Native execution retained. Follow [Tasks 1–2](2026-10-13-club-hero-motion.md); this plan owns Tasks 3–6, followed by [Tasks 7–9](2026-10-13-global-ui-refresh.md).
+**Status and order:** Approved and implemented under Native execution; local validation and independent review are complete. See the notation/UI validation record for release and physical-acceptance status. Follow [Tasks 1–2](2026-10-13-club-hero-motion.md); this plan owns Tasks 3–6, followed by [Tasks 7–9](2026-10-13-global-ui-refresh.md).
 
 ## Global Constraints
 
