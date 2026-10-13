@@ -181,71 +181,74 @@ export function PlaybackView({
         )}
         {!ready && !error && <p role="status">Preparing the cube…</p>}
         <p className="orbit-note">Drag to look around · View changes do not turn the cube</p>
-        <div className="playback-controls">
-          <button
-            className="icon-button"
-            aria-label="Previous move"
-            disabled={!ready || !s || (s.moveIndex === 0 && s.progress === 0)}
-            onClick={() => player?.step(-1)}
-          >
-            ←
-          </button>
-          <button
-            className="play-button"
-            disabled={!ready || !s?.total}
-            onClick={() => (s?.playing ? player?.pause() : player?.play())}
-          >
-            {s?.playing ? 'Pause' : 'Play'} <span aria-hidden="true">{s?.playing ? 'Ⅱ' : '▶'}</span>
-          </button>
-          <button
-            className="icon-button"
-            aria-label="Next move"
-            disabled={!ready || !s || s.moveIndex >= s.total}
-            onClick={() => player?.step(1)}
-          >
-            →
-          </button>
-          <label className="speed">
-            Speed
-            <select
-              aria-label="Playback speed"
-              value={s?.speed ?? 1}
-              onChange={(e) => player?.setSpeed(Number(e.target.value))}
+        <div className="playback-toolbar">
+          <div className="playback-controls">
+            <button
+              className="icon-button"
+              aria-label="Previous move"
+              disabled={!ready || !s || (s.moveIndex === 0 && s.progress === 0)}
+              onClick={() => player?.step(-1)}
             >
-              {[0.25, 0.5, 1, 2].map((v) => (
-                <option key={v} value={v}>
-                  {v}×
-                </option>
-              ))}
-            </select>
-          </label>
-        </div>
-        <input
-          className="move-range"
-          type="range"
-          aria-label="Move position"
-          min="0"
-          max={s?.total ?? 0}
-          value={s?.moveIndex ?? 0}
-          disabled={!ready || !s?.total}
-          onChange={(e) => player?.seekMove(Number(e.target.value))}
-        />
-        <div className="player-options">
-          <label>
-            <input
-              type="checkbox"
-              checked={focused}
-              onChange={(e) => setFocused(e.target.checked)}
-            />{' '}
-            Highlight target pieces
-          </label>
-          <button
-            className="text-button"
-            disabled={!ready || replayIndex < 0}
-            onClick={() => player?.replayAction(replayIndex)}
-          >
-            Replay {replayAlgorithm ? 'formula' : 'action'} ↺
-          </button>
+              ←
+            </button>
+            <button
+              className="play-button"
+              disabled={!ready || !s?.total}
+              onClick={() => (s?.playing ? player?.pause() : player?.play())}
+            >
+              {s?.playing ? 'Pause' : 'Play'}{' '}
+              <span aria-hidden="true">{s?.playing ? 'Ⅱ' : '▶'}</span>
+            </button>
+            <button
+              className="icon-button"
+              aria-label="Next move"
+              disabled={!ready || !s || s.moveIndex >= s.total}
+              onClick={() => player?.step(1)}
+            >
+              →
+            </button>
+            <label className="speed">
+              Speed
+              <select
+                aria-label="Playback speed"
+                value={s?.speed ?? 1}
+                onChange={(e) => player?.setSpeed(Number(e.target.value))}
+              >
+                {[0.25, 0.5, 1, 2].map((v) => (
+                  <option key={v} value={v}>
+                    {v}×
+                  </option>
+                ))}
+              </select>
+            </label>
+          </div>
+          <input
+            className="move-range"
+            type="range"
+            aria-label="Move position"
+            min="0"
+            max={s?.total ?? 0}
+            value={s?.moveIndex ?? 0}
+            disabled={!ready || !s?.total}
+            onChange={(e) => player?.seekMove(Number(e.target.value))}
+          />
+          <div className="player-options">
+            <label>
+              <input
+                type="checkbox"
+                checked={focused}
+                onChange={(e) => setFocused(e.target.checked)}
+              />{' '}
+              Highlight target pieces
+            </label>
+            <button
+              className="text-button"
+              disabled={!ready || replayIndex < 0}
+              onClick={() => player?.replayAction(replayIndex)}
+            >
+              Replay {replayAlgorithm ? 'formula' : 'action'} ↺
+            </button>
+          </div>
         </div>
       </section>
       <aside className="explanation" aria-label="Step explanation">
@@ -335,8 +338,11 @@ export function PlaybackView({
                   </b>
                 ))}
               </div>
-              <small>
-                Current move: <strong>{s?.currentMove ?? 'Complete'}</strong>
+              <small className="current-turn">
+                Current move:{' '}
+                <strong aria-label={s?.currentMove ? 'Current turn' : undefined}>
+                  {s?.currentMove ?? 'Complete'}
+                </strong>
               </small>
               {segment && <p>Segment: {segment.label}</p>}
               {action.algorithmId && ALGORITHM_REGISTRY.variants[action.algorithmId] && (

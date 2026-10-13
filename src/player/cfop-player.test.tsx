@@ -62,6 +62,11 @@ it('shows CFOP pair targets, progress and the actual named maneuver', async () =
   expect(screen.getByText('3 × 3 · Beginner CFOP')).toBeVisible();
   expect(screen.getByText(`Pair ${range.action.pair!.ordinal} of 4 · Insert`)).toBeVisible();
   expect(screen.getByText(CFOP_ALGORITHMS[range.action.algorithmId!].name)).toBeVisible();
+  expect(screen.getByLabelText('Current turn')).toHaveTextContent(range.action.moves[0]);
+  for (const name of ['Previous move', 'Next move', /Replay formula/])
+    expect(screen.getByRole('button', { name })).toBeVisible();
+  expect(screen.getByLabelText('Playback speed')).toBeVisible();
+  expect(screen.getByLabelText('Highlight target pieces')).toBeVisible();
 });
 it.each(['oll-edge-dot', 'pll-h', 'pll-z'])(
   'shows the formula and its specific notation or segments: %s',

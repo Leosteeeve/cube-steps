@@ -27,5 +27,11 @@ export async function renderNotationFrame(page: Page) {
   await page.locator('twisty-player').evaluate(async (player: any) => {
     await player.experimentalCurrentThreeJSPuzzleObject();
     for (const vantage of await player.experimentalCurrentVantages()) await vantage.render();
+    const canvases: HTMLCanvasElement[] = await player.experimentalCurrentCanvases();
+    await Promise.all(
+      canvases.flatMap((canvas) =>
+        canvas.getAnimations().map((animation) => animation.finished.catch(() => {})),
+      ),
+    );
   });
 }

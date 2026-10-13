@@ -25,9 +25,11 @@ for (const width of [1440, 390])
       await page.goto('#/learn/advanced-cfop/' + id);
       await expect(page.locator('.preview-label')).toHaveText('Advanced CFOP · Preview');
       await expect(page.locator('.preview-label')).toBeVisible();
+      if (width < 851) await page.locator('.lesson-path summary').click();
       await expect(
         page.getByRole('navigation', { name: 'Learning path' }).getByRole('link'),
       ).toHaveCount(6);
+      if (width < 851) await page.locator('.lesson-path summary').click();
       if (id === 'intro') {
         await expect(
           page.getByRole('heading', { name: 'Wide turns, slice turns and AUF.' }),

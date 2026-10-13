@@ -531,7 +531,8 @@
   font-weight: 650;
 }
 [data-edition='club'] .club-path > summary span {
-  float: right;
+  display: block;
+  margin-top: 5px;
   font-weight: 400;
   color: var(--muted);
   font-size: 11px;

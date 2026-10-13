@@ -1,5 +1,35 @@
 import { test, expect } from '@playwright/test';
 import { renderNotationFrame } from './helpers/notation';
+import { getCourse } from '../src/content/courses';
+import { lessonRoute } from '../src/app/routes';
+
+test('phone path reaches the final lesson in each method with the full formula and controls', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  for (const method of ['lbl', 'cfop-beginner', 'cfop-advanced'] as const) {
+    const course = getCourse(method),
+      last = course.at(-1)!;
+    await page.goto(lessonRoute(method, course[0].id));
+    const path = page.locator('.lesson-path');
+    await expect(path).not.toHaveAttribute('open');
+    await path.locator('summary').click();
+    await expect(
+      page.getByRole('navigation', { name: 'Learning path' }).getByRole('link'),
+    ).toHaveCount(course.length);
+    await path.getByRole('link', { name: last.shortTitle, exact: false }).click();
+    await expect(path.locator('summary')).toContainText(last.shortTitle);
+    await expect(page.getByRole('button', { name: 'Next move', exact: true })).toBeEnabled();
+    const card = page.locator('.algorithm-card');
+    const start = Number(await card.getAttribute('data-action-start')),
+      end = Number(await card.getAttribute('data-action-end'));
+    await expect(card.locator('.algorithm-moves b')).toHaveCount(end - start);
+    await expect(page.getByLabel('Current turn')).toBeVisible();
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
+      true,
+    );
+  }
+});
 test('global navigation exposes the active destination and keeps the LBL introduction as home', async ({
   page,
 }) => {

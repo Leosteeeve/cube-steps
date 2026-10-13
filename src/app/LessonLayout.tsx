@@ -22,13 +22,13 @@ export function LessonLayout({
     () => typeof matchMedia !== 'function' || matchMedia('(min-width: 851px)').matches,
   );
   useEffect(() => {
-    if (presentation !== 'club' || typeof matchMedia !== 'function') return;
+    if (typeof matchMedia !== 'function') return;
     const media = matchMedia('(min-width: 851px)'),
       change = () => setPathOpen(media.matches);
     change();
     media.addEventListener('change', change);
     return () => media.removeEventListener('change', change);
-  }, [presentation]);
+  }, []);
   const lessons = free
     ? getMethod(method).stages.map((s) => ({ id: s.id, stageId: s.id, shortTitle: s.label }))
     : getCourse(method);
@@ -88,20 +88,19 @@ export function LessonLayout({
   );
   return (
     <div className={'lesson-layout' + (presentation === 'club' ? ' club-lesson-layout' : '')}>
-      {presentation === 'club' ? (
-        <details
-          className="club-path"
-          open={pathOpen}
-          onToggle={(e) => setPathOpen(e.currentTarget.open)}
-        >
-          <summary>
-            Learning path <span>Choose a lesson</span>
-          </summary>
-          {path}
-        </details>
-      ) : (
-        path
-      )}
+      <details
+        className={'lesson-path' + (presentation === 'club' ? ' club-path' : '')}
+        open={pathOpen}
+        onToggle={(e) => setPathOpen(e.currentTarget.open)}
+      >
+        <summary>
+          {free ? 'Solution stages' : 'Learning path'}
+          <span>
+            {lessons.find((lesson) => lesson.id === selected)?.shortTitle ?? 'Choose a lesson'}
+          </span>
+        </summary>
+        {path}
+      </details>
       <div className="lesson-body">{children}</div>
     </div>
   );

@@ -163,6 +163,7 @@ export function SolvePage({ engine, method = 'lbl' }: { engine: CubeEngine; meth
   return (
     <LessonLayout
       free
+      presentation={edition === 'club' ? 'club' : undefined}
       method={method}
       selected={active}
       onSelect={(id) => {
