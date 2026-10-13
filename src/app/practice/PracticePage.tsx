@@ -4,13 +4,8 @@ import { ALGORITHM_REGISTRY as registry } from '../../algorithms/registry';
 import { verifyDemonstration } from '../../algorithms/demonstration';
 import { describeCaseRecognition } from '../../algorithms/recognition-evidence';
 import { createPracticePool } from '../../practice/pool';
-import {
-  practiceStore as globalPracticeStore,
-  createPracticeStore,
-  PRACTICE_GROUPS,
-  normalizePracticeSelection,
-} from '../../practice/storage';
-import { useEdition } from '../edition';
+import { PRACTICE_GROUPS, normalizePracticeSelection } from '../../practice/storage';
+import { usePracticeStore } from './use-practice-store';
 import type { PracticeExercise } from '../../practice/types';
 import { createPracticeClient } from './practice-client';
 import { CaseDiagram } from '../algorithms/CaseDiagram';
@@ -18,14 +13,7 @@ import { AlgorithmPlayer } from '../../player/AlgorithmPlayer';
 import '../algorithms/algorithm-library.css';
 import './practice.css';
 export function PracticePage({ engine }: { engine: CubeEngine }) {
-  const edition = useEdition();
-  const practiceStore = useMemo(
-    () =>
-      edition === 'club'
-        ? createPracticeStore(() => localStorage, 'cubesteps.club.practice-selection.v1')
-        : globalPracticeStore,
-    [edition],
-  );
+  const practiceStore = usePracticeStore();
   const [loaded] = useState(() => practiceStore.load()),
     [selection, setSelection] = useState(loaded.selection),
     [available, setAvailable] = useState(loaded.available);

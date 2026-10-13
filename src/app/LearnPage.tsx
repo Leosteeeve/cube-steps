@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, type ReactNode } from 'react';
 import type { CubeEngine, SolveSession, StageId, MethodId } from '../core/types';
 import { getCourse } from '../content/courses';
 import {
@@ -20,10 +20,14 @@ export function LearnPage({
   engine,
   lessonId,
   method = 'lbl',
+  footer,
+  presentation: layoutPresentation,
 }: {
   engine: CubeEngine;
   lessonId: string;
   method?: MethodId;
+  footer?: ReactNode;
+  presentation?: 'club';
 }) {
   const course = getCourse(method),
     presentation = getMethod(method);
@@ -53,7 +57,7 @@ export function LearnPage({
     };
   }, [client, lesson.id, selectionKey, exampleScramble, method]);
   return (
-    <LessonLayout selected={lesson.id} method={method}>
+    <LessonLayout selected={lesson.id} method={method} presentation={layoutPresentation}>
       <MethodSelector method={method} kind="learn" />
       <div className="lesson-heading">
         <span className="eyebrow">
@@ -243,6 +247,7 @@ export function LearnPage({
           </div>
         </>
       )}
+      {footer}
     </LessonLayout>
   );
 }

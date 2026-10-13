@@ -496,3 +496,195 @@
     font-size: 32px;
   }
 }
+[data-edition='club'] .club-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  max-width: 1360px;
+  margin: 20px auto 8px;
+  padding: 0 24px;
+}
+[data-edition='club'] .club-tools a {
+  padding: 10px 12px;
+  font-size: 12px;
+  min-height: 44px;
+}
+[data-edition='club'] main > .preview-label {
+  margin: 0 max(24px, calc((100vw - 1312px) / 2)) 20px;
+}
+[data-edition='club'] .lesson-layout {
+  max-width: 1360px;
+  padding: 0 24px 40px;
+  margin: auto;
+  grid-template-columns: 230px minmax(0, 1fr);
+  gap: 30px;
+}
+[data-edition='club'] .club-path {
+  align-self: start;
+  min-width: 0;
+}
+[data-edition='club'] .club-path > summary {
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 650;
+}
+[data-edition='club'] .club-path > summary span {
+  float: right;
+  font-weight: 400;
+  color: var(--muted);
+  font-size: 11px;
+}
+[data-edition='club'] .club-path .stage-nav {
+  position: static;
+}
+[data-edition='club'] .club-path .club-note {
+  background: var(--soft);
+}
+[data-edition='club'] .lesson-heading h1 {
+  font-family: Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -1px;
+}
+[data-edition='club'] .player-area {
+  gap: 22px;
+}
+[data-edition='club'] .explanation {
+  background: #f5f8ff;
+  border-color: var(--line);
+}
+[data-edition='club'] .stage-link.active {
+  background: var(--soft);
+  color: var(--ink);
+}
+[data-edition='club'] .club-lesson-progress {
+  margin-top: 25px;
+  padding: 20px 24px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #f7faff;
+}
+[data-edition='club'] .club-lesson-progress label {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-weight: 650;
+  min-height: 44px;
+}
+[data-edition='club'] .club-lesson-progress input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--green);
+}
+[data-edition='club'] .club-lesson-progress p {
+  font-size: 12px;
+  margin: 4px 0 0;
+}
+[data-edition='club'] .club-lesson-progress .club-save-status {
+  margin-top: 10px;
+}
+[data-edition='club'] .algorithm-library {
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+@media (min-width: 851px) {
+  [data-edition='club'] .club-path > summary {
+    margin-bottom: 12px;
+    font-size: 12px;
+  }
+}
+@media (max-width: 850px) {
+  [data-edition='club'] .lesson-layout {
+    grid-template-columns: 1fr;
+    padding-inline: 16px;
+    gap: 20px;
+  }
+  [data-edition='club'] .club-tools {
+    padding-inline: 8px;
+    gap: 0;
+    margin-top: 12px;
+  }
+  [data-edition='club'] .club-tools a {
+    padding: 10px;
+    font-size: 11px;
+  }
+  [data-edition='club'] .club-path .stage-nav {
+    margin-top: 12px;
+    padding: 12px;
+    display: block;
+  }
+  [data-edition='club'] .club-path .stage-nav ol {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  [data-edition='club'] .club-path .nav-heading,
+  [data-edition='club'] .club-path .club-note {
+    display: none;
+  }
+  [data-edition='club'] .club-path .stage-link {
+    width: 100%;
+  }
+}
+[data-edition='club'] .skip-link:not(:focus) {
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+}
+[data-edition='club'] .method-selector a[aria-current],
+[data-edition='club'] .pill {
+  background: var(--soft);
+  border-color: #bed0ee;
+  color: var(--ink);
+}
+[data-edition='club'] .method-selector a:focus-visible {
+  outline-color: var(--green);
+}
+[data-edition='club'] .cube-canvas {
+  background: radial-gradient(ellipse at 50% 55%, #f3f7fe, transparent 68%);
+}
+[data-edition='club'] .play-button:hover:not(:disabled) {
+  background: #114dbd;
+}
+[data-edition='club'] .regrip-guide {
+  background: #edf4ff;
+  border-color: #c9daf2;
+}
+[data-edition='club'] .regrip-guide small,
+[data-edition='club'] .step-section p,
+[data-edition='club'] .algorithm-card small,
+[data-edition='club'] .algorithm-card > span,
+[data-edition='club'] .preview-label,
+[data-edition='club'] .case-selector p,
+[data-edition='club'] .player-options,
+[data-edition='club'] .orbit-note {
+  color: var(--muted);
+}
+[data-edition='club'] .step-section p {
+  font-size: 13px;
+  line-height: 1.8;
+}
+[data-edition='club'] .step-section h3,
+[data-edition='club'] .lesson-notes summary,
+[data-edition='club'] .scramble-details summary,
+[data-edition='club'] .algorithm-moves b {
+  color: var(--ink);
+}
+[data-edition='club'] .step-number,
+[data-edition='club'] .algorithm-card {
+  border-color: var(--line);
+}
+[data-edition='club'] .algorithm-moves b[aria-current] {
+  background: #dce9ff;
+  color: var(--ink);
+  box-shadow: inset 0 -2px #8aace4;
+}
+[data-edition='club'] .speed select {
+  background: var(--soft);
+  color: var(--ink);
+}
+[data-edition='club'] .piece-label {
+  color: var(--muted) !important;
+}

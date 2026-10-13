@@ -1,14 +1,30 @@
-import { createContext, useContext, useState, type ReactNode } from 'react';
+import { createContext, useCallback, useContext, useState, type ReactNode } from 'react';
 import { createClubProgressStore, validLesson } from './progress-store';
 import { CLUB_METHODS, type ClubProgress } from './types';
 import type { MethodId } from '../../core/types';
 function useProgressState() {
   const [store] = useState(() => createClubProgressStore(() => localStorage));
   const [snapshot, setSnapshot] = useState(() => store.load());
-  function update(change: (p: ClubProgress) => ClubProgress) {
-    store.save(change(store.load().value));
-    setSnapshot(store.load());
-  }
+  const update = useCallback(
+    (change: (p: ClubProgress) => ClubProgress) => {
+      store.save(change(store.load().value));
+      setSnapshot(store.load());
+    },
+    [store],
+  );
+  const visitLesson = useCallback(
+    (method: MethodId, lessonId: string) => {
+      const current = store.load().value;
+      if (
+        validLesson(method, lessonId) &&
+        (current.lastLesson?.method !== method ||
+          current.lastLesson.lessonId !== lessonId ||
+          current.selectedMethod !== method)
+      )
+        update((p) => ({ ...p, selectedMethod: method, lastLesson: { method, lessonId } }));
+    },
+    [store, update],
+  );
   return {
     progress: snapshot.value,
     available: snapshot.available,
@@ -16,10 +32,7 @@ function useProgressState() {
     chooseMethod(method: MethodId) {
       if (CLUB_METHODS.includes(method)) update((p) => ({ ...p, selectedMethod: method }));
     },
-    visitLesson(method: MethodId, lessonId: string) {
-      if (validLesson(method, lessonId))
-        update((p) => ({ ...p, selectedMethod: method, lastLesson: { method, lessonId } }));
-    },
+    visitLesson,
     setPracticed(method: MethodId, lessonId: string, value: boolean) {
       if (validLesson(method, lessonId))
         update((p) => ({

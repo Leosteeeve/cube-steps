@@ -13,6 +13,24 @@ import { CaseDiagram } from './CaseDiagram';
 import { parseRoute } from '../routes';
 import { practiceStore } from '../../practice/storage';
 import { createDemonstration } from '../../algorithms/demonstration';
+import { EditionProvider } from '../edition';
+it('hands club selections to club practice without changing global selections', async () => {
+  practiceStore.save({ version: 1, caseIds: ['pll-z'], groupIds: [] });
+  localStorage.removeItem('cubesteps.club.practice-selection.v1');
+  render(
+    <EditionProvider edition="club">
+      <AlgorithmLibraryPage engine={engine} />
+    </EditionProvider>,
+  );
+  const user = userEvent.setup();
+  await user.click(await screen.findByRole('checkbox', { name: 'Select OLL 20' }));
+  await user.click(screen.getByRole('button', { name: 'Practice selected cases' }));
+  expect(practiceStore.load().selection.caseIds).toEqual(['pll-z']);
+  expect(JSON.parse(localStorage.getItem('cubesteps.club.practice-selection.v1')!).caseIds).toEqual(
+    ['oll-20'],
+  );
+  practiceStore.save({ version: 1, caseIds: [], groupIds: [] });
+});
 vi.mock('../../player/AlgorithmPlayer', () => ({
   AlgorithmPlayer: ({ demonstration }: any) => (
     <output data-testid="clip">{demonstration.variantId}</output>

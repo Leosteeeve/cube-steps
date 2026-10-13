@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import { parseClubRoute } from './routes';
 import { SharedFeaturePage } from '../app/SharedFeaturePage';
 import { useCubeEngine } from '../app/use-cube-engine';
@@ -8,7 +8,10 @@ import { ClubFooter } from './components/ClubFooter';
 import { HomePage } from './HomePage';
 import { RouteQuiz } from './learning/RouteQuiz';
 import { useClubProgress } from './learning/use-club-progress';
-import { lessonRoute } from '../app/routes';
+import { lessonRoute, methodRoute } from '../app/routes';
+const ClubLearnPage = lazy(() =>
+  import('./learning/ClubLearnPage').then((m) => ({ default: m.ClubLearnPage })),
+);
 export function ClubApp() {
   const { progress } = useClubProgress();
   const [route, setRoute] = useState(() => parseClubRoute(location.hash));
@@ -37,6 +40,29 @@ export function ClubApp() {
         timerAvailable={false}
       />
       <main id="main" tabIndex={-1}>
+        {!['home', 'quiz', 'timer'].includes(route.kind) && (
+          <nav className="club-tools" aria-label="Learning tools">
+            <a
+              href={methodRoute(
+                'method' in route ? route.method : progress.selectedMethod,
+                'learn',
+              )}
+            >
+              Lessons
+            </a>
+            <a
+              href={methodRoute(
+                'method' in route ? route.method : progress.selectedMethod,
+                'solve',
+              )}
+            >
+              Solve your cube
+            </a>
+            <a href="#/algorithms">Algorithms</a>
+            <a href="#/practice">Formula practice</a>
+            <a href="#/find-your-route">Find your route</a>
+          </nav>
+        )}
         {route.kind === 'home' ? (
           <HomePage
             resumeHref={
@@ -70,7 +96,19 @@ export function ClubApp() {
                 {getMethod(route.method).teachingStatus === 'preview' ? ' · Preview' : ''}
               </p>
             )}
-            <SharedFeaturePage route={route} engine={engine} />
+            {route.kind === 'learn' ? (
+              <Suspense
+                fallback={
+                  <p role="status" className="loading-panel">
+                    Loading your lesson…
+                  </p>
+                }
+              >
+                <ClubLearnPage engine={engine} method={route.method} lessonId={route.lessonId} />
+              </Suspense>
+            ) : (
+              <SharedFeaturePage route={route} engine={engine} />
+            )}
           </>
         ) : (
           <p role="status" className="loading-panel">
