@@ -14,6 +14,8 @@ Complete extraction macros are admitted separately under `advanced-extract/<slot
 
 ## Reproducible data
 
+The `f2l-v1` selection policy scores the complete preparation plus insertion as face-turn equivalents + 2 times explicit rotations + the variant's execution penalty. It retains the best eight validated candidates per unfinished pair, then compares each with half the cheapest immediate cost of a next pair. This is one-pair lookahead, not a globally optimal F2L search. Ties use immediate cost, rotation count, immutable target identity, variant identity and setup sequence. A shared limit of 32,768 candidate simulations covers the entire selection, with at most 256 outputs per target and the separately enforced preparation limits. Budget exhaustion produces a clear failure.
+
 - `node scripts/build-f2l-catalog.mts` re-admits the transcribed source formulas against independent legal placements and writes the F2L catalog plus base fixtures.
 - `npm run generate:cases` uses cubing.js's generic solver **offline only** to find physical outer-face setup sequences for those independently declared states. It verifies every sequence and resumes already verified entries if interrupted. The runtime method never calls this generic solver.
 - `npm run verify:cases` verifies the committed setups and recognition without regenerating randomized setups. Physical setup starts white up, green front; explicit holding rotations then reach the exact displayed initial state.
