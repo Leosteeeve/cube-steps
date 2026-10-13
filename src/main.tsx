@@ -7,8 +7,15 @@ document.documentElement.dataset.edition = 'global';
 const PlayerFixture = import.meta.env.DEV
   ? React.lazy(() => import('./player/PlayerFixture'))
   : null;
+const NotationFixture = import.meta.env.DEV
+  ? React.lazy(() => import('./club/moves/NotationFixture'))
+  : null;
 createRoot(document.getElementById('root')!).render(
-  PlayerFixture && new URLSearchParams(location.search).get('fixture') === 'player' ? (
+  NotationFixture && new URLSearchParams(location.search).get('fixture') === 'notation' ? (
+    <React.Suspense fallback={<p>Preparing the notation fixture…</p>}>
+      <NotationFixture />
+    </React.Suspense>
+  ) : PlayerFixture && new URLSearchParams(location.search).get('fixture') === 'player' ? (
     <React.Suspense fallback={<p>Preparing the player fixture…</p>}>
       <PlayerFixture />
     </React.Suspense>
