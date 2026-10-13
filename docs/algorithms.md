@@ -18,6 +18,10 @@ The 57 OLL entries use the numbered cases and default full-case algorithms from 
 
 Leading source y rotations are moved into the explicit setup contract. The recognition map covers 215 unsolved legal signatures; the 216th orientation is an explicit skip. It ignores last-layer permutation, prefers U alignment over regrips, and verifies all admitted wide/slice formulas. Physical setups have four U variations per case, and separate holding rotations.
 
+## PLL references and coverage
+
+The 21 named PLL cases use [CubeSkills PLL](https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf). Side stickers are transcribed independently from its diagrams, and each complete formula is admitted against that legal permutation. Matching uses relative corner and edge order with cyclic side-color alignment. The 71 unsolved relative signatures cover all 284 unsolved legal permutations; four further permutations need only final U alignment. Source bracketed AUF is omitted from the formula and shown as a separate final step. H and Z retain their slice moves; physical x rotations inside a formula remain visible.
+
 ## F2L selection policy
 
 The `f2l-v1` selection policy scores the complete preparation plus insertion as face-turn equivalents + 2 times explicit rotations + the variant's execution penalty. It retains the best eight validated candidates per unfinished pair, then compares each with half the cheapest immediate cost of a next pair. This is one-pair lookahead, not a globally optimal F2L search. Ties use immediate cost, rotation count, immutable target identity, variant identity and setup sequence. A shared limit of 32,768 candidate simulations covers the entire selection, with at most 256 outputs per target and the separately enforced preparation limits. Budget exhaustion produces a clear failure.
@@ -26,6 +30,7 @@ The `f2l-v1` selection policy scores the complete preparation plus insertion as 
 
 - `node scripts/build-f2l-catalog.mts` re-admits the transcribed source formulas against independent legal placements and writes the F2L catalog plus base fixtures.
 - `node scripts/build-oll-catalog.mts` re-admits all 57 formulas against independent sticker patterns and recreates the OLL recognition map.
+- `node scripts/build-pll-catalog.mts` re-admits all 21 formulas against independent side-sticker patterns and recreates the PLL recognition map.
 - `npm run generate:cases` uses cubing.js's generic solver **offline only** to find physical outer-face setup sequences for those independently declared states. It verifies every sequence and resumes already verified entries if interrupted. The runtime method never calls this generic solver.
 - `npm run verify:cases` verifies the committed setups and recognition without regenerating randomized setups. Physical setup starts white up, green front; explicit holding rotations then reach the exact displayed initial state.
 - `npm run generate:cross` deterministically generates all 190,080 four-edge coordinates. `npm run verify:cross` compares the bytes and manifest against a fresh generation. The runtime checks the version, byte length and SHA-256 before using the asset.

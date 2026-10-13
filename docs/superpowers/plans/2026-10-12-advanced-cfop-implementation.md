@@ -135,11 +135,11 @@ Paths in task blocks resolve the `.ts`/`.tsx` shorthand above. New scripts that 
 
 **Interfaces:** `recognizeAdvancedPLL(engine: CubeEngine,state: CubeState): LastLayerMatch | null` treats solved-up-to-AUF as null and requires F2L plus OLL. `ADVANCED_STAGE_IDS` has the five exact spec IDs. Export `checkAdvancedStage(engine,state,id): boolean`, `ADVANCED_PRESENTATION: MethodPresentation`, `ADVANCED_RUNTIME: MethodRuntime`, `solveAdvancedOLL(context: AdvancedContext): StageResult`, `solveAdvancedPLL(context: AdvancedContext): StageResult`, `solveAdvancedAUF(context: AdvancedContext): StageResult`. Advanced presentation algorithms are derived from admitted registry variants (including setup formulas), not duplicate move definitions.
 
-- [ ] Write `recognizes_all_288_legal_pll_permutations`, `solves_one_formula_then_auf`, and `checks_partial_stages_in_all_frames`. Assert 21 named cases, every equal-parity last-layer edge/corner permutation (`24 * 24 / 2 = 288`), at most one formula per unsolved PLL, no formula for AUF-only states, and final U/U'/U2 alignment solves the cube.
-- [ ] Run `npx.cmd vitest run src/methods/advanced/recognize-pll.test.ts src/methods/advanced/last-layer.test.ts src/methods/advanced/stages.test.ts`; observe failures.
-- [ ] Implement canonical relative-permutation signatures, including cyclic side-color alignment, without trial-applying every formula. Admit all 21 formulas and their fixtures. Stage checks: matched white cross; cross plus four pairs; F2L plus full yellow orientation; F2L/OLL plus permutation solved up to U; fully solved. Checks are center-relative and frame-independent. Setup U turns and physical y regrips stay separate; OLL/PLL append one algorithm action with a verified stage effect.
-- [ ] Rerun focused checks, OLL admission and `npm.cmd run verify:cases`; all pass. Verify H/Z slice formulas, all AUF offsets, skipped OLL/PLL and tampered recognition metadata.
-- [ ] Commit as `feat: add full PLL and advanced stage verification`.
+- [x] Write `recognizes_all_288_legal_pll_permutations`, `solves_one_formula_then_auf`, and `checks_partial_stages_in_all_frames`. Assert 21 named cases, every equal-parity last-layer edge/corner permutation (`24 * 24 / 2 = 288`), at most one formula per unsolved PLL, no formula for AUF-only states, and final U/U'/U2 alignment solves the cube.
+- [x] Run `npx.cmd vitest run src/methods/advanced/recognize-pll.test.ts src/methods/advanced/last-layer.test.ts src/methods/advanced/stages.test.ts`; observe failures.
+- [x] Implement canonical relative-permutation signatures, including cyclic side-color alignment, without trial-applying every formula. Admit all 21 formulas and their fixtures. Stage checks: matched white cross; cross plus four pairs; F2L plus full yellow orientation; F2L/OLL plus permutation solved up to U; fully solved. Checks are center-relative and frame-independent. Setup U turns and physical y regrips stay separate; OLL/PLL append one algorithm action with a verified stage effect.
+- [x] Rerun focused checks, OLL admission and `npm.cmd run verify:cases`; all pass. Verify H/Z slice formulas, all AUF offsets, skipped OLL/PLL and tampered recognition metadata.
+- [x] Commit as `feat: add full PLL and advanced stage verification`.
 
 ## Task 7: Complete Advanced traces and worker integration
 

@@ -1,4 +1,4 @@
-import type { CubeEngine, CubeState, Face } from '../../src/core/types';
+import type { CubeEngine, CubeState, Face, Color } from '../../src/core/types';
 import { EDGE_SLOTS, CORNER_SLOTS } from '../../src/core/observations';
 export const LL_SLOTS = ['UF', 'UR', 'UB', 'UL', 'UFR', 'URB', 'UBL', 'ULF'];
 /** Read an independent sticker pattern, without inverting its algorithm. */
@@ -55,4 +55,55 @@ export function permuteLastLayer(
     copy.data.EDGES.pieces[i] = state.data.EDGES.pieces[edges[i]];
   }
   return copy;
+}
+export function permutations(values: number[]): number[][] {
+  return values.length
+    ? values.flatMap((v, i) => permutations(values.filter((_, j) => i !== j)).map((p) => [v, ...p]))
+    : [[]];
+}
+export function permutationParity(values: readonly number[]): number {
+  let n = 0;
+  for (let i = 0; i < values.length; i++)
+    for (let j = i + 1; j < values.length; j++) if (values[i] > values[j]) n ^= 1;
+  return n;
+}
+export function legalPLLPermutations(engine: CubeEngine): CubeState[] {
+  const base = engine.apply(engine.solved(), ['z2']),
+    perms = permutations([0, 1, 2, 3]);
+  return perms.flatMap((corners) =>
+    perms
+      .filter((edges) => permutationParity(edges) === permutationParity(corners))
+      .map((edges) => permuteLastLayer(base, corners, edges)),
+  );
+}
+export function permutationFixture(
+  engine: CubeEngine,
+  stickers: Record<string, Partial<Record<Face, Color>>>,
+): CubeState {
+  const state = structuredClone(engine.apply(engine.solved(), ['z2'])),
+    solvedObservation = engine.observe(state);
+  for (const slot of LL_SLOTS) {
+    const orbit = slot.length === 2 ? 'EDGES' : 'CORNERS',
+      slots = slot.length === 2 ? EDGE_SLOTS : CORNER_SLOTS;
+    const candidates = slot.length === 2 ? solvedObservation.edges : solvedObservation.corners;
+    const wanted: Partial<Record<Face, Color>> = { ...stickers[slot], U: 'yellow' };
+    const piece = candidates.find((p) =>
+      Object.values(wanted).every((color) => Object.values(p.stickers).includes(color)),
+    );
+    if (!piece) throw new Error(`No legal piece for PLL stickers at ${slot}.`);
+    const index = slots.indexOf(slot);
+    state.data[orbit].pieces[index] = slots.indexOf(piece.id);
+    let matched = false;
+    for (let o = 0; o < slot.length; o++) {
+      state.data[orbit].orientation[index] = o;
+      const obs = engine.observe(state),
+        now = (slot.length === 2 ? obs.edges : obs.corners).find((p) => p.slot === slot)!;
+      if (Object.entries(wanted).every(([face, color]) => now.stickers[face as Face] === color)) {
+        matched = true;
+        break;
+      }
+    }
+    if (!matched) throw new Error(`Mirrored or invalid PLL stickers at ${slot}.`);
+  }
+  return state;
 }
