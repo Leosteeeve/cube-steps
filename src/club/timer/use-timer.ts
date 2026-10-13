@@ -54,6 +54,11 @@ export function useTimer({
         if (document.hidden) controller.dispatch({ type: 'hidden' });
       };
     const leave = () => controller.dispatch({ type: 'leave' });
+    const restore = (event: PageTransitionEvent) => {
+      if (!event.persisted) return;
+      void repository.refresh();
+      if (controller.snapshot().phase === 'loading') void controller.newScramble();
+    };
     const focus = (e: FocusEvent) => {
       const current = controller.snapshot();
       if (
@@ -70,6 +75,7 @@ export function useTimer({
     window.addEventListener('blur', blur);
     document.addEventListener('visibilitychange', hidden);
     window.addEventListener('pagehide', leave);
+    window.addEventListener('pageshow', restore);
     return () => {
       unsubscribe();
       document.removeEventListener('keydown', down);
@@ -78,9 +84,10 @@ export function useTimer({
       window.removeEventListener('blur', blur);
       document.removeEventListener('visibilitychange', hidden);
       window.removeEventListener('pagehide', leave);
+      window.removeEventListener('pageshow', restore);
       controller.dispose();
     };
-  }, [controller]);
+  }, [controller, repository]);
   const active = ['inspection', 'arming', 'running'].includes(state.phase);
   useEffect(() => {
     if (!active) return;

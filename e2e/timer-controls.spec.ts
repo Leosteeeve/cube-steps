@@ -111,3 +111,26 @@ test('moving keyboard focus out of an armed surface cancels that hold', async ({
   await expect(surface).toHaveAttribute('data-phase', 'idle');
   await expect(page.getByText('0 solves', { exact: true })).toBeVisible();
 });
+
+test('restoring a persisted page prepares a new scramble after an interrupted solve', async ({
+  page,
+}) => {
+  await page.goto('club/#/timer');
+  const surface = page.getByRole('button', { name: 'Timing surface', exact: true });
+  await expect(surface).toBeEnabled({ timeout: 20000 });
+  await surface.focus();
+  await page.keyboard.down('Space');
+  await page.waitForTimeout(350);
+  await page.keyboard.up('Space');
+  await expect(surface).toHaveAttribute('data-phase', 'running');
+  await page.evaluate(() =>
+    window.dispatchEvent(new PageTransitionEvent('pagehide', { persisted: true })),
+  );
+  await expect(surface).toHaveAttribute('data-phase', 'loading');
+  await page.evaluate(() =>
+    window.dispatchEvent(new PageTransitionEvent('pageshow', { persisted: true })),
+  );
+  await expect(surface).toHaveAttribute('data-phase', 'idle');
+  await expect(page.getByText('1 solve', { exact: true })).toBeVisible();
+  await expect(page.locator('.timer-last')).toContainText('DNF');
+});

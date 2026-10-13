@@ -1,6 +1,6 @@
 # Club edition validation
 
-Status: all planned local functionality is implemented. Integrated production verification and independent review are in progress; this record does not yet claim deployment. The owner approved all three linked implementation plans and authorized unattended integration and publication on October 13, 2026.
+Status: all planned local functionality is implemented. Independent review identified one important history-refresh race, reproduced and fixed with deterministic tests. Publication remains subject to the exact-commit GitHub checks and public-site verification. The owner approved all three linked implementation plans and authorized unattended integration and publication on October 13, 2026.
 
 ## Shared foundation
 
@@ -30,6 +30,29 @@ Status: all planned local functionality is implemented. Integrated production ve
 - Timer domain tests: 12 files / 45 tests passed. Targeted browser checks passed in Chromium/WebKit: ten control/input checks, four real-storage checks, and eight history/export/layout checks. The integrated development browser run passed all 114 checks. Cross/case assets reverified: 190,080 coordinates and 972 setups for 119 cases.
 - Production testing exposed a reduced-motion change between initial render and event subscription. A regression test reproduced the missed update; resynchronizing after subscription fixed it. All six motion tests and five repeated WebKit production checks passed. The production Timer navigation test was also corrected to expect the static notation lesson's heading rather than nonexistent playback controls.
 - Empty and populated Timer screenshots at 1280, 390 and 360 px were inspected. Timing, export and penalty controls meet the 44 px target; no horizontal overflow was detected. The numeric running clock is excluded from live announcements; instruction/result announcements occur at meaningful transitions. Cube sticker colors remain unchanged.
+
+## Final independent review and regression pass
+
+- One independent reviewer inspected the complete branch, both designs, all three plans, all 15 task review-focus sections and the execution rulings. It reported no critical issues, one important issue, no minor issues and no declined judgments. Its merge assessment was conditional on fixing the history-refresh race.
+- A local save could invalidate an initial or cross-tab history read without replacing it. The database remained intact, but history, averages and exports could be incomplete. Five deterministic regressions failed before the fix, covering successful saves, failed saves, retries, concurrent corrections and deletions. Pending rows now overlay useful in-flight reads; a committed save requests a fresh authoritative snapshot while retaining stale-read protection. All five regressions passed afterward.
+- An additional lifecycle check reproduced a disabled Timer after a persisted `pagehide`/`pageshow` sequence interrupted a solve. Restoration now refreshes history and prepares a new scramble when needed. The browser regression uses explicit persisted page-transition events; it does not claim every browser's real back-forward-cache eligibility was tested.
+- TypeScript and the full unit suite passed after these fixes: 94 files, 391 tests. The earlier integrated development run passed 114 browser checks and production passed 16. The added restoration case brings the complete development suite to 116; final remote CI runs the full suites again before publication.
+- No review findings were deferred. Revised F2L physical-cube acceptance remains pending and is not replaced by this review.
+
+## Execution decisions
+
+The Native workflow used one sequential implementer and one fresh final reviewer. These decisions were recorded during execution:
+
+1. Use an ignored Git worktree under the actual repository because the native workspace tool detected the outer folder as a non-repository. Cost if wrong: manual worktree cleanup; isolation remains explicit.
+2. Use a small Node helper for task-start/task-done because the installed Bash entry was blocked and Python resolved to a Store alias. Cost if wrong: helper auditing discrepancies; task briefs, base commits, logs and pass-only completion markers were retained.
+3. Publish revised Advanced F2L as Preview under the owner's unattended release authorization. Cost if wrong: ergonomics still need renewed physical follow-along feedback; existing accepted methods remain available.
+4. Reuse independent pair-placement/catalog fixtures in the holding tests instead of adding a duplicate fixture module. Cost if wrong: fixture coverage could be narrower; all five specified review cases are explicitly covered.
+5. Cache bounded formula transformations, immutable selection simulations, frozen-state observations and local state keys; use typed orbit copies while preserving deep freeze. Cost if wrong: geometry or cache-staleness regression; core, corpus and rendering checks cover these boundaries, and simulation budgets count cache hits.
+6. Review all three linked plans once on the integration branch. Cost if wrong: interaction defects could evade a single review; the whole-branch review includes each plan's focus areas and integrated tests.
+7. Add a noindex/nofollow request to the club HTML. Cost if wrong: crawlers may ignore it; the site and repository remain public and the README says so.
+8. Preserve unsupported club practice/draft bytes until explicit Reset, with global defaults unchanged. Cost if wrong: incompatible data can require a user reset instead of automatic migration.
+9. Include the edition-aware practice hook and algorithm-library consumer omitted from the file map. Cost if wrong: a broader shared consumer change; tests cover namespace separation and memory-only handoff.
+10. Add an explicit scramble-loading machine input for atomic New/Retry behavior. Cost if wrong: an extra state transition could disable timing incorrectly; controller and browser tests cover readiness and failures.
 
 ## Release constraints
 

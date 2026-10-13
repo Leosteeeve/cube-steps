@@ -101,6 +101,9 @@ export function createTimerRepository(
           pending.delete(id);
           saved.set(id, attempt);
           error = pending.size ? 'Not saved: retry the remaining attempts.' : '';
+          // Supersede older reads with the complete committed database snapshot.
+          // Updating just this row would lose initial history or cross-tab edits.
+          await refresh();
           if (!closed) channel?.postMessage('changed');
         } catch (e) {
           resetClosedConnection(e);
@@ -148,7 +151,8 @@ export function createTimerRepository(
       if (pending.has(attempt.id) || saved.has(attempt.id))
         return writing.get(attempt.id) ?? Promise.resolve();
       pending.set(attempt.id, { ...attempt });
-      ++epoch;
+      // Pending rows are overlaid on reads, so an initial load remains useful
+      // even if this write fails. Only a committed write invalidates a read.
       emit();
       return retry(attempt.id);
     },
