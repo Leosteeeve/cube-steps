@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+import { renderNotationFrame } from './helpers/notation';
 
 test('built club home stays lightweight and both editions retain their tools', async ({ page }) => {
   test.setTimeout(90000);
@@ -70,8 +71,11 @@ test('production club deep links, motion preferences and global identity remain 
   expect(favicon).toBeTruthy();
   expect((await page.request.get(new URL(favicon!, page.url()).href)).ok()).toBe(true);
   await page.goto('club/#/learn/white-cross');
+  await expect(page.getByRole('button', { name: 'Next move', exact: true })).toBeEnabled();
+  await renderNotationFrame(page);
   await page.reload();
   await expect(page.getByRole('button', { name: 'Next move', exact: true })).toBeEnabled();
+  await renderNotationFrame(page);
   await page.getByRole('button', { name: 'Next move', exact: true }).click();
   await expect(page.getByLabel('Current holding')).toContainText('yellow up');
   const before = await page.getByTestId('move-position').textContent();
@@ -83,7 +87,14 @@ test('production club deep links, motion preferences and global identity remain 
   await expect(page.locator('html')).toHaveAttribute('data-motion', 'reduced');
   await expect(page.getByTestId('move-position')).toHaveText(before!);
   await expect(page.getByLabel('Current holding')).toHaveText(holding!);
+  // Keep reload coverage meaningful on a cold/slow renderer download.
+  await page.route('**/assets/*twisty-dynamic-3d*.js', async (route) => {
+    await new Promise((resolve) => setTimeout(resolve, 400));
+    await route.continue();
+  });
   await page.reload();
+  await expect(page.getByRole('button', { name: 'Next move', exact: true })).toBeEnabled();
+  await renderNotationFrame(page);
   await expect(select).toHaveValue('off');
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await select.selectOption('system');

@@ -65,6 +65,8 @@ One **Minor** item is deferred under the approved Native review policy: explain 
 
 ## Release boundary
 
-The reviewed source and production checks are committed in `23fb6edaca7802dd4ba46ceaff01ab082ac17186`; subsequent evidence updates change documentation/screenshots only. All required local suites completed successfully on that source. Logs and the full responsive screenshot matrix are also preserved outside the disposable worktree under the project validation directory.
+The reviewed application source is committed in `23fb6edaca7802dd4ba46ceaff01ab082ac17186`. All required local suites completed successfully on that source. Logs and the full responsive screenshot matrix are also preserved outside the disposable worktree under the project validation directory.
+
+The initial GitHub push run passed all 160 development browser checks but hit an intermittent WebKit production reload check; the parallel pull-request run passed completely. The saved failure trace shows full-page navigation cancelling the previous document's unfinished 3D module request. Delaying that request reproduced the failure locally even after waiting for enabled controls, which only establishes timeline readiness. The production check now also awaits an actual rendered frame before each reload/navigation. Ten repeated Chromium/WebKit checks passed with the delayed download; all original page-error, asset-error and preference assertions remain. This follow-up changes the test and validation record only, not the reviewed application source.
 
 Use the owner's existing GitHub integration/publication authorization with **publish_preview=true** and **teaching_accepted=false**. GitHub checks and the Pages workflow run the required suites again. The deployed `build-info.json` identifies the actual published commit; verify it and the public Home/Moves/global lesson routes before reporting publication. The owner follow-along checklist above remains outstanding.
