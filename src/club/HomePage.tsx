@@ -64,14 +64,14 @@ export function HomePage({ resumeHref }: { resumeHref?: string }) {
               <br />A cube you can finally solve.
             </p>
           </a>
-          <a href="#/learn/notation">
-            <small>02 / TOGETHER</small>
+          <a href="#/moves">
+            <small>02 / EXPLORE</small>
             <span aria-hidden="true">↗</span>
-            <h3>Follow a club lesson</h3>
+            <h3>Meet the moves</h3>
             <p>
-              Open your shared lesson and work
+              A letter. A turn. Now it clicks.
               <br />
-              through each turn together.
+              Watch, compare, and try it yourself.
             </p>
           </a>
           <a href="#/timer">

@@ -688,3 +688,16 @@
 [data-edition='club'] .piece-label {
   color: var(--muted) !important;
 }
+@media (max-width: 480px) {
+  [data-edition='club'] .club-header {
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  [data-edition='club'] .club-header nav {
+    width: 100%;
+    justify-content: space-between;
+  }
+  [data-edition='club'] .club-header nav a {
+    padding-inline: 14px;
+  }
+}

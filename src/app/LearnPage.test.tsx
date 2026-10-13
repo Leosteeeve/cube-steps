@@ -21,6 +21,18 @@ afterEach(() => {
   cleanup();
   vi.clearAllMocks();
 });
+it('links to animated notation only from the club introduction', async () => {
+  const engine = await createCubeEngine();
+  const { rerender } = render(
+    <LearnPage engine={engine} lessonId="notation" presentation="club" />,
+  );
+  expect(screen.getByRole('link', { name: 'Explore moves in 3D' })).toHaveAttribute(
+    'href',
+    '#/moves',
+  );
+  rerender(<LearnPage engine={engine} lessonId="notation" />);
+  expect(screen.queryByRole('link', { name: 'Explore moves in 3D' })).not.toBeInTheDocument();
+});
 it('changes case content together and ignores late cancelled examples', async () => {
   const pending: ((value: SessionResult) => void)[] = [];
   mocked.solve.mockImplementation(() => new Promise((resolve) => pending.push(resolve)));

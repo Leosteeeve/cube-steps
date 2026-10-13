@@ -1,6 +1,15 @@
 import { expect, it } from 'vitest';
 import { parseClubRoute } from './routes';
 import { parseRoute } from '../app/routes';
+it('keeps the explorer in the club entry', () => {
+  expect(parseClubRoute('#/moves')).toEqual({ kind: 'moves' });
+  expect(parseRoute('#/moves')).toEqual({ kind: 'not-found' });
+  expect(parseClubRoute('#/learn/notation')).toEqual({
+    kind: 'learn',
+    method: 'lbl',
+    lessonId: 'notation',
+  });
+});
 it('separates club home and local features from global course routes', () => {
   for (const hash of ['', '#', '#/', '#/home'])
     expect(parseClubRoute(hash)).toEqual({ kind: 'home' });
