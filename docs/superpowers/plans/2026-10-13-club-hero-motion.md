@@ -10,7 +10,7 @@
 
 **Spec:** [Approved design](../specs/2026-10-13-notation-and-ui-refresh-design.md), sections 2–3 and 6–9.
 
-**Status and order:** Awaiting implementation-plan review. Preserve Native execution and one independent final review. Execute Tasks 1–2 here, then [Move Explorer Tasks 3–6](2026-10-13-club-move-explorer.md), then [global UI and integration Tasks 7–9](2026-10-13-global-ui-refresh.md). These are nine tasks total, not separate releases.
+**Status and order:** Approved and implemented under Native execution; local validation and independent review are complete. See the notation/UI validation record for release and physical-acceptance status. Preserve Native execution and one independent final review. Execute Tasks 1–2 here, then [Move Explorer Tasks 3–6](2026-10-13-club-move-explorer.md), then [global UI and integration Tasks 7–9](2026-10-13-global-ui-refresh.md). These are nine tasks total, not separate releases.
 
 ## Global Constraints
 

@@ -1,6 +1,6 @@
 # CubeSteps UI Refresh and Club Move Explorer
 
-Status: the owner approved the visual direction, written specification and all three implementation plans on October 13, 2026. Native implementation is complete; integrated verification and independent review are in progress. New notation physical-cube acceptance remains pending. See the [validation record](../../validation/notation-ui-refresh.md).
+Status: the owner approved the visual direction, written specification and all three implementation plans on October 13, 2026. Native implementation, all required local verification and independent review are complete. New notation physical-cube acceptance remains pending. See the [validation record](../../validation/notation-ui-refresh.md) for evidence and release constraints.
 
 ## 1. Purpose and agreed scope
 
@@ -170,6 +170,6 @@ The page does not save move progress, change lesson completion or touch timer re
 
 Implement in reviewable slices: decorative cube; catalog/controller/renderer and explorer; global presentation; integration/accessibility/regression. The written implementation plan must state concrete files, dependencies, meaningful tests and a final independent review. Continue to use the owner's previously selected Native execution method when the implementation plan is approved.
 
-The current deliverable is this specification and the approved visual references. Written-spec approval permits the implementation-plan stage; it does not label the prototype or production feature complete. Publishing uses the existing repository and GitHub Pages artifact after implementation, verification and applicable release authorization. Verify public URLs and local/remote state before reporting a release.
+The specification and visual references were approved before the implementation plans. The implemented product has now passed local validation and independent review; those checks do not establish physical follow-along acceptance. Publishing uses the existing repository and GitHub Pages artifact under the applicable release authorization. Verify public URLs and local/remote state before reporting a release.
 
 Deferred: a global Move Explorer entry, cumulative notation sequences, notation quizzes/scoring, new solving methods, timer feature expansion, member accounts and additional personal data collection.

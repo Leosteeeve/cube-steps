@@ -1,6 +1,6 @@
 # Notation and UI refresh validation
 
-Status: implementation complete; final integrated verification and independent review in progress. New notation physical-cube acceptance is pending. This record does not claim publication.
+Status: implementation and all required local verification are complete. Independent review found no blocking issues. New notation physical-cube acceptance is pending. Publication status is tracked separately by GitHub Actions and the deployed `build-info.json`.
 
 ## Scope and reference
 
@@ -22,14 +22,28 @@ Verified locally on Windows, Node 24, Chromium and WebKit:
 - Task-level RED→GREEN tests cover new geometry, catalog conventions, native endpoints, controller races, renderer failure/readiness, club routing, phone navigation and current-turn semantics.
 - Full unit suite: **105 files / 489 tests passed**.
 - Cross asset verification: **190,080 states**. Case asset verification: **972 physical setups / 119 cases**.
+- All four fixed-seed correctness corpus files passed (five checks, 655.91 seconds); seed counts, deterministic re-solves, color inputs and checkpoint assertions are unchanged. The exact-cross table suite passed both checks.
+- The 1,000-seed F2L efficiency baseline passed (211.14 seconds); no teaching-policy or metric threshold changes were made.
 - Task 8 browser regression: **48 checks passed** across both browsers, including every method's final phone lesson, exact color input and playback boundaries, daisy checkpoints, F2L regrips and five-width global layouts.
-- Remaining final corpus, full development/production runs and independent-review outcomes will be recorded below once complete.
+- New production selection: **10 checks passed**, including all 54 moves in both browsers, direct refresh, actual bundled module/worker requests, Home/quiz lazy boundaries, static fallback and rejected-module reload recovery.
+- Complete development browser suite: **160 checks passed** in Chromium and WebKit (16.6 minutes).
+- Final TypeScript check and production build passed. Complete production browser suite: **24 checks passed** in Chromium and WebKit (7.1 minutes), covering both editions, refreshed deep links, all 54 notation endpoints, fallbacks, real worker assets, exact colors, formula practice, Timer persistence and exports. Normal paths had no page errors or failed asset responses; only the deliberately aborted module is excluded in its fault-injection test.
 
 The Windows restricted runtime cannot resolve Vite worker paths reliably (`EPERM`) and previously failed temporary Vitest imports. Builds/tests use the normal host runtime. One automatic approval review timed out; the same approved checks ran successfully as explicit commands. The build's existing large-chunk advisory remains.
 
 ## Visual and interaction checks
 
 Screenshots cover 360, 390, 768, 1024 and 1440 px for club Home, Moves and global learning in both browser engines. Actual rendered frames and canvas fade completion are awaited before capture. Desktop and phone screenshots were compared with the approved references; formulas wrap without dropping tokens, no horizontal page overflow is permitted, and primary move controls are at least 44 × 44 px. Keyboard focus and semantic current navigation remain visible. Functional sticker colors retain their meanings.
+
+Calculated contrast for key text/background pairs: global ink/white 11.49:1, muted/white 6.08:1, muted/soft green 5.42:1, green/white 6.55:1; notation navy/white 11.72:1, muted/pale blue 5.44:1 and blue Play/white 6.23:1. This is a scoped text-color check, not a claim of a full accessibility certification.
+
+Representative final captures:
+
+| Surface | Desktop (1440 px) | Phone (390 px) |
+| --- | --- | --- |
+| Club Home | [Capture](assets/notation-ui-refresh/club-home-desktop.png) | [Capture](assets/notation-ui-refresh/club-home-phone.png) |
+| Move Explorer | [Capture](assets/notation-ui-refresh/moves-desktop.png) | [Capture](assets/notation-ui-refresh/moves-phone.png) |
+| Global learning | [Capture](assets/notation-ui-refresh/global-learning-desktop.png) | [Capture](assets/notation-ui-refresh/global-learning-phone.png) |
 
 Intermediate U/U′, D/D′, B/B′, M/M′, E, S, Rw and x frames were inspected to distinguish moving layers from stationary layers and to verify direction. All 54 renderer endpoints include center stickers; independent hand-derived reference fixtures cover the 18 base conventions. Mid-turn reduced-motion changes, selection changes, camera switches and leaving the route are covered. Timer before/after captures retain the same geometry; randomized scrambles naturally differ.
 
@@ -43,4 +57,14 @@ With a physical cube starting white up and green front, follow U, U′, U2, D an
 2. Split canonical method information from algorithm-bearing presentations after Home request tests exposed eager catalog loading. Cost if wrong: metadata drift; presentations consume the same canonical values and course/request tests cover the boundary.
 3. Use a separate DEV-only notation fixture instead of expanding the solve-player fixture. Cost if wrong: test-only entry leakage; production verifies the query cannot expose the notation fixture.
 
-Final review, release and any deferred findings are pending below.
+## Independent review
+
+One fresh independent reviewer examined `914e87a..23fb6ed`, the approved specification, all three plans and their 15 review-focus scenarios, surrounding code, test coverage, execution rulings and saved visual evidence. It found **no Critical or Important issues**, no declined judgments, and assessed the code as ready to merge once the running required verification succeeds. It did not modify files or rerun the heavy suites.
+
+One **Minor** item is deferred under the approved Native review policy: explain lowercase wide-turn aliases near the advanced picker (for example `r = Rw`, `u = Uw`). Canonical explicit `w` controls and their animations work; the supplementary cross-notation explanation is missing. No additional review/fix cycle was run for this wording item.
+
+## Release boundary
+
+The reviewed source and production checks are committed in `23fb6edaca7802dd4ba46ceaff01ab082ac17186`; subsequent evidence updates change documentation/screenshots only. All required local suites completed successfully on that source. Logs and the full responsive screenshot matrix are also preserved outside the disposable worktree under the project validation directory.
+
+Use the owner's existing GitHub integration/publication authorization with **publish_preview=true** and **teaching_accepted=false**. GitHub checks and the Pages workflow run the required suites again. The deployed `build-info.json` identifies the actual published commit; verify it and the public Home/Moves/global lesson routes before reporting publication. The owner follow-along checklist above remains outstanding.
