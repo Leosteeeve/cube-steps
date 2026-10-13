@@ -1,6 +1,6 @@
 # Human-Friendly F2L Follow-Along
 
-Status: written design draft for owner review. The owner approved the intended default behavior; this document and its subsequent implementation plan have not yet been approved. No product code has been changed for this phase.
+Status: written design approved by the owner on October 12, 2026. The implementation plan is being prepared for review. No product code has been changed for this phase.
 
 ## 1. Purpose and confirmed choices
 

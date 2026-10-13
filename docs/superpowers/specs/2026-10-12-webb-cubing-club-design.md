@@ -1,6 +1,6 @@
 # Webb Cubing Club: Public Club Edition
 
-Status: written design draft for owner review. Visual direction and feature choices are approved in conversation; this written specification and its implementation plan are not yet approved. The browser preview is a disposable design prototype.
+Status: written design approved by the owner on October 12, 2026. Implementation is split into foundation/learning and timer plans for review, following the shared F2L improvement. The browser preview is a disposable design prototype.
 
 ## 1. Purpose and audience
 
