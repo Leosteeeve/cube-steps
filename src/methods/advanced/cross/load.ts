@@ -1,5 +1,4 @@
 import type { CrossTable } from './table';
-import assetUrl from './distance-v1.bin?url';
 import manifest from './distance-manifest.json';
 import { CROSS_STATE_COUNT, CROSS_GOAL, rankCross } from './coordinates';
 export async function loadCrossTable(
@@ -14,6 +13,8 @@ export async function loadCrossTable(
     manifest.goalIndex !== rankCross(CROSS_GOAL)
   )
     throw new Error('Shortest-cross asset version is incompatible.');
+  const { default: assetUrl } = await import('./distance-v1.bin?url');
+  signal?.throwIfAborted();
   const response = await fetcher(assetUrl, { signal });
   if (!response.ok)
     throw new Error(

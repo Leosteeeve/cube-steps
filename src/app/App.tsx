@@ -1,10 +1,16 @@
-import { useEffect, useState } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import { createCubeEngine } from '../core/cube';
 import type { CubeEngine } from '../core/types';
 import { LearnPage } from './LearnPage';
 import { SolvePage } from './SolvePage';
 import { parseRoute, methodRoute } from './routes';
 import { getMethod } from '../methods/registry';
+const AlgorithmLibraryPage = lazy(() =>
+  import('./algorithms/AlgorithmLibraryPage').then((m) => ({ default: m.AlgorithmLibraryPage })),
+);
+const AlgorithmDetailPage = lazy(() =>
+  import('./algorithms/AlgorithmDetailPage').then((m) => ({ default: m.AlgorithmDetailPage })),
+);
 export function App() {
   const [route, setRoute] = useState(() => parseRoute(location.hash)),
     [engine, setEngine] = useState<CubeEngine | null>(null),
@@ -17,7 +23,7 @@ export function App() {
       .catch((e) => setError(String(e)));
     return () => removeEventListener('hashchange', change);
   }, []);
-  const methodId = route.kind === 'not-found' ? 'lbl' : route.method,
+  const methodId = 'method' in route ? route.method : 'lbl',
     method = getMethod(methodId);
   return (
     <>
@@ -54,6 +60,12 @@ export function App() {
           >
             Solve your cube
           </a>
+          <a
+            href="#/algorithms"
+            className={route.kind === 'algorithms' || route.kind === 'algorithm' ? 'selected' : ''}
+          >
+            Algorithms
+          </a>
         </nav>
         <a
           className="github-link"
@@ -65,7 +77,7 @@ export function App() {
         </a>
       </header>
       <main id="main" tabIndex={-1}>
-        {route.kind !== 'not-found' && (
+        {'method' in route && (
           <div className="course-banner">
             <span className="pill">
               {methodId === 'lbl' ? 'BEGINNER’S METHOD' : 'CROSS · F2L · OLL · PLL'}
@@ -92,7 +104,21 @@ export function App() {
             {error}
           </p>
         ) : engine ? (
-          route.kind === 'solve' ? (
+          route.kind === 'algorithms' || route.kind === 'algorithm' ? (
+            <Suspense
+              fallback={
+                <p className="loading-panel" role="status">
+                  Loading the algorithm library…
+                </p>
+              }
+            >
+              {route.kind === 'algorithms' ? (
+                <AlgorithmLibraryPage engine={engine} />
+              ) : (
+                <AlgorithmDetailPage engine={engine} caseId={route.caseId} />
+              )}
+            </Suspense>
+          ) : route.kind === 'solve' ? (
             <SolvePage engine={engine} method={route.method} />
           ) : (
             <LearnPage

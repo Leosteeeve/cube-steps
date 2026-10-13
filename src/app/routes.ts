@@ -1,6 +1,8 @@
 import type { MethodId } from '../core/types';
 import { getMethod } from '../methods/registry';
 export type AppRoute =
+  | { kind: 'algorithms' }
+  | { kind: 'algorithm'; caseId: string }
   | { kind: 'solve'; method: MethodId }
   | { kind: 'learn'; method: MethodId; lessonId: string }
   | { kind: 'not-found' };
@@ -15,6 +17,10 @@ export function parseRoute(hash: string): AppRoute {
   const value = hash.replace(/^#\/?/, '').replace(/\/$/, '');
   if (!value || value === 'learn') return { kind: 'learn', method: 'lbl', lessonId: 'notation' };
   const parts = value.split('/');
+  if (parts[0] === 'algorithms') {
+    if (parts.length === 1) return { kind: 'algorithms' };
+    return parts.length === 2 ? { kind: 'algorithm', caseId: parts[1] } : { kind: 'not-found' };
+  }
   if (parts[0] === 'solve') {
     if (parts.length === 1) return { kind: 'solve', method: 'lbl' };
     const method = fromSlug(parts[1]);
