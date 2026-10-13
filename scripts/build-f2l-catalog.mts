@@ -46,6 +46,15 @@ try {
   const cases: Record<string, AlgorithmCase> = {},
     variants: Record<string, AlgorithmVariant> = {},
     preparations: AlgorithmRegistry['preparations'] extends Readonly<infer T> ? T : never = {};
+  const profiles = JSON.parse(
+    await readFile(new URL('./data/f2l-execution-profiles.json', import.meta.url), 'utf8'),
+  );
+  const usedProfiles = new Set<string>();
+  function executionProfile(id: string) {
+    if (!Object.hasOwn(profiles, id)) throw Error(`Missing execution profile: ${id}`);
+    usedProfiles.add(id);
+    return profiles[id];
+  }
   const fixtures: Omit<CaseFixture, 'setup' | 'holdingMoves'>[] = [];
   const slotPower = { FR: 0, BR: 1, BL: 2, FL: 3 };
   function rotate(move: TeachingMove, power: number): TeachingMove {
@@ -140,6 +149,7 @@ try {
           startSignature,
           targetSlot: target.slot,
           executionPenalty,
+          f2lExecution: executionProfile(variantId),
           sourceRefs,
           name: `F2L ${String(index + 1).padStart(2, '0')} · ${target.slot}${name === 'no-regrip' ? ' · no regrip' : ''}`,
           moves: oriented,
@@ -179,6 +189,9 @@ try {
         rotate(m, slotPower[target.slot]),
       );
       preparations[`advanced-extract/${target.slot.toLowerCase()}/${direction}`] = {
+        f2lExecution: executionProfile(
+          `advanced-extract/${target.slot.toLowerCase()}/${direction}`,
+        ),
         name: `Lift from ${target.slot}`,
         moves,
         precondition: `The ${target.slot} slot is unsolved and contains a trapped target piece.`,
@@ -231,6 +244,8 @@ try {
       .map((p) => p.cornerId),
   });
   const catalog = { cases, variants, preparations };
+  for (const id of Object.keys(profiles))
+    if (!usedProfiles.has(id)) throw Error(`Orphaned execution profile: ${id}`);
   admitRegistry(catalog);
   await writeFile(
     new URL('../src/algorithms/data/f2l-catalog.json', import.meta.url),

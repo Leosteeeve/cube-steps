@@ -50,3 +50,9 @@ An algorithm demonstration records a verified physical setup, its exact fixture 
 The compact fixture identity index validates case, target and starting-state identity without eagerly importing every physical setup. Full fixture records are loaded by the library or practice consumer. The additional `f2l-01/fr/mixed/u0..u3` examples exchange two non-target middle edges and two yellow upper edges, preserving legal parity independently of the formula. They demonstrate one pair completing while other pairs remain unfinished. There are 972 verified physical variations across the same 119 cases.
 
 Advanced full-solve playback receives the verified distance asset through an optional third argument to `createPlaybackTimeline` / `createSourcePlaybackController`; the shared view loads it before enabling playback. This lets playback verify full traces without substituting a weaker cross check. Other methods and partial demonstrations need no cross asset.
+# F2L execution profiles
+
+The explicit `scripts/data/f2l-execution-profiles.json` source records reviewed sequences and grip considerations for every F2L variant and extraction. Repeated B-face work has a higher grip penalty; front/back work or repeated side-face half turns has a smaller penalty. R/U and L/U triggers may stay comfortable in a rear slot. For example, `f2l-02/no-regrip/br` is the short `R' U' R` insertion, while `f2l-20/main/br` requires repeated B turns. These are teaching heuristics, not measurements of human speed.
+
+The generator requires exactly one profile per admitted ID. Runtime recognition checks actual sticker directions from a front-right or front-left view; a rear-slot flag never bypasses that evidence. Visibility and grip quality take precedence over move count, with physical rotations counted separately. Registered formulas and source references remain unchanged.
+

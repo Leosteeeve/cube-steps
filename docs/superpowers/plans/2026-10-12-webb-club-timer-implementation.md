@@ -10,7 +10,7 @@
 
 **Spec:** [Approved Webb club design](../specs/2026-10-12-webb-cubing-club-design.md), sections 6–9. Consumes the [foundation plan](2026-10-12-webb-club-foundation-implementation.md).
 
-**Status:** Awaiting owner review. Preserve **Native** execution, sequentially after F2L and club foundation. The last task owns one independent review of the complete club branch and the complete launch checks.
+**Status:** Approved by the owner on October 13, 2026. Execute sequentially using Native, with independent final review. The owner also authorized GitHub merge, Pages publication, local synchronization, and cleanup of redundant task worktrees.
 
 ## Global Constraints
 

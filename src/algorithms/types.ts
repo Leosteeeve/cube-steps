@@ -41,10 +41,20 @@ export interface AlgorithmVariant extends TeachingAlgorithm {
   startSignature: string;
   targetSlot?: 'FR' | 'FL' | 'BR' | 'BL';
   executionPenalty: 0 | 1 | 2;
+  f2lExecution?: F2LExecutionProfile;
   sourceRefs: readonly SourceReference[];
+}
+export interface F2LExecutionProfile {
+  gripPenalty: 0 | 1 | 2;
+  recognition: 'sticker-directions' | 'connected-pair';
+  easyRearInsertion: boolean;
+  rationale: string;
+}
+export interface PreparationAlgorithm extends TeachingAlgorithm {
+  f2lExecution?: F2LExecutionProfile;
 }
 export interface AlgorithmRegistry {
   cases: Readonly<Record<CaseId, AlgorithmCase>>;
   variants: Readonly<Record<VariantId, AlgorithmVariant>>;
-  preparations: Readonly<Record<string, TeachingAlgorithm>>;
+  preparations: Readonly<Record<string, PreparationAlgorithm>>;
 }

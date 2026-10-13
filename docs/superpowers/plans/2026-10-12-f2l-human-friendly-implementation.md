@@ -10,7 +10,7 @@
 
 **Spec:** [Approved F2L design](../specs/2026-10-12-f2l-human-friendly-design.md).
 
-**Status:** Plan awaiting owner review. Preserve the previously selected **Native** execution method: implement sequentially in this session with `executing-plans`, then obtain one fresh independent whole-branch review. All checkboxes represent future work.
+**Status:** Approved by the owner on October 13, 2026. Execute sequentially using Native, with independent final review. The owner also authorized GitHub merge, Pages publication, local synchronization, and cleanup of redundant task worktrees.
 
 ## Global Constraints
 

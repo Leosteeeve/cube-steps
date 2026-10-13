@@ -60,6 +60,13 @@ export interface Checkpoint {
   description: string;
   passed: boolean;
 }
+export interface ExecutionMetrics {
+  quality: number;
+  faceTurns: number;
+  rotations: number;
+  effort: number;
+  reasons: string[];
+}
 export interface TraceAction {
   kind: 'setup' | 'algorithm' | 'regrip';
   ruleId: string;

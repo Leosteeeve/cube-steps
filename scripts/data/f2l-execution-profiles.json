@@ -1,0 +1,1466 @@
+{
+  "f2l-01/main/fl": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U F U' F'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-01/main/bl": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": true,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U L U' L'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-01/main/br": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U B U' B'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-01/main/fr": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U R U' R'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-02/main/fl": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: y' F' U' F. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-02/no-regrip/fl": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: L' U' L. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-02/main/bl": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: y' L' U' L. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-02/no-regrip/bl": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: B' U' B. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-02/main/br": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: y' B' U' B. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-02/no-regrip/br": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": true,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: R' U' R. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-02/main/fr": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: y' R' U' R. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-02/no-regrip/fr": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: F' U' F. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-03/main/fl": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U' F U' F' U y' F' U' F. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-03/no-regrip/fl": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U' F U' F' U L' U' L. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-03/main/bl": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U' L U' L' U y' L' U' L. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-03/no-regrip/bl": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U' L U' L' U B' U' B. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-03/main/br": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U' B U' B' U y' B' U' B. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-03/no-regrip/br": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U' B U' B' U R' U' R. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-03/main/fr": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U' R U' R' U y' R' U' R. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-03/no-regrip/fr": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U' R U' R' U F' U' F. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-04/main/fl": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U' F U2 F' U y' F' U' F. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-04/no-regrip/fl": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U' F U2 F' U L' U' L. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-04/main/bl": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U' L U2 L' U y' L' U' L. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-04/no-regrip/bl": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U' L U2 L' U B' U' B. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-04/main/br": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U' B U2 B' U y' B' U' B. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-04/no-regrip/br": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U' B U2 B' U R' U' R. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-04/main/fr": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U' R U2 R' U y' R' U' R. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-04/no-regrip/fr": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U' R U2 R' U F' U' F. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-05/main/fl": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: y' U F' U F U' F' U' F. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-05/no-regrip/fl": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U L' U L U' L' U' L. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-05/main/bl": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: y' U L' U L U' L' U' L. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-05/no-regrip/bl": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U B' U B U' B' U' B. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-05/main/br": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: y' U B' U B U' B' U' B. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-05/no-regrip/br": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U R' U R U' R' U' R. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-05/main/fr": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: y' U R' U R U' R' U' R. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-05/no-regrip/fr": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U F' U F U' F' U' F. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-06/main/fl": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U' F U F' U2 F U' F'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-06/main/bl": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U' L U L' U2 L U' L'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-06/main/br": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U' B U B' U2 B U' B'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-06/main/fr": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U' R U R' U2 R U' R'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-07/main/fl": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U' F U2 F' U2 F U' F'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-07/main/bl": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U' L U2 L' U2 L U' L'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-07/main/br": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U' B U2 B' U2 B U' B'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-07/main/fr": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U' R U2 R' U2 R U' R'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-08/main/fl": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U F U2 F' U F U' F'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-08/main/bl": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U L U2 L' U L U' L'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-08/main/br": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U B U2 B' U B U' B'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-08/main/fr": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U R U2 R' U R U' R'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-09/main/fl": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U2 F U F' U F U' F'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-09/main/bl": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U2 L U L' U L U' L'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-09/main/br": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U2 B U B' U B U' B'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-09/main/fr": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U2 R U R' U R U' R'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-10/main/fl": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: y' U' F' U F. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-10/no-regrip/fl": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U' L' U L. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-10/main/bl": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: y' U' L' U L. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-10/no-regrip/bl": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U' B' U B. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-10/main/br": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: y' U' B' U B. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-10/no-regrip/br": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": true,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U' R' U R. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-10/main/fr": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: y' U' R' U R. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-10/no-regrip/fr": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U' F' U F. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-11/main/fl": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: F U F'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-11/main/bl": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": true,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: L U L'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-11/main/br": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: B U B'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-11/main/fr": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: R U R'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-12/main/fl": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U' F U F' U F U F'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-12/main/bl": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U' L U L' U L U L'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-12/main/br": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U' B U B' U B U B'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-12/main/fr": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U' R U R' U R U R'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-13/main/fl": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: F' U2 F2 U F2 U F. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-13/main/bl": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated side-face half turns require a grip adjustment. Reviewed sequence: L' U2 L2 U L2 U L. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-13/main/br": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: B' U2 B2 U B2 U B. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-13/main/fr": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated side-face half turns require a grip adjustment. Reviewed sequence: R' U2 R2 U R2 U R. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-14/main/fl": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U' F U' F' U F U F'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-14/main/bl": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U' L U' L' U L U L'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-14/main/br": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U' B U' B' U B U B'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-14/main/fr": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U' R U' R' U R U R'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-15/main/fl": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: y' U F' U' F U2 F' U F. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-15/no-regrip/fl": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U L' U' L U2 L' U L. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-15/main/bl": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: y' U L' U' L U2 L' U L. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-15/no-regrip/bl": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U B' U' B U2 B' U B. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-15/main/br": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: y' U B' U' B U2 B' U B. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-15/no-regrip/br": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U R' U' R U2 R' U R. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-15/main/fr": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: y' U R' U' R U2 R' U R. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-15/no-regrip/fr": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U F' U' F U2 F' U F. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-16/main/fl": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: y' U F' U2 F U2 F' U F. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-16/no-regrip/fl": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U L' U2 L U2 L' U L. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-16/main/bl": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: y' U L' U2 L U2 L' U L. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-16/no-regrip/bl": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U B' U2 B U2 B' U B. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-16/main/br": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: y' U B' U2 B U2 B' U B. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-16/no-regrip/br": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U R' U2 R U2 R' U R. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-16/main/fr": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: y' U R' U2 R U2 R' U R. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-16/no-regrip/fr": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U F' U2 F U2 F' U F. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-17/main/fl": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: y' U' F' U2 F U' F' U F. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-17/no-regrip/fl": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U' L' U2 L U' L' U L. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-17/main/bl": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: y' U' L' U2 L U' L' U L. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-17/no-regrip/bl": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U' B' U2 B U' B' U B. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-17/main/br": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: y' U' B' U2 B U' B' U B. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-17/no-regrip/br": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U' R' U2 R U' R' U R. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-17/main/fr": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: y' U' R' U2 R U' R' U R. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-17/no-regrip/fr": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U' F' U2 F U' F' U F. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-18/main/fl": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: y' U2 F' U' F U' F' U F. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-18/no-regrip/fl": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U2 L' U' L U' L' U L. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-18/main/bl": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: y' U2 L' U' L U' L' U L. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-18/no-regrip/bl": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U2 B' U' B U' B' U B. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-18/main/br": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: y' U2 B' U' B U' B' U B. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-18/no-regrip/br": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U2 R' U' R U' R' U R. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-18/main/fr": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: y' U2 R' U' R U' R' U R. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-18/no-regrip/fr": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U2 F' U' F U' F' U F. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-19/main/fl": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: y' F' U F U2 y F U F'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-19/no-regrip/fl": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: L' U L U2 F U F'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-19/main/bl": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: y' L' U L U2 y L U L'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-19/no-regrip/bl": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: B' U B U2 L U L'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-19/main/br": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: y' B' U B U2 y B U B'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-19/no-regrip/br": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: R' U R U2 B U B'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-19/main/fr": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: y' R' U R U2 y R U R'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-19/no-regrip/fr": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: F' U F U2 R U R'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-20/main/fl": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: F U2 F' U' F U F'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-20/main/bl": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: L U2 L' U' L U L'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-20/main/br": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: B U2 B' U' B U B'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-20/main/fr": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: R U2 R' U' R U R'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-21/main/fl": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U F U' F' U' F U' F' U F U' F'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-21/main/bl": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U L U' L' U' L U' L' U L U' L'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-21/main/br": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U B U' B' U' B U' B' U B U' B'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-21/main/fr": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U R U' R' U' R U' R' U R U' R'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-22/main/fl": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U' L' F U F' U' F' L F. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-22/main/bl": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U' B' L U L' U' L' B L. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-22/main/br": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U' R' B U B' U' B' R B. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-22/main/fr": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U' F' R U R' U' R' F R. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-23/main/fl": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: F U' F' U F U' F'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-23/main/bl": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: L U' L' U L U' L'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-23/main/br": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: B U' B' U B U' B'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-23/main/fr": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: R U' R' U R U' R'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-24/main/fl": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: y' F' U' F U F' U' F. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-24/no-regrip/fl": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: L' U' L U L' U' L. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-24/main/bl": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: y' L' U' L U L' U' L. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-24/no-regrip/bl": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: B' U' B U B' U' B. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-24/main/br": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: y' B' U' B U B' U' B. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-24/no-regrip/br": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: R' U' R U R' U' R. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-24/main/fr": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: y' R' U' R U R' U' R. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-24/no-regrip/fr": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: F' U' F U F' U' F. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-25/main/fl": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: F U' F' U y' F' U F. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-25/no-regrip/fl": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: F U' F' U L' U L. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-25/main/bl": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: L U' L' U y' L' U L. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-25/no-regrip/bl": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: L U' L' U B' U B. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-25/main/br": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: B U' B' U y' B' U B. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-25/no-regrip/br": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: B U' B' U R' U R. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-25/main/fr": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: R U' R' U y' R' U R. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-25/no-regrip/fr": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: R U' R' U F' U F. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-26/main/fl": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U' F U' F' U2 F U' F'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-26/main/bl": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U' L U' L' U2 L U' L'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-26/main/br": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U' B U' B' U2 B U' B'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-26/main/fr": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U' R U' R' U2 R U' R'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-27/main/fl": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U' F U F' U y' F' U' F. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-27/no-regrip/fl": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U' F U F' U L' U' L. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-27/main/bl": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U' L U L' U y' L' U' L. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-27/no-regrip/bl": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U' L U L' U B' U' B. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-27/main/br": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U' B U B' U y' B' U' B. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-27/no-regrip/br": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U' B U B' U R' U' R. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-27/main/fr": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U' R U R' U y' R' U' R. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-27/no-regrip/fr": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U' R U R' U F' U' F. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-28/main/fl": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: F U' F' U' F U F' U2 F U' F'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-28/main/bl": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: L U' L' U' L U L' U2 L U' L'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-28/main/br": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: B U' B' U' B U B' U2 B U' B'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-28/main/fr": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: R U' R' U' R U R' U2 R U' R'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-29/main/fl": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: L' U L U2 F U F' U F U' F'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-29/main/bl": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: B' U B U2 L U L' U L U' L'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-29/main/br": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: R' U R U2 B U B' U B U' B'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-29/main/fr": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: F' U F U2 R U R' U R U' R'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-30/main/fl": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: F U' F' U2 y' F' U' F. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-30/no-regrip/fl": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: F U' F' U2 L' U' L. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-30/main/bl": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: L U' L' U2 y' L' U' L. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-30/no-regrip/bl": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: L U' L' U2 B' U' B. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-30/main/br": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: B U' B' U2 y' B' U' B. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-30/no-regrip/br": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: B U' B' U2 R' U' R. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-30/main/fr": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: R U' R' U2 y' R' U' R. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-30/no-regrip/fr": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: R U' R' U2 F' U' F. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-31/main/fl": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: y' F' U2 F U F' U' F. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-31/no-regrip/fl": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: L' U2 L U L' U' L. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-31/main/bl": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: y' L' U2 L U L' U' L. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-31/no-regrip/bl": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: B' U2 B U B' U' B. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-31/main/br": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: y' B' U2 B U B' U' B. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-31/no-regrip/br": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: R' U2 R U R' U' R. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-31/main/fr": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: y' R' U2 R U R' U' R. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-31/no-regrip/fr": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: F' U2 F U F' U' F. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-32/main/fl": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: y' U' F' U F U F' U F U' F' U F. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-32/no-regrip/fl": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U' L' U L U L' U L U' L' U L. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-32/main/bl": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: y' U' L' U L U L' U L U' L' U L. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-32/no-regrip/bl": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U' B' U B U B' U B U' B' U B. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-32/main/br": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: y' U' B' U B U B' U B U' B' U B. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-32/no-regrip/br": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U' R' U R U R' U R U' R' U R. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-32/main/fr": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: y' U' R' U R U R' U R U' R' U R. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-32/no-regrip/fr": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U' F' U F U F' U F U' F' U F. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-33/main/fl": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U F U' F' U' L' U L. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-33/main/bl": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U L U' L' U' B' U B. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-33/main/br": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U B U' B' U' R' U R. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-33/main/fr": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U R U' R' U' F' U F. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-34/main/fl": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: y' F' U F U' F' U F. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-34/no-regrip/fl": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: L' U L U' L' U L. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-34/main/bl": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: y' L' U L U' L' U L. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-34/no-regrip/bl": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: B' U B U' B' U B. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-34/main/br": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: y' B' U B U' B' U B. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-34/no-regrip/br": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: R' U R U' R' U R. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-34/main/fr": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: y' R' U R U' R' U R. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-34/no-regrip/fr": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: F' U F U' F' U F. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-35/main/fl": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: F U F' U' F U F'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-35/main/bl": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: L U L' U' L U L'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-35/main/br": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: B U B' U' B U B'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-35/main/fr": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: R U R' U' R U R'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-36/main/fl": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U F U' F' U F U' F' U F U' F'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-36/main/bl": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U L U' L' U L U' L' U L U' L'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-36/main/br": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U B U' B' U B U' B' U B U' B'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-36/main/fr": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U R U' R' U R U' R' U R U' R'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-37/main/fl": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U F U F' U2 F U F'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-37/main/bl": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U L U L' U2 L U L'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-37/main/br": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U B U B' U2 B U B'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-37/main/fr": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: U R U R' U2 R U R'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-38/main/fl": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U L' U' L U' F U F'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-38/main/bl": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U B' U' B U' L U L'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-38/main/br": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: U R' U' R U' B U B'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-38/main/fr": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: U F' U' F U' R U R'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-39/main/fl": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: F U' F' Dw F' U2 F U2 F' U F. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-39/no-regrip/fl": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: F U' F' U L' U2 L U2 L' U L. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-39/main/bl": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: L U' L' Dw L' U2 L U2 L' U L. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-39/no-regrip/bl": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: L U' L' U B' U2 B U2 B' U B. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-39/main/br": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: B U' B' Dw B' U2 B U2 B' U B. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-39/no-regrip/br": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: B U' B' U R' U2 R U2 R' U R. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-39/main/fr": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: R U' R' Dw R' U2 R U2 R' U R. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-39/no-regrip/fr": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: R U' R' U F' U2 F U2 F' U F. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-40/main/fl": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: F U' F' U F U2 F' U F U' F'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-40/main/bl": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: L U' L' U L U2 L' U L U' L'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-40/main/br": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: B U' B' U B U2 B' U B U' B'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-40/main/fr": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: R U' R' U R U2 R' U R U' R'. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-41/main/fl": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: F U F' U' F U' F' U2 y' F' U' F. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-41/no-regrip/fl": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: F U F' U' F U' F' U2 L' U' L. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-41/main/bl": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: L U L' U' L U' L' U2 y' L' U' L. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-41/no-regrip/bl": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: L U L' U' L U' L' U2 B' U' B. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-41/main/br": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: B U B' U' B U' B' U2 y' B' U' B. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-41/no-regrip/br": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: B U B' U' B U' B' U2 R' U' R. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-41/main/fr": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: R U R' U' R U' R' U2 y' R' U' R. Recognition visibility is checked from the actual starting state."
+  },
+  "f2l-41/no-regrip/fr": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: R U R' U' R U' R' U2 F' U' F. Recognition visibility is checked from the actual starting state."
+  },
+  "advanced-extract/fl/toward": {
+    "gripPenalty": 1,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Front/back face work interrupts the side-face grip. Reviewed sequence: F U F'. Recognition visibility is checked from the actual starting state."
+  },
+  "advanced-extract/bl/toward": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: L U L'. Recognition visibility is checked from the actual starting state."
+  },
+  "advanced-extract/br/toward": {
+    "gripPenalty": 2,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Repeated B-face work asks for a rear grip. Reviewed sequence: B U B'. Recognition visibility is checked from the actual starting state."
+  },
+  "advanced-extract/fr/toward": {
+    "gripPenalty": 0,
+    "recognition": "sticker-directions",
+    "easyRearInsertion": false,
+    "rationale": "Side-face and U triggers can be executed in the displayed hold. Reviewed sequence: R U R'. Recognition visibility is checked from the actual starting state."
+  }
+}

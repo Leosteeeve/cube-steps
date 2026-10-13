@@ -31,6 +31,12 @@ function fixture(): AlgorithmRegistry {
         startSignature: 'test-pattern',
         targetSlot: 'FR',
         executionPenalty: 0,
+        f2lExecution: {
+          gripPenalty: 0,
+          recognition: 'sticker-directions',
+          easyRearInsertion: false,
+          rationale: 'Short R U insertion.',
+        },
         sourceRefs,
         name: 'Insert',
         moves: ['R', 'U', "R'"],
@@ -68,4 +74,22 @@ it('rejects_invalid_registry_references', () => {
   r.variants['f2l-01/main/fr'].startSignature = '';
   bad.push(r);
   for (const invalid of bad) expect(() => admitRegistry(invalid)).toThrow();
+});
+it('rejects missing or contradictory F2L execution evidence', () => {
+  for (const profile of [
+    undefined,
+    {},
+    { gripPenalty: 0, recognition: 'unknown', easyRearInsertion: false, rationale: 'Reviewed' },
+    { gripPenalty: 0, recognition: 'sticker-directions', easyRearInsertion: false, rationale: '' },
+    {
+      gripPenalty: 1,
+      recognition: 'sticker-directions',
+      easyRearInsertion: true,
+      rationale: 'Contradictory',
+    },
+  ]) {
+    const registry = fixture();
+    registry.variants['f2l-01/main/fr'].f2lExecution = profile as never;
+    expect(() => admitRegistry(registry)).toThrow(/execution profile/i);
+  }
 });
