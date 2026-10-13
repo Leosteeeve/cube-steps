@@ -325,6 +325,11 @@ export function PlaybackView({
                 Current move: <strong>{s?.currentMove ?? 'Complete'}</strong>
               </small>
               {segment && <p>Segment: {segment.label}</p>}
+              {action.algorithmId && ALGORITHM_REGISTRY.variants[action.algorithmId] && (
+                <p>
+                  <a href={'#/algorithms/' + action.caseId}>Explore this case →</a>
+                </p>
+              )}
               {action.moves.some((move) => move.startsWith('M')) && (
                 <p>
                   M turns the middle slice between L and R in the same direction as L. M′ reverses

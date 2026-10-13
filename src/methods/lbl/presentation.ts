@@ -3,6 +3,7 @@ import { LBL_ALGORITHMS } from './catalog';
 export const LBL_PRESENTATION: MethodPresentation = {
   id: 'lbl',
   label: 'LBL',
+  teachingStatus: 'accepted',
   algorithms: LBL_ALGORITHMS,
   stages: [
     { id: 'white-cross', label: 'White cross', group: 'Cross' },

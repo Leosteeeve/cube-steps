@@ -173,11 +173,11 @@ Paths in task blocks resolve the `.ts`/`.tsx` shorthand above. New scripts that 
 
 **Interfaces:** `getCourse('cfop-advanced')` returns intro plus five lessons, each using registry variants. `MethodPresentation.teachingStatus: 'accepted'|'preview'`: LBL and Beginner accepted, Advanced preview. `methodRoute` and new `lessonRoute(method: MethodId,lessonId: string): string` generate exact spec URLs. `AppRoute` gains explicit `not-found` rather than treating unknown method paths as successful LBL; preserve existing valid old URLs.
 
-- [ ] Write `opens_six_advanced_lessons`, `preserves_input_across_three_methods`, and `reports_unknown_method_routes`. Assert five solve navigation stages; intro plus five lessons; direct-bottom shortest cross teaching; full OLL/PLL one-look labels; method-specific submit button; drafts/selected face/undo/color validation survive switches while results clear. Check back/forward during solving and random-scramble generation.
-- [ ] Run `npx.cmd vitest run src/content/advanced-course.test.ts src/app`; observe intended failures.
-- [ ] Add original lessons and verified examples for shortest cross, protected F2L selection, full OLL, full PLL and AUF. Cross shows minimum turns with regrips separate; F2L explains selected pair/variant; case selectors point at real matched registry IDs. Generate stage counts from metadata, replace hardcoded beginner navigation copy, and show Preview only for Advanced. Add registry links from applicable formula cards.
-- [ ] Verify examples by actual `solveAdvancedCFOP` matches and checkpoints, never by a displayed case label alone. Run focused tests plus `npx.cmd playwright test e2e/advanced-learning.spec.ts e2e/method-switching.spec.ts` on both browsers; no overflow, broken refresh routes, lost input or stale result.
-- [ ] Commit as `feat: teach and navigate advanced CFOP alongside beginner methods`.
+- [x] Write `opens_six_advanced_lessons`, `preserves_input_across_three_methods`, and `reports_unknown_method_routes`. Assert five solve navigation stages; intro plus five lessons; direct-bottom shortest cross teaching; full OLL/PLL one-look labels; method-specific submit button; drafts/selected face/undo/color validation survive switches while results clear. Check back/forward during solving and random-scramble generation.
+- [x] Run `npx.cmd vitest run src/content/advanced-course.test.ts src/app`; observe intended failures.
+- [x] Add original lessons and verified examples for shortest cross, protected F2L selection, full OLL, full PLL and AUF. Cross shows minimum turns with regrips separate; F2L explains selected pair/variant; case selectors point at real matched registry IDs. Generate stage counts from metadata, replace hardcoded beginner navigation copy, and show Preview only for Advanced. Add registry links from applicable formula cards.
+- [x] Verify examples by actual `solveAdvancedCFOP` matches and checkpoints, never by a displayed case label alone. Run focused tests plus `npx.cmd playwright test e2e/advanced-learning.spec.ts e2e/method-switching.spec.ts` on both browsers; no overflow, broken refresh routes, lost input or stale result.
+- [x] Commit as `feat: teach and navigate advanced CFOP alongside beginner methods`.
 
 ## Task 10: Algorithm library, diagrams and variant demonstrations
 

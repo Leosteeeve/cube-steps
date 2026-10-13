@@ -19,6 +19,7 @@ const runtime: MethodRuntime = {
   presentation: {
     id: 'cfop-advanced',
     label: 'Advanced CFOP',
+    teachingStatus: 'preview',
     stages: [{ id: 'advanced-f2l', label: 'F2L', group: 'F2L' }],
     algorithms: { ...ALGORITHM_REGISTRY.variants, ...ALGORITHM_REGISTRY.preparations },
   },

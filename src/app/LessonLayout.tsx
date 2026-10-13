@@ -2,6 +2,7 @@ import type { ReactNode } from 'react';
 import { getCourse } from '../content/courses';
 import type { StageId, MethodId } from '../core/types';
 import { getMethod } from '../methods/registry';
+import { lessonRoute } from './routes';
 export function LessonLayout({
   selected,
   children,
@@ -22,8 +23,18 @@ export function LessonLayout({
     <div className="lesson-layout">
       <nav className="stage-nav" aria-label={free ? 'Solution stages' : 'Learning path'}>
         <div className="nav-heading">
-          <span className="eyebrow">{free ? 'YOUR SOLUTION' : 'THE BEGINNER PATH'}</span>
-          <h2>{free ? 'Seven clear stages' : 'A little progress.\nEvery step.'}</h2>
+          <span className="eyebrow">
+            {free
+              ? 'YOUR SOLUTION'
+              : method === 'cfop-advanced'
+                ? 'THE ADVANCED PATH'
+                : 'THE BEGINNER PATH'}
+          </span>
+          <h2>
+            {free
+              ? getMethod(method).stages.length + ' clear stages'
+              : 'A little progress.\nEvery step.'}
+          </h2>
         </div>
         <ol>
           {lessons.map((lesson, index) => (
@@ -40,7 +51,7 @@ export function LessonLayout({
               ) : (
                 <a
                   className={selected === lesson.id ? 'stage-link active' : 'stage-link'}
-                  href={`#/learn/${method === 'lbl' ? '' : 'cfop/'}${lesson.id}`}
+                  href={lessonRoute(method, lesson.id)}
                   aria-current={selected === lesson.id ? 'page' : undefined}
                 >
                   <span className="stage-index">

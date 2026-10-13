@@ -24,6 +24,7 @@ export interface MethodPresentation {
   id: MethodId;
   label: string;
   stages: readonly StageDefinition[];
+  teachingStatus: 'accepted' | 'preview';
   algorithms: Readonly<Record<string, TeachingAlgorithm>>;
 }
 export interface MethodRuntime {

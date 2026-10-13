@@ -5,7 +5,7 @@ export function MethodSelector({ method, kind }: { method: MethodId; kind: 'lear
   return (
     <nav className="method-selector" aria-label="Teaching method">
       <span>Method</span>
-      {(['lbl', 'cfop-beginner'] as const).map((id) => (
+      {(['lbl', 'cfop-beginner', 'cfop-advanced'] as const).map((id) => (
         <a key={id} href={methodRoute(id, kind)} aria-current={method === id ? 'page' : undefined}>
           {getMethod(id).label}
         </a>
