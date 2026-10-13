@@ -1,6 +1,6 @@
 # CubeSteps V1.3: Advanced CFOP and Algorithm Practice
 
-Status: design proposed for written review. No Advanced CFOP implementation is authorized by this document alone.
+Status: written design approved by the owner on October 12, 2026. The next deliverable is an implementation plan for review; Advanced CFOP implementation has not started.
 
 ## 1. Intent and confirmed choices
 
@@ -136,4 +136,4 @@ Roux, ZZ, camera scanning, custom color schemes, color-neutral or X-cross solvin
 
 ## Design self-review
 
-The requested capabilities map to sections 3–6 and independent acceptance in section 8. Exact shortest-cross claims are separated from heuristic F2L selection. Complete solve traces and partial formula demonstrations have distinct contracts. Beginner routes and acceptance stay intact. Formula references, setup frames, cancellation, storage failures, wrong-case practice and unsupported notation have explicit handling. The next step is owner review of this written design, then a separate implementation plan.
+The requested capabilities map to sections 3–6 and independent acceptance in section 8. Exact shortest-cross claims are separated from heuristic F2L selection. Complete solve traces and partial formula demonstrations have distinct contracts. Beginner routes and acceptance stay intact. Formula references, setup frames, cancellation, storage failures, wrong-case practice and unsupported notation have explicit handling. The owner approved this written design; the next review is the separate implementation plan.
