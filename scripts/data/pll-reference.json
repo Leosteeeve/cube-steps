@@ -1,0 +1,800 @@
+[
+  {
+    "page": 1,
+    "column": 1,
+    "y": 449.3,
+    "formula": "R2 U (R U R' U') R' U' (R' U R')",
+    "sourceName": "Ub",
+    "id": "pll-ub",
+    "sideStickers": {
+      "UF": {
+        "F": "red"
+      },
+      "UR": {
+        "R": "green"
+      },
+      "UB": {
+        "B": "blue"
+      },
+      "UL": {
+        "L": "orange"
+      },
+      "UFR": {
+        "F": "green",
+        "R": "orange"
+      },
+      "URB": {
+        "R": "orange",
+        "B": "blue"
+      },
+      "UBL": {
+        "B": "blue",
+        "L": "red"
+      },
+      "ULF": {
+        "L": "red",
+        "F": "green"
+      }
+    }
+  },
+  {
+    "page": 1,
+    "column": 1,
+    "y": 519.1,
+    "formula": "(M2 U M2 U) (M' U2) (M2 U2 M') [U2]",
+    "sourceName": "Z",
+    "id": "pll-z",
+    "sideStickers": {
+      "UF": {
+        "F": "orange"
+      },
+      "UR": {
+        "R": "green"
+      },
+      "UB": {
+        "B": "red"
+      },
+      "UL": {
+        "L": "blue"
+      },
+      "UFR": {
+        "F": "green",
+        "R": "orange"
+      },
+      "URB": {
+        "R": "orange",
+        "B": "blue"
+      },
+      "UBL": {
+        "B": "blue",
+        "L": "red"
+      },
+      "ULF": {
+        "L": "red",
+        "F": "green"
+      }
+    }
+  },
+  {
+    "page": 1,
+    "column": 1,
+    "y": 643.6,
+    "formula": "x (R' U R') D2 (R U' R') D2 R2 x'",
+    "sourceName": "Aa",
+    "id": "pll-aa",
+    "sideStickers": {
+      "UF": {
+        "F": "red"
+      },
+      "UR": {
+        "R": "green"
+      },
+      "UB": {
+        "B": "orange"
+      },
+      "UL": {
+        "L": "blue"
+      },
+      "UFR": {
+        "F": "orange",
+        "R": "blue"
+      },
+      "URB": {
+        "R": "red",
+        "B": "green"
+      },
+      "UBL": {
+        "B": "green",
+        "L": "orange"
+      },
+      "ULF": {
+        "L": "blue",
+        "F": "red"
+      }
+    }
+  },
+  {
+    "page": 1,
+    "column": 1,
+    "y": 717.8,
+    "formula": "x' R U' R' DR U R' D'R U R' DR U' R' D' x",
+    "sourceName": "E",
+    "id": "pll-e",
+    "sideStickers": {
+      "UF": {
+        "F": "red"
+      },
+      "UR": {
+        "R": "green"
+      },
+      "UB": {
+        "B": "orange"
+      },
+      "UL": {
+        "L": "blue"
+      },
+      "UFR": {
+        "F": "green",
+        "R": "orange"
+      },
+      "URB": {
+        "R": "red",
+        "B": "green"
+      },
+      "UBL": {
+        "B": "blue",
+        "L": "red"
+      },
+      "ULF": {
+        "L": "orange",
+        "F": "blue"
+      }
+    }
+  },
+  {
+    "page": 1,
+    "column": 2,
+    "y": 444.1,
+    "formula": "(R U' R U) R U (R U' R' U') R2",
+    "sourceName": "Ua",
+    "id": "pll-ua",
+    "sideStickers": {
+      "UF": {
+        "F": "orange"
+      },
+      "UR": {
+        "R": "red"
+      },
+      "UB": {
+        "B": "blue"
+      },
+      "UL": {
+        "L": "green"
+      },
+      "UFR": {
+        "F": "green",
+        "R": "orange"
+      },
+      "URB": {
+        "R": "orange",
+        "B": "blue"
+      },
+      "UBL": {
+        "B": "blue",
+        "L": "red"
+      },
+      "ULF": {
+        "L": "red",
+        "F": "green"
+      }
+    }
+  },
+  {
+    "page": 1,
+    "column": 2,
+    "y": 525.3,
+    "formula": "(M2 U M2) U2 (M2 U M2)",
+    "sourceName": "H",
+    "id": "pll-h",
+    "sideStickers": {
+      "UF": {
+        "F": "orange"
+      },
+      "UR": {
+        "R": "blue"
+      },
+      "UB": {
+        "B": "red"
+      },
+      "UL": {
+        "L": "green"
+      },
+      "UFR": {
+        "F": "red",
+        "R": "green"
+      },
+      "URB": {
+        "R": "green",
+        "B": "orange"
+      },
+      "UBL": {
+        "B": "orange",
+        "L": "blue"
+      },
+      "ULF": {
+        "L": "blue",
+        "F": "red"
+      }
+    }
+  },
+  {
+    "page": 1,
+    "column": 2,
+    "y": 643.6,
+    "formula": "x R2 D2 (R U R') D2 (R U' R) x'",
+    "sourceName": "Ab",
+    "id": "pll-ab",
+    "sideStickers": {
+      "UF": {
+        "F": "red"
+      },
+      "UR": {
+        "R": "green"
+      },
+      "UB": {
+        "B": "orange"
+      },
+      "UL": {
+        "L": "blue"
+      },
+      "UFR": {
+        "F": "green",
+        "R": "orange"
+      },
+      "URB": {
+        "R": "orange",
+        "B": "blue"
+      },
+      "UBL": {
+        "B": "red",
+        "L": "green"
+      },
+      "ULF": {
+        "L": "blue",
+        "F": "red"
+      }
+    }
+  },
+  {
+    "page": 2,
+    "column": 1,
+    "y": 98.6,
+    "formula": "(R U' R' U') (R U R D) (R' U' R D') (R' U2 R') [U']",
+    "sourceName": "Ra",
+    "id": "pll-ra",
+    "sideStickers": {
+      "UF": {
+        "F": "green"
+      },
+      "UR": {
+        "R": "orange"
+      },
+      "UB": {
+        "B": "red"
+      },
+      "UL": {
+        "L": "blue"
+      },
+      "UFR": {
+        "F": "orange",
+        "R": "blue"
+      },
+      "URB": {
+        "R": "green",
+        "B": "orange"
+      },
+      "UBL": {
+        "B": "blue",
+        "L": "red"
+      },
+      "ULF": {
+        "L": "red",
+        "F": "green"
+      }
+    }
+  },
+  {
+    "page": 2,
+    "column": 1,
+    "y": 174.7,
+    "formula": "(R' U L' U2) (R U' R' U2 R) L [U']",
+    "sourceName": "Ja",
+    "id": "pll-ja",
+    "sideStickers": {
+      "UF": {
+        "F": "green"
+      },
+      "UR": {
+        "R": "orange"
+      },
+      "UB": {
+        "B": "red"
+      },
+      "UL": {
+        "L": "blue"
+      },
+      "UFR": {
+        "F": "green",
+        "R": "orange"
+      },
+      "URB": {
+        "R": "blue",
+        "B": "red"
+      },
+      "UBL": {
+        "B": "orange",
+        "L": "blue"
+      },
+      "ULF": {
+        "L": "red",
+        "F": "green"
+      }
+    }
+  },
+  {
+    "page": 2,
+    "column": 1,
+    "y": 251.7,
+    "formula": "(R U R' U') (R' F R2 U') R' U' (R U R' F')",
+    "sourceName": "T",
+    "id": "pll-t",
+    "sideStickers": {
+      "UF": {
+        "F": "red"
+      },
+      "UR": {
+        "R": "blue"
+      },
+      "UB": {
+        "B": "orange"
+      },
+      "UL": {
+        "L": "green"
+      },
+      "UFR": {
+        "F": "green",
+        "R": "orange"
+      },
+      "URB": {
+        "R": "red",
+        "B": "green"
+      },
+      "UBL": {
+        "B": "orange",
+        "L": "blue"
+      },
+      "ULF": {
+        "L": "blue",
+        "F": "red"
+      }
+    }
+  },
+  {
+    "page": 2,
+    "column": 1,
+    "y": 376.0,
+    "formula": "(R' U R' U') y (R' F' R2 U') (R' U R' F) R F",
+    "sourceName": "V",
+    "id": "pll-v",
+    "sideStickers": {
+      "UF": {
+        "F": "red"
+      },
+      "UR": {
+        "R": "orange"
+      },
+      "UB": {
+        "B": "green"
+      },
+      "UL": {
+        "L": "blue"
+      },
+      "UFR": {
+        "F": "orange",
+        "R": "blue"
+      },
+      "URB": {
+        "R": "green",
+        "B": "orange"
+      },
+      "UBL": {
+        "B": "red",
+        "L": "green"
+      },
+      "ULF": {
+        "L": "blue",
+        "F": "red"
+      }
+    }
+  },
+  {
+    "page": 2,
+    "column": 1,
+    "y": 435.2,
+    "formula": "(RUR'U)(RUR'F')(RUR'U')(R'FR2U') R' U2 (RU'R'",
+    "sourceName": "Na",
+    "id": "pll-na",
+    "sideStickers": {
+      "UF": {
+        "F": "red"
+      },
+      "UR": {
+        "R": "blue"
+      },
+      "UB": {
+        "B": "orange"
+      },
+      "UL": {
+        "L": "green"
+      },
+      "UFR": {
+        "F": "red",
+        "R": "green"
+      },
+      "URB": {
+        "R": "blue",
+        "B": "red"
+      },
+      "UBL": {
+        "B": "orange",
+        "L": "blue"
+      },
+      "ULF": {
+        "L": "green",
+        "F": "orange"
+      }
+    }
+  },
+  {
+    "page": 2,
+    "column": 1,
+    "y": 582.5,
+    "formula": "R2 U (R' U R' U') (R U' R2) D U' (R' U R D') [U]",
+    "sourceName": "Ga",
+    "id": "pll-ga",
+    "sideStickers": {
+      "UF": {
+        "F": "red"
+      },
+      "UR": {
+        "R": "orange"
+      },
+      "UB": {
+        "B": "blue"
+      },
+      "UL": {
+        "L": "green"
+      },
+      "UFR": {
+        "F": "red",
+        "R": "green"
+      },
+      "URB": {
+        "R": "blue",
+        "B": "red"
+      },
+      "UBL": {
+        "B": "green",
+        "L": "orange"
+      },
+      "ULF": {
+        "L": "orange",
+        "F": "blue"
+      }
+    }
+  },
+  {
+    "page": 2,
+    "column": 1,
+    "y": 658.0,
+    "formula": "R2 U' (R U' R U) (R' U R2 D') (U R U' R') D [U']",
+    "sourceName": "Gc",
+    "id": "pll-gc",
+    "sideStickers": {
+      "UF": {
+        "F": "green"
+      },
+      "UR": {
+        "R": "orange"
+      },
+      "UB": {
+        "B": "red"
+      },
+      "UL": {
+        "L": "blue"
+      },
+      "UFR": {
+        "F": "red",
+        "R": "green"
+      },
+      "URB": {
+        "R": "blue",
+        "B": "red"
+      },
+      "UBL": {
+        "B": "green",
+        "L": "orange"
+      },
+      "ULF": {
+        "L": "orange",
+        "F": "blue"
+      }
+    }
+  },
+  {
+    "page": 2,
+    "column": 2,
+    "y": 104.9,
+    "formula": "(R' U2 R U2) R' F (R U R' U') R' F' R2 [U']",
+    "sourceName": "Rb",
+    "id": "pll-rb",
+    "sideStickers": {
+      "UF": {
+        "F": "green"
+      },
+      "UR": {
+        "R": "red"
+      },
+      "UB": {
+        "B": "orange"
+      },
+      "UL": {
+        "L": "blue"
+      },
+      "UFR": {
+        "F": "red",
+        "R": "green"
+      },
+      "URB": {
+        "R": "orange",
+        "B": "blue"
+      },
+      "UBL": {
+        "B": "green",
+        "L": "orange"
+      },
+      "ULF": {
+        "L": "blue",
+        "F": "red"
+      }
+    }
+  },
+  {
+    "page": 2,
+    "column": 2,
+    "y": 181.0,
+    "formula": "(R U R' F') (R U R' U') R' F R2 U' R' [U']",
+    "sourceName": "Jb",
+    "id": "pll-jb",
+    "sideStickers": {
+      "UF": {
+        "F": "green"
+      },
+      "UR": {
+        "R": "red"
+      },
+      "UB": {
+        "B": "orange"
+      },
+      "UL": {
+        "L": "blue"
+      },
+      "UFR": {
+        "F": "green",
+        "R": "orange"
+      },
+      "URB": {
+        "R": "red",
+        "B": "green"
+      },
+      "UBL": {
+        "B": "orange",
+        "L": "blue"
+      },
+      "ULF": {
+        "L": "blue",
+        "F": "red"
+      }
+    }
+  },
+  {
+    "page": 2,
+    "column": 2,
+    "y": 245.4,
+    "formula": "(R' U' F')(R U R' U')(R' F R2 U')(R' U' R U)(R' U R)",
+    "sourceName": "F",
+    "id": "pll-f",
+    "sideStickers": {
+      "UF": {
+        "F": "blue"
+      },
+      "UR": {
+        "R": "orange"
+      },
+      "UB": {
+        "B": "green"
+      },
+      "UL": {
+        "L": "red"
+      },
+      "UFR": {
+        "F": "orange",
+        "R": "blue"
+      },
+      "URB": {
+        "R": "green",
+        "B": "orange"
+      },
+      "UBL": {
+        "B": "blue",
+        "L": "red"
+      },
+      "ULF": {
+        "L": "red",
+        "F": "green"
+      }
+    }
+  },
+  {
+    "page": 2,
+    "column": 2,
+    "y": 376.0,
+    "formula": "F (R U' R' U') (R U R' F') (R U R' U') (R' F R F')",
+    "sourceName": "Y",
+    "id": "pll-y",
+    "sideStickers": {
+      "UF": {
+        "F": "red"
+      },
+      "UR": {
+        "R": "green"
+      },
+      "UB": {
+        "B": "blue"
+      },
+      "UL": {
+        "L": "orange"
+      },
+      "UFR": {
+        "F": "orange",
+        "R": "blue"
+      },
+      "URB": {
+        "R": "green",
+        "B": "orange"
+      },
+      "UBL": {
+        "B": "red",
+        "L": "green"
+      },
+      "ULF": {
+        "L": "blue",
+        "F": "red"
+      }
+    }
+  },
+  {
+    "page": 2,
+    "column": 2,
+    "y": 435.2,
+    "formula": ") (R' U R U') (R' F' U' F) (R U R' F) R' F' (R U' R)",
+    "sourceName": "Nb",
+    "id": "pll-nb",
+    "sideStickers": {
+      "UF": {
+        "F": "red"
+      },
+      "UR": {
+        "R": "blue"
+      },
+      "UB": {
+        "B": "orange"
+      },
+      "UL": {
+        "L": "green"
+      },
+      "UFR": {
+        "F": "orange",
+        "R": "blue"
+      },
+      "URB": {
+        "R": "green",
+        "B": "orange"
+      },
+      "UBL": {
+        "B": "red",
+        "L": "green"
+      },
+      "ULF": {
+        "L": "blue",
+        "F": "red"
+      }
+    }
+  },
+  {
+    "page": 2,
+    "column": 2,
+    "y": 577.3,
+    "formula": "(F' U' F) (R2 u R' U) (R U' R u') R2",
+    "sourceName": "Gb",
+    "id": "pll-gb",
+    "sideStickers": {
+      "UF": {
+        "F": "blue"
+      },
+      "UR": {
+        "R": "orange"
+      },
+      "UB": {
+        "B": "red"
+      },
+      "UL": {
+        "L": "green"
+      },
+      "UFR": {
+        "F": "blue",
+        "R": "red"
+      },
+      "URB": {
+        "R": "green",
+        "B": "orange"
+      },
+      "UBL": {
+        "B": "orange",
+        "L": "blue"
+      },
+      "ULF": {
+        "L": "red",
+        "F": "green"
+      }
+    }
+  },
+  {
+    "page": 2,
+    "column": 2,
+    "y": 653.3,
+    "formula": "D' (R U R' U') D (R2 U' R U') (R' U R' U) R2 [U]",
+    "sourceName": "Gd",
+    "id": "pll-gd",
+    "sideStickers": {
+      "UF": {
+        "F": "orange"
+      },
+      "UR": {
+        "R": "green"
+      },
+      "UB": {
+        "B": "blue"
+      },
+      "UL": {
+        "L": "red"
+      },
+      "UFR": {
+        "F": "red",
+        "R": "green"
+      },
+      "URB": {
+        "R": "blue",
+        "B": "red"
+      },
+      "UBL": {
+        "B": "green",
+        "L": "orange"
+      },
+      "ULF": {
+        "L": "orange",
+        "F": "blue"
+      }
+    }
+  }
+]

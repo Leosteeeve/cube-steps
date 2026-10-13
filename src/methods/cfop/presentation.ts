@@ -3,6 +3,7 @@ import { CFOP_ALGORITHMS } from './catalog';
 export const CFOP_PRESENTATION: MethodPresentation = {
   id: 'cfop-beginner',
   label: 'Beginner CFOP',
+  teachingStatus: 'accepted',
   algorithms: CFOP_ALGORITHMS,
   stages: [
     { id: 'cfop-cross', label: 'Direct white cross', group: 'Cross' },

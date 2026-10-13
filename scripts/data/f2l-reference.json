@@ -1,0 +1,248 @@
+[
+  {
+    "page": 1,
+    "column": 1,
+    "y": 326.6,
+    "formula": "U (R U' R')"
+  },
+  {
+    "page": 1,
+    "column": 1,
+    "y": 367.1,
+    "formula": "y' (R' U' R)"
+  },
+  {
+    "page": 1,
+    "column": 1,
+    "y": 443.0,
+    "formula": "U' (R U' R' U) y' (R' U' R)"
+  },
+  {
+    "page": 1,
+    "column": 1,
+    "y": 489.5,
+    "formula": "U' (R U2' R' U) y' (R' U' R)"
+  },
+  {
+    "page": 1,
+    "column": 1,
+    "y": 542.8,
+    "formula": "y' U (R' U R U') (R' U' R)"
+  },
+  {
+    "page": 1,
+    "column": 1,
+    "y": 617.9,
+    "formula": "(U' R U R') U2 (R U' R')"
+  },
+  {
+    "page": 1,
+    "column": 1,
+    "y": 665.2,
+    "formula": "U' (R U2' R') U2 (R U' R')"
+  },
+  {
+    "page": 1,
+    "column": 1,
+    "y": 740.3,
+    "formula": "U (R U2 R') U (R U' R')"
+  },
+  {
+    "page": 1,
+    "column": 1,
+    "y": 780.8,
+    "formula": "U2 (R U R' U) (R U' R')"
+  },
+  {
+    "page": 1,
+    "column": 2,
+    "y": 320.6,
+    "formula": "y' U' (R' U R)"
+  },
+  {
+    "page": 1,
+    "column": 2,
+    "y": 373.2,
+    "formula": "(R U R')"
+  },
+  {
+    "page": 1,
+    "column": 2,
+    "y": 449.0,
+    "formula": "U' (R U R' U) (R U R')"
+  },
+  {
+    "page": 1,
+    "column": 2,
+    "y": 483.5,
+    "formula": "R' U2' R2 U R2' U R"
+  },
+  {
+    "page": 1,
+    "column": 2,
+    "y": 542.8,
+    "formula": "U' (R U' R' U) (R U R')"
+  },
+  {
+    "page": 1,
+    "column": 2,
+    "y": 607.4,
+    "formula": "y' (U R' U' R) U2' (R' U R)"
+  },
+  {
+    "page": 1,
+    "column": 2,
+    "y": 658.4,
+    "formula": "y' U (R' U2 R) U2' (R' U R)"
+  },
+  {
+    "page": 1,
+    "column": 2,
+    "y": 740.3,
+    "formula": "y' U' (R' U2 R) U' (R' U R)"
+  },
+  {
+    "page": 1,
+    "column": 2,
+    "y": 771.0,
+    "formula": "y' U2 (R' U' R) U' (R' U R)"
+  },
+  {
+    "page": 2,
+    "column": 1,
+    "y": 102.2,
+    "formula": "y' (R' U R) U2' y (R U R')"
+  },
+  {
+    "page": 2,
+    "column": 1,
+    "y": 155.5,
+    "formula": "(R U2 R') U' (R U R')"
+  },
+  {
+    "page": 2,
+    "column": 1,
+    "y": 196.4,
+    "formula": "U (R U' R' U') (R U' R' U) (R U' R')"
+  },
+  {
+    "page": 2,
+    "column": 1,
+    "y": 279.3,
+    "formula": "U' F' (R U R' U') R' F R"
+  },
+  {
+    "page": 2,
+    "column": 1,
+    "y": 332.6,
+    "formula": "(R U' R' U) (R U' R')"
+  },
+  {
+    "page": 2,
+    "column": 1,
+    "y": 373.2,
+    "formula": "y' (R' U' R U) (R' U' R)"
+  },
+  {
+    "page": 2,
+    "column": 1,
+    "y": 449.0,
+    "formula": "(R U' R' U) y' (R' U R)"
+  },
+  {
+    "page": 2,
+    "column": 1,
+    "y": 501.5,
+    "formula": "(U' R U' R') U2 (R U' R')"
+  },
+  {
+    "page": 2,
+    "column": 1,
+    "y": 548.1,
+    "formula": "(U' R U R') U y' (R' U' R)"
+  },
+  {
+    "page": 2,
+    "column": 1,
+    "y": 664.4,
+    "formula": "(R U' R' U') R U R' U2 (R U' R')"
+  },
+  {
+    "page": 2,
+    "column": 1,
+    "y": 711.0,
+    "formula": "(F' U F) U2 (R U R' U) (R U' R')"
+  },
+  {
+    "page": 2,
+    "column": 2,
+    "y": 102.2,
+    "formula": "(R U' R' U2) y' (R' U' R)"
+  },
+  {
+    "page": 2,
+    "column": 2,
+    "y": 155.5,
+    "formula": "y' (R' U2 R) U (R' U' R)"
+  },
+  {
+    "page": 2,
+    "column": 2,
+    "y": 196.4,
+    "formula": "y' U' (R' U R U) (R' U R U') (R' U R)"
+  },
+  {
+    "page": 2,
+    "column": 2,
+    "y": 279.3,
+    "formula": "U (R U' R') U' (F' U F)"
+  },
+  {
+    "page": 2,
+    "column": 2,
+    "y": 332.6,
+    "formula": "y' (R' U R U') (R' U R)"
+  },
+  {
+    "page": 2,
+    "column": 2,
+    "y": 379.2,
+    "formula": "(R U R' U') (R U R')"
+  },
+  {
+    "page": 2,
+    "column": 2,
+    "y": 455.4,
+    "formula": "(U R U' R') (U R U' R') (U R U' R')"
+  },
+  {
+    "page": 2,
+    "column": 2,
+    "y": 501.5,
+    "formula": "U (R U R') U2 (R U R')"
+  },
+  {
+    "page": 2,
+    "column": 2,
+    "y": 548.1,
+    "formula": "U (F' U' F) U' (R U R')"
+  },
+  {
+    "page": 2,
+    "column": 2,
+    "y": 623.6,
+    "formula": "(R U' R') d (R' U2 R) U2' (R' U R)"
+  },
+  {
+    "page": 2,
+    "column": 2,
+    "y": 664.4,
+    "formula": "(R U' R' U) (R U2' R') U (R U' R')"
+  },
+  {
+    "page": 2,
+    "column": 2,
+    "y": 710.7,
+    "formula": "(R U R' U') (R U' R') U2 y' (R' U' R)"
+  }
+]

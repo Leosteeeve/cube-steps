@@ -1,0 +1,1685 @@
+{
+  "cases": {
+    "pll-ub": {
+      "id": "pll-ub",
+      "family": "pll",
+      "label": "Ub perm",
+      "group": "Edges only",
+      "canonicalSignature": "0123|0312",
+      "recognition": "Edges only. Compare matching side-color blocks, headlights and edge order around the yellow layer.",
+      "defaultVariantId": "pll-ub/main",
+      "variantIds": [
+        "pll-ub/main"
+      ],
+      "fixtureIds": [
+        "pll-ub/u0",
+        "pll-ub/u1",
+        "pll-ub/u2",
+        "pll-ub/u3"
+      ],
+      "sourceRefs": [
+        {
+          "title": "CubeSkills PLL",
+          "url": "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf",
+          "reference": "Ub, page 1. Side stickers independently read from the diagram; bracketed final U alignment is a separate stage."
+        }
+      ]
+    },
+    "pll-z": {
+      "id": "pll-z",
+      "family": "pll",
+      "label": "Z perm",
+      "group": "Edges only",
+      "canonicalSignature": "0123|1032",
+      "recognition": "Edges only. Compare matching side-color blocks, headlights and edge order around the yellow layer.",
+      "defaultVariantId": "pll-z/main",
+      "variantIds": [
+        "pll-z/main"
+      ],
+      "fixtureIds": [
+        "pll-z/u0",
+        "pll-z/u1",
+        "pll-z/u2",
+        "pll-z/u3"
+      ],
+      "sourceRefs": [
+        {
+          "title": "CubeSkills PLL",
+          "url": "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf",
+          "reference": "Z, page 1. Side stickers independently read from the diagram; bracketed final U alignment is a separate stage."
+        }
+      ]
+    },
+    "pll-aa": {
+      "id": "pll-aa",
+      "family": "pll",
+      "label": "Aa perm",
+      "group": "Corners only",
+      "canonicalSignature": "0132|1230",
+      "recognition": "Corners only. Compare matching side-color blocks, headlights and edge order around the yellow layer.",
+      "defaultVariantId": "pll-aa/main",
+      "variantIds": [
+        "pll-aa/main"
+      ],
+      "fixtureIds": [
+        "pll-aa/u0",
+        "pll-aa/u1",
+        "pll-aa/u2",
+        "pll-aa/u3"
+      ],
+      "sourceRefs": [
+        {
+          "title": "CubeSkills PLL",
+          "url": "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf",
+          "reference": "Aa, page 1. Side stickers independently read from the diagram; bracketed final U alignment is a separate stage."
+        }
+      ]
+    },
+    "pll-e": {
+      "id": "pll-e",
+      "family": "pll",
+      "label": "E perm",
+      "group": "Corners only",
+      "canonicalSignature": "0321|1230",
+      "recognition": "Corners only. Compare matching side-color blocks, headlights and edge order around the yellow layer.",
+      "defaultVariantId": "pll-e/main",
+      "variantIds": [
+        "pll-e/main"
+      ],
+      "fixtureIds": [
+        "pll-e/u0",
+        "pll-e/u1",
+        "pll-e/u2",
+        "pll-e/u3"
+      ],
+      "sourceRefs": [
+        {
+          "title": "CubeSkills PLL",
+          "url": "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf",
+          "reference": "E, page 1. Side stickers independently read from the diagram; bracketed final U alignment is a separate stage."
+        }
+      ]
+    },
+    "pll-ua": {
+      "id": "pll-ua",
+      "family": "pll",
+      "label": "Ua perm",
+      "group": "Edges only",
+      "canonicalSignature": "0123|0231",
+      "recognition": "Edges only. Compare matching side-color blocks, headlights and edge order around the yellow layer.",
+      "defaultVariantId": "pll-ua/main",
+      "variantIds": [
+        "pll-ua/main"
+      ],
+      "fixtureIds": [
+        "pll-ua/u0",
+        "pll-ua/u1",
+        "pll-ua/u2",
+        "pll-ua/u3"
+      ],
+      "sourceRefs": [
+        {
+          "title": "CubeSkills PLL",
+          "url": "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf",
+          "reference": "Ua, page 1. Side stickers independently read from the diagram; bracketed final U alignment is a separate stage."
+        }
+      ]
+    },
+    "pll-h": {
+      "id": "pll-h",
+      "family": "pll",
+      "label": "H perm",
+      "group": "Edges only",
+      "canonicalSignature": "0123|2301",
+      "recognition": "Edges only. Compare matching side-color blocks, headlights and edge order around the yellow layer.",
+      "defaultVariantId": "pll-h/main",
+      "variantIds": [
+        "pll-h/main"
+      ],
+      "fixtureIds": [
+        "pll-h/u0",
+        "pll-h/u1",
+        "pll-h/u2",
+        "pll-h/u3"
+      ],
+      "sourceRefs": [
+        {
+          "title": "CubeSkills PLL",
+          "url": "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf",
+          "reference": "H, page 1. Side stickers independently read from the diagram; bracketed final U alignment is a separate stage."
+        }
+      ]
+    },
+    "pll-ab": {
+      "id": "pll-ab",
+      "family": "pll",
+      "label": "Ab perm",
+      "group": "Corners only",
+      "canonicalSignature": "0132|3012",
+      "recognition": "Corners only. Compare matching side-color blocks, headlights and edge order around the yellow layer.",
+      "defaultVariantId": "pll-ab/main",
+      "variantIds": [
+        "pll-ab/main"
+      ],
+      "fixtureIds": [
+        "pll-ab/u0",
+        "pll-ab/u1",
+        "pll-ab/u2",
+        "pll-ab/u3"
+      ],
+      "sourceRefs": [
+        {
+          "title": "CubeSkills PLL",
+          "url": "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf",
+          "reference": "Ab, page 1. Side stickers independently read from the diagram; bracketed final U alignment is a separate stage."
+        }
+      ]
+    },
+    "pll-ra": {
+      "id": "pll-ra",
+      "family": "pll",
+      "label": "Ra perm",
+      "group": "Corners and edges",
+      "canonicalSignature": "0132|1023",
+      "recognition": "Corners and edges. Compare matching side-color blocks, headlights and edge order around the yellow layer.",
+      "defaultVariantId": "pll-ra/main",
+      "variantIds": [
+        "pll-ra/main"
+      ],
+      "fixtureIds": [
+        "pll-ra/u0",
+        "pll-ra/u1",
+        "pll-ra/u2",
+        "pll-ra/u3"
+      ],
+      "sourceRefs": [
+        {
+          "title": "CubeSkills PLL",
+          "url": "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf",
+          "reference": "Ra, page 2. Side stickers independently read from the diagram; bracketed final U alignment is a separate stage."
+        }
+      ]
+    },
+    "pll-ja": {
+      "id": "pll-ja",
+      "family": "pll",
+      "label": "Ja perm",
+      "group": "Corners and edges",
+      "canonicalSignature": "0132|3120",
+      "recognition": "Corners and edges. Compare matching side-color blocks, headlights and edge order around the yellow layer.",
+      "defaultVariantId": "pll-ja/main",
+      "variantIds": [
+        "pll-ja/main"
+      ],
+      "fixtureIds": [
+        "pll-ja/u0",
+        "pll-ja/u1",
+        "pll-ja/u2",
+        "pll-ja/u3"
+      ],
+      "sourceRefs": [
+        {
+          "title": "CubeSkills PLL",
+          "url": "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf",
+          "reference": "Ja, page 2. Side stickers independently read from the diagram; bracketed final U alignment is a separate stage."
+        }
+      ]
+    },
+    "pll-t": {
+      "id": "pll-t",
+      "family": "pll",
+      "label": "T perm",
+      "group": "Corners and edges",
+      "canonicalSignature": "0132|0321",
+      "recognition": "Corners and edges. Compare matching side-color blocks, headlights and edge order around the yellow layer.",
+      "defaultVariantId": "pll-t/main",
+      "variantIds": [
+        "pll-t/main"
+      ],
+      "fixtureIds": [
+        "pll-t/u0",
+        "pll-t/u1",
+        "pll-t/u2",
+        "pll-t/u3"
+      ],
+      "sourceRefs": [
+        {
+          "title": "CubeSkills PLL",
+          "url": "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf",
+          "reference": "T, page 2. Side stickers independently read from the diagram; bracketed final U alignment is a separate stage."
+        }
+      ]
+    },
+    "pll-v": {
+      "id": "pll-v",
+      "family": "pll",
+      "label": "V perm",
+      "group": "Corners and edges",
+      "canonicalSignature": "0321|0132",
+      "recognition": "Corners and edges. Compare matching side-color blocks, headlights and edge order around the yellow layer.",
+      "defaultVariantId": "pll-v/main",
+      "variantIds": [
+        "pll-v/main"
+      ],
+      "fixtureIds": [
+        "pll-v/u0",
+        "pll-v/u1",
+        "pll-v/u2",
+        "pll-v/u3"
+      ],
+      "sourceRefs": [
+        {
+          "title": "CubeSkills PLL",
+          "url": "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf",
+          "reference": "V, page 2. Side stickers independently read from the diagram; bracketed final U alignment is a separate stage."
+        }
+      ]
+    },
+    "pll-na": {
+      "id": "pll-na",
+      "family": "pll",
+      "label": "Na perm",
+      "group": "Corners and edges",
+      "canonicalSignature": "0321|0321",
+      "recognition": "Corners and edges. Compare matching side-color blocks, headlights and edge order around the yellow layer.",
+      "defaultVariantId": "pll-na/main",
+      "variantIds": [
+        "pll-na/main"
+      ],
+      "fixtureIds": [
+        "pll-na/u0",
+        "pll-na/u1",
+        "pll-na/u2",
+        "pll-na/u3"
+      ],
+      "sourceRefs": [
+        {
+          "title": "CubeSkills PLL",
+          "url": "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf",
+          "reference": "Na, page 2. Side stickers independently read from the diagram; bracketed final U alignment is a separate stage."
+        }
+      ]
+    },
+    "pll-ga": {
+      "id": "pll-ga",
+      "family": "pll",
+      "label": "Ga perm",
+      "group": "Corners and edges",
+      "canonicalSignature": "0132|2031",
+      "recognition": "Corners and edges. Compare matching side-color blocks, headlights and edge order around the yellow layer.",
+      "defaultVariantId": "pll-ga/main",
+      "variantIds": [
+        "pll-ga/main"
+      ],
+      "fixtureIds": [
+        "pll-ga/u0",
+        "pll-ga/u1",
+        "pll-ga/u2",
+        "pll-ga/u3"
+      ],
+      "sourceRefs": [
+        {
+          "title": "CubeSkills PLL",
+          "url": "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf",
+          "reference": "Ga, page 2. Side stickers independently read from the diagram; bracketed final U alignment is a separate stage."
+        }
+      ]
+    },
+    "pll-gc": {
+      "id": "pll-gc",
+      "family": "pll",
+      "label": "Gc perm",
+      "group": "Corners and edges",
+      "canonicalSignature": "0132|3201",
+      "recognition": "Corners and edges. Compare matching side-color blocks, headlights and edge order around the yellow layer.",
+      "defaultVariantId": "pll-gc/main",
+      "variantIds": [
+        "pll-gc/main"
+      ],
+      "fixtureIds": [
+        "pll-gc/u0",
+        "pll-gc/u1",
+        "pll-gc/u2",
+        "pll-gc/u3"
+      ],
+      "sourceRefs": [
+        {
+          "title": "CubeSkills PLL",
+          "url": "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf",
+          "reference": "Gc, page 2. Side stickers independently read from the diagram; bracketed final U alignment is a separate stage."
+        }
+      ]
+    },
+    "pll-rb": {
+      "id": "pll-rb",
+      "family": "pll",
+      "label": "Rb perm",
+      "group": "Corners and edges",
+      "canonicalSignature": "0132|0213",
+      "recognition": "Corners and edges. Compare matching side-color blocks, headlights and edge order around the yellow layer.",
+      "defaultVariantId": "pll-rb/main",
+      "variantIds": [
+        "pll-rb/main"
+      ],
+      "fixtureIds": [
+        "pll-rb/u0",
+        "pll-rb/u1",
+        "pll-rb/u2",
+        "pll-rb/u3"
+      ],
+      "sourceRefs": [
+        {
+          "title": "CubeSkills PLL",
+          "url": "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf",
+          "reference": "Rb, page 2. Side stickers independently read from the diagram; bracketed final U alignment is a separate stage."
+        }
+      ]
+    },
+    "pll-jb": {
+      "id": "pll-jb",
+      "family": "pll",
+      "label": "Jb perm",
+      "group": "Corners and edges",
+      "canonicalSignature": "0132|0132",
+      "recognition": "Corners and edges. Compare matching side-color blocks, headlights and edge order around the yellow layer.",
+      "defaultVariantId": "pll-jb/main",
+      "variantIds": [
+        "pll-jb/main"
+      ],
+      "fixtureIds": [
+        "pll-jb/u0",
+        "pll-jb/u1",
+        "pll-jb/u2",
+        "pll-jb/u3"
+      ],
+      "sourceRefs": [
+        {
+          "title": "CubeSkills PLL",
+          "url": "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf",
+          "reference": "Jb, page 2. Side stickers independently read from the diagram; bracketed final U alignment is a separate stage."
+        }
+      ]
+    },
+    "pll-f": {
+      "id": "pll-f",
+      "family": "pll",
+      "label": "F perm",
+      "group": "Corners and edges",
+      "canonicalSignature": "0132|2103",
+      "recognition": "Corners and edges. Compare matching side-color blocks, headlights and edge order around the yellow layer.",
+      "defaultVariantId": "pll-f/main",
+      "variantIds": [
+        "pll-f/main"
+      ],
+      "fixtureIds": [
+        "pll-f/u0",
+        "pll-f/u1",
+        "pll-f/u2",
+        "pll-f/u3"
+      ],
+      "sourceRefs": [
+        {
+          "title": "CubeSkills PLL",
+          "url": "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf",
+          "reference": "F, page 2. Side stickers independently read from the diagram; bracketed final U alignment is a separate stage."
+        }
+      ]
+    },
+    "pll-y": {
+      "id": "pll-y",
+      "family": "pll",
+      "label": "Y perm",
+      "group": "Corners and edges",
+      "canonicalSignature": "0321|0213",
+      "recognition": "Corners and edges. Compare matching side-color blocks, headlights and edge order around the yellow layer.",
+      "defaultVariantId": "pll-y/main",
+      "variantIds": [
+        "pll-y/main"
+      ],
+      "fixtureIds": [
+        "pll-y/u0",
+        "pll-y/u1",
+        "pll-y/u2",
+        "pll-y/u3"
+      ],
+      "sourceRefs": [
+        {
+          "title": "CubeSkills PLL",
+          "url": "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf",
+          "reference": "Y, page 2. Side stickers independently read from the diagram; bracketed final U alignment is a separate stage."
+        }
+      ]
+    },
+    "pll-nb": {
+      "id": "pll-nb",
+      "family": "pll",
+      "label": "Nb perm",
+      "group": "Corners and edges",
+      "canonicalSignature": "0321|2103",
+      "recognition": "Corners and edges. Compare matching side-color blocks, headlights and edge order around the yellow layer.",
+      "defaultVariantId": "pll-nb/main",
+      "variantIds": [
+        "pll-nb/main"
+      ],
+      "fixtureIds": [
+        "pll-nb/u0",
+        "pll-nb/u1",
+        "pll-nb/u2",
+        "pll-nb/u3"
+      ],
+      "sourceRefs": [
+        {
+          "title": "CubeSkills PLL",
+          "url": "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf",
+          "reference": "Nb, page 2. Side stickers independently read from the diagram; bracketed final U alignment is a separate stage."
+        }
+      ]
+    },
+    "pll-gb": {
+      "id": "pll-gb",
+      "family": "pll",
+      "label": "Gb perm",
+      "group": "Corners and edges",
+      "canonicalSignature": "0132|1302",
+      "recognition": "Corners and edges. Compare matching side-color blocks, headlights and edge order around the yellow layer.",
+      "defaultVariantId": "pll-gb/main",
+      "variantIds": [
+        "pll-gb/main"
+      ],
+      "fixtureIds": [
+        "pll-gb/u0",
+        "pll-gb/u1",
+        "pll-gb/u2",
+        "pll-gb/u3"
+      ],
+      "sourceRefs": [
+        {
+          "title": "CubeSkills PLL",
+          "url": "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf",
+          "reference": "Gb, page 2. Side stickers independently read from the diagram; bracketed final U alignment is a separate stage."
+        }
+      ]
+    },
+    "pll-gd": {
+      "id": "pll-gd",
+      "family": "pll",
+      "label": "Gd perm",
+      "group": "Corners and edges",
+      "canonicalSignature": "0132|2310",
+      "recognition": "Corners and edges. Compare matching side-color blocks, headlights and edge order around the yellow layer.",
+      "defaultVariantId": "pll-gd/main",
+      "variantIds": [
+        "pll-gd/main"
+      ],
+      "fixtureIds": [
+        "pll-gd/u0",
+        "pll-gd/u1",
+        "pll-gd/u2",
+        "pll-gd/u3"
+      ],
+      "sourceRefs": [
+        {
+          "title": "CubeSkills PLL",
+          "url": "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf",
+          "reference": "Gd, page 2. Side stickers independently read from the diagram; bracketed final U alignment is a separate stage."
+        }
+      ]
+    }
+  },
+  "variants": {
+    "pll-ub/main": {
+      "id": "pll-ub/main",
+      "caseId": "pll-ub",
+      "startSignature": "0123|3021",
+      "executionPenalty": 0,
+      "sourceRefs": [
+        {
+          "title": "CubeSkills PLL",
+          "url": "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf",
+          "reference": "Ub, page 1. Side stickers independently read from the diagram; bracketed final U alignment is a separate stage."
+        }
+      ],
+      "name": "Ub perm",
+      "moves": [
+        "R2",
+        "U",
+        "R",
+        "U",
+        "R'",
+        "U'",
+        "R'",
+        "U'",
+        "R'",
+        "U",
+        "R'"
+      ],
+      "precondition": "White down and yellow up. Match the side-color pattern after setup; relative corners and edges: 0123|3021.",
+      "effect": "Put all last-layer pieces in their correct order. Keep yellow on top and restore the first two layers; a final U turn may still be needed.",
+      "segments": [
+        {
+          "label": "Move group 1",
+          "start": 0,
+          "end": 2
+        },
+        {
+          "label": "Move group 2",
+          "start": 2,
+          "end": 6
+        },
+        {
+          "label": "Move group 3",
+          "start": 6,
+          "end": 8
+        },
+        {
+          "label": "Move group 4",
+          "start": 8,
+          "end": 11
+        }
+      ]
+    },
+    "pll-z/main": {
+      "id": "pll-z/main",
+      "caseId": "pll-z",
+      "startSignature": "0123|1032",
+      "executionPenalty": 0,
+      "sourceRefs": [
+        {
+          "title": "CubeSkills PLL",
+          "url": "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf",
+          "reference": "Z, page 1. Side stickers independently read from the diagram; bracketed final U alignment is a separate stage."
+        }
+      ],
+      "name": "Z perm",
+      "moves": [
+        "M2",
+        "U",
+        "M2",
+        "U",
+        "M'",
+        "U2",
+        "M2",
+        "U2",
+        "M'"
+      ],
+      "precondition": "White down and yellow up. Match the side-color pattern after setup; relative corners and edges: 0123|1032.",
+      "effect": "Put all last-layer pieces in their correct order. Keep yellow on top and restore the first two layers; a final U turn may still be needed.",
+      "segments": [
+        {
+          "label": "Move group 1",
+          "start": 0,
+          "end": 4
+        },
+        {
+          "label": "Move group 2",
+          "start": 4,
+          "end": 6
+        },
+        {
+          "label": "Move group 3",
+          "start": 6,
+          "end": 9
+        }
+      ]
+    },
+    "pll-aa/main": {
+      "id": "pll-aa/main",
+      "caseId": "pll-aa",
+      "startSignature": "0231|2301",
+      "executionPenalty": 0,
+      "sourceRefs": [
+        {
+          "title": "CubeSkills PLL",
+          "url": "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf",
+          "reference": "Aa, page 1. Side stickers independently read from the diagram; bracketed final U alignment is a separate stage."
+        }
+      ],
+      "name": "Aa perm",
+      "moves": [
+        "x",
+        "R'",
+        "U",
+        "R'",
+        "D2",
+        "R",
+        "U'",
+        "R'",
+        "D2",
+        "R2",
+        "x'"
+      ],
+      "precondition": "White down and yellow up. Match the side-color pattern after setup; relative corners and edges: 0231|2301.",
+      "effect": "Put all last-layer pieces in their correct order. Keep yellow on top and restore the first two layers; a final U turn may still be needed.",
+      "segments": [
+        {
+          "label": "Move group 1",
+          "start": 0,
+          "end": 1
+        },
+        {
+          "label": "Move group 2",
+          "start": 1,
+          "end": 4
+        },
+        {
+          "label": "Move group 3",
+          "start": 4,
+          "end": 5
+        },
+        {
+          "label": "Move group 4",
+          "start": 5,
+          "end": 8
+        },
+        {
+          "label": "Move group 5",
+          "start": 8,
+          "end": 11
+        }
+      ]
+    },
+    "pll-e/main": {
+      "id": "pll-e/main",
+      "caseId": "pll-e",
+      "startSignature": "0321|3012",
+      "executionPenalty": 0,
+      "sourceRefs": [
+        {
+          "title": "CubeSkills PLL",
+          "url": "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf",
+          "reference": "E, page 1. Side stickers independently read from the diagram; bracketed final U alignment is a separate stage."
+        }
+      ],
+      "name": "E perm",
+      "moves": [
+        "x'",
+        "R",
+        "U'",
+        "R'",
+        "D",
+        "R",
+        "U",
+        "R'",
+        "D'",
+        "R",
+        "U",
+        "R'",
+        "D",
+        "R",
+        "U'",
+        "R'",
+        "D'",
+        "x"
+      ],
+      "precondition": "White down and yellow up. Match the side-color pattern after setup; relative corners and edges: 0321|3012.",
+      "effect": "Put all last-layer pieces in their correct order. Keep yellow on top and restore the first two layers; a final U turn may still be needed.",
+      "segments": [
+        {
+          "label": "Move group 1",
+          "start": 0,
+          "end": 18
+        }
+      ]
+    },
+    "pll-ua/main": {
+      "id": "pll-ua/main",
+      "caseId": "pll-ua",
+      "startSignature": "0123|1320",
+      "executionPenalty": 0,
+      "sourceRefs": [
+        {
+          "title": "CubeSkills PLL",
+          "url": "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf",
+          "reference": "Ua, page 1. Side stickers independently read from the diagram; bracketed final U alignment is a separate stage."
+        }
+      ],
+      "name": "Ua perm",
+      "moves": [
+        "R",
+        "U'",
+        "R",
+        "U",
+        "R",
+        "U",
+        "R",
+        "U'",
+        "R'",
+        "U'",
+        "R2"
+      ],
+      "precondition": "White down and yellow up. Match the side-color pattern after setup; relative corners and edges: 0123|1320.",
+      "effect": "Put all last-layer pieces in their correct order. Keep yellow on top and restore the first two layers; a final U turn may still be needed.",
+      "segments": [
+        {
+          "label": "Move group 1",
+          "start": 0,
+          "end": 4
+        },
+        {
+          "label": "Move group 2",
+          "start": 4,
+          "end": 6
+        },
+        {
+          "label": "Move group 3",
+          "start": 6,
+          "end": 10
+        },
+        {
+          "label": "Move group 4",
+          "start": 10,
+          "end": 11
+        }
+      ]
+    },
+    "pll-h/main": {
+      "id": "pll-h/main",
+      "caseId": "pll-h",
+      "startSignature": "0123|2301",
+      "executionPenalty": 0,
+      "sourceRefs": [
+        {
+          "title": "CubeSkills PLL",
+          "url": "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf",
+          "reference": "H, page 1. Side stickers independently read from the diagram; bracketed final U alignment is a separate stage."
+        }
+      ],
+      "name": "H perm",
+      "moves": [
+        "M2",
+        "U",
+        "M2",
+        "U2",
+        "M2",
+        "U",
+        "M2"
+      ],
+      "precondition": "White down and yellow up. Match the side-color pattern after setup; relative corners and edges: 0123|2301.",
+      "effect": "Put all last-layer pieces in their correct order. Keep yellow on top and restore the first two layers; a final U turn may still be needed.",
+      "segments": [
+        {
+          "label": "Move group 1",
+          "start": 0,
+          "end": 3
+        },
+        {
+          "label": "Move group 2",
+          "start": 3,
+          "end": 4
+        },
+        {
+          "label": "Move group 3",
+          "start": 4,
+          "end": 7
+        }
+      ]
+    },
+    "pll-ab/main": {
+      "id": "pll-ab/main",
+      "caseId": "pll-ab",
+      "startSignature": "0132|3012",
+      "executionPenalty": 0,
+      "sourceRefs": [
+        {
+          "title": "CubeSkills PLL",
+          "url": "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf",
+          "reference": "Ab, page 1. Side stickers independently read from the diagram; bracketed final U alignment is a separate stage."
+        }
+      ],
+      "name": "Ab perm",
+      "moves": [
+        "x",
+        "R2",
+        "D2",
+        "R",
+        "U",
+        "R'",
+        "D2",
+        "R",
+        "U'",
+        "R",
+        "x'"
+      ],
+      "precondition": "White down and yellow up. Match the side-color pattern after setup; relative corners and edges: 0132|3012.",
+      "effect": "Put all last-layer pieces in their correct order. Keep yellow on top and restore the first two layers; a final U turn may still be needed.",
+      "segments": [
+        {
+          "label": "Move group 1",
+          "start": 0,
+          "end": 3
+        },
+        {
+          "label": "Move group 2",
+          "start": 3,
+          "end": 6
+        },
+        {
+          "label": "Move group 3",
+          "start": 6,
+          "end": 7
+        },
+        {
+          "label": "Move group 4",
+          "start": 7,
+          "end": 10
+        },
+        {
+          "label": "Move group 5",
+          "start": 10,
+          "end": 11
+        }
+      ]
+    },
+    "pll-ra/main": {
+      "id": "pll-ra/main",
+      "caseId": "pll-ra",
+      "startSignature": "0312|3021",
+      "executionPenalty": 0,
+      "sourceRefs": [
+        {
+          "title": "CubeSkills PLL",
+          "url": "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf",
+          "reference": "Ra, page 2. Side stickers independently read from the diagram; bracketed final U alignment is a separate stage."
+        }
+      ],
+      "name": "Ra perm",
+      "moves": [
+        "R",
+        "U'",
+        "R'",
+        "U'",
+        "R",
+        "U",
+        "R",
+        "D",
+        "R'",
+        "U'",
+        "R",
+        "D'",
+        "R'",
+        "U2",
+        "R'"
+      ],
+      "precondition": "White down and yellow up. Match the side-color pattern after setup; relative corners and edges: 0312|3021.",
+      "effect": "Put all last-layer pieces in their correct order. Keep yellow on top and restore the first two layers; a final U turn may still be needed.",
+      "segments": [
+        {
+          "label": "Move group 1",
+          "start": 0,
+          "end": 4
+        },
+        {
+          "label": "Move group 2",
+          "start": 4,
+          "end": 8
+        },
+        {
+          "label": "Move group 3",
+          "start": 8,
+          "end": 12
+        },
+        {
+          "label": "Move group 4",
+          "start": 12,
+          "end": 15
+        }
+      ]
+    },
+    "pll-ja/main": {
+      "id": "pll-ja/main",
+      "caseId": "pll-ja",
+      "startSignature": "0213|0132",
+      "executionPenalty": 0,
+      "sourceRefs": [
+        {
+          "title": "CubeSkills PLL",
+          "url": "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf",
+          "reference": "Ja, page 2. Side stickers independently read from the diagram; bracketed final U alignment is a separate stage."
+        }
+      ],
+      "name": "Ja perm",
+      "moves": [
+        "R'",
+        "U",
+        "L'",
+        "U2",
+        "R",
+        "U'",
+        "R'",
+        "U2",
+        "R",
+        "L"
+      ],
+      "precondition": "White down and yellow up. Match the side-color pattern after setup; relative corners and edges: 0213|0132.",
+      "effect": "Put all last-layer pieces in their correct order. Keep yellow on top and restore the first two layers; a final U turn may still be needed.",
+      "segments": [
+        {
+          "label": "Move group 1",
+          "start": 0,
+          "end": 4
+        },
+        {
+          "label": "Move group 2",
+          "start": 4,
+          "end": 9
+        },
+        {
+          "label": "Move group 3",
+          "start": 9,
+          "end": 10
+        }
+      ]
+    },
+    "pll-t/main": {
+      "id": "pll-t/main",
+      "caseId": "pll-t",
+      "startSignature": "0312|3210",
+      "executionPenalty": 0,
+      "sourceRefs": [
+        {
+          "title": "CubeSkills PLL",
+          "url": "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf",
+          "reference": "T, page 2. Side stickers independently read from the diagram; bracketed final U alignment is a separate stage."
+        }
+      ],
+      "name": "T perm",
+      "moves": [
+        "R",
+        "U",
+        "R'",
+        "U'",
+        "R'",
+        "F",
+        "R2",
+        "U'",
+        "R'",
+        "U'",
+        "R",
+        "U",
+        "R'",
+        "F'"
+      ],
+      "precondition": "White down and yellow up. Match the side-color pattern after setup; relative corners and edges: 0312|3210.",
+      "effect": "Put all last-layer pieces in their correct order. Keep yellow on top and restore the first two layers; a final U turn may still be needed.",
+      "segments": [
+        {
+          "label": "Move group 1",
+          "start": 0,
+          "end": 4
+        },
+        {
+          "label": "Move group 2",
+          "start": 4,
+          "end": 8
+        },
+        {
+          "label": "Move group 3",
+          "start": 8,
+          "end": 10
+        },
+        {
+          "label": "Move group 4",
+          "start": 10,
+          "end": 14
+        }
+      ]
+    },
+    "pll-v/main": {
+      "id": "pll-v/main",
+      "caseId": "pll-v",
+      "startSignature": "0321|2031",
+      "executionPenalty": 0,
+      "sourceRefs": [
+        {
+          "title": "CubeSkills PLL",
+          "url": "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf",
+          "reference": "V, page 2. Side stickers independently read from the diagram; bracketed final U alignment is a separate stage."
+        }
+      ],
+      "name": "V perm",
+      "moves": [
+        "R'",
+        "U",
+        "R'",
+        "U'",
+        "y",
+        "R'",
+        "F'",
+        "R2",
+        "U'",
+        "R'",
+        "U",
+        "R'",
+        "F",
+        "R",
+        "F"
+      ],
+      "precondition": "White down and yellow up. Match the side-color pattern after setup; relative corners and edges: 0321|2031.",
+      "effect": "Put all last-layer pieces in their correct order. Keep yellow on top and restore the first two layers; a final U turn may still be needed.",
+      "segments": [
+        {
+          "label": "Move group 1",
+          "start": 0,
+          "end": 4
+        },
+        {
+          "label": "Move group 2",
+          "start": 4,
+          "end": 5
+        },
+        {
+          "label": "Move group 3",
+          "start": 5,
+          "end": 9
+        },
+        {
+          "label": "Move group 4",
+          "start": 9,
+          "end": 13
+        },
+        {
+          "label": "Move group 5",
+          "start": 13,
+          "end": 15
+        }
+      ]
+    },
+    "pll-na/main": {
+      "id": "pll-na/main",
+      "caseId": "pll-na",
+      "startSignature": "0321|0321",
+      "executionPenalty": 0,
+      "sourceRefs": [
+        {
+          "title": "CubeSkills PLL",
+          "url": "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf",
+          "reference": "Na, page 2. Side stickers independently read from the diagram; bracketed final U alignment is a separate stage."
+        }
+      ],
+      "name": "Na perm",
+      "moves": [
+        "R",
+        "U",
+        "R'",
+        "U",
+        "R",
+        "U",
+        "R'",
+        "F'",
+        "R",
+        "U",
+        "R'",
+        "U'",
+        "R'",
+        "F",
+        "R2",
+        "U'",
+        "R'",
+        "U2",
+        "R",
+        "U'",
+        "R'"
+      ],
+      "precondition": "White down and yellow up. Match the side-color pattern after setup; relative corners and edges: 0321|0321.",
+      "effect": "Put all last-layer pieces in their correct order. Keep yellow on top and restore the first two layers; a final U turn may still be needed.",
+      "segments": [
+        {
+          "label": "Move group 1",
+          "start": 0,
+          "end": 4
+        },
+        {
+          "label": "Move group 2",
+          "start": 4,
+          "end": 8
+        },
+        {
+          "label": "Move group 3",
+          "start": 8,
+          "end": 12
+        },
+        {
+          "label": "Move group 4",
+          "start": 12,
+          "end": 16
+        },
+        {
+          "label": "Move group 5",
+          "start": 16,
+          "end": 18
+        },
+        {
+          "label": "Move group 6",
+          "start": 18,
+          "end": 21
+        }
+      ]
+    },
+    "pll-ga/main": {
+      "id": "pll-ga/main",
+      "caseId": "pll-ga",
+      "startSignature": "0312|0231",
+      "executionPenalty": 0,
+      "sourceRefs": [
+        {
+          "title": "CubeSkills PLL",
+          "url": "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf",
+          "reference": "Ga, page 2. Side stickers independently read from the diagram; bracketed final U alignment is a separate stage."
+        }
+      ],
+      "name": "Ga perm",
+      "moves": [
+        "R2",
+        "U",
+        "R'",
+        "U",
+        "R'",
+        "U'",
+        "R",
+        "U'",
+        "R2",
+        "D",
+        "U'",
+        "R'",
+        "U",
+        "R",
+        "D'"
+      ],
+      "precondition": "White down and yellow up. Match the side-color pattern after setup; relative corners and edges: 0312|0231.",
+      "effect": "Put all last-layer pieces in their correct order. Keep yellow on top and restore the first two layers; a final U turn may still be needed.",
+      "segments": [
+        {
+          "label": "Move group 1",
+          "start": 0,
+          "end": 2
+        },
+        {
+          "label": "Move group 2",
+          "start": 2,
+          "end": 6
+        },
+        {
+          "label": "Move group 3",
+          "start": 6,
+          "end": 9
+        },
+        {
+          "label": "Move group 4",
+          "start": 9,
+          "end": 11
+        },
+        {
+          "label": "Move group 5",
+          "start": 11,
+          "end": 15
+        }
+      ]
+    },
+    "pll-gc/main": {
+      "id": "pll-gc/main",
+      "caseId": "pll-gc",
+      "startSignature": "0312|1203",
+      "executionPenalty": 0,
+      "sourceRefs": [
+        {
+          "title": "CubeSkills PLL",
+          "url": "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf",
+          "reference": "Gc, page 2. Side stickers independently read from the diagram; bracketed final U alignment is a separate stage."
+        }
+      ],
+      "name": "Gc perm",
+      "moves": [
+        "R2",
+        "U'",
+        "R",
+        "U'",
+        "R",
+        "U",
+        "R'",
+        "U",
+        "R2",
+        "D'",
+        "U",
+        "R",
+        "U'",
+        "R'",
+        "D"
+      ],
+      "precondition": "White down and yellow up. Match the side-color pattern after setup; relative corners and edges: 0312|1203.",
+      "effect": "Put all last-layer pieces in their correct order. Keep yellow on top and restore the first two layers; a final U turn may still be needed.",
+      "segments": [
+        {
+          "label": "Move group 1",
+          "start": 0,
+          "end": 2
+        },
+        {
+          "label": "Move group 2",
+          "start": 2,
+          "end": 6
+        },
+        {
+          "label": "Move group 3",
+          "start": 6,
+          "end": 10
+        },
+        {
+          "label": "Move group 4",
+          "start": 10,
+          "end": 14
+        },
+        {
+          "label": "Move group 5",
+          "start": 14,
+          "end": 15
+        }
+      ]
+    },
+    "pll-rb/main": {
+      "id": "pll-rb/main",
+      "caseId": "pll-rb",
+      "startSignature": "0213|1023",
+      "executionPenalty": 0,
+      "sourceRefs": [
+        {
+          "title": "CubeSkills PLL",
+          "url": "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf",
+          "reference": "Rb, page 2. Side stickers independently read from the diagram; bracketed final U alignment is a separate stage."
+        }
+      ],
+      "name": "Rb perm",
+      "moves": [
+        "R'",
+        "U2",
+        "R",
+        "U2",
+        "R'",
+        "F",
+        "R",
+        "U",
+        "R'",
+        "U'",
+        "R'",
+        "F'",
+        "R2"
+      ],
+      "precondition": "White down and yellow up. Match the side-color pattern after setup; relative corners and edges: 0213|1023.",
+      "effect": "Put all last-layer pieces in their correct order. Keep yellow on top and restore the first two layers; a final U turn may still be needed.",
+      "segments": [
+        {
+          "label": "Move group 1",
+          "start": 0,
+          "end": 4
+        },
+        {
+          "label": "Move group 2",
+          "start": 4,
+          "end": 6
+        },
+        {
+          "label": "Move group 3",
+          "start": 6,
+          "end": 10
+        },
+        {
+          "label": "Move group 4",
+          "start": 10,
+          "end": 13
+        }
+      ]
+    },
+    "pll-jb/main": {
+      "id": "pll-jb/main",
+      "caseId": "pll-jb",
+      "startSignature": "0312|0312",
+      "executionPenalty": 0,
+      "sourceRefs": [
+        {
+          "title": "CubeSkills PLL",
+          "url": "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf",
+          "reference": "Jb, page 2. Side stickers independently read from the diagram; bracketed final U alignment is a separate stage."
+        }
+      ],
+      "name": "Jb perm",
+      "moves": [
+        "R",
+        "U",
+        "R'",
+        "F'",
+        "R",
+        "U",
+        "R'",
+        "U'",
+        "R'",
+        "F",
+        "R2",
+        "U'",
+        "R'"
+      ],
+      "precondition": "White down and yellow up. Match the side-color pattern after setup; relative corners and edges: 0312|0312.",
+      "effect": "Put all last-layer pieces in their correct order. Keep yellow on top and restore the first two layers; a final U turn may still be needed.",
+      "segments": [
+        {
+          "label": "Move group 1",
+          "start": 0,
+          "end": 4
+        },
+        {
+          "label": "Move group 2",
+          "start": 4,
+          "end": 8
+        },
+        {
+          "label": "Move group 3",
+          "start": 8,
+          "end": 13
+        }
+      ]
+    },
+    "pll-f/main": {
+      "id": "pll-f/main",
+      "caseId": "pll-f",
+      "startSignature": "0312|1032",
+      "executionPenalty": 0,
+      "sourceRefs": [
+        {
+          "title": "CubeSkills PLL",
+          "url": "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf",
+          "reference": "F, page 2. Side stickers independently read from the diagram; bracketed final U alignment is a separate stage."
+        }
+      ],
+      "name": "F perm",
+      "moves": [
+        "R'",
+        "U'",
+        "F'",
+        "R",
+        "U",
+        "R'",
+        "U'",
+        "R'",
+        "F",
+        "R2",
+        "U'",
+        "R'",
+        "U'",
+        "R",
+        "U",
+        "R'",
+        "U",
+        "R"
+      ],
+      "precondition": "White down and yellow up. Match the side-color pattern after setup; relative corners and edges: 0312|1032.",
+      "effect": "Put all last-layer pieces in their correct order. Keep yellow on top and restore the first two layers; a final U turn may still be needed.",
+      "segments": [
+        {
+          "label": "Move group 1",
+          "start": 0,
+          "end": 3
+        },
+        {
+          "label": "Move group 2",
+          "start": 3,
+          "end": 7
+        },
+        {
+          "label": "Move group 3",
+          "start": 7,
+          "end": 11
+        },
+        {
+          "label": "Move group 4",
+          "start": 11,
+          "end": 15
+        },
+        {
+          "label": "Move group 5",
+          "start": 15,
+          "end": 18
+        }
+      ]
+    },
+    "pll-y/main": {
+      "id": "pll-y/main",
+      "caseId": "pll-y",
+      "startSignature": "0321|2310",
+      "executionPenalty": 0,
+      "sourceRefs": [
+        {
+          "title": "CubeSkills PLL",
+          "url": "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf",
+          "reference": "Y, page 2. Side stickers independently read from the diagram; bracketed final U alignment is a separate stage."
+        }
+      ],
+      "name": "Y perm",
+      "moves": [
+        "F",
+        "R",
+        "U'",
+        "R'",
+        "U'",
+        "R",
+        "U",
+        "R'",
+        "F'",
+        "R",
+        "U",
+        "R'",
+        "U'",
+        "R'",
+        "F",
+        "R",
+        "F'"
+      ],
+      "precondition": "White down and yellow up. Match the side-color pattern after setup; relative corners and edges: 0321|2310.",
+      "effect": "Put all last-layer pieces in their correct order. Keep yellow on top and restore the first two layers; a final U turn may still be needed.",
+      "segments": [
+        {
+          "label": "Move group 1",
+          "start": 0,
+          "end": 1
+        },
+        {
+          "label": "Move group 2",
+          "start": 1,
+          "end": 5
+        },
+        {
+          "label": "Move group 3",
+          "start": 5,
+          "end": 9
+        },
+        {
+          "label": "Move group 4",
+          "start": 9,
+          "end": 13
+        },
+        {
+          "label": "Move group 5",
+          "start": 13,
+          "end": 17
+        }
+      ]
+    },
+    "pll-nb/main": {
+      "id": "pll-nb/main",
+      "caseId": "pll-nb",
+      "startSignature": "0321|2103",
+      "executionPenalty": 0,
+      "sourceRefs": [
+        {
+          "title": "CubeSkills PLL",
+          "url": "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf",
+          "reference": "Nb, page 2. Side stickers independently read from the diagram; bracketed final U alignment is a separate stage."
+        }
+      ],
+      "name": "Nb perm",
+      "moves": [
+        "R'",
+        "U",
+        "R",
+        "U'",
+        "R'",
+        "F'",
+        "U'",
+        "F",
+        "R",
+        "U",
+        "R'",
+        "F",
+        "R'",
+        "F'",
+        "R",
+        "U'",
+        "R"
+      ],
+      "precondition": "White down and yellow up. Match the side-color pattern after setup; relative corners and edges: 0321|2103.",
+      "effect": "Put all last-layer pieces in their correct order. Keep yellow on top and restore the first two layers; a final U turn may still be needed.",
+      "segments": [
+        {
+          "label": "Move group 1",
+          "start": 0,
+          "end": 4
+        },
+        {
+          "label": "Move group 2",
+          "start": 4,
+          "end": 8
+        },
+        {
+          "label": "Move group 3",
+          "start": 8,
+          "end": 12
+        },
+        {
+          "label": "Move group 4",
+          "start": 12,
+          "end": 14
+        },
+        {
+          "label": "Move group 5",
+          "start": 14,
+          "end": 17
+        }
+      ]
+    },
+    "pll-gb/main": {
+      "id": "pll-gb/main",
+      "caseId": "pll-gb",
+      "startSignature": "0231|0312",
+      "executionPenalty": 0,
+      "sourceRefs": [
+        {
+          "title": "CubeSkills PLL",
+          "url": "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf",
+          "reference": "Gb, page 2. Side stickers independently read from the diagram; bracketed final U alignment is a separate stage."
+        }
+      ],
+      "name": "Gb perm",
+      "moves": [
+        "F'",
+        "U'",
+        "F",
+        "R2",
+        "Uw",
+        "R'",
+        "U",
+        "R",
+        "U'",
+        "R",
+        "Uw'",
+        "R2"
+      ],
+      "precondition": "White down and yellow up. Match the side-color pattern after setup; relative corners and edges: 0231|0312.",
+      "effect": "Put all last-layer pieces in their correct order. Keep yellow on top and restore the first two layers; a final U turn may still be needed.",
+      "segments": [
+        {
+          "label": "Move group 1",
+          "start": 0,
+          "end": 3
+        },
+        {
+          "label": "Move group 2",
+          "start": 3,
+          "end": 7
+        },
+        {
+          "label": "Move group 3",
+          "start": 7,
+          "end": 11
+        },
+        {
+          "label": "Move group 4",
+          "start": 11,
+          "end": 12
+        }
+      ]
+    },
+    "pll-gd/main": {
+      "id": "pll-gd/main",
+      "caseId": "pll-gd",
+      "startSignature": "0312|2130",
+      "executionPenalty": 0,
+      "sourceRefs": [
+        {
+          "title": "CubeSkills PLL",
+          "url": "https://www.cubeskills.com/uploads/pdf/tutorials/pll-algorithms.pdf",
+          "reference": "Gd, page 2. Side stickers independently read from the diagram; bracketed final U alignment is a separate stage."
+        }
+      ],
+      "name": "Gd perm",
+      "moves": [
+        "D'",
+        "R",
+        "U",
+        "R'",
+        "U'",
+        "D",
+        "R2",
+        "U'",
+        "R",
+        "U'",
+        "R'",
+        "U",
+        "R'",
+        "U",
+        "R2"
+      ],
+      "precondition": "White down and yellow up. Match the side-color pattern after setup; relative corners and edges: 0312|2130.",
+      "effect": "Put all last-layer pieces in their correct order. Keep yellow on top and restore the first two layers; a final U turn may still be needed.",
+      "segments": [
+        {
+          "label": "Move group 1",
+          "start": 0,
+          "end": 1
+        },
+        {
+          "label": "Move group 2",
+          "start": 1,
+          "end": 5
+        },
+        {
+          "label": "Move group 3",
+          "start": 5,
+          "end": 6
+        },
+        {
+          "label": "Move group 4",
+          "start": 6,
+          "end": 10
+        },
+        {
+          "label": "Move group 5",
+          "start": 10,
+          "end": 14
+        },
+        {
+          "label": "Move group 6",
+          "start": 14,
+          "end": 15
+        }
+      ]
+    }
+  },
+  "preparations": {}
+}

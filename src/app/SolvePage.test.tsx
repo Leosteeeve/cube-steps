@@ -75,6 +75,71 @@ function deferred<T>() {
   });
   return { promise, resolve };
 }
+it('preserves_input_across_three_methods', async () => {
+  seed();
+  render(<App />);
+  const user = userEvent.setup(),
+    textarea = await screen.findByLabelText('Scramble sequence');
+  await user.type(textarea, 'R U');
+  await user.click(screen.getByRole('button', { name: 'Explain with LBL' }));
+  expect(await screen.findByText('Verified LBL solution')).toBeVisible();
+  await showColors();
+  await user.click(screen.getByRole('button', { name: 'Check colors' }));
+  for (const [path, label] of [
+    ['cfop', 'Beginner CFOP'],
+    ['advanced-cfop', 'Advanced CFOP'],
+  ]) {
+    act(() => {
+      location.hash = '#/solve/' + path;
+      window.dispatchEvent(new Event('hashchange'));
+    });
+    expect(screen.getByRole('button', { name: 'Explain with ' + label })).toBeEnabled();
+    expect(screen.queryByText('Verified LBL solution')).not.toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Front face' })).toHaveAttribute(
+      'aria-current',
+      'step',
+    );
+  }
+  await user.click(screen.getByRole('button', { name: 'Eraser' }));
+  await user.click(screen.getByRole('button', { name: /^Front, row 1, column 1,/ }));
+  act(() => {
+    location.hash = '#/solve';
+    window.dispatchEvent(new Event('hashchange'));
+  });
+  expect(screen.getByText('47 / 48 stickers entered')).toBeVisible();
+  await user.click(screen.getByRole('button', { name: 'Undo' }));
+  expect(screen.getByText('48 / 48 stickers entered')).toBeVisible();
+  await user.click(screen.getByRole('button', { name: 'Scramble' }));
+  expect(screen.getByLabelText('Scramble sequence')).toHaveValue('R U');
+});
+it('discards pending solves and random scrambles through all three history routes', async () => {
+  const pending = deferred<SessionResult>(),
+    random = deferred<string>();
+  client.solveScramble.mockImplementationOnce(() => pending.promise);
+  mocked.random.mockImplementationOnce(() => random.promise);
+  render(<App />);
+  const user = userEvent.setup();
+  await user.type(await screen.findByLabelText('Scramble sequence'), 'R U');
+  await user.click(screen.getByRole('button', { name: 'Explain with LBL' }));
+  const navigate = (hash: string) =>
+    act(() => {
+      history.pushState({}, '', hash);
+      window.dispatchEvent(new Event('hashchange'));
+    });
+  navigate('#/solve/cfop');
+  await user.click(screen.getByRole('button', { name: 'Random scramble' }));
+  navigate('#/solve/advanced-cfop');
+  await act(async () => {
+    pending.resolve(colorResult());
+    random.resolve('B2 L2');
+  });
+  expect(screen.getByLabelText('Scramble sequence')).toHaveValue('R U');
+  expect(screen.queryByText('Verified LBL solution')).not.toBeInTheDocument();
+  expect(screen.getByRole('button', { name: 'Explain with Advanced CFOP' })).toBeEnabled();
+  expect(screen.getByRole('button', { name: 'Random scramble' })).toBeEnabled();
+  expect(client.solveScramble).toHaveBeenCalledTimes(1);
+  expect(client.cancel).toHaveBeenCalled();
+});
 it('preserves input and clears the result on a history-driven method change', async () => {
   render(<App />);
   const user = userEvent.setup();

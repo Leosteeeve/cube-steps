@@ -1,0 +1,457 @@
+{
+  "0123|3021": {
+    "caseId": "pll-ub",
+    "variantId": "pll-ub/main",
+    "setup": []
+  },
+  "0123|2013": {
+    "caseId": "pll-ub",
+    "variantId": "pll-ub/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "0123|3102": {
+    "caseId": "pll-ub",
+    "variantId": "pll-ub/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "0123|0312": {
+    "caseId": "pll-ub",
+    "variantId": "pll-ub/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "0123|1032": {
+    "caseId": "pll-z",
+    "variantId": "pll-z/main",
+    "setup": []
+  },
+  "0123|3210": {
+    "caseId": "pll-z",
+    "variantId": "pll-z/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "0231|2301": {
+    "caseId": "pll-aa",
+    "variantId": "pll-aa/main",
+    "setup": []
+  },
+  "0312|0123": {
+    "caseId": "pll-aa",
+    "variantId": "pll-aa/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "0132|1230": {
+    "caseId": "pll-aa",
+    "variantId": "pll-aa/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "0213|1230": {
+    "caseId": "pll-aa",
+    "variantId": "pll-aa/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "0321|3012": {
+    "caseId": "pll-e",
+    "variantId": "pll-e/main",
+    "setup": []
+  },
+  "0321|1230": {
+    "caseId": "pll-e",
+    "variantId": "pll-e/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "0123|1320": {
+    "caseId": "pll-ua",
+    "variantId": "pll-ua/main",
+    "setup": []
+  },
+  "0123|1203": {
+    "caseId": "pll-ua",
+    "variantId": "pll-ua/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "0123|2130": {
+    "caseId": "pll-ua",
+    "variantId": "pll-ua/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "0123|0231": {
+    "caseId": "pll-ua",
+    "variantId": "pll-ua/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "0123|2301": {
+    "caseId": "pll-h",
+    "variantId": "pll-h/main",
+    "setup": []
+  },
+  "0132|3012": {
+    "caseId": "pll-ab",
+    "variantId": "pll-ab/main",
+    "setup": []
+  },
+  "0231|0123": {
+    "caseId": "pll-ab",
+    "variantId": "pll-ab/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "0213|3012": {
+    "caseId": "pll-ab",
+    "variantId": "pll-ab/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "0312|2301": {
+    "caseId": "pll-ab",
+    "variantId": "pll-ab/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "0312|3021": {
+    "caseId": "pll-ra",
+    "variantId": "pll-ra/main",
+    "setup": []
+  },
+  "0213|3120": {
+    "caseId": "pll-ra",
+    "variantId": "pll-ra/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "0231|1320": {
+    "caseId": "pll-ra",
+    "variantId": "pll-ra/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "0132|1023": {
+    "caseId": "pll-ra",
+    "variantId": "pll-ra/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "0213|0132": {
+    "caseId": "pll-ja",
+    "variantId": "pll-ja/main",
+    "setup": []
+  },
+  "0132|3120": {
+    "caseId": "pll-ja",
+    "variantId": "pll-ja/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "0312|3102": {
+    "caseId": "pll-ja",
+    "variantId": "pll-ja/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "0231|2130": {
+    "caseId": "pll-ja",
+    "variantId": "pll-ja/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "0312|3210": {
+    "caseId": "pll-t",
+    "variantId": "pll-t/main",
+    "setup": []
+  },
+  "0213|2103": {
+    "caseId": "pll-t",
+    "variantId": "pll-t/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "0231|3210": {
+    "caseId": "pll-t",
+    "variantId": "pll-t/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "0132|0321": {
+    "caseId": "pll-t",
+    "variantId": "pll-t/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "0321|2031": {
+    "caseId": "pll-v",
+    "variantId": "pll-v/main",
+    "setup": []
+  },
+  "0321|0132": {
+    "caseId": "pll-v",
+    "variantId": "pll-v/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "0321|1023": {
+    "caseId": "pll-v",
+    "variantId": "pll-v/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "0321|1302": {
+    "caseId": "pll-v",
+    "variantId": "pll-v/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "0321|0321": {
+    "caseId": "pll-na",
+    "variantId": "pll-na/main",
+    "setup": []
+  },
+  "0312|0231": {
+    "caseId": "pll-ga",
+    "variantId": "pll-ga/main",
+    "setup": []
+  },
+  "0213|3201": {
+    "caseId": "pll-ga",
+    "variantId": "pll-ga/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "0231|3021": {
+    "caseId": "pll-ga",
+    "variantId": "pll-ga/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "0132|2031": {
+    "caseId": "pll-ga",
+    "variantId": "pll-ga/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "0312|1203": {
+    "caseId": "pll-gc",
+    "variantId": "pll-gc/main",
+    "setup": []
+  },
+  "0213|1302": {
+    "caseId": "pll-gc",
+    "variantId": "pll-gc/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "0231|3102": {
+    "caseId": "pll-gc",
+    "variantId": "pll-gc/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "0132|3201": {
+    "caseId": "pll-gc",
+    "variantId": "pll-gc/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "0213|1023": {
+    "caseId": "pll-rb",
+    "variantId": "pll-rb/main",
+    "setup": []
+  },
+  "0132|0213": {
+    "caseId": "pll-rb",
+    "variantId": "pll-rb/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "0312|2013": {
+    "caseId": "pll-rb",
+    "variantId": "pll-rb/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "0231|1203": {
+    "caseId": "pll-rb",
+    "variantId": "pll-rb/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "0312|0312": {
+    "caseId": "pll-jb",
+    "variantId": "pll-jb/main",
+    "setup": []
+  },
+  "0213|0213": {
+    "caseId": "pll-jb",
+    "variantId": "pll-jb/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "0231|0231": {
+    "caseId": "pll-jb",
+    "variantId": "pll-jb/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "0132|0132": {
+    "caseId": "pll-jb",
+    "variantId": "pll-jb/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "0312|1032": {
+    "caseId": "pll-f",
+    "variantId": "pll-f/main",
+    "setup": []
+  },
+  "0213|0321": {
+    "caseId": "pll-f",
+    "variantId": "pll-f/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "0231|1032": {
+    "caseId": "pll-f",
+    "variantId": "pll-f/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "0132|2103": {
+    "caseId": "pll-f",
+    "variantId": "pll-f/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "0321|2310": {
+    "caseId": "pll-y",
+    "variantId": "pll-y/main",
+    "setup": []
+  },
+  "0321|3120": {
+    "caseId": "pll-y",
+    "variantId": "pll-y/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "0321|0213": {
+    "caseId": "pll-y",
+    "variantId": "pll-y/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "0321|3201": {
+    "caseId": "pll-y",
+    "variantId": "pll-y/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "0321|2103": {
+    "caseId": "pll-nb",
+    "variantId": "pll-nb/main",
+    "setup": []
+  },
+  "0231|0312": {
+    "caseId": "pll-gb",
+    "variantId": "pll-gb/main",
+    "setup": []
+  },
+  "0312|1320": {
+    "caseId": "pll-gb",
+    "variantId": "pll-gb/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "0132|1302": {
+    "caseId": "pll-gb",
+    "variantId": "pll-gb/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "0213|2310": {
+    "caseId": "pll-gb",
+    "variantId": "pll-gb/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "0312|2130": {
+    "caseId": "pll-gd",
+    "variantId": "pll-gd/main",
+    "setup": []
+  },
+  "0213|2031": {
+    "caseId": "pll-gd",
+    "variantId": "pll-gd/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "0231|2013": {
+    "caseId": "pll-gd",
+    "variantId": "pll-gd/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "0132|2310": {
+    "caseId": "pll-gd",
+    "variantId": "pll-gd/main",
+    "setup": [
+      "U2"
+    ]
+  }
+}

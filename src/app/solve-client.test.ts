@@ -1,4 +1,4 @@
-import { expect, it } from 'vitest';
+import { expect, it, vi } from 'vitest';
 import { createSolveClient, type WorkerPort } from './solve-client';
 import { createCubeEngine } from '../core/cube';
 import { handleSolveRequest } from '../workers/solve-request';
@@ -15,6 +15,45 @@ class ControlledWorker implements WorkerPort {
     this.terminated = true;
   }
 }
+it('cancels_during_asset_load_and_clears_watchdogs', async () => {
+  vi.useFakeTimers();
+  try {
+    const workers: ControlledWorker[] = [],
+      client = createSolveClient(() => {
+        const w = new ControlledWorker();
+        workers.push(w);
+        return w;
+      });
+    const pending = client.solveScramble('R', 'cfop-advanced');
+    expect(vi.getTimerCount()).toBe(1);
+    client.cancel();
+    expect(await pending).toMatchObject({ ok: false, error: { kind: 'cancelled' } });
+    expect(workers[0].terminated).toBe(true);
+    expect(vi.getTimerCount()).toBe(0);
+    const next = client.solveScramble('R', 'cfop-advanced');
+    await vi.advanceTimersByTimeAsync(30000);
+    expect(await next).toMatchObject({
+      ok: false,
+      error: { kind: 'worker', message: expect.stringMatching(/timed out|try again/i) },
+    });
+    expect(workers[1].terminated).toBe(true);
+    expect(vi.getTimerCount()).toBe(0);
+  } finally {
+    vi.useRealTimers();
+  }
+});
+it('rejects_a_reply_for_changed_input_provenance', async () => {
+  const w = new ControlledWorker(),
+    client = createSolveClient(() => w),
+    pending = client.solveScramble('R', 'lbl');
+  const reply = handleSolveRequest(await createCubeEngine(), {
+    ...w.request,
+    input: { kind: 'scramble', moves: ['U'] },
+  });
+  if (!reply) throw new Error('Missing reply');
+  w.onmessage?.(new MessageEvent('message', { data: reply }));
+  expect(await pending).toMatchObject({ ok: false, error: { kind: 'worker' } });
+});
 it('rejects a current reply for another method and settles its promise', async () => {
   const worker = new ControlledWorker(),
     client = createSolveClient(() => worker);

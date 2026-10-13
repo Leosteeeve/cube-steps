@@ -1,0 +1,1393 @@
+{
+  "UUUURULF": {
+    "caseId": "oll-26",
+    "variantId": "oll-26/main",
+    "setup": []
+  },
+  "UUUURBUF": {
+    "caseId": "oll-26",
+    "variantId": "oll-26/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "UUUUUBLF": {
+    "caseId": "oll-26",
+    "variantId": "oll-26/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "UUUURBLU": {
+    "caseId": "oll-26",
+    "variantId": "oll-26/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "UUUUFBBF": {
+    "caseId": "oll-21",
+    "variantId": "oll-21/main",
+    "setup": []
+  },
+  "UUUURRLL": {
+    "caseId": "oll-21",
+    "variantId": "oll-21/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "UUUUUUBF": {
+    "caseId": "oll-24",
+    "variantId": "oll-24/main",
+    "setup": []
+  },
+  "UUUURUUL": {
+    "caseId": "oll-24",
+    "variantId": "oll-24/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "UUUUURLU": {
+    "caseId": "oll-24",
+    "variantId": "oll-24/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "UUUUFBUU": {
+    "caseId": "oll-24",
+    "variantId": "oll-24/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "UUUUFUUF": {
+    "caseId": "oll-23",
+    "variantId": "oll-23/main",
+    "setup": []
+  },
+  "UUUURRUU": {
+    "caseId": "oll-23",
+    "variantId": "oll-23/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "UUUUUULL": {
+    "caseId": "oll-23",
+    "variantId": "oll-23/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "UUUUUBBU": {
+    "caseId": "oll-23",
+    "variantId": "oll-23/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "FUBUUUBF": {
+    "caseId": "oll-33",
+    "variantId": "oll-33/main",
+    "setup": []
+  },
+  "URULRUUL": {
+    "caseId": "oll-33",
+    "variantId": "oll-33/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "URULURLU": {
+    "caseId": "oll-33",
+    "variantId": "oll-33/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "FUBUFBUU": {
+    "caseId": "oll-33",
+    "variantId": "oll-33/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "UUUUFRBU": {
+    "caseId": "oll-27",
+    "variantId": "oll-27/main",
+    "setup": []
+  },
+  "UUUUURBL": {
+    "caseId": "oll-27",
+    "variantId": "oll-27/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "UUUUFRUL": {
+    "caseId": "oll-27",
+    "variantId": "oll-27/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "UUUUFUBL": {
+    "caseId": "oll-27",
+    "variantId": "oll-27/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "UUUUFBLL": {
+    "caseId": "oll-22",
+    "variantId": "oll-22/main",
+    "setup": []
+  },
+  "UUUUFRLF": {
+    "caseId": "oll-22",
+    "variantId": "oll-22/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "UUUURBBL": {
+    "caseId": "oll-22",
+    "variantId": "oll-22/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "UUUURRBF": {
+    "caseId": "oll-22",
+    "variantId": "oll-22/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "UUUUFULU": {
+    "caseId": "oll-25",
+    "variantId": "oll-25/main",
+    "setup": []
+  },
+  "UUUUURUF": {
+    "caseId": "oll-25",
+    "variantId": "oll-25/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "UUUUUBUL": {
+    "caseId": "oll-25",
+    "variantId": "oll-25/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "UUUURUBU": {
+    "caseId": "oll-25",
+    "variantId": "oll-25/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "FUBUUULL": {
+    "caseId": "oll-45",
+    "variantId": "oll-45/main",
+    "setup": []
+  },
+  "URULFUUF": {
+    "caseId": "oll-45",
+    "variantId": "oll-45/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "URULUBBU": {
+    "caseId": "oll-45",
+    "variantId": "oll-45/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "FUBURRUU": {
+    "caseId": "oll-45",
+    "variantId": "oll-45/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "UUBLURBL": {
+    "caseId": "oll-05",
+    "variantId": "oll-05/main",
+    "setup": []
+  },
+  "FUULFUBL": {
+    "caseId": "oll-05",
+    "variantId": "oll-05/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "URBUFRBU": {
+    "caseId": "oll-05",
+    "variantId": "oll-05/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "FRUUFRUL": {
+    "caseId": "oll-05",
+    "variantId": "oll-05/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "FUBUURLU": {
+    "caseId": "oll-34",
+    "variantId": "oll-34/main",
+    "setup": []
+  },
+  "URULUUBF": {
+    "caseId": "oll-34",
+    "variantId": "oll-34/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "URULFBUU": {
+    "caseId": "oll-34",
+    "variantId": "oll-34/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "FUBURUUL": {
+    "caseId": "oll-34",
+    "variantId": "oll-34/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "URBUURUF": {
+    "caseId": "oll-36",
+    "variantId": "oll-36/main",
+    "setup": []
+  },
+  "UUBLRUBU": {
+    "caseId": "oll-36",
+    "variantId": "oll-36/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "FRUUFULU": {
+    "caseId": "oll-36",
+    "variantId": "oll-36/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "FUULUBUL": {
+    "caseId": "oll-36",
+    "variantId": "oll-36/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "FRUUUUUU": {
+    "caseId": "oll-28",
+    "variantId": "oll-28/main",
+    "setup": []
+  },
+  "URBUUUUU": {
+    "caseId": "oll-28",
+    "variantId": "oll-28/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "FUULUUUU": {
+    "caseId": "oll-28",
+    "variantId": "oll-28/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "UUBLUUUU": {
+    "caseId": "oll-28",
+    "variantId": "oll-28/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "FUULUUBF": {
+    "caseId": "oll-31",
+    "variantId": "oll-31/main",
+    "setup": []
+  },
+  "FRUURUUL": {
+    "caseId": "oll-31",
+    "variantId": "oll-31/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "UUBLURLU": {
+    "caseId": "oll-31",
+    "variantId": "oll-31/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "URBUFBUU": {
+    "caseId": "oll-31",
+    "variantId": "oll-31/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "FRUUFUUF": {
+    "caseId": "oll-43",
+    "variantId": "oll-43/main",
+    "setup": []
+  },
+  "URBURRUU": {
+    "caseId": "oll-43",
+    "variantId": "oll-43/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "FUULUULL": {
+    "caseId": "oll-43",
+    "variantId": "oll-43/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "UUBLUBBU": {
+    "caseId": "oll-43",
+    "variantId": "oll-43/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "FUULRULF": {
+    "caseId": "oll-06",
+    "variantId": "oll-06/main",
+    "setup": []
+  },
+  "FRUURBUF": {
+    "caseId": "oll-06",
+    "variantId": "oll-06/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "UUBLUBLF": {
+    "caseId": "oll-06",
+    "variantId": "oll-06/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "URBURBLU": {
+    "caseId": "oll-06",
+    "variantId": "oll-06/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "URULRRUU": {
+    "caseId": "oll-46",
+    "variantId": "oll-46/main",
+    "setup": []
+  },
+  "FUBUUBBU": {
+    "caseId": "oll-46",
+    "variantId": "oll-46/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "FUBUFUUF": {
+    "caseId": "oll-46",
+    "variantId": "oll-46/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "URULUULL": {
+    "caseId": "oll-46",
+    "variantId": "oll-46/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "FRUURUBU": {
+    "caseId": "oll-38",
+    "variantId": "oll-38/main",
+    "setup": []
+  },
+  "URBUUBUL": {
+    "caseId": "oll-38",
+    "variantId": "oll-38/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "FUULURUF": {
+    "caseId": "oll-38",
+    "variantId": "oll-38/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "UUBLFULU": {
+    "caseId": "oll-38",
+    "variantId": "oll-38/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "FUBUUUUU": {
+    "caseId": "oll-57",
+    "variantId": "oll-57/main",
+    "setup": []
+  },
+  "URULUUUU": {
+    "caseId": "oll-57",
+    "variantId": "oll-57/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "UUBLUUBF": {
+    "caseId": "oll-32",
+    "variantId": "oll-32/main",
+    "setup": []
+  },
+  "FUULRUUL": {
+    "caseId": "oll-32",
+    "variantId": "oll-32/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "URBUURLU": {
+    "caseId": "oll-32",
+    "variantId": "oll-32/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "FRUUFBUU": {
+    "caseId": "oll-32",
+    "variantId": "oll-32/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "UUBLUULL": {
+    "caseId": "oll-44",
+    "variantId": "oll-44/main",
+    "setup": []
+  },
+  "FUULFUUF": {
+    "caseId": "oll-44",
+    "variantId": "oll-44/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "URBUUBBU": {
+    "caseId": "oll-44",
+    "variantId": "oll-44/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "FRUURRUU": {
+    "caseId": "oll-44",
+    "variantId": "oll-44/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "FUBUFBLL": {
+    "caseId": "oll-51",
+    "variantId": "oll-51/main",
+    "setup": []
+  },
+  "URULFRLF": {
+    "caseId": "oll-51",
+    "variantId": "oll-51/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "URULRBBL": {
+    "caseId": "oll-51",
+    "variantId": "oll-51/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "FUBURRBF": {
+    "caseId": "oll-51",
+    "variantId": "oll-51/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "URULRRBF": {
+    "caseId": "oll-52",
+    "variantId": "oll-52/main",
+    "setup": []
+  },
+  "FUBURBBL": {
+    "caseId": "oll-52",
+    "variantId": "oll-52/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "FUBUFRLF": {
+    "caseId": "oll-52",
+    "variantId": "oll-52/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "URULFBLL": {
+    "caseId": "oll-52",
+    "variantId": "oll-52/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "FRUUUBLF": {
+    "caseId": "oll-09",
+    "variantId": "oll-09/main",
+    "setup": []
+  },
+  "URBURULF": {
+    "caseId": "oll-09",
+    "variantId": "oll-09/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "FUULRBLU": {
+    "caseId": "oll-09",
+    "variantId": "oll-09/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "UUBLRBUF": {
+    "caseId": "oll-09",
+    "variantId": "oll-09/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "UUBLURUF": {
+    "caseId": "oll-35",
+    "variantId": "oll-35/main",
+    "setup": []
+  },
+  "FUULRUBU": {
+    "caseId": "oll-35",
+    "variantId": "oll-35/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "URBUFULU": {
+    "caseId": "oll-35",
+    "variantId": "oll-35/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "FRUUUBUL": {
+    "caseId": "oll-35",
+    "variantId": "oll-35/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "FUBUFRBU": {
+    "caseId": "oll-13",
+    "variantId": "oll-13/main",
+    "setup": []
+  },
+  "URULURBL": {
+    "caseId": "oll-13",
+    "variantId": "oll-13/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "URULFRUL": {
+    "caseId": "oll-13",
+    "variantId": "oll-13/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "FUBUFUBL": {
+    "caseId": "oll-13",
+    "variantId": "oll-13/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "FUBURULF": {
+    "caseId": "oll-16",
+    "variantId": "oll-16/main",
+    "setup": []
+  },
+  "URULRBUF": {
+    "caseId": "oll-16",
+    "variantId": "oll-16/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "URULUBLF": {
+    "caseId": "oll-16",
+    "variantId": "oll-16/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "FUBURBLU": {
+    "caseId": "oll-16",
+    "variantId": "oll-16/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "FRUUUUBF": {
+    "caseId": "oll-29",
+    "variantId": "oll-29/main",
+    "setup": []
+  },
+  "URBURUUL": {
+    "caseId": "oll-29",
+    "variantId": "oll-29/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "FUULURLU": {
+    "caseId": "oll-29",
+    "variantId": "oll-29/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "UUBLFBUU": {
+    "caseId": "oll-29",
+    "variantId": "oll-29/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "FRUUUBBU": {
+    "caseId": "oll-41",
+    "variantId": "oll-41/main",
+    "setup": []
+  },
+  "URBUUULL": {
+    "caseId": "oll-41",
+    "variantId": "oll-41/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "FUULRRUU": {
+    "caseId": "oll-41",
+    "variantId": "oll-41/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "UUBLFUUF": {
+    "caseId": "oll-41",
+    "variantId": "oll-41/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "FUBURRLL": {
+    "caseId": "oll-56",
+    "variantId": "oll-56/main",
+    "setup": []
+  },
+  "URULFBBF": {
+    "caseId": "oll-56",
+    "variantId": "oll-56/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "FUBUFBBF": {
+    "caseId": "oll-55",
+    "variantId": "oll-55/main",
+    "setup": []
+  },
+  "URULRRLL": {
+    "caseId": "oll-55",
+    "variantId": "oll-55/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "URBUFUBL": {
+    "caseId": "oll-10",
+    "variantId": "oll-10/main",
+    "setup": []
+  },
+  "UUBLFRUL": {
+    "caseId": "oll-10",
+    "variantId": "oll-10/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "FRUUURBL": {
+    "caseId": "oll-10",
+    "variantId": "oll-10/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "FUULFRBU": {
+    "caseId": "oll-10",
+    "variantId": "oll-10/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "FRUUURUF": {
+    "caseId": "oll-37",
+    "variantId": "oll-37/main",
+    "setup": []
+  },
+  "URBURUBU": {
+    "caseId": "oll-37",
+    "variantId": "oll-37/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "FUULFULU": {
+    "caseId": "oll-37",
+    "variantId": "oll-37/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "UUBLUBUL": {
+    "caseId": "oll-37",
+    "variantId": "oll-37/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "FUBUUBLF": {
+    "caseId": "oll-14",
+    "variantId": "oll-14/main",
+    "setup": []
+  },
+  "URULRULF": {
+    "caseId": "oll-14",
+    "variantId": "oll-14/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "URULRBLU": {
+    "caseId": "oll-14",
+    "variantId": "oll-14/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "FUBURBUF": {
+    "caseId": "oll-14",
+    "variantId": "oll-14/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "FUBUURBL": {
+    "caseId": "oll-15",
+    "variantId": "oll-15/main",
+    "setup": []
+  },
+  "URULFUBL": {
+    "caseId": "oll-15",
+    "variantId": "oll-15/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "URULFRBU": {
+    "caseId": "oll-15",
+    "variantId": "oll-15/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "FUBUFRUL": {
+    "caseId": "oll-15",
+    "variantId": "oll-15/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "FRUUURLU": {
+    "caseId": "oll-30",
+    "variantId": "oll-30/main",
+    "setup": []
+  },
+  "URBUUUBF": {
+    "caseId": "oll-30",
+    "variantId": "oll-30/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "FUULFBUU": {
+    "caseId": "oll-30",
+    "variantId": "oll-30/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "UUBLRUUL": {
+    "caseId": "oll-30",
+    "variantId": "oll-30/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "URBUFUUF": {
+    "caseId": "oll-42",
+    "variantId": "oll-42/main",
+    "setup": []
+  },
+  "UUBLRRUU": {
+    "caseId": "oll-42",
+    "variantId": "oll-42/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "FRUUUULL": {
+    "caseId": "oll-42",
+    "variantId": "oll-42/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "FUULUBBU": {
+    "caseId": "oll-42",
+    "variantId": "oll-42/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "FRUUFBLL": {
+    "caseId": "oll-48",
+    "variantId": "oll-48/main",
+    "setup": []
+  },
+  "URBUFRLF": {
+    "caseId": "oll-48",
+    "variantId": "oll-48/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "FUULRBBL": {
+    "caseId": "oll-48",
+    "variantId": "oll-48/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "UUBLRRBF": {
+    "caseId": "oll-48",
+    "variantId": "oll-48/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "FUULFBLL": {
+    "caseId": "oll-49",
+    "variantId": "oll-49/main",
+    "setup": []
+  },
+  "FRUUFRLF": {
+    "caseId": "oll-49",
+    "variantId": "oll-49/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "UUBLRBBL": {
+    "caseId": "oll-49",
+    "variantId": "oll-49/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "URBURRBF": {
+    "caseId": "oll-49",
+    "variantId": "oll-49/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "UUBLRRLL": {
+    "caseId": "oll-53",
+    "variantId": "oll-53/main",
+    "setup": []
+  },
+  "FUULFBBF": {
+    "caseId": "oll-53",
+    "variantId": "oll-53/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "URBUFBBF": {
+    "caseId": "oll-53",
+    "variantId": "oll-53/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "FRUURRLL": {
+    "caseId": "oll-53",
+    "variantId": "oll-53/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "FRUUFRBU": {
+    "caseId": "oll-07",
+    "variantId": "oll-07/main",
+    "setup": []
+  },
+  "URBUURBL": {
+    "caseId": "oll-07",
+    "variantId": "oll-07/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "FUULFRUL": {
+    "caseId": "oll-07",
+    "variantId": "oll-07/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "UUBLFUBL": {
+    "caseId": "oll-07",
+    "variantId": "oll-07/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "UUBLFRBU": {
+    "caseId": "oll-11",
+    "variantId": "oll-11/main",
+    "setup": []
+  },
+  "FUULURBL": {
+    "caseId": "oll-11",
+    "variantId": "oll-11/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "URBUFRUL": {
+    "caseId": "oll-11",
+    "variantId": "oll-11/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "FRUUFUBL": {
+    "caseId": "oll-11",
+    "variantId": "oll-11/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "FUBURUBU": {
+    "caseId": "oll-39",
+    "variantId": "oll-39/main",
+    "setup": []
+  },
+  "URULUBUL": {
+    "caseId": "oll-39",
+    "variantId": "oll-39/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "URULURUF": {
+    "caseId": "oll-39",
+    "variantId": "oll-39/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "FUBUFULU": {
+    "caseId": "oll-39",
+    "variantId": "oll-39/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "FRBLRRLL": {
+    "caseId": "oll-01",
+    "variantId": "oll-01/main",
+    "setup": []
+  },
+  "FRBLFBBF": {
+    "caseId": "oll-01",
+    "variantId": "oll-01/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "FRBLURBL": {
+    "caseId": "oll-03",
+    "variantId": "oll-03/main",
+    "setup": []
+  },
+  "FRBLFUBL": {
+    "caseId": "oll-03",
+    "variantId": "oll-03/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "FRBLFRBU": {
+    "caseId": "oll-03",
+    "variantId": "oll-03/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "FRBLFRUL": {
+    "caseId": "oll-03",
+    "variantId": "oll-03/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "FRBLUULL": {
+    "caseId": "oll-18",
+    "variantId": "oll-18/main",
+    "setup": []
+  },
+  "FRBLFUUF": {
+    "caseId": "oll-18",
+    "variantId": "oll-18/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "FRBLUBBU": {
+    "caseId": "oll-18",
+    "variantId": "oll-18/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "FRBLRRUU": {
+    "caseId": "oll-18",
+    "variantId": "oll-18/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "FRBLUBUL": {
+    "caseId": "oll-17",
+    "variantId": "oll-17/main",
+    "setup": []
+  },
+  "FRBLFULU": {
+    "caseId": "oll-17",
+    "variantId": "oll-17/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "FRBLRUBU": {
+    "caseId": "oll-17",
+    "variantId": "oll-17/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "FRBLURUF": {
+    "caseId": "oll-17",
+    "variantId": "oll-17/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "FUULRRBF": {
+    "caseId": "oll-47",
+    "variantId": "oll-47/main",
+    "setup": []
+  },
+  "FRUURBBL": {
+    "caseId": "oll-47",
+    "variantId": "oll-47/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "UUBLFRLF": {
+    "caseId": "oll-47",
+    "variantId": "oll-47/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "URBUFBLL": {
+    "caseId": "oll-47",
+    "variantId": "oll-47/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "UUBLFBLL": {
+    "caseId": "oll-50",
+    "variantId": "oll-50/main",
+    "setup": []
+  },
+  "FUULFRLF": {
+    "caseId": "oll-50",
+    "variantId": "oll-50/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "URBURBBL": {
+    "caseId": "oll-50",
+    "variantId": "oll-50/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "FRUURRBF": {
+    "caseId": "oll-50",
+    "variantId": "oll-50/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "FUULRRLL": {
+    "caseId": "oll-54",
+    "variantId": "oll-54/main",
+    "setup": []
+  },
+  "FRUUFBBF": {
+    "caseId": "oll-54",
+    "variantId": "oll-54/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "UUBLFBBF": {
+    "caseId": "oll-54",
+    "variantId": "oll-54/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "URBURRLL": {
+    "caseId": "oll-54",
+    "variantId": "oll-54/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "URBURBUF": {
+    "caseId": "oll-08",
+    "variantId": "oll-08/main",
+    "setup": []
+  },
+  "UUBLRBLU": {
+    "caseId": "oll-08",
+    "variantId": "oll-08/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "FRUURULF": {
+    "caseId": "oll-08",
+    "variantId": "oll-08/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "FUULUBLF": {
+    "caseId": "oll-08",
+    "variantId": "oll-08/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "FUULRBUF": {
+    "caseId": "oll-12",
+    "variantId": "oll-12/main",
+    "setup": []
+  },
+  "FRUURBLU": {
+    "caseId": "oll-12",
+    "variantId": "oll-12/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "UUBLRULF": {
+    "caseId": "oll-12",
+    "variantId": "oll-12/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "URBUUBLF": {
+    "caseId": "oll-12",
+    "variantId": "oll-12/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "FUBUUBUL": {
+    "caseId": "oll-40",
+    "variantId": "oll-40/main",
+    "setup": []
+  },
+  "URULFULU": {
+    "caseId": "oll-40",
+    "variantId": "oll-40/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "URULRUBU": {
+    "caseId": "oll-40",
+    "variantId": "oll-40/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "FUBUURUF": {
+    "caseId": "oll-40",
+    "variantId": "oll-40/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "FRBLFBLL": {
+    "caseId": "oll-02",
+    "variantId": "oll-02/main",
+    "setup": []
+  },
+  "FRBLFRLF": {
+    "caseId": "oll-02",
+    "variantId": "oll-02/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "FRBLRBBL": {
+    "caseId": "oll-02",
+    "variantId": "oll-02/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "FRBLRRBF": {
+    "caseId": "oll-02",
+    "variantId": "oll-02/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "FRBLRULF": {
+    "caseId": "oll-04",
+    "variantId": "oll-04/main",
+    "setup": []
+  },
+  "FRBLRBUF": {
+    "caseId": "oll-04",
+    "variantId": "oll-04/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "FRBLUBLF": {
+    "caseId": "oll-04",
+    "variantId": "oll-04/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "FRBLRBLU": {
+    "caseId": "oll-04",
+    "variantId": "oll-04/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "FRBLRUUL": {
+    "caseId": "oll-19",
+    "variantId": "oll-19/main",
+    "setup": []
+  },
+  "FRBLFBUU": {
+    "caseId": "oll-19",
+    "variantId": "oll-19/main",
+    "setup": [
+      "U"
+    ]
+  },
+  "FRBLUUBF": {
+    "caseId": "oll-19",
+    "variantId": "oll-19/main",
+    "setup": [
+      "U'"
+    ]
+  },
+  "FRBLURLU": {
+    "caseId": "oll-19",
+    "variantId": "oll-19/main",
+    "setup": [
+      "U2"
+    ]
+  },
+  "FRBLUUUU": {
+    "caseId": "oll-20",
+    "variantId": "oll-20/main",
+    "setup": []
+  }
+}

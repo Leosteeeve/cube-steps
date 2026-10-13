@@ -166,7 +166,7 @@ export function SolvePage({ engine, method = 'lbl' }: { engine: CubeEngine; meth
       <div className="lesson-heading">
         <span className="eyebrow">YOUR CUBE. THE SAME METHOD.</span>
         <h1>A clear path for your cube.</h1>
-        <p>Get a complete beginner solution, with a reason behind every move.</p>
+        <p>Get a complete {presentation.label} solution, with a reason behind every move.</p>
       </div>
       <div className="input-mode-switch" role="group" aria-label="Cube input">
         <button

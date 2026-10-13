@@ -2,13 +2,40 @@ import { afterEach, beforeAll, expect, it, vi } from 'vitest';
 import { createCubeEngine } from '../core/cube';
 import type { CubeEngine } from '../core/types';
 import * as solver from '../methods/lbl/solve';
-import { handleSolveRequest } from './solve-request';
+import { handleSolveRequest, handleSolveMessage } from './solve-request';
 import { GOLDEN_CASES } from '../../tests/fixtures/facelet-cases';
 let engine: CubeEngine;
 beforeAll(async () => {
   engine = await createCubeEngine();
 });
 afterEach(() => vi.restoreAllMocks());
+it('loads_assets_only_for_a_valid_advanced_request_and_reports_load_failure', async () => {
+  const loader = vi.fn(async () => {
+    throw new Error('checksum mismatch');
+  });
+  for (const request of [
+    { requestId: 1, method: 'lbl', input: { kind: 'scramble', moves: [] } },
+    { requestId: 2, method: 'cfop-beginner', input: { kind: 'scramble', moves: [] } },
+    { requestId: 3, method: 'cfop-advanced', input: { kind: 'scramble', moves: ['M'] } },
+    { requestId: 4, method: 'cfop-advanced', input: { kind: 'facelets', facelets: {} } },
+    { requestId: -1, method: 'cfop-advanced', input: { kind: 'scramble', moves: [] } },
+  ])
+    await handleSolveMessage(engine, request, loader);
+  expect(loader).not.toHaveBeenCalled();
+  const reply = await handleSolveMessage(
+    engine,
+    { requestId: 5, method: 'cfop-advanced', input: { kind: 'scramble', moves: ['R'] } },
+    loader,
+  );
+  expect(loader).toHaveBeenCalledTimes(1);
+  expect(reply).toMatchObject({
+    requestId: 5,
+    result: {
+      ok: false,
+      error: { kind: 'solver', message: expect.stringContaining('checksum mismatch') },
+    },
+  });
+});
 it.each([undefined, 'roux', null, 1])('rejects an invalid or missing method: %s', (method) => {
   expect(
     handleSolveRequest(engine, { requestId: 5, method, input: { kind: 'scramble', moves: [] } }),

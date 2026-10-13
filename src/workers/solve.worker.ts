@@ -1,10 +1,10 @@
 import { createCubeEngine } from '../core/cube';
-import { handleSolveRequest } from './solve-request';
+import { handleSolveMessage } from './solve-request';
 import type { WorkerReply } from './solve-protocol';
 self.onmessage = async (event: MessageEvent<unknown>) => {
   try {
     const engine = await createCubeEngine();
-    const reply = handleSolveRequest(engine, event.data);
+    const reply = await handleSolveMessage(engine, event.data);
     if (reply) self.postMessage(reply);
   } catch (error) {
     const request = event.data;

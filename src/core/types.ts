@@ -1,7 +1,8 @@
 export type Face = 'U' | 'D' | 'L' | 'R' | 'F' | 'B';
 export type FaceMove = `${Face}${'' | "'" | '2'}`;
-export type TeachingMove = FaceMove | `${'x' | 'y' | 'z' | 'M'}${'' | "'" | '2'}`;
-export type MethodId = 'lbl' | 'cfop-beginner';
+export type TeachingMove =
+  FaceMove | `${`${Face}w` | 'x' | 'y' | 'z' | 'M' | 'E' | 'S'}${'' | "'" | '2'}`;
+export type MethodId = 'lbl' | 'cfop-beginner' | 'cfop-advanced';
 export type Color = 'white' | 'yellow' | 'green' | 'blue' | 'red' | 'orange';
 export type Facelets = Readonly<Record<Face, readonly (Color | null)[]>>;
 export type FaceletSnapshot = Readonly<Record<Face, readonly Color[]>>;
@@ -42,7 +43,9 @@ export type CFOPStageId =
   | 'cfop-pll-corners'
   | 'cfop-pll-edges'
   | 'cfop-auf';
-export type StageId = LBLStageId | CFOPStageId;
+export type AdvancedStageId =
+  'advanced-cross' | 'advanced-f2l' | 'advanced-oll' | 'advanced-pll' | 'advanced-auf';
+export type StageId = LBLStageId | CFOPStageId | AdvancedStageId;
 export interface PairTrace {
   cornerId: string;
   edgeId: string;
@@ -68,6 +71,13 @@ export interface TraceAction {
   algorithmId?: string;
   repetition?: { group: string; index: number };
   pair?: PairTrace;
+  cross?: { distanceBefore: number; distanceAfter: number };
+  selection?: {
+    policyVersion: 'f2l-v1';
+    immediateCost: number;
+    nextCost: number;
+    compared: number;
+  };
   before: CubeState;
   after: CubeState;
   checkpoint: Checkpoint;

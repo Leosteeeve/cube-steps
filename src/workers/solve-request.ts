@@ -1,10 +1,21 @@
-import type { CubeEngine, CubeState, SolveInput } from '../core/types';
+import type { CubeEngine, CubeState, SolveInput, MethodId } from '../core/types';
 import { validateFacelets } from '../core/facelets';
 import { resolveSolveInput } from '../core/solve-input';
 import { solveLBL } from '../methods/lbl/solve';
 import { solveCFOP } from '../methods/cfop/solve';
+import { solveAdvancedCFOP } from '../methods/advanced/solve';
+import { loadAdvancedAssets, type AdvancedAssets } from '../methods/advanced/assets';
 import type { WorkerReply } from './solve-protocol';
-export function handleSolveRequest(engine: CubeEngine, request: unknown): WorkerReply | null {
+type PreparedRequest = {
+  requestId: number;
+  method: MethodId;
+  input: SolveInput;
+  initial: CubeState;
+};
+function prepareSolveRequest(
+  engine: CubeEngine,
+  request: unknown,
+): PreparedRequest | WorkerReply | null {
   if (
     !request ||
     typeof request !== 'object' ||
@@ -19,8 +30,13 @@ export function handleSolveRequest(engine: CubeEngine, request: unknown): Worker
     requestId,
     result: { ok: false, error: { kind: 'input', message } },
   });
-  if (!('method' in request) || (request.method !== 'lbl' && request.method !== 'cfop-beginner'))
-    return fail('Choose a supported teaching method: LBL or Beginner CFOP.');
+  if (
+    !('method' in request) ||
+    (request.method !== 'lbl' &&
+      request.method !== 'cfop-beginner' &&
+      request.method !== 'cfop-advanced')
+  )
+    return fail('Choose a supported teaching method: LBL, Beginner CFOP or Advanced CFOP.');
   if (
     !('input' in request) ||
     !request.input ||
@@ -53,7 +69,33 @@ export function handleSolveRequest(engine: CubeEngine, request: unknown): Worker
       return fail(error instanceof Error ? error.message : 'Invalid scramble input.');
     }
   } else return fail('This input mode is not supported.');
-  const result = request.method === 'lbl' ? solveLBL(engine, initial) : solveCFOP(engine, initial);
+  return { requestId, method: request.method, input, initial };
+}
+export function handleSolveRequest(
+  engine: CubeEngine,
+  request: unknown,
+  advanced?: AdvancedAssets,
+): WorkerReply | null {
+  const prepared = prepareSolveRequest(engine, request);
+  if (!prepared || !('initial' in prepared)) return prepared;
+  const { requestId, method, input, initial } = prepared;
+  if (method === 'cfop-advanced' && !advanced)
+    return {
+      requestId,
+      result: {
+        ok: false,
+        error: {
+          kind: 'solver',
+          message: 'Advanced CFOP assets are unavailable. Please try again.',
+        },
+      },
+    };
+  const result =
+    method === 'lbl'
+      ? solveLBL(engine, initial)
+      : method === 'cfop-beginner'
+        ? solveCFOP(engine, initial)
+        : solveAdvancedCFOP(engine, initial, advanced!);
   return {
     requestId,
     result: result.ok
@@ -67,4 +109,29 @@ export function handleSolveRequest(engine: CubeEngine, request: unknown): Worker
           },
         },
   };
+}
+export async function handleSolveMessage(
+  engine: CubeEngine,
+  request: unknown,
+  load: () => Promise<AdvancedAssets> = () => loadAdvancedAssets(fetch),
+): Promise<WorkerReply | null> {
+  const prepared = prepareSolveRequest(engine, request);
+  if (!prepared || !('initial' in prepared)) return prepared;
+  try {
+    const assets = prepared.method === 'cfop-advanced' ? await load() : undefined;
+    return handleSolveRequest(engine, request, assets);
+  } catch (error) {
+    return {
+      requestId: prepared.requestId,
+      result: {
+        ok: false,
+        error: {
+          kind: 'solver',
+          message:
+            'Advanced CFOP assets could not load: ' +
+            (error instanceof Error ? error.message : 'Please try again.'),
+        },
+      },
+    };
+  }
 }

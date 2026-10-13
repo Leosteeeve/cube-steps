@@ -1,21 +1,26 @@
 import type { CubeEngine, CubeState, SolveSession, StageId, TeachingMove } from '../core/types';
-import { createTimeline } from './timeline';
-import { assertSessionInput } from '../core/solve-input';
-export interface PlaybackSnapshot {
+import { createPlaybackTimeline } from './playback-timeline';
+import type { PlaybackSource, PlaybackSectionId } from './playback-source';
+import type { AdvancedAssets } from '../methods/advanced/assets';
+
+export interface SourcePlaybackSnapshot {
   moveIndex: number;
   currentMove: TeachingMove | null;
   progress: number;
   actionIndex: number;
-  stageId: StageId;
+  sectionId: PlaybackSectionId;
   boundaryState: CubeState;
   timestamp: number;
   speed: number;
   playing: boolean;
   total: number;
 }
-export function createPlaybackController(engine: CubeEngine, session: SolveSession) {
-  assertSessionInput(engine, session);
-  const timeline = createTimeline(engine, session.trace),
+export function createSourcePlaybackController(
+  engine: CubeEngine,
+  source: PlaybackSource,
+  assets?: AdvancedAssets,
+) {
+  const timeline = createPlaybackTimeline(engine, source, assets),
     count = timeline.moves.length;
   let boundaries = Array.from({ length: count + 1 }, (_, i) => i * 1000),
     timestamp = 0,
@@ -25,9 +30,9 @@ export function createPlaybackController(engine: CubeEngine, session: SolveSessi
     frame = 0,
     generation = 0,
     stopAt = count,
-    selectedStage: StageId | undefined;
-  const listeners = new Set<(s: PlaybackSnapshot) => void>();
-  function snapshot(): PlaybackSnapshot {
+    selectedSection: PlaybackSectionId | undefined;
+  const listeners = new Set<(s: SourcePlaybackSnapshot) => void>();
+  function snapshot(): SourcePlaybackSnapshot {
     let index = 0;
     while (index < count && timestamp >= boundaries[index + 1]) index++;
     const actionIndex = timeline.actions.findIndex((a) => index >= a.start && index < a.end);
@@ -39,8 +44,8 @@ export function createPlaybackController(engine: CubeEngine, session: SolveSessi
           ? (timestamp - boundaries[index]) / (boundaries[index + 1] - boundaries[index])
           : 0,
       actionIndex,
-      stageId:
-        selectedStage ?? timeline.actions[actionIndex]?.stageId ?? session.trace.stages.at(-1)!.id,
+      sectionId:
+        selectedSection ?? timeline.actions[actionIndex]?.sectionId ?? timeline.sections.at(-1)!.id,
       boundaryState: timeline.states[index],
       timestamp,
       speed,
@@ -62,7 +67,7 @@ export function createPlaybackController(engine: CubeEngine, session: SolveSessi
   }
   function seekMove(index: number) {
     pause();
-    selectedStage = undefined;
+    selectedSection = undefined;
     timestamp = boundaries[Math.min(count, Math.max(0, Math.round(index)))];
     stopAt = count;
     emit();
@@ -71,7 +76,7 @@ export function createPlaybackController(engine: CubeEngine, session: SolveSessi
     if (disposed || count === 0 || playing) return;
     if (timestamp >= boundaries[count]) seekMove(0);
     if (timestamp >= boundaries[stopAt]) stopAt = count;
-    selectedStage = undefined;
+    selectedSection = undefined;
     playing = true;
     const token = ++generation;
     let previous = performance.now();
@@ -103,11 +108,11 @@ export function createPlaybackController(engine: CubeEngine, session: SolveSessi
       stopAt = range.end;
       play();
     },
-    seekStage(id: StageId) {
-      const range = timeline.stages.find((s) => s.id === id);
+    seekSection(id: PlaybackSectionId) {
+      const range = timeline.sections.find((s) => s.id === id);
       if (!range) return;
       seekMove(range.start);
-      selectedStage = id;
+      selectedSection = id;
       emit();
     },
     setSpeed(value: number) {
@@ -128,7 +133,7 @@ export function createPlaybackController(engine: CubeEngine, session: SolveSessi
       timestamp = boundaries[index];
       emit();
     },
-    subscribe(listener: (s: PlaybackSnapshot) => void) {
+    subscribe(listener: (s: SourcePlaybackSnapshot) => void) {
       listeners.add(listener);
       listener(snapshot());
       return () => {
@@ -142,6 +147,34 @@ export function createPlaybackController(engine: CubeEngine, session: SolveSessi
       cancelAnimationFrame(frame);
       listeners.clear();
     },
+  };
+}
+export type SourcePlaybackController = ReturnType<typeof createSourcePlaybackController>;
+export type PlaybackSnapshot = Omit<SourcePlaybackSnapshot, 'sectionId'> & { stageId: StageId };
+export function createPlaybackController(
+  engine: CubeEngine,
+  session: SolveSession,
+  assets?: AdvancedAssets,
+) {
+  const player = createSourcePlaybackController(engine, { kind: 'solve', session }, assets);
+  const legacy = (s: SourcePlaybackSnapshot): PlaybackSnapshot => {
+    const { sectionId, ...rest } = s;
+    return { ...rest, stageId: sectionId as StageId };
+  };
+  return {
+    ...player,
+    timeline: {
+      ...player.timeline,
+      stages: player.timeline.sections,
+      actions: player.timeline.actions.map(({ sectionId, ...a }) => ({
+        ...a,
+        stageId: sectionId as StageId,
+      })),
+    },
+    snapshot: () => legacy(player.snapshot()),
+    subscribe: (listener: (s: PlaybackSnapshot) => void) =>
+      player.subscribe((s) => listener(legacy(s))),
+    seekStage: (id: StageId) => player.seekSection(id),
   };
 }
 export type PlaybackController = ReturnType<typeof createPlaybackController>;

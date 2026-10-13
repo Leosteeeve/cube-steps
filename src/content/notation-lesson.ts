@@ -17,3 +17,8 @@ export const CFOP_NOTATION = [
   'M turns only the middle slice between L and R, in the same direction as L. M′ reverses that direction; M2 is a half turn. Keep the two outer faces still. This is a slice move, not a whole-cube regrip.',
   'AUF means adjust the upper face: use U, U′ or U2 to align the top layer’s side colors with their centers after the last-layer formula. If they already match, no AUF is needed.',
 ];
+export const ADVANCED_NOTATION = [
+  'Rw turns the right two layers together in the direction of R. Lw, Uw, Dw, Fw and Bw use the same rule on their named face. Lowercase r, l, u, d, f and b are common aliases; CubeSteps displays the explicit w spelling.',
+  'M turns the middle slice like L; E turns the middle slice like D; S turns the middle slice like F. The outer layers stay still. A prime reverses the move and 2 means a half turn. Slice turns move centers, so follow the displayed grip.',
+  'For formula comparisons, a face or wide turn counts as one and a slice turn counts as two. Half turns have the same count. Whole-cube rotations are counted separately. The shortest-cross count uses only outer-face turns.',
+];
