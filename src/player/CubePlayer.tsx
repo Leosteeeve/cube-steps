@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import type { CubeEngine, SolveSession, StageId } from '../core/types';
 import { getMethod } from '../methods/registry';
 import {
@@ -39,7 +39,8 @@ export function CubePlayer({
     stageCallback = useRef(onStageChange);
   stageCallback.current = onStageChange;
   focusRef.current = focused;
-  useEffect(() => {
+  // Install each replacement controller before the positioning effect below.
+  useLayoutEffect(() => {
     let player: PlaybackController;
     try {
       player = createPlaybackController(engine, session);
@@ -90,7 +91,8 @@ export function CubePlayer({
       controller.current = null;
     };
   }, [engine, session]);
-  useEffect(() => {
+  // Position the lesson before enabled controls can accept the first user input.
+  useLayoutEffect(() => {
     if (stage) controller.current?.seekStage(stage);
     if (caseId) {
       const action = controller.current?.timeline.actions.find(
@@ -98,7 +100,7 @@ export function CubePlayer({
       );
       if (action) controller.current?.seekMove(action.start);
     }
-  }, [stage, stageRequestId, ready, caseId]);
+  }, [engine, session, stage, stageRequestId, ready, caseId]);
   useEffect(() => {
     const p = controller.current;
     if (p) p.setSpeed(p.snapshot().speed);
