@@ -35,11 +35,18 @@ export function createSolveClient(
 ) {
   let requestId = 0,
     active:
-      { id: number; worker: WorkerPort; resolve: (result: SessionResult) => void } | undefined;
+      | {
+          id: number;
+          worker: WorkerPort;
+          resolve: (result: SessionResult) => void;
+          timer: ReturnType<typeof setTimeout>;
+        }
+      | undefined;
   function cancel() {
     if (active) {
       const old = active;
       active = undefined;
+      clearTimeout(old.timer);
       old.worker.terminate();
       old.resolve({
         ok: false,
@@ -50,15 +57,34 @@ export function createSolveClient(
   function send(input: SolveRequestInput, method: MethodId): Promise<SessionResult> {
     return new Promise((resolve) => {
       try {
+        const sentInput = structuredClone(input);
+        const fingerprint = (value: SolveRequestInput) =>
+          JSON.stringify(
+            value.kind === 'scramble'
+              ? ['scramble', value.moves]
+              : [
+                  'facelets',
+                  ...(['U', 'R', 'F', 'D', 'L', 'B'] as const).map((face) => value.facelets[face]),
+                ],
+          );
         const worker = factory(),
           id = ++requestId;
-        active = { id, worker, resolve };
         const finish = (result: SessionResult) => {
           if (active?.id !== id) return;
+          clearTimeout(active.timer);
           active = undefined;
           worker.terminate();
           resolve(result);
         };
+        const timer = setTimeout(
+          () =>
+            finish({
+              ok: false,
+              error: { kind: 'worker', message: 'The solver timed out. Please try again.' },
+            }),
+          30000,
+        );
+        active = { id, worker, resolve, timer };
         worker.onmessage = ({ data }) => {
           if (data.requestId !== id) return;
           if (data.result.ok && data.result.session?.trace?.method !== method) {
@@ -67,6 +93,16 @@ export function createSolveClient(
               error: {
                 kind: 'worker',
                 message: 'The worker returned a solution for the wrong method. Please solve again.',
+              },
+            });
+            return;
+          }
+          if (data.result.ok && fingerprint(data.result.session.input) !== fingerprint(sentInput)) {
+            finish({
+              ok: false,
+              error: {
+                kind: 'worker',
+                message: 'The worker returned a solution for different input. Please solve again.',
               },
             });
             return;
@@ -84,8 +120,9 @@ export function createSolveClient(
             error: { kind: 'worker', message: `The solver could not start: ${event.message}` },
           });
         };
-        worker.postMessage({ requestId: id, method, input: structuredClone(input) });
+        worker.postMessage({ requestId: id, method, input: structuredClone(sentInput) });
       } catch (error) {
+        if (active) clearTimeout(active.timer);
         active?.worker.terminate();
         active = undefined;
         resolve({

@@ -9,7 +9,44 @@ import { observeF2LPairs, preservesF2L } from '../cfop/f2l-cases';
 import { ALGORITHM_REGISTRY } from '../../algorithms/registry';
 import { f2lSignature } from './f2l/recognize';
 import type { F2LTarget } from './f2l/types';
+import type { CrossTable } from './cross/table';
+import { extractCross, rankCross, CROSS_MOVES } from './cross/coordinates';
+import { crossMoveEvidence } from './cross/solve';
+import type { FaceMove } from '../../core/types';
 const same = (a: readonly string[], b: readonly string[]) => a.join(' ') === b.join(' ');
+// Cross validation requires the integrity-checked distance asset. The unbound
+// runtime fails closed for cross actions and is sufficient for partial demos.
+export function createAdvancedRuntime(table: CrossTable): MethodRuntime {
+  return {
+    ...ADVANCED_RUNTIME,
+    checkAction(engine, action, stage) {
+      if (stage !== 'advanced-cross' || action.ruleId === 'advanced-holding')
+        return ADVANCED_RUNTIME.checkAction(engine, action, stage);
+      if (
+        action.ruleId !== 'advanced-cross-step' ||
+        action.caseId !== 'shortest-cross' ||
+        action.kind !== 'setup' ||
+        action.moves.length !== 1 ||
+        !CROSS_MOVES.includes(action.moves[0] as FaceMove) ||
+        !engine.equals(engine.apply(action.before, action.moves), action.after)
+      )
+        return false;
+      const before = table.distances[rankCross(extractCross(engine, action.before))],
+        after = table.distances[rankCross(extractCross(engine, action.after))],
+        evidence = crossMoveEvidence(engine, action.before, action.after);
+      return (
+        before >= 1 &&
+        before <= 8 &&
+        after === before - 1 &&
+        action.cross?.distanceBefore === before &&
+        action.cross.distanceAfter === after &&
+        same(action.targets, evidence.targets) &&
+        action.recognition === evidence.recognition &&
+        action.explanation === evidence.explanation
+      );
+    },
+  };
+}
 export const ADVANCED_RUNTIME: MethodRuntime = {
   presentation: ADVANCED_PRESENTATION,
   checkStage: checkAdvancedStage,

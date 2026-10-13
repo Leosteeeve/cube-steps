@@ -36,3 +36,9 @@ The `f2l-v1` selection policy scores the complete preparation plus insertion as 
 - `npm run generate:cross` deterministically generates all 190,080 four-edge coordinates. `npm run verify:cross` compares the bytes and manifest against a fresh generation. The runtime checks the version, byte length and SHA-256 before using the asset.
 
 Expanded teaching notation uses `Rw/Lw/Uw/Dw/Fw/Bw`, `M/E/S`, outer-face moves and `x/y/z`. Lowercase wide aliases are normalized only when admitting source formulas. Free-scramble input remains limited to the six outer faces. Formula comparison counts a face or wide turn as one, a slice as two, and rotations separately; half turns have the same count. The cross optimum uses only outer-face turns.
+
+## Complete-solve verification
+
+Advanced solves return all five stages, including explicit skips. Each cross turn carries its before/after distance and the actual change to every affected white edge. `createAdvancedRuntime(verifiedCrossTable)` checks those claims against the recorded cube coordinates; the unbound runtime rejects cross actions because it has no distance asset. F2L and last-layer checks validate actual case, target and formula identities and their completed effects. Full traces must replay to a solved cube.
+
+The worker validates a request before fetching Advanced assets. Missing or corrupt assets produce a failure instead of a different method. Cancelling terminates the worker, and a 30-second watchdog settles stalled requests. A successful response must match both the requested method and the input snapshot taken when the request was sent.
