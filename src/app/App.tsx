@@ -64,7 +64,7 @@ export function App() {
             {route.method === 'lbl' ? 'BEGINNER’S METHOD' : 'CROSS · F2L · OLL · PLL'}
           </span>
           <p>Understand the moves. Enjoy the solve.</p>
-          <span className="preview-label">{method.label} · Preview</span>
+          <span className="preview-label">{method.label}</span>
         </div>
         {error ? (
           <p className="error" role="alert">

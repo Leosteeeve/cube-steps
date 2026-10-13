@@ -2,7 +2,7 @@
 
 Learn to solve the 3×3 cube with step-by-step animations and explained algorithms, starting with the beginner's method.
 
-**Status: V1.2 preview adds complete Beginner CFOP lessons and explained solving. Physical-cube CFOP teaching acceptance is pending. Earlier LBL and color-entry acceptance records remain in their dated validation documents.**
+**Status: V1.2 offers complete Beginner CFOP lessons and explained solving. The owner confirmed physical-cube CFOP teaching acceptance on October 12, 2026. Earlier LBL and color-entry acceptance records remain in their dated validation documents.**
 
 [Open CubeSteps](https://leosteeeve.github.io/cube-steps/) — use it directly in your browser, with no account or installation.
 
@@ -81,8 +81,8 @@ Cube state, teaching rules, course content, and playback are separate modules. S
 | --- | --- |
 | V1 | LBL lessons and formula-based solving are available; physical-cube teaching acceptance is complete |
 | V1.1 | Guided six-face colors, legality checks, and LBL playback; new physical-input acceptance pending |
-| V1.2 | Beginner CFOP preview: intuitive F2L, two-look OLL and PLL, with lessons and generated solutions; physical acceptance pending |
-| Later CFOP versions | Full PLL, then full OLL |
+| V1.2 | Beginner CFOP: intuitive F2L, two-look OLL and PLL, with lessons and generated solutions; physical teaching acceptance complete |
+| Next CFOP version (planning) | Advanced CFOP alongside Beginner CFOP: shortest white cross, efficient F2L formulas, full OLL/PLL, and a formula library with selected-case practice |
 | Later methods and inputs | Roux → ZZ, then camera scanning with correction, in separate versions |
 
 Future roadmap items are not available yet. Scanning, user-turn scoring, offline installation, and desktop packages are not included. The 3D view needs WebGL; color entry, validation, and textual steps remain available if rendering is unavailable.

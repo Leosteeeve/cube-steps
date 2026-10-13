@@ -233,7 +233,7 @@ export function SolvePage({ engine, method = 'lbl' }: { engine: CubeEngine; meth
               Leave blank to explore an already solved cube.
             </p>
             <button className="primary-button" type="submit" disabled={busy || randomizing}>
-              {busy ? 'Finding your steps…' : 'Explain this solve'}{' '}
+              {busy ? 'Finding your steps…' : `Explain with ${presentation.label}`}{' '}
               <span aria-hidden="true">→</span>
             </button>
             {busy && (

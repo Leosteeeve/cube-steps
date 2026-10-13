@@ -8,7 +8,6 @@ export function MethodSelector({ method, kind }: { method: MethodId; kind: 'lear
       {(['lbl', 'cfop-beginner'] as const).map((id) => (
         <a key={id} href={methodRoute(id, kind)} aria-current={method === id ? 'page' : undefined}>
           {getMethod(id).label}
-          {id === 'cfop-beginner' && <small>Preview</small>}
         </a>
       ))}
     </nav>

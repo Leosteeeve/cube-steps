@@ -9,9 +9,7 @@ test('opens the full CFOP course and every verified case selector', async ({ pag
   await expect(
     page.getByRole('heading', { name: 'Think in pairs. Solve in four phases.', exact: true }),
   ).toBeVisible();
-  await expect(
-    page.getByText(/Physical-cube CFOP teaching acceptance is still pending/),
-  ).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'M turns and AUF.', exact: true })).toBeVisible();
   for (const lesson of CFOP_COURSE.filter((l) => l.stageId)) {
     await page.locator(`.stage-nav a[href="#/learn/cfop/${lesson.id}"]`).click();
     await expect(page.getByRole('heading', { name: lesson.title, exact: true })).toBeVisible();

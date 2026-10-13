@@ -80,7 +80,7 @@ it('preserves input and clears the result on a history-driven method change', as
   const user = userEvent.setup();
   const textarea = await screen.findByLabelText('Scramble sequence');
   await user.type(textarea, 'R U');
-  await user.click(screen.getByRole('button', { name: 'Explain this solve' }));
+  await user.click(screen.getByRole('button', { name: 'Explain with LBL' }));
   expect(await screen.findByText('Verified LBL solution')).toBeVisible();
   const calls = client.solveScramble.mock.calls.length;
   act(() => {
@@ -90,7 +90,7 @@ it('preserves input and clears the result on a history-driven method change', as
   expect(textarea).toHaveValue('R U');
   expect(screen.queryByText('Verified LBL solution')).not.toBeInTheDocument();
   expect(client.solveScramble).toHaveBeenCalledTimes(calls);
-  await user.click(screen.getByRole('button', { name: 'Explain this solve' }));
+  await user.click(screen.getByRole('button', { name: 'Explain with Beginner CFOP' }));
   expect(client.solveScramble).toHaveBeenLastCalledWith('R U', 'cfop-beginner');
   expect(await screen.findByText('Verified Beginner CFOP solution')).toBeVisible();
 });
@@ -122,9 +122,9 @@ it('cancels late work across methods without changing the new draft or busy stat
   const view = render(<SolvePage engine={engine} method="lbl" />),
     user = userEvent.setup();
   await user.type(screen.getByLabelText('Scramble sequence'), 'R');
-  await user.click(screen.getByRole('button', { name: 'Explain this solve' }));
+  await user.click(screen.getByRole('button', { name: 'Explain with LBL' }));
   view.rerender(<SolvePage engine={engine} method="cfop-beginner" />);
-  await user.click(screen.getByRole('button', { name: 'Explain this solve' }));
+  await user.click(screen.getByRole('button', { name: 'Explain with Beginner CFOP' }));
   await act(async () => old.resolve(colorResult()));
   expect(screen.getByRole('button', { name: 'Finding your steps…' })).toBeDisabled();
   expect(screen.queryByText('Verified LBL solution')).not.toBeInTheDocument();
@@ -165,7 +165,7 @@ it('checks invalid drafts and enables only a verified snapshot, retaining the pr
   expect(screen.getByText('Verified LBL solution')).toBeVisible();
   await user.click(screen.getByRole('button', { name: 'Scramble' }));
   await user.type(screen.getByLabelText('Scramble sequence'), 'R M');
-  await user.click(screen.getByRole('button', { name: 'Explain this solve' }));
+  await user.click(screen.getByRole('button', { name: 'Explain with LBL' }));
   expect(screen.getByRole('alert')).toHaveTextContent('At character 3');
   expect(summary.innerHTML).toBe(old);
 });
@@ -219,7 +219,7 @@ it('keeps separate drafts and ignores obsolete random and scramble results', asy
   render(<SolvePage engine={engine} />);
   const user = userEvent.setup();
   await user.type(screen.getByLabelText('Scramble sequence'), 'R');
-  await user.click(screen.getByRole('button', { name: 'Explain this solve' }));
+  await user.click(screen.getByRole('button', { name: 'Explain with LBL' }));
   await user.type(screen.getByLabelText('Scramble sequence'), ' U');
   await act(async () => pending.resolve(colorResult()));
   expect(screen.queryByText('Verified LBL solution')).not.toBeInTheDocument();

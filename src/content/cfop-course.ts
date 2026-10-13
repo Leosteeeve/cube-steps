@@ -37,7 +37,7 @@ export const CFOP_COURSE: readonly Lesson[] = [
       'Start every example scramble with white up and green front. Follow the explicit regrip when the solution asks for white down; face letters always refer to your current grip.',
     check:
       'At each completed maneuver, check the pieces named by the lesson. Temporary disruption inside a formula is expected; finish it before judging the result.',
-    tip: 'This preview teaches intuitive F2L and four last-layer looks. Already-complete stages are skipped. Physical-cube CFOP teaching acceptance is still pending.',
+    tip: 'This course teaches intuitive F2L and four last-layer looks. Already-complete stages are skipped. Follow each preparation and finish each complete formula before checking the result.',
     algorithmIds: [],
     exampleScramble: CFOP_GUIDED_SCRAMBLE,
   },

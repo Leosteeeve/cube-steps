@@ -6,7 +6,7 @@ test('method links and browser history preserve the scramble and clear the previ
   page.on('pageerror', (e) => errors.push(e.message));
   await page.goto('#/solve');
   await page.getByLabel('Scramble sequence').fill('R U F2');
-  await page.getByRole('button', { name: 'Explain this solve' }).click();
+  await page.getByRole('button', { name: 'Explain with LBL' }).click();
   await expect(page.getByText('Verified LBL solution')).toBeVisible();
   await page
     .getByRole('navigation', { name: 'Teaching method' })
@@ -21,7 +21,7 @@ test('method links and browser history preserve the scramble and clear the previ
   await expect(page.getByLabel('Scramble sequence')).toHaveValue('R U F2');
   await page.goForward();
   await expect(page).toHaveURL(/#\/solve\/cfop$/);
-  await page.getByRole('button', { name: 'Explain this solve' }).click();
+  await page.getByRole('button', { name: 'Explain with Beginner CFOP' }).click();
   await expect(page.getByText('Verified Beginner CFOP solution')).toBeVisible();
   await expect(
     page.getByRole('button', { name: '02 First two layers', exact: true }),

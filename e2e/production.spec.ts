@@ -30,7 +30,7 @@ test('production CFOP preserves method, exact scramble/colors, solved rendering 
   await page.reload();
   const example = GOLDEN_CASES[7];
   await page.getByLabel('Scramble sequence').fill(example.moves.join(' '));
-  await page.getByRole('button', { name: 'Explain this solve', exact: true }).click();
+  await page.getByRole('button', { name: 'Explain with Beginner CFOP', exact: true }).click();
   await expect(page.getByText('Verified Beginner CFOP solution')).toBeVisible();
   await expect(page.getByRole('button', { name: 'Next move', exact: true })).toBeEnabled();
   await expect.poll(() => renderedColors(page)).toEqual(example.facelets);
@@ -71,7 +71,7 @@ test('production base path loads worker, 3D renderer, random scrambles and refre
   });
   await page.goto('#/solve');
   await page.getByLabel('Scramble sequence').fill("R U2 F' L2 B D'");
-  await page.getByRole('button', { name: 'Explain this solve', exact: true }).click();
+  await page.getByRole('button', { name: 'Explain with LBL', exact: true }).click();
   await expect(page.getByRole('button', { name: 'Next move', exact: true })).toBeEnabled();
   await page.getByLabel('Move position').focus();
   await page.keyboard.press('End');
@@ -89,7 +89,7 @@ test('production base path loads worker, 3D renderer, random scrambles and refre
     .toBe(true);
   await page.getByRole('button', { name: 'Random scramble', exact: true }).click();
   await expect(page.getByLabel('Scramble sequence')).not.toHaveValue("R U2 F' L2 B D'");
-  await page.getByRole('button', { name: 'Explain this solve', exact: true }).click();
+  await page.getByRole('button', { name: 'Explain with LBL', exact: true }).click();
   await expect(page.getByRole('button', { name: 'Next move', exact: true })).toBeEnabled();
   await page.goto('#/learn/corner-orientation');
   // Refresh a loaded lesson. Reloading during the previous document's route
