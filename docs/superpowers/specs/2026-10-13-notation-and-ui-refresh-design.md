@@ -1,6 +1,6 @@
 # CubeSteps UI Refresh and Club Move Explorer
 
-Status: the owner approved the interactive visual direction on October 13, 2026. This written specification is awaiting review. Product implementation has not started.
+Status: the owner approved the interactive visual direction and this written specification on October 13, 2026. The implementation plans are awaiting review. Product implementation has not started.
 
 ## 1. Purpose and agreed scope
 
