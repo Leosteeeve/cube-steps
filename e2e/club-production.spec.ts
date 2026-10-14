@@ -1,5 +1,6 @@
+import { dismissTutorialForTest } from './helpers/tutorial';
 import { expect, test } from '@playwright/test';
-import { renderNotationFrame } from './helpers/notation';
+import { renderLessonFrame } from './helpers/notation';
 
 test('built club home stays lightweight and both editions retain their tools', async ({ page }) => {
   test.setTimeout(90000);
@@ -14,6 +15,7 @@ test('built club home stays lightweight and both editions retain their tools', a
     if (response.status() >= 400) bad.push(response.url());
   });
   await page.goto('club/');
+  await dismissTutorialForTest(page);
   await expect(page.getByRole('button', { name: 'Pause motion', exact: true })).toBeVisible();
   await page.getByRole('link', { name: 'Find my starting point' }).click();
   await expect(page.getByRole('button', { name: 'Skip questions' })).toBeVisible();
@@ -39,6 +41,7 @@ test('built club home stays lightweight and both editions retain their tools', a
     await expect(page.locator('main h1')).toBeVisible();
   }
   await page.goto('club/#/timer');
+  await dismissTutorialForTest(page);
   await expect(page.getByRole('button', { name: 'Timing surface', exact: true })).toBeEnabled({
     timeout: 25000,
   });
@@ -66,16 +69,17 @@ test('production club deep links, motion preferences and global identity remain 
     if (r.status() >= 400) bad.push(r.url());
   });
   await page.goto('club/');
+  await dismissTutorialForTest(page);
   await expect(page.getByRole('link', { name: 'Find my starting point' })).toBeVisible();
   const favicon = await page.locator('link[rel="icon"]').getAttribute('href');
   expect(favicon).toBeTruthy();
   expect((await page.request.get(new URL(favicon!, page.url()).href)).ok()).toBe(true);
   await page.goto('club/#/learn/white-cross');
   await expect(page.getByRole('button', { name: 'Next move', exact: true })).toBeEnabled();
-  await renderNotationFrame(page);
+  await renderLessonFrame(page);
   await page.reload();
   await expect(page.getByRole('button', { name: 'Next move', exact: true })).toBeEnabled();
-  await renderNotationFrame(page);
+  await renderLessonFrame(page);
   await page.getByRole('button', { name: 'Next move', exact: true }).click();
   await expect(page.getByLabel('Current holding')).toContainText('yellow up');
   const before = await page.getByTestId('move-position').textContent();
@@ -94,7 +98,7 @@ test('production club deep links, motion preferences and global identity remain 
   });
   await page.reload();
   await expect(page.getByRole('button', { name: 'Next move', exact: true })).toBeEnabled();
-  await renderNotationFrame(page);
+  await renderLessonFrame(page);
   await expect(select).toHaveValue('off');
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await select.selectOption('system');

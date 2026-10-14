@@ -1,3 +1,4 @@
+import { dismissTutorialForTest } from './helpers/tutorial';
 import { expect, test } from '@playwright/test';
 import type { TimerRepository } from '../src/club/timer/repository';
 declare global {
@@ -154,4 +155,9 @@ test('a second tab receives committed records without replacing its own history'
     )
     .toBe('plus2');
   for (const p of [page, other]) await p.evaluate(() => window.storageTestRepository.dispose());
+});
+
+test.beforeEach(async ({ page }) => {
+  await page.goto('club/');
+  await dismissTutorialForTest(page);
 });

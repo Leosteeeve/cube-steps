@@ -70,11 +70,15 @@ The production output is `dist/`, configured for the GitHub Pages path `/cube-st
 
 ## Community edition
 
-[Club member entrance](https://leosteeeve.github.io/cube-steps/club/) · [Personal timer](https://leosteeeve.github.io/cube-steps/club/#/timer)
+[Club member entrance](https://leosteeeve.github.io/cube-steps/club/) · [Personal timer](https://leosteeeve.github.io/cube-steps/club/#/timer) · [Website guide](https://leosteeeve.github.io/cube-steps/club/#/guide)
 
 This separate edition is intended for our club members. Please share the link within the club rather than promote it publicly. Anyone with the link can open it without a GitHub account; it is public, not access-controlled. The club entry requests search engines not to index it, but that is not a privacy guarantee. The main CubeSteps homepage does not advertise this entrance.
 
 The club edition shares the same courses, formulas, solvers and player. It adds a blue-and-white layout, a short route questionnaire, self-reported lesson progress, and an independent timer with real scrambles, matching six-face diagrams, optional inspection, ao5/ao12, corrections, history, trends, and CSV/JSON export. All quiz recommendations use available methods. No questionnaire answers are saved.
+
+First-time members can choose a short tour, postpone it, or stop automatic offers. **Page tour** stays available on each feature page; **Guide** collects written steps, control references, real screenshots, and links to start, resume or restart a walkthrough. Simple Moves and lesson steps invite hands-on practice; input drafts, practice answers and Timer history are protected. Timer help opens only while idle and locks timing inputs until a fresh press after exit. Tutorial choices use their own local-storage key and never mark a lesson mastered.
+
+The written Guide works without loading the cube engine. Its Timer screenshots are visibly labeled examples captured in isolated browser contexts. A narrated video is being developed separately; no video is published or embedded yet.
 
 The homepage cube now has equal-sized pieces, gentle motion and occasional layer turns. Pause it locally or turn decorative motion off. **Moves** opens a separate notation workbench: choose from 54 face, wide, slice and whole-cube turns; read the direction from the relevant face; then play, pause or replay one move. Holding and Direction views change only the camera. Reduced motion or unavailable 3D rendering provides static Before/After diagrams. The new notation workbench is a preview pending physical-cube follow-along acceptance.
 

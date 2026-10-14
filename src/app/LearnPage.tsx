@@ -1,4 +1,5 @@
-import { useEffect, useMemo, useState, type ReactNode } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
+import { useGuidanceScope, useGuidanceTarget } from '../ui/guidance';
 import type { CubeEngine, SolveSession, StageId, MethodId } from '../core/types';
 import { getCourse } from '../content/courses';
 import {
@@ -39,6 +40,32 @@ export function LearnPage({
   const example = lesson.examples?.find((e) => e.id === selectedCase),
     exampleScramble = example?.scramble ?? lesson.exampleScramble;
   const selectionKey = `${method}/${lesson.id}/${example?.id ?? 'guided'}`;
+  const notesTarget = useGuidanceTarget('lesson.notes'),
+    notes = useRef<HTMLDetailsElement | null>(null);
+  const notesRef = useCallback(
+    (node: HTMLDetailsElement | null) => {
+      notes.current = node;
+      return notesTarget(node);
+    },
+    [notesTarget],
+  );
+  useGuidanceScope(
+    'lesson-notes',
+    useCallback(() => {
+      const node = notes.current,
+        saved = node?.open;
+      let live = true;
+      if (node) node.open = true;
+      return {
+        restore() {
+          if (live && node?.isConnected) node.open = saved ?? false;
+        },
+        dispose() {
+          live = false;
+        },
+      };
+    }, [selectionKey]),
+  );
   const session = loaded?.key === selectionKey ? loaded.session : null;
   const lessonLink = (id: string) => lessonRoute(method, id);
   useEffect(() => {
@@ -69,7 +96,7 @@ export function LearnPage({
         <p>{lesson.goal}</p>
       </div>
       {!lesson.stageId ? (
-        <section className="notation-content">
+        <section ref={notesTarget} className="notation-content">
           <div className="notation-intro">
             <span className="big-cube-mark" aria-hidden="true">
               ◈
@@ -176,7 +203,7 @@ export function LearnPage({
               solve.
             </p>
           )}
-          <details className="lesson-notes">
+          <details ref={notesRef} className="lesson-notes">
             <summary>
               How this stage works <span>Read before you play</span>
             </summary>

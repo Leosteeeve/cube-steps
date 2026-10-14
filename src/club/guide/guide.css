@@ -1,0 +1,246 @@
+.club-guide {
+  max-width: 1200px;
+  margin: auto;
+  padding: 24px 0 72px;
+}
+.guide-heading {
+  max-width: 730px;
+  padding: 30px 0 48px;
+}
+.guide-heading h1 {
+  font-size: clamp(2.3rem, 5vw, 4.4rem);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  margin: 18px 0 24px;
+}
+.guide-heading h1 em {
+  color: var(--club-blue, #2568c4);
+}
+.guide-heading > p:last-child {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  max-width: 540px;
+}
+.guide-layout {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  gap: 56px;
+  align-items: start;
+}
+.guide-index {
+  position: sticky;
+  top: 24px;
+  display: grid;
+  gap: 6px;
+  border-top: 2px solid #d4e1f0;
+  padding-top: 12px;
+}
+.guide-index > p {
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+}
+.guide-index a {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  color: inherit;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+.guide-index a span {
+  font-size: 0.7rem;
+  color: #5a7294;
+}
+.guide-index a:hover,
+.guide-index a[aria-current] {
+  background: #eaf2fc;
+  color: #134d95;
+}
+.guide-chapter {
+  border-top: 1px solid #d7e3f1;
+  padding: 30px 0 48px;
+  scroll-margin-top: 24px;
+}
+.guide-chapter h2 {
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  line-height: 1.2;
+  scroll-margin-top: 30px;
+}
+.guide-summary {
+  font-size: 1.1rem;
+  color: #415a7d;
+  line-height: 1.65;
+}
+.guide-steps {
+  padding-left: 1.4rem;
+  line-height: 1.85;
+}
+.guide-steps li {
+  padding-left: 0.4rem;
+  margin: 16px 0;
+}
+.guide-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 24px 0;
+}
+.guide-tour-directory {
+  border: 1px solid #d7e3f1;
+  border-radius: 14px;
+  padding: 8px 18px;
+  background: #f7faff;
+  margin: 20px 0;
+}
+.guide-tour-directory > div {
+  padding: 12px 0;
+}
+.guide-tour-directory strong {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+.guide-tour-directory > div > div {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.club-guide button,
+.guide-lightbox button {
+  min-height: 44px;
+  border: 1px solid #c3d4e9;
+  background: white;
+  color: #123967;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font: inherit;
+  cursor: pointer;
+}
+.guide-controls {
+  border-bottom: 1px solid #d7e3f1;
+  margin-top: 24px;
+}
+.guide-controls summary {
+  padding: 18px 0;
+  cursor: pointer;
+  font-weight: 650;
+  min-height: 44px;
+}
+.guide-controls dl {
+  margin: 0 0 20px;
+}
+.guide-controls dl > div {
+  padding: 13px 0;
+  border-top: 1px solid #e6edf5;
+}
+.guide-controls dt {
+  font-weight: 650;
+}
+.guide-controls dd {
+  margin: 6px 0 0;
+  line-height: 1.7;
+  color: #415a7d;
+}
+.guide-image {
+  margin: 28px 0;
+}
+.club-guide .guide-image-button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+  text-align: left;
+  border-radius: 12px;
+}
+.guide-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #f2f6fb;
+}
+.guide-image-button span {
+  display: block;
+  padding: 12px 16px;
+  font-size: 0.8rem;
+}
+.guide-image figcaption {
+  font-size: 0.85rem;
+  color: #496182;
+  line-height: 1.6;
+  margin: 10px 0;
+}
+.guide-image-failed {
+  padding: 24px;
+  background: #f2f6fb;
+  border-radius: 12px;
+}
+.guide-lightbox {
+  position: fixed;
+  inset: 0;
+  background: #081b32f5;
+  color: white;
+  z-index: 1500;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  align-items: center;
+  overflow: auto;
+}
+.guide-lightbox button {
+  align-self: flex-end;
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.guide-lightbox img {
+  max-width: 100%;
+  height: auto;
+  flex-shrink: 0;
+}
+.guide-lightbox p {
+  max-width: 900px;
+  line-height: 1.5;
+  margin: 0;
+}
+.guide-reset {
+  margin: 24px 0;
+}
+.guide-reset p {
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: #496182;
+}
+@media (max-width: 760px) {
+  .guide-layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .guide-index {
+    position: static;
+    grid-template-columns: 1fr 1fr;
+  }
+  .guide-index > p {
+    grid-column: 1/-1;
+  }
+  .guide-index a {
+    font-size: 0.8rem;
+    padding: 8px 4px;
+    gap: 6px;
+  }
+  .guide-heading {
+    padding: 12px 0 24px;
+  }
+  .guide-lightbox {
+    padding: 12px;
+  }
+}
+
+.club-guide {
+  padding-left: 24px;
+  padding-right: 24px;
+}

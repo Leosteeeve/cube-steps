@@ -2,14 +2,22 @@ import { useRef } from 'react';
 import type { TimerState, TimerInput } from './machine';
 import { formatResult } from './format';
 import { effectiveResult } from './statistics';
+import type { TutorialInputGate } from './tutorial-input';
+import { useGuidanceTarget } from '../../ui/guidance';
 export function TimerSurface({
   state,
-  dispatch,
+  dispatch: send,
+  inputGate,
 }: {
   state: TimerState;
   dispatch: (input: TimerInput) => void;
+  inputGate?: TutorialInputGate;
 }) {
   const pointer = useRef<number | null>(null);
+  const target = useGuidanceTarget('timer.surface');
+  const dispatch = (input: TimerInput) => {
+    if (!inputGate || inputGate.allow(input)) send(input);
+  };
   const inspectionStartedAt =
     state.phase === 'inspection' || state.phase === 'arming' ? state.inspectionStartedAt : null;
   const inspectionMs =
@@ -49,7 +57,7 @@ export function TimerSurface({
           ? formatResult(effectiveResult(state.lastAttempt))
           : '0.00';
   return (
-    <div className="timer-surface-wrap">
+    <div ref={target} className="timer-surface-wrap">
       <p className="timer-instruction" role="status">
         {label}
       </p>
@@ -64,6 +72,8 @@ export function TimerSurface({
         disabled={state.phase === 'loading' || state.phase === 'error'}
         onPointerDown={(e) => {
           if (e.button !== 0 || !e.isPrimary || pointer.current !== null) return;
+          if (inputGate && !inputGate.allow({ type: 'down', token: `pointer:${e.pointerId}` }))
+            return;
           e.preventDefault();
           pointer.current = e.pointerId;
           e.currentTarget.setPointerCapture(e.pointerId);

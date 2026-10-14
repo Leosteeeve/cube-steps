@@ -702,3 +702,13 @@
     padding-inline: 14px;
   }
 }
+
+@media (max-width: 760px) {
+  [data-edition='club'] .club-header nav {
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+  [data-edition='club'] .club-header nav a {
+    padding: 10px 8px;
+  }
+}

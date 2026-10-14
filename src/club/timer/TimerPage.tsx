@@ -1,4 +1,8 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useLayoutEffect, useMemo, useState } from 'react';
+import { useGuidanceTarget } from '../../ui/guidance';
+import { useOptionalClubTutorial } from '../tutorial/TutorialProvider';
+import { TourEntry } from '../tutorial/TourEntry';
+import { createTutorialInputGate, timerTutorialAllowed } from './tutorial-input';
 import type { CubeEngine } from '../../core/types';
 import type { TimerRepository } from './repository';
 import { useTimer } from './use-timer';
@@ -21,12 +25,32 @@ export function TimerPage({
   const [initial] = useState(() => loadTimerSettings(() => localStorage));
   const [settingsSaved, setSettingsSaved] = useState(initial.available && initial.writable);
   const [protectedSettings, setProtectedSettings] = useState(!initial.writable);
-  const { state, controller, history } = useTimer({ engine, repository, settings: initial.value });
+  const [inputGate] = useState(createTutorialInputGate),
+    tutorial = useOptionalClubTutorial();
+  const { state, controller, history } = useTimer({
+    engine,
+    repository,
+    settings: initial.value,
+    inputGate,
+  });
+  const registerGuard = tutorial?.registerGuard,
+    registerInputLock = tutorial?.registerInputLock;
+  useLayoutEffect(
+    () => registerGuard?.(() => timerTutorialAllowed(controller.snapshot(), repository.snapshot())),
+    [registerGuard, controller, repository],
+  );
+  useLayoutEffect(() => registerInputLock?.(inputGate.setLocked), [registerInputLock, inputGate]);
+  useEffect(() => () => inputGate.dispose(), [inputGate]);
+  const scrambleTarget = useGuidanceTarget('timer.scramble', state.phase === 'idle'),
+    settingsTarget = useGuidanceTarget('timer.settings'),
+    historyTarget = useGuidanceTarget('timer.history'),
+    exportTarget = useGuidanceTarget('timer.export');
   const stats = useMemo(() => summarizeHistory(history.attempts), [history.attempts]),
     active = ['inspection', 'arming', 'running', 'stopped'].includes(state.phase);
   const last = useMemo(() => orderedAttempts(history.attempts).at(-1), [history.attempts]);
   return (
     <div className="club-timer" data-phase={state.phase}>
+      <TourEntry tourId="timer" ready={timerTutorialAllowed(state, history)} />
       <div className="timer-title">
         <div>
           <p className="club-kicker">● YOUR PERSONAL PRACTICE SPACE</p>
@@ -43,7 +67,7 @@ export function TimerPage({
       </div>
       <div className="timer-workspace">
         <section className="timer-main-card" aria-label="Cube timer">
-          <div className="timer-scramble">
+          <div ref={scrambleTarget} className="timer-scramble">
             <div className="timer-card-heading">
               <span>3 × 3 / SCRAMBLE</span>
               <button
@@ -67,8 +91,12 @@ export function TimerPage({
               </div>
             )}
           </div>
-          <TimerSurface state={{ ...state, lastAttempt: last }} dispatch={controller.dispatch} />
-          <div className="timer-options">
+          <TimerSurface
+            state={{ ...state, lastAttempt: last }}
+            dispatch={controller.dispatch}
+            inputGate={inputGate}
+          />
+          <div ref={settingsTarget} className="timer-options">
             <label>
               <input
                 type="checkbox"
@@ -182,11 +210,11 @@ export function TimerPage({
           {stats.count < 12 && <span>{12 - stats.count} more solves needed</span>}
         </div>
       </section>
-      <div className="timer-bottom-grid">
+      <div ref={historyTarget} className="timer-bottom-grid">
         <TimerTrend attempts={history.attempts} />
         <TimerHistory repository={repository} engine={engine} />
       </div>
-      <div className="timer-export">
+      <div ref={exportTarget} className="timer-export">
         <div>
           <strong>Your practice, on this device.</strong>
           <p>

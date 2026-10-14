@@ -1,3 +1,4 @@
+import { dismissTutorialForTest } from './helpers/tutorial';
 import { expect, test } from '@playwright/test';
 import { createCubeEngine } from '../src/core/cube';
 import { stateToFacelets } from '../src/core/facelets';
@@ -14,6 +15,7 @@ test('all 54 single moves preserve native renderer stickers including centers', 
   page.on('pageerror', (error) => errors.push(error.message));
   const engine = await createCubeEngine();
   await page.goto('club/#/moves');
+  await dismissTutorialForTest(page);
   for (const { base } of NOTATION_ENTRIES)
     for (const amount of ['', "'", '2'] as const) {
       const demo = buildNotationDemo(engine, { base, amount });
@@ -40,6 +42,7 @@ test('camera changes preserve a partial move and all representative layers anima
   page.on('pageerror', (error) => errors.push(error.message));
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto('club/#/moves');
+  await dismissTutorialForTest(page);
   for (const move of ['U', "U'", 'D', "D'", 'B', "B'", 'M', "M'", 'E', 'S', 'Rw', 'x']) {
     await selectNotation(page, move);
     await expect(page.getByRole('button', { name: 'Play move', exact: true })).toBeEnabled();

@@ -6,6 +6,7 @@ import { createCubeEngine } from '../../core/cube';
 import type { CubeEngine } from '../../core/types';
 import { NotationPlayer } from './NotationPlayer';
 import { createNotationAdapter, type NotationRenderer } from './cubing-adapter';
+import { GuidanceProvider } from '../../ui/guidance';
 vi.mock('./cubing-adapter', () => ({ createNotationAdapter: vi.fn() }));
 let engine: CubeEngine,
   reduced = false;
@@ -36,6 +37,28 @@ beforeEach(() => {
 afterEach(() => {
   cleanup();
   vi.unstubAllGlobals();
+});
+it('wrong move does not complete U prime playback and re-selection is not playback', async () => {
+  const emit = vi.fn(),
+    bridge = { emit, registerTarget: () => () => {}, registerScope: () => () => {} };
+  const v = render(
+    <GuidanceProvider bridge={bridge}>
+      <NotationPlayer engine={engine} selection={{ base: 'R', amount: '2' }} />
+    </GuidanceProvider>,
+  );
+  await waitFor(() => expect(screen.getByRole('button', { name: 'Play move' })).toBeEnabled());
+  expect(emit).not.toHaveBeenCalled();
+  fireEvent.click(screen.getByRole('button', { name: 'Play move' }));
+  expect(emit).toHaveBeenLastCalledWith({ name: 'notation-play', value: 'R2' });
+  v.rerender(
+    <GuidanceProvider bridge={bridge}>
+      <NotationPlayer engine={engine} selection={{ base: 'U', amount: "'" }} />
+    </GuidanceProvider>,
+  );
+  await waitFor(() => expect(screen.getByRole('button', { name: 'Play move' })).toBeEnabled());
+  expect(emit).toHaveBeenCalledOnce();
+  fireEvent.click(screen.getByRole('button', { name: 'Replay' }));
+  expect(emit).toHaveBeenLastCalledWith({ name: 'notation-play', value: "U'" });
 });
 it('does not accept an old selection after the next renderer is ready', async () => {
   let resolveOld!: (v: NotationRenderer) => void;

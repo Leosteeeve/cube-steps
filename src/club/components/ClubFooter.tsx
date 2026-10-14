@@ -4,6 +4,7 @@ export function ClubFooter() {
     <footer className="club-footer">
       <MotionPreference />
       <span>Webb Cubing Club</span>
+      <a href="#/guide">Website guide</a>
       <span>
         Built for curious minds. Powered by <a href={import.meta.env.BASE_URL}>CubeSteps</a>.
       </span>

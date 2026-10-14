@@ -1,3 +1,4 @@
+import { dismissTutorialForTest } from './helpers/tutorial';
 import { expect, test } from '@playwright/test';
 import { readFile } from 'node:fs/promises';
 declare global {
@@ -56,6 +57,9 @@ test('unsaved results remain exportable and retry persists them exactly once', a
     };
   });
   await page.goto('club/#/timer');
+  // The shared welcome dismissal already visited /club/; reload so the fault
+  // injection runs even when goto above only changes the hash.
+  await page.reload();
   const surface = page.getByRole('button', { name: 'Timing surface', exact: true });
   await expect(surface).toBeEnabled({ timeout: 20000 });
   await surface.focus();
@@ -156,4 +160,9 @@ test('phone timer and history fit the viewport with generous controls', async ({
       fullPage: true,
     });
   }
+});
+
+test.beforeEach(async ({ page }) => {
+  await page.goto('club/');
+  await dismissTutorialForTest(page);
 });

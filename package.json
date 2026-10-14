@@ -23,7 +23,9 @@
     "preview": "vite preview --host 127.0.0.1",
     "test:production": "node scripts/test-production.mjs",
     "notices": "node scripts/collect-notices.mjs",
-    "format": "prettier --write src tests e2e scripts *.ts *.json .github/workflows"
+    "format": "prettier --write src tests e2e scripts *.ts *.json .github/workflows",
+    "capture:guide": "node scripts/tutorial/capture-guide.mts",
+    "verify:guide": "node scripts/tutorial/capture-guide.mts --verify"
   },
   "dependencies": {
     "cubing": "0.65.1",

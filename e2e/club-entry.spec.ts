@@ -1,3 +1,4 @@
+import { dismissTutorialForTest } from './helpers/tutorial';
 import { test, expect } from '@playwright/test';
 test('club homepage fits phones and desktop with clear learning actions', async ({
   page,
@@ -7,6 +8,7 @@ test('club homepage fits phones and desktop with clear learning actions', async 
   for (const width of [1280, 390, 360]) {
     await page.setViewportSize({ width, height: 900 });
     await page.goto('club/');
+  await dismissTutorialForTest(page);
     await expect(page.getByRole('heading', { name: 'One turn. A new possibility.' })).toBeVisible();
     await expect(page.getByRole('link', { name: 'Find my starting point' })).toHaveAttribute(
       'href',
@@ -36,6 +38,7 @@ test('club home and deep lesson reload preserve their entry and shared player', 
   const errors: string[] = [];
   page.on('pageerror', (e) => errors.push(e.message));
   await page.goto('club/');
+  await dismissTutorialForTest(page);
   await expect(page.getByRole('link', { name: 'Webb Cubing Club home' })).toBeVisible();
   await expect(page.locator('html')).toHaveAttribute('data-edition', 'club');
   await page.goto('club/#/learn/white-cross');

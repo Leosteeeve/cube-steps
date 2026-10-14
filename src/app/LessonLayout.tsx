@@ -1,4 +1,5 @@
-import { useEffect, useState, type ReactNode } from 'react';
+import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
+import { useGuidanceScope, useGuidanceTarget } from '../ui/guidance';
 import { getCourse } from '../content/courses';
 import type { StageId, MethodId } from '../core/types';
 import { getMethod } from '../methods/registry';
@@ -21,6 +22,25 @@ export function LessonLayout({
   const [pathOpen, setPathOpen] = useState(
     () => typeof matchMedia !== 'function' || matchMedia('(min-width: 851px)').matches,
   );
+  const navTarget = useGuidanceTarget('lesson.navigation'),
+    currentOpen = useRef(pathOpen);
+  currentOpen.current = pathOpen;
+  useGuidanceScope(
+    'lesson-path',
+    useCallback(() => {
+      const saved = currentOpen.current;
+      let live = true;
+      if (!free) setPathOpen(true);
+      return {
+        restore() {
+          if (live && !free) setPathOpen(saved);
+        },
+        dispose() {
+          live = false;
+        },
+      };
+    }, [free]),
+  );
   useEffect(() => {
     if (typeof matchMedia !== 'function') return;
     const media = matchMedia('(min-width: 851px)'),
@@ -33,7 +53,11 @@ export function LessonLayout({
     ? getMethod(method).stages.map((s) => ({ id: s.id, stageId: s.id, shortTitle: s.label }))
     : getCourse(method);
   const path = (
-    <nav className="stage-nav" aria-label={free ? 'Solution stages' : 'Learning path'}>
+    <nav
+      ref={!free ? navTarget : undefined}
+      className="stage-nav"
+      aria-label={free ? 'Solution stages' : 'Learning path'}
+    >
       <div className="nav-heading">
         <span className="eyebrow">
           {free

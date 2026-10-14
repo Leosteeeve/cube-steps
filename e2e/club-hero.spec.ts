@@ -1,8 +1,10 @@
+import { dismissTutorialForTest } from './helpers/tutorial';
 import { expect, test } from '@playwright/test';
 test('hero visibly turns a layer and keeps its paused frame', async ({ page }, info) => {
   await page.setViewportSize({ width: 1440, height: 950 });
   await page.clock.install();
   await page.goto('club/');
+  await dismissTutorialForTest(page);
   await expect(page.getByRole('button', { name: 'Pause motion' })).toBeVisible();
   const pixels = () => page.locator('canvas.hero-canvas').evaluate((canvas: HTMLCanvasElement) => canvas.toDataURL());
   const initial = await pixels();
@@ -33,6 +35,7 @@ for (const width of [360, 390, 768, 1024, 1440])
     page.on('request', (req) => requests.push(req.url()));
     page.on('pageerror', (error) => errors.push(error.message));
     await page.goto('club/');
+  await dismissTutorialForTest(page);
     await expect(page.getByRole('link', { name: 'Resume learning' })).toHaveAttribute(
       'href',
       '#/learn/white-cross',

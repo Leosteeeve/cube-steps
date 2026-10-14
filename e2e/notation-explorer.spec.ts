@@ -1,3 +1,4 @@
+import { dismissTutorialForTest } from './helpers/tutorial';
 import { test, expect } from '@playwright/test';
 import { selectNotation, renderNotationFrame } from './helpers/notation';
 for (const width of [360, 390, 768, 1024, 1440])
@@ -6,11 +7,12 @@ for (const width of [360, 390, 768, 1024, 1440])
     const errors: string[] = [];
     page.on('pageerror', (e) => errors.push(e.message));
     await page.goto('club/#/moves');
+    await dismissTutorialForTest(page);
     await expect(page.locator('.notation-player')).toHaveAttribute('data-phase', 'ready');
     await expect(page.locator('.notation-player')).toHaveAttribute('data-progress', '0');
     await expect(
       page.getByRole('navigation', { name: 'Main navigation' }).getByRole('link'),
-    ).toHaveText(['Home', 'Moves', 'Learn', 'Timer ↗']);
+    ).toHaveText(['Home', 'Moves', 'Learn', 'Timer ↗', 'Guide']);
     await expect(page.getByRole('link', { name: 'Moves', exact: true })).toHaveAttribute(
       'aria-current',
       'page',
@@ -60,6 +62,7 @@ for (const width of [360, 390, 768, 1024, 1440])
 test('reduced motion, WebGL fallback and recoverable lazy module failure', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto('club/#/moves');
+  await dismissTutorialForTest(page);
   await expect(page.getByRole('button', { name: 'After', exact: true })).toBeEnabled({
     timeout: 20000,
   });
@@ -117,6 +120,7 @@ test('decoration off allows deliberate moves and explorer leaves stored learning
     );
   });
   await page.goto('club/#/moves');
+  await dismissTutorialForTest(page);
   const timerRows = await page.evaluate(async () => {
     const db = await new Promise<IDBDatabase>((resolve, reject) => {
       const request = indexedDB.open('cubesteps.club.timer', 1);

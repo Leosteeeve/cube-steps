@@ -1,6 +1,7 @@
 // @vitest-environment jsdom
 import '@testing-library/jest-dom/vitest';
-import { cleanup, render, screen } from '@testing-library/react';
+import { cleanup, fireEvent, render, screen } from '@testing-library/react';
+import { TestTour } from '../../club/tutorial/TestTour';
 import userEvent from '@testing-library/user-event';
 import { afterEach, beforeAll, expect, it, vi } from 'vitest';
 import { createCubeEngine } from '../../core/cube';
@@ -41,6 +42,28 @@ beforeAll(async () => {
   engine = await createCubeEngine();
 });
 afterEach(cleanup);
+it('read-only library tour preserves filters and selected cases', async () => {
+  localStorage.setItem(
+    'cubesteps.club.tutorial.v1',
+    JSON.stringify({ version: 1, welcome: 'never', dismissed: {}, tours: {} }),
+  );
+  render(
+    <TestTour id="algorithms">
+      <AlgorithmLibraryPage engine={engine} />
+    </TestTour>,
+  );
+  await screen.findByRole('checkbox', { name: 'Select OLL 20' });
+  fireEvent.change(screen.getByLabelText('Search cases'), { target: { value: 'OLL 20' } });
+  fireEvent.click(screen.getByRole('checkbox', { name: 'Select OLL 20' }));
+  expect(document.querySelector('[data-guidance="algorithms.filters"]')).not.toBeNull();
+  fireEvent.click(screen.getByRole('button', { name: 'Page tour' }));
+  fireEvent.click(screen.getByRole('button', { name: 'Clear selection' }));
+  fireEvent.click(screen.getByRole('button', { name: 'Next' }));
+  expect(document.querySelector('[data-guidance="algorithms.case"]')).not.toBeNull();
+  fireEvent.click(screen.getByRole('button', { name: 'Exit tour' }));
+  expect(screen.getByLabelText('Search cases')).toHaveValue('OLL 20');
+  expect(screen.getByRole('checkbox', { name: 'Select OLL 20' })).toBeChecked();
+});
 it('passes library preselection into the shared practice selection', async () => {
   practiceStore.save({ version: 1, caseIds: [], groupIds: [] });
   render(<AlgorithmLibraryPage engine={engine} />);

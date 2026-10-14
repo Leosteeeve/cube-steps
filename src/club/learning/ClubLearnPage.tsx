@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { LearnPage } from '../../app/LearnPage';
 import type { CubeEngine, MethodId } from '../../core/types';
 import { ProgressStatus, useClubProgress } from './use-club-progress';
+import { useGuidanceTarget } from '../../ui/guidance';
 export function ClubLearnPage({
   engine,
   method,
@@ -12,6 +13,7 @@ export function ClubLearnPage({
   lessonId: string;
 }) {
   const { progress, visitLesson, setPracticed } = useClubProgress();
+  const practiceTarget = useGuidanceTarget('lesson.practice');
   useEffect(() => visitLesson(method, lessonId), [method, lessonId, visitLesson]);
   return (
     <LearnPage
@@ -21,7 +23,7 @@ export function ClubLearnPage({
       lessonId={lessonId}
       presentation="club"
       footer={
-        <section className="club-lesson-progress">
+        <section ref={practiceTarget} className="club-lesson-progress">
           <label>
             <input
               type="checkbox"

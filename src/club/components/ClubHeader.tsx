@@ -3,7 +3,7 @@ export function ClubHeader({
   active,
   timerAvailable,
 }: {
-  active: 'home' | 'moves' | 'learn' | 'timer';
+  active: 'home' | 'moves' | 'learn' | 'timer' | 'guide';
   timerAvailable: boolean;
 }) {
   return (
@@ -26,6 +26,9 @@ export function ClubHeader({
             Timer <span aria-hidden="true">↗</span>
           </a>
         )}
+        <a href="#/guide" aria-current={active === 'guide' ? 'page' : undefined}>
+          Guide
+        </a>
       </nav>
     </header>
   );

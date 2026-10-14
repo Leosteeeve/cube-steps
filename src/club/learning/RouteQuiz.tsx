@@ -5,6 +5,7 @@ import type { MethodId } from '../../core/types';
 import { CLUB_METHODS, type QuizAnswers } from './types';
 import { recommendRoute } from './recommend';
 import { ProgressStatus, useClubProgress } from './use-club-progress';
+import { useGuidanceTarget } from '../../ui/guidance';
 const questions: { key: keyof QuizAnswers; title: string; options: [string, string][] }[] = [
   {
     key: 'ability',
@@ -46,6 +47,8 @@ const questions: { key: keyof QuizAnswers; title: string; options: [string, stri
 const label = (method: MethodId) =>
   getMethod(method).label + (getMethod(method).teachingStatus === 'preview' ? ' · Preview' : '');
 export function RouteQuiz() {
+  const answersTarget = useGuidanceTarget('quiz.answers'),
+    routeTarget = useGuidanceTarget('quiz.route');
   const [answers, setAnswers] = useState<Partial<QuizAnswers>>({}),
     [step, setStep] = useState(0),
     [chooser, setChooser] = useState(false),
@@ -59,8 +62,10 @@ export function RouteQuiz() {
   const method = override ?? recommendation?.method;
   const q = questions[step];
   return (
-    <section className="club-quiz club-panel">
-      <p className="club-kicker">YOUR CUBE. YOUR STARTING POINT.</p>
+    <section ref={answersTarget} className="club-quiz club-panel">
+      <p ref={routeTarget} className="club-kicker">
+        YOUR CUBE. YOUR STARTING POINT.
+      </p>
       <h1 ref={title} tabIndex={-1}>
         {chooser ? 'Choose your starting point' : method ? 'A route to grow with.' : q.title}
       </h1>

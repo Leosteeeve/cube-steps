@@ -1,8 +1,10 @@
-import { useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
+import { useGuidanceAction, useGuidanceScope, useGuidanceTarget } from '../../ui/guidance';
 import type { CubeEngine } from '../../core/types';
 import {
   NOTATION_ENTRIES,
   describeNotation,
+  notationToken,
   type NotationEntry,
   type NotationSelection,
 } from './catalog';
@@ -10,16 +12,45 @@ import { NotationPlayer } from './NotationPlayer';
 import './moves.css';
 export function MoveExplorerPage({ engine }: { engine: CubeEngine }) {
   const [selection, setSelection] = useState<NotationSelection>({ base: 'U', amount: '' });
+  const emit = useGuidanceAction(),
+    faces = useGuidanceTarget('moves.faces'),
+    amountTarget = useGuidanceTarget('moves.amount'),
+    advanced = useGuidanceTarget('moves.advanced');
+  const current = useRef(selection);
+  current.current = selection;
+  useGuidanceScope(
+    'notation-selection',
+    useCallback(() => {
+      const saved = current.current;
+      let live = true;
+      return {
+        restore() {
+          if (live) setSelection(saved);
+        },
+        dispose() {
+          live = false;
+        },
+      };
+    }, [engine]),
+  );
   function choices(family: NotationEntry['family'], label: string) {
     return (
-      <div className="move-family" role="group" aria-label={label}>
+      <div
+        ref={family === 'face' ? faces : undefined}
+        className="move-family"
+        role="group"
+        aria-label={label}
+      >
         {NOTATION_ENTRIES.filter((entry) => entry.family === family).map((entry) => (
           <button
             key={entry.base}
             type="button"
             aria-label={`${entry.base}, ${entry.name}`}
             aria-pressed={selection.base === entry.base}
-            onClick={() => setSelection((current) => ({ ...current, base: entry.base }))}
+            onClick={() => {
+              setSelection((current) => ({ ...current, base: entry.base }));
+              emit({ name: 'notation-base', value: entry.base });
+            }}
           >
             <strong>{entry.base}</strong>
             <span>{entry.name.replace(' face', '')}</span>
@@ -40,7 +71,7 @@ export function MoveExplorerPage({ engine }: { engine: CubeEngine }) {
           <h2>01 / Choose a face</h2>
           {choices('face', 'Face turns')}
           <details className="moves-advanced">
-            <summary>Explore more moves</summary>
+            <summary ref={advanced}>Explore more moves</summary>
             <h3>Whole cube</h3>
             {choices('rotation', 'Whole-cube rotations')}
             <h3>Two layers</h3>
@@ -51,7 +82,7 @@ export function MoveExplorerPage({ engine }: { engine: CubeEngine }) {
           <p className="moves-picker-note">Letters follow your grip, not a fixed sticker color.</p>
         </aside>
         <div className="moves-example">
-          <div className="moves-variants" role="group" aria-label="Turn amount">
+          <div ref={amountTarget} className="moves-variants" role="group" aria-label="Turn amount">
             <span>02 / Choose a turn</span>
             {(['', "'", '2'] as const).map((amount) => {
               const description = describeNotation({ base: selection.base, amount });
@@ -61,7 +92,13 @@ export function MoveExplorerPage({ engine }: { engine: CubeEngine }) {
                   type="button"
                   aria-label={description.spoken}
                   aria-pressed={selection.amount === amount}
-                  onClick={() => setSelection((current) => ({ ...current, amount }))}
+                  onClick={() => {
+                    setSelection((current) => ({ ...current, amount }));
+                    emit({
+                      name: 'notation-select',
+                      value: notationToken({ ...selection, amount }),
+                    });
+                  }}
                 >
                   {description.display}
                 </button>
