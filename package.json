@@ -7,6 +7,9 @@
     "node": ">=24"
   },
   "scripts": {
+    "prepare:guide-video": "node scripts/tutorial/prepare-guide-video.mts",
+    "predev": "npm run prepare:guide-video",
+    "prebuild": "npm run prepare:guide-video",
     "dev": "vite --host 127.0.0.1",
     "typecheck": "tsc --noEmit",
     "generate:cross": "node scripts/generate-cross-table.mts",

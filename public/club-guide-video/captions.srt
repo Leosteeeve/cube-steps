@@ -1,0 +1,407 @@
+1
+00:00:00,650 --> 00:00:02,790
+Welcome to Webb Cubing Club.
+
+2
+00:00:02,790 --> 00:00:05,390
+Bring your cube, and a little curiosity.
+
+3
+00:00:05,390 --> 00:00:07,746
+This is your place to learn with the club,
+
+4
+00:00:07,746 --> 00:00:08,732
+practice at home,
+
+5
+00:00:08,732 --> 00:00:10,770
+and take one small step at a time.
+
+6
+00:00:13,000 --> 00:00:14,818
+You do not need an account.
+
+7
+00:00:14,818 --> 00:00:17,975
+Start with a short lesson.
+Speed can come later.
+
+8
+00:00:21,000 --> 00:00:23,140
+Choose Find my starting point.
+
+9
+00:00:23,140 --> 00:00:25,779
+Four short questions
+suggest a learning route
+
+10
+00:00:25,779 --> 00:00:27,729
+based on what you can already do,
+
+11
+00:00:27,729 --> 00:00:29,800
+your goals, and how you practice.
+
+12
+00:00:33,000 --> 00:00:34,860
+This is not a test.
+
+13
+00:00:34,860 --> 00:00:37,107
+If you cannot solve independently yet,
+
+14
+00:00:37,107 --> 00:00:39,182
+the beginner's layer by layer route
+
+15
+00:00:39,182 --> 00:00:40,800
+is a good place to start.
+
+16
+00:00:44,000 --> 00:00:47,000
+Read the reasons, then
+choose Start lesson.
+
+17
+00:00:47,000 --> 00:00:48,534
+You can skip the questions,
+
+18
+00:00:48,534 --> 00:00:51,120
+choose a route yourself,
+or change it later.
+
+19
+00:00:56,000 --> 00:00:57,508
+First, meet the moves.
+
+20
+00:00:57,508 --> 00:01:00,000
+Hold white on top and green in front.
+
+21
+00:01:00,000 --> 00:01:02,034
+U means up, D down, L left,
+
+22
+00:01:02,034 --> 00:01:04,120
+R right, F front, and B back.
+
+23
+00:01:08,000 --> 00:01:10,640
+A plain letter is a
+clockwise quarter turn,
+
+24
+00:01:10,640 --> 00:01:12,500
+looking straight at that face.
+
+25
+00:01:12,500 --> 00:01:15,026
+A prime means counterclockwise.
+
+26
+00:01:15,026 --> 00:01:16,750
+A two means a half turn.
+
+27
+00:01:19,000 --> 00:01:21,360
+Choose U′, then Direction view.
+
+28
+00:01:21,360 --> 00:01:24,200
+Press Play and copy the
+upper layer on your cube.
+
+29
+00:01:24,200 --> 00:01:26,120
+Replay slowly if you need.
+
+30
+00:01:26,120 --> 00:01:28,720
+Moving the camera only changes your view.
+
+31
+00:01:36,000 --> 00:01:38,101
+In Learn, begin with the holding
+
+32
+00:01:38,101 --> 00:01:39,820
+and notation introduction.
+
+33
+00:01:39,820 --> 00:01:42,460
+Follow the club leader's
+lesson in a meeting,
+
+34
+00:01:42,460 --> 00:01:45,220
+or work through the
+stages at your own pace.
+
+35
+00:01:49,000 --> 00:01:50,190
+For the first cross,
+
+36
+00:01:50,190 --> 00:01:52,740
+build white petals
+around the yellow center.
+
+37
+00:01:52,740 --> 00:01:55,553
+Match each petal's side
+color to its center,
+
+38
+00:01:55,553 --> 00:01:56,860
+then turn it down.
+
+39
+00:02:00,000 --> 00:02:01,935
+To copy this exact example,
+
+40
+00:02:01,935 --> 00:02:04,700
+open Follow along with a physical cube.
+
+41
+00:02:04,700 --> 00:02:06,700
+Apply its scramble from solved,
+
+42
+00:02:06,700 --> 00:02:08,700
+with white up and green front.
+
+43
+00:02:08,700 --> 00:02:10,820
+Our screen is already prepared.
+
+44
+00:02:13,000 --> 00:02:15,360
+Use Next move to watch one turn.
+
+45
+00:02:15,360 --> 00:02:17,720
+Read the goal and result check.
+
+46
+00:02:17,720 --> 00:02:20,340
+A stage jump changes only the screen;
+
+47
+00:02:20,340 --> 00:02:23,120
+follow all earlier
+moves on your real cube.
+
+48
+00:02:26,000 --> 00:02:28,508
+Later, explore the algorithm library
+
+49
+00:02:28,508 --> 00:02:30,000
+and formula practice.
+
+50
+00:02:30,000 --> 00:02:33,000
+Learn to recognize a case
+before revealing its answer.
+
+51
+00:02:33,000 --> 00:02:34,895
+Beginner and Advanced CFOP
+
+52
+00:02:34,895 --> 00:02:37,120
+are there when you are ready.
+
+53
+00:02:41,000 --> 00:02:43,068
+Stuck with a cube in your hands?
+
+54
+00:02:43,068 --> 00:02:45,700
+Open Solve your cube. Choose your method.
+
+55
+00:02:45,700 --> 00:02:47,500
+If you know the scramble, paste it
+
+56
+00:02:47,500 --> 00:02:49,420
+and ask for an explained solution.
+
+57
+00:02:54,000 --> 00:02:57,000
+This short example has
+already been prepared.
+
+58
+00:02:57,000 --> 00:03:00,000
+Follow its verified stages
+with the same player.
+
+59
+00:03:00,000 --> 00:03:02,200
+Keep your cube's holding aligned,
+
+60
+00:03:02,200 --> 00:03:05,120
+including any shown whole cube rotations.
+
+61
+00:03:06,000 --> 00:03:08,000
+Or choose Enter colors.
+
+62
+00:03:08,000 --> 00:03:11,500
+Copy all six faces using
+each holding diagram.
+
+63
+00:03:11,500 --> 00:03:13,700
+Review them, then Check colors.
+
+64
+00:03:13,700 --> 00:03:16,620
+Fix any errors before
+generating a solution.
+
+65
+00:03:21,000 --> 00:03:24,320
+When you can solve
+independently, try Timer.
+
+66
+00:03:24,320 --> 00:03:26,880
+Apply the random scramble from solved.
+
+67
+00:03:26,880 --> 00:03:28,515
+Compare the six face diagram
+
+68
+00:03:28,515 --> 00:03:30,720
+to check your cube before you begin.
+
+69
+00:03:32,000 --> 00:03:34,642
+On a keyboard, hold Space until Ready,
+
+70
+00:03:34,642 --> 00:03:36,200
+then release to start.
+
+71
+00:03:36,200 --> 00:03:38,000
+Press Space again to stop.
+
+72
+00:03:38,000 --> 00:03:40,737
+This is a short control demonstration,
+
+73
+00:03:40,737 --> 00:03:42,025
+not a real solve.
+
+74
+00:03:45,000 --> 00:03:48,467
+On a touch screen, hold the
+large timer until Ready,
+
+75
+00:03:48,467 --> 00:03:51,000
+release, then touch it again to stop.
+
+76
+00:03:51,000 --> 00:03:53,333
+Optional inspection gives you time
+
+77
+00:03:53,333 --> 00:03:54,750
+to look before starting.
+
+78
+00:03:59,000 --> 00:04:02,200
+The history here uses
+labeled example results.
+
+79
+00:04:02,200 --> 00:04:05,780
+See individual times,
+averages of five and twelve,
+
+80
+00:04:05,780 --> 00:04:07,000
+and the trend.
+
+81
+00:04:07,000 --> 00:04:10,825
+You can correct a result
+with plus two or DNF.
+
+82
+00:04:13,000 --> 00:04:16,000
+Records stay in this
+browser, on this device.
+
+83
+00:04:16,000 --> 00:04:17,790
+Export CSV or JSON
+
+84
+00:04:17,790 --> 00:04:22,500
+before clearing browser
+data or changing devices.
+
+85
+00:04:22,500 --> 00:04:24,900
+There is no automatic cloud sync.
+
+86
+00:04:26,000 --> 00:04:27,137
+Need a reminder?
+
+87
+00:04:27,137 --> 00:04:30,680
+Open Guide for screenshots
+and written instructions.
+
+88
+00:04:30,680 --> 00:04:34,280
+Expand Every control,
+explained for the details.
+
+89
+00:04:34,280 --> 00:04:37,600
+Page tours show the controls
+right where you use them.
+
+90
+00:04:39,000 --> 00:04:42,000
+You can skip a step or
+exit a tour at any time.
+
+91
+00:04:42,000 --> 00:04:44,800
+For today, learn one unfamiliar move,
+
+92
+00:04:44,800 --> 00:04:47,750
+try one lesson, and
+repeat it with your cube.
+
+93
+00:04:51,000 --> 00:04:53,320
+Come back for another small step tomorrow.
+
+94
+00:04:53,320 --> 00:04:55,540
+Learn it here. Try it in your hands.
+
+95
+00:04:55,540 --> 00:04:56,320
+Your turn.
