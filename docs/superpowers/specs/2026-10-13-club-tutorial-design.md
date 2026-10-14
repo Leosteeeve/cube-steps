@@ -1,6 +1,6 @@
 # Club Onboarding, Guide, and Tutorial Video
 
-Status: design draft for owner review. The owner selected segmented tours, light hands-on interaction with skippable steps, and a 4–6 minute video with English narration, English captions, and real website operation. The detailed behavior below is proposed for written approval. No tutorial implementation, video production, dependency installation, or publication has started.
+Status: the owner approved this written design on October 13, 2026 and requested implementation plans. The owner selected segmented tours, light hands-on interaction with skippable steps, and a 4–6 minute video with English narration, English captions, and real website operation. Implementation-plan approval is the next step. No tutorial implementation, video production, dependency installation, or publication has started.
 
 ## 1. Purpose and audience
 
