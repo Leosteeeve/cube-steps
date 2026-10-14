@@ -3,6 +3,7 @@ import { GUIDE_CHAPTERS, TOUR_DESTINATIONS } from './chapters';
 import type { GuideSectionId, GuideScreenshot } from './types';
 import screenshots from './screenshots.json';
 import { GuideImage } from './GuideImage';
+import { GuideVideo } from './GuideVideo';
 import { useClubTutorial } from '../tutorial/TutorialProvider';
 import './guide.css';
 export function GuidePage({ section }: { section?: GuideSectionId }) {
@@ -24,6 +25,7 @@ export function GuidePage({ section }: { section?: GuideSectionId }) {
         </h1>
         <p>Keep your cube nearby. Learn one thing, try it, then come back for the next.</p>
       </header>
+      <GuideVideo />
       <div className="guide-layout">
         <nav className="guide-index" aria-label="Guide chapters">
           <p>IN THIS GUIDE</p>

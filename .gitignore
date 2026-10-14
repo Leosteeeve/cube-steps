@@ -159,3 +159,5 @@ media/club-tutorial/public/narration/
 media/club-tutorial/output/
 media/club-tutorial/.cache/
 test-results-review/
+public/club-guide-video/*.mp4
+public/club-guide-video/*.tmp

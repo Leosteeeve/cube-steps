@@ -78,13 +78,15 @@ The club edition shares the same courses, formulas, solvers and player. It adds 
 
 First-time members can choose a short tour, postpone it, or stop automatic offers. **Page tour** stays available on each feature page; **Guide** collects written steps, control references, real screenshots, and links to start, resume or restart a walkthrough. Simple Moves and lesson steps invite hands-on practice; input drafts, practice answers and Timer history are protected. Timer help opens only while idle and locks timing inputs until a fresh press after exit. Tutorial choices use their own local-storage key and never mark a lesson mastered.
 
-The written Guide works without loading the cube engine. Its Timer screenshots are visibly labeled examples captured in isolated browser contexts. A narrated video is being developed separately; no video is published or embedded yet.
+The Guide starts with a five-minute website walkthrough with English narration and captions. It loads only after selecting **Watch the 5-minute guide**, and includes a download link and an expandable transcript. The written chapters work without loading the video or cube engine. Timer demonstrations and screenshots use visibly labeled examples captured in isolated browser contexts.
 
 The homepage cube now has equal-sized pieces, gentle motion and occasional layer turns. Pause it locally or turn decorative motion off. **Moves** opens a separate notation workbench: choose from 54 face, wide, slice and whole-cube turns; read the direction from the relevant face; then play, pause or replay one move. Holding and Direction views change only the camera. Reduced motion or unavailable 3D rendering provides static Before/After diagrams. The new notation workbench is a preview pending physical-cube follow-along acceptance.
 
 Progress and preferences use separate club storage keys; timer history stays in this browser's IndexedDB. There are no accounts or cross-device synchronization. Export a backup before clearing browser data. Unsaved attempts remain visible and exportable with a **Not saved** label. Leaving, hiding or losing focus during a timed solve records an interrupted DNF; a hard browser close can prevent an unfinished save. Manual +2 adds to inspection +2; DNF overrides numeric time. Each average discards one best and one worst result, and two DNFs make the window DNF.
 
 For local development, open `/cube-steps/club/`. Both entries are built and deployed from this repository. See the [club validation record](docs/validation/webb-club.md) and [notation/UI validation](docs/validation/notation-ui-refresh.md).
+
+`npm run dev` and `npm run build` first prepare the Guide video: download the accepted 37 MB MP4 from a versioned GitHub Release and verify its size and SHA-256. The verified file is reused locally and stays outside Git history. Run `npm run prepare:guide-video` explicitly if needed. Builds fail if the download or verification fails; the published site serves its own copy and needs no third-party video player. See [video publication notes](docs/validation/guide-video-publication.md).
 
 ## Publish to GitHub Pages
 

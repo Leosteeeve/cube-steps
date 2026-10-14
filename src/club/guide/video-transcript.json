@@ -1,0 +1,98 @@
+[
+  {
+    "start": 0.65,
+    "text": "Welcome to Webb Cubing Club. Bring your cube, and a little curiosity. This is your place to learn with the club, practice at home, and take one small step at a time."
+  },
+  {
+    "start": 13,
+    "text": "You do not need an account. Start with a short lesson. Speed can come later."
+  },
+  {
+    "start": 21,
+    "text": "Choose Find my starting point. Four short questions suggest a learning route based on what you can already do, your goals, and how you practice."
+  },
+  {
+    "start": 33,
+    "text": "This is not a test. If you cannot solve independently yet, the beginner's layer by layer route is a good place to start."
+  },
+  {
+    "start": 44,
+    "text": "Read the reasons, then choose Start lesson. You can skip the questions, choose a route yourself, or change it later."
+  },
+  {
+    "start": 56,
+    "text": "First, meet the moves. Hold white on top and green in front. U means up, D down, L left, R right, F front, and B back."
+  },
+  {
+    "start": 68,
+    "text": "A plain letter is a clockwise quarter turn, looking straight at that face. A prime means counterclockwise. A two means a half turn."
+  },
+  {
+    "start": 79,
+    "text": "Choose U prime, then Direction view. Press Play and copy the upper layer on your cube. Replay slowly if you need. Moving the camera only changes your view."
+  },
+  {
+    "start": 96,
+    "text": "In Learn, begin with the holding and notation introduction. Follow the club leader's lesson in a meeting, or work through the stages at your own pace."
+  },
+  {
+    "start": 109,
+    "text": "For the first cross, build white petals around the yellow center. Match each petal's side color to its center, then turn it down."
+  },
+  {
+    "start": 120,
+    "text": "To copy this exact example, open Follow along with a physical cube. Apply its scramble from solved, with white up and green front. Our screen is already prepared."
+  },
+  {
+    "start": 133,
+    "text": "Use Next move to watch one turn. Read the goal and result check. A stage jump changes only the screen; follow all earlier moves on your real cube."
+  },
+  {
+    "start": 146,
+    "text": "Later, explore the algorithm library and formula practice. Learn to recognize a case before revealing its answer. Beginner and Advanced C F O P are there when you are ready."
+  },
+  {
+    "start": 161,
+    "text": "Stuck with a cube in your hands? Open Solve your cube. Choose your method. If you know the scramble, paste it and ask for an explained solution."
+  },
+  {
+    "start": 174,
+    "text": "This short example has already been prepared. Follow its verified stages with the same player. Keep your cube's holding aligned, including any shown whole cube rotations."
+  },
+  {
+    "start": 186,
+    "text": "Or choose Enter colors. Copy all six faces using each holding diagram. Review them, then Check colors. Fix any errors before generating a solution."
+  },
+  {
+    "start": 201,
+    "text": "When you can solve independently, try Timer. Apply the random scramble from solved. Compare the six face diagram to check your cube before you begin."
+  },
+  {
+    "start": 212,
+    "text": "On a keyboard, hold Space until Ready, then release to start. Press Space again to stop. This is a short control demonstration, not a real solve."
+  },
+  {
+    "start": 225,
+    "text": "On a touch screen, hold the large timer until Ready, release, then touch it again to stop. Optional inspection gives you time to look before starting."
+  },
+  {
+    "start": 239,
+    "text": "The history here uses labeled example results. See individual times, averages of five and twelve, and the trend. You can correct a result with plus two or D N F."
+  },
+  {
+    "start": 253,
+    "text": "Records stay in this browser, on this device. Export C S V or J S O N before clearing browser data or changing devices. There is no automatic cloud sync."
+  },
+  {
+    "start": 266,
+    "text": "Need a reminder? Open Guide for screenshots and written instructions. Expand Every control, explained for the details. Page tours show the controls right where you use them."
+  },
+  {
+    "start": 279,
+    "text": "You can skip a step or exit a tour at any time. For today, learn one unfamiliar move, try one lesson, and repeat it with your cube."
+  },
+  {
+    "start": 291,
+    "text": "Come back for another small step tomorrow. Learn it here. Try it in your hands. Your turn."
+  }
+]
