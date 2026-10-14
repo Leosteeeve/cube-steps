@@ -9,7 +9,8 @@ export type TourId =
   | 'algorithm'
   | 'practice'
   | 'timer';
-export type GuidanceAction = { name: string; value?: string };
+import type { GuidanceAction } from '../../ui/guidance';
+export type { GuidanceAction } from '../../ui/guidance';
 export type TourStep = {
   id: string;
   targetId: string;

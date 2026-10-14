@@ -1,6 +1,12 @@
 import { HeroCube } from './hero/HeroCube';
 import { ProgressStatus } from './learning/use-club-progress';
+import { useGuidanceTarget } from '../ui/guidance';
 export function HomePage({ resumeHref }: { resumeHref?: string }) {
+  const start = useGuidanceTarget('home.start'),
+    learn = useGuidanceTarget('home.learn'),
+    moves = useGuidanceTarget('home.moves'),
+    timer = useGuidanceTarget('home.timer'),
+    help = useGuidanceTarget('home.help');
   return (
     <div className="club-home">
       <section className="club-hero">
@@ -16,11 +22,11 @@ export function HomePage({ resumeHref }: { resumeHref?: string }) {
             Learn at your pace. Get better together.
           </p>
           <div className="club-actions">
-            <a className="club-primary" href={resumeHref ?? '#/find-your-route'}>
+            <a ref={start} className="club-primary" href={resumeHref ?? '#/find-your-route'}>
               {resumeHref ? 'Resume learning' : 'Find my starting point'}{' '}
               <span aria-hidden="true">↗</span>
             </a>
-            <a className="club-secondary" href="#/learn/notation">
+            <a ref={learn} className="club-secondary" href="#/learn/notation">
               Join a lesson
             </a>
           </div>
@@ -64,7 +70,7 @@ export function HomePage({ resumeHref }: { resumeHref?: string }) {
               <br />A cube you can finally solve.
             </p>
           </a>
-          <a href="#/moves">
+          <a ref={moves} href="#/moves">
             <small>02 / EXPLORE</small>
             <span aria-hidden="true">↗</span>
             <h3>Meet the moves</h3>
@@ -74,7 +80,7 @@ export function HomePage({ resumeHref }: { resumeHref?: string }) {
               Watch, compare, and try it yourself.
             </p>
           </a>
-          <a href="#/timer">
+          <a ref={timer} href="#/timer">
             <small>03 / PRACTICE</small>
             <span aria-hidden="true">↗</span>
             <h3>A little better, each time</h3>
@@ -86,6 +92,9 @@ export function HomePage({ resumeHref }: { resumeHref?: string }) {
           </a>
         </div>
       </section>
+      <p ref={help} className="club-help-note">
+        Need a hand? Open Page tour for a short introduction, with Skip and Exit always available.
+      </p>
     </div>
   );
 }

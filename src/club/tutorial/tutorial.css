@@ -1,0 +1,129 @@
+.tour-entry {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin: 0 0 1.2rem;
+  font-size: 0.85rem;
+}
+.tour-entry button {
+  min-height: 40px;
+  padding: 0.45rem 0.8rem;
+  border: 1px solid #c9d9ec;
+  border-radius: 999px;
+  background: #fff;
+  color: #234b7d;
+  font-size: inherit;
+}
+.tour-invitation {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  background: #edf5ff;
+}
+.tour-invitation button {
+  border-color: transparent;
+  background: transparent;
+}
+.tour-entry small {
+  color: #486079;
+}
+.tutorial-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  pointer-events: none;
+  color: #112f52;
+  font-family: var(--font-body, sans-serif);
+}
+.tutorial-shade {
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 42, 67, 0.12);
+}
+.tutorial-outline {
+  position: fixed;
+  outline: 3px solid #2977d0;
+  outline-offset: 5px;
+  border-radius: 12px;
+  box-shadow: 0 0 0 8px #ffffffb0;
+}
+.tutorial-bubble {
+  position: fixed;
+  width: min(360px, calc(100vw - 24px));
+  max-height: calc(100dvh - 24px);
+  overflow: auto;
+  box-sizing: border-box;
+  padding: 22px;
+  background: #fff;
+  border: 1px solid #c3d5eb;
+  border-radius: 22px;
+  box-shadow: 0 18px 70px #12345c30;
+  pointer-events: auto;
+}
+.tutorial-eyebrow {
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  color: #426b99;
+  margin-bottom: 10px;
+}
+.tutorial-bubble h2 {
+  font-size: 1.28rem;
+  line-height: 1.25;
+  margin: 0 0 12px;
+}
+.tutorial-bubble p {
+  font-size: 0.94rem;
+  line-height: 1.5;
+  margin: 0 0 14px;
+}
+.tutorial-bubble .tutorial-status {
+  border-top: 1px solid #e5edf7;
+  padding-top: 10px;
+  font-size: 0.81rem;
+  color: #3b5b7c;
+}
+.tutorial-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  position: sticky;
+  bottom: 0;
+  background: #fff;
+  padding-top: 6px;
+}
+.tutorial-actions button {
+  border-radius: 10px;
+  border: 1px solid #c9d9ec;
+  min-height: 44px;
+  padding: 9px 12px;
+  background: #f5f8fc;
+  color: #173a64;
+  font-size: 0.85rem;
+}
+.tutorial-actions button.club-primary {
+  color: #fff;
+  background: #205fa8;
+  border-color: #205fa8;
+}
+.tutorial-actions button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.tutorial-bubble :focus-visible {
+  outline: 3px solid #e9a52b;
+  outline-offset: 3px;
+}
+@media (max-width: 480px) {
+  .tutorial-bubble {
+    padding: 16px;
+    border-radius: 16px;
+  }
+  .tutorial-bubble p {
+    font-size: 0.87rem;
+  }
+  .tour-entry {
+    justify-content: flex-start;
+  }
+}

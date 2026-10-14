@@ -11,6 +11,9 @@ import { useClubProgress } from './learning/use-club-progress';
 import { lessonRoute, methodRoute } from '../app/routes';
 import { createTimerRepository } from './timer/repository';
 import { MoveExplorerRoute } from './moves/MoveExplorerRoute';
+import { TutorialRouteBoundary } from './tutorial/TutorialProvider';
+import { TourEntry } from './tutorial/TourEntry';
+import { tourForRoute } from './tutorial/catalog';
 const TimerPage = lazy(() => import('./timer/TimerPage').then((m) => ({ default: m.TimerPage })));
 const ClubLearnPage = lazy(() =>
   import('./learning/ClubLearnPage').then((m) => ({ default: m.ClubLearnPage })),
@@ -27,6 +30,10 @@ export function ClubApp() {
   }, []);
   const { engine, error, retry } = useCubeEngine(
     !['home', 'quiz', 'not-found'].includes(route.kind),
+  );
+  const tourId = tourForRoute(
+    route,
+    route.kind === 'learn' && !['notation', 'intro'].includes(route.lessonId),
   );
   return (
     <>
@@ -53,83 +60,91 @@ export function ClubApp() {
         timerAvailable={true}
       />
       <main id="main" tabIndex={-1}>
-        {!['home', 'quiz', 'timer', 'moves'].includes(route.kind) && (
-          <nav className="club-tools" aria-label="Learning tools">
-            <a
-              href={methodRoute(
-                'method' in route ? route.method : progress.selectedMethod,
-                'learn',
-              )}
-            >
-              Lessons
-            </a>
-            <a
-              href={methodRoute(
-                'method' in route ? route.method : progress.selectedMethod,
-                'solve',
-              )}
-            >
-              Solve your cube
-            </a>
-            <a href="#/algorithms">Algorithms</a>
-            <a href="#/practice">Formula practice</a>
-            <a href="#/moves">Move explorer</a>
-            <a href="#/find-your-route">Find your route</a>
-          </nav>
-        )}
-        {route.kind === 'home' ? (
-          <HomePage
-            resumeHref={
-              progress.lastLesson
-                ? lessonRoute(progress.lastLesson.method, progress.lastLesson.lessonId)
-                : undefined
-            }
-          />
-        ) : route.kind === 'quiz' ? (
-          <RouteQuiz />
-        ) : route.kind === 'not-found' ? (
-          <section>
-            <h1>Page not found.</h1>
-            <a href="#/">Back home</a>
-          </section>
-        ) : error ? (
-          <section role="alert">
-            <p>{error}</p>
-            <button onClick={retry}>Retry loading cube</button>
-          </section>
-        ) : engine ? (
-          <>
-            {'method' in route && (
-              <p className="preview-label">
-                {getMethod(route.method).label}
-                {getMethod(route.method).teachingStatus === 'preview' ? ' · Preview' : ''}
-              </p>
-            )}
-            {route.kind === 'moves' ? (
-              <MoveExplorerRoute engine={engine} />
-            ) : route.kind === 'timer' ? (
-              <Suspense fallback={<p role="status">Loading your practice space…</p>}>
-                <TimerPage engine={engine} repository={timerRepository} />
-              </Suspense>
-            ) : route.kind === 'learn' ? (
-              <Suspense
-                fallback={
-                  <p role="status" className="loading-panel">
-                    Loading your lesson…
-                  </p>
-                }
+        <TutorialRouteBoundary routeKey={JSON.stringify(route)} tourId={tourId}>
+          {tourId && route.kind !== 'timer' && (
+            <TourEntry
+              tourId={tourId}
+              ready={route.kind === 'home' || route.kind === 'quiz' || !!engine}
+            />
+          )}
+          {!['home', 'quiz', 'timer', 'moves'].includes(route.kind) && (
+            <nav className="club-tools" aria-label="Learning tools">
+              <a
+                href={methodRoute(
+                  'method' in route ? route.method : progress.selectedMethod,
+                  'learn',
+                )}
               >
-                <ClubLearnPage engine={engine} method={route.method} lessonId={route.lessonId} />
-              </Suspense>
-            ) : (
-              <SharedFeaturePage route={route} engine={engine} />
-            )}
-          </>
-        ) : (
-          <p role="status" className="loading-panel">
-            Getting your cube ready…
-          </p>
-        )}
+                Lessons
+              </a>
+              <a
+                href={methodRoute(
+                  'method' in route ? route.method : progress.selectedMethod,
+                  'solve',
+                )}
+              >
+                Solve your cube
+              </a>
+              <a href="#/algorithms">Algorithms</a>
+              <a href="#/practice">Formula practice</a>
+              <a href="#/moves">Move explorer</a>
+              <a href="#/find-your-route">Find your route</a>
+            </nav>
+          )}
+          {route.kind === 'home' ? (
+            <HomePage
+              resumeHref={
+                progress.lastLesson
+                  ? lessonRoute(progress.lastLesson.method, progress.lastLesson.lessonId)
+                  : undefined
+              }
+            />
+          ) : route.kind === 'quiz' ? (
+            <RouteQuiz />
+          ) : route.kind === 'not-found' ? (
+            <section>
+              <h1>Page not found.</h1>
+              <a href="#/">Back home</a>
+            </section>
+          ) : error ? (
+            <section role="alert">
+              <p>{error}</p>
+              <button onClick={retry}>Retry loading cube</button>
+            </section>
+          ) : engine ? (
+            <>
+              {'method' in route && (
+                <p className="preview-label">
+                  {getMethod(route.method).label}
+                  {getMethod(route.method).teachingStatus === 'preview' ? ' · Preview' : ''}
+                </p>
+              )}
+              {route.kind === 'moves' ? (
+                <MoveExplorerRoute engine={engine} />
+              ) : route.kind === 'timer' ? (
+                <Suspense fallback={<p role="status">Loading your practice space…</p>}>
+                  <TimerPage engine={engine} repository={timerRepository} />
+                </Suspense>
+              ) : route.kind === 'learn' ? (
+                <Suspense
+                  fallback={
+                    <p role="status" className="loading-panel">
+                      Loading your lesson…
+                    </p>
+                  }
+                >
+                  <ClubLearnPage engine={engine} method={route.method} lessonId={route.lessonId} />
+                </Suspense>
+              ) : (
+                <SharedFeaturePage route={route} engine={engine} />
+              )}
+            </>
+          ) : (
+            <p role="status" className="loading-panel">
+              Getting your cube ready…
+            </p>
+          )}
+        </TutorialRouteBoundary>
       </main>
       <ClubFooter />
     </>
