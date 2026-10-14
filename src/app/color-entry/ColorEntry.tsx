@@ -7,6 +7,7 @@ import { FaceGrid } from './FaceGrid';
 import { FaceOverview } from './FaceOverview';
 import { HoldingGuide } from './HoldingGuide';
 import './color-entry.css';
+import { useGuidanceTarget } from '../../ui/guidance';
 interface Props {
   state: DraftState;
   onAction: (action: DraftAction) => void;
@@ -28,13 +29,15 @@ export function ColorEntry({
   solveLabel = 'Explain with LBL',
 }: Props) {
   const [review, setReview] = useState(false);
+  const inputTarget = useGuidanceTarget('solve.input'),
+    validationTarget = useGuidanceTarget('solve.validation');
   const { facelets, face, selection } = state.draft;
   const index = FACE_ENTRY_ORDER.indexOf(face),
     all = Object.values(facelets).flat();
   const entered = all.filter((color) => color !== null).length - 6;
   const issues = validation && !validation.ok ? validation.issues : [];
   return (
-    <section className="color-entry" aria-label="Enter cube colors">
+    <section ref={inputTarget} className="color-entry" aria-label="Enter cube colors">
       <div className="color-entry-intro">
         <div>
           <span className="eyebrow">FROM YOUR HANDS TO THE SCREEN</span>
@@ -193,41 +196,43 @@ export function ColorEntry({
           </button>
         </div>
       )}
-      <div className="color-counts" aria-label="Color counts">
-        {Object.values(COLORS).map((color) => {
-          const count = all.filter((value) => value === color).length;
-          return (
-            <div
-              key={color}
-              aria-label={`${color} count`}
-              className={count > 9 ? 'over-count' : ''}
-            >
-              <i data-color={color} aria-hidden="true" />
-              <span>
-                {color}
-                <strong>
-                  {count} / 9{count > 9 ? ' · too many' : ''}
-                </strong>
-              </span>
-            </div>
-          );
-        })}
-      </div>
-      {issues.length > 0 && (
-        <div className="color-errors" role="alert">
-          <strong>Review your colors</strong>
-          <ul>
-            {issues.map((issue, i) => (
-              <li key={`${issue.code}-${i}`}>{issue.message}</li>
-            ))}
-          </ul>
+      <div ref={validationTarget} className="color-validation">
+        <div className="color-counts" aria-label="Color counts">
+          {Object.values(COLORS).map((color) => {
+            const count = all.filter((value) => value === color).length;
+            return (
+              <div
+                key={color}
+                aria-label={`${color} count`}
+                className={count > 9 ? 'over-count' : ''}
+              >
+                <i data-color={color} aria-hidden="true" />
+                <span>
+                  {color}
+                  <strong>
+                    {count} / 9{count > 9 ? ' · too many' : ''}
+                  </strong>
+                </span>
+              </div>
+            );
+          })}
         </div>
-      )}
-      {validation?.ok && (
-        <p className="color-valid" role="status">
-          Colors checked. This cube can be solved with normal turns.
-        </p>
-      )}
+        {issues.length > 0 && (
+          <div className="color-errors" role="alert">
+            <strong>Review your colors</strong>
+            <ul>
+              {issues.map((issue, i) => (
+                <li key={`${issue.code}-${i}`}>{issue.message}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+        {validation?.ok && (
+          <p className="color-valid" role="status">
+            Colors checked. This cube can be solved with normal turns.
+          </p>
+        )}
+      </div>
       <div className="color-solve-actions">
         <p>
           Before following the solution, return to <strong>white up, green front</strong>.

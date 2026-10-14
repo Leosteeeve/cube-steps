@@ -8,6 +8,7 @@ import { AlgorithmPlayer } from '../../player/AlgorithmPlayer';
 import { CaseDiagram } from './CaseDiagram';
 import { useFixtures } from './use-fixtures';
 import './algorithm-library.css';
+import { useGuidanceTarget } from '../../ui/guidance';
 export function AlgorithmDetailPage({ engine, caseId }: { engine: CubeEngine; caseId: string }) {
   const c = getAlgorithmCase(caseId);
   return c ? (
@@ -21,6 +22,8 @@ export function AlgorithmDetailPage({ engine, caseId }: { engine: CubeEngine; ca
   );
 }
 function CaseDetail({ engine, entry: c }: { engine: CubeEngine; entry: AlgorithmCase }) {
+  const holdingTarget = useGuidanceTarget('algorithm.holding'),
+    formulaTarget = useGuidanceTarget('algorithm.formula');
   const [variantId, setVariantId] = useState(c.defaultVariantId),
     fixtures = useFixtures();
   const variant = registry.variants[variantId];
@@ -75,8 +78,10 @@ function CaseDetail({ engine, entry: c }: { engine: CubeEngine; entry: Algorithm
             </select>
           </label>
           <h2>Hold and recognize</h2>
-          <p>{variant.precondition}</p>
-          <code data-testid="selected-formula">{variant.moves.join(' ')}</code>
+          <p ref={holdingTarget}>{variant.precondition}</p>
+          <code ref={formulaTarget} data-testid="selected-formula">
+            {variant.moves.join(' ')}
+          </code>
           <ol className="formula-segments" data-testid="formula-segments">
             {variant.segments?.map((s, i) => (
               <li key={i}>

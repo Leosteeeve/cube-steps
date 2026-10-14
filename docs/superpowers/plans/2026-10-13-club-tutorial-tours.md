@@ -10,7 +10,7 @@
 
 **Spec:** [Approved club tutorial design](../specs/2026-10-13-club-tutorial-design.md), sections 1–6 and 9–11.
 
-**Status and order:** Awaiting plan review. Preserve the owner's Native execution preference. This plan owns Tasks 1–5; follow with [Guide Tasks 6–7](2026-10-13-club-tutorial-guide.md), then [media Tasks 8–10](2026-10-13-club-tutorial-video.md). Full-film Task 10 waits for narrated-sample acceptance.
+**Status and order:** Approved by the owner on 2026-10-13 for Native implementation. Preserve the owner's Native execution preference. This plan owns Tasks 1–5; follow with [Guide Tasks 6–7](2026-10-13-club-tutorial-guide.md), then [media Tasks 8–10](2026-10-13-club-tutorial-video.md). Full-film Task 10 waits for narrated-sample acceptance.
 
 ## Global Constraints
 

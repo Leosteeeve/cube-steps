@@ -10,7 +10,7 @@
 
 **Spec:** [Approved club tutorial design](../specs/2026-10-13-club-tutorial-design.md), sections 3, 5, 7 and 9–11.
 
-**Status and order:** Awaiting plan review. Tasks 6–7 follow [tour Tasks 1–5](2026-10-13-club-tutorial-tours.md). Preserve Native execution. [Media Tasks 8–10](2026-10-13-club-tutorial-video.md) reuse the verified UI/capture conventions; the website can release independently of full-film production.
+**Status and order:** Approved by the owner on 2026-10-13 for Native implementation. Tasks 6–7 follow [tour Tasks 1–5](2026-10-13-club-tutorial-tours.md). Preserve Native execution. [Media Tasks 8–10](2026-10-13-club-tutorial-video.md) reuse the verified UI/capture conventions; the website can release independently of full-film production.
 
 ## Global Constraints
 

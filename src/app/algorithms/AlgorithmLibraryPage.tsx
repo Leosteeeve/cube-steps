@@ -7,7 +7,10 @@ import './algorithm-library.css';
 import '../practice/practice.css';
 import { normalizePracticeSelection } from '../../practice/storage';
 import { usePracticeStore } from '../practice/use-practice-store';
+import { useGuidanceTarget } from '../../ui/guidance';
 export function AlgorithmLibraryPage({ engine }: { engine: CubeEngine }) {
+  const filtersTarget = useGuidanceTarget('algorithms.filters'),
+    caseTarget = useGuidanceTarget('algorithms.case');
   const practiceStore = usePracticeStore();
   const [family, setFamily] = useState('all'),
     [group, setGroup] = useState('all'),
@@ -43,7 +46,7 @@ export function AlgorithmLibraryPage({ engine }: { engine: CubeEngine }) {
           CFOP lessons and solves.
         </p>
       </header>
-      <div className="library-filters">
+      <div ref={filtersTarget} className="library-filters">
         <label>
           Family
           <select
@@ -106,7 +109,7 @@ export function AlgorithmLibraryPage({ engine }: { engine: CubeEngine }) {
         <p>Loading recognition views…</p>
       ) : (
         <div className="case-grid">
-          {filtered.map((c) => {
+          {filtered.map((c, index) => {
             const f = fixtures.get!(c.fixtureIds[0])!;
             const targets = f.target
               ? [f.target.cornerId, f.target.edgeId]
@@ -114,7 +117,7 @@ export function AlgorithmLibraryPage({ engine }: { engine: CubeEngine }) {
                   .filter((p) => p.slot.includes('U'))
                   .map((p) => p.id);
             return (
-              <article className="case-tile" key={c.id}>
+              <article ref={index === 0 ? caseTarget : undefined} className="case-tile" key={c.id}>
                 <div className="case-tile-heading">
                   <h2>{c.label}</h2>
                   <span>{c.family.toUpperCase()}</span>

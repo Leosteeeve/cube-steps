@@ -12,7 +12,11 @@ import { CaseDiagram } from '../algorithms/CaseDiagram';
 import { AlgorithmPlayer } from '../../player/AlgorithmPlayer';
 import '../algorithms/algorithm-library.css';
 import './practice.css';
+import { useGuidanceTarget } from '../../ui/guidance';
 export function PracticePage({ engine }: { engine: CubeEngine }) {
+  const scopeTarget = useGuidanceTarget('practice.scope'),
+    revealTarget = useGuidanceTarget('practice.reveal'),
+    nextTarget = useGuidanceTarget('practice.next');
   const practiceStore = usePracticeStore();
   const [loaded] = useState(() => practiceStore.load()),
     [selection, setSelection] = useState(loaded.selection),
@@ -107,7 +111,7 @@ export function PracticePage({ engine }: { engine: CubeEngine }) {
         open={selectionOpen}
         onToggle={(e) => setSelectionOpen(e.currentTarget.open)}
       >
-        <summary>Choose cases</summary>
+        <summary ref={scopeTarget}>Choose cases</summary>
         <div className="practice-selection-actions">
           <button onClick={() => change(Object.keys(registry.cases), true)}>
             Select all cases
@@ -162,6 +166,7 @@ export function PracticePage({ engine }: { engine: CubeEngine }) {
           {selection.caseIds.length} {selection.caseIds.length === 1 ? 'case' : 'cases'} selected
         </p>
         <button
+          ref={nextTarget}
           className="primary-button"
           disabled={!selection.caseIds.length || busy}
           onClick={() => void next()}
@@ -214,6 +219,7 @@ export function PracticePage({ engine }: { engine: CubeEngine }) {
                 </div>
                 {!revealed ? (
                   <button
+                    ref={revealTarget}
                     className="primary-button reveal-button"
                     onClick={() => setRevealed(true)}
                   >

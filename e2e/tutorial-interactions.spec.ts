@@ -1,6 +1,8 @@
 import { test, expect } from '@playwright/test';
 import { dismissTutorialForTest } from './helpers/tutorial';
 import { renderNotationFrame, selectNotation } from './helpers/notation';
+import { GOLDEN_CASES } from '../tests/fixtures/facelet-cases';
+import { enterFacelets } from './helpers/color-entry';
 async function next(page: import('@playwright/test').Page) {
   await page.getByRole('dialog').getByRole('button', { name: 'Next', exact: true }).click();
 }
@@ -120,4 +122,55 @@ test('static and failed renderers allow skipping; global pages remain unchanged'
   await expect(page.getByRole('img', { name: 'Before U', exact: true })).toBeVisible();
   await page.goto('#/learn/notation');
   await expect(page.getByRole('button', { name: 'Page tour', exact: true })).toHaveCount(0);
+});
+test('read-only solve tour preserves a partially colored invalid draft and never submits it', async ({
+  page,
+}) => {
+  await page.goto('club/#/solve');
+  await dismissTutorialForTest(page);
+  await enterFacelets(page, GOLDEN_CASES[7].facelets);
+  await page.getByRole('button', { name: 'Eraser', exact: true }).click();
+  await page.getByRole('button', { name: /^Down, row 1, column 1,/ }).click();
+  await page.getByRole('button', { name: 'Check colors', exact: true }).click();
+  const before = await page.evaluate(() => sessionStorage.getItem('cubesteps.club.color-draft.v1'));
+  await page.getByRole('button', { name: 'Page tour', exact: true }).click();
+  await expect(page.locator('[data-guidance="solve.input"]')).toBeVisible();
+  await next(page);
+  await expect(page.locator('[data-guidance="solve.validation"]')).toBeVisible();
+  await next(page);
+  await expect(page.locator('[data-guidance="solve.explanation"]')).toHaveCount(0);
+  await page.getByRole('button', { name: 'Exit tour' }).click();
+  expect(await page.evaluate(() => sessionStorage.getItem('cubesteps.club.color-draft.v1'))).toBe(
+    before,
+  );
+  await expect(page.getByRole('button', { name: 'Next move', exact: true })).toHaveCount(0);
+});
+test('read-only formula tours preserve selected scope and keep the exercise hidden', async ({
+  page,
+}) => {
+  await page.goto('club/#/algorithms');
+  await dismissTutorialForTest(page);
+  await page.getByLabel('Search cases').fill('OLL 20');
+  await page.getByRole('checkbox', { name: 'Select OLL 20', exact: true }).check();
+  await page.getByRole('button', { name: 'Page tour', exact: true }).click();
+  await next(page);
+  await expect(page.locator('[data-guidance="algorithms.case"]')).toBeVisible();
+  await page.getByRole('button', { name: 'Exit tour' }).click();
+  await expect(page.getByLabel('Search cases')).toHaveValue('OLL 20');
+  await expect(page.getByRole('checkbox', { name: 'Select OLL 20', exact: true })).toBeChecked();
+  await page.getByRole('button', { name: 'Practice selected cases', exact: true }).click();
+  await page.getByRole('button', { name: 'Start practice', exact: true }).click();
+  await expect(page.getByRole('button', { name: 'Show solution', exact: true })).toBeVisible();
+  const before = await page.evaluate(() =>
+    localStorage.getItem('cubesteps.club.practice-selection.v1'),
+  );
+  await page.getByRole('button', { name: 'Page tour', exact: true }).click();
+  await next(page);
+  await next(page);
+  await page.getByRole('button', { name: 'Exit tour' }).click();
+  await expect(page.getByRole('button', { name: 'Show solution', exact: true })).toBeVisible();
+  await expect(page.locator('.practice-answer')).toHaveCount(0);
+  expect(
+    await page.evaluate(() => localStorage.getItem('cubesteps.club.practice-selection.v1')),
+  ).toBe(before);
 });

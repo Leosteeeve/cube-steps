@@ -1,6 +1,7 @@
 // @vitest-environment jsdom
 import '@testing-library/jest-dom/vitest';
-import { act, cleanup, render, screen, within } from '@testing-library/react';
+import { act, cleanup, fireEvent, render, screen, within } from '@testing-library/react';
+import { TestTour } from '../club/tutorial/TestTour';
 import userEvent from '@testing-library/user-event';
 import { afterEach, beforeAll, beforeEach, expect, it, vi } from 'vitest';
 import { SolvePage } from './SolvePage';
@@ -112,6 +113,45 @@ it('preserves_input_across_three_methods', async () => {
   await user.click(screen.getByRole('button', { name: 'Scramble' }));
   expect(screen.getByLabelText('Scramble sequence')).toHaveValue('R U');
 });
+it.each(['partial colors', 'invalid colors', 'pending solve'])(
+  'read-only tour preserves %s',
+  async (scenario) => {
+    localStorage.setItem(
+      'cubesteps.club.tutorial.v1',
+      JSON.stringify({ version: 1, welcome: 'never', dismissed: {}, tours: {} }),
+    );
+    render(
+      <TestTour id="solve">
+        <SolvePage engine={engine} />
+      </TestTour>,
+    );
+    expect(document.querySelector('[data-guidance="solve.input"]')).not.toBeNull();
+    if (scenario === 'pending solve') {
+      client.solveScramble.mockReturnValue(new Promise(() => {}));
+      fireEvent.change(screen.getByLabelText('Scramble sequence'), { target: { value: 'R U' } });
+      fireEvent.click(screen.getByRole('button', { name: 'Explain with LBL' }));
+    } else {
+      fireEvent.click(screen.getByRole('button', { name: 'Enter colors' }));
+      fireEvent.click(screen.getByRole('button', { name: /^Front, row 1, column 1,/ }));
+      if (scenario === 'invalid colors')
+        fireEvent.click(screen.getByRole('button', { name: 'Check colors' }));
+    }
+    const draft = sessionStorage.getItem('cubesteps.color-draft.v1'),
+      calls = client.solveScramble.mock.calls.length;
+    fireEvent.click(screen.getByRole('button', { name: 'Page tour' }));
+    const reset = screen.queryByRole('button', { name: 'Reset colors' });
+    if (reset) fireEvent.click(reset);
+    const solve = screen.queryByRole('button', { name: 'Explain with LBL' });
+    if (solve) fireEvent.click(solve);
+    fireEvent.click(within(screen.getByRole('dialog')).getByRole('button', { name: 'Next' }));
+    expect(document.querySelector('[data-guidance="solve.validation"]')).not.toBeNull();
+    fireEvent.click(screen.getByRole('button', { name: 'Exit tour' }));
+    expect(sessionStorage.getItem('cubesteps.color-draft.v1')).toBe(draft);
+    expect(client.solveFacelets).not.toHaveBeenCalled();
+    expect(client.solveScramble).toHaveBeenCalledTimes(calls);
+    if (scenario === 'invalid colors') expect(screen.getByRole('alert')).toBeVisible();
+  },
+);
 it('discards pending solves and random scrambles through all three history routes', async () => {
   const pending = deferred<SessionResult>(),
     random = deferred<string>();

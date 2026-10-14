@@ -10,7 +10,7 @@
 
 **Spec:** [Approved club tutorial design](../specs/2026-10-13-club-tutorial-design.md), sections 8, 10 and 11.
 
-**Status and order:** Awaiting plan review. Preserve Native execution. Task 8 follows the stabilized website from [Tasks 6–7](2026-10-13-club-tutorial-guide.md). Task 9 ends at owner sample review. **Do not start full-film Task 10 until the owner accepts the narrated sample.** Initial video delivery is local; hosting/upload/embedding remains a separate later decision as approved in the spec.
+**Status and order:** Approved by the owner on 2026-10-13 for Native implementation. Preserve Native execution. Task 8 follows the stabilized website from [Tasks 6–7](2026-10-13-club-tutorial-guide.md). Task 9 ends at owner sample review. **Do not start full-film Task 10 until the owner accepts the narrated sample.** Initial video delivery is local; hosting/upload/embedding remains a separate later decision as approved in the spec.
 
 ## Global Constraints
 

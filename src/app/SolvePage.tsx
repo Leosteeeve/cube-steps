@@ -13,7 +13,11 @@ import { useEdition } from './edition';
 import { FACE_ENTRY_ORDER } from '../core/facelet-layout';
 import { getMethod } from '../methods/registry';
 import { MethodSelector } from './MethodSelector';
+import { useGuidanceTarget } from '../ui/guidance';
 export function SolvePage({ engine, method = 'lbl' }: { engine: CubeEngine; method?: MethodId }) {
+  const inputTarget = useGuidanceTarget('solve.input'),
+    validationTarget = useGuidanceTarget('solve.validation'),
+    explanationTarget = useGuidanceTarget('solve.explanation');
   const presentation = getMethod(method),
     firstStage = presentation.stages[0].id;
   const methodRef = useRef(method);
@@ -191,7 +195,12 @@ export function SolvePage({ engine, method = 'lbl' }: { engine: CubeEngine; meth
         <h1>A clear path for your cube.</h1>
         <p>Get a complete {presentation.label} solution, with a reason behind every move.</p>
       </div>
-      <div className="input-mode-switch" role="group" aria-label="Cube input">
+      <div
+        ref={mode === 'scramble' ? inputTarget : undefined}
+        className="input-mode-switch"
+        role="group"
+        aria-label="Cube input"
+      >
         <button
           type="button"
           aria-pressed={mode === 'scramble'}
@@ -250,7 +259,7 @@ export function SolvePage({ engine, method = 'lbl' }: { engine: CubeEngine; meth
             aria-describedby="scramble-help"
           />
           <div className="form-bottom">
-            <p id="scramble-help">
+            <p ref={!error ? validationTarget : undefined} id="scramble-help">
               Start solved, white up & green front. Use U D L R F B with ′ or 2.
               <br />
               Leave blank to explore an already solved cube.
@@ -275,7 +284,7 @@ export function SolvePage({ engine, method = 'lbl' }: { engine: CubeEngine; meth
         </form>
       )}
       {error && (
-        <p className="error" role="alert">
+        <p ref={mode === 'scramble' ? validationTarget : undefined} className="error" role="alert">
           {error}
           {session ? ' Your previous verified solution remains below.' : ''}
         </p>
@@ -303,13 +312,15 @@ export function SolvePage({ engine, method = 'lbl' }: { engine: CubeEngine; meth
               The draft has changed. The solution below still uses its saved input.
             </p>
           )}
-          <CubePlayer
-            engine={engine}
-            session={session}
-            stage={stage}
-            stageRequestId={stageRequestId}
-            onStageChange={setActive}
-          />
+          <div ref={explanationTarget}>
+            <CubePlayer
+              engine={engine}
+              session={session}
+              stage={stage}
+              stageRequestId={stageRequestId}
+              onStageChange={setActive}
+            />
+          </div>
         </>
       ) : (
         <div className="empty-solve">

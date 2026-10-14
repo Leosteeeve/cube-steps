@@ -1,6 +1,7 @@
 // @vitest-environment jsdom
 import '@testing-library/jest-dom/vitest';
-import { act, cleanup, render, screen, within } from '@testing-library/react';
+import { act, cleanup, fireEvent, render, screen, within } from '@testing-library/react';
+import { TestTour } from '../../club/tutorial/TestTour';
 import userEvent from '@testing-library/user-event';
 import { afterEach, beforeAll, beforeEach, expect, it, vi } from 'vitest';
 import { createCubeEngine } from '../../core/cube';
@@ -54,6 +55,30 @@ it('hides_answer_until_explicit_reveal', async () => {
     'groupIds',
     'version',
   ]);
+});
+it('read-only practice tour preserves saved scope and never reveals or replaces a case', async () => {
+  localStorage.setItem(
+    'cubesteps.club.tutorial.v1',
+    JSON.stringify({ version: 1, welcome: 'never', dismissed: {}, tours: {} }),
+  );
+  render(
+    <TestTour id="practice">
+      <PracticePage engine={engine} />
+    </TestTour>,
+  );
+  fireEvent.click(screen.getByRole('button', { name: 'Start practice' }));
+  await screen.findByRole('button', { name: 'Show solution' });
+  const before = localStorage.getItem(PRACTICE_STORAGE_KEY),
+    calls = mock.generate.mock.calls.length;
+  expect(document.querySelector('[data-guidance="practice.scope"]')).not.toBeNull();
+  fireEvent.click(screen.getByRole('button', { name: 'Page tour' }));
+  fireEvent.click(screen.getByRole('button', { name: 'Next' }));
+  fireEvent.click(screen.getByRole('button', { name: 'Show solution' }));
+  fireEvent.click(screen.getByRole('button', { name: 'Next case' }));
+  fireEvent.click(screen.getByRole('button', { name: 'Exit tour' }));
+  expect(localStorage.getItem(PRACTICE_STORAGE_KEY)).toBe(before);
+  expect(mock.generate).toHaveBeenCalledTimes(calls);
+  expect(screen.queryByTestId('answer-player')).not.toBeInTheDocument();
 });
 it('reveals the actual rotated exercise recognition', async () => {
   practiceStore.save({ version: 1, caseIds: ['oll-26'], groupIds: [] });
