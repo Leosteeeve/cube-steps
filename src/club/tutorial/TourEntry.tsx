@@ -43,6 +43,7 @@ export function TourEntry({ tourId, ready = true }: { tourId: TourId; ready?: bo
         </span>
       )}
       {!api.storage.writable && <small>Tutorial choices are kept for this visit only.</small>}
+      <a href={`#/guide/${TOURS[tourId].steps[0].guideSection}`}>Guide</a>
     </aside>
   );
 }

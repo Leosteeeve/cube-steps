@@ -1,6 +1,12 @@
 import { expect, it } from 'vitest';
 import { parseClubRoute } from './routes';
 import { parseRoute } from '../app/routes';
+it('supports the club Guide and rejects unknown sections without changing global routes', () => {
+  expect(parseClubRoute('#/guide')).toEqual({ kind: 'guide' });
+  expect(parseClubRoute('#/guide/timer')).toEqual({ kind: 'guide', section: 'timer' });
+  expect(parseClubRoute('#/guide/unknown')).toEqual({ kind: 'not-found' });
+  expect(parseRoute('#/guide')).toEqual({ kind: 'not-found' });
+});
 it('keeps the explorer in the club entry', () => {
   expect(parseClubRoute('#/moves')).toEqual({ kind: 'moves' });
   expect(parseRoute('#/moves')).toEqual({ kind: 'not-found' });

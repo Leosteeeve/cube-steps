@@ -3,6 +3,7 @@ import { TOURS } from './catalog';
 import { createTourController } from './controller';
 import { createTutorialStore, defaultPreferences } from './storage';
 import type { TourId } from './types';
+import { parseClubRoute } from '../routes';
 type Scope = { begin: () => GuidanceLease; lease?: GuidanceLease };
 export function createTutorialRuntime(getStorage: () => Storage) {
   const store = createTutorialStore(getStorage),
@@ -21,6 +22,7 @@ export function createTutorialRuntime(getStorage: () => Storage) {
     routeKey: string | null = null,
     routeTour: TourId | null = null,
     disposed = false;
+  let pending: { key: string; id: TourId; mode: 'start' | 'resume' | 'restart' } | null = null;
   const listeners = new Set<() => void>(),
     guards = new Set<() => boolean>(),
     locks = new Set<(on: boolean) => void>();
@@ -130,6 +132,7 @@ export function createTutorialRuntime(getStorage: () => Storage) {
     return true;
   }
   function exit() {
+    pending = null;
     welcome = null;
     if (controller.snapshot().run) controller.exit();
     else {
@@ -149,6 +152,13 @@ export function createTutorialRuntime(getStorage: () => Storage) {
     },
     getTarget,
     requestStart,
+    openTour(href: string, id: TourId, mode: 'start' | 'resume' | 'restart') {
+      if (!href.startsWith('#/') || parseClubRoute(href).kind === 'not-found') return;
+      exit();
+      pending = { key: JSON.stringify(parseClubRoute(href)), id, mode };
+      if (location.hash !== href) location.hash = href;
+      publish();
+    },
     exit,
     dismissInvitation: (id: TourId) => controller.dismiss(id),
     resetPreferences() {
@@ -181,8 +191,10 @@ export function createTutorialRuntime(getStorage: () => Storage) {
     },
     setRoute(key: string, tour: TourId | null) {
       if (routeKey !== null && key !== routeKey) {
+        const waiting = pending?.key === key ? pending : null;
         release(false);
         exit();
+        pending = waiting;
       }
       routeKey = key;
       routeTour = tour;
@@ -193,6 +205,20 @@ export function createTutorialRuntime(getStorage: () => Storage) {
         controller.setWelcome('later');
     },
     offer() {
+      if (pending) {
+        if (routeKey !== pending.key || locked || !allowed()) return;
+        const { id, mode } = pending,
+          saved = controller.snapshot().preferences.tours[id];
+        const step =
+          mode === 'resume' &&
+          saved &&
+          !saved.completed &&
+          saved.contentVersion === TOURS[id].contentVersion
+            ? (TOURS[id].steps.find((s) => s.id === saved.nextStepId) ?? TOURS[id].steps[0])
+            : TOURS[id].steps[0];
+        if (getTarget(step.targetId) && requestStart(id, mode)) pending = null;
+        return;
+      }
       if (
         locked ||
         !routeTour ||

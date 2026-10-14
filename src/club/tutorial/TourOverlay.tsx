@@ -225,6 +225,9 @@ export function TourOverlay({ runtime }: { runtime: TutorialRuntime }) {
               </button>
               <button onClick={runtime.controller.skip}>Skip step</button>
               <button onClick={runtime.exit}>Exit tour</button>
+              <a href={`#/guide/${step!.guideSection}`} onClick={runtime.exit}>
+                Written guide
+              </a>
             </div>
           </>
         )}

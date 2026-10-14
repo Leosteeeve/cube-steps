@@ -21,6 +21,7 @@ function useApi(runtime: TutorialRuntime) {
     runtime,
     overlayOpen: !!(state.run || state.welcome),
     requestStart: runtime.requestStart,
+    openTour: runtime.openTour,
     dismissInvitation: runtime.dismissInvitation,
     resetPreferences: runtime.resetPreferences,
     exit: runtime.exit,
