@@ -4,6 +4,8 @@ import type { TimerSettings } from './types';
 import { createTimerController } from './controller';
 import { isTimerKeyTarget } from './input';
 import type { TimerRepository } from './repository';
+import type { TimerInput } from './machine';
+import type { TutorialInputGate } from './tutorial-input';
 export function useTimerHistory(repository: TimerRepository) {
   const [history, setHistory] = useState(() => repository.snapshot());
   useEffect(() => {
@@ -18,10 +20,12 @@ export function useTimer({
   engine,
   repository,
   settings,
+  inputGate,
 }: {
   engine: CubeEngine;
   repository: TimerRepository;
   settings: TimerSettings;
+  inputGate?: TutorialInputGate;
 }) {
   const controller = useMemo(
     () => createTimerController({ engine, repository, settings }),
@@ -33,25 +37,45 @@ export function useTimer({
     const unsubscribe = controller.subscribe(setState);
     setState(controller.snapshot());
     void controller.newScramble();
+    const dispatch = (input: TimerInput) => {
+      if (!inputGate || inputGate.allow(input)) controller.dispatch(input);
+    };
+    const observeKey = (e: KeyboardEvent) =>
+      inputGate?.observeKey({
+        type: e.type as 'keydown' | 'keyup',
+        code: e.code,
+        repeat: e.repeat,
+      });
+    const observePointer = (e: PointerEvent) =>
+      inputGate?.observePointer({
+        type: e.type as 'pointerdown' | 'pointerup' | 'pointercancel',
+        pointerId: e.pointerId,
+      });
     const down = (e: KeyboardEvent) => {
       if (e.code === 'Escape') {
-        controller.dispatch({ type: 'escape' });
+        dispatch({ type: 'escape' });
         return;
       }
       if (e.code === 'Space' && isTimerKeyTarget(e.target)) {
         e.preventDefault();
-        if (!e.repeat) controller.dispatch({ type: 'down', token: 'keyboard' });
+        if (!e.repeat) dispatch({ type: 'down', token: 'keyboard' });
       }
     };
     const up = (e: KeyboardEvent) => {
       if (e.code === 'Space' && isTimerKeyTarget(e.target)) {
         e.preventDefault();
-        controller.dispatch({ type: 'up', token: 'keyboard' });
+        dispatch({ type: 'up', token: 'keyboard' });
       }
     };
-    const blur = () => controller.dispatch({ type: 'blur' }),
+    const blur = () => {
+        inputGate?.releaseHeld();
+        controller.dispatch({ type: 'blur' });
+      },
       hidden = () => {
-        if (document.hidden) controller.dispatch({ type: 'hidden' });
+        if (document.hidden) {
+          inputGate?.releaseHeld();
+          controller.dispatch({ type: 'hidden' });
+        }
       };
     const leave = () => controller.dispatch({ type: 'leave' });
     const restore = (event: PageTransitionEvent) => {
@@ -69,6 +93,11 @@ export function useTimer({
       )
         controller.dispatch({ type: 'blur' });
     };
+    document.addEventListener('keydown', observeKey, true);
+    document.addEventListener('keyup', observeKey, true);
+    document.addEventListener('pointerdown', observePointer, true);
+    document.addEventListener('pointerup', observePointer, true);
+    document.addEventListener('pointercancel', observePointer, true);
     document.addEventListener('keydown', down);
     document.addEventListener('keyup', up);
     document.addEventListener('focusin', focus);
@@ -78,6 +107,11 @@ export function useTimer({
     window.addEventListener('pageshow', restore);
     return () => {
       unsubscribe();
+      document.removeEventListener('keydown', observeKey, true);
+      document.removeEventListener('keyup', observeKey, true);
+      document.removeEventListener('pointerdown', observePointer, true);
+      document.removeEventListener('pointerup', observePointer, true);
+      document.removeEventListener('pointercancel', observePointer, true);
       document.removeEventListener('keydown', down);
       document.removeEventListener('keyup', up);
       document.removeEventListener('focusin', focus);
@@ -87,7 +121,7 @@ export function useTimer({
       window.removeEventListener('pageshow', restore);
       controller.dispose();
     };
-  }, [controller, repository]);
+  }, [controller, repository, inputGate]);
   const active = ['inspection', 'arming', 'running'].includes(state.phase);
   useEffect(() => {
     if (!active) return;

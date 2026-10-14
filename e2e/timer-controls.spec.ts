@@ -1,3 +1,4 @@
+import { dismissTutorialForTest } from './helpers/tutorial';
 import { expect, test } from '@playwright/test';
 test('keyboard timer arms, saves once, ignores controls and interrupts route changes', async ({
   page,
@@ -133,4 +134,9 @@ test('restoring a persisted page prepares a new scramble after an interrupted so
   await expect(surface).toHaveAttribute('data-phase', 'idle');
   await expect(page.getByText('1 solve', { exact: true })).toBeVisible();
   await expect(page.locator('.timer-last')).toContainText('DNF');
+});
+
+test.beforeEach(async ({ page }) => {
+  await page.goto('club/');
+  await dismissTutorialForTest(page);
 });
