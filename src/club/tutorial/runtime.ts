@@ -51,6 +51,7 @@ export function createTutorialRuntime(getStorage: () => Storage) {
     }
   }
   function release(restore = true) {
+    if (!locked) return;
     for (const set of scopes.values())
       for (const scope of set)
         if (scope.lease) {

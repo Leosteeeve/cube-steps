@@ -33,3 +33,18 @@ Desktop, 390/360 px phones, keyboard, 200% zoom, reduced motion, static renderer
 ## Release and video status
 
 Website release verification is in progress. Preserve LBL/Beginner CFOP accepted and Advanced CFOP preview metadata; Pages uses the existing preview publication flag. The narrated sample and full film are separate deliverables; sample acceptance has not occurred, and no full film or video upload is authorized by website completion.
+
+## Independent review and final corrections
+
+One fresh-context reviewer inspected `f238746..040d9cc`, the spec, task plans and rulings, and reproduced two Important issues against the built site. No Critical or Minor findings were raised.
+
+- Rotation/short viewport: a docked bubble obscured U. The overlay now reserves a visible control area, limits the reading panel and corrects scroll geometry. A real hit-test regression failed first, then passed at 640 × 360 and 150% zoom in Chromium and WebKit.
+- Tall phone images: enlargement reduced width from 310 px to 92 px. The lightbox now keeps a readable width and scrolls vertically, with sticky Close. The width/focus regression failed first, then passed in both engines.
+- A subsequent production check exposed idle preference updates restoring focus despite no tour having opened. A unit reproduction failed first; release now restores focus only when the runtime owned it. The built keyboard enlargement test then passed in both engines.
+- The production engine blocker initially denied Vite's 1,676-byte preload helper named `cubing~global~club`. Inspection confirmed it contains only preload code. The test now blocks actual engine chunks and retains the no-engine request assertion.
+
+Final local source suite: **543 tests / 120 files passed**. Typecheck and production build passed. Initial complete development browser run: **188/194 passed**, with six WebKit timeouts while other browser jobs were active; all six passed on an isolated retry (2.9 minutes), with assertions unchanged. Initial production run: 26/28; the two Guide failures were investigated as above and the complete four-test tutorial production set then passed. The final onboarding regression set and GitHub CI/release evidence are recorded at integration.
+
+Review limitations: film/voice approval belongs to Tasks 8–10; no renewed physical teaching acceptance is claimed; CI and Pages require their own live evidence. These are separate gates, not reviewer approval of unpublished results.
+
+Final onboarding regression after all fixes: **38/38 Chromium and WebKit checks passed**. No deferred review minors. GitHub CI and public deployment remain the integration gates.

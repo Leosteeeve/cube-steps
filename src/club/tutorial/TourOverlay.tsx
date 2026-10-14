@@ -46,6 +46,8 @@ export function TourOverlay({ runtime }: { runtime: TutorialRuntime }) {
   useLayoutEffect(() => {
     if (!open || !bubble.current) return;
     let frame = 0;
+    const originalPadding = document.body.style.paddingBottom;
+    const basePadding = Number.parseFloat(getComputedStyle(document.body).paddingBottom) || 0;
     function measure() {
       frame = 0;
       if (!bubble.current) return;
@@ -63,18 +65,42 @@ export function TourOverlay({ runtime }: { runtime: TutorialRuntime }) {
         (Number.parseFloat(getComputedStyle(document.body).zoom) || 1);
       bubble.current.style.width = `${Math.min(360, viewport.width / scale - 24)}px`;
       bubble.current.style.maxHeight = `${viewport.height / scale - 24}px`;
-      const box = bubble.current.getBoundingClientRect();
+      let box = bubble.current.getBoundingClientRect();
       const current = step ? runtime.getTarget(step.targetId) : null,
-        r = current?.getBoundingClientRect();
+        initialRect = current?.getBoundingClientRect();
+      let r = initialRect;
+      // Layout changes (rotation, zoom, and scroll anchoring) can leave the
+      // highlighted control above the viewport even when the bubble fits.
+      if (r && (r.top < viewport.top + 12 || r.top >= viewport.top + viewport.height - 24)) {
+        window.scrollBy(0, r.top - viewport.top - 12);
+        r = current!.getBoundingClientRect();
+      }
       if (run && step && !current && runtime.controller.snapshot().run?.status !== 'unavailable')
         runtime.controller.target(run.token, 'waiting');
-      const measured = r
+      let measured = r
         ? positionTour(r, box, viewport)
         : {
             left: Math.max(12, viewport.left + (viewport.width - box.width) / 2),
             top: Math.max(12, viewport.top + (viewport.height - box.height) / 2),
             placement: 'center',
           };
+      if (r && measured.placement === 'dock') {
+        // A short viewport needs separate target and reading areas. Reserve
+        // document space so even the last control can scroll above the dock.
+        const targetSpace = Math.min(r.height, viewport.height * 0.35);
+        bubble.current.style.maxHeight = `${Math.max(80, viewport.height - targetSpace - 36) / scale}px`;
+        box = bubble.current.getBoundingClientRect();
+        document.body.style.paddingBottom = `${basePadding + (box.height + 24) / scale}px`;
+        r = current!.getBoundingClientRect();
+        const desiredTop = viewport.top + 12;
+        if (Math.abs(r.top - desiredTop) > 1) window.scrollBy(0, r.top - desiredTop);
+        r = current!.getBoundingClientRect();
+        measured = {
+          left: viewport.left + 12,
+          top: viewport.top + viewport.height - box.height - 12,
+          placement: 'dock',
+        };
+      }
       const next = { ...measured, left: measured.left / scale, top: measured.top / scale };
       setLayout((old) =>
         old && old.left === next.left && old.top === next.top && old.placement === next.placement
@@ -105,6 +131,7 @@ export function TourOverlay({ runtime }: { runtime: TutorialRuntime }) {
     window.visualViewport?.addEventListener('resize', schedule);
     window.visualViewport?.addEventListener('scroll', schedule);
     return () => {
+      document.body.style.paddingBottom = originalPadding;
       cancelAnimationFrame(frame);
       resize?.disconnect();
       mutation.disconnect();

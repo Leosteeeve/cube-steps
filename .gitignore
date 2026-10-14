@@ -152,3 +152,10 @@ vite.config.ts.timestamp-*
 test-results/
 playwright-report/
 .worktrees/
+
+media/club-tutorial/node_modules/
+media/club-tutorial/public/captures/
+media/club-tutorial/public/narration/
+media/club-tutorial/output/
+media/club-tutorial/.cache/
+test-results-review/

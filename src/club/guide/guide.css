@@ -193,12 +193,14 @@
 .guide-lightbox button {
   align-self: flex-end;
   flex-shrink: 0;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 .guide-lightbox img {
   max-width: 100%;
-  max-height: calc(100dvh - 170px);
-  object-fit: contain;
-  min-height: 0;
+  height: auto;
+  flex-shrink: 0;
 }
 .guide-lightbox p {
   max-width: 900px;

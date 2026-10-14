@@ -44,8 +44,11 @@ test('built Guide loads no engine, enlarges real screenshots, and survives image
     errors: string[] = [];
   page.on('request', (r) => requests.push(r.url()));
   page.on('pageerror', (e) => errors.push(e.message));
-  await page.route(/\/assets\/(?:cube-|registry-|cubing~|solve\.worker|practice\.worker)/, (r) =>
-    r.abort(),
+  // Vite puts its small preload helper in cubing~global~club; it contains no
+  // puzzle engine. Block actual engine chunks without blocking app startup.
+  await page.route(
+    /\/assets\/(?:cube-|registry-|cubing~(?!global~club-)|solve\.worker|practice\.worker)/,
+    (r) => r.abort(),
   );
   await page.goto('club/#/guide');
   await expect(page.locator('.guide-chapter')).toHaveCount(8);
@@ -63,7 +66,9 @@ test('built Guide loads no engine, enlarges real screenshots, and survives image
   await expect(page.getByRole('link', { name: 'Open Home →', exact: true })).toBeVisible();
   expect(
     requests.filter((u) =>
-      /\/assets\/(?:cube-|registry-|cubing~|solve\.worker|practice\.worker)/.test(u),
+      /\/assets\/(?:cube-|registry-|cubing~(?!global~club-)|solve\.worker|practice\.worker)/.test(
+        u,
+      ),
     ),
   ).toEqual([]);
   expect(errors).toEqual([]);
