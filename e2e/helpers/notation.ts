@@ -35,3 +35,25 @@ export async function renderNotationFrame(page: Page) {
     );
   });
 }
+// Lesson players expose a different readiness lifecycle from single-move demos.
+export async function renderLessonFrame(page: Page) {
+  await page.locator('twisty-player').scrollIntoViewIfNeeded();
+  await expect
+    .poll(() =>
+      page
+        .locator('twisty-player')
+        .evaluate(
+          async (player: any) => Array.from(await player.experimentalCurrentVantages()).length,
+        ),
+    )
+    .toBeGreaterThan(0);
+  await page.locator('twisty-player').evaluate(async (player: any) => {
+    for (const vantage of await player.experimentalCurrentVantages()) await vantage.render();
+    const canvases: HTMLCanvasElement[] = await player.experimentalCurrentCanvases();
+    await Promise.all(
+      canvases.flatMap((canvas) =>
+        canvas.getAnimations().map((animation) => animation.finished.catch(() => {})),
+      ),
+    );
+  });
+}

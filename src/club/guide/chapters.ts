@@ -26,7 +26,7 @@ export const GUIDE_CHAPTERS: readonly GuideChapter[] = [
       'Open Find your route and answer four short questions. The result explains a suggested starting point; it is not a test and it does not lock you into a method.',
       'If you cannot yet solve a cube alone, start with LBL: holding and notation, a white daisy, then one layer at a time. Beginner CFOP introduces a bottom cross, F2L and two-look last-layer steps. Advanced CFOP adds shortest cross, a larger F2L catalog and full OLL / PLL.',
       'A small daily routine: review one unfamiliar move in Moves, follow one lesson with your cube, then repeat that stage once without the animation. When you can solve independently, try a few untimed solves before using Timer.',
-      'In a club session, follow the leader’s chosen lesson. At home, use Continue learning to return to your last lesson. Your progress belongs to this browser; no account is needed.',
+      'In a club session, follow the leader’s chosen lesson. At home, use Resume learning to return to your last lesson. Your progress belongs to this browser; no account is needed.',
     ],
     controls: controls([
       [
@@ -46,7 +46,7 @@ export const GUIDE_CHAPTERS: readonly GuideChapter[] = [
         'Choose LBL, Beginner CFOP or Advanced CFOP yourself. You can switch later.',
       ],
       [
-        'Continue learning',
+        'Resume learning',
         'Resume the last lesson saved on this device. This appears after a lesson visit.',
       ],
       [
@@ -121,6 +121,18 @@ export const GUIDE_CHAPTERS: readonly GuideChapter[] = [
         'Switch among LBL, Beginner CFOP and Advanced CFOP. Preview labels identify teaching content still awaiting its own acceptance.',
       ],
       [
+        'Follow along with a physical cube',
+        'Expand the exact example scramble and apply it from solved, white up and green front. Before a later stage or selected case, finish all earlier moves. A stage jump changes the on-screen cube instantly; it does not move your real cube.',
+      ],
+      [
+        'Practice example / case selector',
+        'Where offered, choose a verified case or return to the full guided example. Read its own scramble and preparation; selecting a case replaces the displayed example.',
+      ],
+      [
+        'Start with the white cross / Next lesson / Try your own scramble',
+        'Continue from the introduction, advance a lesson, or open free solving when the course ends. Explore this case opens its formula reference.',
+      ],
+      [
         'Lesson path / stage links',
         'Open a stage directly. Introductory pages contain reading; later stages include playable demonstrations.',
       ],
@@ -174,6 +186,10 @@ export const GUIDE_CHAPTERS: readonly GuideChapter[] = [
       [
         'Scramble / Enter colors',
         'Choose the input mode. Color drafts are temporary browser-session data, not a cloud backup.',
+      ],
+      [
+        'Check your center colors first',
+        'Expand the supported center-color scheme before painting. This version supports white/yellow, green/blue and red/orange opposite pairs in the displayed arrangement.',
       ],
       [
         'Scramble sequence / Random scramble',
@@ -275,6 +291,14 @@ export const GUIDE_CHAPTERS: readonly GuideChapter[] = [
         'Expand the checklist. Family and group checkboxes select or remove their cases; a mixed checkbox means only some are chosen.',
       ],
       [
+        'Select all cases / Clear selection',
+        'Choose the full catalog or empty the scope before selecting a smaller group.',
+      ],
+      [
+        'Reset saved practice selection',
+        'Only shown for unreadable saved selection data. Explicitly replace that incompatible selection; it does not clear Timer history.',
+      ],
+      [
         'Individual case checkboxes',
         'Build a precise practice scope. Select at least one case before starting.',
       ],
@@ -332,6 +356,14 @@ export const GUIDE_CHAPTERS: readonly GuideChapter[] = [
       [
         'Trend / Inspect a plotted solve',
         'Inspect a specific result in the graph; the accessible selector offers the same information.',
+      ],
+      [
+        'Single / ao5 / ao12 chart buttons',
+        'Switch the graph between individual results and rolling averages. DNF and missing averages leave gaps.',
+      ],
+      [
+        'Newer solves / Older solves',
+        'Page through history when there are more results than fit on one page.',
       ],
       ['View solve …', 'Expand its time, penalties, original scramble and historical diagram.'],
       [
@@ -406,6 +438,10 @@ export const GUIDE_CHAPTERS: readonly GuideChapter[] = [
         'Choose whether decorative animation runs. It is separate from the instructional move controls.',
       ],
       ['Skip to content', 'The first keyboard link jumps past the header to the main page.'],
+      [
+        'Reset learning data',
+        'Only appears when saved learning data is unreadable. It explicitly resets lesson progress; this is separate from resetting tutorial choices.',
+      ],
     ]),
   },
 ];

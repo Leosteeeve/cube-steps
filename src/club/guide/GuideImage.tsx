@@ -30,7 +30,10 @@ export function GuideImage({ image }: { image: GuideScreenshot }) {
   }, [open]);
   const src = import.meta.env.BASE_URL + image.src;
   return (
-    <figure className="guide-image">
+    <figure
+      className="guide-image"
+      style={image.width < 500 ? { maxWidth: image.width } : undefined}
+    >
       {failed ? (
         <p className="guide-image-failed">
           Screenshot unavailable. Follow the written steps and caption.

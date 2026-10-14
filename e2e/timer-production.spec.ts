@@ -1,3 +1,4 @@
+import { dismissTutorialForTest } from './helpers/tutorial';
 import { expect, test } from '@playwright/test';
 import { readFile } from 'node:fs/promises';
 test('production timer uses real workers, matching diagrams, durable history and export', async ({
@@ -26,6 +27,7 @@ test('production timer uses real workers, matching diagrams, durable history and
     expect(metadata.dirty).toBe(false);
   }
   await page.goto('club/#/timer');
+  await dismissTutorialForTest(page);
   const surface = page.getByRole('button', { name: 'Timing surface', exact: true });
   await expect(surface).toBeEnabled({ timeout: 25000 });
   const text = (await page.locator('.timer-scramble-text').innerText()).trim(),
@@ -78,6 +80,7 @@ test.describe('mobile production timing', () => {
     page.on('pageerror', (e) => errors.push(e.message));
     await page.emulateMedia({ reducedMotion: 'reduce' });
     await page.goto('club/#/timer');
+  await dismissTutorialForTest(page);
     const surface = page.getByRole('button', { name: 'Timing surface', exact: true });
     await expect(surface).toBeEnabled({ timeout: 25000 });
     await expect(page.locator('html')).toHaveAttribute('data-motion', 'reduced');

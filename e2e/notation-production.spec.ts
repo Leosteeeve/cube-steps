@@ -1,3 +1,4 @@
+import { dismissTutorialForTest } from './helpers/tutorial';
 import { expect, test } from '@playwright/test';
 import { createCubeEngine } from '../src/core/cube';
 import { stateToFacelets } from '../src/core/facelets';
@@ -62,6 +63,7 @@ test('built move explorer provides static endpoints when WebGL is unavailable', 
     } as typeof original;
   });
   await page.goto('club/#/moves');
+  await page.reload();
   await expect(page.getByRole('alert')).toContainText('3D animation is unavailable');
   const engine = await createCubeEngine();
   for (const move of ['U', "U'", 'U2', 'D', 'B', 'Rw', 'M', 'x']) {
@@ -120,3 +122,5 @@ test('a rejected production lazy module has a visible reload recovery and usable
   ).toEqual([]);
   expect(bad).toEqual([]);
 });
+
+test.beforeEach(async ({ page }) => { await page.goto('club/'); await dismissTutorialForTest(page); });
