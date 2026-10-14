@@ -97,6 +97,33 @@ export function createSourcePlaybackController(
     play,
     pause,
     seekMove,
+    restorePaused(position: {
+      moveIndex: number;
+      progress: number;
+      sectionId: PlaybackSectionId;
+      speed: number;
+    }) {
+      if (disposed) return;
+      playing = false;
+      generation++;
+      cancelAnimationFrame(frame);
+      const index = Math.min(
+        count,
+        Math.max(0, Math.floor(Number.isFinite(position.moveIndex) ? position.moveIndex : 0)),
+      );
+      const progress = Number.isFinite(position.progress)
+        ? Math.min(1, Math.max(0, position.progress))
+        : 0;
+      timestamp =
+        boundaries[index] +
+        (index < count ? (boundaries[index + 1] - boundaries[index]) * progress : 0);
+      speed = [0.25, 0.5, 1, 2].includes(position.speed) ? position.speed : 1;
+      selectedSection = timeline.sections.some((s) => s.id === position.sectionId)
+        ? position.sectionId
+        : undefined;
+      stopAt = count;
+      emit();
+    },
     step(direction: -1 | 1) {
       const s = snapshot();
       seekMove(s.moveIndex + (direction === -1 && s.progress > 0 ? 0 : direction));

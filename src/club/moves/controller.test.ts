@@ -48,6 +48,22 @@ it('waits for matching readiness, plays once and holds at its endpoint', () => {
   controller.play();
   expect(frames.size).toBe(0);
 });
+it('restore pauses fractional playback and obeys static endpoints', () => {
+  const { controller, frames } = setup();
+  controller.ready(1, 1000);
+  controller.play();
+  controller.restorePaused({ progress: 0.5, speed: 0.5 });
+  expect(controller.snapshot()).toMatchObject({ phase: 'paused', progress: 0.5, speed: 0.5 });
+  expect(frames.size).toBe(0);
+  controller.setReducedMotion(true);
+  controller.restorePaused({ progress: 0.5, speed: 1 });
+  expect(controller.snapshot().progress).toBe(0);
+  controller.restorePaused({ progress: 2, speed: 1 });
+  expect(controller.snapshot().progress).toBe(1);
+  controller.select(buildNotationDemo(engine, { base: 'R', amount: '2' }));
+  controller.restorePaused({ progress: 0.5, speed: 1 });
+  expect(controller.snapshot()).toMatchObject({ phase: 'loading', progress: 0 });
+});
 it('preserves position on pause, resume and speed changes', () => {
   const { controller, advance, frames } = setup();
   controller.ready(1, 1000);

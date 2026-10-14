@@ -137,6 +137,21 @@ export function createNotationController(
     play,
     pause,
     reset,
+    restorePaused(position: { progress: number; speed: 0.5 | 1 }) {
+      if (disposed || state.phase === 'loading' || state.error) return;
+      cancel();
+      const requested = Number.isFinite(position.progress)
+        ? Math.min(1, Math.max(0, position.progress))
+        : 0;
+      const progress = state.reducedMotion && requested < 1 ? 0 : requested;
+      state = {
+        ...state,
+        progress,
+        speed: position.speed === 0.5 ? 0.5 : 1,
+        phase: progress === 1 ? 'complete' : progress === 0 ? 'ready' : 'paused',
+      };
+      emit();
+    },
     replay() {
       if (disposed || state.reducedMotion || !duration || state.error) return;
       reset();

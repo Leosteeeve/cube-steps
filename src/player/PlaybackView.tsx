@@ -1,4 +1,5 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useGuidanceAction, useGuidanceScope, useGuidanceTarget } from '../ui/guidance';
 import type { CubeEngine } from '../core/types';
 import type { PlaybackSource, PlaybackSectionId } from './playback-source';
 import { ALGORITHM_REGISTRY } from '../algorithms/registry';
@@ -64,6 +65,11 @@ export function PlaybackView({
     [focused, setFocused] = useState(true);
   const focusRef = useRef(true),
     sectionCallback = useRef(onSectionChange);
+  const restoredSection = useRef<{
+    source: PlaybackSource;
+    sectionId: PlaybackSectionId;
+    requestId?: number;
+  } | null>(null);
   sectionCallback.current = onSectionChange;
   focusRef.current = focused;
   // Install each replacement controller before the positioning effect below.
@@ -127,6 +133,16 @@ export function PlaybackView({
   }, [engine, source, assets, needsAdvanced, assetError]);
   // Position the lesson before enabled controls can accept the first user input.
   useLayoutEffect(() => {
+    const restored = restoredSection.current;
+    if (restored) {
+      restoredSection.current = null;
+      if (
+        restored.source === source &&
+        restored.sectionId === section &&
+        restored.requestId === sectionRequestId
+      )
+        return;
+    }
     if (section) controller.current?.seekSection(section);
     if (caseId) {
       const action = controller.current?.timeline.actions.find(
@@ -135,12 +151,41 @@ export function PlaybackView({
       if (action) controller.current?.seekMove(action.start);
     }
   }, [engine, source, section, sectionRequestId, ready, caseId, assets]);
+  const requestRef = useRef(sectionRequestId);
+  requestRef.current = sectionRequestId;
+  useGuidanceScope(
+    'shared-playback',
+    useCallback(() => {
+      const p = controller.current;
+      p?.pause();
+      const saved = p?.snapshot();
+      let live = true;
+      return {
+        restore() {
+          if (!live || !p || controller.current !== p || !saved) return;
+          restoredSection.current = {
+            source,
+            sectionId: saved.sectionId,
+            requestId: requestRef.current,
+          };
+          p.restorePaused(saved);
+        },
+        dispose() {
+          live = false;
+        },
+      };
+    }, [engine, source, assets, needsAdvanced, assetError]),
+  );
   useEffect(() => {
     const p = controller.current;
     if (p) p.setSpeed(p.snapshot().speed);
   }, [focused]);
   const player = controller.current,
     s = snapshot;
+  const emit = useGuidanceAction(),
+    controlsTarget = useGuidanceTarget('player.controls', ready),
+    nextTarget = useGuidanceTarget('player.next', ready && !!s && s.moveIndex < s.total),
+    turnTarget = useGuidanceTarget('player.turn', ready);
   const currentStage = player?.timeline.sections.find((item) => item.id === s?.sectionId);
   const range = player?.timeline.actions[s?.actionIndex ?? -1],
     action = Boolean(currentStage?.skipReason) ? undefined : range?.action;
@@ -181,7 +226,7 @@ export function PlaybackView({
         )}
         {!ready && !error && <p role="status">Preparing the cube…</p>}
         <p className="orbit-note">Drag to look around · View changes do not turn the cube</p>
-        <div className="playback-toolbar">
+        <div ref={controlsTarget} className="playback-toolbar">
           <div className="playback-controls">
             <button
               className="icon-button"
@@ -202,8 +247,14 @@ export function PlaybackView({
             <button
               className="icon-button"
               aria-label="Next move"
+              ref={nextTarget}
               disabled={!ready || !s || s.moveIndex >= s.total}
-              onClick={() => player?.step(1)}
+              onClick={() => {
+                if (!player) return;
+                const before = player.snapshot().moveIndex;
+                player.step(1);
+                if (player.snapshot().moveIndex > before) emit({ name: 'player-next' });
+              }}
             >
               →
             </button>
@@ -338,7 +389,7 @@ export function PlaybackView({
                   </b>
                 ))}
               </div>
-              <small className="current-turn">
+              <small ref={turnTarget} className="current-turn">
                 Current move:{' '}
                 <strong aria-label={s?.currentMove ? 'Current turn' : undefined}>
                   {s?.currentMove ?? 'Complete'}

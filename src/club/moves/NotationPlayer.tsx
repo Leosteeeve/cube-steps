@@ -1,4 +1,5 @@
-import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import { useGuidanceAction, useGuidanceScope, useGuidanceTarget } from '../../ui/guidance';
 import type { CubeEngine } from '../../core/types';
 import { stateToFacelets } from '../../core/facelets';
 import { useSystemReducedMotion } from '../../ui/use-system-reduced-motion';
@@ -30,6 +31,13 @@ export function NotationPlayer({
     renderer = useRef<NotationRenderer | null>(null),
     camera = useRef(notationCamera(demo.entry, mode));
   camera.current = notationCamera(demo.entry, mode);
+  const emit = useGuidanceAction(),
+    holdingTarget = useGuidanceTarget('moves.holding'),
+    directionTarget = useGuidanceTarget('moves.direction'),
+    tokenTarget = useGuidanceTarget('moves.token');
+  const currentMode = useRef(mode);
+  currentMode.current = mode;
+  const pendingRestore = useRef<{ move: string; progress: number; speed: 0.5 | 1 } | null>(null);
   const reduced = useSystemReducedMotion();
   useLayoutEffect(
     () =>
@@ -50,6 +58,8 @@ export function NotationPlayer({
         ? controller.snapshot().version
         : controller.select(demo);
     const abort = new AbortController();
+    if (pendingRestore.current && pendingRestore.current.move !== demo.move)
+      pendingRestore.current = null;
     let local: NotationRenderer | undefined;
     const failure = (message: string) => {
       if (abort.signal.aborted || controller.snapshot().version !== version) return;
@@ -75,6 +85,11 @@ export function NotationPlayer({
         renderer.current = adapter;
         adapter.setCamera(camera.current);
         controller.ready(version, adapter.durationMs);
+        if (pendingRestore.current?.move === demo.move) {
+          const saved = pendingRestore.current;
+          pendingRestore.current = null;
+          controller.restorePaused(saved);
+        }
       })
       .catch((error) =>
         failure(error instanceof Error ? error.message : 'The animation could not be loaded.'),
@@ -85,6 +100,35 @@ export function NotationPlayer({
       if (renderer.current === local) renderer.current = null;
     };
   }, [controller, demo, retry]);
+  useGuidanceScope(
+    'notation-player',
+    useCallback(() => {
+      controller.pause();
+      const saved = controller.snapshot(),
+        savedMode = currentMode.current;
+      let live = true;
+      return {
+        restore() {
+          if (!live) return;
+          controller.pause();
+          setMode(savedMode);
+          const current = controller.snapshot();
+          if (current.demo.move === saved.demo.move && current.phase !== 'loading') {
+            controller.restorePaused(saved);
+            renderer.current?.setCamera(notationCamera(saved.demo.entry, savedMode));
+          } else
+            pendingRestore.current = {
+              move: saved.demo.move,
+              progress: saved.progress,
+              speed: saved.speed,
+            };
+        },
+        dispose() {
+          live = false;
+        },
+      };
+    }, [controller]),
+  );
   useEffect(() => {
     const pause = () => controller.pause(),
       visibility = () => {
@@ -102,6 +146,7 @@ export function NotationPlayer({
     ready = matching && !['loading', 'error'].includes(snapshot.phase);
   const progress = matching ? snapshot.progress : 0,
     staticMode = reduced || !!snapshot.error;
+  const playTarget = useGuidanceTarget('moves.play', ready && !staticMode);
   const boundary = progress === 1 ? demo.final : demo.initial,
     centers = engine.observe(boundary).centers;
   const description = describeNotation(selection);
@@ -151,11 +196,16 @@ export function NotationPlayer({
             />
           )}
         </div>
-        <p className="notation-holding" aria-label="Current holding">
+        <p ref={holdingTarget} className="notation-holding" aria-label="Current holding">
           {centers.U} up · {centers.F} front
           {progress > 0 && progress < 1 ? ' · last completed position' : ''}
         </p>
-        <div className="notation-camera" role="group" aria-label="Observation viewpoint">
+        <div
+          ref={directionTarget}
+          className="notation-camera"
+          role="group"
+          aria-label="Observation viewpoint"
+        >
           <button
             type="button"
             aria-pressed={mode === 'holding'}
@@ -209,15 +259,30 @@ export function NotationPlayer({
             <>
               <button
                 className="notation-play"
+                ref={snapshot.phase !== 'complete' ? playTarget : undefined}
                 type="button"
                 disabled={!ready || snapshot.phase === 'complete'}
-                onClick={() =>
-                  snapshot.phase === 'playing' ? controller.pause() : controller.play()
-                }
+                onClick={() => {
+                  if (snapshot.phase === 'playing') controller.pause();
+                  else {
+                    controller.play();
+                    if (controller.snapshot().phase === 'playing')
+                      emit({ name: 'notation-play', value: demo.move });
+                  }
+                }}
               >
                 {snapshot.phase === 'playing' ? 'Pause move' : 'Play move'}
               </button>
-              <button type="button" disabled={!ready} onClick={() => controller.replay()}>
+              <button
+                ref={snapshot.phase === 'complete' ? playTarget : undefined}
+                type="button"
+                disabled={!ready}
+                onClick={() => {
+                  controller.replay();
+                  if (controller.snapshot().phase === 'playing')
+                    emit({ name: 'notation-play', value: demo.move });
+                }}
+              >
                 Replay
               </button>
             </>
@@ -245,7 +310,9 @@ export function NotationPlayer({
       </section>
       <aside className="notation-explanation" aria-label="Move meaning">
         <p className="eyebrow">READ THE MOVE</p>
-        <h2 aria-label="Selected move">{description.display}</h2>
+        <h2 ref={tokenTarget} aria-label="Selected move">
+          {description.display}
+        </h2>
         <p className="notation-name">
           {demo.entry.name}
           {selection.amount === "'"

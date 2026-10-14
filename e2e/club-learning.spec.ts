@@ -1,3 +1,4 @@
+import { dismissTutorialForTest } from './helpers/tutorial';
 import { expect, test } from '@playwright/test';
 import { GOLDEN_CASES } from '../tests/fixtures/facelet-cases';
 import { enterFacelets } from './helpers/color-entry';
@@ -7,6 +8,7 @@ test('club questionnaire, practiced lessons and resume survive navigation and re
   const errors: string[] = [];
   page.on('pageerror', (e) => errors.push(e.message));
   await page.goto('club/#/find-your-route');
+  await dismissTutorialForTest(page);
   await page.getByRole('button', { name: 'Skip questions' }).click();
   await page.getByRole('button', { name: 'Choose LBL', exact: true }).click();
   await page.getByRole('link', { name: 'Start lesson', exact: true }).click();
@@ -68,6 +70,7 @@ test('club tools share real solve, colors, library and practice within the club 
   const errors: string[] = [];
   page.on('pageerror', (e) => errors.push(e.message));
   await page.goto('club/#/learn/notation');
+  await dismissTutorialForTest(page);
   await page.getByRole('link', { name: 'Solve your cube', exact: true }).click();
   await page.getByLabel('Scramble sequence').fill('R');
   await page.getByRole('button', { name: 'Explain with LBL', exact: true }).click();
@@ -77,6 +80,7 @@ test('club tools share real solve, colors, library and practice within the club 
   await page.getByRole('button', { name: 'Explain with LBL', exact: true }).click();
   await expect(page.getByRole('button', { name: 'Next move', exact: true })).toBeEnabled();
   await page.goto('club/#/algorithms');
+  await dismissTutorialForTest(page);
   await page.getByRole('checkbox', { name: 'Select OLL 20', exact: true }).check();
   await page.getByRole('button', { name: 'Practice selected cases', exact: true }).click();
   await expect(page.getByRole('checkbox', { name: 'OLL 20', exact: true })).toBeChecked();

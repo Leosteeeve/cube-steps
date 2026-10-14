@@ -37,6 +37,23 @@ it('steps both ways and seeks exact stage checkpoints', () => {
   expect(engine.equals(player.snapshot().boundaryState, session.trace.stages[3].before)).toBe(true);
   player.dispose();
 });
+it('restore pauses fractional playback using current renderer boundaries', () => {
+  const player = createPlaybackController(engine, session),
+    section = player.timeline.stages[0].id;
+  player.play();
+  player.setBoundaries(Array.from({ length: player.snapshot().total + 1 }, (_, i) => i * 400));
+  player.restorePaused({ moveIndex: 2, progress: 0.5, sectionId: section, speed: 0.5 });
+  expect(player.snapshot()).toMatchObject({
+    moveIndex: 2,
+    progress: 0.5,
+    timestamp: 1000,
+    stageId: section,
+    playing: false,
+    speed: 0.5,
+  });
+  vi.advanceTimersByTime(2000);
+  expect(player.snapshot().timestamp).toBe(1000);
+});
 it('replays one complete action and cancels obsolete animation after seeking', () => {
   const player = createPlaybackController(engine, session),
     flat = flattenTrace(session.trace);
