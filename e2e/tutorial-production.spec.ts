@@ -63,6 +63,9 @@ test('built Guide loads no engine, enlarges real screenshots, and survives image
   await expect(button).toBeFocused();
   await page.route('**/club-guide/*.png', (r) => r.abort());
   await page.reload();
+  // Lazy images need to approach the viewport before WebKit requests them.
+  // Do not depend on its preload distance or reload scroll restoration.
+  await page.locator('.guide-image').first().scrollIntoViewIfNeeded();
   await expect(page.getByText(/Screenshot unavailable/).first()).toBeVisible();
   await expect(page.getByRole('link', { name: 'Open Home →', exact: true })).toBeVisible();
   expect(
