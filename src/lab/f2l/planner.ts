@@ -121,6 +121,7 @@ export function* planLabF2L(
                 node.frame,
                 profiles,
                 budget,
+                { firstPerHold: width === 1 },
               )) {
                 if (event.kind === 'work') {
                   yield event;

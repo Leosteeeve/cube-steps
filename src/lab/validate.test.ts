@@ -12,9 +12,17 @@ import { planLabF2L } from './f2l/planner';
 import { finalizeLabRoute } from './finalize';
 import { createAdvancedRuntime } from '../methods/advanced/definition';
 import type { TraceAction } from '../core/types';
+import { seededScramble } from '../../tests/fixtures/lbl-cases';
+import { stateToFacelets } from '../core/facelets';
 let engine: CubeEngine;
 beforeAll(async () => {
   engine = await createCubeEngine();
+});
+it('reproduces a complete seed-2 yellow-bottom score from neutral grip', () => {
+  const initial = engine.apply(engine.solved(), seededScramble(2));
+  const input = prepareLabInput(engine, { kind: 'facelets', facelets: stateToFacelets(initial) });
+  const route = fixtureLabRoute(engine, input, 'yellow');
+  expect(() => validateLabRoute(labContext(engine), input, route, 'current')).not.toThrow();
 });
 
 it('admits a physically valid d+2 Lab cross while Advanced still rejects non-descending steps', () => {

@@ -1,0 +1,2329 @@
+{
+  "configuration": "minimum cross seeds; complete F2L seed; no optional 30-second exploration",
+  "count": 40,
+  "environment": {
+    "node": "v24.18.0",
+    "cpu": "AMD Ryzen 9 8945HX with Radeon Graphics        ",
+    "platform": "win32"
+  },
+  "rows": [
+    {
+      "seed": 1,
+      "advanced": {
+        "runtimeMs": 155.14120000000003,
+        "faceTurnEquivalents": 35,
+        "rotations": 3,
+        "estimatedScore": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 35,
+          "R": 3,
+          "G": 2,
+          "V": 0,
+          "A": 2,
+          "cost": 49
+        }
+      },
+      "white": {
+        "runtimeMs": 69.35419999999999,
+        "operations": 19856,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 35,
+          "R": 6,
+          "G": 2,
+          "V": 1,
+          "A": 2,
+          "cost": 58
+        },
+        "bottom": "white",
+        "crossMinimum": 6,
+        "crossLength": 6
+      },
+      "allSix": {
+        "runtimeMs": 270.7371999999999,
+        "operations": 121880,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 36,
+          "R": 4,
+          "G": 3,
+          "V": 0,
+          "A": 1,
+          "cost": 52
+        },
+        "bottom": "yellow",
+        "crossMinimum": 6,
+        "crossLength": 6
+      }
+    },
+    {
+      "seed": 2,
+      "advanced": {
+        "runtimeMs": 228.30330000000004,
+        "faceTurnEquivalents": 34,
+        "rotations": 3,
+        "estimatedScore": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 34,
+          "R": 3,
+          "G": 4,
+          "V": 0,
+          "A": 0,
+          "cost": 48
+        }
+      },
+      "white": {
+        "runtimeMs": 54.666999999999916,
+        "operations": 24655,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 44,
+          "R": 5,
+          "G": 2,
+          "V": 2,
+          "A": 1,
+          "cost": 66
+        },
+        "bottom": "white",
+        "crossMinimum": 5,
+        "crossLength": 5
+      },
+      "allSix": {
+        "runtimeMs": 256.49440000000004,
+        "operations": 131706,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 37,
+          "R": 2,
+          "G": 2,
+          "V": 0,
+          "A": 1,
+          "cost": 47
+        },
+        "bottom": "yellow",
+        "crossMinimum": 6,
+        "crossLength": 6
+      }
+    },
+    {
+      "seed": 3,
+      "advanced": {
+        "runtimeMs": 156.55380000000014,
+        "faceTurnEquivalents": 37,
+        "rotations": 5,
+        "estimatedScore": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 37,
+          "R": 5,
+          "G": 2,
+          "V": 0,
+          "A": 1,
+          "cost": 53
+        }
+      },
+      "white": {
+        "runtimeMs": 33.80269999999996,
+        "operations": 19504,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 43,
+          "R": 2,
+          "G": 2,
+          "V": 1,
+          "A": 3,
+          "cost": 60
+        },
+        "bottom": "white",
+        "crossMinimum": 6,
+        "crossLength": 6
+      },
+      "allSix": {
+        "runtimeMs": 208.99160000000006,
+        "operations": 121388,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 42,
+          "R": 2,
+          "G": 1,
+          "V": 0,
+          "A": 1,
+          "cost": 50
+        },
+        "bottom": "red",
+        "crossMinimum": 7,
+        "crossLength": 7
+      }
+    },
+    {
+      "seed": 4,
+      "advanced": {
+        "runtimeMs": 256.04479999999967,
+        "faceTurnEquivalents": 48,
+        "rotations": 4,
+        "estimatedScore": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 48,
+          "R": 4,
+          "G": 2,
+          "V": 0,
+          "A": 2,
+          "cost": 64
+        }
+      },
+      "white": {
+        "runtimeMs": 46.97620000000006,
+        "operations": 23970,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 47,
+          "R": 3,
+          "G": 1,
+          "V": 1,
+          "A": 4,
+          "cost": 66
+        },
+        "bottom": "white",
+        "crossMinimum": 6,
+        "crossLength": 6
+      },
+      "allSix": {
+        "runtimeMs": 200.2507999999998,
+        "operations": 116248,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 31,
+          "R": 2,
+          "G": 2,
+          "V": 0,
+          "A": 2,
+          "cost": 43
+        },
+        "bottom": "blue",
+        "crossMinimum": 7,
+        "crossLength": 7
+      }
+    },
+    {
+      "seed": 5,
+      "advanced": {
+        "runtimeMs": 269.6583999999998,
+        "faceTurnEquivalents": 40,
+        "rotations": 5,
+        "estimatedScore": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 40,
+          "R": 5,
+          "G": 4,
+          "V": 0,
+          "A": 1,
+          "cost": 60
+        }
+      },
+      "white": {
+        "runtimeMs": 44.38310000000001,
+        "operations": 22406,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 39,
+          "R": 3,
+          "G": 3,
+          "V": 0,
+          "A": 3,
+          "cost": 57
+        },
+        "bottom": "white",
+        "crossMinimum": 5,
+        "crossLength": 5
+      },
+      "allSix": {
+        "runtimeMs": 214.32739999999967,
+        "operations": 121563,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 36,
+          "R": 5,
+          "G": 3,
+          "V": 0,
+          "A": 1,
+          "cost": 54
+        },
+        "bottom": "red",
+        "crossMinimum": 6,
+        "crossLength": 6
+      }
+    },
+    {
+      "seed": 6,
+      "advanced": {
+        "runtimeMs": 131.56629999999996,
+        "faceTurnEquivalents": 40,
+        "rotations": 3,
+        "estimatedScore": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 40,
+          "R": 3,
+          "G": 5,
+          "V": 0,
+          "A": 3,
+          "cost": 62
+        }
+      },
+      "white": {
+        "runtimeMs": 23.010800000000017,
+        "operations": 18805,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 42,
+          "R": 2,
+          "G": 5,
+          "V": 0,
+          "A": 2,
+          "cost": 60
+        },
+        "bottom": "white",
+        "crossMinimum": 6,
+        "crossLength": 6
+      },
+      "allSix": {
+        "runtimeMs": 180.55110000000013,
+        "operations": 123185,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 40,
+          "R": 1,
+          "G": 2,
+          "V": 0,
+          "A": 2,
+          "cost": 50
+        },
+        "bottom": "yellow",
+        "crossMinimum": 6,
+        "crossLength": 6
+      }
+    },
+    {
+      "seed": 7,
+      "advanced": {
+        "runtimeMs": 160.35509999999977,
+        "faceTurnEquivalents": 43,
+        "rotations": 4,
+        "estimatedScore": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 43,
+          "R": 4,
+          "G": 0,
+          "V": 0,
+          "A": 1,
+          "cost": 53
+        }
+      },
+      "white": {
+        "runtimeMs": 28.48799999999983,
+        "operations": 19661,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 40,
+          "R": 5,
+          "G": 1,
+          "V": 1,
+          "A": 2,
+          "cost": 59
+        },
+        "bottom": "white",
+        "crossMinimum": 5,
+        "crossLength": 5
+      },
+      "allSix": {
+        "runtimeMs": 223.7132999999999,
+        "operations": 132374,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 39,
+          "R": 4,
+          "G": 2,
+          "V": 0,
+          "A": 1,
+          "cost": 53
+        },
+        "bottom": "blue",
+        "crossMinimum": 6,
+        "crossLength": 6
+      }
+    },
+    {
+      "seed": 8,
+      "advanced": {
+        "runtimeMs": 165.48230000000012,
+        "faceTurnEquivalents": 39,
+        "rotations": 5,
+        "estimatedScore": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 39,
+          "R": 5,
+          "G": 2,
+          "V": 0,
+          "A": 2,
+          "cost": 57
+        }
+      },
+      "white": {
+        "runtimeMs": 46.94959999999992,
+        "operations": 23385,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 48,
+          "R": 3,
+          "G": 3,
+          "V": 0,
+          "A": 1,
+          "cost": 62
+        },
+        "bottom": "white",
+        "crossMinimum": 6,
+        "crossLength": 6
+      },
+      "allSix": {
+        "runtimeMs": 189.99069999999938,
+        "operations": 124809,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 42,
+          "R": 2,
+          "G": 2,
+          "V": 0,
+          "A": 1,
+          "cost": 52
+        },
+        "bottom": "green",
+        "crossMinimum": 7,
+        "crossLength": 7
+      }
+    },
+    {
+      "seed": 9,
+      "advanced": {
+        "runtimeMs": 100.61359999999968,
+        "faceTurnEquivalents": 44,
+        "rotations": 2,
+        "estimatedScore": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 44,
+          "R": 2,
+          "G": 1,
+          "V": 0,
+          "A": 2,
+          "cost": 54
+        }
+      },
+      "white": {
+        "runtimeMs": 30.305500000000393,
+        "operations": 14742,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 33,
+          "R": 1,
+          "G": 1,
+          "V": 0,
+          "A": 2,
+          "cost": 41
+        },
+        "bottom": "white",
+        "crossMinimum": 6,
+        "crossLength": 6
+      },
+      "allSix": {
+        "runtimeMs": 158.17889999999989,
+        "operations": 103518,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 33,
+          "R": 1,
+          "G": 1,
+          "V": 0,
+          "A": 2,
+          "cost": 41
+        },
+        "bottom": "white",
+        "crossMinimum": 6,
+        "crossLength": 6
+      }
+    },
+    {
+      "seed": 10,
+      "advanced": {
+        "runtimeMs": 110.92829999999958,
+        "faceTurnEquivalents": 36,
+        "rotations": 4,
+        "estimatedScore": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 36,
+          "R": 4,
+          "G": 1,
+          "V": 0,
+          "A": 2,
+          "cost": 50
+        }
+      },
+      "white": {
+        "runtimeMs": 26.8786999999993,
+        "operations": 16716,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 36,
+          "R": 1,
+          "G": 1,
+          "V": 0,
+          "A": 2,
+          "cost": 44
+        },
+        "bottom": "white",
+        "crossMinimum": 5,
+        "crossLength": 5
+      },
+      "allSix": {
+        "runtimeMs": 179.23370000000068,
+        "operations": 112253,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 32,
+          "R": 2,
+          "G": 1,
+          "V": 0,
+          "A": 3,
+          "cost": 44
+        },
+        "bottom": "orange",
+        "crossMinimum": 6,
+        "crossLength": 6
+      }
+    },
+    {
+      "seed": 11,
+      "advanced": {
+        "runtimeMs": 65.47609999999986,
+        "faceTurnEquivalents": 36,
+        "rotations": 1,
+        "estimatedScore": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 36,
+          "R": 1,
+          "G": 3,
+          "V": 0,
+          "A": 1,
+          "cost": 46
+        }
+      },
+      "white": {
+        "runtimeMs": 25.712800000000243,
+        "operations": 17745,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 44,
+          "R": 3,
+          "G": 2,
+          "V": 0,
+          "A": 1,
+          "cost": 56
+        },
+        "bottom": "white",
+        "crossMinimum": 6,
+        "crossLength": 6
+      },
+      "allSix": {
+        "runtimeMs": 212.33109999999942,
+        "operations": 124996,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 35,
+          "R": 3,
+          "G": 3,
+          "V": 0,
+          "A": 0,
+          "cost": 47
+        },
+        "bottom": "red",
+        "crossMinimum": 6,
+        "crossLength": 6
+      }
+    },
+    {
+      "seed": 12,
+      "advanced": {
+        "runtimeMs": 128.1262999999999,
+        "faceTurnEquivalents": 53,
+        "rotations": 2,
+        "estimatedScore": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 53,
+          "R": 2,
+          "G": 4,
+          "V": 0,
+          "A": 2,
+          "cost": 69
+        }
+      },
+      "white": {
+        "runtimeMs": 22.962100000000646,
+        "operations": 16249,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 40,
+          "R": 3,
+          "G": 4,
+          "V": 1,
+          "A": 2,
+          "cost": 61
+        },
+        "bottom": "white",
+        "crossMinimum": 6,
+        "crossLength": 6
+      },
+      "allSix": {
+        "runtimeMs": 171.07669999999962,
+        "operations": 116376,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 30,
+          "R": 4,
+          "G": 3,
+          "V": 0,
+          "A": 1,
+          "cost": 46
+        },
+        "bottom": "red",
+        "crossMinimum": 6,
+        "crossLength": 6
+      }
+    },
+    {
+      "seed": 13,
+      "advanced": {
+        "runtimeMs": 189.55239999999958,
+        "faceTurnEquivalents": 36,
+        "rotations": 4,
+        "estimatedScore": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 36,
+          "R": 4,
+          "G": 1,
+          "V": 0,
+          "A": 2,
+          "cost": 50
+        }
+      },
+      "white": {
+        "runtimeMs": 46.17609999999968,
+        "operations": 24160,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 45,
+          "R": 3,
+          "G": 2,
+          "V": 0,
+          "A": 2,
+          "cost": 59
+        },
+        "bottom": "white",
+        "crossMinimum": 6,
+        "crossLength": 6
+      },
+      "allSix": {
+        "runtimeMs": 206.19779999999992,
+        "operations": 121145,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 39,
+          "R": 3,
+          "G": 1,
+          "V": 0,
+          "A": 0,
+          "cost": 47
+        },
+        "bottom": "green",
+        "crossMinimum": 7,
+        "crossLength": 7
+      }
+    },
+    {
+      "seed": 14,
+      "advanced": {
+        "runtimeMs": 271.1419999999998,
+        "faceTurnEquivalents": 40,
+        "rotations": 2,
+        "estimatedScore": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 40,
+          "R": 2,
+          "G": 4,
+          "V": 0,
+          "A": 4,
+          "cost": 60
+        }
+      },
+      "white": {
+        "runtimeMs": 44.49569999999949,
+        "operations": 22824,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 40,
+          "R": 2,
+          "G": 2,
+          "V": 1,
+          "A": 2,
+          "cost": 55
+        },
+        "bottom": "white",
+        "crossMinimum": 6,
+        "crossLength": 6
+      },
+      "allSix": {
+        "runtimeMs": 227.58610000000044,
+        "operations": 127565,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 32,
+          "R": 6,
+          "G": 0,
+          "V": 0,
+          "A": 2,
+          "cost": 48
+        },
+        "bottom": "red",
+        "crossMinimum": 6,
+        "crossLength": 6
+      }
+    },
+    {
+      "seed": 15,
+      "advanced": {
+        "runtimeMs": 111.55739999999969,
+        "faceTurnEquivalents": 39,
+        "rotations": 3,
+        "estimatedScore": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 39,
+          "R": 3,
+          "G": 3,
+          "V": 0,
+          "A": 2,
+          "cost": 55
+        }
+      },
+      "white": {
+        "runtimeMs": 22.07459999999992,
+        "operations": 16474,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 40,
+          "R": 6,
+          "G": 3,
+          "V": 1,
+          "A": 1,
+          "cost": 63
+        },
+        "bottom": "white",
+        "crossMinimum": 7,
+        "crossLength": 7
+      },
+      "allSix": {
+        "runtimeMs": 139.36020000000008,
+        "operations": 94316,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 35,
+          "R": 2,
+          "G": 1,
+          "V": 0,
+          "A": 2,
+          "cost": 45
+        },
+        "bottom": "yellow",
+        "crossMinimum": 7,
+        "crossLength": 7
+      }
+    },
+    {
+      "seed": 16,
+      "advanced": {
+        "runtimeMs": 130.5046000000002,
+        "faceTurnEquivalents": 31,
+        "rotations": 3,
+        "estimatedScore": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 31,
+          "R": 3,
+          "G": 1,
+          "V": 0,
+          "A": 0,
+          "cost": 39
+        }
+      },
+      "white": {
+        "runtimeMs": 29.773699999999735,
+        "operations": 18934,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 44,
+          "R": 4,
+          "G": 3,
+          "V": 0,
+          "A": 1,
+          "cost": 60
+        },
+        "bottom": "white",
+        "crossMinimum": 5,
+        "crossLength": 5
+      },
+      "allSix": {
+        "runtimeMs": 192.95359999999982,
+        "operations": 122692,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 38,
+          "R": 4,
+          "G": 1,
+          "V": 0,
+          "A": 1,
+          "cost": 50
+        },
+        "bottom": "orange",
+        "crossMinimum": 5,
+        "crossLength": 5
+      }
+    },
+    {
+      "seed": 17,
+      "advanced": {
+        "runtimeMs": 131.14229999999952,
+        "faceTurnEquivalents": 37,
+        "rotations": 4,
+        "estimatedScore": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 37,
+          "R": 4,
+          "G": 3,
+          "V": 0,
+          "A": 1,
+          "cost": 53
+        }
+      },
+      "white": {
+        "runtimeMs": 24.271500000000742,
+        "operations": 18421,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 38,
+          "R": 3,
+          "G": 2,
+          "V": 0,
+          "A": 1,
+          "cost": 50
+        },
+        "bottom": "white",
+        "crossMinimum": 5,
+        "crossLength": 5
+      },
+      "allSix": {
+        "runtimeMs": 166.29079999999976,
+        "operations": 112427,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 38,
+          "R": 3,
+          "G": 2,
+          "V": 0,
+          "A": 1,
+          "cost": 50
+        },
+        "bottom": "white",
+        "crossMinimum": 5,
+        "crossLength": 5
+      }
+    },
+    {
+      "seed": 18,
+      "advanced": {
+        "runtimeMs": 32.835299999999734,
+        "faceTurnEquivalents": 29,
+        "rotations": 2,
+        "estimatedScore": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 29,
+          "R": 2,
+          "G": 2,
+          "V": 0,
+          "A": 1,
+          "cost": 39
+        }
+      },
+      "white": {
+        "runtimeMs": 13.884799999999814,
+        "operations": 10759,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 29,
+          "R": 1,
+          "G": 2,
+          "V": 0,
+          "A": 1,
+          "cost": 37
+        },
+        "bottom": "white",
+        "crossMinimum": 5,
+        "crossLength": 5
+      },
+      "allSix": {
+        "runtimeMs": 184.1756000000005,
+        "operations": 116204,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 29,
+          "R": 1,
+          "G": 2,
+          "V": 0,
+          "A": 1,
+          "cost": 37
+        },
+        "bottom": "white",
+        "crossMinimum": 5,
+        "crossLength": 5
+      }
+    },
+    {
+      "seed": 19,
+      "advanced": {
+        "runtimeMs": 368.8199999999997,
+        "faceTurnEquivalents": 40,
+        "rotations": 5,
+        "estimatedScore": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 40,
+          "R": 5,
+          "G": 2,
+          "V": 0,
+          "A": 1,
+          "cost": 56
+        }
+      },
+      "white": {
+        "runtimeMs": 84.41319999999905,
+        "operations": 27967,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 32,
+          "R": 2,
+          "G": 2,
+          "V": 1,
+          "A": 1,
+          "cost": 45
+        },
+        "bottom": "white",
+        "crossMinimum": 5,
+        "crossLength": 5
+      },
+      "allSix": {
+        "runtimeMs": 302.0604000000003,
+        "operations": 142565,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 32,
+          "R": 2,
+          "G": 2,
+          "V": 1,
+          "A": 1,
+          "cost": 45
+        },
+        "bottom": "white",
+        "crossMinimum": 5,
+        "crossLength": 5
+      }
+    },
+    {
+      "seed": 20,
+      "advanced": {
+        "runtimeMs": 96.97110000000066,
+        "faceTurnEquivalents": 40,
+        "rotations": 5,
+        "estimatedScore": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 40,
+          "R": 5,
+          "G": 3,
+          "V": 0,
+          "A": 2,
+          "cost": 60
+        }
+      },
+      "white": {
+        "runtimeMs": 27.57430000000022,
+        "operations": 19219,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 40,
+          "R": 4,
+          "G": 3,
+          "V": 0,
+          "A": 1,
+          "cost": 56
+        },
+        "bottom": "white",
+        "crossMinimum": 6,
+        "crossLength": 6
+      },
+      "allSix": {
+        "runtimeMs": 221.20520000000033,
+        "operations": 127050,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 40,
+          "R": 2,
+          "G": 1,
+          "V": 0,
+          "A": 3,
+          "cost": 52
+        },
+        "bottom": "blue",
+        "crossMinimum": 6,
+        "crossLength": 6
+      }
+    },
+    {
+      "seed": 21,
+      "advanced": {
+        "runtimeMs": 12.692699999999604,
+        "faceTurnEquivalents": 26,
+        "rotations": 1,
+        "estimatedScore": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 26,
+          "R": 1,
+          "G": 2,
+          "V": 0,
+          "A": 1,
+          "cost": 34
+        }
+      },
+      "white": {
+        "runtimeMs": 12.200199999999313,
+        "operations": 8505,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 26,
+          "R": 1,
+          "G": 1,
+          "V": 0,
+          "A": 1,
+          "cost": 32
+        },
+        "bottom": "white",
+        "crossMinimum": 6,
+        "crossLength": 6
+      },
+      "allSix": {
+        "runtimeMs": 184.20410000000084,
+        "operations": 107754,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 26,
+          "R": 1,
+          "G": 1,
+          "V": 0,
+          "A": 1,
+          "cost": 32
+        },
+        "bottom": "white",
+        "crossMinimum": 6,
+        "crossLength": 6
+      }
+    },
+    {
+      "seed": 22,
+      "advanced": {
+        "runtimeMs": 165.70539999999892,
+        "faceTurnEquivalents": 39,
+        "rotations": 4,
+        "estimatedScore": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 39,
+          "R": 4,
+          "G": 3,
+          "V": 0,
+          "A": 0,
+          "cost": 53
+        }
+      },
+      "white": {
+        "runtimeMs": 41.32170000000042,
+        "operations": 23430,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 42,
+          "R": 4,
+          "G": 2,
+          "V": 0,
+          "A": 0,
+          "cost": 54
+        },
+        "bottom": "white",
+        "crossMinimum": 6,
+        "crossLength": 6
+      },
+      "allSix": {
+        "runtimeMs": 185.47669999999925,
+        "operations": 115294,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 35,
+          "R": 3,
+          "G": 1,
+          "V": 0,
+          "A": 2,
+          "cost": 47
+        },
+        "bottom": "yellow",
+        "crossMinimum": 6,
+        "crossLength": 6
+      }
+    },
+    {
+      "seed": 23,
+      "advanced": {
+        "runtimeMs": 101.18159999999989,
+        "faceTurnEquivalents": 46,
+        "rotations": 4,
+        "estimatedScore": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 46,
+          "R": 4,
+          "G": 3,
+          "V": 0,
+          "A": 3,
+          "cost": 66
+        }
+      },
+      "white": {
+        "runtimeMs": 27.513100000000122,
+        "operations": 18604,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 43,
+          "R": 3,
+          "G": 4,
+          "V": 0,
+          "A": 2,
+          "cost": 61
+        },
+        "bottom": "white",
+        "crossMinimum": 7,
+        "crossLength": 7
+      },
+      "allSix": {
+        "runtimeMs": 158.6823999999997,
+        "operations": 112904,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 36,
+          "R": 5,
+          "G": 3,
+          "V": 0,
+          "A": 0,
+          "cost": 52
+        },
+        "bottom": "orange",
+        "crossMinimum": 6,
+        "crossLength": 6
+      }
+    },
+    {
+      "seed": 24,
+      "advanced": {
+        "runtimeMs": 94.69520000000011,
+        "faceTurnEquivalents": 44,
+        "rotations": 1,
+        "estimatedScore": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 44,
+          "R": 1,
+          "G": 5,
+          "V": 0,
+          "A": 1,
+          "cost": 58
+        }
+      },
+      "white": {
+        "runtimeMs": 27.126500000000306,
+        "operations": 18870,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 43,
+          "R": 1,
+          "G": 3,
+          "V": 1,
+          "A": 1,
+          "cost": 56
+        },
+        "bottom": "white",
+        "crossMinimum": 7,
+        "crossLength": 7
+      },
+      "allSix": {
+        "runtimeMs": 203.35599999999977,
+        "operations": 123159,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 30,
+          "R": 2,
+          "G": 2,
+          "V": 0,
+          "A": 2,
+          "cost": 42
+        },
+        "bottom": "red",
+        "crossMinimum": 4,
+        "crossLength": 4
+      }
+    },
+    {
+      "seed": 25,
+      "advanced": {
+        "runtimeMs": 154.0529000000006,
+        "faceTurnEquivalents": 43,
+        "rotations": 3,
+        "estimatedScore": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 43,
+          "R": 3,
+          "G": 4,
+          "V": 0,
+          "A": 2,
+          "cost": 61
+        }
+      },
+      "white": {
+        "runtimeMs": 27.327299999999013,
+        "operations": 18791,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 43,
+          "R": 1,
+          "G": 3,
+          "V": 0,
+          "A": 2,
+          "cost": 55
+        },
+        "bottom": "white",
+        "crossMinimum": 6,
+        "crossLength": 6
+      },
+      "allSix": {
+        "runtimeMs": 179.54730000000018,
+        "operations": 114880,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 38,
+          "R": 3,
+          "G": 1,
+          "V": 0,
+          "A": 1,
+          "cost": 48
+        },
+        "bottom": "green",
+        "crossMinimum": 5,
+        "crossLength": 5
+      }
+    },
+    {
+      "seed": 26,
+      "advanced": {
+        "runtimeMs": 127.64469999999892,
+        "faceTurnEquivalents": 34,
+        "rotations": 3,
+        "estimatedScore": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 34,
+          "R": 3,
+          "G": 2,
+          "V": 0,
+          "A": 4,
+          "cost": 52
+        }
+      },
+      "white": {
+        "runtimeMs": 36.89899999999943,
+        "operations": 17206,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 29,
+          "R": 4,
+          "G": 2,
+          "V": 1,
+          "A": 3,
+          "cost": 50
+        },
+        "bottom": "white",
+        "crossMinimum": 5,
+        "crossLength": 5
+      },
+      "allSix": {
+        "runtimeMs": 172.89379999999983,
+        "operations": 113396,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 32,
+          "R": 3,
+          "G": 2,
+          "V": 0,
+          "A": 1,
+          "cost": 44
+        },
+        "bottom": "green",
+        "crossMinimum": 5,
+        "crossLength": 5
+      }
+    },
+    {
+      "seed": 27,
+      "advanced": {
+        "runtimeMs": 52.60239999999976,
+        "faceTurnEquivalents": 30,
+        "rotations": 3,
+        "estimatedScore": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 30,
+          "R": 3,
+          "G": 2,
+          "V": 0,
+          "A": 0,
+          "cost": 40
+        }
+      },
+      "white": {
+        "runtimeMs": 17.894800000000032,
+        "operations": 13938,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 31,
+          "R": 1,
+          "G": 1,
+          "V": 0,
+          "A": 2,
+          "cost": 39
+        },
+        "bottom": "white",
+        "crossMinimum": 4,
+        "crossLength": 4
+      },
+      "allSix": {
+        "runtimeMs": 177.28039999999964,
+        "operations": 112926,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 31,
+          "R": 1,
+          "G": 1,
+          "V": 0,
+          "A": 2,
+          "cost": 39
+        },
+        "bottom": "white",
+        "crossMinimum": 4,
+        "crossLength": 4
+      }
+    },
+    {
+      "seed": 28,
+      "advanced": {
+        "runtimeMs": 213.1318999999985,
+        "faceTurnEquivalents": 39,
+        "rotations": 4,
+        "estimatedScore": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 39,
+          "R": 4,
+          "G": 1,
+          "V": 0,
+          "A": 1,
+          "cost": 51
+        }
+      },
+      "white": {
+        "runtimeMs": 29.195099999999,
+        "operations": 18394,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 41,
+          "R": 5,
+          "G": 1,
+          "V": 0,
+          "A": 1,
+          "cost": 55
+        },
+        "bottom": "white",
+        "crossMinimum": 6,
+        "crossLength": 6
+      },
+      "allSix": {
+        "runtimeMs": 218.41469999999936,
+        "operations": 123860,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 30,
+          "R": 2,
+          "G": 3,
+          "V": 0,
+          "A": 1,
+          "cost": 42
+        },
+        "bottom": "blue",
+        "crossMinimum": 4,
+        "crossLength": 4
+      }
+    },
+    {
+      "seed": 29,
+      "advanced": {
+        "runtimeMs": 180.45470000000023,
+        "faceTurnEquivalents": 40,
+        "rotations": 1,
+        "estimatedScore": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 40,
+          "R": 1,
+          "G": 4,
+          "V": 0,
+          "A": 1,
+          "cost": 52
+        }
+      },
+      "white": {
+        "runtimeMs": 28.539700000001176,
+        "operations": 19364,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 40,
+          "R": 3,
+          "G": 2,
+          "V": 0,
+          "A": 1,
+          "cost": 52
+        },
+        "bottom": "white",
+        "crossMinimum": 6,
+        "crossLength": 6
+      },
+      "allSix": {
+        "runtimeMs": 156.61160000000018,
+        "operations": 114505,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 33,
+          "R": 3,
+          "G": 1,
+          "V": 0,
+          "A": 1,
+          "cost": 43
+        },
+        "bottom": "orange",
+        "crossMinimum": 5,
+        "crossLength": 5
+      }
+    },
+    {
+      "seed": 30,
+      "advanced": {
+        "runtimeMs": 291.09909999999945,
+        "faceTurnEquivalents": 35,
+        "rotations": 2,
+        "estimatedScore": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 35,
+          "R": 2,
+          "G": 1,
+          "V": 0,
+          "A": 2,
+          "cost": 45
+        }
+      },
+      "white": {
+        "runtimeMs": 42.92749999999978,
+        "operations": 21220,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 37,
+          "R": 6,
+          "G": 1,
+          "V": 0,
+          "A": 3,
+          "cost": 57
+        },
+        "bottom": "white",
+        "crossMinimum": 6,
+        "crossLength": 6
+      },
+      "allSix": {
+        "runtimeMs": 166.49239999999918,
+        "operations": 115997,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 39,
+          "R": 1,
+          "G": 2,
+          "V": 0,
+          "A": 1,
+          "cost": 47
+        },
+        "bottom": "green",
+        "crossMinimum": 6,
+        "crossLength": 6
+      }
+    },
+    {
+      "seed": 31,
+      "advanced": {
+        "runtimeMs": 233.73569999999927,
+        "faceTurnEquivalents": 35,
+        "rotations": 2,
+        "estimatedScore": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 35,
+          "R": 2,
+          "G": 2,
+          "V": 0,
+          "A": 2,
+          "cost": 47
+        }
+      },
+      "white": {
+        "runtimeMs": 27.565499999998792,
+        "operations": 20923,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 43,
+          "R": 3,
+          "G": 2,
+          "V": 1,
+          "A": 1,
+          "cost": 58
+        },
+        "bottom": "white",
+        "crossMinimum": 6,
+        "crossLength": 6
+      },
+      "allSix": {
+        "runtimeMs": 205.22110000000066,
+        "operations": 124988,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 40,
+          "R": 2,
+          "G": 2,
+          "V": 0,
+          "A": 0,
+          "cost": 48
+        },
+        "bottom": "green",
+        "crossMinimum": 6,
+        "crossLength": 6
+      }
+    },
+    {
+      "seed": 32,
+      "advanced": {
+        "runtimeMs": 200.25960000000123,
+        "faceTurnEquivalents": 36,
+        "rotations": 3,
+        "estimatedScore": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 36,
+          "R": 3,
+          "G": 2,
+          "V": 0,
+          "A": 2,
+          "cost": 50
+        }
+      },
+      "white": {
+        "runtimeMs": 29.706899999999223,
+        "operations": 20524,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 36,
+          "R": 7,
+          "G": 2,
+          "V": 0,
+          "A": 1,
+          "cost": 56
+        },
+        "bottom": "white",
+        "crossMinimum": 6,
+        "crossLength": 6
+      },
+      "allSix": {
+        "runtimeMs": 152.50820000000022,
+        "operations": 114895,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 32,
+          "R": 6,
+          "G": 1,
+          "V": 0,
+          "A": 0,
+          "cost": 46
+        },
+        "bottom": "green",
+        "crossMinimum": 3,
+        "crossLength": 3
+      }
+    },
+    {
+      "seed": 33,
+      "advanced": {
+        "runtimeMs": 191.53009999999995,
+        "faceTurnEquivalents": 42,
+        "rotations": 2,
+        "estimatedScore": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 42,
+          "R": 2,
+          "G": 3,
+          "V": 0,
+          "A": 4,
+          "cost": 60
+        }
+      },
+      "white": {
+        "runtimeMs": 30.749399999998786,
+        "operations": 18969,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 43,
+          "R": 4,
+          "G": 2,
+          "V": 1,
+          "A": 1,
+          "cost": 60
+        },
+        "bottom": "white",
+        "crossMinimum": 6,
+        "crossLength": 6
+      },
+      "allSix": {
+        "runtimeMs": 139.183500000001,
+        "operations": 106392,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 31,
+          "R": 3,
+          "G": 2,
+          "V": 1,
+          "A": 0,
+          "cost": 44
+        },
+        "bottom": "blue",
+        "crossMinimum": 6,
+        "crossLength": 6
+      }
+    },
+    {
+      "seed": 34,
+      "advanced": {
+        "runtimeMs": 113.20329999999922,
+        "faceTurnEquivalents": 41,
+        "rotations": 4,
+        "estimatedScore": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 41,
+          "R": 4,
+          "G": 2,
+          "V": 1,
+          "A": 2,
+          "cost": 60
+        }
+      },
+      "white": {
+        "runtimeMs": 25.98359999999957,
+        "operations": 17547,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 40,
+          "R": 3,
+          "G": 3,
+          "V": 1,
+          "A": 4,
+          "cost": 63
+        },
+        "bottom": "white",
+        "crossMinimum": 4,
+        "crossLength": 4
+      },
+      "allSix": {
+        "runtimeMs": 163.21719999999914,
+        "operations": 111574,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 40,
+          "R": 2,
+          "G": 1,
+          "V": 0,
+          "A": 1,
+          "cost": 48
+        },
+        "bottom": "green",
+        "crossMinimum": 4,
+        "crossLength": 4
+      }
+    },
+    {
+      "seed": 35,
+      "advanced": {
+        "runtimeMs": 217.31750000000102,
+        "faceTurnEquivalents": 35,
+        "rotations": 2,
+        "estimatedScore": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 35,
+          "R": 2,
+          "G": 2,
+          "V": 1,
+          "A": 3,
+          "cost": 52
+        }
+      },
+      "white": {
+        "runtimeMs": 40.07300000000032,
+        "operations": 18847,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 33,
+          "R": 3,
+          "G": 2,
+          "V": 1,
+          "A": 3,
+          "cost": 52
+        },
+        "bottom": "white",
+        "crossMinimum": 6,
+        "crossLength": 6
+      },
+      "allSix": {
+        "runtimeMs": 185.16599999999926,
+        "operations": 116382,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 33,
+          "R": 4,
+          "G": 1,
+          "V": 2,
+          "A": 1,
+          "cost": 51
+        },
+        "bottom": "red",
+        "crossMinimum": 4,
+        "crossLength": 4
+      }
+    },
+    {
+      "seed": 36,
+      "advanced": {
+        "runtimeMs": 134.03950000000077,
+        "faceTurnEquivalents": 41,
+        "rotations": 3,
+        "estimatedScore": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 41,
+          "R": 3,
+          "G": 2,
+          "V": 0,
+          "A": 0,
+          "cost": 51
+        }
+      },
+      "white": {
+        "runtimeMs": 25.311400000000503,
+        "operations": 18658,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 39,
+          "R": 4,
+          "G": 3,
+          "V": 1,
+          "A": 0,
+          "cost": 56
+        },
+        "bottom": "white",
+        "crossMinimum": 5,
+        "crossLength": 5
+      },
+      "allSix": {
+        "runtimeMs": 179.57340000000113,
+        "operations": 117799,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 37,
+          "R": 4,
+          "G": 2,
+          "V": 0,
+          "A": 1,
+          "cost": 51
+        },
+        "bottom": "red",
+        "crossMinimum": 5,
+        "crossLength": 5
+      }
+    },
+    {
+      "seed": 37,
+      "advanced": {
+        "runtimeMs": 182.1206000000002,
+        "faceTurnEquivalents": 48,
+        "rotations": 2,
+        "estimatedScore": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 48,
+          "R": 2,
+          "G": 4,
+          "V": 0,
+          "A": 1,
+          "cost": 62
+        }
+      },
+      "white": {
+        "runtimeMs": 46.88550000000032,
+        "operations": 24786,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 44,
+          "R": 4,
+          "G": 2,
+          "V": 1,
+          "A": 3,
+          "cost": 65
+        },
+        "bottom": "white",
+        "crossMinimum": 7,
+        "crossLength": 7
+      },
+      "allSix": {
+        "runtimeMs": 187.35349999999926,
+        "operations": 117452,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 36,
+          "R": 2,
+          "G": 1,
+          "V": 0,
+          "A": 1,
+          "cost": 44
+        },
+        "bottom": "red",
+        "crossMinimum": 6,
+        "crossLength": 6
+      }
+    },
+    {
+      "seed": 38,
+      "advanced": {
+        "runtimeMs": 182.45930000000044,
+        "faceTurnEquivalents": 42,
+        "rotations": 4,
+        "estimatedScore": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 42,
+          "R": 4,
+          "G": 1,
+          "V": 0,
+          "A": 2,
+          "cost": 56
+        }
+      },
+      "white": {
+        "runtimeMs": 66.10649999999987,
+        "operations": 27913,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 45,
+          "R": 4,
+          "G": 2,
+          "V": 0,
+          "A": 2,
+          "cost": 61
+        },
+        "bottom": "white",
+        "crossMinimum": 6,
+        "crossLength": 6
+      },
+      "allSix": {
+        "runtimeMs": 216.92119999999886,
+        "operations": 128305,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 32,
+          "R": 6,
+          "G": 1,
+          "V": 0,
+          "A": 1,
+          "cost": 48
+        },
+        "bottom": "blue",
+        "crossMinimum": 2,
+        "crossLength": 2
+      }
+    },
+    {
+      "seed": 39,
+      "advanced": {
+        "runtimeMs": 117.46169999999984,
+        "faceTurnEquivalents": 41,
+        "rotations": 7,
+        "estimatedScore": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 41,
+          "R": 7,
+          "G": 3,
+          "V": 0,
+          "A": 1,
+          "cost": 63
+        }
+      },
+      "white": {
+        "runtimeMs": 30.380600000000413,
+        "operations": 19781,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 46,
+          "R": 3,
+          "G": 2,
+          "V": 1,
+          "A": 0,
+          "cost": 59
+        },
+        "bottom": "white",
+        "crossMinimum": 5,
+        "crossLength": 5
+      },
+      "allSix": {
+        "runtimeMs": 188.1841000000004,
+        "operations": 118929,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 30,
+          "R": 1,
+          "G": 0,
+          "V": 0,
+          "A": 1,
+          "cost": 34
+        },
+        "bottom": "orange",
+        "crossMinimum": 5,
+        "crossLength": 5
+      }
+    },
+    {
+      "seed": 40,
+      "advanced": {
+        "runtimeMs": 169.52039999999943,
+        "faceTurnEquivalents": 39,
+        "rotations": 4,
+        "estimatedScore": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 39,
+          "R": 4,
+          "G": 1,
+          "V": 0,
+          "A": 2,
+          "cost": 53
+        }
+      },
+      "white": {
+        "runtimeMs": 70.2015999999985,
+        "operations": 29347,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 44,
+          "R": 6,
+          "G": 1,
+          "V": 1,
+          "A": 1,
+          "cost": 63
+        },
+        "bottom": "white",
+        "crossMinimum": 6,
+        "crossLength": 6
+      },
+      "allSix": {
+        "runtimeMs": 224.6890000000003,
+        "operations": 131914,
+        "rated": true,
+        "score": {
+          "rated": true,
+          "modelVersion": "lab-execution-v1",
+          "T": 36,
+          "R": 3,
+          "G": 1,
+          "V": 0,
+          "A": 1,
+          "cost": 46
+        },
+        "bottom": "green",
+        "crossMinimum": 4,
+        "crossLength": 4
+      }
+    }
+  ],
+  "summary": {
+    "advanced": {
+      "runtimeMs": {
+        "count": 40,
+        "mean": 159.89207249999987,
+        "median": 155.14120000000003,
+        "p95": 271.1419999999998,
+        "max": 368.8199999999997
+      },
+      "rated": 40,
+      "T": {
+        "count": 40,
+        "mean": 38.825,
+        "median": 39,
+        "p95": 48,
+        "max": 53
+      },
+      "R": {
+        "count": 40,
+        "mean": 3.2,
+        "median": 3,
+        "p95": 5,
+        "max": 7
+      },
+      "G": {
+        "count": 40,
+        "mean": 2.45,
+        "median": 2,
+        "p95": 4,
+        "max": 5
+      },
+      "V": {
+        "count": 40,
+        "mean": 0.05,
+        "median": 0,
+        "p95": 0,
+        "max": 1
+      },
+      "A": {
+        "count": 40,
+        "mean": 1.65,
+        "median": 2,
+        "p95": 4,
+        "max": 4
+      },
+      "cost": {
+        "count": 40,
+        "mean": 53.575,
+        "median": 53,
+        "p95": 64,
+        "max": 69
+      }
+    },
+    "white": {
+      "runtimeMs": {
+        "count": 40,
+        "mean": 35.75158749999984,
+        "median": 29.706899999999223,
+        "p95": 69.35419999999999,
+        "max": 84.41319999999905
+      },
+      "rated": 40,
+      "T": {
+        "count": 40,
+        "mean": 39.675,
+        "median": 40,
+        "p95": 46,
+        "max": 48
+      },
+      "R": {
+        "count": 40,
+        "mean": 3.3,
+        "median": 3,
+        "p95": 6,
+        "max": 7
+      },
+      "G": {
+        "count": 40,
+        "mean": 2.175,
+        "median": 2,
+        "p95": 4,
+        "max": 5
+      },
+      "V": {
+        "count": 40,
+        "mean": 0.5,
+        "median": 0,
+        "p95": 1,
+        "max": 2
+      },
+      "A": {
+        "count": 40,
+        "mean": 1.675,
+        "median": 1,
+        "p95": 3,
+        "max": 4
+      },
+      "cost": {
+        "count": 40,
+        "mean": 55.475,
+        "median": 57,
+        "p95": 65,
+        "max": 66
+      }
+    },
+    "allSix": {
+      "runtimeMs": {
+        "count": 40,
+        "mean": 193.76707999999994,
+        "median": 185.47669999999925,
+        "p95": 256.49440000000004,
+        "max": 302.0604000000003
+      },
+      "rated": 40,
+      "T": {
+        "count": 40,
+        "mean": 34.825,
+        "median": 35,
+        "p95": 40,
+        "max": 42
+      },
+      "R": {
+        "count": 40,
+        "mean": 2.8,
+        "median": 2,
+        "p95": 6,
+        "max": 6
+      },
+      "G": {
+        "count": 40,
+        "mean": 1.6,
+        "median": 1,
+        "p95": 3,
+        "max": 3
+      },
+      "V": {
+        "count": 40,
+        "mean": 0.1,
+        "median": 0,
+        "p95": 1,
+        "max": 2
+      },
+      "A": {
+        "count": 40,
+        "mean": 1.15,
+        "median": 1,
+        "p95": 2,
+        "max": 3
+      },
+      "cost": {
+        "count": 40,
+        "mean": 46.225,
+        "median": 47,
+        "p95": 52,
+        "max": 54
+      }
+    }
+  }
+}

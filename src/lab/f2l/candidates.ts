@@ -158,6 +158,7 @@ export function* enumerateLabInsertions(
   frame: LabFrame,
   profiles: ExecutionCatalog,
   budget: LabBudget,
+  options: { firstPerHold?: boolean } = {},
 ): Generator<LabWork | { kind: 'insertion'; candidate: LabInsertion }> {
   const engine = meterLabEngine(rawEngine, budget);
   budget.charge('expand');
@@ -178,6 +179,7 @@ export function* enumerateLabInsertions(
   const heldEntries = new Set<unknown>();
   const seen = new Set<string>();
   const candidates: LabInsertion[] = [];
+  const seededSlots = new Set<string>();
   const candidateEntries = new Map<LabInsertion, symbol>();
   const track = (key: unknown) => {
     if (!budget.retain(key)) throw new LabStopped('frontier-limit');
@@ -228,6 +230,7 @@ export function* enumerateLabInsertions(
   try {
     register(queue[0]);
     for (let cursor = 0; cursor < queue.length; cursor++) {
+      if (options.firstPerHold && seededSlots.size === 4) break;
       const entry = queue[cursor];
       for (const rotation of HOLDS) {
         budget.charge('expand');
@@ -240,6 +243,7 @@ export function* enumerateLabInsertions(
         const pair = observeF2LPairs(engine, held.state).find(
           (p) => p.cornerId === target.cornerId,
         )!;
+        if (options.firstPerHold && seededSlots.has(pair.slot)) continue;
         const c = o.corners.find((p) => p.id === target.cornerId)!,
           e = o.edges.find((p) => p.id === target.edgeId)!;
         const wrongCorner =
@@ -249,6 +253,7 @@ export function* enumerateLabInsertions(
           (s) => [...s].sort().join('') === [...occupied].sort().join(''),
         );
         for (const u of U_ALIGNMENTS) {
+          if (options.firstPerHold && seededSlots.has(pair.slot)) break;
           budget.charge('expand');
           yield LAB_WORK;
           const aligned = u.length
@@ -315,6 +320,10 @@ export function* enumerateLabInsertions(
                 target: atInsertion as F2LTarget,
                 variantId: variant.id,
               });
+              if (options.firstPerHold) {
+                seededSlots.add(atInsertion.slot);
+                break;
+              }
             }
           } else if (entry.depth < 2 && extractionSlot) {
             const id = `advanced-extract/${extractionSlot.toLowerCase()}/toward`,

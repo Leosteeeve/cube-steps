@@ -206,7 +206,9 @@ export function* scoreExecution(
           score.events = [...path.score.events, ...events];
           next.set(candidate.terminalGrip, candidate);
         }
-      paths = [...next.values()];
+      // Keep tie order identical when a continuation is evaluated incrementally
+      // or replayed in one pass from neutral grip.
+      paths = [...next.values()].sort(rankExecutionPaths);
       if (!paths.length) {
         yield {
           kind: 'paths',

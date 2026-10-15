@@ -1,0 +1,7530 @@
+{
+  "phase": "core",
+  "runs": 40,
+  "configuration": "Temporary Vite development worker harness; first result includes lazy imports, engine/table initialization and worker validation; excludes UI and independent main-thread validation.",
+  "batching": {
+    "targetMs": 4,
+    "targetOperations": 128,
+    "ceilings": {
+      "ms": 8,
+      "operations": 256
+    },
+    "note": "Headroom for one bounded generator step; observed maxima are reported, not assumed."
+  },
+  "sourceHashes": {
+    "src/lab/execution/score.ts": "d966a3fa948396f2128585cfaab3f30c8238a8ca35d2c527e3977c25e2e0d550",
+    "src/lab/f2l/candidates.ts": "93825c86c981578f5fb0a2ab7bb4ba428f504920aca3ca1480c1f3512a877f80",
+    "src/lab/f2l/planner.ts": "ca0362d78913a25a2cada7258f3da0b81c8f38d06e8ac4911d9ba704c18e91ee",
+    "scripts/benchmark-lab.mts": "5ee0d66c7d6fc3bdbcba71e2fda95a8bfe77bc28e6bb5b2c523d693a1863f5a7"
+  },
+  "revision": "57cc4b566d97cf691201746462041aed5651ba7c",
+  "dirty": true,
+  "environment": {
+    "cpu": "AMD Ryzen 9 8945HX with Radeon Graphics        ",
+    "platform": "win32",
+    "release": "10.0.26200",
+    "node": "v24.18.0",
+    "browser": "156.0.8078.4",
+    "device": "Windows development desktop; no physical-phone inference"
+  },
+  "rows": [
+    {
+      "type": "done",
+      "requestId": 1,
+      "firstMs": 883.4999511763453,
+      "elapsedMs": 889.0999511778355,
+      "maxBatchMs": 7.9000000059604645,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 889.0999511778355,
+        "operations": 19914,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 6
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 287,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 19914,
+        "byKind": {
+          "expand": 793,
+          "simulate": 2597,
+          "score": 16524
+        },
+        "elapsedMs": 889.0999511778355,
+        "entries": 0,
+        "entryHighWater": 287
+      },
+      "memory": null,
+      "seed": 1,
+      "condition": "cold",
+      "firstObservedMs": 883.5999023467302,
+      "stopLatencyMs": 5.5999999940395355
+    },
+    {
+      "type": "done",
+      "requestId": 1,
+      "firstMs": 1016.7999999970198,
+      "elapsedMs": 1022,
+      "maxBatchMs": 7.799999997019768,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 1022,
+        "operations": 24703,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              5
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 5
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 6
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 286,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 24703,
+        "byKind": {
+          "expand": 794,
+          "simulate": 2896,
+          "score": 21013
+        },
+        "elapsedMs": 1022.1000000014901,
+        "entries": 0,
+        "entryHighWater": 286
+      },
+      "memory": null,
+      "seed": 2,
+      "condition": "cold",
+      "firstObservedMs": 1016.9999511688948,
+      "stopLatencyMs": 5.200000002980232
+    },
+    {
+      "type": "done",
+      "requestId": 1,
+      "firstMs": 817.0999999940395,
+      "elapsedMs": 823.2999999970198,
+      "maxBatchMs": 5.100000001490116,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 823.2999999970198,
+        "operations": 19589,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              7
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 7
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 31,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 19589,
+        "byKind": {
+          "expand": 470,
+          "simulate": 1674,
+          "score": 17445
+        },
+        "elapsedMs": 823.2999999970198,
+        "entries": 0,
+        "entryHighWater": 31
+      },
+      "memory": null,
+      "seed": 3,
+      "condition": "cold",
+      "firstObservedMs": 817,
+      "stopLatencyMs": 6.300000004470348
+    },
+    {
+      "type": "done",
+      "requestId": 1,
+      "firstMs": 1001.89990234375,
+      "elapsedMs": 1008.2999023422599,
+      "maxBatchMs": 5.600000001490116,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 1008.1999023407698,
+        "operations": 24082,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 0,
+            "minimum": 6
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 2,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 287,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 24082,
+        "byKind": {
+          "expand": 882,
+          "simulate": 2880,
+          "score": 20320
+        },
+        "elapsedMs": 1008.2999023422599,
+        "entries": 0,
+        "entryHighWater": 287
+      },
+      "memory": null,
+      "seed": 4,
+      "condition": "cold",
+      "firstObservedMs": 1001.9999511688948,
+      "stopLatencyMs": 6.4000000059604645
+    },
+    {
+      "type": "done",
+      "requestId": 1,
+      "firstMs": 925.60009765625,
+      "elapsedMs": 931.0000976622105,
+      "maxBatchMs": 5.100000001490116,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 930.8000976592302,
+        "operations": 22472,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              5
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 5
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              5
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 5
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 286,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 22472,
+        "byKind": {
+          "expand": 794,
+          "simulate": 2825,
+          "score": 18853
+        },
+        "elapsedMs": 931.0000976622105,
+        "entries": 0,
+        "entryHighWater": 286
+      },
+      "memory": null,
+      "seed": 5,
+      "condition": "cold",
+      "firstObservedMs": 925.6999023407698,
+      "stopLatencyMs": 5.200000002980232
+    },
+    {
+      "type": "done",
+      "requestId": 1,
+      "firstMs": 778.1998046860099,
+      "elapsedMs": 783.7998046875,
+      "maxBatchMs": 5.600000001490116,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 783.7998046875,
+        "operations": 18855,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 6
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 47,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 18855,
+        "byKind": {
+          "expand": 444,
+          "simulate": 1622,
+          "score": 16789
+        },
+        "elapsedMs": 783.7998046875,
+        "entries": 0,
+        "entryHighWater": 47
+      },
+      "memory": null,
+      "seed": 6,
+      "condition": "cold",
+      "firstObservedMs": 778.1999023407698,
+      "stopLatencyMs": 5.700000002980232
+    },
+    {
+      "type": "done",
+      "requestId": 1,
+      "firstMs": 827.5999511703849,
+      "elapsedMs": 832.9999511688948,
+      "maxBatchMs": 4.300000004470348,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 832.8999511674047,
+        "operations": 19717,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              5
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 5
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              7
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 7
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 46,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 19717,
+        "byKind": {
+          "expand": 486,
+          "simulate": 1764,
+          "score": 17467
+        },
+        "elapsedMs": 832.9999511688948,
+        "entries": 0,
+        "entryHighWater": 46
+      },
+      "memory": null,
+      "seed": 7,
+      "condition": "cold",
+      "firstObservedMs": 827.9000000059605,
+      "stopLatencyMs": 5.299999997019768
+    },
+    {
+      "type": "done",
+      "requestId": 1,
+      "firstMs": 970.5999023467302,
+      "elapsedMs": 977.6999023482203,
+      "maxBatchMs": 6.799999997019768,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 977.6999023482203,
+        "operations": 23532,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              7
+            ],
+            "crosses": 1,
+            "f2l": 0,
+            "minimum": 7
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 2,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 287,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 23532,
+        "byKind": {
+          "expand": 878,
+          "simulate": 2846,
+          "score": 19808
+        },
+        "elapsedMs": 977.6999023482203,
+        "entries": 0,
+        "entryHighWater": 287
+      },
+      "memory": null,
+      "seed": 8,
+      "condition": "cold",
+      "firstObservedMs": 970.699951171875,
+      "stopLatencyMs": 7.199999995529652
+    },
+    {
+      "type": "done",
+      "requestId": 1,
+      "firstMs": 619.3999511748552,
+      "elapsedMs": 624.699951171875,
+      "maxBatchMs": 4.399999998509884,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 624.699951171875,
+        "operations": 14845,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 6
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 31,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 14845,
+        "byKind": {
+          "expand": 425,
+          "simulate": 1353,
+          "score": 13067
+        },
+        "elapsedMs": 624.699951171875,
+        "entries": 0,
+        "entryHighWater": 31
+      },
+      "memory": null,
+      "seed": 9,
+      "condition": "cold",
+      "firstObservedMs": 619.699951171875,
+      "stopLatencyMs": 5.199999995529652
+    },
+    {
+      "type": "done",
+      "requestId": 1,
+      "firstMs": 756.9002441465855,
+      "elapsedMs": 763.500244140625,
+      "maxBatchMs": 5.200000002980232,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 763.4002441465855,
+        "operations": 16810,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              5
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 5
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 6
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 30,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 16810,
+        "byKind": {
+          "expand": 487,
+          "simulate": 1617,
+          "score": 14706
+        },
+        "elapsedMs": 763.500244140625,
+        "entries": 0,
+        "entryHighWater": 30
+      },
+      "memory": null,
+      "seed": 10,
+      "condition": "cold",
+      "firstObservedMs": 756.9000976532698,
+      "stopLatencyMs": 6.5
+    },
+    {
+      "type": "done",
+      "requestId": 1,
+      "firstMs": 744.699951171875,
+      "elapsedMs": 750.5999511703849,
+      "maxBatchMs": 6.899999998509884,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 750.5999511703849,
+        "operations": 17793,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 6
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 31,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 17793,
+        "byKind": {
+          "expand": 434,
+          "simulate": 1592,
+          "score": 15767
+        },
+        "elapsedMs": 750.5999511703849,
+        "entries": 0,
+        "entryHighWater": 31
+      },
+      "memory": null,
+      "seed": 11,
+      "condition": "cold",
+      "firstObservedMs": 744.800048828125,
+      "stopLatencyMs": 5.800000004470348
+    },
+    {
+      "type": "done",
+      "requestId": 1,
+      "firstMs": 693.0999511703849,
+      "elapsedMs": 698.5999511703849,
+      "maxBatchMs": 5.899999998509884,
+      "maxBatchOperations": 160,
+      "coverage": {
+        "elapsedMs": 698.4999511688948,
+        "operations": 16332,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 6
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 31,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 16332,
+        "byKind": {
+          "expand": 451,
+          "simulate": 1485,
+          "score": 14396
+        },
+        "elapsedMs": 698.5999511703849,
+        "entries": 0,
+        "entryHighWater": 31
+      },
+      "memory": null,
+      "seed": 12,
+      "condition": "cold",
+      "firstObservedMs": 693.3000000044703,
+      "stopLatencyMs": 5.299999997019768
+    },
+    {
+      "type": "done",
+      "requestId": 1,
+      "firstMs": 1010.0001464858651,
+      "elapsedMs": 1017.1001464873552,
+      "maxBatchMs": 4,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 1017.1001464873552,
+        "operations": 24274,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 6
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 287,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 24274,
+        "byKind": {
+          "expand": 918,
+          "simulate": 2993,
+          "score": 20363
+        },
+        "elapsedMs": 1017.1001464873552,
+        "entries": 0,
+        "entryHighWater": 287
+      },
+      "memory": null,
+      "seed": 13,
+      "condition": "cold",
+      "firstObservedMs": 1010.3999999985099,
+      "stopLatencyMs": 6.9000000059604645
+    },
+    {
+      "type": "done",
+      "requestId": 1,
+      "firstMs": 956.4999511688948,
+      "elapsedMs": 962.2999511733651,
+      "maxBatchMs": 6.5,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 962.199951171875,
+        "operations": 22883,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              5
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 5
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 287,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 22883,
+        "byKind": {
+          "expand": 861,
+          "simulate": 2928,
+          "score": 19094
+        },
+        "elapsedMs": 962.2999511733651,
+        "entries": 0,
+        "entryHighWater": 287
+      },
+      "memory": null,
+      "seed": 14,
+      "condition": "cold",
+      "firstObservedMs": 956.5,
+      "stopLatencyMs": 5.800000004470348
+    },
+    {
+      "type": "done",
+      "requestId": 1,
+      "firstMs": 694.8999999985099,
+      "elapsedMs": 700.8999999985099,
+      "maxBatchMs": 5.399999998509884,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 700.7999999970198,
+        "operations": 16606,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              7
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 7
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              7
+            ],
+            "crosses": 1,
+            "f2l": 0,
+            "minimum": 7
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 2,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 48,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 16606,
+        "byKind": {
+          "expand": 510,
+          "simulate": 1648,
+          "score": 14448
+        },
+        "elapsedMs": 700.8999999985099,
+        "entries": 0,
+        "entryHighWater": 48
+      },
+      "memory": null,
+      "seed": 15,
+      "condition": "cold",
+      "firstObservedMs": 695.0000488311052,
+      "stopLatencyMs": 5.899999998509884
+    },
+    {
+      "type": "done",
+      "requestId": 1,
+      "firstMs": 812.7000000029802,
+      "elapsedMs": 818.2000000029802,
+      "maxBatchMs": 5.800000004470348,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 818.1000000014901,
+        "operations": 19069,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              5
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 5
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              7
+            ],
+            "crosses": 1,
+            "f2l": 0,
+            "minimum": 7
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 2,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 46,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 19069,
+        "byKind": {
+          "expand": 512,
+          "simulate": 1729,
+          "score": 16828
+        },
+        "elapsedMs": 818.2000000029802,
+        "entries": 0,
+        "entryHighWater": 46
+      },
+      "memory": null,
+      "seed": 16,
+      "condition": "cold",
+      "firstObservedMs": 812.9000488296151,
+      "stopLatencyMs": 5.399999998509884
+    },
+    {
+      "type": "done",
+      "requestId": 1,
+      "firstMs": 781.8999999985099,
+      "elapsedMs": 788.5,
+      "maxBatchMs": 5.4000000059604645,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 788.5,
+        "operations": 18547,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              5
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 5
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              5
+            ],
+            "crosses": 1,
+            "f2l": 0,
+            "minimum": 5
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 2,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 46,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 18547,
+        "byKind": {
+          "expand": 530,
+          "simulate": 1780,
+          "score": 16237
+        },
+        "elapsedMs": 788.5,
+        "entries": 0,
+        "entryHighWater": 46
+      },
+      "memory": null,
+      "seed": 17,
+      "condition": "cold",
+      "firstObservedMs": 782.1000488325953,
+      "stopLatencyMs": 6.5
+    },
+    {
+      "type": "done",
+      "requestId": 1,
+      "firstMs": 473.30000000447035,
+      "elapsedMs": 479.20000000298023,
+      "maxBatchMs": 7.200000002980232,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 479.1000000014901,
+        "operations": 10833,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              5
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 5
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              4
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 4
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 30,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 10833,
+        "byKind": {
+          "expand": 285,
+          "simulate": 1147,
+          "score": 9401
+        },
+        "elapsedMs": 479.20000000298023,
+        "entries": 0,
+        "entryHighWater": 30
+      },
+      "memory": null,
+      "seed": 18,
+      "condition": "cold",
+      "firstObservedMs": 473.4000488296151,
+      "stopLatencyMs": 5.800000004470348
+    },
+    {
+      "type": "done",
+      "requestId": 1,
+      "firstMs": 1153.800048828125,
+      "elapsedMs": 1159.2000488266349,
+      "maxBatchMs": 5.100000001490116,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 1159.2000488266349,
+        "operations": 28084,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              5
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 5
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 6
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 286,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 28084,
+        "byKind": {
+          "expand": 1504,
+          "simulate": 4823,
+          "score": 21757
+        },
+        "elapsedMs": 1159.300048828125,
+        "entries": 0,
+        "entryHighWater": 286
+      },
+      "memory": null,
+      "seed": 19,
+      "condition": "cold",
+      "firstObservedMs": 1153.9000976532698,
+      "stopLatencyMs": 5.399999998509884
+    },
+    {
+      "type": "done",
+      "requestId": 1,
+      "firstMs": 799.3000000044703,
+      "elapsedMs": 805.2000000029802,
+      "maxBatchMs": 7.399999998509884,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 805,
+        "operations": 19360,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 0,
+            "minimum": 6
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 2,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 31,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 19360,
+        "byKind": {
+          "expand": 453,
+          "simulate": 1610,
+          "score": 17297
+        },
+        "elapsedMs": 805.2000000029802,
+        "entries": 0,
+        "entryHighWater": 31
+      },
+      "memory": null,
+      "seed": 20,
+      "condition": "cold",
+      "firstObservedMs": 799.5,
+      "stopLatencyMs": 5.9000000059604645
+    },
+    {
+      "type": "done",
+      "requestId": 1,
+      "firstMs": 383.10004882514477,
+      "elapsedMs": 388.9000488296151,
+      "maxBatchMs": 5.5,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 388.9000488296151,
+        "operations": 8571,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 6
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 19,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 8571,
+        "byKind": {
+          "expand": 257,
+          "simulate": 1004,
+          "score": 7310
+        },
+        "elapsedMs": 389.00004883110523,
+        "entries": 0,
+        "entryHighWater": 19
+      },
+      "memory": null,
+      "seed": 21,
+      "condition": "cold",
+      "firstObservedMs": 383.4000488296151,
+      "stopLatencyMs": 5.800000004470348
+    },
+    {
+      "type": "done",
+      "requestId": 1,
+      "firstMs": 967.1001953110099,
+      "elapsedMs": 973.2001953125,
+      "maxBatchMs": 5.5,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 973.1001953110099,
+        "operations": 23520,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 6
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 287,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 23520,
+        "byKind": {
+          "expand": 847,
+          "simulate": 2796,
+          "score": 19877
+        },
+        "elapsedMs": 973.2001953125,
+        "entries": 0,
+        "entryHighWater": 287
+      },
+      "memory": null,
+      "seed": 22,
+      "condition": "cold",
+      "firstObservedMs": 967.5000976547599,
+      "stopLatencyMs": 5.899999998509884
+    },
+    {
+      "type": "done",
+      "requestId": 1,
+      "firstMs": 770.0999023392797,
+      "elapsedMs": 777.9999023377895,
+      "maxBatchMs": 4.300000004470348,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 777.89990234375,
+        "operations": 18721,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              7
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 7
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 0,
+            "minimum": 6
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 2,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 48,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 18721,
+        "byKind": {
+          "expand": 512,
+          "simulate": 1689,
+          "score": 16520
+        },
+        "elapsedMs": 777.9999023377895,
+        "entries": 0,
+        "entryHighWater": 48
+      },
+      "memory": null,
+      "seed": 23,
+      "condition": "cold",
+      "firstObservedMs": 770.2999511733651,
+      "stopLatencyMs": 7.699999995529652
+    },
+    {
+      "type": "done",
+      "requestId": 1,
+      "firstMs": 809.4999023452401,
+      "elapsedMs": 815.5999023392797,
+      "maxBatchMs": 5.5999999940395355,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 815.4999023452401,
+        "operations": 19011,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              7
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 7
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 0,
+            "minimum": 6
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 2,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 48,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 19011,
+        "byKind": {
+          "expand": 553,
+          "simulate": 1715,
+          "score": 16743
+        },
+        "elapsedMs": 815.5999023392797,
+        "entries": 0,
+        "entryHighWater": 48
+      },
+      "memory": null,
+      "seed": 24,
+      "condition": "cold",
+      "firstObservedMs": 809.5999511703849,
+      "stopLatencyMs": 6.100000001490116
+    },
+    {
+      "type": "done",
+      "requestId": 1,
+      "firstMs": 796.099853515625,
+      "elapsedMs": 801.599853515625,
+      "maxBatchMs": 8.200000002980232,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 801.4998535141349,
+        "operations": 18855,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              5
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 5
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 47,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 18855,
+        "byKind": {
+          "expand": 437,
+          "simulate": 1620,
+          "score": 16798
+        },
+        "elapsedMs": 801.599853515625,
+        "entries": 0,
+        "entryHighWater": 47
+      },
+      "memory": null,
+      "seed": 25,
+      "condition": "cold",
+      "firstObservedMs": 796.4999511688948,
+      "stopLatencyMs": 5.200000002980232
+    },
+    {
+      "type": "done",
+      "requestId": 1,
+      "firstMs": 734.0999023392797,
+      "elapsedMs": 739.1999023407698,
+      "maxBatchMs": 5.5,
+      "maxBatchOperations": 161,
+      "coverage": {
+        "elapsedMs": 739.0999023392797,
+        "operations": 17290,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              5
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 5
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 6
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 286,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 17290,
+        "byKind": {
+          "expand": 729,
+          "simulate": 2480,
+          "score": 14081
+        },
+        "elapsedMs": 739.1999023407698,
+        "entries": 0,
+        "entryHighWater": 286
+      },
+      "memory": null,
+      "seed": 26,
+      "condition": "cold",
+      "firstObservedMs": 734.2999023422599,
+      "stopLatencyMs": 4.899999998509884
+    },
+    {
+      "type": "done",
+      "requestId": 1,
+      "firstMs": 591.900146484375,
+      "elapsedMs": 597.0001464784145,
+      "maxBatchMs": 7.299999997019768,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 596.900146484375,
+        "operations": 14008,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              4
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 4
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              7
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 7
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 29,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 14008,
+        "byKind": {
+          "expand": 357,
+          "simulate": 1308,
+          "score": 12343
+        },
+        "elapsedMs": 597.0001464784145,
+        "entries": 0,
+        "entryHighWater": 29
+      },
+      "memory": null,
+      "seed": 27,
+      "condition": "cold",
+      "firstObservedMs": 591.8999999985099,
+      "stopLatencyMs": 5.100000001490116
+    },
+    {
+      "type": "done",
+      "requestId": 1,
+      "firstMs": 760.2997558563948,
+      "elapsedMs": 765.6997558623552,
+      "maxBatchMs": 6.799999997019768,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 765.6997558623552,
+        "operations": 18442,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 6
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 31,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 18442,
+        "byKind": {
+          "expand": 436,
+          "simulate": 1653,
+          "score": 16353
+        },
+        "elapsedMs": 765.6997558623552,
+        "entries": 0,
+        "entryHighWater": 31
+      },
+      "memory": null,
+      "seed": 28,
+      "condition": "cold",
+      "firstObservedMs": 760.5999023467302,
+      "stopLatencyMs": 5.199999995529652
+    },
+    {
+      "type": "done",
+      "requestId": 1,
+      "firstMs": 802.5001464858651,
+      "elapsedMs": 808.6001464873552,
+      "maxBatchMs": 7.200000002980232,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 808.6001464873552,
+        "operations": 19438,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              5
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 5
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 47,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 19438,
+        "byKind": {
+          "expand": 521,
+          "simulate": 1801,
+          "score": 17116
+        },
+        "elapsedMs": 808.6001464873552,
+        "entries": 0,
+        "entryHighWater": 47
+      },
+      "memory": null,
+      "seed": 29,
+      "condition": "cold",
+      "firstObservedMs": 802.7999511733651,
+      "stopLatencyMs": 6
+    },
+    {
+      "type": "done",
+      "requestId": 1,
+      "firstMs": 903.5000488236547,
+      "elapsedMs": 908.9000488221645,
+      "maxBatchMs": 5.600000001490116,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 908.9000488221645,
+        "operations": 21352,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              7
+            ],
+            "crosses": 1,
+            "f2l": 0,
+            "minimum": 7
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 2,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 287,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 21352,
+        "byKind": {
+          "expand": 861,
+          "simulate": 2762,
+          "score": 17729
+        },
+        "elapsedMs": 908.9000488221645,
+        "entries": 0,
+        "entryHighWater": 287
+      },
+      "memory": null,
+      "seed": 30,
+      "condition": "cold",
+      "firstObservedMs": 903.60009765625,
+      "stopLatencyMs": 5.5
+    },
+    {
+      "type": "done",
+      "requestId": 1,
+      "firstMs": 862.1998046860099,
+      "elapsedMs": 867.4998046904802,
+      "maxBatchMs": 6.799999997019768,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 867.3998046889901,
+        "operations": 21073,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 0,
+            "minimum": 6
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 2,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 47,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 21073,
+        "byKind": {
+          "expand": 620,
+          "simulate": 2013,
+          "score": 18440
+        },
+        "elapsedMs": 867.4998046904802,
+        "entries": 0,
+        "entryHighWater": 47
+      },
+      "memory": null,
+      "seed": 31,
+      "condition": "cold",
+      "firstObservedMs": 862.4999023452401,
+      "stopLatencyMs": 5.299999997019768
+    },
+    {
+      "type": "done",
+      "requestId": 1,
+      "firstMs": 847.6999999955297,
+      "elapsedMs": 853.1000000014901,
+      "maxBatchMs": 5.700000002980232,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 853,
+        "operations": 20585,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              5
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 5
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 47,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 20585,
+        "byKind": {
+          "expand": 515,
+          "simulate": 1828,
+          "score": 18242
+        },
+        "elapsedMs": 853.1000000014901,
+        "entries": 0,
+        "entryHighWater": 47
+      },
+      "memory": null,
+      "seed": 32,
+      "condition": "cold",
+      "firstObservedMs": 848.0999511703849,
+      "stopLatencyMs": 5.299999997019768
+    },
+    {
+      "type": "done",
+      "requestId": 1,
+      "firstMs": 783.9000000059605,
+      "elapsedMs": 790.6000000014901,
+      "maxBatchMs": 6.100000001490116,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 790.6000000014901,
+        "operations": 19043,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              4
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 4
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 31,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 19043,
+        "byKind": {
+          "expand": 465,
+          "simulate": 1720,
+          "score": 16858
+        },
+        "elapsedMs": 790.6000000014901,
+        "entries": 0,
+        "entryHighWater": 31
+      },
+      "memory": null,
+      "seed": 33,
+      "condition": "cold",
+      "firstObservedMs": 783.9999511688948,
+      "stopLatencyMs": 6.700000002980232
+    },
+    {
+      "type": "done",
+      "requestId": 1,
+      "firstMs": 747.8999999985099,
+      "elapsedMs": 753.1999999955297,
+      "maxBatchMs": 7.300000004470348,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 753.1999999955297,
+        "operations": 17644,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              4
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 4
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              7
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 7
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 29,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 17644,
+        "byKind": {
+          "expand": 496,
+          "simulate": 1640,
+          "score": 15508
+        },
+        "elapsedMs": 753.1999999955297,
+        "entries": 0,
+        "entryHighWater": 29
+      },
+      "memory": null,
+      "seed": 34,
+      "condition": "cold",
+      "firstObservedMs": 748,
+      "stopLatencyMs": 5.299999997019768
+    },
+    {
+      "type": "done",
+      "requestId": 1,
+      "firstMs": 789.699951171875,
+      "elapsedMs": 795.699951171875,
+      "maxBatchMs": 7.600000001490116,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 795.699951171875,
+        "operations": 18977,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 0,
+            "minimum": 6
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 2,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 47,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 18977,
+        "byKind": {
+          "expand": 557,
+          "simulate": 1866,
+          "score": 16554
+        },
+        "elapsedMs": 795.699951171875,
+        "entries": 0,
+        "entryHighWater": 47
+      },
+      "memory": null,
+      "seed": 35,
+      "condition": "cold",
+      "firstObservedMs": 789.9000976607203,
+      "stopLatencyMs": 5.899999998509884
+    },
+    {
+      "type": "done",
+      "requestId": 1,
+      "firstMs": 790.9001953154802,
+      "elapsedMs": 797.6001953184605,
+      "maxBatchMs": 7.100000001490116,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 797.6001953184605,
+        "operations": 18727,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              5
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 5
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 6
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 46,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 18727,
+        "byKind": {
+          "expand": 522,
+          "simulate": 1866,
+          "score": 16339
+        },
+        "elapsedMs": 797.6001953184605,
+        "entries": 0,
+        "entryHighWater": 46
+      },
+      "memory": null,
+      "seed": 36,
+      "condition": "cold",
+      "firstObservedMs": 791.10009765625,
+      "stopLatencyMs": 6.699999995529652
+    },
+    {
+      "type": "done",
+      "requestId": 1,
+      "firstMs": 1015.8000976517797,
+      "elapsedMs": 1021.7000976577401,
+      "maxBatchMs": 7.600000001490116,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 1021.60009765625,
+        "operations": 24843,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              7
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 7
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              7
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 7
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 288,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 24843,
+        "byKind": {
+          "expand": 830,
+          "simulate": 2917,
+          "score": 21096
+        },
+        "elapsedMs": 1021.7000976577401,
+        "entries": 0,
+        "entryHighWater": 288
+      },
+      "memory": null,
+      "seed": 37,
+      "condition": "cold",
+      "firstObservedMs": 1015.9000488221645,
+      "stopLatencyMs": 6
+    },
+    {
+      "type": "done",
+      "requestId": 1,
+      "firstMs": 1157.2000000029802,
+      "elapsedMs": 1162.3999999985099,
+      "maxBatchMs": 5.699999995529652,
+      "maxBatchOperations": 157,
+      "coverage": {
+        "elapsedMs": 1162.3000000044703,
+        "operations": 27962,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 6
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 287,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 27962,
+        "byKind": {
+          "expand": 1157,
+          "simulate": 3957,
+          "score": 22848
+        },
+        "elapsedMs": 1162.3999999985099,
+        "entries": 0,
+        "entryHighWater": 287
+      },
+      "memory": null,
+      "seed": 38,
+      "condition": "cold",
+      "firstObservedMs": 1157.3999511674047,
+      "stopLatencyMs": 5.100000001490116
+    },
+    {
+      "type": "done",
+      "requestId": 1,
+      "firstMs": 817.5000976547599,
+      "elapsedMs": 822.60009765625,
+      "maxBatchMs": 7.600000001490116,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 822.60009765625,
+        "operations": 19835,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              5
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 5
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 6
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 46,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 19835,
+        "byKind": {
+          "expand": 478,
+          "simulate": 1783,
+          "score": 17574
+        },
+        "elapsedMs": 822.60009765625,
+        "entries": 0,
+        "entryHighWater": 46
+      },
+      "memory": null,
+      "seed": 39,
+      "condition": "cold",
+      "firstObservedMs": 817.8000976592302,
+      "stopLatencyMs": 5
+    },
+    {
+      "type": "done",
+      "requestId": 1,
+      "firstMs": 1200.6001464873552,
+      "elapsedMs": 1207.0001464858651,
+      "maxBatchMs": 5.200000002980232,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 1206.900146484375,
+        "operations": 29395,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 6
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 287,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 29395,
+        "byKind": {
+          "expand": 1096,
+          "simulate": 3881,
+          "score": 24418
+        },
+        "elapsedMs": 1207.0001464858651,
+        "entries": 0,
+        "entryHighWater": 287
+      },
+      "memory": null,
+      "seed": 40,
+      "condition": "cold",
+      "firstObservedMs": 1201.10009765625,
+      "stopLatencyMs": 6.100000001490116
+    },
+    {
+      "type": "done",
+      "requestId": 2,
+      "firstMs": 744.7998535111547,
+      "elapsedMs": 752.1998535096645,
+      "maxBatchMs": 2.5,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 752.099853515625,
+        "operations": 19957,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 6
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 287,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 19957,
+        "byKind": {
+          "expand": 832,
+          "simulate": 2601,
+          "score": 16524
+        },
+        "elapsedMs": 752.1998535096645,
+        "entries": 0,
+        "entryHighWater": 287
+      },
+      "memory": null,
+      "seed": 1,
+      "condition": "warm",
+      "firstObservedMs": 745.0999023467302,
+      "stopLatencyMs": 7.199999995529652
+    },
+    {
+      "type": "done",
+      "requestId": 3,
+      "firstMs": 939.6999999955297,
+      "elapsedMs": 944.5,
+      "maxBatchMs": 1.8000000044703484,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 944.3999999985099,
+        "operations": 24726,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              5
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 5
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 6
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 286,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 24726,
+        "byKind": {
+          "expand": 815,
+          "simulate": 2898,
+          "score": 21013
+        },
+        "elapsedMs": 944.5,
+        "entries": 0,
+        "entryHighWater": 286
+      },
+      "memory": null,
+      "seed": 2,
+      "condition": "warm",
+      "firstObservedMs": 939.9000488296151,
+      "stopLatencyMs": 4.799999997019768
+    },
+    {
+      "type": "done",
+      "requestId": 4,
+      "firstMs": 728.5000488236547,
+      "elapsedMs": 733.0000488236547,
+      "maxBatchMs": 1.9000000059604645,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 732.9000488221645,
+        "operations": 19581,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              7
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 7
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 31,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 19581,
+        "byKind": {
+          "expand": 462,
+          "simulate": 1674,
+          "score": 17445
+        },
+        "elapsedMs": 733.0000488236547,
+        "entries": 0,
+        "entryHighWater": 31
+      },
+      "memory": null,
+      "seed": 3,
+      "condition": "warm",
+      "firstObservedMs": 728.8000976592302,
+      "stopLatencyMs": 4.399999998509884
+    },
+    {
+      "type": "done",
+      "requestId": 5,
+      "firstMs": 902.4000488221645,
+      "elapsedMs": 907.0000488236547,
+      "maxBatchMs": 1.7999999970197678,
+      "maxBatchOperations": 157,
+      "coverage": {
+        "elapsedMs": 907.0000488236547,
+        "operations": 24072,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 6
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 287,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 24072,
+        "byKind": {
+          "expand": 882,
+          "simulate": 2880,
+          "score": 20310
+        },
+        "elapsedMs": 907.0000488236547,
+        "entries": 0,
+        "entryHighWater": 287
+      },
+      "memory": null,
+      "seed": 4,
+      "condition": "warm",
+      "firstObservedMs": 902.60009765625,
+      "stopLatencyMs": 4.600000001490116
+    },
+    {
+      "type": "done",
+      "requestId": 6,
+      "firstMs": 837.6999023407698,
+      "elapsedMs": 843.2999023422599,
+      "maxBatchMs": 1.8999999985098839,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 843.2999023422599,
+        "operations": 22552,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              5
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 5
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              5
+            ],
+            "crosses": 1,
+            "f2l": 0,
+            "minimum": 5
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 2,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 286,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 22552,
+        "byKind": {
+          "expand": 837,
+          "simulate": 2829,
+          "score": 18886
+        },
+        "elapsedMs": 843.2999023422599,
+        "entries": 0,
+        "entryHighWater": 286
+      },
+      "memory": null,
+      "seed": 5,
+      "condition": "warm",
+      "firstObservedMs": 837.8999511748552,
+      "stopLatencyMs": 5.5
+    },
+    {
+      "type": "done",
+      "requestId": 7,
+      "firstMs": 730.1999023407698,
+      "elapsedMs": 734.6999023407698,
+      "maxBatchMs": 1.3999999985098839,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 734.6999023407698,
+        "operations": 18941,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 6
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 47,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 18941,
+        "byKind": {
+          "expand": 525,
+          "simulate": 1627,
+          "score": 16789
+        },
+        "elapsedMs": 734.6999023407698,
+        "entries": 0,
+        "entryHighWater": 47
+      },
+      "memory": null,
+      "seed": 6,
+      "condition": "warm",
+      "firstObservedMs": 730.4999511763453,
+      "stopLatencyMs": 4.399999998509884
+    },
+    {
+      "type": "done",
+      "requestId": 8,
+      "firstMs": 708.7998535111547,
+      "elapsedMs": 713.599853515625,
+      "maxBatchMs": 1.7000000029802322,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 713.599853515625,
+        "operations": 19709,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              5
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 5
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              7
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 7
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 46,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 19709,
+        "byKind": {
+          "expand": 479,
+          "simulate": 1763,
+          "score": 17467
+        },
+        "elapsedMs": 713.599853515625,
+        "entries": 0,
+        "entryHighWater": 46
+      },
+      "memory": null,
+      "seed": 7,
+      "condition": "warm",
+      "firstObservedMs": 708.9999023452401,
+      "stopLatencyMs": 4.700000002980232
+    },
+    {
+      "type": "done",
+      "requestId": 9,
+      "firstMs": 883.800048828125,
+      "elapsedMs": 889.300048828125,
+      "maxBatchMs": 1.8999999985098839,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 889.300048828125,
+        "operations": 23439,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              7
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 7
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 287,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 23439,
+        "byKind": {
+          "expand": 828,
+          "simulate": 2840,
+          "score": 19771
+        },
+        "elapsedMs": 889.300048828125,
+        "entries": 0,
+        "entryHighWater": 287
+      },
+      "memory": null,
+      "seed": 8,
+      "condition": "warm",
+      "firstObservedMs": 884.0000976547599,
+      "stopLatencyMs": 5.5
+    },
+    {
+      "type": "done",
+      "requestId": 10,
+      "firstMs": 535.2998535111547,
+      "elapsedMs": 540.599853515625,
+      "maxBatchMs": 1.5,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 540.599853515625,
+        "operations": 14838,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 6
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 31,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 14838,
+        "byKind": {
+          "expand": 418,
+          "simulate": 1353,
+          "score": 13067
+        },
+        "elapsedMs": 540.599853515625,
+        "entries": 0,
+        "entryHighWater": 31
+      },
+      "memory": null,
+      "seed": 9,
+      "condition": "warm",
+      "firstObservedMs": 535.4999023452401,
+      "stopLatencyMs": 5.299999997019768
+    },
+    {
+      "type": "done",
+      "requestId": 11,
+      "firstMs": 608.099853515625,
+      "elapsedMs": 613.099853515625,
+      "maxBatchMs": 2,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 612.9998535141349,
+        "operations": 16764,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              5
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 5
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 6
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 30,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 16764,
+        "byKind": {
+          "expand": 446,
+          "simulate": 1612,
+          "score": 14706
+        },
+        "elapsedMs": 613.099853515625,
+        "entries": 0,
+        "entryHighWater": 30
+      },
+      "memory": null,
+      "seed": 10,
+      "condition": "warm",
+      "firstObservedMs": 608.2999023422599,
+      "stopLatencyMs": 5.300000004470348
+    },
+    {
+      "type": "done",
+      "requestId": 12,
+      "firstMs": 651.2999023422599,
+      "elapsedMs": 657.1999023407698,
+      "maxBatchMs": 1.7999999970197678,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 657.1999023407698,
+        "operations": 17814,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 6
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 31,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 17814,
+        "byKind": {
+          "expand": 453,
+          "simulate": 1594,
+          "score": 15767
+        },
+        "elapsedMs": 657.1999023407698,
+        "entries": 0,
+        "entryHighWater": 31
+      },
+      "memory": null,
+      "seed": 11,
+      "condition": "warm",
+      "firstObservedMs": 651.4999511763453,
+      "stopLatencyMs": 5.899999998509884
+    },
+    {
+      "type": "done",
+      "requestId": 13,
+      "firstMs": 580.1998535096645,
+      "elapsedMs": 584.7998535111547,
+      "maxBatchMs": 1.5,
+      "maxBatchOperations": 160,
+      "coverage": {
+        "elapsedMs": 584.7998535111547,
+        "operations": 16297,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 6
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 31,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 16297,
+        "byKind": {
+          "expand": 419,
+          "simulate": 1482,
+          "score": 14396
+        },
+        "elapsedMs": 584.7998535111547,
+        "entries": 0,
+        "entryHighWater": 31
+      },
+      "memory": null,
+      "seed": 12,
+      "condition": "warm",
+      "firstObservedMs": 580.39990234375,
+      "stopLatencyMs": 4.600000001490116
+    },
+    {
+      "type": "done",
+      "requestId": 14,
+      "firstMs": 891.4999023377895,
+      "elapsedMs": 896.0999023392797,
+      "maxBatchMs": 1.3000000044703484,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 895.9999023377895,
+        "operations": 24254,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 6
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 287,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 24254,
+        "byKind": {
+          "expand": 900,
+          "simulate": 2991,
+          "score": 20363
+        },
+        "elapsedMs": 896.0999023392797,
+        "entries": 0,
+        "entryHighWater": 287
+      },
+      "memory": null,
+      "seed": 13,
+      "condition": "warm",
+      "firstObservedMs": 891.699951171875,
+      "stopLatencyMs": 4.600000001490116
+    },
+    {
+      "type": "done",
+      "requestId": 15,
+      "firstMs": 846.4999023377895,
+      "elapsedMs": 850.9999023377895,
+      "maxBatchMs": 1.3000000044703484,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 850.9999023377895,
+        "operations": 22960,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              5
+            ],
+            "crosses": 1,
+            "f2l": 0,
+            "minimum": 5
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 2,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 287,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 22960,
+        "byKind": {
+          "expand": 895,
+          "simulate": 2932,
+          "score": 19133
+        },
+        "elapsedMs": 850.9999023377895,
+        "entries": 0,
+        "entryHighWater": 287
+      },
+      "memory": null,
+      "seed": 14,
+      "condition": "warm",
+      "firstObservedMs": 846.7999511733651,
+      "stopLatencyMs": 4.399999998509884
+    },
+    {
+      "type": "done",
+      "requestId": 16,
+      "firstMs": 595.8999511674047,
+      "elapsedMs": 601.0999511703849,
+      "maxBatchMs": 1.3999999985098839,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 601.0999511703849,
+        "operations": 16544,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              7
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 7
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              7
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 7
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 48,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 16544,
+        "byKind": {
+          "expand": 466,
+          "simulate": 1643,
+          "score": 14435
+        },
+        "elapsedMs": 601.0999511703849,
+        "entries": 0,
+        "entryHighWater": 48
+      },
+      "memory": null,
+      "seed": 15,
+      "condition": "warm",
+      "firstObservedMs": 596.2000000029802,
+      "stopLatencyMs": 5.100000001490116
+    },
+    {
+      "type": "done",
+      "requestId": 17,
+      "firstMs": 683.1999999955297,
+      "elapsedMs": 688.1999999955297,
+      "maxBatchMs": 1.6000000014901161,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 688.1999999955297,
+        "operations": 19021,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              5
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 5
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              7
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 7
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 46,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 19021,
+        "byKind": {
+          "expand": 481,
+          "simulate": 1726,
+          "score": 16814
+        },
+        "elapsedMs": 688.1999999955297,
+        "entries": 0,
+        "entryHighWater": 46
+      },
+      "memory": null,
+      "seed": 16,
+      "condition": "warm",
+      "firstObservedMs": 683.5000488311052,
+      "stopLatencyMs": 4.899999998509884
+    },
+    {
+      "type": "done",
+      "requestId": 18,
+      "firstMs": 677.1999023407698,
+      "elapsedMs": 681.89990234375,
+      "maxBatchMs": 1.7000000029802322,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 681.89990234375,
+        "operations": 18491,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              5
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 5
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              5
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 5
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 46,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 18491,
+        "byKind": {
+          "expand": 500,
+          "simulate": 1777,
+          "score": 16214
+        },
+        "elapsedMs": 681.89990234375,
+        "entries": 0,
+        "entryHighWater": 46
+      },
+      "memory": null,
+      "seed": 17,
+      "condition": "warm",
+      "firstObservedMs": 677.3999511748552,
+      "stopLatencyMs": 4.699999995529652
+    },
+    {
+      "type": "done",
+      "requestId": 19,
+      "firstMs": 388.800048828125,
+      "elapsedMs": 394.800048828125,
+      "maxBatchMs": 1.5,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 394.7000488266349,
+        "operations": 10857,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              5
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 5
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              4
+            ],
+            "crosses": 1,
+            "f2l": 0,
+            "minimum": 4
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 2,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 30,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 10857,
+        "byKind": {
+          "expand": 305,
+          "simulate": 1149,
+          "score": 9403
+        },
+        "elapsedMs": 394.800048828125,
+        "entries": 0,
+        "entryHighWater": 30
+      },
+      "memory": null,
+      "seed": 18,
+      "condition": "warm",
+      "firstObservedMs": 389.0000976547599,
+      "stopLatencyMs": 6
+    },
+    {
+      "type": "done",
+      "requestId": 20,
+      "firstMs": 1051.7999999970198,
+      "elapsedMs": 1056.0999999940395,
+      "maxBatchMs": 1.3999999985098839,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 1056.0999999940395,
+        "operations": 28016,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              5
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 5
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 6
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 286,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 28016,
+        "byKind": {
+          "expand": 1441,
+          "simulate": 4818,
+          "score": 21757
+        },
+        "elapsedMs": 1056.0999999940395,
+        "entries": 0,
+        "entryHighWater": 286
+      },
+      "memory": null,
+      "seed": 19,
+      "condition": "warm",
+      "firstObservedMs": 1052.0000488311052,
+      "stopLatencyMs": 4.299999997019768
+    },
+    {
+      "type": "done",
+      "requestId": 21,
+      "firstMs": 697.4998535141349,
+      "elapsedMs": 702.599853515625,
+      "maxBatchMs": 1.5,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 702.599853515625,
+        "operations": 19360,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 0,
+            "minimum": 6
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 2,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 31,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 19360,
+        "byKind": {
+          "expand": 453,
+          "simulate": 1610,
+          "score": 17297
+        },
+        "elapsedMs": 702.599853515625,
+        "entries": 0,
+        "entryHighWater": 31
+      },
+      "memory": null,
+      "seed": 20,
+      "condition": "warm",
+      "firstObservedMs": 697.7999023422599,
+      "stopLatencyMs": 5
+    },
+    {
+      "type": "done",
+      "requestId": 22,
+      "firstMs": 291.79985351115465,
+      "elapsedMs": 296.89985351264477,
+      "maxBatchMs": 1.5,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 296.89985351264477,
+        "operations": 8639,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 0,
+            "minimum": 6
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 2,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 23,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 8639,
+        "byKind": {
+          "expand": 314,
+          "simulate": 1008,
+          "score": 7317
+        },
+        "elapsedMs": 296.89985351264477,
+        "entries": 0,
+        "entryHighWater": 23
+      },
+      "memory": null,
+      "seed": 21,
+      "condition": "warm",
+      "firstObservedMs": 292.09990234673023,
+      "stopLatencyMs": 5
+    },
+    {
+      "type": "done",
+      "requestId": 23,
+      "firstMs": 859.7999511659145,
+      "elapsedMs": 864.199951171875,
+      "maxBatchMs": 1.2000000029802322,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 864.199951171875,
+        "operations": 23478,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 6
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 287,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 23478,
+        "byKind": {
+          "expand": 808,
+          "simulate": 2793,
+          "score": 19877
+        },
+        "elapsedMs": 864.199951171875,
+        "entries": 0,
+        "entryHighWater": 287
+      },
+      "memory": null,
+      "seed": 22,
+      "condition": "warm",
+      "firstObservedMs": 860,
+      "stopLatencyMs": 4.399999998509884
+    },
+    {
+      "type": "done",
+      "requestId": 24,
+      "firstMs": 672.1999999955297,
+      "elapsedMs": 677.3999999985099,
+      "maxBatchMs": 1.6000000014901161,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 677.3999999985099,
+        "operations": 18710,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              7
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 7
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 0,
+            "minimum": 6
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 2,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 48,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 18710,
+        "byKind": {
+          "expand": 512,
+          "simulate": 1689,
+          "score": 16509
+        },
+        "elapsedMs": 677.3999999985099,
+        "entries": 0,
+        "entryHighWater": 48
+      },
+      "memory": null,
+      "seed": 23,
+      "condition": "warm",
+      "firstObservedMs": 672.4000488296151,
+      "stopLatencyMs": 5.100000001490116
+    },
+    {
+      "type": "done",
+      "requestId": 25,
+      "firstMs": 687.0999999940395,
+      "elapsedMs": 691.5999999940395,
+      "maxBatchMs": 1.3999999985098839,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 691.5999999940395,
+        "operations": 18974,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              7
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 7
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 6
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 48,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 18974,
+        "byKind": {
+          "expand": 542,
+          "simulate": 1714,
+          "score": 16718
+        },
+        "elapsedMs": 691.5999999940395,
+        "entries": 0,
+        "entryHighWater": 48
+      },
+      "memory": null,
+      "seed": 24,
+      "condition": "warm",
+      "firstObservedMs": 687.300048828125,
+      "stopLatencyMs": 4.399999998509884
+    },
+    {
+      "type": "done",
+      "requestId": 26,
+      "firstMs": 679.599853515625,
+      "elapsedMs": 685.4998535141349,
+      "maxBatchMs": 1.6000000014901161,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 685.4998535141349,
+        "operations": 18855,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              5
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 5
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 47,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 18855,
+        "byKind": {
+          "expand": 437,
+          "simulate": 1620,
+          "score": 16798
+        },
+        "elapsedMs": 685.4998535141349,
+        "entries": 0,
+        "entryHighWater": 47
+      },
+      "memory": null,
+      "seed": 25,
+      "condition": "warm",
+      "firstObservedMs": 679.7999023422599,
+      "stopLatencyMs": 5.9000000059604645
+    },
+    {
+      "type": "done",
+      "requestId": 27,
+      "firstMs": 640.0999023392797,
+      "elapsedMs": 645.2999023422599,
+      "maxBatchMs": 1.5,
+      "maxBatchOperations": 161,
+      "coverage": {
+        "elapsedMs": 645.2999023422599,
+        "operations": 17254,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              5
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 5
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 6
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 286,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 17254,
+        "byKind": {
+          "expand": 697,
+          "simulate": 2476,
+          "score": 14081
+        },
+        "elapsedMs": 645.2999023422599,
+        "entries": 0,
+        "entryHighWater": 286
+      },
+      "memory": null,
+      "seed": 26,
+      "condition": "warm",
+      "firstObservedMs": 640.2999511733651,
+      "stopLatencyMs": 5.299999997019768
+    },
+    {
+      "type": "done",
+      "requestId": 28,
+      "firstMs": 508.7000488266349,
+      "elapsedMs": 513.2000488266349,
+      "maxBatchMs": 1.7000000029802322,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 513.2000488266349,
+        "operations": 14036,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              4
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 4
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              7
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 7
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 29,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 14036,
+        "byKind": {
+          "expand": 381,
+          "simulate": 1312,
+          "score": 12343
+        },
+        "elapsedMs": 513.2000488266349,
+        "entries": 0,
+        "entryHighWater": 29
+      },
+      "memory": null,
+      "seed": 27,
+      "condition": "warm",
+      "firstObservedMs": 508.80009765923023,
+      "stopLatencyMs": 4.5
+    },
+    {
+      "type": "done",
+      "requestId": 29,
+      "firstMs": 660.2999511659145,
+      "elapsedMs": 665.3999511674047,
+      "maxBatchMs": 1.5,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 665.3999511674047,
+        "operations": 18471,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 6
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 31,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 18471,
+        "byKind": {
+          "expand": 462,
+          "simulate": 1656,
+          "score": 16353
+        },
+        "elapsedMs": 665.3999511674047,
+        "entries": 0,
+        "entryHighWater": 31
+      },
+      "memory": null,
+      "seed": 28,
+      "condition": "warm",
+      "firstObservedMs": 660.5,
+      "stopLatencyMs": 5.100000001490116
+    },
+    {
+      "type": "done",
+      "requestId": 30,
+      "firstMs": 696.5999999940395,
+      "elapsedMs": 701.1999999955297,
+      "maxBatchMs": 1.3999999985098839,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 701.0999999940395,
+        "operations": 19474,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              5
+            ],
+            "crosses": 1,
+            "f2l": 0,
+            "minimum": 5
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 2,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 47,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 19474,
+        "byKind": {
+          "expand": 552,
+          "simulate": 1803,
+          "score": 17119
+        },
+        "elapsedMs": 701.1999999955297,
+        "entries": 0,
+        "entryHighWater": 47
+      },
+      "memory": null,
+      "seed": 29,
+      "condition": "warm",
+      "firstObservedMs": 696.7000488266349,
+      "stopLatencyMs": 4.700000002980232
+    },
+    {
+      "type": "done",
+      "requestId": 31,
+      "firstMs": 785.1999023407698,
+      "elapsedMs": 789.6999023407698,
+      "maxBatchMs": 1.2999999970197678,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 789.5999023392797,
+        "operations": 21313,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              7
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 7
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 287,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 21313,
+        "byKind": {
+          "expand": 849,
+          "simulate": 2761,
+          "score": 17703
+        },
+        "elapsedMs": 789.7999023422599,
+        "entries": 0,
+        "entryHighWater": 287
+      },
+      "memory": null,
+      "seed": 30,
+      "condition": "warm",
+      "firstObservedMs": 785.4999511763453,
+      "stopLatencyMs": 4.399999998509884
+    },
+    {
+      "type": "done",
+      "requestId": 32,
+      "firstMs": 756.0000488236547,
+      "elapsedMs": 761.6000488251448,
+      "maxBatchMs": 1.3000000044703484,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 761.6000488251448,
+        "operations": 20978,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 6
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 47,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 20978,
+        "byKind": {
+          "expand": 577,
+          "simulate": 2009,
+          "score": 18392
+        },
+        "elapsedMs": 761.6000488251448,
+        "entries": 0,
+        "entryHighWater": 47
+      },
+      "memory": null,
+      "seed": 31,
+      "condition": "warm",
+      "firstObservedMs": 756.2000976577401,
+      "stopLatencyMs": 5.600000001490116
+    },
+    {
+      "type": "done",
+      "requestId": 33,
+      "firstMs": 753.699951171875,
+      "elapsedMs": 758.3999511674047,
+      "maxBatchMs": 1.6000000014901161,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 758.3999511674047,
+        "operations": 20665,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              5
+            ],
+            "crosses": 1,
+            "f2l": 0,
+            "minimum": 5
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 2,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 47,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 20665,
+        "byKind": {
+          "expand": 547,
+          "simulate": 1831,
+          "score": 18287
+        },
+        "elapsedMs": 758.3999511674047,
+        "entries": 0,
+        "entryHighWater": 47
+      },
+      "memory": null,
+      "seed": 32,
+      "condition": "warm",
+      "firstObservedMs": 754,
+      "stopLatencyMs": 4.600000001490116
+    },
+    {
+      "type": "done",
+      "requestId": 34,
+      "firstMs": 695.1999999955297,
+      "elapsedMs": 699.7999999970198,
+      "maxBatchMs": 1.6000000014901161,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 699.7999999970198,
+        "operations": 19120,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              4
+            ],
+            "crosses": 1,
+            "f2l": 0,
+            "minimum": 4
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 2,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 31,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 19120,
+        "byKind": {
+          "expand": 479,
+          "simulate": 1722,
+          "score": 16919
+        },
+        "elapsedMs": 699.7999999970198,
+        "entries": 0,
+        "entryHighWater": 31
+      },
+      "memory": null,
+      "seed": 33,
+      "condition": "warm",
+      "firstObservedMs": 695.4000488296151,
+      "stopLatencyMs": 4.5
+    },
+    {
+      "type": "done",
+      "requestId": 35,
+      "firstMs": 641.1000488251448,
+      "elapsedMs": 646.7000488266349,
+      "maxBatchMs": 1.6999999955296516,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 646.7000488266349,
+        "operations": 17646,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              4
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 4
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              7
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 7
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 29,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 17646,
+        "byKind": {
+          "expand": 498,
+          "simulate": 1640,
+          "score": 15508
+        },
+        "elapsedMs": 646.7000488266349,
+        "entries": 0,
+        "entryHighWater": 29
+      },
+      "memory": null,
+      "seed": 34,
+      "condition": "warm",
+      "firstObservedMs": 641.3000976592302,
+      "stopLatencyMs": 5.600000001490116
+    },
+    {
+      "type": "done",
+      "requestId": 36,
+      "firstMs": 688.6999023407698,
+      "elapsedMs": 693.1999023407698,
+      "maxBatchMs": 1.4000000059604645,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 693.0999023392797,
+        "operations": 18977,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 0,
+            "minimum": 6
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 2,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 47,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 18977,
+        "byKind": {
+          "expand": 557,
+          "simulate": 1866,
+          "score": 16554
+        },
+        "elapsedMs": 693.1999023407698,
+        "entries": 0,
+        "entryHighWater": 47
+      },
+      "memory": null,
+      "seed": 35,
+      "condition": "warm",
+      "firstObservedMs": 688.7999511733651,
+      "stopLatencyMs": 4.700000002980232
+    },
+    {
+      "type": "done",
+      "requestId": 37,
+      "firstMs": 665,
+      "elapsedMs": 669.2999999970198,
+      "maxBatchMs": 1.2999999970197678,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 669.2999999970198,
+        "operations": 18762,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              5
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 5
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 6
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 46,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 18762,
+        "byKind": {
+          "expand": 555,
+          "simulate": 1868,
+          "score": 16339
+        },
+        "elapsedMs": 669.2999999970198,
+        "entries": 0,
+        "entryHighWater": 46
+      },
+      "memory": null,
+      "seed": 36,
+      "condition": "warm",
+      "firstObservedMs": 665.2000488266349,
+      "stopLatencyMs": 4.4000000059604645
+    },
+    {
+      "type": "done",
+      "requestId": 38,
+      "firstMs": 891.2999999970198,
+      "elapsedMs": 896.1999999955297,
+      "maxBatchMs": 1.2000000029802322,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 896.1999999955297,
+        "operations": 24872,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              7
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 7
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              7
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 7
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 288,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 24872,
+        "byKind": {
+          "expand": 858,
+          "simulate": 2918,
+          "score": 21096
+        },
+        "elapsedMs": 896.1999999955297,
+        "entries": 0,
+        "entryHighWater": 288
+      },
+      "memory": null,
+      "seed": 37,
+      "condition": "warm",
+      "firstObservedMs": 891.5000488311052,
+      "stopLatencyMs": 5
+    },
+    {
+      "type": "done",
+      "requestId": 39,
+      "firstMs": 1060.0999999940395,
+      "elapsedMs": 1065.0999999940395,
+      "maxBatchMs": 1.7999999970197678,
+      "maxBatchOperations": 157,
+      "coverage": {
+        "elapsedMs": 1065.0999999940395,
+        "operations": 28035,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 0,
+            "minimum": 6
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 2,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 287,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 28035,
+        "byKind": {
+          "expand": 1209,
+          "simulate": 3963,
+          "score": 22863
+        },
+        "elapsedMs": 1065.0999999940395,
+        "entries": 0,
+        "entryHighWater": 287
+      },
+      "memory": null,
+      "seed": 38,
+      "condition": "warm",
+      "firstObservedMs": 1060.4000488296151,
+      "stopLatencyMs": 4.899999998509884
+    },
+    {
+      "type": "done",
+      "requestId": 40,
+      "firstMs": 713.7999511659145,
+      "elapsedMs": 718.199951171875,
+      "maxBatchMs": 1.7000000029802322,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 718.199951171875,
+        "operations": 19839,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              5
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 5
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 6
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 46,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 19839,
+        "byKind": {
+          "expand": 482,
+          "simulate": 1783,
+          "score": 17574
+        },
+        "elapsedMs": 718.199951171875,
+        "entries": 0,
+        "entryHighWater": 46
+      },
+      "memory": null,
+      "seed": 39,
+      "condition": "warm",
+      "firstObservedMs": 714.1000000014901,
+      "stopLatencyMs": 4.399999998509884
+    },
+    {
+      "type": "done",
+      "requestId": 41,
+      "firstMs": 1081.7000488266349,
+      "elapsedMs": 1086.800048828125,
+      "maxBatchMs": 1.3000000044703484,
+      "maxBatchOperations": 155,
+      "coverage": {
+        "elapsedMs": 1086.800048828125,
+        "operations": 29395,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "exploring",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 0,
+            "f2l": 0,
+            "minimum": 6
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 287,
+        "reason": "cancelled"
+      },
+      "budget": {
+        "operations": 29395,
+        "byKind": {
+          "expand": 1096,
+          "simulate": 3881,
+          "score": 24418
+        },
+        "elapsedMs": 1086.800048828125,
+        "entries": 0,
+        "entryHighWater": 287
+      },
+      "memory": null,
+      "seed": 40,
+      "condition": "warm",
+      "firstObservedMs": 1081.9000976607203,
+      "stopLatencyMs": 5.399999998509884
+    }
+  ],
+  "summary": {
+    "cold": {
+      "firstMs": {
+        "median": 802.5001464858651,
+        "p95": 1153.800048828125,
+        "max": 1200.6001464873552
+      },
+      "firstObservedMs": {
+        "median": 802.7999511733651,
+        "p95": 1153.9000976532698,
+        "max": 1201.10009765625
+      },
+      "stopLatencyMs": {
+        "median": 5.800000004470348,
+        "p95": 6.9000000059604645,
+        "max": 7.699999995529652
+      },
+      "maxBatchMs": {
+        "median": 5.700000002980232,
+        "p95": 7.799999997019768,
+        "max": 8.200000002980232
+      },
+      "maxBatchOperations": {
+        "median": 155,
+        "p95": 157,
+        "max": 161
+      }
+    },
+    "warm": {
+      "firstMs": {
+        "median": 696.5999999940395,
+        "p95": 1051.7999999970198,
+        "max": 1081.7000488266349
+      },
+      "firstObservedMs": {
+        "median": 696.7000488266349,
+        "p95": 1052.0000488311052,
+        "max": 1081.9000976607203
+      },
+      "stopLatencyMs": {
+        "median": 4.799999997019768,
+        "p95": 5.9000000059604645,
+        "max": 7.199999995529652
+      },
+      "maxBatchMs": {
+        "median": 1.5,
+        "p95": 1.9000000059604645,
+        "max": 2.5
+      },
+      "maxBatchOperations": {
+        "median": 155,
+        "p95": 157,
+        "max": 161
+      }
+    }
+  },
+  "phoneEvidence": "Unavailable: no representative physical phone connected.",
+  "memoryEvidence": "Worker memory API unavailable; frontier high-water counts are reported separately."
+}
