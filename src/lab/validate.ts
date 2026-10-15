@@ -80,7 +80,7 @@ function sameState(a: CubeState, b: unknown): boolean {
 }
 const moves = (value: unknown, max = 512): value is TeachingMove[] =>
   Array.isArray(value) && value.length <= max && value.every(isTeachingMove);
-function shape(raw: unknown): asserts raw is LabRoute {
+export function assertLabRouteShape(raw: unknown): asserts raw is LabRoute {
   requireThat(raw && typeof raw === 'object', 'shape', 'Missing Lab route.');
   const r = raw as LabRoute;
   requireThat(
@@ -278,7 +278,7 @@ function* replayLabRouteSteps(
   budget: LabBudget,
 ): Generator<LabWork, VerifiedLabRoute> {
   budget.checkpoint();
-  shape(raw);
+  assertLabRouteShape(raw);
   const route = raw,
     engine = meterLabEngine(context.engine, budget);
   const actual = (yield* prepareLabInputSteps(engine, input.input, budget)).initial;

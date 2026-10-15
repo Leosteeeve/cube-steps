@@ -8,6 +8,9 @@ import { ComparePage } from './ComparePage';
 import { LabPlayer } from './LabPlayer';
 import './lab.css';
 import { TourEntry } from '../tutorial/TourEntry';
+import type { LabRepository } from '../../lab/experiments/repository';
+import { LabNotebookProvider } from './LabNotebookProvider';
+import { LabExperimentPanel } from './LabExperimentPanel';
 function Workspace() {
   const { state, stop, engine, pinned, prepared, playbackError, registerPlayback } =
       useLabSession(),
@@ -145,10 +148,17 @@ function Workspace() {
         calibration. Camera movement, initial positioning and last-layer moves are outside the
         objective.
       </p>
+      <LabExperimentPanel />
     </div>
   );
 }
-export function LabWorkspace({ view }: { view: LabView }) {
+export function LabWorkspace({
+  view,
+  getRepository,
+}: {
+  view: LabView;
+  getRepository: () => Promise<LabRepository>;
+}) {
   const { engine, error, retry } = useCubeEngine(true);
   if (error)
     return (
@@ -158,9 +168,11 @@ export function LabWorkspace({ view }: { view: LabView }) {
       </section>
     );
   return engine ? (
-    <LabSessionProvider engine={engine} view={view}>
-      <Workspace />
-    </LabSessionProvider>
+    <LabNotebookProvider getRepository={getRepository}>
+      <LabSessionProvider engine={engine} view={view}>
+        <Workspace />
+      </LabSessionProvider>
+    </LabNotebookProvider>
   ) : (
     <p role="status">Preparing the Lab workspace…</p>
   );

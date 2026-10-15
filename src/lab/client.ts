@@ -24,6 +24,7 @@ export interface LabClientSnapshot {
   routes: readonly VerifiedLabRoute[];
   recommendedRouteId?: string;
   coverage?: LabCoverage;
+  settings?: LabSettings;
   issue?: LabIssue;
 }
 export interface LabClient {
@@ -217,6 +218,7 @@ export function createLabClient(deps: LabClientDependencies = {}): LabClient {
         recommendedRouteId: undefined,
         inputFingerprint: undefined,
         coverage: undefined,
+        settings: undefined,
         issue: undefined,
       });
       if (!isLabSettings(settings)) {
@@ -246,7 +248,7 @@ export function createLabClient(deps: LabClientDependencies = {}): LabClient {
           cancelled: () => !live(r),
         }),
       };
-      publish({ coverage: emptyLabCoverage(settings) });
+      publish({ coverage: emptyLabCoverage(settings), settings: structuredClone(settings) });
       r.timer = setTimer(
         () =>
           finish(r, 'stopped', {

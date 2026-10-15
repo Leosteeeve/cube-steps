@@ -14,6 +14,7 @@ import { MoveExplorerRoute } from './moves/MoveExplorerRoute';
 import { TutorialRouteBoundary } from './tutorial/TutorialProvider';
 import { TourEntry } from './tutorial/TourEntry';
 import { tourForRoute } from './tutorial/catalog';
+import { createLabOwner } from './lab-owner';
 const TimerPage = lazy(() => import('./timer/TimerPage').then((m) => ({ default: m.TimerPage })));
 const GuidePage = lazy(() => import('./guide/GuidePage').then((m) => ({ default: m.GuidePage })));
 const LabWorkspace = lazy(() =>
@@ -23,6 +24,8 @@ const ClubLearnPage = lazy(() =>
   import('./learning/ClubLearnPage').then((m) => ({ default: m.ClubLearnPage })),
 );
 export function ClubApp() {
+  const [labOwner] = useState(createLabOwner);
+  useEffect(() => () => labOwner.dispose(), [labOwner]);
   const [timerRepository] = useState(() => createTimerRepository());
   useEffect(() => () => timerRepository.dispose(), [timerRepository]);
   const { progress } = useClubProgress();
@@ -117,7 +120,7 @@ export function ClubApp() {
             </Suspense>
           ) : route.kind === 'lab' ? (
             <Suspense fallback={<p role="status">Loading CFOP Lab…</p>}>
-              <LabWorkspace view={route.view} />
+              <LabWorkspace view={route.view} getRepository={labOwner.get} />
             </Suspense>
           ) : route.kind === 'not-found' ? (
             <section>
