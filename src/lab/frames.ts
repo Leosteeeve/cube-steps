@@ -2,6 +2,7 @@ import type { Color, CubeEngine, CubeState, Face, TeachingMove } from '../core/t
 import { CENTER_SLOTS, COLORS, CORNER_SLOTS, EDGE_SLOTS } from '../core/observations';
 import { copyCubeState } from '../core/state';
 import type { LabHold, LabInput } from './types';
+import { LAB_WORK, meterLabEngine, type LabBudget, type LabWork } from './budget';
 
 export interface LabFrame {
   hold: LabHold;
@@ -20,7 +21,7 @@ const orientations = new WeakMap<
   CubeEngine,
   readonly { state: CubeState; moves: readonly TeachingMove[] }[]
 >();
-function holdingFrames(engine: CubeEngine) {
+function* holdingFrameSteps(engine: CubeEngine) {
   let cached = orientations.get(engine);
   if (cached) return cached;
   const queue = [{ state: engine.solved(), moves: [] as TeachingMove[] }];
@@ -29,6 +30,7 @@ function holdingFrames(engine: CubeEngine) {
   for (let index = 0; index < queue.length; index++)
     for (const move of ROTATIONS) {
       const next = engine.apply(queue[index].state, [move]);
+      yield LAB_WORK;
       if (!seen.has(key(next))) {
         seen.add(key(next));
         queue.push({ state: next, moves: [...queue[index].moves, move] });
@@ -37,6 +39,27 @@ function holdingFrames(engine: CubeEngine) {
   cached = queue;
   orientations.set(engine, cached);
   return cached;
+}
+function holdingFrames(engine: CubeEngine) {
+  const steps = holdingFrameSteps(engine);
+  for (;;) {
+    const next = steps.next();
+    if (next.done) return next.value;
+  }
+}
+
+/** Warm the finite orientation table cooperatively before the small frame lookup. */
+export function* createLabFrameSteps(
+  engine: CubeEngine,
+  input: LabInput,
+  hold: LabHold,
+  budget: LabBudget,
+): Generator<LabWork, LabFrame> {
+  const metered = meterLabEngine(engine, budget);
+  yield* holdingFrameSteps(metered);
+  budget.charge('expand');
+  yield LAB_WORK;
+  return createLabFrame(metered, input, hold);
 }
 
 function relabeler(colorMap: Record<Color, Color>) {

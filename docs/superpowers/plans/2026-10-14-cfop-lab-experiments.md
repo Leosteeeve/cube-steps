@@ -10,7 +10,7 @@
 
 **Spec:** [Approved CFOP Lab design](../specs/2026-10-14-cfop-lab-design.md), sections 8–11.
 
-**Status and order:** Awaiting plan review; preserve Native execution. Tasks 11–15 follow [core Tasks 1–6](2026-10-14-cfop-lab-core.md) and [workspace Tasks 7–10](2026-10-14-cfop-lab-workspace.md). The final task includes the independent review and established GitHub/Pages workflow after applicable gates pass.
+**Status and order:** Approved October 14, 2026 for Native execution. Tasks 11–15 follow [core Tasks 1–6](2026-10-14-cfop-lab-core.md) and [workspace Tasks 7–10](2026-10-14-cfop-lab-workspace.md). The final task includes the independent review and established GitHub/Pages workflow after applicable gates pass.
 
 ## Global Constraints
 

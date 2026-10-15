@@ -19,7 +19,7 @@ export interface LabInput {
 export type LabSectionId =
   'lab-position' | 'lab-cross' | 'lab-f2l' | 'lab-oll' | 'lab-pll' | 'lab-auf';
 export interface LabCheckpoint {
-  predicate: 'position' | 'cross' | 'pair' | 'f2l' | 'oll' | 'pll' | 'solved';
+  predicate: 'position' | 'cross-progress' | 'cross' | 'pair' | 'f2l' | 'oll' | 'pll' | 'solved';
   description: string;
   protectedIds: readonly string[];
   targets: readonly string[];
@@ -58,6 +58,7 @@ export interface LabCoverage {
   colors: Partial<Record<Color, LabColorCoverage>>;
   crossCompletions: number;
   f2lCompletions: number;
+  rejectedCandidates: number;
   entryHighWater: number;
   reason?: LabStopReason;
 }
@@ -102,6 +103,7 @@ export interface LabRoute {
   crossMinimum: number;
   crossLength: number;
   actions: readonly LabAction[];
+  skips: readonly { section: LabSectionId; reason: string }[];
   boundaries: { crossStart: number; crossEnd: number; f2lEnd: number };
   final: CubeState;
   setupMoves: readonly TeachingMove[];

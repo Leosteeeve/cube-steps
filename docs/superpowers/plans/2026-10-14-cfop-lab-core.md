@@ -10,7 +10,7 @@
 
 **Spec:** [Approved CFOP Lab design](../specs/2026-10-14-cfop-lab-design.md), especially sections 3–6 and 10.
 
-**Status:** Written design approved October 14, 2026. These implementation plans await review. Preserve the owner's Native execution choice. Product implementation has not started.
+**Status:** Design and all three implementation plans approved October 14, 2026. Native implementation is underway on the isolated `codex/cfop-lab` branch. The complete feature remains unreleased pending the remaining implementation and validation gates.
 
 ## Global Constraints
 

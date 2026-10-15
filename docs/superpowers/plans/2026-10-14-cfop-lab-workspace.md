@@ -10,7 +10,7 @@
 
 **Spec:** [Approved CFOP Lab design](../specs/2026-10-14-cfop-lab-design.md), sections 3–7 and 10; [approved visual reference](../specs/assets/cfop-lab/preview.html).
 
-**Status and order:** Awaiting implementation-plan review. Native execution remains selected. Tasks 7–10 depend on [core Tasks 1–6](2026-10-14-cfop-lab-core.md), including the correctness and initial performance gate; [experiments Tasks 11–15](2026-10-14-cfop-lab-experiments.md) complete the feature before publication.
+**Status and order:** Approved October 14, 2026 for Native execution. Tasks 7–10 depend on [core Tasks 1–6](2026-10-14-cfop-lab-core.md), including the correctness and initial performance gate; [experiments Tasks 11–15](2026-10-14-cfop-lab-experiments.md) complete the feature before publication.
 
 ## Global Constraints
 
