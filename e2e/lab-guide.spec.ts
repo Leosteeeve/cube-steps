@@ -13,6 +13,13 @@ test('Lab Guide works without solver assets and a missing screenshot keeps writt
   await page.goto('club/#/guide/lab');
   await expect(page.getByRole('heading', { name: 'Explore CFOP Lab' })).toBeFocused();
   await expect(page.getByRole('link', { name: /Open CFOP Lab/ })).toHaveAttribute('href', '#/lab');
+  // WebKit waits until the lazy image approaches the viewport before requesting it.
+  await page
+    .locator('.guide-chapter')
+    .filter({ has: page.locator('#guide-lab') })
+    .locator('figure')
+    .first()
+    .scrollIntoViewIfNeeded();
   await expect(page.getByText(/Screenshot unavailable/)).toBeVisible();
   await page.setViewportSize({ width: 390, height: 844 });
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);

@@ -1,0 +1,6810 @@
+{
+  "phase": "integrated",
+  "build": {
+    "commit": "787fda6ec5c8e0b9a711fd93ace5e7d6a86f3d0e",
+    "dirty": false,
+    "release": "CubeSteps club edition and human-friendly F2L preview",
+    "entries": {
+      "global": "./",
+      "club": "./club/"
+    },
+    "teachingStatus": {
+      "lbl": "accepted",
+      "cfop-beginner": "accepted",
+      "cfop-advanced": "preview"
+    }
+  },
+  "runs": 40,
+  "fullRuns": 3,
+  "recordedAt": "2026-10-15T05:49:50.772Z",
+  "configuration": "Actual built club Lab UI and production worker; first visible candidate has independent main-thread physical validation. Cold = fresh browser profile, warm = same page/cache; each analysis still creates its own worker. Initial page readiness is recorded separately and in endToEndFirstMs. Stop measures click dispatch to actual worker.terminate, not only UI state.",
+  "revision": "787fda6ec5c8e0b9a711fd93ace5e7d6a86f3d0e",
+  "environment": {
+    "cpu": "AMD Ryzen 9 8945HX with Radeon Graphics        ",
+    "platform": "win32",
+    "release": "10.0.26200",
+    "node": "v24.18.0",
+    "browser": "156.0.8078.4",
+    "device": "Windows desktop; no physical-phone inference",
+    "backgroundActivity": "One serial WebKit regression suite on the same desktop; not an idle-host measurement."
+  },
+  "summary": {
+    "cold": {
+      "uiReadyMs": {
+        "n": 40,
+        "median": 936.6189999999988,
+        "p95": 946.7795000000042,
+        "max": 1027.3082
+      },
+      "firstMs": {
+        "n": 40,
+        "median": 856.8999999910593,
+        "p95": 1205.5999999940395,
+        "max": 1273.7999999970198
+      },
+      "endToEndFirstMs": {
+        "n": 40,
+        "median": 1797.9507999910566,
+        "p95": 2140.737199994037,
+        "max": 2208.3811999970203
+      },
+      "stopLatencyMs": {
+        "n": 40,
+        "median": 0.10000000894069672,
+        "p95": 0.20000000298023224,
+        "max": 0.29999999701976776
+      },
+      "elapsedMs": {
+        "n": 40,
+        "median": 972.8000000119209,
+        "p95": 1278.4000000059605,
+        "max": 1388.199999988079
+      }
+    },
+    "warm": {
+      "uiReadyMs": {
+        "n": 40,
+        "median": 0,
+        "p95": 0,
+        "max": 0
+      },
+      "firstMs": {
+        "n": 40,
+        "median": 835.9000000059605,
+        "p95": 1184.2000000029802,
+        "max": 1249.2000000029802
+      },
+      "endToEndFirstMs": {
+        "n": 40,
+        "median": 835.9000000059605,
+        "p95": 1184.2000000029802,
+        "max": 1249.2000000029802
+      },
+      "stopLatencyMs": {
+        "n": 40,
+        "median": 0,
+        "p95": 0.10000000894069672,
+        "max": 0.10000000894069672
+      },
+      "elapsedMs": {
+        "n": 40,
+        "median": 888.5,
+        "p95": 1237.300000011921,
+        "max": 1303.6000000089407
+      }
+    },
+    "progressive": {
+      "uiReadyMs": {
+        "n": 3,
+        "median": 0,
+        "p95": 0,
+        "max": 0
+      },
+      "firstMs": {
+        "n": 3,
+        "median": 851.5,
+        "p95": 1043.2000000029802,
+        "max": 1043.2000000029802
+      },
+      "endToEndFirstMs": {
+        "n": 3,
+        "median": 851.5,
+        "p95": 1043.2000000029802,
+        "max": 1043.2000000029802
+      },
+      "stopLatencyMs": null,
+      "elapsedMs": {
+        "n": 3,
+        "median": 30006.29999999702,
+        "p95": 30008.19999998808,
+        "max": 30008.19999998808
+      }
+    },
+    "stalled-worker-watchdog": {
+      "uiReadyMs": {
+        "n": 1,
+        "median": 0,
+        "p95": 0,
+        "max": 0
+      },
+      "firstMs": null,
+      "endToEndFirstMs": null,
+      "stopLatencyMs": null,
+      "elapsedMs": {
+        "n": 1,
+        "median": 30414.10000000894,
+        "p95": 30414.10000000894,
+        "max": 30414.10000000894
+      }
+    }
+  },
+  "rows": [
+    {
+      "seed": 1,
+      "condition": "cold",
+      "uiReadyMs": 1027.3082,
+      "firstMs": 860.1000000089407,
+      "endToEndFirstMs": 1887.4082000089406,
+      "stopLatencyMs": 0.09999999403953552,
+      "elapsedMs": 980.4000000059605,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 978.800048828125,
+        "operations": 21448,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 288,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 15200000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 2,
+      "condition": "cold",
+      "uiReadyMs": 938.4557,
+      "firstMs": 1074.199999988079,
+      "endToEndFirstMs": 2012.655699988079,
+      "stopLatencyMs": 0.10000000894069672,
+      "elapsedMs": 1192.7999999970198,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 1191.199951171875,
+        "operations": 26780,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              5
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 5
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 287,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 16100000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 3,
+      "condition": "cold",
+      "uiReadyMs": 947.8122999999996,
+      "firstMs": 857,
+      "endToEndFirstMs": 1804.8122999999996,
+      "stopLatencyMs": 0.29999999701976776,
+      "elapsedMs": 972.8000000119209,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 971,
+        "operations": 21582,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 32,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 15200000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 4,
+      "condition": "cold",
+      "uiReadyMs": 931.1514999999999,
+      "firstMs": 1039.6000000089407,
+      "endToEndFirstMs": 1970.7515000089406,
+      "stopLatencyMs": 0.09999999403953552,
+      "elapsedMs": 1149,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 1147.5,
+        "operations": 26022,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 288,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 16100000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 5,
+      "condition": "cold",
+      "uiReadyMs": 928.3500999999997,
+      "firstMs": 988.7999999970198,
+      "endToEndFirstMs": 1917.1500999970194,
+      "stopLatencyMs": 0.09999999403953552,
+      "elapsedMs": 1104.199999988079,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 1101.89990234375,
+        "operations": 24246,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              5
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 5
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 287,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 15200000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 6,
+      "condition": "cold",
+      "uiReadyMs": 938.0432999999994,
+      "firstMs": 846.5,
+      "endToEndFirstMs": 1784.5432999999994,
+      "stopLatencyMs": 0.09999999403953552,
+      "elapsedMs": 900.9000000059605,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 899,
+        "operations": 20790,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 48,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 13400000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 7,
+      "condition": "cold",
+      "uiReadyMs": 941.8075000000008,
+      "firstMs": 875.2999999970198,
+      "endToEndFirstMs": 1817.1074999970206,
+      "stopLatencyMs": 0.20000000298023224,
+      "elapsedMs": 984.5999999940395,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 983,
+        "operations": 21643,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              5
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 5
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 47,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 15200000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 8,
+      "condition": "cold",
+      "uiReadyMs": 945.5025999999998,
+      "firstMs": 1046.2000000029802,
+      "endToEndFirstMs": 1991.70260000298,
+      "stopLatencyMs": 0.20000000298023224,
+      "elapsedMs": 1096.2000000029802,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 1094.7001953125,
+        "operations": 25658,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 288,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 14300000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 9,
+      "condition": "cold",
+      "uiReadyMs": 942.5684999999976,
+      "firstMs": 652.7999999970198,
+      "endToEndFirstMs": 1595.3684999970174,
+      "stopLatencyMs": 0.20000000298023224,
+      "elapsedMs": 766.0999999940395,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 764.599853515625,
+        "operations": 16290,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 32,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 15200000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 10,
+      "condition": "cold",
+      "uiReadyMs": 943.1706999999988,
+      "firstMs": 737.5,
+      "endToEndFirstMs": 1680.6706999999988,
+      "stopLatencyMs": 0.09999999403953552,
+      "elapsedMs": 847,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 845.60009765625,
+        "operations": 18401,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              5
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 5
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 31,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 15200000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 11,
+      "condition": "cold",
+      "uiReadyMs": 929.3881000000001,
+      "firstMs": 786.2999999970198,
+      "endToEndFirstMs": 1715.68809999702,
+      "stopLatencyMs": 0.20000000298023224,
+      "elapsedMs": 903.1000000089407,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 901.199951171875,
+        "operations": 19487,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 32,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 15200000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 12,
+      "condition": "cold",
+      "uiReadyMs": 936.7250999999997,
+      "firstMs": 740.4000000059605,
+      "endToEndFirstMs": 1677.1251000059601,
+      "stopLatencyMs": 0,
+      "elapsedMs": 857.7999999970198,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 856.10009765625,
+        "operations": 18072,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 32,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 15200000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 13,
+      "condition": "cold",
+      "uiReadyMs": 944.8748999999989,
+      "firstMs": 1067.5,
+      "endToEndFirstMs": 2012.374899999999,
+      "stopLatencyMs": 0.20000000298023224,
+      "elapsedMs": 1178.5,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 1177,
+        "operations": 26223,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 288,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 15200000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 14,
+      "condition": "cold",
+      "uiReadyMs": 927.7979999999989,
+      "firstMs": 1026.0999999940395,
+      "endToEndFirstMs": 1953.8979999940384,
+      "stopLatencyMs": 0.10000000894069672,
+      "elapsedMs": 1140.5999999940395,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 1138.89990234375,
+        "operations": 24802,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 288,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 15200000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 15,
+      "condition": "cold",
+      "uiReadyMs": 926.8898000000008,
+      "firstMs": 727.4000000059605,
+      "endToEndFirstMs": 1654.2898000059613,
+      "stopLatencyMs": 0.09999999403953552,
+      "elapsedMs": 785.3000000119209,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 783.599853515625,
+        "operations": 17996,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              7
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 7
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 49,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 13400000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 16,
+      "condition": "cold",
+      "uiReadyMs": 941.0507999999973,
+      "firstMs": 856.8999999910593,
+      "endToEndFirstMs": 1797.9507999910566,
+      "stopLatencyMs": 0.20000000298023224,
+      "elapsedMs": 973,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 971.400146484375,
+        "operations": 21089,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              5
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 5
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 47,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 15200000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 17,
+      "condition": "cold",
+      "uiReadyMs": 936.6189999999988,
+      "firstMs": 822.7999999970198,
+      "endToEndFirstMs": 1759.4189999970185,
+      "stopLatencyMs": 0.20000000298023224,
+      "elapsedMs": 939.5999999940395,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 937.900146484375,
+        "operations": 20076,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              5
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 5
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 47,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 15200000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 18,
+      "condition": "cold",
+      "uiReadyMs": 936.6728999999978,
+      "firstMs": 492.09999999403954,
+      "endToEndFirstMs": 1428.7728999940373,
+      "stopLatencyMs": 0.10000000894069672,
+      "elapsedMs": 607.2999999970198,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 605.60009765625,
+        "operations": 12084,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              5
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 5
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 31,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 14300000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 19,
+      "condition": "cold",
+      "uiReadyMs": 935.1371999999974,
+      "firstMs": 1205.5999999940395,
+      "endToEndFirstMs": 2140.737199994037,
+      "stopLatencyMs": 0.20000000298023224,
+      "elapsedMs": 1318.699999988079,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 1317.099853515625,
+        "operations": 29385,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              5
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 5
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 287,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 14300000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 20,
+      "condition": "cold",
+      "uiReadyMs": 919.9585999999981,
+      "firstMs": 844.7000000029802,
+      "endToEndFirstMs": 1764.6586000029783,
+      "stopLatencyMs": 0.20000000298023224,
+      "elapsedMs": 957.7999999970198,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 956.199951171875,
+        "operations": 20859,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 32,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 15200000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 21,
+      "condition": "cold",
+      "uiReadyMs": 946.7795000000042,
+      "firstMs": 387.29999999701977,
+      "endToEndFirstMs": 1334.079499997024,
+      "stopLatencyMs": 0.10000000894069672,
+      "elapsedMs": 505.29999999701977,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 503.400146484375,
+        "operations": 9710,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 16,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 14300000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 22,
+      "condition": "cold",
+      "uiReadyMs": 937.3607000000047,
+      "firstMs": 1026.4000000059605,
+      "endToEndFirstMs": 1963.7607000059652,
+      "stopLatencyMs": 0.10000000894069672,
+      "elapsedMs": 1141.5,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 1139.900146484375,
+        "operations": 25246,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 288,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 15200000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 23,
+      "condition": "cold",
+      "uiReadyMs": 934.1235000000015,
+      "firstMs": 806.2000000029802,
+      "endToEndFirstMs": 1740.3235000029817,
+      "stopLatencyMs": 0.10000000894069672,
+      "elapsedMs": 920.2999999970198,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 918.699951171875,
+        "operations": 20268,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              7
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 7
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 49,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 15200000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 24,
+      "condition": "cold",
+      "uiReadyMs": 941.2534000000014,
+      "firstMs": 853.4000000059605,
+      "endToEndFirstMs": 1794.6534000059619,
+      "stopLatencyMs": 0.10000000894069672,
+      "elapsedMs": 965.7999999970198,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 964,
+        "operations": 21019,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              7
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 7
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 49,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 15200000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 25,
+      "condition": "cold",
+      "uiReadyMs": 941.6726999999955,
+      "firstMs": 825.4000000059605,
+      "endToEndFirstMs": 1767.072700005956,
+      "stopLatencyMs": 0.09999999403953552,
+      "elapsedMs": 936.7999999970198,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 935.099853515625,
+        "operations": 20766,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 48,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 15200000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 26,
+      "condition": "cold",
+      "uiReadyMs": 924.1071999999986,
+      "firstMs": 741.0999999940395,
+      "endToEndFirstMs": 1665.207199994038,
+      "stopLatencyMs": 0.20000000298023224,
+      "elapsedMs": 849.2999999970198,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 847.699951171875,
+        "operations": 18516,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              5
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 5
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 287,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 15200000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 27,
+      "condition": "cold",
+      "uiReadyMs": 925.8539999999994,
+      "firstMs": 616.5,
+      "endToEndFirstMs": 1542.3539999999994,
+      "stopLatencyMs": 0.20000000298023224,
+      "elapsedMs": 725.1999999880791,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 723.699951171875,
+        "operations": 15390,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              4
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 4
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 30,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 14300000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 28,
+      "condition": "cold",
+      "uiReadyMs": 931.409599999999,
+      "firstMs": 811,
+      "endToEndFirstMs": 1742.409599999999,
+      "stopLatencyMs": 0.20000000298023224,
+      "elapsedMs": 926.5,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 925,
+        "operations": 20131,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 32,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 15200000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 29,
+      "condition": "cold",
+      "uiReadyMs": 933.3143000000055,
+      "firstMs": 870.7000000029802,
+      "endToEndFirstMs": 1804.0143000029857,
+      "stopLatencyMs": 0.20000000298023224,
+      "elapsedMs": 983.6000000089407,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 982,
+        "operations": 21326,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 48,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 15200000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 30,
+      "condition": "cold",
+      "uiReadyMs": 925.2293999999965,
+      "firstMs": 936.3000000119209,
+      "endToEndFirstMs": 1861.5294000119175,
+      "stopLatencyMs": 0.09999999403953552,
+      "elapsedMs": 1062.5,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 1060.5,
+        "operations": 22867,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 288,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 15200000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 31,
+      "condition": "cold",
+      "uiReadyMs": 943.135000000002,
+      "firstMs": 934.1999999880791,
+      "endToEndFirstMs": 1877.334999988081,
+      "stopLatencyMs": 0.20000000298023224,
+      "elapsedMs": 1050.3999999910593,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 1048.7001953125,
+        "operations": 22937,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 48,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 15200000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 32,
+      "condition": "cold",
+      "uiReadyMs": 928.1713999999993,
+      "firstMs": 901.4000000059605,
+      "endToEndFirstMs": 1829.5714000059597,
+      "stopLatencyMs": 0.20000000298023224,
+      "elapsedMs": 1015.7000000029802,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 1014,
+        "operations": 22241,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 48,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 15200000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 33,
+      "condition": "cold",
+      "uiReadyMs": 942.3473000000085,
+      "firstMs": 862,
+      "endToEndFirstMs": 1804.3473000000085,
+      "stopLatencyMs": 0.09999999403953552,
+      "elapsedMs": 976,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 974.599853515625,
+        "operations": 21059,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 32,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 15200000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 34,
+      "condition": "cold",
+      "uiReadyMs": 933.4533000000083,
+      "firstMs": 788.2999999970198,
+      "endToEndFirstMs": 1721.753299997028,
+      "stopLatencyMs": 0.10000000894069672,
+      "elapsedMs": 905.7999999970198,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 903.699951171875,
+        "operations": 19229,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              4
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 4
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 30,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 15200000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 35,
+      "condition": "cold",
+      "uiReadyMs": 937.4933000000019,
+      "firstMs": 837.5,
+      "endToEndFirstMs": 1774.993300000002,
+      "stopLatencyMs": 0.09999999403953552,
+      "elapsedMs": 959.3999999910593,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 957.699951171875,
+        "operations": 20371,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 48,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 15200000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 36,
+      "condition": "cold",
+      "uiReadyMs": 929.2324999999983,
+      "firstMs": 827.5999999940395,
+      "endToEndFirstMs": 1756.8324999940378,
+      "stopLatencyMs": 0.20000000298023224,
+      "elapsedMs": 878.7999999970198,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 877.199951171875,
+        "operations": 20239,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              5
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 5
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 47,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 12700000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 37,
+      "condition": "cold",
+      "uiReadyMs": 928.7200000000012,
+      "firstMs": 1089.9000000059605,
+      "endToEndFirstMs": 2018.6200000059616,
+      "stopLatencyMs": 0.20000000298023224,
+      "elapsedMs": 1207.9000000059605,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 1206.39990234375,
+        "operations": 26893,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              7
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 7
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 289,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 15200000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 38,
+      "condition": "cold",
+      "uiReadyMs": 936.9246999999887,
+      "firstMs": 1225.7999999970198,
+      "endToEndFirstMs": 2162.7246999970084,
+      "stopLatencyMs": 0.20000000298023224,
+      "elapsedMs": 1278.4000000059605,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 1276.800048828125,
+        "operations": 29898,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 288,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 12700000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 39,
+      "condition": "cold",
+      "uiReadyMs": 928.9087999999902,
+      "firstMs": 891.9000000059605,
+      "endToEndFirstMs": 1820.8088000059506,
+      "stopLatencyMs": 0.10000000894069672,
+      "elapsedMs": 1004.5999999940395,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 1002.699951171875,
+        "operations": 21890,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              5
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 5
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 47,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 15200000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 40,
+      "condition": "cold",
+      "uiReadyMs": 934.5812000000005,
+      "firstMs": 1273.7999999970198,
+      "endToEndFirstMs": 2208.3811999970203,
+      "stopLatencyMs": 0.20000000298023224,
+      "elapsedMs": 1388.199999988079,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 1386.400146484375,
+        "operations": 31472,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 288,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 16100000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 1,
+      "condition": "warm",
+      "uiReadyMs": 0,
+      "firstMs": 857.5,
+      "endToEndFirstMs": 857.5,
+      "stopLatencyMs": 0.09999999403953552,
+      "elapsedMs": 947.5999999940395,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 946.5,
+        "operations": 21448,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 288,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 12700000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 2,
+      "condition": "warm",
+      "uiReadyMs": 0,
+      "firstMs": 1070.300000011921,
+      "endToEndFirstMs": 1070.300000011921,
+      "stopLatencyMs": 0,
+      "elapsedMs": 1136.5,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 1135.39990234375,
+        "operations": 26780,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              5
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 5
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 287,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 12700000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 3,
+      "condition": "warm",
+      "uiReadyMs": 0,
+      "firstMs": 858.1000000089407,
+      "endToEndFirstMs": 858.1000000089407,
+      "stopLatencyMs": 0.09999999403953552,
+      "elapsedMs": 916.2999999970198,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 915.199951171875,
+        "operations": 21582,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 32,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 12700000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 4,
+      "condition": "warm",
+      "uiReadyMs": 0,
+      "firstMs": 1033.4000000059605,
+      "endToEndFirstMs": 1033.4000000059605,
+      "stopLatencyMs": 0,
+      "elapsedMs": 1087.300000011921,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 1086.199951171875,
+        "operations": 26022,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 288,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 12700000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 5,
+      "condition": "warm",
+      "uiReadyMs": 0,
+      "firstMs": 963.2000000029802,
+      "endToEndFirstMs": 963.2000000029802,
+      "stopLatencyMs": 0,
+      "elapsedMs": 1006.9000000059605,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 1005.5,
+        "operations": 24246,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              5
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 5
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 287,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 12700000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 6,
+      "condition": "warm",
+      "uiReadyMs": 0,
+      "firstMs": 818.5,
+      "endToEndFirstMs": 818.5,
+      "stopLatencyMs": 0.09999999403953552,
+      "elapsedMs": 870.5,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 869.2998046875,
+        "operations": 20790,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 48,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 12700000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 7,
+      "condition": "warm",
+      "uiReadyMs": 0,
+      "firstMs": 854.1000000089407,
+      "endToEndFirstMs": 854.1000000089407,
+      "stopLatencyMs": 0,
+      "elapsedMs": 904.3000000119209,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 903.199951171875,
+        "operations": 21643,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              5
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 5
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 47,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 12700000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 8,
+      "condition": "warm",
+      "uiReadyMs": 0,
+      "firstMs": 1022.6000000089407,
+      "endToEndFirstMs": 1022.6000000089407,
+      "stopLatencyMs": 0,
+      "elapsedMs": 1071.6000000089407,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 1070.099853515625,
+        "operations": 25658,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 288,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 12700000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 9,
+      "condition": "warm",
+      "uiReadyMs": 0,
+      "firstMs": 649,
+      "endToEndFirstMs": 649,
+      "stopLatencyMs": 0,
+      "elapsedMs": 704.5999999940395,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 703.099853515625,
+        "operations": 16290,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 32,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 12700000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 10,
+      "condition": "warm",
+      "uiReadyMs": 0,
+      "firstMs": 717.7999999970198,
+      "endToEndFirstMs": 717.7999999970198,
+      "stopLatencyMs": 0.09999999403953552,
+      "elapsedMs": 769.6999999880791,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 768.800048828125,
+        "operations": 18401,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              5
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 5
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 31,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 12700000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 11,
+      "condition": "warm",
+      "uiReadyMs": 0,
+      "firstMs": 779.6000000089407,
+      "endToEndFirstMs": 779.6000000089407,
+      "stopLatencyMs": 0,
+      "elapsedMs": 823.5,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 822.2998046875,
+        "operations": 19487,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 32,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 12700000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 12,
+      "condition": "warm",
+      "uiReadyMs": 0,
+      "firstMs": 696.9000000059605,
+      "endToEndFirstMs": 696.9000000059605,
+      "stopLatencyMs": 0,
+      "elapsedMs": 737.1000000089407,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 736.199951171875,
+        "operations": 18072,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 32,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 12700000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 13,
+      "condition": "warm",
+      "uiReadyMs": 0,
+      "firstMs": 1034.3999999910593,
+      "endToEndFirstMs": 1034.3999999910593,
+      "stopLatencyMs": 0.10000000894069672,
+      "elapsedMs": 1087.8999999910593,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 1086.800048828125,
+        "operations": 26223,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 288,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 12700000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 14,
+      "condition": "warm",
+      "uiReadyMs": 0,
+      "firstMs": 978.4000000059605,
+      "endToEndFirstMs": 978.4000000059605,
+      "stopLatencyMs": 0,
+      "elapsedMs": 1020.7999999970198,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 1020,
+        "operations": 24802,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 288,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 12700000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 15,
+      "condition": "warm",
+      "uiReadyMs": 0,
+      "firstMs": 704.2000000029802,
+      "endToEndFirstMs": 704.2000000029802,
+      "stopLatencyMs": 0,
+      "elapsedMs": 756,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 754.699951171875,
+        "operations": 17996,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              7
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 7
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 49,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 12700000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 16,
+      "condition": "warm",
+      "uiReadyMs": 0,
+      "firstMs": 835.9000000059605,
+      "endToEndFirstMs": 835.9000000059605,
+      "stopLatencyMs": 0,
+      "elapsedMs": 888.5,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 887.699951171875,
+        "operations": 21089,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              5
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 5
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 47,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 12700000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 17,
+      "condition": "warm",
+      "uiReadyMs": 0,
+      "firstMs": 785.2999999970198,
+      "endToEndFirstMs": 785.2999999970198,
+      "stopLatencyMs": 0,
+      "elapsedMs": 836.2999999970198,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 835.300048828125,
+        "operations": 20076,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              5
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 5
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 47,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 12700000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 18,
+      "condition": "warm",
+      "uiReadyMs": 0,
+      "firstMs": 464.79999999701977,
+      "endToEndFirstMs": 464.79999999701977,
+      "stopLatencyMs": 0.10000000894069672,
+      "elapsedMs": 521.2999999970198,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 520.5,
+        "operations": 12084,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              5
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 5
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 31,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 12700000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 19,
+      "condition": "warm",
+      "uiReadyMs": 0,
+      "firstMs": 1184.2000000029802,
+      "endToEndFirstMs": 1184.2000000029802,
+      "stopLatencyMs": 0.09999999403953552,
+      "elapsedMs": 1237.300000011921,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 1236,
+        "operations": 29385,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              5
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 5
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 287,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 12700000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 20,
+      "condition": "warm",
+      "uiReadyMs": 0,
+      "firstMs": 828.7999999970198,
+      "endToEndFirstMs": 828.7999999970198,
+      "stopLatencyMs": 0.09999999403953552,
+      "elapsedMs": 870.2000000029802,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 869.300048828125,
+        "operations": 20859,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 32,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 12700000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 21,
+      "condition": "warm",
+      "uiReadyMs": 0,
+      "firstMs": 371.79999999701977,
+      "endToEndFirstMs": 371.79999999701977,
+      "stopLatencyMs": 0,
+      "elapsedMs": 421.40000000596046,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 420.400146484375,
+        "operations": 9710,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 16,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 12700000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 22,
+      "condition": "warm",
+      "uiReadyMs": 0,
+      "firstMs": 1007.8999999910593,
+      "endToEndFirstMs": 1007.8999999910593,
+      "stopLatencyMs": 0.09999999403953552,
+      "elapsedMs": 1054.2999999970198,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 1053.099853515625,
+        "operations": 25246,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 288,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 12700000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 23,
+      "condition": "warm",
+      "uiReadyMs": 0,
+      "firstMs": 796.7000000029802,
+      "endToEndFirstMs": 796.7000000029802,
+      "stopLatencyMs": 0,
+      "elapsedMs": 838.2999999970198,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 837.39990234375,
+        "operations": 20268,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              7
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 7
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 49,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 12700000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 24,
+      "condition": "warm",
+      "uiReadyMs": 0,
+      "firstMs": 845.5,
+      "endToEndFirstMs": 845.5,
+      "stopLatencyMs": 0,
+      "elapsedMs": 888.7000000029802,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 887.699951171875,
+        "operations": 21019,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              7
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 7
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 49,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 12700000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 25,
+      "condition": "warm",
+      "uiReadyMs": 0,
+      "firstMs": 826.3999999910593,
+      "endToEndFirstMs": 826.3999999910593,
+      "stopLatencyMs": 0,
+      "elapsedMs": 870.2999999970198,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 869.199951171875,
+        "operations": 20766,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 48,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 12700000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 26,
+      "condition": "warm",
+      "uiReadyMs": 0,
+      "firstMs": 740.5,
+      "endToEndFirstMs": 740.5,
+      "stopLatencyMs": 0,
+      "elapsedMs": 787.0999999940395,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 786.199951171875,
+        "operations": 18516,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              5
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 5
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 287,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 12700000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 27,
+      "condition": "warm",
+      "uiReadyMs": 0,
+      "firstMs": 614.9000000059605,
+      "endToEndFirstMs": 614.9000000059605,
+      "stopLatencyMs": 0.10000000894069672,
+      "elapsedMs": 669.5,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 668.300048828125,
+        "operations": 15390,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              4
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 4
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 30,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 12700000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 28,
+      "condition": "warm",
+      "uiReadyMs": 0,
+      "firstMs": 792.6000000089407,
+      "endToEndFirstMs": 792.6000000089407,
+      "stopLatencyMs": 0,
+      "elapsedMs": 838.2000000029802,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 837,
+        "operations": 20131,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 32,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 12700000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 29,
+      "condition": "warm",
+      "uiReadyMs": 0,
+      "firstMs": 851.8999999910593,
+      "endToEndFirstMs": 851.8999999910593,
+      "stopLatencyMs": 0,
+      "elapsedMs": 902.3999999910593,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 901.5,
+        "operations": 21326,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 48,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 12700000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 30,
+      "condition": "warm",
+      "uiReadyMs": 0,
+      "firstMs": 913.6000000089407,
+      "endToEndFirstMs": 913.6000000089407,
+      "stopLatencyMs": 0,
+      "elapsedMs": 954.8000000119209,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 954,
+        "operations": 22867,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 288,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 12700000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 31,
+      "condition": "warm",
+      "uiReadyMs": 0,
+      "firstMs": 926.3000000119209,
+      "endToEndFirstMs": 926.3000000119209,
+      "stopLatencyMs": 0,
+      "elapsedMs": 971.5,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 970.39990234375,
+        "operations": 22937,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 48,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 12700000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 32,
+      "condition": "warm",
+      "uiReadyMs": 0,
+      "firstMs": 886.5,
+      "endToEndFirstMs": 886.5,
+      "stopLatencyMs": 0,
+      "elapsedMs": 936.5,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 935.5,
+        "operations": 22241,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 48,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 12700000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 33,
+      "condition": "warm",
+      "uiReadyMs": 0,
+      "firstMs": 831.7000000029802,
+      "endToEndFirstMs": 831.7000000029802,
+      "stopLatencyMs": 0,
+      "elapsedMs": 886.7000000029802,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 885.800048828125,
+        "operations": 21059,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 32,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 12700000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 34,
+      "condition": "warm",
+      "uiReadyMs": 0,
+      "firstMs": 764.7999999970198,
+      "endToEndFirstMs": 764.7999999970198,
+      "stopLatencyMs": 0,
+      "elapsedMs": 805.3999999910593,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 804.2998046875,
+        "operations": 19229,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              4
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 4
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 30,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 12700000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 35,
+      "condition": "warm",
+      "uiReadyMs": 0,
+      "firstMs": 813.7000000029802,
+      "endToEndFirstMs": 813.7000000029802,
+      "stopLatencyMs": 0.09999999403953552,
+      "elapsedMs": 855.9000000059605,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 854.89990234375,
+        "operations": 20371,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 48,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 12700000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 36,
+      "condition": "warm",
+      "uiReadyMs": 0,
+      "firstMs": 802.8000000119209,
+      "endToEndFirstMs": 802.8000000119209,
+      "stopLatencyMs": 0,
+      "elapsedMs": 853.8000000119209,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 853,
+        "operations": 20239,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              5
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 5
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 47,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 12700000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 37,
+      "condition": "warm",
+      "uiReadyMs": 0,
+      "firstMs": 1072.1000000089407,
+      "endToEndFirstMs": 1072.1000000089407,
+      "stopLatencyMs": 0,
+      "elapsedMs": 1122.7000000029802,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 1120.900146484375,
+        "operations": 26893,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              7
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 7
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 289,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 12700000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 38,
+      "condition": "warm",
+      "uiReadyMs": 0,
+      "firstMs": 1194.800000011921,
+      "endToEndFirstMs": 1194.800000011921,
+      "stopLatencyMs": 0,
+      "elapsedMs": 1238.1000000089407,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 1237.300048828125,
+        "operations": 29898,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 288,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 12700000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 39,
+      "condition": "warm",
+      "uiReadyMs": 0,
+      "firstMs": 875.2000000029802,
+      "endToEndFirstMs": 875.2000000029802,
+      "stopLatencyMs": 0.10000000894069672,
+      "elapsedMs": 921.4000000059605,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 920.60009765625,
+        "operations": 21890,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              5
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 5
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 47,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 12700000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 40,
+      "condition": "warm",
+      "uiReadyMs": 0,
+      "firstMs": 1249.2000000029802,
+      "endToEndFirstMs": 1249.2000000029802,
+      "stopLatencyMs": 0,
+      "elapsedMs": 1303.6000000089407,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 1302.89990234375,
+        "operations": 31472,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              }
+            ],
+            "lengths": [
+              6
+            ],
+            "crosses": 1,
+            "f2l": 1,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 1,
+        "f2lCompletions": 1,
+        "rejectedCandidates": 0,
+        "entryHighWater": 288,
+        "reason": "cancelled"
+      },
+      "memory": {
+        "usedJSHeapSize": 12700000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 1,
+      "condition": "progressive",
+      "uiReadyMs": 0,
+      "firstMs": 851.5,
+      "endToEndFirstMs": 851.5,
+      "stopLatencyMs": null,
+      "elapsedMs": 30008.19999998808,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 30007,
+        "operations": 755002,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              },
+              {
+                "bottom": "white",
+                "front": "red"
+              },
+              {
+                "bottom": "white",
+                "front": "blue"
+              },
+              {
+                "bottom": "white",
+                "front": "orange"
+              }
+            ],
+            "lengths": [
+              6,
+              7,
+              8
+            ],
+            "crosses": 12,
+            "f2l": 4,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              },
+              {
+                "bottom": "yellow",
+                "front": "red"
+              },
+              {
+                "bottom": "yellow",
+                "front": "blue"
+              },
+              {
+                "bottom": "yellow",
+                "front": "orange"
+              }
+            ],
+            "lengths": [
+              6,
+              7,
+              8
+            ],
+            "crosses": 12,
+            "f2l": 4,
+            "minimum": 6
+          },
+          "red": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "red",
+                "front": "green"
+              },
+              {
+                "bottom": "red",
+                "front": "white"
+              },
+              {
+                "bottom": "red",
+                "front": "blue"
+              },
+              {
+                "bottom": "red",
+                "front": "yellow"
+              }
+            ],
+            "lengths": [
+              6,
+              7,
+              8
+            ],
+            "crosses": 12,
+            "f2l": 4,
+            "minimum": 6
+          },
+          "orange": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "orange",
+                "front": "green"
+              },
+              {
+                "bottom": "orange",
+                "front": "white"
+              },
+              {
+                "bottom": "orange",
+                "front": "blue"
+              },
+              {
+                "bottom": "orange",
+                "front": "yellow"
+              }
+            ],
+            "lengths": [
+              7,
+              8,
+              9
+            ],
+            "crosses": 12,
+            "f2l": 4,
+            "minimum": 7
+          },
+          "green": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "green",
+                "front": "white"
+              },
+              {
+                "bottom": "green",
+                "front": "red"
+              },
+              {
+                "bottom": "green",
+                "front": "yellow"
+              },
+              {
+                "bottom": "green",
+                "front": "orange"
+              }
+            ],
+            "lengths": [
+              4,
+              5,
+              6
+            ],
+            "crosses": 12,
+            "f2l": 4,
+            "minimum": 4
+          },
+          "blue": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "blue",
+                "front": "white"
+              },
+              {
+                "bottom": "blue",
+                "front": "red"
+              },
+              {
+                "bottom": "blue",
+                "front": "yellow"
+              },
+              {
+                "bottom": "blue",
+                "front": "orange"
+              }
+            ],
+            "lengths": [
+              6,
+              7,
+              8
+            ],
+            "crosses": 12,
+            "f2l": 4,
+            "minimum": 6
+          }
+        },
+        "crossCompletions": 72,
+        "f2lCompletions": 24,
+        "rejectedCandidates": 0,
+        "entryHighWater": 6436,
+        "reason": "time-limit"
+      },
+      "memory": {
+        "usedJSHeapSize": 12700000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 2,
+      "condition": "progressive",
+      "uiReadyMs": 0,
+      "firstMs": 1043.2000000029802,
+      "endToEndFirstMs": 1043.2000000029802,
+      "stopLatencyMs": null,
+      "elapsedMs": 30006.29999999702,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 30005.199951171875,
+        "operations": 752403,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              },
+              {
+                "bottom": "white",
+                "front": "red"
+              },
+              {
+                "bottom": "white",
+                "front": "blue"
+              },
+              {
+                "bottom": "white",
+                "front": "orange"
+              }
+            ],
+            "lengths": [
+              5,
+              6,
+              7
+            ],
+            "crosses": 12,
+            "f2l": 4,
+            "minimum": 5
+          },
+          "yellow": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              },
+              {
+                "bottom": "yellow",
+                "front": "red"
+              },
+              {
+                "bottom": "yellow",
+                "front": "blue"
+              },
+              {
+                "bottom": "yellow",
+                "front": "orange"
+              }
+            ],
+            "lengths": [
+              6,
+              7,
+              8
+            ],
+            "crosses": 12,
+            "f2l": 4,
+            "minimum": 6
+          },
+          "red": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "red",
+                "front": "green"
+              },
+              {
+                "bottom": "red",
+                "front": "white"
+              },
+              {
+                "bottom": "red",
+                "front": "blue"
+              },
+              {
+                "bottom": "red",
+                "front": "yellow"
+              }
+            ],
+            "lengths": [
+              5,
+              6,
+              7
+            ],
+            "crosses": 12,
+            "f2l": 5,
+            "minimum": 5
+          },
+          "orange": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "orange",
+                "front": "green"
+              },
+              {
+                "bottom": "orange",
+                "front": "white"
+              },
+              {
+                "bottom": "orange",
+                "front": "blue"
+              },
+              {
+                "bottom": "orange",
+                "front": "yellow"
+              }
+            ],
+            "lengths": [
+              6,
+              7,
+              8
+            ],
+            "crosses": 12,
+            "f2l": 4,
+            "minimum": 6
+          },
+          "green": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "green",
+                "front": "white"
+              },
+              {
+                "bottom": "green",
+                "front": "red"
+              },
+              {
+                "bottom": "green",
+                "front": "yellow"
+              },
+              {
+                "bottom": "green",
+                "front": "orange"
+              }
+            ],
+            "lengths": [
+              6,
+              7,
+              8
+            ],
+            "crosses": 12,
+            "f2l": 4,
+            "minimum": 6
+          },
+          "blue": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "blue",
+                "front": "white"
+              },
+              {
+                "bottom": "blue",
+                "front": "red"
+              },
+              {
+                "bottom": "blue",
+                "front": "yellow"
+              },
+              {
+                "bottom": "blue",
+                "front": "orange"
+              }
+            ],
+            "lengths": [
+              7,
+              8,
+              9
+            ],
+            "crosses": 12,
+            "f2l": 4,
+            "minimum": 7
+          }
+        },
+        "crossCompletions": 72,
+        "f2lCompletions": 25,
+        "rejectedCandidates": 0,
+        "entryHighWater": 6051,
+        "reason": "time-limit"
+      },
+      "memory": {
+        "usedJSHeapSize": 12700000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 3,
+      "condition": "progressive",
+      "uiReadyMs": 0,
+      "firstMs": 845.9000000059605,
+      "endToEndFirstMs": 845.9000000059605,
+      "stopLatencyMs": null,
+      "elapsedMs": 30005.40000000596,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 30004.300048828125,
+        "operations": 749850,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              },
+              {
+                "bottom": "white",
+                "front": "red"
+              },
+              {
+                "bottom": "white",
+                "front": "blue"
+              },
+              {
+                "bottom": "white",
+                "front": "orange"
+              }
+            ],
+            "lengths": [
+              6,
+              7,
+              8
+            ],
+            "crosses": 12,
+            "f2l": 4,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              },
+              {
+                "bottom": "yellow",
+                "front": "red"
+              },
+              {
+                "bottom": "yellow",
+                "front": "blue"
+              },
+              {
+                "bottom": "yellow",
+                "front": "orange"
+              }
+            ],
+            "lengths": [
+              7,
+              8,
+              9
+            ],
+            "crosses": 12,
+            "f2l": 4,
+            "minimum": 7
+          },
+          "red": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "red",
+                "front": "green"
+              },
+              {
+                "bottom": "red",
+                "front": "white"
+              },
+              {
+                "bottom": "red",
+                "front": "blue"
+              },
+              {
+                "bottom": "red",
+                "front": "yellow"
+              }
+            ],
+            "lengths": [
+              7,
+              8,
+              9
+            ],
+            "crosses": 12,
+            "f2l": 4,
+            "minimum": 7
+          },
+          "orange": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "orange",
+                "front": "green"
+              },
+              {
+                "bottom": "orange",
+                "front": "white"
+              },
+              {
+                "bottom": "orange",
+                "front": "blue"
+              },
+              {
+                "bottom": "orange",
+                "front": "yellow"
+              }
+            ],
+            "lengths": [
+              6,
+              7,
+              8
+            ],
+            "crosses": 12,
+            "f2l": 4,
+            "minimum": 6
+          },
+          "green": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "green",
+                "front": "white"
+              },
+              {
+                "bottom": "green",
+                "front": "red"
+              },
+              {
+                "bottom": "green",
+                "front": "yellow"
+              },
+              {
+                "bottom": "green",
+                "front": "orange"
+              }
+            ],
+            "lengths": [
+              6,
+              7,
+              8
+            ],
+            "crosses": 12,
+            "f2l": 4,
+            "minimum": 6
+          },
+          "blue": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "blue",
+                "front": "white"
+              },
+              {
+                "bottom": "blue",
+                "front": "red"
+              },
+              {
+                "bottom": "blue",
+                "front": "yellow"
+              },
+              {
+                "bottom": "blue",
+                "front": "orange"
+              }
+            ],
+            "lengths": [
+              6,
+              7,
+              8
+            ],
+            "crosses": 12,
+            "f2l": 4,
+            "minimum": 6
+          }
+        },
+        "crossCompletions": 72,
+        "f2lCompletions": 24,
+        "rejectedCandidates": 0,
+        "entryHighWater": 5037,
+        "reason": "time-limit"
+      },
+      "memory": {
+        "usedJSHeapSize": 12700000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    },
+    {
+      "seed": 1,
+      "condition": "stalled-worker-watchdog",
+      "uiReadyMs": 0,
+      "firstMs": null,
+      "endToEndFirstMs": null,
+      "stopLatencyMs": null,
+      "elapsedMs": 30414.10000000894,
+      "phase": "stopped",
+      "coverage": {
+        "elapsedMs": 30412.599853515625,
+        "operations": 27,
+        "colors": {
+          "white": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "yellow": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "red": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "orange": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "green": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          },
+          "blue": {
+            "status": "unvisited",
+            "holds": [],
+            "lengths": [],
+            "crosses": 0,
+            "f2l": 0
+          }
+        },
+        "crossCompletions": 0,
+        "f2lCompletions": 0,
+        "rejectedCandidates": 0,
+        "entryHighWater": 0,
+        "reason": "time-limit"
+      },
+      "memory": {
+        "usedJSHeapSize": 10000000,
+        "scope": "Chromium renderer process estimate; not isolated worker heap"
+      }
+    }
+  ],
+  "phoneEvidence": "Unavailable: no representative physical phone connected. Phone target is unverified; retain Experimental label and use Stop/current route on slower devices.",
+  "memoryEvidence": "Retained-entry high-water counts are enforced; renderer heap API is supplemental, not a worker-specific memory measurement.",
+  "consoleErrors": []
+}
