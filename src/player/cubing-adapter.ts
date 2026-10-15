@@ -23,7 +23,9 @@ export async function createCubingAdapter(
   const flat =
     source.kind === 'solve'
       ? flattenTrace(source.session.trace)
-      : { moves: source.demonstration.actions.flatMap((a) => a.moves) };
+      : source.kind === 'lab'
+        ? source.prepared.timeline
+        : { moves: source.demonstration.actions.flatMap((a) => a.moves) };
   const player = new TwistyPlayer({
     puzzle: '3x3x3',
     alg: flat.moves.join(' '),

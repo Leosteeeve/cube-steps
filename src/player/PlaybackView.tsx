@@ -17,6 +17,9 @@ const stageTitle = (id: string) =>
     .split('-')
     .map((w) => w[0].toUpperCase() + w.slice(1))
     .join(' ');
+export interface PlaybackHandle {
+  pause(): void;
+}
 interface Props {
   engine: CubeEngine;
   source: PlaybackSource;
@@ -24,6 +27,8 @@ interface Props {
   sectionRequestId?: number;
   onSectionChange?: (id: PlaybackSectionId) => void;
   caseId?: string;
+  onHandle?: (handle: PlaybackHandle | null) => void;
+  onPosition?: (position: SourcePlaybackSnapshot) => void;
 }
 export function PlaybackView({
   engine,
@@ -32,6 +37,8 @@ export function PlaybackView({
   sectionRequestId,
   onSectionChange,
   caseId,
+  onHandle,
+  onPosition,
 }: Props) {
   const needsAdvanced = source.kind === 'solve' && source.session.trace.method === 'cfop-advanced';
   const [assets, setAssets] = useState<AdvancedAssets>(),
@@ -39,10 +46,12 @@ export function PlaybackView({
   const method =
     source.kind === 'solve'
       ? getMethod(source.session.trace.method)
-      : {
-          label: ALGORITHM_REGISTRY.cases[source.demonstration.caseId]?.label ?? 'Algorithm',
-          algorithms: ALGORITHM_REGISTRY.variants,
-        };
+      : source.kind === 'lab'
+        ? { label: source.prepared.label, algorithms: source.prepared.algorithms }
+        : {
+            label: ALGORITHM_REGISTRY.cases[source.demonstration.caseId]?.label ?? 'Algorithm',
+            algorithms: ALGORITHM_REGISTRY.variants,
+          };
   useEffect(() => {
     if (!needsAdvanced || assets) return;
     const abort = new AbortController();
@@ -72,6 +81,10 @@ export function PlaybackView({
   } | null>(null);
   sectionCallback.current = onSectionChange;
   focusRef.current = focused;
+  const handleCallback = useRef(onHandle),
+    positionCallback = useRef(onPosition);
+  handleCallback.current = onHandle;
+  positionCallback.current = onPosition;
   // Install each replacement controller before the positioning effect below.
   useLayoutEffect(() => {
     if (needsAdvanced && !assets) {
@@ -92,6 +105,7 @@ export function PlaybackView({
       return;
     }
     controller.current = player;
+    handleCallback.current?.({ pause: () => player.pause() });
     let cancelled = false,
       adapter: Awaited<ReturnType<typeof createCubingAdapter>> | undefined;
     setReady(false);
@@ -99,6 +113,7 @@ export function PlaybackView({
     const reduced = matchMedia('(prefers-reduced-motion: reduce)');
     const unsubscribe = player.subscribe((s) => {
       setSnapshot(s);
+      positionCallback.current?.(s);
       if (adapter) {
         adapter.setTimestamp(reduced.matches ? adapter.boundaries[s.moveIndex] : s.timestamp);
         adapter.highlight(
@@ -129,6 +144,7 @@ export function PlaybackView({
       player.dispose();
       adapter?.dispose();
       controller.current = null;
+      handleCallback.current?.(null);
     };
   }, [engine, source, assets, needsAdvanced, assetError]);
   // Position the lesson before enabled controls can accept the first user input.
@@ -396,11 +412,13 @@ export function PlaybackView({
                 </strong>
               </small>
               {segment && <p>Segment: {segment.label}</p>}
-              {action.algorithmId && ALGORITHM_REGISTRY.variants[action.algorithmId] && (
-                <p>
-                  <a href={'#/algorithms/' + action.caseId}>Explore this case →</a>
-                </p>
-              )}
+              {source.kind !== 'lab' &&
+                action.algorithmId &&
+                ALGORITHM_REGISTRY.variants[action.algorithmId] && (
+                  <p>
+                    <a href={'#/algorithms/' + action.caseId}>Explore this case →</a>
+                  </p>
+                )}
               {action.moves.some((move) => move.startsWith('M')) && (
                 <p>
                   M turns the middle slice between L and R in the same direction as L. M′ reverses

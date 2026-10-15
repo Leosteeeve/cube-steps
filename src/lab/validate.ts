@@ -34,6 +34,10 @@ import {
 import type { LabAction, LabInput, LabRoute, LabSectionId } from './types';
 
 const verified = Symbol('physically verified Lab route');
+const admitted = new WeakSet<object>();
+export function isVerifiedLabRoute(value: unknown): value is VerifiedLabRoute {
+  return typeof value === 'object' && value !== null && admitted.has(value);
+}
 export interface VerifiedLabRoute {
   readonly route: LabRoute;
   readonly validationMode: 'current' | 'archive';
@@ -599,11 +603,13 @@ function* replayLabRouteSteps(
       'Route identity does not match its contents.',
     );
   }
-  return Object.freeze({
+  const result = Object.freeze({
     route: freezeLabValue(structuredClone(route)),
     validationMode: mode,
     [verified]: true as const,
   });
+  admitted.add(result);
+  return result;
 }
 
 function checkCurrentAction(engine: CubeEngine, a: LabAction, before: CubeState, pair?: F2LTarget) {

@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import type { CubeEngine, SolveSession, StageId } from '../core/types';
 import type { PlaybackSource } from './playback-source';
 import { PlaybackView } from './PlaybackView';
+import { getMethod } from '../methods/registry';
 interface Props {
   engine: CubeEngine;
   session: SolveSession;
@@ -27,7 +28,8 @@ export function CubePlayer({
       sectionRequestId={stageRequestId}
       caseId={caseId}
       onSectionChange={(id) => {
-        if (id !== 'algorithm-setup' && id !== 'algorithm-formula') onStageChange?.(id);
+        const stage = getMethod(session.trace.method).stages.find((s) => s.id === id);
+        if (stage) onStageChange?.(stage.id);
       }}
     />
   );
