@@ -11,6 +11,7 @@ it('covers every tour section with substantial original instructions and valid d
     'algorithms',
     'practice',
     'timer',
+    'lab',
     'help',
   ]);
   for (const c of GUIDE_CHAPTERS) {

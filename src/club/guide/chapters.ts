@@ -13,6 +13,7 @@ export const TOUR_DESTINATIONS: Record<TourId, { label: string; href: string }> 
   algorithm: { label: 'An algorithm case', href: '#/algorithms/oll-20' },
   practice: { label: 'Formula practice', href: '#/practice' },
   timer: { label: 'Timer', href: '#/timer' },
+  lab: { label: 'CFOP Lab', href: '#/lab' },
 };
 export const GUIDE_CHAPTERS: readonly GuideChapter[] = [
   {
@@ -389,6 +390,67 @@ export const GUIDE_CHAPTERS: readonly GuideChapter[] = [
       [
         'Page tour',
         'Available only when idle and saves have no unresolved errors. The tour locks timing inputs and never creates sample attempts in your history.',
+      ],
+    ]),
+  },
+  {
+    id: 'lab',
+    title: 'Explore CFOP Lab',
+    summary:
+      'An experimental workspace for experienced cubers: compare complete Cross + F2L sequences, then test how they feel in your hands.',
+    href: '#/lab',
+    tourIds: ['lab'],
+    screenshotIds: ['lab-analyze', 'lab-compare'],
+    steps: [
+      'Enter a standard scramble, or select Six-face colors and match the stated holding before painting all faces. Check colors explains impossible states. An empty scramble means an already solved cube. Editing the cube or allowed colors clears the current analysis; save an experiment first if you want to keep it.',
+      'Choose White only, White + yellow, All six colors, or your own nonempty selection. Each bottom has four possible fronts. Non-white bottoms require recognizing their corresponding cross and F2L pieces; do not follow white-piece instructions from memory.',
+      'Press Analyze. A complete verified route appears first, then the bounded search keeps improving for up to 30 seconds including initialization. Stop keeps verified routes already found. Coverage lists checked colors, holds and path lengths; an unfinished search does not establish an overall optimum.',
+      'Compare the exact cross minimum for that bottom with the chosen route. Lab also explores crosses one or two turns longer, looking for a better whole Cross + F2L sequence. The recommendation has the lowest estimated cost among the verified candidates found. It is not a guarantee of the fastest human solve.',
+      'Pin a route before studying it. New recommendations do not replace your pin or rewind its player. Match the bottom and front, then follow actual x / y / z rotations with the cube. Camera dragging only changes the view; hand-regrip notes only change your grip. Neither is an extra face turn.',
+      'Select routes for Compare to inspect cross length, F2L turn equivalents, pair order, rotations and handling estimates side by side. Practice the whole sequence, including its holds, before deciding whether fewer moves feel better.',
+      'Trials & notes is a separate practiced Cross + F2L endpoint, not a full-solve Timer. Set up the original cube, perform the displayed initial positioning before starting, and stop when F2L is complete. OLL, PLL and final alignment are outside the measured interval. Record warmups separately from measured attempts.',
+      'The lab-execution-v1 model assumes common right-hand-led two-handed handling. Its grip, visibility and awkward-transition estimates await physical calibration; scores are not seconds. Experiments and notes stay in this browser on this device until you explicitly export and share a file. They are not automatically sent to club members.',
+    ],
+    controls: controls([
+      [
+        'Scramble / Six-face colors / Random scramble',
+        'Choose an input, paste face-turn notation, or generate a random scramble. Errors identify the invalid notation or color state. The six-face diagram uses the actual physical centers.',
+      ],
+      [
+        'Allowed bottom colors',
+        'Limit the search to colors you want to practice. The selection is saved locally, but choosing colors does not start analysis.',
+      ],
+      [
+        'Analyze / Stop analysis',
+        'Start a fresh analysis or stop background work while keeping verified results. Initialization or asset errors are separate from invalid cube input.',
+      ],
+      [
+        'Search coverage and exact cross references',
+        'Inspect each bottom’s shortest cross reference, fronts checked and candidate counts. Search time and bounds limit the alternatives that can be found.',
+      ],
+      [
+        'T — turn equivalents',
+        'Outer and wide quarter or half turns count as one; slice turns count as two. Initial positioning, whole-cube rotations and last-layer moves are not included in T.',
+      ],
+      [
+        'R / G / V / A',
+        'R counts actual whole-cube rotations. G estimates hand regrips, V visibility cost and A awkward transitions. A displayed regrip estimate is not another physical cube rotation.',
+      ],
+      [
+        'Estimated cost',
+        'The current hypothesis is T + 2R + 2G + 3V + 2A over Cross + F2L. Treat differences as reasons to try a route, not measured time or physical endorsement.',
+      ],
+      [
+        'Pin route / Compare',
+        'Keep a verified route in the player, or select up to four routes from the same cube for the comparison table. Editing input invalidates these selections.',
+      ],
+      [
+        'Player / Stage / Next move / Replay',
+        'Use the shared player to inspect exact physical turns and checkpoints. Initial positioning and the last layer remain playable but outside the Lab objective and trial interval.',
+      ],
+      [
+        'Trials & notes',
+        'Save an experiment and record practiced Cross + F2L attempts. Confirm setup and holding before every attempt; interruptions and deviations stay separate from comparable results. Use the ordinary Timer for full solves.',
       ],
     ]),
   },

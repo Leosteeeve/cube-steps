@@ -8,7 +8,8 @@ export type TourId =
   | 'algorithms'
   | 'algorithm'
   | 'practice'
-  | 'timer';
+  | 'timer'
+  | 'lab';
 import type { GuidanceAction } from '../../ui/guidance';
 export type { GuidanceAction } from '../../ui/guidance';
 export type TourStep = {

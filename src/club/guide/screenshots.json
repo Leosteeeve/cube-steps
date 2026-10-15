@@ -180,6 +180,30 @@
       "sourceRevision": "9e6bbf707d7e54ed678f802b202e61d4b0999772-dirty",
       "scenario": "timer-phone",
       "exampleData": true
+    },
+    {
+      "id": "lab-analyze",
+      "src": "club-guide/lab-analyze.png",
+      "alt": "CFOP Lab example showing input colors, a route recommendation and physical cube playback",
+      "caption": "Example analysis: a verified recommendation, exact cross references and pinned playback. Handling scores remain estimates.",
+      "route": "club/#/lab",
+      "width": 1360,
+      "height": 2207,
+      "sourceRevision": "2d61ccba1a0c0e8ab2c7a556f2968df5025fd17e-dirty",
+      "scenario": "lab-analyze",
+      "exampleData": true
+    },
+    {
+      "id": "lab-compare",
+      "src": "club-guide/lab-compare.png",
+      "alt": "CFOP Lab example comparison table and pinned route player",
+      "caption": "Example comparison: two routes for the same cube, with move counts, estimated handling and actual holds.",
+      "route": "club/#/lab",
+      "width": 1360,
+      "height": 1827,
+      "sourceRevision": "2d61ccba1a0c0e8ab2c7a556f2968df5025fd17e-dirty",
+      "scenario": "lab-compare",
+      "exampleData": true
     }
   ]
 }

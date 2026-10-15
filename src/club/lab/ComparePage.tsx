@@ -3,7 +3,7 @@ import { useGuidanceTarget } from '../../ui/guidance';
 import { useLabSession } from './LabSessionProvider';
 export function ComparePage() {
   const { state, edit } = useLabSession(),
-    target = useGuidanceTarget('lab.comparison');
+    target = useGuidanceTarget('lab.table');
   const routes = state.comparedRouteIds.map((id) => state.routes[id]).filter(Boolean);
   return (
     <section className="lab-card" ref={target} aria-label="Route comparison">

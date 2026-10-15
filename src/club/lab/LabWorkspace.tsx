@@ -7,14 +7,17 @@ import { AnalyzePage } from './AnalyzePage';
 import { ComparePage } from './ComparePage';
 import { LabPlayer } from './LabPlayer';
 import './lab.css';
+import { TourEntry } from '../tutorial/TourEntry';
 function Workspace() {
   const { state, stop, engine, pinned, prepared, playbackError, registerPlayback } =
       useLabSession(),
     s = state.snapshot;
   const busy = s.phase === 'initializing' || s.phase === 'searching',
-    progressTarget = useGuidanceTarget('lab.progress');
+    progressTarget = useGuidanceTarget('lab.progress'),
+    comparisonTarget = useGuidanceTarget('lab.comparison');
   return (
     <div className="lab-workspace">
+      {state.view === 'analyze' && <TourEntry tourId="lab" ready />}
       <header className="lab-intro">
         <div>
           <span className="eyebrow">A LITTLE CURIOSITY. A BETTER NEXT MOVE.</span>
@@ -27,6 +30,7 @@ function Workspace() {
         {(['analyze', 'compare', 'trials'] as const).map((v, i) => (
           <a
             key={v}
+            ref={v === 'compare' ? comparisonTarget : undefined}
             href={v === 'analyze' ? '#/lab' : '#/lab/' + v}
             aria-current={state.view === v ? 'page' : undefined}
           >
