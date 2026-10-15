@@ -16,6 +16,9 @@ import { TourEntry } from './tutorial/TourEntry';
 import { tourForRoute } from './tutorial/catalog';
 const TimerPage = lazy(() => import('./timer/TimerPage').then((m) => ({ default: m.TimerPage })));
 const GuidePage = lazy(() => import('./guide/GuidePage').then((m) => ({ default: m.GuidePage })));
+const LabWorkspace = lazy(() =>
+  import('./lab/LabWorkspace').then((m) => ({ default: m.LabWorkspace })),
+);
 const ClubLearnPage = lazy(() =>
   import('./learning/ClubLearnPage').then((m) => ({ default: m.ClubLearnPage })),
 );
@@ -30,7 +33,7 @@ export function ClubApp() {
     return () => removeEventListener('hashchange', change);
   }, []);
   const { engine, error, retry } = useCubeEngine(
-    !['home', 'quiz', 'guide', 'not-found'].includes(route.kind),
+    !['home', 'quiz', 'guide', 'lab', 'not-found'].includes(route.kind),
   );
   const tourId = tourForRoute(
     route,
@@ -58,7 +61,9 @@ export function ClubApp() {
                 ? 'moves'
                 : route.kind === 'guide'
                   ? 'guide'
-                  : 'learn'
+                  : route.kind === 'lab'
+                    ? 'lab'
+                    : 'learn'
         }
         timerAvailable={true}
       />
@@ -70,7 +75,9 @@ export function ClubApp() {
               ready={route.kind === 'home' || route.kind === 'quiz' || !!engine}
             />
           )}
-          {!['home', 'quiz', 'timer', 'moves', 'guide', 'not-found'].includes(route.kind) && (
+          {!['home', 'quiz', 'timer', 'moves', 'guide', 'lab', 'not-found'].includes(
+            route.kind,
+          ) && (
             <nav className="club-tools" aria-label="Learning tools">
               <a
                 href={methodRoute(
@@ -107,6 +114,10 @@ export function ClubApp() {
           ) : route.kind === 'guide' ? (
             <Suspense fallback={<p role="status">Loading the guide…</p>}>
               <GuidePage section={route.section} />
+            </Suspense>
+          ) : route.kind === 'lab' ? (
+            <Suspense fallback={<p role="status">Loading CFOP Lab…</p>}>
+              <LabWorkspace view={route.view} />
             </Suspense>
           ) : route.kind === 'not-found' ? (
             <section>

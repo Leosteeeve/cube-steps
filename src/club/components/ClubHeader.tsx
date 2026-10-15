@@ -3,7 +3,7 @@ export function ClubHeader({
   active,
   timerAvailable,
 }: {
-  active: 'home' | 'moves' | 'learn' | 'timer' | 'guide';
+  active: 'home' | 'moves' | 'learn' | 'timer' | 'guide' | 'lab';
   timerAvailable: boolean;
 }) {
   return (
@@ -28,6 +28,9 @@ export function ClubHeader({
         )}
         <a href="#/guide" aria-current={active === 'guide' ? 'page' : undefined}>
           Guide
+        </a>
+        <a href="#/lab" aria-current={active === 'lab' ? 'page' : undefined}>
+          CFOP Lab
         </a>
       </nav>
     </header>

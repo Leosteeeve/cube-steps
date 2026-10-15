@@ -5,6 +5,7 @@ export type ClubRoute =
   | { kind: 'quiz' }
   | { kind: 'timer' }
   | { kind: 'moves' }
+  | { kind: 'lab'; view: 'analyze' | 'compare' | 'trials' }
   | { kind: 'guide'; section?: GuideSectionId }
   | AppRoute;
 export function parseClubRoute(hash: string): ClubRoute {
@@ -13,6 +14,10 @@ export function parseClubRoute(hash: string): ClubRoute {
   if (value === 'find-your-route') return { kind: 'quiz' };
   if (value === 'timer') return { kind: 'timer' };
   if (value === 'moves') return { kind: 'moves' };
+  if (value === 'lab') return { kind: 'lab', view: 'analyze' };
+  if (value === 'lab/compare') return { kind: 'lab', view: 'compare' };
+  if (value === 'lab/trials') return { kind: 'lab', view: 'trials' };
+  if (value.startsWith('lab/')) return { kind: 'not-found' };
   if (value === 'guide') return { kind: 'guide' };
   if (value.startsWith('guide/')) {
     const section = value.slice(6) as GuideSectionId;

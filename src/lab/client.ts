@@ -50,7 +50,10 @@ class AssetError extends Error {}
 async function defaultPrepare(input: SolveInput, control: LabClientControl) {
   const { loadLabContext, drainLabAsync } = await import('../workers/lab-request');
   const context = await loadLabContext().catch((error) => {
-    throw new AssetError(String(error));
+    throw new AssetError(
+      'Lab assets could not load. Check your connection and try Analyze again.',
+      { cause: error },
+    );
   });
   const { prepareLabInputSteps } = await import('./input');
   return drainLabAsync(

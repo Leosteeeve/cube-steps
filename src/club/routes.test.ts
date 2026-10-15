@@ -1,6 +1,17 @@
 import { expect, it } from 'vitest';
 import { parseClubRoute } from './routes';
 import { parseRoute } from '../app/routes';
+it('keeps all Lab links club-only and rejects unknown Lab suffixes', () => {
+  for (const [hash, view] of [
+    ['#/lab', 'analyze'],
+    ['#/lab/compare', 'compare'],
+    ['#/lab/trials', 'trials'],
+  ] as const) {
+    expect(parseClubRoute(hash)).toEqual({ kind: 'lab', view });
+    expect(parseRoute(hash)).toEqual({ kind: 'not-found' });
+  }
+  expect(parseClubRoute('#/lab/missing')).toEqual({ kind: 'not-found' });
+});
 it('supports the club Guide and rejects unknown sections without changing global routes', () => {
   expect(parseClubRoute('#/guide')).toEqual({ kind: 'guide' });
   expect(parseClubRoute('#/guide/timer')).toEqual({ kind: 'guide', section: 'timer' });
