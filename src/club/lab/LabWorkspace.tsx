@@ -11,6 +11,7 @@ import { TourEntry } from '../tutorial/TourEntry';
 import type { LabRepository } from '../../lab/experiments/repository';
 import { LabNotebookProvider } from './LabNotebookProvider';
 import { LabExperimentPanel } from './LabExperimentPanel';
+import { ExperimentTransfer } from './ExperimentTransfer';
 import { TrialsPage } from './TrialsPage';
 import type { TrialMemory } from '../../lab/trials/types';
 function Workspace({ trialMemory }: { trialMemory: TrialMemory }) {
@@ -145,6 +146,7 @@ function Workspace({ trialMemory }: { trialMemory: TrialMemory }) {
         objective.
       </p>
       <LabExperimentPanel />
+      <ExperimentTransfer />
     </div>
   );
 }

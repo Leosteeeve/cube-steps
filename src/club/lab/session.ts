@@ -37,7 +37,7 @@ export type LabSessionEvent =
       type: 'load-experiment';
       experimentId: string;
       input: SolveInput;
-      settings: LabSettings;
+      settings: Omit<LabSettings, 'modelVersion'> & { modelVersion: string };
       routes: readonly VerifiedLabRoute[];
       coverage?: LabCoverage;
     };
@@ -138,7 +138,7 @@ export function reduceLabSession(state: LabSessionState, event: LabSessionEvent)
   return {
     ...state,
     input: event.input,
-    settings: event.settings,
+    settings: { ...event.settings, modelVersion: 'lab-execution-v1' },
     routes: Object.fromEntries(routes.map((r) => [r.route.id, r])),
     pinnedRouteId: routes[0].route.id,
     comparedRouteIds: [],

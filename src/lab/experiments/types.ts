@@ -9,7 +9,7 @@ export interface LabExperiment {
   inputFingerprint: string;
   setupMoves: readonly TeachingMove[];
   diagramHold: LabHold;
-  settings: LabSettings;
+  settings: Omit<LabSettings, 'modelVersion'> & { modelVersion: string };
   limits: {
     deadlineMs: number;
     operations: number;

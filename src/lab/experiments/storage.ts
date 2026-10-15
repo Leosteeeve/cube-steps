@@ -8,7 +8,10 @@ import {
   emptyLabData,
   sameLabValue,
   demand,
+  assertRevisionHistory,
+  IMMUTABLE_ATTEMPT_FIELDS,
 } from './schema';
+import { assertTransfer, recordKey } from './transfer';
 import { verifyExperiment } from './snapshots';
 import type {
   LabAttempt,
@@ -36,6 +39,7 @@ export class LabConflictError extends Error {
   }
 }
 export interface LabStore {
+  commitImport(data: LabData): Promise<void>;
   saveTester(t: LabTester): Promise<void>;
   list(): Promise<LabStoredData>;
   saveExperiment(e: LabExperiment): Promise<void>;
@@ -207,6 +211,17 @@ export function openLabStore(
           return true;
         };
         data.attempts = keep('attempts', data.attempts, references);
+        data.attempts = keep('attempts', data.attempts, (a) => {
+          try {
+            assertRevisionHistory({
+              attempts: [a],
+              attemptRevisions: data.attemptRevisions.filter((r) => r.id === a.id),
+            });
+            return true;
+          } catch {
+            return false;
+          }
+        });
         let changed = true;
         while (changed) {
           const before = data.attempts.length,
@@ -265,6 +280,7 @@ export function openLabStore(
           const data = clean(raw),
             { value, writes } = change(data, raw);
           assertGraph(data);
+          assertRevisionHistory(data);
           for (const table of LAB_TABLES)
             for (const row of writes[table] ?? [])
               transaction
@@ -290,20 +306,7 @@ export function openLabStore(
         demand(a.revision === (expected === null ? 0 : expected + 1), 'Invalid next revision.');
         if (head) {
           assertAttempt(head);
-          for (const k of [
-            'createdAt',
-            'experimentId',
-            'routeId',
-            'testerId',
-            'timingMethod',
-            'endpoint',
-            'comparisonId',
-            'blockId',
-            'slot',
-            'retryOf',
-            'intendedOrder',
-            'actualOrder',
-          ])
+          for (const k of IMMUTABLE_ATTEMPT_FIELDS)
             demand((head as any)[k] === (a as any)[k], 'Recorded conditions are immutable.');
         }
         const existingRevision = raw.attemptRevisions.find((x) => x.key === revisionKey(a));
@@ -316,6 +319,39 @@ export function openLabStore(
         return { attempts: [a], attemptRevisions: [a], testers: [tester] };
       };
       resolve({
+        async commitImport(incoming) {
+          const copy = structuredClone(incoming);
+          assertTransfer({
+            schemaVersion: 1,
+            exportedAt: new Date().toISOString(),
+            pending: [],
+            ...copy,
+          });
+          for (const e of copy.experiments) {
+            await verify(e);
+            admitted.set(e.id, structuredClone(e));
+          }
+          await mutate((data, raw) => {
+            const writes: Partial<Record<LabTable, any[]>> = {};
+            for (const table of LAB_TABLES)
+              for (const row of copy[table]) {
+                const key = recordKey(table, row),
+                  existing = raw[table].find(
+                    (x) => (table === 'attemptRevisions' ? x.key : x.id) === key,
+                  );
+                if (
+                  existing &&
+                  !sameLabValue(table === 'attemptRevisions' ? existing.attempt : existing, row)
+                )
+                  throw new LabConflictError();
+                if (!existing) {
+                  (data[table] as any[]).push(row);
+                  (writes[table] ??= []).push(row);
+                }
+              }
+            return { value: undefined, writes };
+          });
+        },
         async saveTester(t) {
           assertTester(t);
           await mutate((data, raw) => {

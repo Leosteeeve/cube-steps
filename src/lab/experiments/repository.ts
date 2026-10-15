@@ -18,6 +18,7 @@ import type {
   LabStoredData,
   TrialBlock,
   LabTester,
+  LabData,
 } from './types';
 export function createLabRepository(open: () => Promise<LabStore> = openLabStore) {
   let saved: LabStoredData = { ...emptyLabData(), incompatibleCount: 0, incompatibleRecords: [] },
@@ -143,6 +144,24 @@ export function createLabRepository(open: () => Promise<LabStore> = openLabStore
   if (typeof window !== 'undefined') window.addEventListener('beforeunload', beforeUnload);
   if (channel) channel.onmessage = () => void refresh();
   return {
+    async commitImport(data: LabData) {
+      if (disposed) throw Error('Lab repository closed.');
+      // Preview owns this complete graph until a successful atomic commit; never split it into independent retry jobs.
+      await track(
+        (async () => {
+          try {
+            await (await connect()).commitImport(structuredClone(data));
+            ++epoch;
+            channel?.postMessage('changed');
+            await refresh();
+          } catch (e) {
+            resetConnection(e);
+            await refresh();
+            throw e;
+          }
+        })(),
+      );
+    },
     snapshot,
     refresh,
     subscribe(fn: () => void) {

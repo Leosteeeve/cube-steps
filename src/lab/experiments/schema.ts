@@ -1,5 +1,4 @@
 import { isTeachingMove } from '../../core/teaching-moves';
-import { isLabSettings } from '../../workers/lab-protocol';
 import { assertLabRouteShape } from '../validate';
 import type {
   LabAttempt,
@@ -104,6 +103,163 @@ function hold(v: unknown) {
 function moves(v: unknown) {
   demand(Array.isArray(v) && v.length <= 512 && v.every(isTeachingMove), 'Invalid move sequence.');
 }
+function inputShape(v: unknown) {
+  demand(v && typeof v === 'object', 'Missing cube input.');
+  if ((v as any).kind === 'scramble') {
+    keys(v, ['kind', 'moves']);
+    moves(v.moves);
+    demand(
+      v.moves.every((m: string) => /^[UDLRFB](?:'|2)?$/.test(m)),
+      'Invalid scramble notation.',
+    );
+  } else {
+    keys(v, ['kind', 'facelets']);
+    demand(v.kind === 'facelets', 'Unknown cube input.');
+    keys(v.facelets, ['U', 'D', 'L', 'R', 'F', 'B']);
+    for (const side of Object.values(v.facelets) as unknown[])
+      demand(
+        Array.isArray(side) && side.length === 9 && side.every((c) => colors.includes(c)),
+        'Invalid face colors.',
+      );
+  }
+}
+function stateShape(v: unknown) {
+  keys(v, ['data']);
+  keys(v.data, ['EDGES', 'CORNERS', 'CENTERS']);
+  for (const [name, size, mod] of [
+    ['EDGES', 12, 2],
+    ['CORNERS', 8, 3],
+    ['CENTERS', 6, 4],
+  ] as const) {
+    const orbit = v.data[name];
+    keys(orbit, ['pieces', 'orientation'], ['orientationMod']);
+    demand(
+      Array.isArray(orbit.pieces) &&
+        orbit.pieces.length === size &&
+        new Set(orbit.pieces).size === size &&
+        orbit.pieces.every((n: unknown) => integer(n, size - 1)),
+      'Invalid piece permutation.',
+    );
+    demand(
+      Array.isArray(orbit.orientation) &&
+        orbit.orientation.length === size &&
+        orbit.orientation.every((n: unknown) => integer(n, mod - 1)),
+      'Invalid piece orientation.',
+    );
+    demand(
+      orbit.orientationMod === undefined ||
+        (Array.isArray(orbit.orientationMod) &&
+          orbit.orientationMod.length === size &&
+          orbit.orientationMod.every((n: unknown) => integer(n, mod))),
+      'Invalid orientation modulus.',
+    );
+  }
+}
+function strictRoute(raw: unknown) {
+  keys(raw, [
+    'kind',
+    'schemaVersion',
+    'id',
+    'inputFingerprint',
+    'input',
+    'initial',
+    'startHold',
+    'endHold',
+    'positioningMoves',
+    'neutralGrip',
+    'crossMinimum',
+    'crossLength',
+    'actions',
+    'skips',
+    'boundaries',
+    'final',
+    'setupMoves',
+    'score',
+    'searchVersion',
+    'modelVersion',
+    'catalogVersion',
+    'formulas',
+  ]);
+  assertLabRouteShape(raw);
+  inputShape(raw.input);
+  stateShape(raw.initial);
+  stateShape(raw.final);
+  keys(raw.boundaries, ['crossStart', 'crossEnd', 'f2lEnd']);
+  for (const a of raw.actions) {
+    keys(
+      a,
+      [
+        'id',
+        'section',
+        'kind',
+        'ruleId',
+        'caseId',
+        'targets',
+        'recognition',
+        'explanation',
+        'moves',
+        'before',
+        'after',
+        'checkpoint',
+      ],
+      ['algorithmId', 'repetition', 'pair'],
+    );
+    stateShape(a.before);
+    stateShape(a.after);
+    keys(a.checkpoint, ['predicate', 'description', 'protectedIds', 'targets'], ['hold']);
+    demand(
+      ['position', 'cross-progress', 'cross', 'pair', 'f2l', 'oll', 'pll', 'solved'].includes(
+        a.checkpoint.predicate,
+      ),
+      'Unknown checkpoint.',
+    );
+    demand(
+      [...a.checkpoint.targets, ...a.checkpoint.protectedIds].every((x) => text(x, 20, 1)),
+      'Invalid checkpoint IDs.',
+    );
+    if (a.checkpoint.hold) hold(a.checkpoint.hold);
+    if (a.repetition) {
+      keys(a.repetition, ['group', 'index']);
+      demand(
+        text(a.repetition.group, 120, 1) && integer(a.repetition.index, 512),
+        'Invalid repetition.',
+      );
+    }
+    if (a.pair) {
+      keys(a.pair, [
+        'cornerId',
+        'edgeId',
+        'slot',
+        'phase',
+        'ordinal',
+        'solvedBefore',
+        'solvedAfter',
+      ]);
+      demand(
+        [a.pair.cornerId, a.pair.edgeId, a.pair.slot].every((x) => text(x, 20, 1)) &&
+          ['prepare', 'pair', 'insert'].includes(a.pair.phase) &&
+          [a.pair.ordinal, a.pair.solvedBefore, a.pair.solvedAfter].every((n) => integer(n, 4)),
+        'Invalid pair metadata.',
+      );
+    }
+  }
+  for (const s of raw.skips) keys(s, ['section', 'reason']);
+  for (const f of Object.values(raw.formulas)) {
+    keys(
+      f,
+      ['id', 'caseId', 'name', 'moves', 'precondition', 'effect', 'sourceRefs'],
+      ['segments'],
+    );
+    f.sourceRefs.forEach((ref) => keys(ref, ['title', 'url', 'reference']));
+    f.segments?.forEach((s) => keys(s, ['label', 'start', 'end']));
+  }
+  if (raw.score.rated) {
+    keys(raw.score, ['rated', 'modelVersion', 'T', 'R', 'G', 'V', 'A', 'cost', 'events']);
+    raw.score.events.forEach((e) =>
+      keys(e, ['boundary', 'kind', 'profileId', 'fromGrip', 'toGrip', 'count', 'rationale']),
+    );
+  } else keys(raw.score, ['rated', 'reason']);
+}
 export function assertExperiment(raw: unknown): asserts raw is LabExperiment {
   boundedLabValue(raw);
   keys(
@@ -133,11 +289,19 @@ export function assertExperiment(raw: unknown): asserts raw is LabExperiment {
   );
   demand(raw.label === undefined || text(raw.label, 60), 'Label exceeds 60 characters.');
   demand(raw.provenance === undefined || text(raw.provenance, 160), 'Invalid provenance.');
-  demand(
-    text(raw.inputFingerprint, 4096, 1) && isLabSettings(raw.settings),
-    'Missing input or settings.',
-  );
+  demand(text(raw.inputFingerprint, 4096, 1), 'Missing input or settings.');
   keys(raw.settings, ['allowedColors', 'modelVersion']);
+  demand(
+    Array.isArray(raw.settings.allowedColors) &&
+      raw.settings.allowedColors.length >= 1 &&
+      raw.settings.allowedColors.length <= 6 &&
+      new Set(raw.settings.allowedColors).size === raw.settings.allowedColors.length &&
+      raw.settings.allowedColors.every((c: string) => colors.includes(c)) &&
+      text(raw.settings.modelVersion, 120, 1) &&
+      raw.settings.modelVersion === raw.modelVersion,
+    'Invalid saved settings.',
+  );
+  inputShape(raw.input);
   hold(raw.diagramHold);
   moves(raw.setupMoves);
   for (const k of ['appVersion', 'modelVersion', 'catalogVersion', 'searchVersion'])
@@ -220,6 +384,7 @@ export function assertExperiment(raw: unknown): asserts raw is LabExperiment {
   );
   const ids = new Set<string>();
   for (const r of raw.routes) {
+    strictRoute(r);
     assertLabRouteShape(r);
     demand(!ids.has(r.id), 'Duplicate route.');
     ids.add(r.id);
@@ -466,5 +631,50 @@ export function assertGraph(data: LabData) {
         p = p.retryOf ? heads.get(p.retryOf) : undefined;
       }
     }
+  }
+}
+export const IMMUTABLE_ATTEMPT_FIELDS = [
+  'createdAt',
+  'experimentId',
+  'routeId',
+  'testerId',
+  'timingMethod',
+  'endpoint',
+  'kind',
+  'comparisonId',
+  'blockId',
+  'slot',
+  'retryOf',
+  'intendedOrder',
+  'actualOrder',
+  'setupConfirmed',
+  'holdConfirmed',
+  'interruption',
+] as const;
+export function assertRevisionHistory(data: Pick<LabData, 'attempts' | 'attemptRevisions'>) {
+  const heads = new Map(data.attempts.map((a) => [a.id, a]));
+  demand(
+    data.attemptRevisions.every((a) => heads.has(a.id)),
+    'Orphan attempt revision.',
+  );
+  for (const head of heads.values()) {
+    const rows = data.attemptRevisions
+      .filter((a) => a.id === head.id)
+      .sort((a, b) => a.revision - b.revision);
+    demand(
+      rows.length === head.revision + 1 && sameLabValue(rows.at(-1), head),
+      'Incomplete revision history or mismatched head.',
+    );
+    rows.forEach((a, i) => {
+      demand(
+        a.revision === i && a.previousRevision === (i ? i - 1 : null),
+        'Broken revision chain.',
+      );
+      demand(
+        IMMUTABLE_ATTEMPT_FIELDS.every((k) => a[k] === head[k]),
+        'Recorded revision conditions changed.',
+      );
+      demand(!i || a.updatedAt >= rows[i - 1].updatedAt, 'Revision timestamps go backwards.');
+    });
   }
 }

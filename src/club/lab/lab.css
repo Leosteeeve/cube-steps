@@ -480,3 +480,40 @@
 .lab-save {
   margin-top: 1.5rem;
 }
+.lab-transfer {
+  margin-top: 1.25rem;
+  display: grid;
+  gap: 1rem;
+}
+.lab-transfer fieldset,
+.lab-import-preview {
+  display: grid;
+  gap: 0.8rem;
+  padding: 1rem;
+  border: 1px solid #dce6f5;
+  border-radius: 14px;
+  min-width: 0;
+}
+.lab-transfer label {
+  display: grid;
+  gap: 0.4rem;
+  overflow-wrap: anywhere;
+}
+.lab-transfer label:has(input[type='checkbox']) {
+  display: flex;
+  align-items: center;
+}
+.lab-transfer input[type='file'],
+.lab-transfer select {
+  font: inherit;
+  max-width: 100%;
+  min-width: 0;
+  padding: 0.6rem;
+  border: 1px solid #c6d6e9;
+  border-radius: 10px;
+}
+.lab-transfer-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
