@@ -51,7 +51,14 @@ function Workspace({ trialMemory }: { trialMemory: TrialMemory }) {
           this cube to start again.
         </p>
       )}
-      <section className="lab-search-status" ref={progressTarget} aria-label="Search status">
+      <section
+        className="lab-search-status"
+        ref={progressTarget}
+        aria-label="Search status"
+        data-lab-phase={s.phase}
+        data-lab-request={s.requestId}
+        data-lab-coverage={s.coverage ? JSON.stringify(s.coverage) : undefined}
+      >
         <div role="status">
           <strong>
             {s.phase === 'initializing'

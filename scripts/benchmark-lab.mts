@@ -28,10 +28,11 @@ if (
   throw Error(
     'Use --phase core|integrated, --runs 0..1000 and --full-runs 0..40, with at least one run.',
   );
-if (phase === 'integrated')
-  throw Error(
-    'Integrated measurements require the completed Lab UI in Task 15; no integrated performance result was recorded.',
-  );
+if (phase === 'integrated') {
+  const { runIntegratedBenchmark } = await import('./benchmark-lab-integrated.mts');
+  await runIntegratedBenchmark(args, runs, fullRuns);
+  process.exit(0);
+}
 const output = resolve(arg('--output', 'test-results/lab-core-benchmark.json'));
 const temporary = resolve('.temp', `lab-benchmark-${process.pid}`),
   serverLog: string[] = [];

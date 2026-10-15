@@ -20,7 +20,7 @@ const scenes: (CaptureScenario & { caption: string; alt: string })[] = [
   {
     id: 'lab-analyze',
     route: 'club/#/lab',
-    target: '.lab-workspace',
+    target: '.lab-grid',
     exampleData: true,
     caption:
       'Example analysis: a verified recommendation, exact cross references and pinned playback. Handling scores remain estimates.',
@@ -30,12 +30,22 @@ const scenes: (CaptureScenario & { caption: string; alt: string })[] = [
   {
     id: 'lab-compare',
     route: 'club/#/lab',
-    target: '.lab-workspace',
+    target: '.lab-grid',
     exampleData: true,
     caption:
       'Example comparison: two routes for the same cube, with move counts, estimated handling and actual holds.',
     alt: 'CFOP Lab example comparison table and pinned route player',
     prepare: (p: Page) => prepareTutorialScene(p, 'lab-compare'),
+  },
+  {
+    id: 'lab-trials',
+    route: 'club/#/lab',
+    target: '.lab-notebook',
+    exampleData: true,
+    caption:
+      'Example trial setup: fixed A/B blocks, the original cube diagram and unchecked confirmations before practiced Cross + F2L timing. No physical results are claimed.',
+    alt: 'CFOP Lab example showing saved trial conditions, original cube setup and Cross plus F2L timing controls',
+    prepare: (p: Page) => prepareTutorialScene(p, 'lab-trials'),
   },
   {
     id: 'home',

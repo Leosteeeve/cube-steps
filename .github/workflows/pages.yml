@@ -39,8 +39,11 @@ jobs:
       - run: npm run verify:cases
       - run: npm run test:unit
       - run: npm run test:corpus
-      - run: npx vitest run tests/advanced-cross-table.test.ts
+      - run: npm run test:lab:corpus
+      - run: npx vitest run tests/advanced-cross-table.test.ts tests/lab-physical-fixtures.test.ts
       - run: npm run test:efficiency
+      - run: npm run test:lab:efficiency
+      - run: npm run verify:guide
       - run: npm run build
       - run: npm run test:e2e
       - run: npm run test:production

@@ -255,7 +255,8 @@ export function createLabClient(deps: LabClientDependencies = {}): LabClient {
             code: 'timeout',
             message: 'The 30-second analysis limit was reached. Verified routes remain available.',
           }),
-        30_500,
+        // Leave scheduling/render headroom below the 30.5s foreground watchdog target.
+        30_400,
       );
       try {
         const worker: LabWorkerPort = (

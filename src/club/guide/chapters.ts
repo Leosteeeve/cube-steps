@@ -400,7 +400,7 @@ export const GUIDE_CHAPTERS: readonly GuideChapter[] = [
       'An experimental workspace for experienced cubers: compare complete Cross + F2L sequences, then test how they feel in your hands.',
     href: '#/lab',
     tourIds: ['lab'],
-    screenshotIds: ['lab-analyze', 'lab-compare'],
+    screenshotIds: ['lab-analyze', 'lab-compare', 'lab-trials'],
     steps: [
       'Enter a standard scramble, or select Six-face colors and match the stated holding before painting all faces. Check colors explains impossible states. An empty scramble means an already solved cube. Editing the cube or allowed colors clears the current analysis; save an experiment first if you want to keep it.',
       'Choose White only, White + yellow, All six colors, or your own nonempty selection. Each bottom has four possible fronts. Non-white bottoms require recognizing their corresponding cross and F2L pieces; do not follow white-piece instructions from memory.',
@@ -409,6 +409,10 @@ export const GUIDE_CHAPTERS: readonly GuideChapter[] = [
       'Pin a route before studying it. New recommendations do not replace your pin or rewind its player. Match the bottom and front, then follow actual x / y / z rotations with the cube. Camera dragging only changes the view; hand-regrip notes only change your grip. Neither is an extra face turn.',
       'Select routes for Compare to inspect cross length, F2L turn equivalents, pair order, rotations and handling estimates side by side. Practice the whole sequence, including its holds, before deciding whether fewer moves feel better.',
       'Trials & notes is a separate practiced Cross + F2L endpoint, not a full-solve Timer. Set up the original cube, perform the displayed initial positioning before starting, and stop when F2L is complete. OLL, PLL and final alignment are outside the measured interval. Record warmups separately from measured attempts.',
+      'Save the pinned route and selected alternatives as an experiment. In Trials & notes, choose a tester and timing method. Create a fixed A/B comparison to save five alternating AB/BA blocks, or use an exploratory single route. Practice without a time limit, reset the original cube, match the bottom/front and confirm both checks before every attempt.',
+      'For keyboard or touch, hold the timing surface for 300 ms until Ready, release to start, then press again to stop. External timer / manual entry accepts seconds or m:ss.mmm. Review the result and explicitly report whether you followed the route; optional flow and recognition ratings run from 1 to 5. Blur, hiding the page, leaving or a cancelled touch interrupts the attempt. Return to Trials to recover its review; a hard close can lose an unsaved draft.',
+      'Raw trials appear immediately. A comparison needs five complete matched A/B blocks from the same tester and timing method before showing route medians and the median paired B − A. Positive B − A means B took longer. Warmups, deviations, interruptions, deleted entries and unmatched exploratory trials do not count. A linked retry can fill its original slot once; missing ratings remain missing. These are descriptive observations, not a declared winner.',
+      'Export selected JSON defaults to routes only. Deliberately include trial history or tester labels if needed. Import preview checks the entire file and physically replays its routes before you commit; nothing is written during preview. Resolve conflicts by skipping the experiment or importing a separate copy. Archived routes retain their old formula definitions and estimates, visibly separated from current recommendations.',
       'The lab-execution-v1 model assumes common right-hand-led two-handed handling. Its grip, visibility and awkward-transition estimates await physical calibration; scores are not seconds. Experiments and notes stay in this browser on this device until you explicitly export and share a file. They are not automatically sent to club members.',
     ],
     controls: controls([
@@ -451,6 +455,46 @@ export const GUIDE_CHAPTERS: readonly GuideChapter[] = [
       [
         'Trials & notes',
         'Save an experiment and record practiced Cross + F2L attempts. Confirm setup and holding before every attempt; interruptions and deviations stay separate from comparable results. Use the ordinary Timer for full solves.',
+      ],
+      [
+        'Save experiment / Saved experiments',
+        'Save up to four pinned/selected routes with an optional label, or load an immutable snapshot without restarting search. A failure remains visibly unsaved; Retry save preserves its identity. Export unsaved recovery before closing if saving is unavailable. Discard unsaved edit keeps the stored version. Incompatible records are preserved and separately exportable.',
+      ],
+      [
+        'Tester / Add separate tester / Timing method / Attempt kind',
+        'Keep one local anonymous tester or add an optional label for a different tester. Choose Keyboard, Touch pad, or External timer / manual entry and Warmup or Measured. Conditions lock while timing or reviewing so one attempt cannot change its basis.',
+      ],
+      [
+        'Comparison / Route A / Route B / Planned block slot',
+        'Create a fixed pair and five AB/BA blocks before timing. Select an open slot or return to one that needs a linked retry. A/B identities never switch when scores change. Add two comparison blocks to extend a completed plan. Exploratory single-route trials stay outside matched summaries.',
+      ],
+      [
+        'Setup diagram / Study this route / Holds and formulas',
+        'Rebuild the saved input from a solved cube in the diagram hold. Apply initial positioning before timing. Study its verified animation, formulas and estimated hand instructions; then reset the cube. Cross and F2L already complete disables timing; a skipped cross with remaining F2L is clearly labeled.',
+      ],
+      [
+        'Trial timing surface / External time / Review external time',
+        'Confirm the original setup and starting hold. Hold for 300 ms, release on Ready, press to stop. Space is ignored in editing controls. Escape interrupts; a second touch cannot start or stop a different pointer. Search and playback stop before timing. External times are kept separate from browser timings.',
+      ],
+      [
+        'Outcome / Flow / Recognition / Note / Save trial',
+        'Report Followed, Deviated or Incomplete explicitly; interruptions remain interrupted. Rate only what you observed and leave other ratings blank. Save after reviewing, retry a failed write, or discard the review and prepare next. No result is silently marked successful.',
+      ],
+      [
+        'Correct trial / Delete trial / Restore trial / Undo last deletion',
+        'Corrections create a revision without changing the recorded route or conditions. Deletion removes an attempt from summaries but preserves its history; Restore or Undo returns it. All raw attempts, retries and actual versus intended order stay visible.',
+      ],
+      [
+        'Your paired observations / Ratings and exclusions',
+        'Read the complete-block count first. With five complete blocks, compare the route medians and paired B − A, plus optional-rating distributions. Excluded attempts have reasons; no rating is invented and no statistical significance is claimed.',
+      ],
+      [
+        'Export selection / Include trial records / Include tester labels',
+        'Choose experiments explicitly. JSON retains routes and any selected trials with revisions. CSV is for readable analysis and cannot be imported. Pending records are labeled. Limits are 10 MiB, 50 experiments and 5,000 attempt/revision records; reduce the selection if needed.',
+      ],
+      [
+        'Import experiment JSON / Import preview / Commit validated import',
+        'Select a file, review counts, source-unsaved labels and archive warnings, then commit once. Identical records are reused. Different content never overwrites a stored identity: choose Skip or Import a separate copy. If another tab changes the notebook, Refresh preview and resolve again. Discard preview writes nothing.',
       ],
     ]),
   },

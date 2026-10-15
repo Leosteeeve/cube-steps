@@ -50,14 +50,14 @@ function setup(overrides: NonNullable<Parameters<typeof createLabClient>[0]> = {
   });
   return { ports, client, verify };
 }
-it('creates workers lazily and enforces the 30.5-second watchdog from Analyze', async () => {
+it('creates workers lazily and leaves 100ms scheduling headroom under the 30.5-second watchdog', async () => {
   vi.useFakeTimers();
   vi.setSystemTime(1000);
   const { client, ports } = setup();
   expect(ports).toHaveLength(0);
   client.analyze(input, settings);
   expect(ports[0].request).toMatchObject({ startedAt: 1000, deadlineAt: 31000 });
-  await vi.advanceTimersByTimeAsync(30499);
+  await vi.advanceTimersByTimeAsync(30399);
   expect(ports[0].terminated).toBe(false);
   await vi.advanceTimersByTimeAsync(1);
   expect(ports[0].terminated).toBe(true);

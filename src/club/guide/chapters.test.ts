@@ -2,6 +2,22 @@ import { expect, it } from 'vitest';
 import { GUIDE_CHAPTERS } from './chapters';
 import { TOURS } from '../tutorial/catalog';
 import { parseClubRoute } from '../routes';
+it('documents fixed trials, honest paired summaries and deliberate file transfer', () => {
+  const lab = GUIDE_CHAPTERS.find((c) => c.id === 'lab')!;
+  expect(lab.screenshotIds).toContain('lab-trials');
+  const copy = JSON.stringify(lab);
+  for (const phrase of [
+    'five complete',
+    '300',
+    'External',
+    'revision',
+    'Import preview',
+    'tester labels',
+    'Archived',
+    'AB/BA',
+  ])
+    expect(copy).toContain(phrase);
+});
 it('covers every tour section with substantial original instructions and valid destinations', () => {
   expect(GUIDE_CHAPTERS.map((c) => c.id)).toEqual([
     'start',

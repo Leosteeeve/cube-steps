@@ -9,7 +9,8 @@ export type TutorialScene =
   | 'practice'
   | 'timer'
   | 'lab-analyze'
-  | 'lab-compare';
+  | 'lab-compare'
+  | 'lab-trials';
 export async function renderTutorialFrame(page: Page) {
   await page.locator('twisty-player').scrollIntoViewIfNeeded();
   await expect
@@ -44,7 +45,7 @@ export async function dismissCaptureWelcome(page: Page) {
 }
 export async function prepareTutorialScene(page: Page, scene: TutorialScene): Promise<void> {
   await dismissCaptureWelcome(page);
-  if (scene === 'lab-analyze' || scene === 'lab-compare') {
+  if (scene === 'lab-analyze' || scene === 'lab-compare' || scene === 'lab-trials') {
     await page.getByLabel('Scramble sequence').fill("R U F2 L D2 B R2 U' F D L2");
     await page.getByRole('button', { name: 'Analyze', exact: true }).click();
     await expect
@@ -65,6 +66,22 @@ export async function prepareTutorialScene(page: Page, scene: TutorialScene): Pr
         .getByRole('link', { name: 'Compare' })
         .click();
     await renderTutorialFrame(page);
+    if (scene === 'lab-trials') {
+      await page.getByLabel('Experiment label (optional)').fill('Example session · sample routes');
+      await page.getByRole('button', { name: 'Save experiment', exact: true }).click();
+      await expect(page.getByText('Experiment saved on this device.', { exact: true })).toBeVisible(
+        { timeout: 20000 },
+      );
+      await page
+        .getByRole('navigation', { name: 'Lab workspace' })
+        .getByRole('link', { name: 'Trials & notes' })
+        .click();
+      await page.getByText('Create a fixed A/B comparison', { exact: true }).click();
+      await page.getByRole('button', { name: 'Create comparison and five blocks' }).click();
+      await expect(page.getByLabel('Planned block slot')).toBeVisible();
+      await page.getByText('Create a fixed A/B comparison', { exact: true }).click();
+      await labelExample(page, '.lab-notebook');
+    }
   }
   if (scene === 'home') {
     await page.getByRole('button', { name: 'Pause motion', exact: true }).click();
