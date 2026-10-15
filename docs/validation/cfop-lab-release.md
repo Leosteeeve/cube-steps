@@ -23,11 +23,39 @@ Transfers are capped at 10 MiB, 50 experiments and 5,000 attempt/revision record
 
 ## Verification record
 
-Final command counts, integrated timing measurements, independent review and publication receipt will be recorded here after their corresponding checks complete. Partial or failed runs are not passes.
+| Gate | Observed result |
+| --- | --- |
+| Typecheck and production build | Passed, including the review fixes. Existing large cubing chunk warning remains. |
+| Exact cross table | 190,080 states; SHA-256 `e9bfbe91bcaea8e85ce4dd56b350969adce7b058633be1f6175b01703c070f73`. |
+| Admitted algorithm fixtures | 972 fixtures across 119 cases, passed. |
+| Full unit suite after review fixes | 150 files / 739 tests passed. |
+| Stable solver/color corpus | 4 files / 5 tests passed, 616.10 seconds. |
+| Lab catalog and corpus | 2 files / 3 tests passed, 228.97 seconds; 1,000 seeded inputs × six physical bottoms, plus catalog/last-layer replay. |
+| Stable efficiency regression | 1 test passed, 179.54 seconds. |
+| Lab efficiency comparison | 1 test passed, 16.10 seconds; fixed sample, not a universal improvement claim. |
+| Guide manifest | Passed; Analyze, Compare and Trials screenshots recaptured and visually checked. |
+| Exhaustive cross table and physical fixture replay | 2 files / 3 tests passed. |
+| Production browser integration | 36/36 Chromium/WebKit passed before review fixes; the affected built Lab workflow and lazy-loading checks then passed 4/4 after fixes. Final full CI remains a publication gate. |
+| Complete development browser suite | In progress; obsolete navigation/watchdog expectations are being corrected and rerun. |
+| Integrated desktop benchmark | Pending. No physical-phone result claimed. |
+
+Partial or failed runs are not passes. The first production run had 34 passes and two obsolete eight-chapter assertions; the Guide now has nine chapters, including Lab. Updating that exact expectation and explicitly checking the Lab heading produced the green 36-test run.
 
 The first integrated smoke test found the old 30.5-second scheduled watchdog surfaced at 30,510 ms with a deliberately silent worker. A deterministic failing timer test confirmed the missing headroom; the watchdog was changed to 30.4 seconds and the test passed. A fresh built-UI run is required below before release.
 
 Guide screenshots use isolated examples, explicitly labeled where appropriate. The accepted five-minute Guide film and 30-second outreach clip are unchanged. The README retains the public club entrance without naming the school or claiming restricted access.
+
+## Independent review and fix pass
+
+One fresh-context `gpt-6-astra` reviewer examined the whole branch `7298560..7e6e448` read-only, including targeted diagnostics. It established no critical issues and three Important findings. All three received a focused failing regression before the fix:
+
+- Loading a saved experiment now replaces the displayed scramble or facelet draft, clears obsolete validation, and keeps the input diagram aligned with its routes.
+- CSV eligibility now uses the same complete matched blocks and exact tester/method grouping as the on-screen summary; incomplete blocks and superseded revisions retain their exclusion reasons.
+- Every client termination records its actual reason and current elapsed/work accounting, including Stop, watchdog, admission limits and errors. A delayed browser receipt may honestly exceed 60 seconds without extending the 30-second active-search budget; it remains saveable instead of being rejected solely for scheduling delay.
+
+Post-fix full unit/type/build checks passed; browser and final deployment receipts remain distinct gates. There are no deferred minor findings. No second review was dispatched.
+
+The reviewer explicitly left physical-phone behavior, human fingertrick benefit, worker-specific heap bytes, global search optimality and eventual deployment outside its established evidence. These remain limitations or separate executor gates, not silent approvals.
 
 ## Publication and rollback
 

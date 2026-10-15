@@ -53,6 +53,11 @@ test('production Lab retains physical routes, saves, interrupts trials and previ
     timeout: 20000,
   });
   await page
+    .getByRole('navigation', { name: 'Lab workspace' })
+    .getByRole('link', { name: 'Analyze' })
+    .click();
+  await expect(page.getByLabel('Scramble sequence')).toHaveValue('R U F2 L D2 B R2');
+  await page
     .getByRole('checkbox', { name: 'Export Production verification example', exact: true })
     .check();
   const download = page.waitForEvent('download');

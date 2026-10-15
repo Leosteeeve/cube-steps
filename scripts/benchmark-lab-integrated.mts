@@ -264,6 +264,7 @@ export async function runIntegratedBenchmark(args: string[], runs: number, fullR
         node: process.version,
         browser: browser.version(),
         device: 'Windows desktop; no physical-phone inference',
+        backgroundActivity: arg('--background-activity', 'Not recorded'),
       },
       summary,
       rows,

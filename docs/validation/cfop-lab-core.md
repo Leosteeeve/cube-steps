@@ -1,5 +1,7 @@
 # CFOP Lab core validation
 
+This is the historical Task 6 record. See [release validation](cfop-lab-release.md) for the later integrated UI, review and publication evidence; the original core measurements below remain unchanged.
+
 Recorded October 14, 2026. Software correctness and the desktop **core** first-result target pass. This is a temporary worker harness, before the club UI and its independent main-thread verification. Integrated performance, representative physical-phone performance, and human handling calibration remain pending. Nothing in this report establishes a fastest human solve or globally optimal F2L.
 
 ## Reproducible configuration
@@ -67,6 +69,6 @@ npm.cmd run benchmark:lab -- --phase core --runs 40
 npm.cmd run benchmark:lab -- --phase core --runs 0 --full-runs 3 --output test-results/lab-core-progressive.json
 ```
 
-The benchmark also accepts `--base-url` and `--output`. Diagnostic corpus limits are explicitly labeled partial and are not accepted as the full corpus. `--phase integrated` currently refuses to claim a result until Task 15 adds the completed UI path. Temporary harness files are removed after execution and are outside the production module graph.
+The benchmark also accepts `--base-url` and `--output`. Diagnostic corpus limits are explicitly labeled partial and are not accepted as the full corpus. At Task 6, `--phase integrated` refused to claim a result until Task 15 added the completed UI path. The integrated implementation is now available; its evidence is recorded separately. Temporary core harness files are removed after execution and are outside the production module graph.
 
 Tasks 7–15 must still verify main-thread admission, stale-message handling, pinned playback, real browser interaction, trial persistence, import/export, ordinary-method regressions, production assets and final independent review. Physical-phone performance and human handling feedback must remain visibly unverified until measured. The club feature remains unpublished during these steps.

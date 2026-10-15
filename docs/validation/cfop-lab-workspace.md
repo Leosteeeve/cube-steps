@@ -1,6 +1,6 @@
 # CFOP Lab workspace verification
 
-October 14, 2026. Development branch; publication awaits the experiment notebook and final review.
+October 14, 2026. Historical Tasks 7–10 record. See [release validation](cfop-lab-release.md) for the later experiment notebook, integrated verification and final review.
 
 ## Verified
 
