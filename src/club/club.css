@@ -10,6 +10,7 @@
 }
 [data-edition='club'] .club-header {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
@@ -36,6 +37,8 @@
 }
 [data-edition='club'] .club-header nav {
   display: flex;
+  flex-wrap: wrap;
+  max-width: 100%;
   gap: 8px;
   align-items: center;
 }

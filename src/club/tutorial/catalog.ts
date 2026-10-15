@@ -10,6 +10,43 @@ const step = (
 ): TourStep => ({ id, targetId, title, body, guideSection, action });
 const tour = (id: TourId, steps: TourStep[]): TourDefinition => ({ id, contentVersion: 1, steps });
 export const TOURS: Readonly<Record<TourId, TourDefinition>> = {
+  lab: tour('lab', [
+    step(
+      'input',
+      'lab.input',
+      'Bring a familiar cube',
+      'Enter a scramble or all six faces. Lab explores experimental Cross + F2L routes; this tour never starts analysis or changes your input.',
+      'lab',
+    ),
+    step(
+      'colors',
+      'lab.colors',
+      'Choose your bottom colors',
+      'Start with White only if that is what you know. All six colors explores more choices, but you must recognize the matching pieces and hold.',
+      'lab',
+    ),
+    step(
+      'progress',
+      'lab.progress',
+      'Let the search improve',
+      'After Analyze, a verified route appears first and search continues for up to 30 seconds. Stop keeps the routes already found. Coverage describes what was searched, not a proof of the best overall route.',
+      'lab',
+    ),
+    step(
+      'recommendation',
+      'lab.recommendation',
+      'Read the tradeoff',
+      'The exact cross minimum is a reference. A route may add one or two turns for a better estimated Cross + F2L sequence. Pin a route to keep its playback stable. Handling scores are hypotheses awaiting physical trials.',
+      'lab',
+    ),
+    step(
+      'comparison',
+      'lab.comparison',
+      'Compare, then try',
+      'Select routes for Compare. Match the actual bottom and front, practice the full sequence, then record Cross + F2L in Trials & notes. Initial positioning and last-layer moves are outside the trial.',
+      'lab',
+    ),
+  ]),
   home: tour('home', [
     step(
       'start',
@@ -309,6 +346,7 @@ export const TOURS: Readonly<Record<TourId, TourDefinition>> = {
   ]),
 };
 export function tourForRoute(route: ClubRoute, playableLesson: boolean): TourId | null {
+  if (route.kind === 'lab') return route.view === 'analyze' ? 'lab' : null;
   if (route.kind === 'learn') return playableLesson ? 'lesson-player' : 'lesson-intro';
   return route.kind in TOURS ? (route.kind as TourId) : null;
 }

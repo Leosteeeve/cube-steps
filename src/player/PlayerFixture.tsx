@@ -153,9 +153,9 @@ export default function PlayerFixture() {
       {data &&
         (data.source.kind === 'solve' ? (
           <CubePlayer engine={data.engine} session={data.source.session} stage={stage} />
-        ) : (
+        ) : data.source.kind === 'algorithm' ? (
           <AlgorithmPlayer engine={data.engine} demonstration={data.source.demonstration} />
-        ))}
+        ) : null)}
       <style>
         {
           '.cube-canvas{height:400px}.playback-controls{display:flex;gap:12px;flex-wrap:wrap}.explanation{max-width:500px;min-width:0}.algorithm-moves{display:flex;gap:8px;flex-wrap:wrap}.player-area{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:30px}button,select{padding:12px} @media(max-width:700px){.player-area{grid-template-columns:minmax(0,1fr)}.cube-canvas{height:330px}}'

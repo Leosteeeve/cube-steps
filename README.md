@@ -86,6 +86,10 @@ Progress and preferences use separate club storage keys; timer history stays in 
 
 For local development, open `/cube-steps/club/`. Both entries are built and deployed from this repository. See the [club validation record](docs/validation/webb-club.md) and [notation/UI validation](docs/validation/notation-ui-refresh.md).
 
+The club entrance also contains **CFOP Lab · Experimental** (`#/lab`), with instructions in **Guide → Explore CFOP Lab** (`#/guide/lab`). It searches selected bottom colors and all four starting fronts, using each color's exact cross minimum as a reference while also considering one or two extra cross turns. It compares complete Cross + F2L paths with a versioned right-hand-led handling estimate; it does not promise globally optimal F2L or the fastest human solve. Verified routes appear progressively, and Stop keeps the current choices. Stable LBL and CFOP solvers retain their own rules.
+
+Save fixed experiments before practicing. Lab trials stop at the end of F2L, use unlimited preparation and keep keyboard, touch and external times separate. Five complete matched A/B blocks are required for descriptive medians; deviations, interruptions, warmups and missing ratings remain visible. The ordinary full-solve Timer is separate. JSON exports default to routes only, with trials and tester labels opt-in. Imports are physically validated and previewed before an atomic commit; conflicts can be skipped or copied, and old-model routes are labeled archived. All records remain local until you deliberately share a file. See the [Lab validation record](docs/validation/cfop-lab-release.md) and [physical comparison worksheet](docs/lab/physical-review.md). Human fingertrick calibration and representative physical-phone performance remain pending.
+
 `npm run dev` and `npm run build` first prepare the Guide video: download the accepted 37 MB MP4 from a versioned GitHub Release and verify its size and SHA-256. The verified file is reused locally and stays outside Git history. Run `npm run prepare:guide-video` explicitly if needed. Builds fail if the download or verification fails; the published site serves its own copy and needs no third-party video player. See [video publication notes](docs/validation/guide-video-publication.md).
 
 ## Publish to GitHub Pages
@@ -100,7 +104,10 @@ npm run verify:cross
 npm run verify:cases
 npm run test:unit
 npm run test:corpus
+npm run test:lab:corpus
 npm run test:efficiency
+npm run test:lab:efficiency
+npm run verify:guide
 npx playwright install chromium webkit
 npm run test:e2e
 npm run build

@@ -19,7 +19,7 @@ const image = {
   scenario: 'home',
   exampleData: false,
 };
-it('renders all eight written chapters without a cube player', () => {
+it('renders all written chapters without a cube player', () => {
   render(
     <TutorialProvider>
       <GuidePage />
@@ -29,6 +29,15 @@ it('renders all eight written chapters without a cube player', () => {
     expect(screen.getByRole('heading', { name: c.title })).toBeInTheDocument();
   expect(document.querySelector('twisty-player')).toBeNull();
   expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+});
+it('focuses the Lab deep link and provides a clear Analyze destination', () => {
+  render(
+    <TutorialProvider>
+      <GuidePage section={'lab' as never} />
+    </TutorialProvider>,
+  );
+  expect(screen.getByRole('heading', { name: 'Explore CFOP Lab' })).toHaveFocus();
+  expect(screen.getByRole('link', { name: /Open CFOP Lab/ })).toHaveAttribute('href', '#/lab');
 });
 it('enlarges a screenshot with an accessible close and restores focus; failures keep its caption', () => {
   render(<GuideImage image={image} />);

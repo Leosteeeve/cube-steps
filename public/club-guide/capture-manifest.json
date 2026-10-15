@@ -180,6 +180,42 @@
       "sourceRevision": "9e6bbf707d7e54ed678f802b202e61d4b0999772-dirty",
       "scenario": "timer-phone",
       "exampleData": true
+    },
+    {
+      "id": "lab-analyze",
+      "src": "club-guide/lab-analyze.png",
+      "alt": "CFOP Lab example showing input colors, a route recommendation and physical cube playback",
+      "caption": "Example analysis: a verified recommendation, exact cross references and pinned playback. Handling scores remain estimates.",
+      "route": "club/#/lab",
+      "width": 1304,
+      "height": 1693,
+      "sourceRevision": "8ad22d9-task15",
+      "scenario": "lab-analyze",
+      "exampleData": true
+    },
+    {
+      "id": "lab-compare",
+      "src": "club-guide/lab-compare.png",
+      "alt": "CFOP Lab example comparison table and pinned route player",
+      "caption": "Example comparison: two routes for the same cube, with move counts, estimated handling and actual holds.",
+      "route": "club/#/lab",
+      "width": 1304,
+      "height": 1373,
+      "sourceRevision": "8ad22d9-task15",
+      "scenario": "lab-compare",
+      "exampleData": true
+    },
+    {
+      "id": "lab-trials",
+      "src": "club-guide/lab-trials.png",
+      "alt": "CFOP Lab example showing saved trial conditions, original cube setup and Cross plus F2L timing controls",
+      "caption": "Example trial setup: fixed A/B blocks, the original cube diagram and unchecked confirmations before practiced Cross + F2L timing. No physical results are claimed.",
+      "route": "club/#/lab",
+      "width": 1304,
+      "height": 1568,
+      "sourceRevision": "8ad22d9-task15",
+      "scenario": "lab-trials",
+      "exampleData": true
     }
   ]
 }

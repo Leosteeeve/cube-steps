@@ -7,6 +7,7 @@ export const GUIDE_SECTION_IDS = [
   'algorithms',
   'practice',
   'timer',
+  'lab',
   'help',
 ] as const;
 export type GuideSectionId = (typeof GUIDE_SECTION_IDS)[number];

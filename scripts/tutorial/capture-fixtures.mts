@@ -1,6 +1,16 @@
 import { expect, type Page } from '@playwright/test';
 export type TutorialScene =
-  'home' | 'quiz' | 'moves' | 'lesson' | 'solve' | 'algorithms' | 'practice' | 'timer';
+  | 'home'
+  | 'quiz'
+  | 'moves'
+  | 'lesson'
+  | 'solve'
+  | 'algorithms'
+  | 'practice'
+  | 'timer'
+  | 'lab-analyze'
+  | 'lab-compare'
+  | 'lab-trials';
 export async function renderTutorialFrame(page: Page) {
   await page.locator('twisty-player').scrollIntoViewIfNeeded();
   await expect
@@ -35,6 +45,44 @@ export async function dismissCaptureWelcome(page: Page) {
 }
 export async function prepareTutorialScene(page: Page, scene: TutorialScene): Promise<void> {
   await dismissCaptureWelcome(page);
+  if (scene === 'lab-analyze' || scene === 'lab-compare' || scene === 'lab-trials') {
+    await page.getByLabel('Scramble sequence').fill("R U F2 L D2 B R2 U' F D L2");
+    await page.getByRole('button', { name: 'Analyze', exact: true }).click();
+    await expect
+      .poll(() => page.locator('.lab-candidate').count(), { timeout: 30000 })
+      .toBeGreaterThanOrEqual(2);
+    await page.getByRole('button', { name: 'Stop analysis', exact: true }).click();
+    const cards = page.locator('.lab-candidate');
+    await cards
+      .first()
+      .getByRole('button', { name: /Pin.*playback/ })
+      .click();
+    await cards.nth(0).getByLabel('Compare this route').check();
+    await cards.nth(1).getByLabel('Compare this route').check();
+    await expect(page.getByRole('button', { name: 'Next move', exact: true })).toBeEnabled();
+    if (scene === 'lab-compare')
+      await page
+        .getByRole('navigation', { name: 'Lab workspace' })
+        .getByRole('link', { name: 'Compare' })
+        .click();
+    await renderTutorialFrame(page);
+    if (scene === 'lab-trials') {
+      await page.getByLabel('Experiment label (optional)').fill('Example session · sample routes');
+      await page.getByRole('button', { name: 'Save experiment', exact: true }).click();
+      await expect(page.getByText('Experiment saved on this device.', { exact: true })).toBeVisible(
+        { timeout: 20000 },
+      );
+      await page
+        .getByRole('navigation', { name: 'Lab workspace' })
+        .getByRole('link', { name: 'Trials & notes' })
+        .click();
+      await page.getByText('Create a fixed A/B comparison', { exact: true }).click();
+      await page.getByRole('button', { name: 'Create comparison and five blocks' }).click();
+      await expect(page.getByLabel('Planned block slot')).toBeVisible();
+      await page.getByText('Create a fixed A/B comparison', { exact: true }).click();
+      await labelExample(page, '.lab-notebook');
+    }
+  }
   if (scene === 'home') {
     await page.getByRole('button', { name: 'Pause motion', exact: true }).click();
   }

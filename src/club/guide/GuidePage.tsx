@@ -71,7 +71,9 @@ export function GuidePage({ section }: { section?: GuideSectionId }) {
                               ? 'Practice'
                               : c.id === 'timer'
                                 ? 'Timer'
-                                : 'Moves'}{' '}
+                                : c.id === 'lab'
+                                  ? 'CFOP Lab'
+                                  : 'Moves'}{' '}
                     →
                   </a>
                 )}

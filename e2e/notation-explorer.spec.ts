@@ -12,7 +12,7 @@ for (const width of [360, 390, 768, 1024, 1440])
     await expect(page.locator('.notation-player')).toHaveAttribute('data-progress', '0');
     await expect(
       page.getByRole('navigation', { name: 'Main navigation' }).getByRole('link'),
-    ).toHaveText(['Home', 'Moves', 'Learn', 'Timer ↗', 'Guide']);
+    ).toHaveText(['Home', 'Moves', 'Learn', 'Timer ↗', 'Guide', 'CFOP Lab']);
     await expect(page.getByRole('link', { name: 'Moves', exact: true })).toHaveAttribute(
       'aria-current',
       'page',

@@ -1,0 +1,692 @@
+{
+  "phase": "core",
+  "runs": 0,
+  "fullRuns": 3,
+  "configuration": "Temporary Vite development worker harness; first result includes lazy imports, engine/table initialization and worker validation; excludes UI and independent main-thread validation.",
+  "batching": {
+    "targetMs": 4,
+    "targetOperations": 128,
+    "ceilings": {
+      "ms": 8,
+      "operations": 256
+    },
+    "note": "Headroom for one bounded generator step; observed maxima are reported, not assumed."
+  },
+  "sourceHashes": {
+    "src/lab/execution/score.ts": "d966a3fa948396f2128585cfaab3f30c8238a8ca35d2c527e3977c25e2e0d550",
+    "src/lab/f2l/candidates.ts": "93825c86c981578f5fb0a2ab7bb4ba428f504920aca3ca1480c1f3512a877f80",
+    "src/lab/f2l/planner.ts": "ca0362d78913a25a2cada7258f3da0b81c8f38d06e8ac4911d9ba704c18e91ee",
+    "scripts/benchmark-lab.mts": "711553fbfcb49d476e348a40b697649b56ea337d9d5937e1503b3012750f2565"
+  },
+  "revision": "57cc4b566d97cf691201746462041aed5651ba7c",
+  "dirty": true,
+  "environment": {
+    "cpu": "AMD Ryzen 9 8945HX with Radeon Graphics        ",
+    "platform": "win32",
+    "release": "10.0.26200",
+    "node": "v24.18.0",
+    "browser": "156.0.8078.4",
+    "device": "Windows development desktop; no physical-phone inference"
+  },
+  "rows": [
+    {
+      "type": "done",
+      "requestId": 2,
+      "firstMs": 741.300048828125,
+      "elapsedMs": 30015.600048832595,
+      "maxBatchMs": 8.600000001490116,
+      "maxBatchOperations": 190,
+      "coverage": {
+        "elapsedMs": 30004.300048828125,
+        "operations": 777097,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              },
+              {
+                "bottom": "white",
+                "front": "red"
+              },
+              {
+                "bottom": "white",
+                "front": "blue"
+              },
+              {
+                "bottom": "white",
+                "front": "orange"
+              }
+            ],
+            "lengths": [
+              6,
+              7,
+              8
+            ],
+            "crosses": 12,
+            "f2l": 4,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              },
+              {
+                "bottom": "yellow",
+                "front": "red"
+              },
+              {
+                "bottom": "yellow",
+                "front": "blue"
+              },
+              {
+                "bottom": "yellow",
+                "front": "orange"
+              }
+            ],
+            "lengths": [
+              6,
+              7,
+              8
+            ],
+            "crosses": 12,
+            "f2l": 4,
+            "minimum": 6
+          },
+          "red": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "red",
+                "front": "green"
+              },
+              {
+                "bottom": "red",
+                "front": "white"
+              },
+              {
+                "bottom": "red",
+                "front": "blue"
+              },
+              {
+                "bottom": "red",
+                "front": "yellow"
+              }
+            ],
+            "lengths": [
+              6,
+              7,
+              8
+            ],
+            "crosses": 12,
+            "f2l": 4,
+            "minimum": 6
+          },
+          "orange": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "orange",
+                "front": "green"
+              },
+              {
+                "bottom": "orange",
+                "front": "white"
+              },
+              {
+                "bottom": "orange",
+                "front": "blue"
+              },
+              {
+                "bottom": "orange",
+                "front": "yellow"
+              }
+            ],
+            "lengths": [
+              7,
+              8,
+              9
+            ],
+            "crosses": 12,
+            "f2l": 4,
+            "minimum": 7
+          },
+          "green": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "green",
+                "front": "white"
+              },
+              {
+                "bottom": "green",
+                "front": "red"
+              },
+              {
+                "bottom": "green",
+                "front": "yellow"
+              },
+              {
+                "bottom": "green",
+                "front": "orange"
+              }
+            ],
+            "lengths": [
+              4,
+              5,
+              6
+            ],
+            "crosses": 12,
+            "f2l": 4,
+            "minimum": 4
+          },
+          "blue": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "blue",
+                "front": "white"
+              },
+              {
+                "bottom": "blue",
+                "front": "red"
+              },
+              {
+                "bottom": "blue",
+                "front": "yellow"
+              },
+              {
+                "bottom": "blue",
+                "front": "orange"
+              }
+            ],
+            "lengths": [
+              6,
+              7,
+              8
+            ],
+            "crosses": 12,
+            "f2l": 4,
+            "minimum": 6
+          }
+        },
+        "crossCompletions": 72,
+        "f2lCompletions": 24,
+        "rejectedCandidates": 0,
+        "entryHighWater": 6427,
+        "reason": "time-limit"
+      },
+      "budget": {
+        "operations": 777097,
+        "byKind": {
+          "expand": 29884,
+          "simulate": 80957,
+          "score": 666256
+        },
+        "elapsedMs": 30015.600048832595,
+        "entries": 0,
+        "entryHighWater": 6427
+      },
+      "memory": null,
+      "seed": 1,
+      "condition": "progressive",
+      "firstObservedMs": 741.5000976547599,
+      "stopLatencyMs": null
+    },
+    {
+      "type": "done",
+      "requestId": 3,
+      "firstMs": 919.0999023467302,
+      "elapsedMs": 30002.29990234971,
+      "maxBatchMs": 1.8999999985098839,
+      "maxBatchOperations": 197,
+      "coverage": {
+        "elapsedMs": 30002.19990234822,
+        "operations": 777982,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              },
+              {
+                "bottom": "white",
+                "front": "red"
+              },
+              {
+                "bottom": "white",
+                "front": "blue"
+              },
+              {
+                "bottom": "white",
+                "front": "orange"
+              }
+            ],
+            "lengths": [
+              5,
+              6,
+              7
+            ],
+            "crosses": 12,
+            "f2l": 4,
+            "minimum": 5
+          },
+          "yellow": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              },
+              {
+                "bottom": "yellow",
+                "front": "red"
+              },
+              {
+                "bottom": "yellow",
+                "front": "blue"
+              },
+              {
+                "bottom": "yellow",
+                "front": "orange"
+              }
+            ],
+            "lengths": [
+              6,
+              7,
+              8
+            ],
+            "crosses": 12,
+            "f2l": 4,
+            "minimum": 6
+          },
+          "red": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "red",
+                "front": "green"
+              },
+              {
+                "bottom": "red",
+                "front": "white"
+              },
+              {
+                "bottom": "red",
+                "front": "blue"
+              },
+              {
+                "bottom": "red",
+                "front": "yellow"
+              }
+            ],
+            "lengths": [
+              5,
+              6,
+              7
+            ],
+            "crosses": 12,
+            "f2l": 5,
+            "minimum": 5
+          },
+          "orange": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "orange",
+                "front": "green"
+              },
+              {
+                "bottom": "orange",
+                "front": "white"
+              },
+              {
+                "bottom": "orange",
+                "front": "blue"
+              },
+              {
+                "bottom": "orange",
+                "front": "yellow"
+              }
+            ],
+            "lengths": [
+              6,
+              7,
+              8
+            ],
+            "crosses": 12,
+            "f2l": 4,
+            "minimum": 6
+          },
+          "green": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "green",
+                "front": "white"
+              },
+              {
+                "bottom": "green",
+                "front": "red"
+              },
+              {
+                "bottom": "green",
+                "front": "yellow"
+              },
+              {
+                "bottom": "green",
+                "front": "orange"
+              }
+            ],
+            "lengths": [
+              6,
+              7,
+              8
+            ],
+            "crosses": 12,
+            "f2l": 4,
+            "minimum": 6
+          },
+          "blue": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "blue",
+                "front": "white"
+              },
+              {
+                "bottom": "blue",
+                "front": "red"
+              },
+              {
+                "bottom": "blue",
+                "front": "yellow"
+              },
+              {
+                "bottom": "blue",
+                "front": "orange"
+              }
+            ],
+            "lengths": [
+              7,
+              8,
+              9
+            ],
+            "crosses": 12,
+            "f2l": 4,
+            "minimum": 7
+          }
+        },
+        "crossCompletions": 72,
+        "f2lCompletions": 25,
+        "rejectedCandidates": 0,
+        "entryHighWater": 6044,
+        "reason": "time-limit"
+      },
+      "budget": {
+        "operations": 777982,
+        "byKind": {
+          "expand": 29030,
+          "simulate": 78358,
+          "score": 670594
+        },
+        "elapsedMs": 30002.29990234971,
+        "entries": 0,
+        "entryHighWater": 6044
+      },
+      "memory": null,
+      "seed": 2,
+      "condition": "progressive",
+      "firstObservedMs": 919.3999511748552,
+      "stopLatencyMs": null
+    },
+    {
+      "type": "done",
+      "requestId": 4,
+      "firstMs": 704.8000000044703,
+      "elapsedMs": 30004.40000000596,
+      "maxBatchMs": 2.2000000029802322,
+      "maxBatchOperations": 195,
+      "coverage": {
+        "elapsedMs": 30004.30000000447,
+        "operations": 781704,
+        "colors": {
+          "white": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "white",
+                "front": "green"
+              },
+              {
+                "bottom": "white",
+                "front": "red"
+              },
+              {
+                "bottom": "white",
+                "front": "blue"
+              },
+              {
+                "bottom": "white",
+                "front": "orange"
+              }
+            ],
+            "lengths": [
+              6,
+              7,
+              8
+            ],
+            "crosses": 12,
+            "f2l": 4,
+            "minimum": 6
+          },
+          "yellow": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "yellow",
+                "front": "green"
+              },
+              {
+                "bottom": "yellow",
+                "front": "red"
+              },
+              {
+                "bottom": "yellow",
+                "front": "blue"
+              },
+              {
+                "bottom": "yellow",
+                "front": "orange"
+              }
+            ],
+            "lengths": [
+              7,
+              8,
+              9
+            ],
+            "crosses": 12,
+            "f2l": 4,
+            "minimum": 7
+          },
+          "red": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "red",
+                "front": "green"
+              },
+              {
+                "bottom": "red",
+                "front": "white"
+              },
+              {
+                "bottom": "red",
+                "front": "blue"
+              },
+              {
+                "bottom": "red",
+                "front": "yellow"
+              }
+            ],
+            "lengths": [
+              7,
+              8,
+              9
+            ],
+            "crosses": 12,
+            "f2l": 4,
+            "minimum": 7
+          },
+          "orange": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "orange",
+                "front": "green"
+              },
+              {
+                "bottom": "orange",
+                "front": "white"
+              },
+              {
+                "bottom": "orange",
+                "front": "blue"
+              },
+              {
+                "bottom": "orange",
+                "front": "yellow"
+              }
+            ],
+            "lengths": [
+              6,
+              7,
+              8
+            ],
+            "crosses": 12,
+            "f2l": 4,
+            "minimum": 6
+          },
+          "green": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "green",
+                "front": "white"
+              },
+              {
+                "bottom": "green",
+                "front": "red"
+              },
+              {
+                "bottom": "green",
+                "front": "yellow"
+              },
+              {
+                "bottom": "green",
+                "front": "orange"
+              }
+            ],
+            "lengths": [
+              6,
+              7,
+              8
+            ],
+            "crosses": 12,
+            "f2l": 4,
+            "minimum": 6
+          },
+          "blue": {
+            "status": "seeded",
+            "holds": [
+              {
+                "bottom": "blue",
+                "front": "white"
+              },
+              {
+                "bottom": "blue",
+                "front": "red"
+              },
+              {
+                "bottom": "blue",
+                "front": "yellow"
+              },
+              {
+                "bottom": "blue",
+                "front": "orange"
+              }
+            ],
+            "lengths": [
+              6,
+              7,
+              8
+            ],
+            "crosses": 12,
+            "f2l": 4,
+            "minimum": 6
+          }
+        },
+        "crossCompletions": 72,
+        "f2lCompletions": 24,
+        "rejectedCandidates": 0,
+        "entryHighWater": 5031,
+        "reason": "time-limit"
+      },
+      "budget": {
+        "operations": 781704,
+        "byKind": {
+          "expand": 28469,
+          "simulate": 75276,
+          "score": 677959
+        },
+        "elapsedMs": 30004.40000000596,
+        "entries": 0,
+        "entryHighWater": 5031
+      },
+      "memory": null,
+      "seed": 3,
+      "condition": "progressive",
+      "firstObservedMs": 705.0000488311052,
+      "stopLatencyMs": null
+    }
+  ],
+  "summary": {
+    "progressive": {
+      "firstMs": {
+        "median": 741.300048828125,
+        "p95": 919.0999023467302,
+        "max": 919.0999023467302
+      },
+      "firstObservedMs": {
+        "median": 741.5000976547599,
+        "p95": 919.3999511748552,
+        "max": 919.3999511748552
+      },
+      "stopLatencyMs": {},
+      "maxBatchMs": {
+        "median": 2.2000000029802322,
+        "p95": 8.600000001490116,
+        "max": 8.600000001490116
+      },
+      "maxBatchOperations": {
+        "median": 195,
+        "p95": 197,
+        "max": 197
+      },
+      "elapsedMs": {
+        "median": 30004.40000000596,
+        "p95": 30015.600048832595,
+        "max": 30015.600048832595
+      }
+    }
+  },
+  "phoneEvidence": "Unavailable: no representative physical phone connected.",
+  "memoryEvidence": "Worker memory API unavailable; frontier high-water counts are reported separately."
+}

@@ -18,6 +18,36 @@ const desktop = { width: 1360, height: 1000 },
   phone = { width: 390, height: 844 };
 const scenes: (CaptureScenario & { caption: string; alt: string })[] = [
   {
+    id: 'lab-analyze',
+    route: 'club/#/lab',
+    target: '.lab-grid',
+    exampleData: true,
+    caption:
+      'Example analysis: a verified recommendation, exact cross references and pinned playback. Handling scores remain estimates.',
+    alt: 'CFOP Lab example showing input colors, a route recommendation and physical cube playback',
+    prepare: (p: Page) => prepareTutorialScene(p, 'lab-analyze'),
+  },
+  {
+    id: 'lab-compare',
+    route: 'club/#/lab',
+    target: '.lab-grid',
+    exampleData: true,
+    caption:
+      'Example comparison: two routes for the same cube, with move counts, estimated handling and actual holds.',
+    alt: 'CFOP Lab example comparison table and pinned route player',
+    prepare: (p: Page) => prepareTutorialScene(p, 'lab-compare'),
+  },
+  {
+    id: 'lab-trials',
+    route: 'club/#/lab',
+    target: '.lab-notebook',
+    exampleData: true,
+    caption:
+      'Example trial setup: fixed A/B blocks, the original cube diagram and unchecked confirmations before practiced Cross + F2L timing. No physical results are claimed.',
+    alt: 'CFOP Lab example showing saved trial conditions, original cube setup and Cross plus F2L timing controls',
+    prepare: (p: Page) => prepareTutorialScene(p, 'lab-trials'),
+  },
+  {
     id: 'home',
     route: 'club/',
     target: '.club-hero',
@@ -148,11 +178,14 @@ export async function captureGuide({
   baseUrl,
   outputDir,
   sourceRevision,
+  only,
 }: {
   baseUrl: string;
   outputDir: string;
   sourceRevision: string;
+  only?: readonly string[];
 }): Promise<GuideScreenshot[]> {
+  if (only?.some((id) => !scenes.some((s) => s.id === id))) throw Error('Unknown capture scene');
   const root = resolve(outputDir);
   await mkdir(root, { recursive: true });
   if ((await realpath(root)) !== root) throw Error('Output directory must not be a symlink');
@@ -160,6 +193,7 @@ export async function captureGuide({
     images: GuideScreenshot[] = [];
   try {
     for (const s of scenes) {
+      if (only && !only.includes(s.id)) continue;
       const context = await browser.newContext({ viewport: s.viewport, deviceScaleFactor: 1 }),
         page = await context.newPage(),
         errors: string[] = [];
@@ -201,11 +235,15 @@ export async function captureGuide({
   } finally {
     await browser.close();
   }
+  const previous: GuideScreenshot[] = only
+    ? JSON.parse(await readFile(resolve(root, 'capture-manifest.json'), 'utf8')).images
+    : [];
+  const merged = [...previous.filter((p) => !images.some((i) => i.id === p.id)), ...images];
   await writeFile(
     resolve(root, 'capture-manifest.json'),
-    JSON.stringify({ version: 1, images }, null, 2) + '\n',
+    JSON.stringify({ version: 1, images: merged }, null, 2) + '\n',
   );
-  return images;
+  return merged;
 }
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const args = process.argv.slice(2),
@@ -225,6 +263,7 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
       baseUrl: get('--base-url', 'http://127.0.0.1:4173/cube-steps/'),
       outputDir: resolve(get('--output-dir', 'public/club-guide')),
       sourceRevision: get('--revision', 'uncommitted'),
+      only: args.includes('--only') ? get('--only', '').split(',') : undefined,
     });
     await writeFile(manifest, JSON.stringify({ version: 1, images }, null, 2) + '\n');
   }

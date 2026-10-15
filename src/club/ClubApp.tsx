@@ -14,12 +14,18 @@ import { MoveExplorerRoute } from './moves/MoveExplorerRoute';
 import { TutorialRouteBoundary } from './tutorial/TutorialProvider';
 import { TourEntry } from './tutorial/TourEntry';
 import { tourForRoute } from './tutorial/catalog';
+import { createLabOwner } from './lab-owner';
 const TimerPage = lazy(() => import('./timer/TimerPage').then((m) => ({ default: m.TimerPage })));
 const GuidePage = lazy(() => import('./guide/GuidePage').then((m) => ({ default: m.GuidePage })));
+const LabWorkspace = lazy(() =>
+  import('./lab/LabWorkspace').then((m) => ({ default: m.LabWorkspace })),
+);
 const ClubLearnPage = lazy(() =>
   import('./learning/ClubLearnPage').then((m) => ({ default: m.ClubLearnPage })),
 );
 export function ClubApp() {
+  const [labOwner] = useState(createLabOwner);
+  useEffect(() => () => labOwner.dispose(), [labOwner]);
   const [timerRepository] = useState(() => createTimerRepository());
   useEffect(() => () => timerRepository.dispose(), [timerRepository]);
   const { progress } = useClubProgress();
@@ -30,7 +36,7 @@ export function ClubApp() {
     return () => removeEventListener('hashchange', change);
   }, []);
   const { engine, error, retry } = useCubeEngine(
-    !['home', 'quiz', 'guide', 'not-found'].includes(route.kind),
+    !['home', 'quiz', 'guide', 'lab', 'not-found'].includes(route.kind),
   );
   const tourId = tourForRoute(
     route,
@@ -58,19 +64,23 @@ export function ClubApp() {
                 ? 'moves'
                 : route.kind === 'guide'
                   ? 'guide'
-                  : 'learn'
+                  : route.kind === 'lab'
+                    ? 'lab'
+                    : 'learn'
         }
         timerAvailable={true}
       />
       <main id="main" tabIndex={-1}>
         <TutorialRouteBoundary routeKey={JSON.stringify(route)} tourId={tourId}>
-          {tourId && route.kind !== 'timer' && (
+          {tourId && route.kind !== 'timer' && route.kind !== 'lab' && (
             <TourEntry
               tourId={tourId}
               ready={route.kind === 'home' || route.kind === 'quiz' || !!engine}
             />
           )}
-          {!['home', 'quiz', 'timer', 'moves', 'guide', 'not-found'].includes(route.kind) && (
+          {!['home', 'quiz', 'timer', 'moves', 'guide', 'lab', 'not-found'].includes(
+            route.kind,
+          ) && (
             <nav className="club-tools" aria-label="Learning tools">
               <a
                 href={methodRoute(
@@ -107,6 +117,14 @@ export function ClubApp() {
           ) : route.kind === 'guide' ? (
             <Suspense fallback={<p role="status">Loading the guide…</p>}>
               <GuidePage section={route.section} />
+            </Suspense>
+          ) : route.kind === 'lab' ? (
+            <Suspense fallback={<p role="status">Loading CFOP Lab…</p>}>
+              <LabWorkspace
+                view={route.view}
+                getRepository={labOwner.get}
+                trialMemory={labOwner.trial}
+              />
             </Suspense>
           ) : route.kind === 'not-found' ? (
             <section>
