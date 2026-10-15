@@ -4,6 +4,7 @@ import {
   assertComparison,
   assertBlock,
   assertAttempt,
+  assertTester,
   emptyLabData,
 } from './schema';
 import { openLabStore, type LabStore } from './storage';
@@ -16,6 +17,7 @@ import type {
   LabRepositorySnapshot,
   LabStoredData,
   TrialBlock,
+  LabTester,
 } from './types';
 export function createLabRepository(open: () => Promise<LabStore> = openLabStore) {
   let saved: LabStoredData = { ...emptyLabData(), incompatibleCount: 0, incompatibleRecords: [] },
@@ -150,6 +152,11 @@ export function createLabRepository(open: () => Promise<LabStore> = openLabStore
       };
     },
     retry: run,
+    saveTester(t: LabTester) {
+      assertTester(t);
+      const copy = structuredClone(t);
+      return save({ id: t.id, table: 'testers', records: [copy] }, (s) => s.saveTester(copy));
+    },
     discardPending(id: string) {
       if (writing.has(id)) throw Error('Wait for this write to finish before discarding it.');
       pending.delete(id);

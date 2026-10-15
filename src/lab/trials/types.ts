@@ -53,3 +53,8 @@ export type TrialEffect =
   | { type: 'quiesce' }
   | { type: 'draft'; draft: TrialDraft }
   | { type: 'interrupted'; draft: TrialDraft };
+export interface TrialMemory {
+  current: TrialState | null;
+  draftId?: string;
+  createdAt?: string;
+}

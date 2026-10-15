@@ -29,6 +29,12 @@ function useSession(engine: CubeEngine, view: LabView, factory: () => LabClient)
       createLabSession(readLabPreferences(storage())),
     );
   const handle = useRef<PlaybackHandle | null>(null);
+  const timing = useRef(false);
+  const [timingLocked, setTimingLockedState] = useState(false);
+  const setTimingLocked = useCallback((value: boolean) => {
+    timing.current = value;
+    setTimingLockedState(value);
+  }, []);
   const [inputError, setInputError] = useState(''),
     [validation, setValidation] = useState<FaceletValidation | null>(null),
     [preferencesSaved, setPreferencesSaved] = useState(true),
@@ -86,6 +92,7 @@ function useSession(engine: CubeEngine, view: LabView, factory: () => LabClient)
     };
   }, [pinned, engine]);
   function edit(event: LabSessionEvent) {
+    if (timing.current) return;
     const changing =
       event.type === 'edit' ||
       event.type === 'settings' ||
@@ -102,6 +109,7 @@ function useSession(engine: CubeEngine, view: LabView, factory: () => LabClient)
     dispatch(event);
   }
   function analyze() {
+    if (timing.current) return;
     let input: SolveInput;
     if (state.draft.mode === 'scramble') {
       const parsed = parseScramble(state.draft.text);
@@ -130,6 +138,8 @@ function useSession(engine: CubeEngine, view: LabView, factory: () => LabClient)
   }
   return {
     engine,
+    timingLocked,
+    setTimingLocked,
     state,
     pinned,
     prepared,

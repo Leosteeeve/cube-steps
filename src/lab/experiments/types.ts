@@ -36,6 +36,7 @@ export interface LabComparison {
 }
 export interface TrialBlock {
   id: string;
+  ordinal: number;
   comparisonId: string;
   createdAt: string;
   intendedOrder: 'AB' | 'BA';

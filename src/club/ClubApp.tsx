@@ -120,7 +120,11 @@ export function ClubApp() {
             </Suspense>
           ) : route.kind === 'lab' ? (
             <Suspense fallback={<p role="status">Loading CFOP Lab…</p>}>
-              <LabWorkspace view={route.view} getRepository={labOwner.get} />
+              <LabWorkspace
+                view={route.view}
+                getRepository={labOwner.get}
+                trialMemory={labOwner.trial}
+              />
             </Suspense>
           ) : route.kind === 'not-found' ? (
             <section>

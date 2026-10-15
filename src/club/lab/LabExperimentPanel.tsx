@@ -11,7 +11,7 @@ export function downloadLabText(name: string, text: string, type = 'application/
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 export function LabExperimentPanel() {
-  const { state, edit, quiesce } = useLabSession(),
+  const { state, edit, quiesce, timingLocked } = useLabSession(),
     { repository, records } = useLabNotebook();
   const [label, setLabel] = useState(''),
     [status, setStatus] = useState(''),
@@ -74,7 +74,9 @@ export function LabExperimentPanel() {
         <input maxLength={60} value={label} onChange={(e) => setLabel(e.target.value)} />
       </label>
       <button
-        disabled={busy || !ids.length || state.routes[ids[0]]?.validationMode !== 'current'}
+        disabled={
+          timingLocked || busy || !ids.length || state.routes[ids[0]]?.validationMode !== 'current'
+        }
         onClick={() => void save()}
       >
         Save experiment
@@ -82,7 +84,7 @@ export function LabExperimentPanel() {
       <label>
         Saved experiments
         <select
-          disabled={busy}
+          disabled={busy || timingLocked}
           value={state.selectedExperimentId ?? ''}
           onChange={(e) => void load(e.target.value)}
         >

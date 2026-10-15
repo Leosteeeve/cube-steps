@@ -11,7 +11,9 @@ import { TourEntry } from '../tutorial/TourEntry';
 import type { LabRepository } from '../../lab/experiments/repository';
 import { LabNotebookProvider } from './LabNotebookProvider';
 import { LabExperimentPanel } from './LabExperimentPanel';
-function Workspace() {
+import { TrialsPage } from './TrialsPage';
+import type { TrialMemory } from '../../lab/trials/types';
+function Workspace({ trialMemory }: { trialMemory: TrialMemory }) {
   const { state, stop, engine, pinned, prepared, playbackError, registerPlayback } =
       useLabSession(),
     s = state.snapshot;
@@ -132,15 +134,9 @@ function Workspace() {
           <div hidden={state.view !== 'analyze'}>
             <AnalyzePage part="alternatives" />
           </div>
-          {state.view === 'trials' && (
-            <section className="lab-card">
-              <h2>Trials & notes</h2>
-              <p>
-                Save an experiment to compare practiced Cross + F2L execution. The notebook is being
-                connected in the next implementation task.
-              </p>
-            </section>
-          )}
+          <div hidden={state.view !== 'trials'}>
+            <TrialsPage active={state.view === 'trials'} memory={trialMemory} />
+          </div>
         </div>
       </div>
       <p className="lab-footnote">
@@ -155,9 +151,11 @@ function Workspace() {
 export function LabWorkspace({
   view,
   getRepository,
+  trialMemory,
 }: {
   view: LabView;
   getRepository: () => Promise<LabRepository>;
+  trialMemory: TrialMemory;
 }) {
   const { engine, error, retry } = useCubeEngine(true);
   if (error)
@@ -170,7 +168,7 @@ export function LabWorkspace({
   return engine ? (
     <LabNotebookProvider getRepository={getRepository}>
       <LabSessionProvider engine={engine} view={view}>
-        <Workspace />
+        <Workspace trialMemory={trialMemory} />
       </LabSessionProvider>
     </LabNotebookProvider>
   ) : (

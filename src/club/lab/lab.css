@@ -382,3 +382,101 @@
     height: 260px;
   }
 }
+.lab-notebook {
+  display: grid;
+  gap: 1.25rem;
+  min-width: 0;
+}
+.lab-notebook fieldset,
+.lab-trial-review,
+.lab-save {
+  display: grid;
+  gap: 0.8rem;
+  min-width: 0;
+}
+.lab-notebook label,
+.lab-save label {
+  display: grid;
+  gap: 0.35rem;
+}
+.lab-notebook label:has(input[type='checkbox']) {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+.lab-notebook input:not([type='checkbox']),
+.lab-notebook select,
+.lab-notebook textarea,
+.lab-save input,
+.lab-save select {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  font: inherit;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid #c6d6e9;
+  border-radius: 10px;
+  background: #fff;
+  color: #153451;
+}
+.lab-notebook fieldset {
+  border: 1px solid #dce6f5;
+  border-radius: 14px;
+  padding: 1rem;
+}
+.lab-trial-work {
+  display: grid;
+  gap: 1.25rem;
+  min-width: 0;
+  align-items: start;
+}
+@media (min-width: 900px) {
+  .lab-notebook fieldset {
+    grid-template-columns: 1fr 1fr;
+    align-items: end;
+  }
+  .lab-notebook fieldset details {
+    grid-column: 1 / -1;
+  }
+  .lab-trial-work {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.lab-notebook code {
+  overflow-wrap: anywhere;
+}
+.lab-trial-setup svg {
+  max-width: 360px;
+}
+.lab-timing-surface {
+  width: 100%;
+  min-height: 150px;
+  font-size: clamp(1.6rem, 6vw, 3rem);
+  font-variant-numeric: tabular-nums;
+  touch-action: none;
+  user-select: none;
+}
+.lab-timing-surface.ready {
+  background: #d9f4e2;
+  color: #155d35;
+}
+.lab-timing-surface.running {
+  background: #e4eeff;
+  color: #12396b;
+}
+.lab-history {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+.lab-history li {
+  border-top: 1px solid #dce6f5;
+  padding-top: 1rem;
+}
+.lab-history button {
+  margin-right: 0.5rem;
+}
+.lab-save {
+  margin-top: 1.5rem;
+}

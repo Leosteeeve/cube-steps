@@ -19,6 +19,7 @@ import type {
   LabStoredData,
   LabTable,
   TrialBlock,
+  LabTester,
 } from './types';
 export const LAB_TABLES: LabTable[] = [
   'experiments',
@@ -35,6 +36,7 @@ export class LabConflictError extends Error {
   }
 }
 export interface LabStore {
+  saveTester(t: LabTester): Promise<void>;
   list(): Promise<LabStoredData>;
   saveExperiment(e: LabExperiment): Promise<void>;
   saveComparison(c: LabComparison): Promise<void>;
@@ -165,17 +167,20 @@ export function openLabStore(
           );
         });
         const comp = new Map(data.comparisons.map((c) => [c.id, c])),
-          slots = new Set<string>();
+          slots = new Set<string>(),
+          ordinals = new Set<string>();
         data.trialBlocks = keep('trialBlocks', data.trialBlocks, (b) => {
           const c = comp.get(b.comparisonId);
           if (
             !c ||
             b.slots[0].routeId !== c.routeAId ||
             b.slots[1].routeId !== c.routeBId ||
-            b.slots.some((s) => slots.has(s.id))
+            b.slots.some((s) => slots.has(s.id)) ||
+            ordinals.has(`${b.comparisonId}:${b.ordinal}`)
           )
             return false;
           b.slots.forEach((s) => slots.add(s.id));
+          ordinals.add(`${b.comparisonId}:${b.ordinal}`);
           return true;
         });
         const blocks = new Map(data.trialBlocks.map((b) => [b.id, b])),
@@ -311,6 +316,14 @@ export function openLabStore(
         return { attempts: [a], attemptRevisions: [a], testers: [tester] };
       };
       resolve({
+        async saveTester(t) {
+          assertTester(t);
+          await mutate((data, raw) => {
+            immutable(raw, 'testers', t);
+            if (!data.testers.some((x) => x.id === t.id)) data.testers.push(t);
+            return { value: undefined, writes: { testers: [t] } };
+          });
+        },
         list,
         close: () => db.close(),
         async saveExperiment(e) {

@@ -256,9 +256,12 @@ export function assertComparison(raw: unknown): asserts raw is LabComparison {
   );
 }
 export function assertBlock(raw: unknown): asserts raw is TrialBlock {
-  keys(raw, ['id', 'comparisonId', 'createdAt', 'intendedOrder', 'slots']);
+  keys(raw, ['id', 'ordinal', 'comparisonId', 'createdAt', 'intendedOrder', 'slots']);
   demand(
     id(raw.id) &&
+      Number.isSafeInteger(raw.ordinal) &&
+      raw.ordinal >= 1 &&
+      raw.ordinal <= 1000000 &&
       id(raw.comparisonId) &&
       date(raw.createdAt) &&
       ['AB', 'BA'].includes(raw.intendedOrder) &&
@@ -404,8 +407,12 @@ export function assertGraph(data: LabData) {
       'At most six comparisons per experiment.',
     );
   const slotIds = new Set<string>();
+  const ordinals = new Set<string>();
   data.trialBlocks.forEach((b) => {
     assertBlock(b);
+    const ordinalKey = `${b.comparisonId}:${b.ordinal}`;
+    demand(!ordinals.has(ordinalKey), 'Duplicate block order.');
+    ordinals.add(ordinalKey);
     const c = comp.get(b.comparisonId);
     demand(
       c && b.slots[0].routeId === c.routeAId && b.slots[1].routeId === c.routeBId,
