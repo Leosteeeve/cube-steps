@@ -103,7 +103,7 @@ test('Stop before first route and a stuck worker recover without exposing late r
   expect(result).toEqual({
     early: 'stopped',
     earlyRoutes: 0,
-    delay: 30500,
+    delay: 30400,
     terminated: true,
     phase: 'stopped',
     issue: 'timeout',

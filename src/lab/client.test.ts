@@ -4,6 +4,9 @@ import { labContext, fixtureLabRoute } from '../../tests/fixtures/lab-context';
 import { prepareLabInput } from './input';
 import { validateLabRoute } from './validate';
 import { createLabClient } from './client';
+import { LabStopped } from './budget';
+import { createExperiment } from './experiments/snapshots';
+import { isLabCoverage } from '../workers/lab-protocol';
 import type { LabWorkerPort, LabReply, LabRequest } from '../workers/lab-protocol';
 import type { LabRoute } from './types';
 let context: ReturnType<typeof labContext>, route: LabRoute;
@@ -61,7 +64,11 @@ it('creates workers lazily and leaves 100ms scheduling headroom under the 30.5-s
   expect(ports[0].terminated).toBe(false);
   await vi.advanceTimersByTimeAsync(1);
   expect(ports[0].terminated).toBe(true);
-  expect(client.snapshot()).toMatchObject({ phase: 'stopped', issue: { code: 'timeout' } });
+  expect(client.snapshot()).toMatchObject({
+    phase: 'stopped',
+    issue: { code: 'timeout' },
+    coverage: { elapsedMs: 30400, reason: 'time-limit' },
+  });
   expect(vi.getTimerCount()).toBe(0);
   client.dispose();
 });
@@ -149,7 +156,11 @@ it('keeps input errors, verification failures and asset/worker failures distinct
   await flush();
   expect(client.snapshot().issue?.code).toBe('verification');
   ports[0].reply({ kind: 'error', requestId: 1, code: 'assets', message: 'asset missing' });
-  expect(client.snapshot()).toMatchObject({ phase: 'error', issue: { code: 'assets' } });
+  expect(client.snapshot()).toMatchObject({
+    phase: 'error',
+    issue: { code: 'assets' },
+    coverage: { reason: 'error' },
+  });
   client.dispose();
   const failed = setup({
     prepare: async () => {
@@ -207,7 +218,75 @@ it('finishes only after the final queued replay and includes its work in coverag
   expect(client.snapshot().phase).toBe('searching');
   release!();
   await flush();
-  expect(client.snapshot()).toMatchObject({ phase: 'complete', coverage: { operations: 112 } });
+  expect(client.snapshot()).toMatchObject({
+    phase: 'complete',
+    coverage: { operations: 112, reason: 'complete' },
+  });
   expect(client.snapshot().routes).toHaveLength(1);
+  client.dispose();
+});
+it('records manual stop elapsed time and client work even without worker progress', async () => {
+  vi.useFakeTimers();
+  vi.setSystemTime(1000);
+  const { client } = setup({
+    prepare: async (raw, control) => {
+      control.budget.charge('simulate', 7);
+      return prepareLabInput(context.engine, raw);
+    },
+  });
+  client.analyze(input, settings);
+  await flush();
+  await vi.advanceTimersByTimeAsync(1000);
+  client.stop();
+  expect(client.snapshot().coverage).toMatchObject({
+    elapsedMs: 1000,
+    operations: 7,
+    reason: 'cancelled',
+  });
+  client.dispose();
+});
+it.each(['work-limit', 'frontier-limit'] as const)(
+  'records the final client %s rather than a stale worker reason',
+  async (reason) => {
+    const { client, ports } = setup({
+      verify: async () => {
+        throw new LabStopped(reason);
+      },
+    });
+    client.analyze(input, settings);
+    await flush();
+    ports[0].reply({
+      kind: 'progress',
+      requestId: 1,
+      coverage: {
+        elapsedMs: 10,
+        operations: 20,
+        colors: {},
+        crossCompletions: 1,
+        f2lCompletions: 1,
+        rejectedCandidates: 0,
+        entryHighWater: 2,
+        reason: 'complete',
+      },
+    });
+    ports[0].reply({ kind: 'candidate', requestId: 1, route });
+    await flush();
+    expect(client.snapshot().coverage).toMatchObject({ operations: 20, entryHighWater: 3, reason });
+    client.dispose();
+  },
+);
+it('keeps an honest saveable receipt after background scheduling delays', async () => {
+  vi.useFakeTimers();
+  vi.setSystemTime(1000);
+  const { client, ports } = setup();
+  client.analyze(input, settings);
+  await flush();
+  ports[0].reply({ kind: 'candidate', requestId: 1, route });
+  await flush();
+  vi.setSystemTime(100000);
+  client.stop();
+  expect(client.snapshot().coverage).toMatchObject({ elapsedMs: 99000, reason: 'cancelled' });
+  expect(isLabCoverage(client.snapshot().coverage)).toBe(true);
+  expect(() => createExperiment(client.snapshot(), [route.id])).not.toThrow();
   client.dispose();
 });

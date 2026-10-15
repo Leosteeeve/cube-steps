@@ -128,17 +128,22 @@ export function createLabClient(deps: LabClientDependencies = {}): LabClient {
   function issue(code: LabIssue['code'], message: string) {
     publish({ issue: { code, message } });
   }
-  function finish(r: RequestState, phase: LabClientSnapshot['phase'], problem?: LabIssue) {
+  function finish(
+    r: RequestState,
+    phase: LabClientSnapshot['phase'],
+    reason: LabStopReason,
+    problem?: LabIssue,
+  ) {
     if (!live(r)) return;
     const own = r.control.budget.snapshot();
-    const coverage = r.workerCoverage
-      ? {
-          ...r.workerCoverage,
-          operations: r.workerCoverage.operations + own.operations,
-          entryHighWater: r.workerCoverage.entryHighWater + own.entryHighWater,
-          elapsedMs: own.elapsedMs,
-        }
-      : snapshot.coverage;
+    const worker = r.workerCoverage ?? emptyLabCoverage(snapshot.settings!);
+    const coverage: LabCoverage = {
+      ...worker,
+      operations: worker.operations + own.operations,
+      entryHighWater: worker.entryHighWater + own.entryHighWater,
+      elapsedMs: own.elapsedMs,
+      reason,
+    };
     cancel(r);
     publish({ phase, coverage, ...(problem ? { issue: problem } : {}) });
   }
@@ -146,6 +151,7 @@ export function createLabClient(deps: LabClientDependencies = {}): LabClient {
     finish(
       r,
       reason === 'complete' ? 'complete' : 'stopped',
+      reason,
       reason === 'complete'
         ? undefined
         : {
@@ -251,7 +257,7 @@ export function createLabClient(deps: LabClientDependencies = {}): LabClient {
       publish({ coverage: emptyLabCoverage(settings), settings: structuredClone(settings) });
       r.timer = setTimer(
         () =>
-          finish(r, 'stopped', {
+          finish(r, 'stopped', 'time-limit', {
             code: 'timeout',
             message: 'The 30-second analysis limit was reached. Verified routes remain available.',
           }),
@@ -274,7 +280,7 @@ export function createLabClient(deps: LabClientDependencies = {}): LabClient {
           }
           if (data.kind === 'initializing') return;
           if (data.kind === 'error') {
-            finish(r, 'error', { code: data.code, message: data.message });
+            finish(r, 'error', 'error', { code: data.code, message: data.message });
             return;
           }
           if (data.kind === 'progress' || data.kind === 'done') {
@@ -341,7 +347,7 @@ export function createLabClient(deps: LabClientDependencies = {}): LabClient {
           void drain(r);
         };
         worker.onerror = () =>
-          finish(r, 'error', {
+          finish(r, 'error', 'error', {
             code: 'search',
             message: 'The analysis worker stopped unexpectedly. Verified routes remain available.',
           });
@@ -354,7 +360,7 @@ export function createLabClient(deps: LabClientDependencies = {}): LabClient {
           deadlineAt: startedAt + 30_000,
         });
       } catch (error) {
-        finish(r, 'error', {
+        finish(r, 'error', 'error', {
           code: 'assets',
           message: `The analysis worker could not start: ${String(error)}`,
         });
@@ -373,14 +379,14 @@ export function createLabClient(deps: LabClientDependencies = {}): LabClient {
             stopped(r, error.reason);
             return;
           }
-          finish(r, 'error', {
+          finish(r, 'error', 'error', {
             code: error instanceof AssetError ? 'assets' : 'input',
             message: error instanceof Error ? error.message : 'Invalid cube input.',
           });
         });
     },
     stop() {
-      if (current && live(current)) finish(current, 'stopped');
+      if (current && live(current)) finish(current, 'stopped', 'cancelled');
     },
     dispose() {
       if (current) cancel(current);

@@ -80,7 +80,8 @@ export function isLabCoverage(value: unknown): value is LabCoverage {
     !c ||
     !Number.isFinite(c.elapsedMs) ||
     c.elapsedMs < 0 ||
-    c.elapsedMs > 60_000 ||
+    // A suspended tab can deliver a bounded search's stop receipt much later.
+    c.elapsedMs > Number.MAX_SAFE_INTEGER ||
     !integer(c.operations, 2_000_000) ||
     !integer(c.entryHighWater, 25_000) ||
     !integer(c.crossCompletions, 576) ||

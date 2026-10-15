@@ -55,11 +55,13 @@ test('Lab saves immutable routes and reloads without searching', async ({ page }
     .nth(1)
     .getAttribute('value');
   await page.reload();
+  await page.getByLabel('Scramble sequence').fill('F2');
   await page.getByLabel('Saved experiments').selectOption(id!);
   await expect(page.getByText('Saved experiment loaded. Search has not restarted.')).toBeVisible({
     timeout: 15000,
   });
   await expect(page.getByRole('button', { name: 'Stop analysis' })).toHaveCount(0);
+  await expect(page.getByLabel('Scramble sequence')).toHaveValue('R U F2 L D2 B R2');
   await expect(page.getByRole('heading', { name: 'Pinned route', exact: true })).toBeVisible();
 });
 test('real Lab transactions preserve revisions, conflicts, corrupt data and database boundaries', async ({

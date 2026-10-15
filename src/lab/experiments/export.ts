@@ -8,6 +8,7 @@ import {
   type LabPendingReference,
 } from './transfer';
 import { selectEligibleAttempts } from '../trials/blocks';
+import { summarizeComparison } from '../trials/summary';
 export interface LabExportSelection {
   experimentIds: readonly string[];
   comparisonIds?: readonly string[];
@@ -141,19 +142,42 @@ export function exportLabCsv(
     'deleted_at',
   ];
   const rows: unknown[][] = [];
+  const eligibility = new Map<string, { eligible: Set<string>; excluded: Map<string, string> }>();
   for (const a of p.attemptRevisions) {
     const e = p.experiments.find((e) => e.id === a.experimentId)!,
       r = e.routes.find((r) => r.id === a.routeId)!;
-    const selected = selectEligibleAttempts(
-      p.attempts.filter(
+    const key = JSON.stringify([a.experimentId, a.comparisonId, a.testerId, a.timingMethod]);
+    let selected = eligibility.get(key);
+    if (!selected) {
+      const matching = p.attempts.filter(
         (x) =>
           x.experimentId === a.experimentId &&
           x.comparisonId === a.comparisonId &&
           x.testerId === a.testerId &&
           x.timingMethod === a.timingMethod,
-      ),
-      p.trialBlocks.filter((b) => b.comparisonId === a.comparisonId),
-    );
+      );
+      const c = p.comparisons.find((c) => c.id === a.comparisonId);
+      if (c) {
+        const summary = summarizeComparison(c, a.testerId, a.timingMethod, p.trialBlocks, matching);
+        const excluded = new Map(summary.exclusions.map((x) => [x.attemptId, x.reason]));
+        selected = {
+          eligible: new Set(
+            summary.selection.slots.flatMap((s) =>
+              s.attempt && !excluded.has(s.attempt.id) ? [s.attempt.id] : [],
+            ),
+          ),
+          excluded,
+        };
+      } else {
+        selected = {
+          eligible: new Set(),
+          excluded: new Map(
+            selectEligibleAttempts(matching, []).excluded.map((x) => [x.attemptId, x.reason]),
+          ),
+        };
+      }
+      eligibility.set(key, selected);
+    }
     const head = p.attempts.find((x) => x.id === a.id)!,
       current = head.revision === a.revision;
     rows.push([
@@ -182,8 +206,8 @@ export function exportLabCsv(
       a.intendedOrder,
       a.actualOrder,
       a.retryOf,
-      current && selected.slots.some((s) => s.attempt?.id === a.id),
-      current ? selected.excluded.find((x) => x.attemptId === a.id)?.reason : 'Superseded revision',
+      current && selected.eligible.has(a.id),
+      current ? selected.excluded.get(a.id) : 'Superseded revision',
       a.flow,
       a.recognition,
       a.note,

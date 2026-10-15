@@ -138,6 +138,18 @@ export function reduceLabSession(state: LabSessionState, event: LabSessionEvent)
   return {
     ...state,
     input: event.input,
+    draft:
+      event.input.kind === 'scramble'
+        ? { mode: 'scramble', text: event.input.moves.join(' '), colors: createDraftState() }
+        : {
+            mode: 'facelets',
+            text: '',
+            colors: createDraftState({
+              facelets: event.input.facelets,
+              face: 'F',
+              selection: 'white',
+            }),
+          },
     settings: { ...event.settings, modelVersion: 'lab-execution-v1' },
     routes: Object.fromEntries(routes.map((r) => [r.route.id, r])),
     pinnedRouteId: routes[0].route.id,

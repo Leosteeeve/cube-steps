@@ -1,5 +1,6 @@
 import { beforeAll, expect, it } from 'vitest';
 import { createCubeEngine } from '../../core/cube';
+import { stateToFacelets } from '../../core/facelets';
 import { labContext, fixtureLabRoute } from '../../../tests/fixtures/lab-context';
 import { prepareLabInput } from '../../lab/input';
 import { validateLabRoute, type VerifiedLabRoute } from '../../lab/validate';
@@ -106,3 +107,31 @@ it('opens a saved experiment without requesting a new search or recommending his
   expect(s.pinnedRouteId).toBe(a.route.id);
   expect(reduceLabSession(s, { type: 'compare', routeId: 'foreign', selected: true })).toBe(s);
 });
+it.each(['scramble', 'facelets'] as const)(
+  'loads the saved %s input into a fresh matching editor draft',
+  (kind) => {
+    let s = reduceLabSession(createLabSession(), { type: 'edit', text: 'F2' });
+    s = reduceLabSession(s, {
+      type: 'color-draft',
+      action: { type: 'paint', cell: { face: 'F', index: 0 } },
+    });
+    const saved =
+      kind === 'scramble' ? input : { kind, facelets: stateToFacelets(a.route.initial) };
+    s = reduceLabSession(s, {
+      type: 'load-experiment',
+      experimentId: 'saved-input',
+      input: saved,
+      routes: [a],
+      settings: s.settings,
+    });
+    expect(s.draft.mode).toBe(kind);
+    expect(s.draft.text).toBe(kind === 'scramble' ? 'R U F' : '');
+    expect(s.draft.colors.history).toEqual([]);
+    if (saved.kind === 'facelets') {
+      expect(s.draft.colors.draft.facelets).toEqual(saved.facelets);
+      expect(s.draft.colors.draft.facelets).not.toBe(saved.facelets);
+    }
+    expect(s.input).toEqual(saved);
+    expect(s.pinnedRouteId).toBe(a.route.id);
+  },
+);

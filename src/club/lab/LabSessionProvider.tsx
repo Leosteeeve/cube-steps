@@ -102,7 +102,7 @@ function useSession(engine: CubeEngine, view: LabView, factory: () => LabClient)
     if (changing) quiesce();
     if (event.type === 'settings')
       setPreferencesSaved(writeLabPreferences(storage(), event.settings).ok);
-    if (event.type === 'edit' || event.type === 'color-draft') {
+    if (event.type === 'edit' || event.type === 'color-draft' || event.type === 'load-experiment') {
       setInputError('');
       setValidation(null);
     }

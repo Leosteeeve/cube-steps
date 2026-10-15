@@ -4,6 +4,8 @@ import { emptyLabData } from './schema';
 import { buildLabExport, exportLabCsv } from './export';
 import { stageLabImport } from './transfer';
 import type { LabRepositorySnapshot } from './types';
+import { createComparison } from './snapshots';
+import { createComparisonBlocks } from '../trials/blocks';
 let f: Awaited<ReturnType<typeof experimentFixture>>;
 beforeAll(async () => {
   f = await experimentFixture();
@@ -113,4 +115,64 @@ it('keeps CSV numeric fields numeric and escapes quotes, unicode, newlines and c
     s.attemptRevisions = [structuredClone(s.attempts[0])];
     expect(exportLabCsv(s, selection)).toContain(`"' \u0001${prefix}calc"`);
   }
+});
+it('exports matched-summary eligibility, exact condition groups and superseded revisions', () => {
+  const s = snapshot(),
+    e = s.experiments[0];
+  const c = createComparison(e, e.routes[0].id, e.routes[1].id);
+  const blocks = createComparisonBlocks(c),
+    block = blocks[0];
+  s.comparisons = [c];
+  s.trialBlocks = [...blocks];
+  const a = {
+    ...s.attempts[0],
+    comparisonId: c.id,
+    blockId: block.id,
+    slot: block.slots[0].id,
+    intendedOrder: block.intendedOrder,
+    actualOrder: 1,
+  };
+  const b = {
+    ...attemptFixture(e.id, e.routes[1].id),
+    comparisonId: c.id,
+    blockId: block.id,
+    slot: block.slots[1].id,
+    intendedOrder: block.intendedOrder,
+    actualOrder: 2,
+  };
+  const rows = () => {
+    const lines = exportLabCsv(s, { experimentIds: [e.id], includeAttempts: true })
+      .trim()
+      .split('\r\n');
+    const cells = (line: string) =>
+      [...line.matchAll(/("(?:[^"]|"")*"|[^,\r\n]+)(?:,|$)/g)].map((m) =>
+        m[1].startsWith('"') ? m[1].slice(1, -1).replaceAll('""', '"') : m[1],
+      );
+    const header = cells(lines[0]);
+    return lines
+      .slice(1)
+      .map((line) => Object.fromEntries(cells(line).map((v, i) => [header[i], v])));
+  };
+  s.attempts = [a];
+  s.attemptRevisions = [a];
+  expect(rows()[0]).toMatchObject({ eligible: 'false', exclusion: 'Incomplete matched block' });
+  s.attempts = [a, b];
+  s.attemptRevisions = [a, b];
+  expect(rows().map((r) => r.eligible)).toEqual(['true', 'true']);
+  s.testers.push({ id: 'another-tester' });
+  const other = { ...b, testerId: 'another-tester' };
+  s.attempts = [a, other];
+  s.attemptRevisions = [a, other];
+  expect(rows().map((r) => r.exclusion)).toEqual([
+    'Incomplete matched block',
+    'Incomplete matched block',
+  ]);
+  const deleted = { ...a, revision: 1, previousRevision: 0, deletedAt: a.updatedAt };
+  s.attempts = [deleted, b];
+  s.attemptRevisions = [a, deleted, b];
+  expect(rows().map((r) => [r.eligible, r.exclusion])).toEqual([
+    ['false', 'Superseded revision'],
+    ['false', 'Deleted'],
+    ['false', 'Incomplete matched block'],
+  ]);
 });

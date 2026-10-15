@@ -332,7 +332,8 @@ export function assertExperiment(raw: unknown): asserts raw is LabExperiment {
   demand(
     typeof raw.coverage.elapsedMs === 'number' &&
       raw.coverage.elapsedMs >= 0 &&
-      raw.coverage.elapsedMs <= 60000,
+      Number.isFinite(raw.coverage.elapsedMs) &&
+      raw.coverage.elapsedMs <= Number.MAX_SAFE_INTEGER,
     'Invalid elapsed coverage.',
   );
   for (const k of [
