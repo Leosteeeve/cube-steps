@@ -1,6 +1,8 @@
 # CFOP Lab: Club Experimental Solver and Physical Comparisons
 
-Status: conversational solver design and workspace/trial mockup approved by the owner on October 14, 2026. This complete written design is awaiting owner review. Product implementation has not started.
+Status: conversational solver design, workspace/trial mockup and this complete written design approved by the owner on October 14, 2026. The three implementation plans are awaiting review. Product implementation has not started.
+
+Implementation plans: [Search core — Tasks 1–6](../plans/2026-10-14-cfop-lab-core.md), [Club workspace — Tasks 7–10](../plans/2026-10-14-cfop-lab-workspace.md), and [Physical experiments — Tasks 11–15](../plans/2026-10-14-cfop-lab-experiments.md). The owner's Native execution choice is preserved.
 
 ## 1. Purpose and confirmed decisions
 
