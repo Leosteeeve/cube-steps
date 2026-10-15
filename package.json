@@ -21,7 +21,7 @@
     "test:corpus": "vitest run tests/solver-corpus.test.ts tests/color-input-corpus.test.ts tests/cfop-corpus.test.ts tests/advanced-cfop-corpus.test.ts --maxWorkers=1",
     "test:advanced": "vitest run src/methods/advanced src/algorithms src/practice tests/advanced-cross-table.test.ts tests/advanced-cfop-corpus.test.ts",
     "test:efficiency": "vitest run tests/advanced-efficiency.test.ts",
-    "test:lab": "vitest run src/lab",
+    "test:lab": "vitest run src/lab src/workers/lab-request.test.ts",
     "test:lab:corpus": "vitest run tests/lab-catalog.test.ts tests/lab-corpus.test.ts --maxWorkers=1",
     "test:lab:efficiency": "vitest run tests/lab-efficiency.test.ts",
     "benchmark:lab": "node scripts/benchmark-lab.mts",
