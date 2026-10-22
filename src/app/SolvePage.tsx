@@ -11,7 +11,8 @@ import { createDraftState, reduceDraft, type DraftAction } from './color-entry/d
 import { createDraftStore } from './color-entry/draft-storage';
 import { useEdition } from './edition';
 import { FACE_ENTRY_ORDER } from '../core/facelet-layout';
-import { getMethod } from '../methods/registry';
+import { getMethodInfo as getMethod } from '../methods/info';
+import { registerMethodRuntime } from '../methods/registry';
 import { MethodSelector } from './MethodSelector';
 import { useGuidanceTarget } from '../ui/guidance';
 export function SolvePage({ engine, method = 'lbl' }: { engine: CubeEngine; method?: MethodId }) {
@@ -121,6 +122,34 @@ export function SolvePage({ engine, method = 'lbl' }: { engine: CubeEngine; meth
     const token = ++epoch.current;
     setBusy(true);
     setError('');
+    if (method === 'roux-beginner') {
+      let timeout: ReturnType<typeof setTimeout> | undefined;
+      try {
+        const { ROUX_RUNTIME } = await Promise.race([
+          import('../methods/roux/definition'),
+          new Promise<never>((_, reject) => {
+            timeout = setTimeout(
+              () => reject(Error('Roux playback loading timed out. Please try again.')),
+              30000,
+            );
+          }),
+        ]);
+        registerMethodRuntime(ROUX_RUNTIME);
+      } catch (error) {
+        if (token === epoch.current && methodRef.current === method) {
+          setBusy(false);
+          setError(
+            error instanceof Error
+              ? error.message
+              : 'Unable to load Roux playback. Please try again.',
+          );
+        }
+        return;
+      } finally {
+        if (timeout) clearTimeout(timeout);
+      }
+      if (token !== epoch.current || methodRef.current !== method) return;
+    }
     const result =
       mode === 'colors' && checked?.ok
         ? await client.solveFacelets(checked.facelets, method)

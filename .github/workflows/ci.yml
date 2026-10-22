@@ -18,8 +18,12 @@ jobs:
       - run: npm run typecheck
       - run: npm run verify:cross
       - run: npm run verify:cases
+      - run: npm run verify:roux
+      - run: npm run verify:roux:examples
       - run: npm run test:unit
       - run: npm run test:corpus
+      - run: npm run test:roux:coverage
+      - run: npm run test:roux:corpus
       - run: npm run test:lab:corpus
       - run: npx vitest run tests/advanced-cross-table.test.ts tests/lab-physical-fixtures.test.ts
       - run: npm run test:efficiency

@@ -225,7 +225,7 @@
       "route": "club/#/learn/roux/roux-first-block",
       "width": 1052,
       "height": 854,
-      "sourceRevision": "cf1b931-roux-guide-candidate",
+      "sourceRevision": "fd31237-task15-numbering",
       "scenario": "roux-learning",
       "exampleData": true
     },
@@ -237,7 +237,7 @@
       "route": "club/#/learn/roux/roux-first-block",
       "width": 1052,
       "height": 1003,
-      "sourceRevision": "cf1b931-roux-guide-candidate",
+      "sourceRevision": "fd31237-task15-numbering",
       "scenario": "roux-slice-checkpoint",
       "exampleData": true
     },
@@ -249,7 +249,7 @@
       "route": "club/#/learn/roux/roux-first-block",
       "width": 358,
       "height": 1436,
-      "sourceRevision": "cf1b931-roux-guide-candidate",
+      "sourceRevision": "fd31237-task15-numbering",
       "scenario": "roux-learning-phone",
       "exampleData": true
     }

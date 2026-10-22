@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react'
 import { useGuidanceScope, useGuidanceTarget } from '../ui/guidance';
 import { getCourse } from '../content/courses';
 import type { StageId, MethodId } from '../core/types';
-import { getMethod } from '../methods/registry';
+import { getMethodInfo as getMethod } from '../methods/info';
 import { lessonRoute } from './routes';
 export function LessonLayout({
   selected,
@@ -91,7 +91,11 @@ export function LessonLayout({
                 aria-current={selected === lesson.id ? 'page' : undefined}
               >
                 <span className="stage-index">
-                  {index === 0 ? '·' : String(index).padStart(2, '0')}
+                  {method === 'roux-beginner'
+                    ? String(index + 1).padStart(2, '0')
+                    : index === 0
+                      ? '·'
+                      : String(index).padStart(2, '0')}
                 </span>
                 <span>{lesson.shortTitle}</span>
               </a>

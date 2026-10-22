@@ -1,6 +1,6 @@
 # Beginner Roux validation
 
-Status: **Preview**. The owner approved the design and all three implementation plans. Engine validation is recorded below; club browser delivery and physical teaching acceptance are still pending.
+Status: **Preview**. The owner approved the design and all three implementation plans. Engine and club-browser validation are recorded below. Physical teaching acceptance is still pending.
 
 ## Scope and invariants
 
@@ -39,6 +39,20 @@ Scoped Git attributes retain LF in policy JSON and treat policy bytes as binary,
 The initial measurements use Windows, Node 24.18.0 and an AMD Ryzen 9 8945HX. The corpus can write its detailed measurements with `CUBESTEPS_ROUX_METRICS` set to an output file. File-backed asset loading includes decoding and integrity checks; it is not a network or phone measurement. Browser and real-phone measurements will be recorded separately.
 
 The maintained corpus run passed 12 tests in 147.23 seconds. Across seeds 1–1,000, solve latency was 93.25 ms median, 125.21 ms at the 95th percentile and 184.25 ms maximum; cold file-backed asset loading took 48.30 ms. Maximum observed work was 3,821 nodes, 38 actions and 96 move tokens. Focused Roux checks passed 78 tests across 23 files; exhaustive coverage passed all three tests in 151.64 seconds. Both artifact generators and TypeScript validation passed.
+
+## Browser evidence
+
+The focused Roux browser checks run on Chromium and WebKit. They cover all eight chapters, M/M′/M2 demonstrations, a verified example per chapter, random and pasted input, live-generated six-face color input, method switching, cancellation and retry, temporary center phases, seek/reverse/replay, keyboard controls and reduced motion. Global Roux links fail gracefully, and global home/CFOP plus club Timer do not request the Roux catalog or policies.
+
+Real browser testing found and fixed a discarded scramble when switching between Roux and CFOP. All solve methods now retain the same input component; Roux playback registration remains lazy and guards against stale requests. A separate failing-then-passing regression aligns the Roux sidebar's eight chapter numbers with its lesson headers. The final unit run passes 839 tests across 182 files.
+
+Desktop (1,360 px) and phone (390 px) screenshots were visually inspected. No horizontal overflow or browser exceptions occurred in these checks. The following spot measurements include clicking Explain, runtime/worker loading and reaching a ready player, with two different scrambles per fresh browser context. They use the desktop Windows host during other regression work; phone widths emulate layout and are **not real-phone speed measurements**, distributions or performance promises.
+
+| Browser / viewport | Cold solve | Next solve |
+| --- | ---: | ---: |
+| Chromium / 1,360 px | 1,303 ms | 395 ms |
+| Chromium / 390 px | 1,302 ms | 382 ms |
+| WebKit / 390 px | 2,516 ms | 1,219 ms |
 
 ## Physical acceptance to perform
 

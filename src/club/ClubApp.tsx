@@ -164,8 +164,7 @@ export function ClubApp() {
                 <Suspense fallback={<p role="status">Loading your practice space…</p>}>
                   <TimerPage engine={engine} repository={timerRepository} />
                 </Suspense>
-              ) : (route.kind === 'learn' || route.kind === 'solve') &&
-                route.method === 'roux-beginner' ? (
+              ) : route.kind === 'learn' && route.method === 'roux-beginner' ? (
                 <Suspense fallback={<p role="status">Loading Beginner Roux…</p>}>
                   <RouxFeaturePage engine={engine} route={route} />
                 </Suspense>

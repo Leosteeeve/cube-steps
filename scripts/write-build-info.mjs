@@ -13,7 +13,12 @@ writeFileSync(
         }).trim().length > 0,
       release: 'CubeSteps club edition and human-friendly F2L preview',
       entries: { global: './', club: './club/' },
-      teachingStatus: { lbl: 'accepted', 'cfop-beginner': 'accepted', 'cfop-advanced': 'preview' },
+      teachingStatus: {
+        lbl: 'accepted',
+        'cfop-beginner': 'accepted',
+        'cfop-advanced': 'preview',
+        'roux-beginner': 'preview',
+      },
     },
     null,
     2,
