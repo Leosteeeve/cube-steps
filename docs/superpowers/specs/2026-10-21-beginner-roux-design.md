@@ -1,6 +1,8 @@
 # Beginner Roux: Club Lessons and Explained Solving
 
-Status: the owner approved the conversational teaching and solving structure on October 21, 2026. This written specification is ready for owner review. It does not authorize product implementation; an implementation plan follows written-spec approval.
+Status: the owner approved both the conversational teaching structure and this written specification on October 21, 2026. The three implementation plans below are ready for owner review; product implementation has not started. The previously selected Native execution method is preserved.
+
+Implementation plans: [Blocks and corners — Tasks 1–5](../plans/2026-10-21-beginner-roux-blocks.md), [LSE and complete solver — Tasks 6–10](../plans/2026-10-21-beginner-roux-solver.md), and [Club teaching and delivery — Tasks 11–15](../plans/2026-10-21-beginner-roux-club.md).
 
 ## 1. Purpose and confirmed decisions
 
