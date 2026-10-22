@@ -17,6 +17,7 @@ import { MethodSelector } from './MethodSelector';
 import { CaseSelector } from './CaseSelector';
 import { methodRoute, lessonRoute } from './routes';
 import { ALGORITHM_REGISTRY } from '../algorithms/registry';
+import { useEdition } from './edition';
 export function LearnPage({
   engine,
   lessonId,
@@ -30,10 +31,11 @@ export function LearnPage({
   footer?: ReactNode;
   presentation?: 'club';
 }) {
+  const edition = useEdition();
   const course = getCourse(method),
     presentation = getMethod(method);
   const lesson = course.find((l) => l.id === lessonId) ?? course[0],
-    client = useMemo(() => createSolveClient(), []);
+    client = useMemo(() => createSolveClient(undefined, edition), [edition]);
   const [loaded, setLoaded] = useState<{ key: string; session: SolveSession } | null>(null),
     [error, setError] = useState(''),
     [selectedCase, setSelectedCase] = useState('guided');

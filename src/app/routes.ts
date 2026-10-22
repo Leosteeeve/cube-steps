@@ -1,5 +1,6 @@
 import type { MethodId } from '../core/types';
 import { getMethodInfo as getMethod } from '../methods/info';
+import { methodAvailable, type MethodEdition } from '../methods/availability';
 export type AppRoute =
   | { kind: 'practice' }
   | { kind: 'algorithms' }
@@ -14,8 +15,14 @@ const slugs: Record<MethodId, string> = {
   'roux-beginner': 'roux',
 };
 const fromSlug = (slug: string): MethodId | undefined =>
-  slug === 'cfop' ? 'cfop-beginner' : slug === 'advanced-cfop' ? 'cfop-advanced' : undefined;
-export function parseRoute(hash: string): AppRoute {
+  slug === 'cfop'
+    ? 'cfop-beginner'
+    : slug === 'advanced-cfop'
+      ? 'cfop-advanced'
+      : slug === 'roux'
+        ? 'roux-beginner'
+        : undefined;
+export function parseRoute(hash: string, edition: MethodEdition = 'global'): AppRoute {
   const value = hash.replace(/^#\/?/, '').replace(/\/$/, '');
   if (!value || value === 'learn') return { kind: 'learn', method: 'lbl', lessonId: 'notation' };
   const parts = value.split('/');
@@ -27,14 +34,18 @@ export function parseRoute(hash: string): AppRoute {
   if (parts[0] === 'solve') {
     if (parts.length === 1) return { kind: 'solve', method: 'lbl' };
     const method = fromSlug(parts[1]);
-    return method && parts.length === 2 ? { kind: 'solve', method } : { kind: 'not-found' };
+    return method && methodAvailable(method, edition) && parts.length === 2
+      ? { kind: 'solve', method }
+      : { kind: 'not-found' };
   }
   if (parts[0] !== 'learn') return { kind: 'not-found' };
   const specific = fromSlug(parts[1]),
     method = specific ?? 'lbl',
     intro = method === 'lbl' ? 'notation' : 'intro';
+  if (!methodAvailable(method, edition)) return { kind: 'not-found' };
   if (parts.length > (specific ? 3 : 2)) return { kind: 'not-found' };
   const lessonId = parts[specific ? 2 : 1] ?? intro;
+  if (method === 'roux-beginner' && lessonId === 'roux-frame') return { kind: 'not-found' };
   if (lessonId !== intro && !getMethod(method).stages.some((s) => s.id === lessonId))
     return { kind: 'not-found' };
   return { kind: 'learn', method, lessonId };

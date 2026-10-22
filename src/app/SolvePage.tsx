@@ -22,9 +22,9 @@ export function SolvePage({ engine, method = 'lbl' }: { engine: CubeEngine; meth
     firstStage = presentation.stages[0].id;
   const methodRef = useRef(method);
   methodRef.current = method;
-  const client = useMemo(() => createSolveClient(), []),
-    epoch = useRef(0);
   const edition = useEdition();
+  const client = useMemo(() => createSolveClient(undefined, edition), [edition]),
+    epoch = useRef(0);
   const store = useMemo(
     () =>
       createDraftStore(

@@ -15,6 +15,27 @@ class ControlledWorker implements WorkerPort {
     this.terminated = true;
   }
 }
+it('sends club identity and ignores a late Roux request after replacement', async () => {
+  const workers: ControlledWorker[] = [];
+  const client = createSolveClient(() => {
+    const w = new ControlledWorker();
+    workers.push(w);
+    return w;
+  }, 'club');
+  const old = client.solveScramble('R', 'roux-beginner');
+  expect(workers[0].request).toMatchObject({ edition: 'club', method: 'roux-beginner' });
+  const late = workers[0].onmessage;
+  const next = client.solveScramble('U', 'roux-beginner');
+  expect(await old).toMatchObject({ ok: false, error: { kind: 'cancelled' } });
+  late?.(
+    new MessageEvent('message', {
+      data: { requestId: 1, result: { ok: false, error: { kind: 'solver', message: 'old' } } },
+    }),
+  );
+  expect(workers[1].terminated).toBe(false);
+  client.cancel();
+  expect(await next).toMatchObject({ ok: false, error: { kind: 'cancelled' } });
+});
 it('cancels_during_asset_load_and_clears_watchdogs', async () => {
   vi.useFakeTimers();
   try {

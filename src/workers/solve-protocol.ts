@@ -3,6 +3,7 @@ import type { Facelets, FaceMove, SolveSession, MethodId, StageId } from '../cor
 export type SolveRequestInput =
   { kind: 'scramble'; moves: readonly FaceMove[] } | { kind: 'facelets'; facelets: Facelets };
 export interface SolveRequest {
+  edition?: 'global' | 'club';
   requestId: number;
   method: MethodId;
   input: SolveRequestInput;

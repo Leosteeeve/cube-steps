@@ -44,9 +44,25 @@ export const ADVANCED_INFO: MethodInfo = {
   ],
 };
 
+export const ROUX_INFO: MethodInfo = {
+  id: 'roux-beginner',
+  label: 'Beginner Roux',
+  teachingStatus: 'preview',
+  stages: [
+    { id: 'roux-frame', label: 'Holding and the middle slice', group: 'Foundation' },
+    { id: 'roux-first-block', label: 'Build the left block', group: 'Blocks' },
+    { id: 'roux-second-block', label: 'Build the right block', group: 'Blocks' },
+    { id: 'roux-corner-orientation', label: 'Orient the yellow corners', group: 'Corners' },
+    { id: 'roux-corner-permutation', label: 'Position the corners', group: 'Corners' },
+    { id: 'roux-edge-orientation', label: 'Orient the last six edges', group: 'LSE' },
+    { id: 'roux-left-right-edges', label: 'Place the left and right edges', group: 'LSE' },
+    { id: 'roux-last-four-edges', label: 'Finish the last four edges', group: 'Finish' },
+  ],
+};
 export function getMethodInfo(id: MethodId): MethodInfo {
   if (id === 'lbl') return LBL_INFO;
   if (id === 'cfop-beginner') return CFOP_INFO;
   if (id === 'cfop-advanced') return ADVANCED_INFO;
+  if (id === 'roux-beginner') return ROUX_INFO;
   throw new Error(`Method ${id} is not registered.`);
 }

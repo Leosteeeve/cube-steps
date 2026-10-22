@@ -23,5 +23,5 @@ export function parseClubRoute(hash: string): ClubRoute {
     const section = value.slice(6) as GuideSectionId;
     return GUIDE_SECTION_IDS.includes(section) ? { kind: 'guide', section } : { kind: 'not-found' };
   }
-  return parseRoute(hash);
+  return parseRoute(hash, 'club');
 }

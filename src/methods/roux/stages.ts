@@ -1,19 +1,10 @@
 import type { CubeEngine, CubeState, StageId } from '../../core/types';
-import type { StageDefinition } from '../contracts';
+import { ROUX_INFO } from '../info';
 import type { RouxStageId } from './types';
 import { observeRouxFrame } from './frame';
 import { blockComplete, topCornersOriented, cornerOffset, rouxSolved } from './predicates';
 import { lseGoalReached } from './lse/model';
-export const ROUX_STAGES: readonly StageDefinition[] = [
-  { id: 'roux-frame', label: 'Holding and the middle slice', group: 'Foundation' },
-  { id: 'roux-first-block', label: 'Build the left block', group: 'Blocks' },
-  { id: 'roux-second-block', label: 'Build the right block', group: 'Blocks' },
-  { id: 'roux-corner-orientation', label: 'Orient the yellow corners', group: 'Corners' },
-  { id: 'roux-corner-permutation', label: 'Position the corners', group: 'Corners' },
-  { id: 'roux-edge-orientation', label: 'Orient the last six edges', group: 'LSE' },
-  { id: 'roux-left-right-edges', label: 'Place the left and right edges', group: 'LSE' },
-  { id: 'roux-last-four-edges', label: 'Finish the last four edges', group: 'Finish' },
-];
+export const ROUX_STAGES = ROUX_INFO.stages;
 export const ROUX_STAGE_IDS = ROUX_STAGES.map((s) => s.id) as RouxStageId[];
 export function checkRouxStage(engine: CubeEngine, state: CubeState, id: StageId): boolean {
   try {
