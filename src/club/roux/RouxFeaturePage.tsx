@@ -4,7 +4,10 @@ import { registerMethodRuntime } from '../../methods/registry';
 import { ROUX_RUNTIME } from '../../methods/roux/definition';
 import { ClubLearnPage } from '../learning/ClubLearnPage';
 import { SolvePage } from '../../app/SolvePage';
+import { registerRouxCourse } from '../../content/courses';
+import { ROUX_COURSE } from '../../content/roux-course';
 registerMethodRuntime(ROUX_RUNTIME);
+registerRouxCourse(ROUX_COURSE);
 export function RouxFeaturePage({
   engine,
   route,

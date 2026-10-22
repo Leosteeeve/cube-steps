@@ -12,9 +12,12 @@ export interface NotationDemo {
   initial: CubeState;
   final: CubeState;
 }
-export function buildNotationDemo(engine: CubeEngine, selection: NotationSelection): NotationDemo {
-  const move = notationToken(selection),
-    initial = engine.solved();
+export function buildNotationDemo(
+  engine: CubeEngine,
+  selection: NotationSelection,
+  initial: CubeState = engine.solved(),
+): NotationDemo {
+  const move = notationToken(selection);
   return {
     selection: { ...selection },
     entry: NOTATION_ENTRIES.find((entry) => entry.base === selection.base)!,

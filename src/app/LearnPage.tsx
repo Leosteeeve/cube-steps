@@ -1,4 +1,13 @@
-import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
+import {
+  lazy,
+  Suspense,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type ReactNode,
+} from 'react';
 import { useGuidanceScope, useGuidanceTarget } from '../ui/guidance';
 import type { CubeEngine, SolveSession, StageId, MethodId } from '../core/types';
 import { getCourse } from '../content/courses';
@@ -18,6 +27,10 @@ import { CaseSelector } from './CaseSelector';
 import { methodRoute, lessonRoute } from './routes';
 import { ALGORITHM_REGISTRY } from '../algorithms/registry';
 import { useEdition } from './edition';
+import { FaceOverview } from './color-entry/FaceOverview';
+const RouxLessonDetails = lazy(() =>
+  import('../club/roux/RouxLessonDetails').then((m) => ({ default: m.RouxLessonDetails })),
+);
 export function LearnPage({
   engine,
   lessonId,
@@ -41,6 +54,7 @@ export function LearnPage({
     [selectedCase, setSelectedCase] = useState('guided');
   const example = lesson.examples?.find((e) => e.id === selectedCase),
     exampleScramble = example?.scramble ?? lesson.exampleScramble;
+  const exampleInput = example?.input;
   const selectionKey = `${method}/${lesson.id}/${example?.id ?? 'guided'}`;
   const notesTarget = useGuidanceTarget('lesson.notes'),
     notes = useRef<HTMLDetailsElement | null>(null);
@@ -75,7 +89,14 @@ export function LearnPage({
     setLoaded(null);
     setError('');
     if (lesson.stageId)
-      void client.solveScramble(exampleScramble, method).then((result) => {
+      void (
+        exampleInput?.kind === 'facelets'
+          ? client.solveFacelets(exampleInput.facelets, method)
+          : client.solveScramble(
+              exampleInput?.kind === 'scramble' ? exampleInput.moves.join(' ') : exampleScramble,
+              method,
+            )
+      ).then((result) => {
         if (!live) return;
         if (result.ok) setLoaded({ key: selectionKey, session: result.session });
         else if (result.error.kind !== 'cancelled') setError(result.error.message);
@@ -84,14 +105,14 @@ export function LearnPage({
       live = false;
       client.cancel();
     };
-  }, [client, lesson.id, selectionKey, exampleScramble, method]);
+  }, [client, lesson.id, selectionKey, exampleScramble, exampleInput, method]);
   return (
     <LessonLayout selected={lesson.id} method={method} presentation={layoutPresentation}>
       <MethodSelector method={method} kind="learn" />
       <div className="lesson-heading">
         <span className="eyebrow">
           {lesson.stageId
-            ? `LESSON ${course.indexOf(lesson)} / ${presentation.stages.length}`
+            ? `LESSON ${course.indexOf(lesson) + (method === 'roux-beginner' ? 1 : 0)} / ${presentation.stages.length}`
             : 'BEFORE YOU BEGIN'}
         </span>
         <h1>{lesson.title}</h1>
@@ -201,49 +222,77 @@ export function LearnPage({
           )}
           {example && (
             <p className="notice" data-case-id={example.id}>
-              Case: {example.title}. The player starts at the first matching action in this verified
-              solve.
+              Case: {example.title}{' '}
+              {method === 'roux-beginner'
+                ? 'The player starts at this stage in the verified solve.'
+                : 'The player starts at the first matching action in this verified solve.'}
             </p>
           )}
-          <details ref={notesRef} className="lesson-notes">
-            <summary>
-              How this stage works <span>Read before you play</span>
-            </summary>
-            <div className="notes-grid">
-              <div>
-                <h3>Recognize</h3>
-                <p>{lesson.observe}</p>
-              </div>
-              <div>
-                <h3>Prepare & solve</h3>
-                <p>{lesson.prepare}</p>
-              </div>
-              <div>
-                <h3>Check</h3>
-                <p>{lesson.check}</p>
-              </div>
+          {method === 'roux-beginner' ? (
+            <div ref={notesTarget}>
+              <Suspense fallback={<p role="status">Loading the detailed Roux lesson…</p>}>
+                <RouxLessonDetails engine={engine} lessonId={lesson.id} />
+              </Suspense>
             </div>
-            <p className="lesson-tip">{lesson.tip}</p>
-            {lesson.algorithmIds.map((id) => (
-              <p className="formula-reference" key={id}>
-                <strong>{presentation.algorithms[id].name}</strong>
-                <code>{presentation.algorithms[id].moves.join(' ')}</code>
-                {ALGORITHM_REGISTRY.variants[id] && (
-                  <a href={'#/algorithms/' + ALGORITHM_REGISTRY.variants[id].caseId}>
-                    Explore this case →
-                  </a>
-                )}
-              </p>
-            ))}
-          </details>
+          ) : (
+            <details ref={notesRef} className="lesson-notes">
+              <summary>
+                How this stage works <span>Read before you play</span>
+              </summary>
+              <div className="notes-grid">
+                <div>
+                  <h3>Recognize</h3>
+                  <p>{lesson.observe}</p>
+                </div>
+                <div>
+                  <h3>Prepare & solve</h3>
+                  <p>{lesson.prepare}</p>
+                </div>
+                <div>
+                  <h3>Check</h3>
+                  <p>{lesson.check}</p>
+                </div>
+              </div>
+              <p className="lesson-tip">{lesson.tip}</p>
+              {lesson.algorithmIds.map((id) => (
+                <p className="formula-reference" key={id}>
+                  <strong>{presentation.algorithms[id].name}</strong>
+                  <code>{presentation.algorithms[id].moves.join(' ')}</code>
+                  {ALGORITHM_REGISTRY.variants[id] && (
+                    <a href={'#/algorithms/' + ALGORITHM_REGISTRY.variants[id].caseId}>
+                      Explore this case →
+                    </a>
+                  )}
+                </p>
+              ))}
+            </details>
+          )}
           <details className="scramble-details">
             <summary>
-              Follow along with a physical cube <span>View example scramble</span>
+              Follow along with a physical cube{' '}
+              <span>
+                {exampleInput?.kind === 'facelets'
+                  ? 'View example colors'
+                  : 'View example scramble'}
+              </span>
             </summary>
-            <p>Start solved with white up and green front, then apply:</p>
-            <code>{exampleScramble}</code>
+            {exampleInput?.kind === 'facelets' ? (
+              <>
+                <p>
+                  This case uses a legal color snapshot in the input hold: white up, green front.
+                  Use the diagram to identify the example; to follow your own physical cube, enter
+                  its colors in Solve your cube.
+                </p>
+                <FaceOverview facelets={exampleInput.facelets} />
+              </>
+            ) : (
+              <>
+                <p>Start solved with white up and green front, then apply:</p>
+                <code>{exampleScramble}</code>
+              </>
+            )}
             <p>
-              {example
+              {example && !exampleInput
                 ? 'This selected case uses its own example scramble. '
                 : 'The full guided example follows one complete solve. '}
               For a later stage or case, finish all earlier moves first. A jump changes the

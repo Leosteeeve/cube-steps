@@ -1,0 +1,171 @@
+.roux-lesson-details {
+  --roux-white: #fff;
+  --roux-yellow: #ffe16a;
+  --roux-red: #e77a72;
+  --roux-orange: #f6ad69;
+  --roux-blue: #538cda;
+  --roux-green: #65ba8f;
+  margin: 1.5rem 0;
+  line-height: 1.75;
+}
+.roux-overview {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(240px, 1fr);
+  gap: 2rem;
+  align-items: center;
+}
+.roux-four-steps {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+.roux-four-steps article,
+.roux-mistakes article {
+  border: 1px solid #d9e5f4;
+  border-radius: 16px;
+  padding: 1.3rem;
+  background: #f7faff;
+}
+.roux-four-steps h3 {
+  margin: 0.25rem 0;
+}
+.roux-four-steps p {
+  margin: 0;
+}
+.roux-diagram {
+  margin: 0;
+  padding: 1rem;
+  min-width: 0;
+}
+.roux-diagram figcaption {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  margin-top: 0.8rem;
+}
+.roux-net {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px;
+  max-width: 340px;
+  margin: auto;
+  color: #173756;
+}
+.roux-net-face b {
+  font-size: 0.75rem;
+  display: block;
+  text-align: center;
+}
+.roux-net-face > div {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+.roux-net .face-U {
+  grid-column: 2;
+}
+.roux-net .face-L {
+  grid-column: 1;
+  grid-row: 2;
+}
+.roux-net .face-F {
+  grid-column: 2;
+  grid-row: 2;
+}
+.roux-net .face-R {
+  grid-column: 3;
+  grid-row: 2;
+}
+.roux-net .face-B {
+  grid-column: 4;
+  grid-row: 2;
+}
+.roux-net .face-D {
+  grid-column: 2;
+  grid-row: 3;
+}
+.roux-sticker {
+  aspect-ratio: 1;
+  border: 1px solid #a6b5c5;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(8px, 0.8vw, 11px);
+  font-weight: 700;
+  line-height: 1;
+}
+.roux-sticker.target {
+  outline: 1px solid #173756;
+}
+.roux-sticker.ignored {
+  background: #e5e9ee;
+  color: #768290;
+}
+.roux-example-list,
+.roux-reference details {
+  padding: 1rem;
+  border: 1px solid #d9e5f4;
+  border-radius: 12px;
+  margin: 1rem 0;
+}
+.roux-example-list summary,
+.roux-reference summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+.roux-reference-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+.roux-reference-grid details {
+  margin: 0;
+}
+.roux-reference code {
+  display: block;
+  overflow-wrap: anywhere;
+  white-space: normal;
+  padding: 0.8rem;
+  background: #f0f5fc;
+}
+.roux-mistakes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+.roux-physical-check {
+  border-left: 3px solid #5286cc;
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  background: #f6f9fe;
+}
+.roux-foundation {
+  margin: 2rem 0;
+}
+.roux-foundation [aria-label='Middle-slice move'] {
+  display: flex;
+  gap: 0.6rem;
+  margin: 1rem 0;
+}
+.roux-foundation [aria-pressed='true'] {
+  background: #153f70;
+  color: #fff;
+}
+@media (max-width: 650px) {
+  .roux-overview,
+  .roux-four-steps,
+  .roux-mistakes,
+  .roux-reference-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .roux-diagram {
+    padding: 0.5rem;
+  }
+  .roux-four-steps article {
+    padding: 1rem;
+  }
+  .roux-sticker {
+    font-size: 10px;
+  }
+}

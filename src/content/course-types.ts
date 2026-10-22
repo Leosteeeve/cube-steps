@@ -1,5 +1,6 @@
-import type { StageId } from '../core/types';
+import type { StageId, SolveInput } from '../core/types';
 export interface CaseExample {
+  input?: SolveInput;
   id: string;
   title: string;
   scramble: string;
