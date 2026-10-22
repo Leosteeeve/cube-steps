@@ -52,3 +52,29 @@ it('rejects failed or unverified loads and permits a fresh retry', async () => {
   await expect(load()).resolves.toHaveProperty('checkAction');
   expect(loader).toHaveBeenCalledTimes(3);
 });
+it('times out even an unresponsive module loader, then permits a fresh retry', async () => {
+  const assets = await loadTestRouxAssets();
+  let signal: AbortSignal | undefined;
+  const loader = vi.fn((received: AbortSignal) => {
+    signal = received;
+    return new Promise<typeof assets>(() => {});
+  });
+  vi.useFakeTimers();
+  try {
+    const load = createRouxPlaybackLoader(loader);
+    let outcome = 'pending';
+    const first = load().catch((error: Error) => {
+      outcome = error.message;
+    });
+    await vi.advanceTimersByTimeAsync(30000);
+    expect(outcome).toMatch(/timed out/);
+    expect(signal?.aborted).toBe(true);
+    await first;
+    loader.mockResolvedValueOnce(assets);
+    await expect(load()).resolves.toHaveProperty('checkAction');
+    expect(loader).toHaveBeenCalledTimes(2);
+    expect(vi.getTimerCount()).toBe(0);
+  } finally {
+    vi.useRealTimers();
+  }
+});

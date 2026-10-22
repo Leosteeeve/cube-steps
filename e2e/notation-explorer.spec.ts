@@ -91,11 +91,17 @@ test('reduced motion, WebGL fallback and recoverable lazy module failure', async
   await selectNotation(page, 'x');
   await page.getByRole('button', { name: 'After', exact: true }).click();
   await expect(page.getByLabel('Current holding')).toContainText('green up · yellow front');
-  await page.route('**/MoveExplorerPage.tsx', (route) => route.abort());
+  const moveExplorerModule = (url: URL) => url.pathname.endsWith('/MoveExplorerPage.tsx');
+  let rejectedModules = 0;
+  await page.route(moveExplorerModule, (route) => {
+    rejectedModules++;
+    return route.abort();
+  });
   await page.reload();
   await expect(page.getByRole('alert')).toContainText('could not load');
+  expect(rejectedModules).toBeGreaterThan(0);
   await expect(page.getByRole('button', { name: 'Reload move explorer' })).toBeVisible();
-  await page.unroute('**/MoveExplorerPage.tsx');
+  await page.unroute(moveExplorerModule);
   await page.getByRole('button', { name: 'Reload move explorer' }).click();
   await expect(page.getByRole('img', { name: 'Before U', exact: true })).toBeVisible();
   await page.getByRole('link', { name: 'Home', exact: true }).click();
