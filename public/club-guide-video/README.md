@@ -1,11 +1,12 @@
 # Club website Guide video
 
-The owner accepted the five-minute English-narrated and captioned `full-v1` film, then requested embedding it in the club Guide on October 13, 2026.
+The owner accepted this five-minute film and requested replacing the Guide video on October 21, 2026. It uses English on-screen instructions, music and occasional interface sound effects, with no spoken narration. The closing retains “Your turn. Keep your curiosity.” from the original film.
 
-- `poster.webp`: a resized still from the accepted clean master, at 0:01.
-- `captions.srt`: the accepted English caption cues, also burned into the viewing copy.
-- `club-guide-video-v1.mp4`: generated/downloaded asset, excluded from Git. See `scripts/tutorial/guide-video.json` for its immutable size/hash and versioned Release URL.
+- `poster-v2.webp`: a resized still from the accepted export at 0:01.5.
+- `captions.srt`: a timed text companion to the on-screen instructions, including the example-context notes. The movie already contains visible instructions; this is not a speech transcript.
+- `CREDITS.txt`: music and sound-effect attribution, source links, licenses and editing details.
+- `club-guide-video-v2.mp4`: generated/downloaded asset, excluded from Git. See `scripts/tutorial/guide-video.json` for its immutable size/hash and versioned Release URL.
 
-Original script, club mark, captions, and composition: CubeSteps project originals, MIT. Real website footage retains the project's third-party notices. Narration is synthetic (Kokoro `af_heart`, credited in the film and Guide); there is no music or personal member data. The source model and authoring packages retain their own licenses and are not distributed with this website.
+Website footage, editorial text and club mark are original CubeSteps material under MIT; third-party footage components retain their notices. Music is “Origami” by Scott Buckley, CC BY 4.0, with volume changes, excerpts, repetition, a crossfade and fades. Interface effects are Kenney Interface Sounds, CC0. These media licenses are separate from the repository's MIT license. Credits appear in the film, the Guide and the accompanying text file.
 
-The video is 300 seconds, 1920 × 1080, 30 fps, H.264/AAC. The accepted file is copied without re-encoding. Media production sources and reproducible dependencies remain in the owner's sealed local `full-v1` archive; only the finished viewing copy is published.
+The video is approximately 300 seconds, 1920 × 1080, 30 fps, H.264/AAC, and is published byte-for-byte without re-encoding. Production sources and licensed source assets remain in the owner's local `full-no-narration-v1` archive. The earlier narrated film remains available in the immutable `club-guide-video-v1` Release.

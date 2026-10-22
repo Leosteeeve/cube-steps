@@ -108,6 +108,11 @@
   padding: 8px 0;
   color: #134d95;
 }
+.guide-video-credits {
+  font-size: 0.8rem;
+  line-height: 1.7;
+  color: #415a7d;
+}
 .guide-video-transcript {
   border-top: 1px solid #d7e3f1;
 }
