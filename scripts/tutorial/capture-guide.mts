@@ -18,6 +18,50 @@ const desktop = { width: 1360, height: 1000 },
   phone = { width: 390, height: 844 };
 const scenes: (CaptureScenario & { caption: string; alt: string })[] = [
   {
+    id: 'roux-learning',
+    route: 'club/#/learn/roux/roux-first-block',
+    target: '.player-area',
+    exampleData: true,
+    caption:
+      'Example first-block lesson: a real target, fixed holding and explained maneuvers. Beginner Roux remains Preview.',
+    alt: 'Beginner Roux first-block player with actual target highlights and explanation',
+    prepare: async (p: Page) => {
+      await prepareTutorialScene(p, 'quiz');
+      await p.getByLabel('Practice case').selectOption('left-m');
+      await expect(p.getByRole('button', { name: 'Next move', exact: true })).toBeEnabled({
+        timeout: 30000,
+      });
+      await renderTutorialFrame(p);
+    },
+  },
+  {
+    id: 'roux-slice-checkpoint',
+    route: 'club/#/learn/roux/roux-first-block',
+    target: '.player-area',
+    exampleData: true,
+    caption:
+      'Example quarter-M checkpoint: the middle centers have moved; the fixed side frame stays blue left and green right.',
+    alt: 'Roux player paused at a middle-slice setup with the actual centers and reference guidance',
+    prepare: async (p: Page) => {
+      await prepareTutorialScene(p, 'quiz');
+      await p.getByLabel('Practice case').selectOption('left-m');
+      await expect(p.getByRole('button', { name: 'Next move', exact: true })).toBeEnabled({
+        timeout: 30000,
+      });
+      await expect(p.locator('.roux-holding-guide')).toBeVisible();
+      for (let i = 0; i < 60; i++) {
+        if (
+          (await p.locator('.roux-holding-guide').getAttribute('data-reference')) ===
+          'setup-required'
+        )
+          break;
+        await p.getByRole('button', { name: 'Next move', exact: true }).click();
+      }
+      await expect(p.getByText(/Middle-slice setup in progress/)).toBeVisible();
+      await renderTutorialFrame(p);
+    },
+  },
+  {
     id: 'lab-analyze',
     route: 'club/#/lab',
     target: '.lab-grid',
@@ -165,7 +209,7 @@ const scenes: (CaptureScenario & { caption: string; alt: string })[] = [
     if (s.target) await expect(p.locator(s.target)).toBeVisible();
   },
 }));
-for (const id of ['home', 'moves', 'timer']) {
+for (const id of ['home', 'moves', 'timer', 'roux-learning']) {
   const original = scenes.find((s) => s.id === id)!;
   scenes.push({
     ...original,

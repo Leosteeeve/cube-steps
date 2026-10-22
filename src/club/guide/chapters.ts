@@ -44,7 +44,7 @@ export const GUIDE_CHAPTERS: readonly GuideChapter[] = [
       ],
       [
         'Skip questions / Change route',
-        'Choose LBL, Beginner CFOP or Advanced CFOP yourself. You can switch later.',
+        'Choose LBL, Beginner CFOP, Advanced CFOP or the club Beginner Roux preview yourself. The questionnaire keeps its established recommendations; you can switch later.',
       ],
       [
         'Resume learning',
@@ -166,6 +166,41 @@ export const GUIDE_CHAPTERS: readonly GuideChapter[] = [
       [
         'Learning tools',
         'Open Lessons, Solve your cube, Algorithms, Formula practice, Move explorer or Find your route.',
+      ],
+    ]),
+  },
+  {
+    id: 'roux',
+    title: 'Build with Beginner Roux',
+    summary:
+      'Preview: two side blocks, a two-look corner task, then six edges with the middle slice.',
+    href: '#/learn/roux/intro',
+    tourIds: [],
+    screenshotIds: ['roux-learning', 'roux-slice-checkpoint', 'roux-learning-phone'],
+    steps: [
+      'Choose Beginner Roux in the club method selector or manual route chooser. New solvers can still start with the questionnaire’s LBL recommendation. Roux uses fewer memorized formulas but asks you to understand blocks and piece relationships.',
+      'Enter every scramble or color input in white-up, green-front holding. Follow the visible x2 y regrip. Then keep blue left and green right; white bottom describes the lower block stickers. M and M′ move the middle centers, so the current up/front colors can change without an error.',
+      'Read Look, Prepare, Do and Check. Choose a worked example, pause, step backward or replay the whole maneuver. Stage jumps only change the screen: do all earlier moves first on a real cube. Each chapter includes mistakes, recovery and a physical checkpoint.',
+      'Recognize the four yellow corners without requiring a yellow cross. Use the seven OCLL cases, then T with headlights on the left or Y with no headlights. Finish each full formula before checking that the two blocks return.',
+      'In LSE, wait for a white or yellow up center before judging orientation. “Middle-slice setup in progress” is a normal intermediate state. Match yellow-blue and yellow-green to their corner neighbors, then finish every edge, center and final U alignment.',
+      'Use Solve with Beginner Roux for a random scramble, pasted standard face turns or six-face color entry. The existing algorithm library and formula practice are CFOP resources; Roux worked examples and references are inside its course. This preview still needs physical follow-along feedback.',
+    ],
+    controls: controls([
+      [
+        'Practice case',
+        'Choose a verified example in the current chapter. Color snapshots retain the standard input hold and are shown under Follow along with a physical cube.',
+      ],
+      [
+        'M / M′ / M2 foundation',
+        'Compare slice directions from the Roux hold; use Holding and Direction views without changing the physical move.',
+      ],
+      [
+        'Roux reference',
+        'Read the fixed side frame, actual middle centers and any temporary restoration note at the last completed move.',
+      ],
+      [
+        'Replay formula / action',
+        'Start the current full maneuver again. Check protected pieces at its declared endpoint.',
       ],
     ]),
   },

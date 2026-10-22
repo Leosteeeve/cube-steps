@@ -216,6 +216,42 @@
       "sourceRevision": "8ad22d9-task15",
       "scenario": "lab-trials",
       "exampleData": true
+    },
+    {
+      "id": "roux-learning",
+      "src": "club-guide/roux-learning.png",
+      "alt": "Beginner Roux first-block player with actual target highlights and explanation",
+      "caption": "Example first-block lesson: a real target, fixed holding and explained maneuvers. Beginner Roux remains Preview.",
+      "route": "club/#/learn/roux/roux-first-block",
+      "width": 1052,
+      "height": 854,
+      "sourceRevision": "cf1b931-roux-guide-candidate",
+      "scenario": "roux-learning",
+      "exampleData": true
+    },
+    {
+      "id": "roux-slice-checkpoint",
+      "src": "club-guide/roux-slice-checkpoint.png",
+      "alt": "Roux player paused at a middle-slice setup with the actual centers and reference guidance",
+      "caption": "Example quarter-M checkpoint: the middle centers have moved; the fixed side frame stays blue left and green right.",
+      "route": "club/#/learn/roux/roux-first-block",
+      "width": 1052,
+      "height": 1003,
+      "sourceRevision": "cf1b931-roux-guide-candidate",
+      "scenario": "roux-slice-checkpoint",
+      "exampleData": true
+    },
+    {
+      "id": "roux-learning-phone",
+      "src": "club-guide/roux-learning-phone.png",
+      "alt": "Beginner Roux first-block player with actual target highlights and explanation",
+      "caption": "Example first-block lesson: a real target, fixed holding and explained maneuvers. Beginner Roux remains Preview. Phone layout.",
+      "route": "club/#/learn/roux/roux-first-block",
+      "width": 358,
+      "height": 1436,
+      "sourceRevision": "cf1b931-roux-guide-candidate",
+      "scenario": "roux-learning-phone",
+      "exampleData": true
     }
   ]
 }

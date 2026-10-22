@@ -101,8 +101,19 @@ export function ClubApp() {
               >
                 Solve your cube
               </a>
-              <a href="#/algorithms">Algorithms</a>
-              <a href="#/practice">Formula practice</a>
+              <a href="#/algorithms">
+                {'method' in route && route.method === 'roux-beginner'
+                  ? 'CFOP algorithms'
+                  : 'Algorithms'}
+              </a>
+              <a href="#/practice">
+                {'method' in route && route.method === 'roux-beginner'
+                  ? 'CFOP formula practice'
+                  : 'Formula practice'}
+              </a>
+              {'method' in route && route.method === 'roux-beginner' && (
+                <a href="#/guide/roux">Roux guide</a>
+              )}
               <a href="#/moves">Move explorer</a>
               <a href="#/find-your-route">Find your route</a>
             </nav>

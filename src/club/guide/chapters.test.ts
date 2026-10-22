@@ -23,6 +23,7 @@ it('covers every tour section with substantial original instructions and valid d
     'start',
     'moves',
     'lessons',
+    'roux',
     'solve',
     'algorithms',
     'practice',
@@ -38,4 +39,12 @@ it('covers every tour section with substantial original instructions and valid d
   }
   for (const t of Object.values(TOURS))
     for (const s of t.steps) expect(GUIDE_CHAPTERS.some((c) => c.id === s.guideSection)).toBe(true);
+});
+it('documents the fixed Roux hold, middle centers and full lesson/solver destinations', () => {
+  const roux = GUIDE_CHAPTERS.find((c) => c.id === 'roux')!;
+  expect(roux.href).toBe('#/learn/roux/intro');
+  for (const phrase of ['M′', 'blue left', 'yellow cross', 'CFOP', 'Preview'])
+    expect(JSON.stringify(roux)).toContain(phrase);
+  expect(parseClubRoute('#/guide/roux')).toEqual({ kind: 'guide', section: 'roux' });
+  expect(parseClubRoute('#/solve/roux')).toEqual({ kind: 'solve', method: 'roux-beginner' });
 });
