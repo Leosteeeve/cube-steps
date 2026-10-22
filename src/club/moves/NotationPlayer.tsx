@@ -166,7 +166,8 @@ export function NotationPlayer({
     staticMode = reduced || !!snapshot.error;
   const playTarget = useGuidanceTarget('moves.play', ready && !staticMode);
   const boundary = progress === 1 ? demo.final : demo.initial,
-    centers = engine.observe(boundary).centers;
+    centers = engine.observe(boundary).centers,
+    startingCenters = engine.observe(demo.initial).centers;
   const description = describeNotation(selection);
   const status =
     !matching || snapshot.phase === 'loading'
@@ -344,7 +345,8 @@ export function NotationPlayer({
         <p>{demo.entry.layerText}</p>
         <DirectionGuide selection={selection} />
         <p className="notation-start">
-          Starting grip: white up · green front. Every example resets to this solved position.
+          Starting grip: {startingCenters.U} up · {startingCenters.F} front. Every example resets to
+          this solved position.
         </p>
         <p>Letters follow your physical hold, not a permanent sticker color.</p>
       </aside>

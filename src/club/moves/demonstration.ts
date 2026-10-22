@@ -11,6 +11,20 @@ export interface NotationDemo {
   move: TeachingMove;
   initial: CubeState;
   final: CubeState;
+  setup: TeachingMove[];
+}
+function solvedHoldSetup(engine: CubeEngine, initial: CubeState): TeachingMove[] {
+  const holds = [{ state: engine.solved(), moves: [] as TeachingMove[] }];
+  for (let i = 0; i < holds.length; i++) {
+    const hold = holds[i];
+    if (engine.equals(hold.state, initial)) return hold.moves;
+    for (const move of ['x', 'y'] as const) {
+      const state = engine.apply(hold.state, [move]);
+      if (!holds.some((h) => engine.equals(h.state, state)))
+        holds.push({ state, moves: [...hold.moves, move] });
+    }
+  }
+  throw Error('A notation demonstration must start from a solved holding orientation.');
 }
 export function buildNotationDemo(
   engine: CubeEngine,
@@ -24,5 +38,6 @@ export function buildNotationDemo(
     move,
     initial,
     final: engine.apply(initial, [move]),
+    setup: solvedHoldSetup(engine, initial),
   };
 }

@@ -55,6 +55,11 @@ it('resets the same move when its physical starting frame changes', async () => 
   await waitFor(() => expect(screen.getByRole('button', { name: 'Play move' })).toBeEnabled());
   expect(screen.getByLabelText('Current holding')).toHaveTextContent('yellow up · red front');
   expect(screen.getByText('Blue left · green right')).toBeVisible();
+  expect(
+    screen.getByText(
+      'Starting grip: yellow up · red front. Every example resets to this solved position.',
+    ),
+  ).toBeVisible();
   expect(document.querySelector('[data-boundary-state]')).toHaveAttribute(
     'data-boundary-state',
     JSON.stringify(held.data),

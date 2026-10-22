@@ -1,6 +1,54 @@
 import { test, expect } from '@playwright/test';
 import { dismissTutorialForTest } from './helpers/tutorial';
 import { renderLessonFrame } from './helpers/notation';
+import { matchesBoundary } from './helpers/color-entry';
+
+test('a failed lesson policy download can be retried without reloading the page', async ({
+  page,
+}) => {
+  await page.goto('club/');
+  await dismissTutorialForTest(page);
+  await page.route(
+    (url) =>
+      url.pathname.includes('block-policies') &&
+      url.pathname.endsWith('.json') &&
+      !url.searchParams.has('url'),
+    (route) => route.abort('failed'),
+    { times: 1 },
+  );
+  await page.goto('club/#/learn/roux/intro');
+  await expect(page.getByRole('alert')).toBeVisible();
+  await page.getByRole('button', { name: 'Retry loading Roux', exact: true }).click();
+  await expect(
+    page.getByRole('heading', { name: 'Two blocks. Four corners. Six edges.' }),
+  ).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Next move', exact: true })).toBeEnabled();
+});
+
+test('Roux M demonstrations render their declared hold before and after all three turns', async ({
+  page,
+}) => {
+  await page.goto('club/#/learn/roux/intro');
+  await dismissTutorialForTest(page);
+  for (const name of ['M', 'M′', 'M2']) {
+    await page
+      .getByRole('group', { name: 'Middle-slice move' })
+      .getByRole('button', { name, exact: true })
+      .click();
+    await expect(page.getByRole('button', { name: 'Play move', exact: true })).toBeEnabled();
+    await expect.poll(() => matchesBoundary(page)).toBe(true);
+    await expect(
+      page.getByText(
+        'Starting grip: yellow up · red front. Every example resets to this solved position.',
+      ),
+    ).toBeVisible();
+    await page.getByRole('button', { name: 'Play move', exact: true }).click();
+    await expect(page.locator('.notation-player')).toHaveAttribute('data-phase', 'complete');
+    await expect.poll(() => matchesBoundary(page)).toBe(true);
+    await page.getByRole('button', { name: 'Reset', exact: true }).click();
+    await expect.poll(() => matchesBoundary(page)).toBe(true);
+  }
+});
 test('eight Roux chapters, slice foundations and one verified case per chapter', async ({
   page,
 }) => {
@@ -43,6 +91,22 @@ test('eight Roux chapters, slice foundations and one verified case per chapter',
     await expect(
       page.getByRole('heading', { name: 'If something looks wrong', exact: true }),
     ).toBeVisible();
+    if (chapter === 'roux-first-block' || chapter === 'roux-second-block') {
+      await expect(
+        page.getByRole('heading', { name: 'Keep these nearby.', exact: true }),
+      ).toBeVisible();
+      await expect(page.getByLabel('Block maneuver group')).toHaveValue('slice');
+      await page.getByLabel('Block maneuver group').selectOption('trigger');
+      await page.getByText("Open, adjust, close: R U R'", { exact: true }).click();
+      await expect(
+        page
+          .getByText(
+            'Protection: check the completed pieces after the whole maneuver; they may move temporarily inside it.',
+            { exact: true },
+          )
+          .first(),
+      ).toBeVisible();
+    }
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
       true,
     );
@@ -78,7 +142,7 @@ test('Roux stays out of global and timer initialization', async ({ page }) => {
     requested.filter((u) =>
       // Rolldown names shared cubing.js chunks after all their importers, including Roux.
       // Match dedicated Roux entry chunks, not an importer name embedded in a shared name.
-      /\/roux\/|\/(?:RouxFeaturePage|RouxHoldingGuide|RouxLessonDetails|definition|roux-course)[.-]|block-policies|lse-policies/.test(
+      /\/roux\/|\/assets\/(?:definition|browser-runtime)-|\/(?:RouxFeaturePage|RouxHoldingGuide|RouxLessonDetails|roux-course)[.-]|block-policies|lse-policies/.test(
         u,
       ),
     ),

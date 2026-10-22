@@ -63,15 +63,35 @@ test('method switching retains the draft and delayed loading can be cancelled an
     .getByRole('link', { name: 'Beginner Roux', exact: true })
     .click();
   await expect(page.getByLabel('Scramble sequence')).toHaveValue('R U F2');
-  await page.route('**/*block-policies*', async (r) => {
-    await new Promise((resolve) => setTimeout(resolve, 1200));
-    await r.continue();
+  let release!: () => void;
+  let requested!: () => void;
+  const held = new Promise<void>((resolve) => {
+    release = resolve;
   });
+  const assetRequested = new Promise<void>((resolve) => {
+    requested = resolve;
+  });
+  // Hold the actual policy bytes once. Vite also requests a ?url wrapper in
+  // both realms; delaying those would multiply the artificial network delay.
+  await page.route(
+    (url) =>
+      url.pathname.includes('block-policies') &&
+      url.pathname.endsWith('.json') &&
+      !url.searchParams.has('url'),
+    async (r) => {
+      requested();
+      await held;
+      await r.continue();
+    },
+    { times: 1 },
+  );
   await page.getByRole('button', { name: 'Explain with Beginner Roux', exact: true }).click();
+  await assetRequested;
   await page.getByRole('button', { name: 'Cancel', exact: true }).click();
   await expect(page.getByLabel('Scramble sequence')).toHaveValue('R U F2');
   await page.getByLabel('Scramble sequence').fill('L U2');
   await page.getByRole('button', { name: 'Explain with Beginner Roux', exact: true }).click();
+  release();
   await expect(page.getByText('Verified Beginner Roux solution')).toBeVisible();
   await expect(page.getByRole('button', { name: 'Next move', exact: true })).toBeEnabled();
   await page.getByText('Scramble for this solution', { exact: true }).click();

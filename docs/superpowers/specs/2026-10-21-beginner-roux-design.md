@@ -1,6 +1,6 @@
 # Beginner Roux: Club Lessons and Explained Solving
 
-Status: the owner approved this specification and all three implementation plans. Native implementation is in progress; the headless solver is undergoing its complete corpus checks. The club release remains Preview until physical teaching acceptance.
+Status: the owner approved this specification and all three implementation plans. Native implementation and independent review are complete; release validation is recorded in [Beginner Roux validation](../../validation/2026-10-21-beginner-roux.md). The club release remains Preview until physical teaching acceptance.
 
 Implementation plans: [Blocks and corners — Tasks 1–5](../plans/2026-10-21-beginner-roux-blocks.md), [LSE and complete solver — Tasks 6–10](../plans/2026-10-21-beginner-roux-solver.md), and [Club teaching and delivery — Tasks 11–15](../plans/2026-10-21-beginner-roux-club.md).
 

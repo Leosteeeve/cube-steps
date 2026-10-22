@@ -27,7 +27,7 @@ export async function createNotationAdapter(
   const player = new TwistyPlayer({
     puzzle: '3x3x3',
     alg: demo.move,
-    experimentalSetupAlg: '',
+    experimentalSetupAlg: demo.setup.join(' '),
     experimentalSetupAnchor: 'start',
     controlPanel: 'none',
     background: 'none',
@@ -101,22 +101,25 @@ export async function createNotationAdapter(
     if (disposed) throw new Error('The animation was disposed.');
     clearTimeout(timer);
     const axisFaces = ({ x: ['L', 'R'], y: ['D', 'U'], z: ['B', 'F'] } as const)[demo.entry.axis];
-    const mask = (slots: readonly string[], count: number) => ({
-      pieces: slots.map((slot) => ({
-        facelets: Array(count).fill(
-          demo.entry.layers.includes(
-            slot.includes(axisFaces[1]) ? 1 : slot.includes(axisFaces[0]) ? -1 : 0,
-          )
-            ? 'regular'
-            : 'dim',
-        ),
-      })),
+    const mask = (orbit: string, slots: readonly string[], count: number) => ({
+      pieces: slots.map((_, piece) => {
+        const slot = slots[demo.initial.data[orbit].pieces.indexOf(piece)];
+        return {
+          facelets: Array(count).fill(
+            demo.entry.layers.includes(
+              slot.includes(axisFaces[1]) ? 1 : slot.includes(axisFaces[0]) ? -1 : 0,
+            )
+              ? 'regular'
+              : 'dim',
+          ),
+        };
+      }),
     });
     player.experimentalStickeringMaskOrbits = {
       orbits: {
-        EDGES: mask(EDGE_SLOTS, 2),
-        CORNERS: mask(CORNER_SLOTS, 3),
-        CENTERS: mask(CENTER_SLOTS, 1),
+        EDGES: mask('EDGES', EDGE_SLOTS, 2),
+        CORNERS: mask('CORNERS', CORNER_SLOTS, 3),
+        CENTERS: mask('CENTERS', CENTER_SLOTS, 1),
       },
     };
     return {

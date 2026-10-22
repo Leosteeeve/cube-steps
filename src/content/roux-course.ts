@@ -310,13 +310,16 @@ export const ROUX_LESSON_DETAILS: Readonly<Record<string, RouxLessonDetail>> = O
     const t = ROUX_LESSON_TEXT[l.id],
       stage = l.stageId as RouxStageId;
     const referenceIds = ROUX_REFERENCE.filter((r) =>
-      stage === 'roux-corner-orientation'
-        ? r.id.includes('ocll')
-        : stage === 'roux-corner-permutation'
-          ? r.id === 'roux-t' || r.id === 'roux-y'
-          : stage.includes('edge')
-            ? r.id.includes('lse')
-            : false,
+      stage === 'roux-first-block' || stage === 'roux-second-block'
+        ? r.id.startsWith('roux-block-') &&
+          (stage === 'roux-first-block' || r.algorithm.moves.every((move) => /^[RUM]/.test(move)))
+        : stage === 'roux-corner-orientation'
+          ? r.id.includes('ocll')
+          : stage === 'roux-corner-permutation'
+            ? r.id === 'roux-t' || r.id === 'roux-y'
+            : stage.includes('edge')
+              ? r.id.includes('lse')
+              : false,
     ).map((r) => r.id);
     return [
       l.id,

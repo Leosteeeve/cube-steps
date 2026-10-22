@@ -12,7 +12,6 @@ import { createDraftStore } from './color-entry/draft-storage';
 import { useEdition } from './edition';
 import { FACE_ENTRY_ORDER } from '../core/facelet-layout';
 import { getMethodInfo as getMethod } from '../methods/info';
-import { registerMethodRuntime } from '../methods/registry';
 import { MethodSelector } from './MethodSelector';
 import { useGuidanceTarget } from '../ui/guidance';
 export function SolvePage({ engine, method = 'lbl' }: { engine: CubeEngine; method?: MethodId }) {
@@ -125,8 +124,8 @@ export function SolvePage({ engine, method = 'lbl' }: { engine: CubeEngine; meth
     if (method === 'roux-beginner') {
       let timeout: ReturnType<typeof setTimeout> | undefined;
       try {
-        const { ROUX_RUNTIME } = await Promise.race([
-          import('../methods/roux/definition'),
+        await Promise.race([
+          import('../methods/roux/browser-runtime').then((m) => m.prepareRouxPlayback()),
           new Promise<never>((_, reject) => {
             timeout = setTimeout(
               () => reject(Error('Roux playback loading timed out. Please try again.')),
@@ -134,7 +133,6 @@ export function SolvePage({ engine, method = 'lbl' }: { engine: CubeEngine; meth
             );
           }),
         ]);
-        registerMethodRuntime(ROUX_RUNTIME);
       } catch (error) {
         if (token === epoch.current && methodRef.current === method) {
           setBusy(false);

@@ -48,6 +48,7 @@ it('supports M, its inverse and M2 from the fixed Roux hold', async () => {
   for (const amount of ['', "'", '2'] as const) {
     const demo = buildNotationDemo(e, { base: 'M', amount }, initial);
     expect(demo.initial).toEqual(initial);
+    expect(e.equals(e.apply(e.solved(), demo.setup), initial)).toBe(true);
     expect(
       e.equals(e.apply(demo.final, [amount === '2' ? 'M2' : amount === "'" ? 'M' : "M'"]), initial),
     ).toBe(true);

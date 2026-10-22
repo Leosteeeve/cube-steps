@@ -44,15 +44,21 @@ The maintained corpus run passed 12 tests in 147.23 seconds. Across seeds 1–1,
 
 The focused Roux browser checks run on Chromium and WebKit. They cover all eight chapters, M/M′/M2 demonstrations, a verified example per chapter, random and pasted input, live-generated six-face color input, method switching, cancellation and retry, temporary center phases, seek/reverse/replay, keyboard controls and reduced motion. Global Roux links fail gracefully, and global home/CFOP plus club Timer do not request the Roux catalog or policies.
 
-Real browser testing found and fixed a discarded scramble when switching between Roux and CFOP. All solve methods now retain the same input component; Roux playback registration remains lazy and guards against stale requests. A separate failing-then-passing regression aligns the Roux sidebar's eight chapter numbers with its lesson headers. The final unit run passes 839 tests across 182 files.
+Real browser testing found and fixed a discarded scramble when switching between Roux and CFOP. All solve methods now retain the same input component; Roux playback registration remains lazy and guards against stale requests. A separate failing-then-passing regression aligns the Roux sidebar's eight chapter numbers with its lesson headers.
+
+The independent review found four issues, corrected in one tested fix pass: M demonstrations now render their declared Roux hold and highlights; browser playback uses asynchronously loaded verified assets instead of generating policies on the main thread; both block chapters include grouped references to the actual shared maneuvers; and the loading assertion distinguishes dedicated Roux assets from existing method modules. Actual renderer endpoints are checked before and after M/M′/M2. Failed downloads can be retried without a page reload, and cancelling a pending solve does not reuse its old input. The cancellation test holds one actual policy download, rather than adding delays to each development-module wrapper.
+
+After the review fixes, all 844 unit tests across 183 files pass. Type checking, generated course examples, Guide assets and the build pass. Full development/production browser checks and remote CI remain mandatory publication gates; their final results belong to the PR and deployment receipts.
 
 Desktop (1,360 px) and phone (390 px) screenshots were visually inspected. No horizontal overflow or browser exceptions occurred in these checks. The following spot measurements include clicking Explain, runtime/worker loading and reaching a ready player, with two different scrambles per fresh browser context. They use the desktop Windows host during other regression work; phone widths emulate layout and are **not real-phone speed measurements**, distributions or performance promises.
 
 | Browser / viewport | Cold solve | Next solve |
 | --- | ---: | ---: |
-| Chromium / 1,360 px | 1,303 ms | 395 ms |
-| Chromium / 390 px | 1,302 ms | 382 ms |
-| WebKit / 390 px | 2,516 ms | 1,219 ms |
+| Chromium / 1,360 px | 365 ms | 399 ms |
+| Chromium / 390 px | 377 ms | 387 ms |
+| WebKit / 390 px | 973 ms | 678 ms |
+
+One minor teaching polish item remains deferred: an unfinished block preparation has accurate target and state transitions, but its final purpose sentence is generic. More specific extraction, connection or insertion wording will benefit from physical feedback.
 
 ## Physical acceptance to perform
 
