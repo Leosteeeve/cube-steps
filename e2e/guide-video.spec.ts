@@ -4,18 +4,26 @@ test('Guide loads the film only on request and keeps written help available', as
   const mediaRequests: string[] = [];
   const errors: string[] = [];
   page.on('request', (request) => {
-    if (request.url().includes('club-guide-video-v1.mp4')) mediaRequests.push(request.url());
+    if (request.url().includes('club-guide-video-v2.mp4')) mediaRequests.push(request.url());
   });
   page.on('pageerror', (error) => errors.push(error.message));
   await page.goto('club/#/guide');
   const watch = page.getByRole('button', { name: 'Watch the 5-minute guide' });
   await expect(watch).toBeVisible();
+  await expect(
+    page.getByText(
+      '5 minutes · English on-screen instructions · Music & sound effects · No narration',
+      { exact: true },
+    ),
+  ).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Origami — Scott Buckley' })).toBeVisible();
   await expect(page.locator('video')).toHaveCount(0);
   await expect(page.getByRole('heading', { name: 'Find your first step' })).toBeVisible();
   expect(mediaRequests).toEqual([]);
   await watch.click();
   const video = page.locator('video');
   await expect(video).toBeVisible();
+  await expect(video).toHaveAttribute('src', /club-guide-video-v2\.mp4$/);
   await expect.poll(() => video.evaluate((v: HTMLVideoElement) => v.readyState)).toBeGreaterThan(1);
   expect(await video.evaluate((v: HTMLVideoElement) => v.duration)).toBeCloseTo(300, 0);
   await video.evaluate((v: HTMLVideoElement) => {
@@ -36,8 +44,11 @@ test('Guide loads the film only on request and keeps written help available', as
       true,
     );
   }
-  await page.getByText('Read the video transcript', { exact: true }).click();
-  await expect(page.getByText('There is no automatic cloud sync.', { exact: false })).toBeVisible();
+  await page.getByText('Read the on-screen guide', { exact: true }).click();
+  await expect(
+    page.getByText('Your results are stored locally, not automatically synced.', { exact: false }),
+  ).toBeVisible();
+  await expect(page.getByText('Your turn. Keep your curiosity.', { exact: false })).toBeVisible();
   expect(errors).toEqual([]);
 });
 
@@ -53,7 +64,7 @@ test('an unavailable film preserves the written Guide and a download alternative
     v.load();
   });
   await expect(page.getByRole('status')).toContainText('The video could not load');
-  await expect(page.getByRole('link', { name: 'Download video (37 MB)' })).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Download video (36 MB)' })).toBeVisible();
   await page
     .getByRole('navigation', { name: 'Guide chapters' })
     .getByRole('link', { name: /Read a move/ })

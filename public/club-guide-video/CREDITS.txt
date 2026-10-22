@@ -1,0 +1,21 @@
+Music: "Origami" by Scott Buckley - released under CC BY 4.0.
+https://www.scottbuckley.com.au/library/origami/
+https://creativecommons.org/licenses/by/4.0/
+Edits: two excerpts beginning at 00:12, adjusted volume, a four-second crossfade,
+and opening/closing fades. Mixed with interface effects. No spoken narration.
+If uploading to YouTube, include the music credit and author link in the description.
+
+Interface effects: Kenney, Interface Sounds (1.0), CC0.
+https://kenney.nl/assets/interface-sounds
+https://creativecommons.org/publicdomain/zero/1.0/
+Used: click_001.ogg, switch_001.ogg, confirmation_001.ogg. Volume adjusted.
+Original license and source-page snapshots are retained in the local authoring archive.
+
+Website footage, editorial text and club mark: original CubeSteps project material.
+Footage revision: be8e89d81e42894db47854290123517ccc04f3d5.
+The footage records real website operation. Crops preserve the original turn sequences
+and source playback speed. Original capture timings are retained in source/captures.json.
+Prepared lesson/solver examples, Timer control runs and sample history are labeled.
+Closing composition is adapted from the original full tutorial at the owner's request.
+
+Created 2026-10-21. Accepted for publication in the club Guide as club-guide-video-v2.

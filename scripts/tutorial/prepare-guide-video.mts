@@ -36,7 +36,7 @@ if (import.meta.main) {
   await prepareGuideVideo(
     asset,
     fileURLToPath(
-      new URL('../../public/club-guide-video/club-guide-video-v1.mp4', import.meta.url),
+      new URL('../../public/club-guide-video/club-guide-video-v2.mp4', import.meta.url),
     ),
   );
   console.log('Guide video verified.');

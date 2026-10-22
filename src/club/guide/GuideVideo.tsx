@@ -20,16 +20,16 @@ export function GuideVideo() {
             autoPlay
             playsInline
             preload="none"
-            poster={`${media}poster.webp`}
-            src={`${media}club-guide-video-v1.mp4`}
-            aria-label="The five-minute club website guide, with English narration and captions"
+            poster={`${media}poster-v2.webp`}
+            src={`${media}club-guide-video-v2.mp4`}
+            aria-label="The five-minute club website guide, with English on-screen instructions, music and sound effects, and no narration"
             onError={() => setFailed(true)}
           >
             Your browser cannot play this video. Use the download link below.
           </video>
         ) : (
           <button className="guide-video-play" onClick={() => setStarted(true)}>
-            <img src={`${media}poster.webp`} alt="" width={1280} height={720} />
+            <img src={`${media}poster-v2.webp`} alt="" width={1280} height={720} />
             <span>
               <span aria-hidden="true">▶</span> Watch the 5-minute guide
             </span>
@@ -37,20 +37,30 @@ export function GuideVideo() {
         )}
       </div>
       <div className="guide-video-meta">
-        <p>5 minutes · English narration & captions · AI narration</p>
-        <a href={`${media}club-guide-video-v1.mp4`} download="Webb-Cubing-Club-Guide.mp4">
-          Download video (37 MB)
+        <p>5 minutes · English on-screen instructions · Music & sound effects · No narration</p>
+        <a href={`${media}club-guide-video-v2.mp4`} download="Webb-Cubing-Club-Guide.mp4">
+          Download video (36 MB)
         </a>
       </div>
+      <p className="guide-video-credits">
+        Music:{' '}
+        <a href="https://www.scottbuckley.com.au/library/origami/">Origami — Scott Buckley</a> (
+        <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>). Sound effects:{' '}
+        <a href="https://kenney.nl/assets/interface-sounds">Kenney</a> (CC0).{' '}
+        <a href={`${media}CREDITS.txt`}>Credits & edits</a>.
+      </p>
       {failed && (
         <p role="status">
           The video could not load. Try the download link, or follow the written guide below.
         </p>
       )}
       <details className="guide-video-transcript">
-        <summary>Read the video transcript</summary>
+        <summary>Read the on-screen guide</summary>
         {transcript.map((segment) => (
-          <p key={segment.start}>{segment.text}</p>
+          <p key={segment.start}>
+            <strong>{`${Math.floor(segment.start / 60)}:${String(segment.start % 60).padStart(2, '0')}`}</strong>{' '}
+            {segment.text}
+          </p>
         ))}
       </details>
     </section>
