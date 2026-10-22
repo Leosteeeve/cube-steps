@@ -11,6 +11,7 @@ const slugs: Record<MethodId, string> = {
   lbl: '',
   'cfop-beginner': 'cfop',
   'cfop-advanced': 'advanced-cfop',
+  'roux-beginner': 'roux',
 };
 const fromSlug = (slug: string): MethodId | undefined =>
   slug === 'cfop' ? 'cfop-beginner' : slug === 'advanced-cfop' ? 'cfop-advanced' : undefined;

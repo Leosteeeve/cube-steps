@@ -47,7 +47,7 @@ function plan(
       actions.push({
         kind: purpose === 'formula' ? 'algorithm' : 'setup',
         ruleId: algorithmId ?? `roux-corner-${purpose}`,
-        caseId: match.caseId,
+        caseId: purpose === 'align' ? 'roux-corners-in-order' : match.caseId,
         targets: observation.corners.filter((p) => p.slot.includes('U')).map((p) => p.id),
         moves,
         algorithmId,

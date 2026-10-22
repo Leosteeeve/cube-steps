@@ -1,6 +1,15 @@
 import assert from 'node:assert/strict';
 import type { CubeEngine, CubeState } from '../../src/core/types';
 import type { RouxPlanResult } from '../../src/methods/roux/types';
+import { readFileSync } from 'node:fs';
+import { loadRouxAssets } from '../../src/methods/roux/assets';
+export const loadTestRouxAssets = () =>
+  loadRouxAssets((async (input) => {
+    const name = String(input).includes('block-policies')
+      ? 'block-policies.json'
+      : 'lse-policies.bin';
+    return new Response(new Uint8Array(readFileSync('src/methods/roux/data/' + name)));
+  }) as typeof fetch);
 export function assertRouxActions(
   engine: CubeEngine,
   initial: CubeState,

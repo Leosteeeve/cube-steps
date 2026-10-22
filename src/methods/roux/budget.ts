@@ -22,6 +22,7 @@ export class RouxPlanningError extends Error {
   }
 }
 export interface RouxBudget {
+  check(stage: RouxStageId): void;
   node(stage: RouxStageId): void;
   action(stage: RouxStageId, moves: readonly TeachingMove[]): void;
 }
@@ -41,6 +42,7 @@ export function createRouxBudget(
       throw new RouxPlanningError('budget', stage, 'Roux time budget exhausted.');
   };
   return {
+    check: checkTime,
     node(stage) {
       checkTime(stage);
       if (++nodes > limits.maxNodes)
