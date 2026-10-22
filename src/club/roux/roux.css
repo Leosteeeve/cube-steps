@@ -169,3 +169,19 @@
     font-size: 10px;
   }
 }
+.roux-holding-guide {
+  padding: 0.8rem 1rem;
+  border: 1px solid #d4e2f4;
+  border-radius: 12px;
+  background: #f5f8fd;
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+.roux-holding-guide p {
+  margin: 0.25rem 0;
+}
+.roux-holding-guide small {
+  display: block;
+  color: #405e7e;
+}

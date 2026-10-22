@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { lazy, Suspense, useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useGuidanceAction, useGuidanceScope, useGuidanceTarget } from '../ui/guidance';
 import type { CubeEngine } from '../core/types';
 import type { PlaybackSource, PlaybackSectionId } from './playback-source';
@@ -12,6 +12,9 @@ import {
 } from './controller';
 import { createCubingAdapter } from './cubing-adapter';
 import { RegripGuide } from './RegripGuide';
+const RouxPlaybackGuide = lazy(() =>
+  import('./RouxHoldingGuide').then((m) => ({ default: m.RouxPlaybackGuide })),
+);
 const stageTitle = (id: string) =>
   id
     .split('-')
@@ -319,6 +322,21 @@ export function PlaybackView({
         </div>
       </section>
       <aside className="explanation" aria-label="Step explanation">
+        {s && source.kind === 'solve' && source.session.trace.method === 'roux-beginner' && (
+          <Suspense fallback={null}>
+            <RouxPlaybackGuide
+              engine={engine}
+              boundaryState={s.boundaryState}
+              action={action}
+              completedMoves={
+                range
+                  ? Math.max(0, Math.min(action?.moves.length ?? 0, s.moveIndex - range.start))
+                  : 0
+              }
+              moving={s.progress > 0}
+            />
+          </Suspense>
+        )}
         {s && (
           <RegripGuide
             engine={engine}
