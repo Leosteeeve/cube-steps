@@ -1,6 +1,7 @@
 import type { CubeEngine, CubeState, TeachingMove } from '../../src/core/types';
 // Every fixture is a legal replay from the explicitly held solved cube.
 const fixtures: Readonly<Record<string, readonly TeachingMove[]>> = {
+  'first-block-slice-assist': ['D', "M'"],
   'broken-left-block': ['L'],
   'middle-quarter': ['M'],
   'middle-half': ['M2'],
