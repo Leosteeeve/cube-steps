@@ -38,6 +38,33 @@ afterEach(() => {
   cleanup();
   vi.unstubAllGlobals();
 });
+it('resets the same move when its physical starting frame changes', async () => {
+  const { rouxReferenceState } = await import('../../methods/roux/frame');
+  const v = render(<NotationPlayer engine={engine} selection={{ base: 'M', amount: '' }} />);
+  await waitFor(() => expect(screen.getByRole('button', { name: 'Play move' })).toBeEnabled());
+  fireEvent.click(screen.getByRole('button', { name: 'Play move' }));
+  const held = rouxReferenceState(engine);
+  v.rerender(
+    <NotationPlayer
+      engine={engine}
+      selection={{ base: 'M', amount: '' }}
+      initialState={held}
+      holdingLabel="Blue left · green right"
+    />,
+  );
+  await waitFor(() => expect(screen.getByRole('button', { name: 'Play move' })).toBeEnabled());
+  expect(screen.getByLabelText('Current holding')).toHaveTextContent('yellow up · red front');
+  expect(screen.getByText('Blue left · green right')).toBeVisible();
+  expect(
+    screen.getByText(
+      'Starting grip: yellow up · red front. Every example resets to this solved position.',
+    ),
+  ).toBeVisible();
+  expect(document.querySelector('[data-boundary-state]')).toHaveAttribute(
+    'data-boundary-state',
+    JSON.stringify(held.data),
+  );
+});
 it('wrong move does not complete U prime playback and re-selection is not playback', async () => {
   const emit = vi.fn(),
     bridge = { emit, registerTarget: () => () => {}, registerScope: () => () => {} };

@@ -26,7 +26,8 @@ export function RegripGuide({
         )
       : undefined;
   const hasInternalRotation =
-    action?.kind === 'algorithm' && action.moves.some((m) => /^[xyz]|w/.test(m));
+    action?.kind === 'algorithm' && action.moves.some((m) => /^[xyz]/.test(m));
+  const hasLayerTurn = action?.moves.some((m) => /w|^[MES]/.test(m));
   return (
     <section className="regrip-guide" aria-label="Holding guide">
       <p aria-label="Current holding" data-front-color={now.F} data-up-color={now.U}>
@@ -50,6 +51,12 @@ export function RegripGuide({
           Follow the physical rotations inside this formula; the holding colors update after each
           completed move.
         </p>
+      )}
+      {hasLayerTurn && (
+        <small>
+          Wide turns move two layers; M/E/S move one inner slice. Follow those layers, not a
+          whole-cube rotation.
+        </small>
       )}
       {(destination || hasInternalRotation) && (
         <small>Dragging the view only changes your viewpoint.</small>

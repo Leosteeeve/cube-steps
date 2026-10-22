@@ -3,6 +3,7 @@ export const GUIDE_SECTION_IDS = [
   'start',
   'moves',
   'lessons',
+  'roux',
   'solve',
   'algorithms',
   'practice',

@@ -4,6 +4,7 @@ import { createCubeEngine } from '../../core/cube';
 import type { CubeEngine } from '../../core/types';
 import { buildNotationDemo } from './demonstration';
 import { createNotationAdapter } from './cubing-adapter';
+import { EDGE_SLOTS } from '../../core/observations';
 const state = vi.hoisted(() => ({
   ready: Promise.resolve<{ algDuration: () => number }>({ algDuration: () => 1000 }),
 }));
@@ -42,6 +43,28 @@ const options = () => ({
   signal: new AbortController().signal,
   camera: { latitude: 28, longitude: 32, referenceFace: 'U' as const },
   onError: vi.fn(),
+});
+it('highlights the physical middle-slice pieces in a rotated Roux hold', async () => {
+  const initial = engine.apply(engine.solved(), ['x2', 'y']);
+  const host = document.createElement('div');
+  document.body.append(host);
+  const adapter = await createNotationAdapter(
+    host,
+    buildNotationDemo(engine, { base: 'M', amount: '' }, initial),
+    options(),
+  );
+  const mask = (
+    host.firstElementChild as unknown as {
+      experimentalStickeringMaskOrbits: { orbits: { EDGES: { pieces: { facelets: string[] }[] } } };
+    }
+  ).experimentalStickeringMaskOrbits.orbits.EDGES;
+  const highlighted = EDGE_SLOTS.filter((_, i) => mask.pieces[i].facelets[0] === 'regular');
+  const expected = engine
+    .observe(initial)
+    .edges.filter((p) => !/[LR]/.test(p.slot))
+    .map((p) => p.id);
+  expect(highlighted.sort()).toEqual(expected.sort());
+  adapter.dispose();
 });
 it('renders one token, preserves progress on camera changes and disposes only its own element', async () => {
   const host = document.createElement('div');

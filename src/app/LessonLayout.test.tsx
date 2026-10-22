@@ -6,6 +6,8 @@ import { LessonLayout } from './LessonLayout';
 import { getCourse } from '../content/courses';
 import { getMethod } from '../methods/registry';
 import { lessonRoute } from './routes';
+import { registerRouxCourse } from '../content/courses';
+import { ROUX_COURSE } from '../content/roux-course';
 beforeEach(() =>
   vi.stubGlobal('matchMedia', () => ({
     matches: false,
@@ -16,6 +18,17 @@ beforeEach(() =>
 afterEach(() => {
   cleanup();
   vi.unstubAllGlobals();
+});
+it('numbers all eight Roux chapters consistently with their lesson headers', () => {
+  registerRouxCourse(ROUX_COURSE);
+  const { container } = render(
+    <LessonLayout method="roux-beginner" selected="intro">
+      Lesson
+    </LessonLayout>,
+  );
+  expect([...container.querySelectorAll('.stage-index')].map((label) => label.textContent)).toEqual(
+    ['01', '02', '03', '04', '05', '06', '07', '08'],
+  );
 });
 it.each(['lbl', 'cfop-beginner', 'cfop-advanced'] as const)(
   'exposes every lesson after expanding the phone selector for %s',

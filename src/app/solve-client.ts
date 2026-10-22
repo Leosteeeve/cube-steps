@@ -32,6 +32,7 @@ function freezeReceived<T>(value: T): T {
 export function createSolveClient(
   factory: () => WorkerPort = () =>
     new Worker(new URL('../workers/solve.worker.ts', import.meta.url), { type: 'module' }),
+  edition: 'global' | 'club' = 'global',
 ) {
   let requestId = 0,
     active:
@@ -120,7 +121,7 @@ export function createSolveClient(
             error: { kind: 'worker', message: `The solver could not start: ${event.message}` },
           });
         };
-        worker.postMessage({ requestId: id, method, input: structuredClone(sentInput) });
+        worker.postMessage({ requestId: id, method, input: structuredClone(sentInput), edition });
       } catch (error) {
         if (active) clearTimeout(active.timer);
         active?.worker.terminate();

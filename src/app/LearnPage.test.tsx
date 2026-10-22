@@ -8,9 +8,13 @@ import { solveCFOP } from '../methods/cfop/solve';
 import { CFOP_EXAMPLES } from '../content/cfop-examples';
 import { parseScramble } from '../core/notation';
 import type { SessionResult } from './solve-client';
-const mocked = vi.hoisted(() => ({ solve: vi.fn(), cancel: vi.fn() }));
+const mocked = vi.hoisted(() => ({ solve: vi.fn(), facelets: vi.fn(), cancel: vi.fn() }));
 vi.mock('./solve-client', () => ({
-  createSolveClient: () => ({ solveScramble: mocked.solve, cancel: mocked.cancel }),
+  createSolveClient: () => ({
+    solveScramble: mocked.solve,
+    solveFacelets: mocked.facelets,
+    cancel: mocked.cancel,
+  }),
 }));
 vi.mock('../player/CubePlayer', () => ({
   CubePlayer: ({ caseId }: { caseId?: string }) => (
@@ -20,6 +24,34 @@ vi.mock('../player/CubePlayer', () => ({
 afterEach(() => {
   cleanup();
   vi.clearAllMocks();
+});
+it('dispatches a legal Roux color example without treating it as a scramble', async () => {
+  const { ROUX_COURSE } = await import('../content/roux-course');
+  const { registerRouxCourse } = await import('../content/courses');
+  const { registerMethodRuntime } = await import('../methods/registry');
+  const { ROUX_RUNTIME } = await import('../methods/roux/definition');
+  registerRouxCourse(ROUX_COURSE);
+  registerMethodRuntime(ROUX_RUNTIME);
+  mocked.solve.mockImplementation(() => new Promise(() => {}));
+  mocked.facelets.mockImplementation(() => new Promise(() => {}));
+  render(
+    <LearnPage
+      engine={await createCubeEngine()}
+      method="roux-beginner"
+      lessonId="roux-corner-orientation"
+    />,
+  );
+  fireEvent.change(screen.getByLabelText('Practice case'), { target: { value: 'roux-ocll-21' } });
+  const selected = ROUX_COURSE.find((l) => l.id === 'roux-corner-orientation')!.examples!.find(
+    (e) => e.id === 'roux-ocll-21',
+  )!;
+  expect(mocked.facelets).toHaveBeenCalledWith(
+    selected.input!.kind === 'facelets' ? selected.input!.facelets : null,
+    'roux-beginner',
+  );
+  expect(screen.getByText('LESSON 4 / 8')).toBeVisible();
+  expect(screen.queryByText('Start with the white cross')).toBeNull();
+  await screen.findByRole('heading', { name: 'Look' });
 });
 it('links to animated notation only from the club introduction', async () => {
   const engine = await createCubeEngine();

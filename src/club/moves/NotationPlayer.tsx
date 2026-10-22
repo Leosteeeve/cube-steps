@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { useGuidanceAction, useGuidanceScope, useGuidanceTarget } from '../../ui/guidance';
-import type { CubeEngine } from '../../core/types';
+import type { CubeEngine, CubeState } from '../../core/types';
 import { stateToFacelets } from '../../core/facelets';
 import { useSystemReducedMotion } from '../../ui/use-system-reduced-motion';
 import { describeNotation, type NotationSelection } from './catalog';
@@ -15,15 +15,19 @@ import './moves.css';
 export function NotationPlayer({
   engine,
   selection,
+  initialState,
+  holdingLabel,
 }: {
   engine: CubeEngine;
   selection: NotationSelection;
+  initialState?: CubeState;
+  holdingLabel?: string;
 }) {
   const demo = useMemo(
-    () => buildNotationDemo(engine, selection),
-    [engine, selection.base, selection.amount],
+    () => buildNotationDemo(engine, selection, initialState),
+    [engine, selection.base, selection.amount, initialState],
   );
-  const controller = useMemo(() => createNotationController(demo), [engine]);
+  const controller = useMemo(() => createNotationController(demo), [engine, initialState]);
   const [snapshot, setSnapshot] = useState(controller.snapshot),
     [mode, setMode] = useState<NotationCameraMode>('holding'),
     [retry, setRetry] = useState(0);
@@ -37,7 +41,12 @@ export function NotationPlayer({
     tokenTarget = useGuidanceTarget('moves.token');
   const currentMode = useRef(mode);
   currentMode.current = mode;
-  const pendingRestore = useRef<{ move: string; progress: number; speed: 0.5 | 1 } | null>(null);
+  const pendingRestore = useRef<{
+    move: string;
+    initial: CubeState;
+    progress: number;
+    speed: 0.5 | 1;
+  } | null>(null);
   const reduced = useSystemReducedMotion();
   useLayoutEffect(
     () =>
@@ -58,7 +67,11 @@ export function NotationPlayer({
         ? controller.snapshot().version
         : controller.select(demo);
     const abort = new AbortController();
-    if (pendingRestore.current && pendingRestore.current.move !== demo.move)
+    if (
+      pendingRestore.current &&
+      (pendingRestore.current.move !== demo.move ||
+        !engine.equals(pendingRestore.current.initial, demo.initial))
+    )
       pendingRestore.current = null;
     let local: NotationRenderer | undefined;
     const failure = (message: string) => {
@@ -113,12 +126,17 @@ export function NotationPlayer({
           controller.pause();
           setMode(savedMode);
           const current = controller.snapshot();
-          if (current.demo.move === saved.demo.move && current.phase !== 'loading') {
+          if (
+            current.demo.move === saved.demo.move &&
+            engine.equals(current.demo.initial, saved.demo.initial) &&
+            current.phase !== 'loading'
+          ) {
             controller.restorePaused(saved);
             renderer.current?.setCamera(notationCamera(saved.demo.entry, savedMode));
           } else
             pendingRestore.current = {
               move: saved.demo.move,
+              initial: saved.demo.initial,
               progress: saved.progress,
               speed: saved.speed,
             };
@@ -148,7 +166,8 @@ export function NotationPlayer({
     staticMode = reduced || !!snapshot.error;
   const playTarget = useGuidanceTarget('moves.play', ready && !staticMode);
   const boundary = progress === 1 ? demo.final : demo.initial,
-    centers = engine.observe(boundary).centers;
+    centers = engine.observe(boundary).centers,
+    startingCenters = engine.observe(demo.initial).centers;
   const description = describeNotation(selection);
   const status =
     !matching || snapshot.phase === 'loading'
@@ -200,6 +219,7 @@ export function NotationPlayer({
           {centers.U} up · {centers.F} front
           {progress > 0 && progress < 1 ? ' · last completed position' : ''}
         </p>
+        {holdingLabel && <p className="notation-holding">{holdingLabel}</p>}
         <div
           ref={directionTarget}
           className="notation-camera"
@@ -325,7 +345,8 @@ export function NotationPlayer({
         <p>{demo.entry.layerText}</p>
         <DirectionGuide selection={selection} />
         <p className="notation-start">
-          Starting grip: white up · green front. Every example resets to this solved position.
+          Starting grip: {startingCenters.U} up · {startingCenters.F} front. Every example resets to
+          this solved position.
         </p>
         <p>Letters follow your physical hold, not a permanent sticker color.</p>
       </aside>

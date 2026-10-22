@@ -20,8 +20,8 @@ export function CaseSelector({
         ))}
       </select>
       <p>
-        Case jumps change the on-screen cube instantly. On a physical cube, follow the scramble and
-        all earlier moves first.
+        Case jumps change the on-screen cube instantly. On a physical cube, match the example input
+        and follow all earlier moves first. Open the input details below for the scramble or colors.
       </p>
     </div>
   );

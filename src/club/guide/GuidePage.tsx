@@ -63,20 +63,23 @@ export function GuidePage({ section }: { section?: GuideSectionId }) {
                       ? 'Home'
                       : c.id === 'lessons'
                         ? 'Lessons'
-                        : c.id === 'solve'
-                          ? 'Solve your cube'
-                          : c.id === 'algorithms'
-                            ? 'Algorithms'
-                            : c.id === 'practice'
-                              ? 'Practice'
-                              : c.id === 'timer'
-                                ? 'Timer'
-                                : c.id === 'lab'
-                                  ? 'CFOP Lab'
-                                  : 'Moves'}{' '}
+                        : c.id === 'roux'
+                          ? 'Beginner Roux'
+                          : c.id === 'solve'
+                            ? 'Solve your cube'
+                            : c.id === 'algorithms'
+                              ? 'Algorithms'
+                              : c.id === 'practice'
+                                ? 'Practice'
+                                : c.id === 'timer'
+                                  ? 'Timer'
+                                  : c.id === 'lab'
+                                    ? 'CFOP Lab'
+                                    : 'Moves'}{' '}
                     →
                   </a>
                 )}
+                {c.id === 'roux' && <a href="#/solve/roux">Solve with Beginner Roux →</a>}
               </div>
               {!!c.tourIds.length && (
                 <div className="guide-tour-directory" aria-label={`${c.title} tours`}>

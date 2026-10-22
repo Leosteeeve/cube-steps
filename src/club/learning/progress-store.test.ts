@@ -16,6 +16,33 @@ it('round trips validated lessons and keeps editions separate', () => {
   expect(localStorage.getItem('cubesteps.practice-selection.v1')).toBe('global');
   expect(store.save({ ...value, lastLesson: { method: 'lbl', lessonId: 'missing' } })).toBe(false);
 });
+it('preserves pre-Roux progress while adding Roux before its course is lazy-loaded', () => {
+  const old = {
+    ...value,
+    practiced: {
+      lbl: ['notation', 'white-cross'],
+      'cfop-beginner': ['intro'],
+      'cfop-advanced': ['intro'],
+    },
+  };
+  localStorage.setItem(PROGRESS_KEY, JSON.stringify(old));
+  const store = createClubProgressStore(() => localStorage),
+    loaded = store.load().value;
+  expect(loaded.practiced['roux-beginner'] ?? []).toEqual([]);
+  expect(
+    store.save({
+      ...loaded,
+      selectedMethod: 'roux-beginner',
+      lastLesson: { method: 'roux-beginner', lessonId: 'roux-first-block' },
+      practiced: { ...loaded.practiced, 'roux-beginner': ['intro', 'roux-first-block'] },
+    }),
+  ).toBe(true);
+  const saved = createClubProgressStore(() => localStorage).load();
+  expect(saved.writable).toBe(true);
+  for (const id of ['lbl', 'cfop-beginner', 'cfop-advanced'] as const)
+    expect(saved.value.practiced[id]).toEqual(old.practiced[id]);
+  expect(saved.value.practiced['roux-beginner']).toEqual(['intro', 'roux-first-block']);
+});
 it.each([
   '{',
   'null',

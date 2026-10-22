@@ -16,6 +16,9 @@ import { TourEntry } from './tutorial/TourEntry';
 import { tourForRoute } from './tutorial/catalog';
 import { createLabOwner } from './lab-owner';
 const TimerPage = lazy(() => import('./timer/TimerPage').then((m) => ({ default: m.TimerPage })));
+const RouxFeaturePage = lazy(() =>
+  import('./roux/RouxFeaturePage').then((m) => ({ default: m.RouxFeaturePage })),
+);
 const GuidePage = lazy(() => import('./guide/GuidePage').then((m) => ({ default: m.GuidePage })));
 const LabWorkspace = lazy(() =>
   import('./lab/LabWorkspace').then((m) => ({ default: m.LabWorkspace })),
@@ -98,8 +101,19 @@ export function ClubApp() {
               >
                 Solve your cube
               </a>
-              <a href="#/algorithms">Algorithms</a>
-              <a href="#/practice">Formula practice</a>
+              <a href="#/algorithms">
+                {'method' in route && route.method === 'roux-beginner'
+                  ? 'CFOP algorithms'
+                  : 'Algorithms'}
+              </a>
+              <a href="#/practice">
+                {'method' in route && route.method === 'roux-beginner'
+                  ? 'CFOP formula practice'
+                  : 'Formula practice'}
+              </a>
+              {'method' in route && route.method === 'roux-beginner' && (
+                <a href="#/guide/roux">Roux guide</a>
+              )}
               <a href="#/moves">Move explorer</a>
               <a href="#/find-your-route">Find your route</a>
             </nav>
@@ -149,6 +163,10 @@ export function ClubApp() {
               ) : route.kind === 'timer' ? (
                 <Suspense fallback={<p role="status">Loading your practice space…</p>}>
                   <TimerPage engine={engine} repository={timerRepository} />
+                </Suspense>
+              ) : route.kind === 'learn' && route.method === 'roux-beginner' ? (
+                <Suspense fallback={<p role="status">Loading Beginner Roux…</p>}>
+                  <RouxFeaturePage engine={engine} route={route} />
                 </Suspense>
               ) : route.kind === 'learn' ? (
                 <Suspense

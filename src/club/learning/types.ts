@@ -11,4 +11,9 @@ export interface ClubProgress {
   lastLesson?: { method: MethodId; lessonId: string };
   practiced: Partial<Record<MethodId, string[]>>;
 }
-export const CLUB_METHODS = ['lbl', 'cfop-beginner', 'cfop-advanced'] as const;
+export const CLUB_METHODS: readonly MethodId[] = [
+  'lbl',
+  'cfop-beginner',
+  'cfop-advanced',
+  'roux-beginner',
+];

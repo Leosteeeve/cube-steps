@@ -1,4 +1,7 @@
-import type { CubeEngine, CubeState, SolveInput, MethodId } from '../core/types';
+import type { CubeEngine, CubeState, SolveInput, MethodId, SolveResult } from '../core/types';
+import { methodAvailable } from '../methods/availability';
+import type { RouxAssets } from '../methods/roux/assets';
+import type { solveRoux } from '../methods/roux/solve';
 import { validateFacelets } from '../core/facelets';
 import { resolveSolveInput } from '../core/solve-input';
 import { solveLBL } from '../methods/lbl/solve';
@@ -34,9 +37,13 @@ function prepareSolveRequest(
     !('method' in request) ||
     (request.method !== 'lbl' &&
       request.method !== 'cfop-beginner' &&
-      request.method !== 'cfop-advanced')
+      request.method !== 'cfop-advanced' &&
+      request.method !== 'roux-beginner')
   )
     return fail('Choose a supported teaching method: LBL, Beginner CFOP or Advanced CFOP.');
+  const edition = 'edition' in request ? request.edition : 'global';
+  if ((edition !== 'club' && edition !== 'global') || !methodAvailable(request.method, edition))
+    return fail('This teaching method is available only in the club edition.');
   if (
     !('input' in request) ||
     !request.input ||
@@ -78,7 +85,22 @@ export function handleSolveRequest(
 ): WorkerReply | null {
   const prepared = prepareSolveRequest(engine, request);
   if (!prepared || !('initial' in prepared)) return prepared;
+  return solvePrepared(engine, prepared, advanced);
+}
+function solvePrepared(
+  engine: CubeEngine,
+  prepared: PreparedRequest,
+  advanced?: AdvancedAssets,
+): WorkerReply {
   const { requestId, method, input, initial } = prepared;
+  if (method === 'roux-beginner')
+    return {
+      requestId,
+      result: {
+        ok: false,
+        error: { kind: 'solver', message: 'Beginner Roux requires the asynchronous asset loader.' },
+      },
+    };
   if (method === 'cfop-advanced' && !advanced)
     return {
       requestId,
@@ -96,6 +118,9 @@ export function handleSolveRequest(
       : method === 'cfop-beginner'
         ? solveCFOP(engine, initial)
         : solveAdvancedCFOP(engine, initial, advanced!);
+  return wrapResult(prepared, result);
+}
+function wrapResult({ requestId, input }: PreparedRequest, result: SolveResult): WorkerReply {
   return {
     requestId,
     result: result.ok
@@ -114,12 +139,23 @@ export async function handleSolveMessage(
   engine: CubeEngine,
   request: unknown,
   load: () => Promise<AdvancedAssets> = () => loadAdvancedAssets(fetch),
+  loadRoux: () => Promise<{ solve: typeof solveRoux; assets: RouxAssets }> = async () => {
+    const [{ solveRoux }, { loadRouxAssets }] = await Promise.all([
+      import('../methods/roux/solve'),
+      import('../methods/roux/assets'),
+    ]);
+    return { solve: solveRoux, assets: await loadRouxAssets(fetch) };
+  },
 ): Promise<WorkerReply | null> {
   const prepared = prepareSolveRequest(engine, request);
   if (!prepared || !('initial' in prepared)) return prepared;
   try {
+    if (prepared.method === 'roux-beginner') {
+      const { solve, assets } = await loadRoux();
+      return wrapResult(prepared, solve(engine, prepared.initial, assets));
+    }
     const assets = prepared.method === 'cfop-advanced' ? await load() : undefined;
-    return handleSolveRequest(engine, request, assets);
+    return solvePrepared(engine, prepared, assets);
   } catch (error) {
     return {
       requestId: prepared.requestId,
@@ -128,7 +164,8 @@ export async function handleSolveMessage(
         error: {
           kind: 'solver',
           message:
-            'Advanced CFOP assets could not load: ' +
+            (prepared.method === 'roux-beginner' ? 'Beginner Roux' : 'Advanced CFOP') +
+            ' assets could not load: ' +
             (error instanceof Error ? error.message : 'Please try again.'),
         },
       },

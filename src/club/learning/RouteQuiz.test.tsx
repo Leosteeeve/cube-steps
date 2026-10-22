@@ -53,4 +53,9 @@ it('skips to a chooser without guessing answers', () => {
   fireEvent.click(screen.getByRole('button', { name: 'Skip questions' }));
   expect(screen.getByRole('heading', { name: 'Choose your starting point' })).toBeVisible();
   expect(screen.getByRole('button', { name: 'Choose Beginner CFOP' })).toBeVisible();
+  fireEvent.click(screen.getByRole('button', { name: 'Choose Beginner Roux · Preview' }));
+  expect(screen.getByRole('link', { name: 'Start lesson' })).toHaveAttribute(
+    'href',
+    '#/learn/roux/intro',
+  );
 });

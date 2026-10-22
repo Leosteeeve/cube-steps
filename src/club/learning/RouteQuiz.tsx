@@ -90,7 +90,9 @@ export function RouteQuiz() {
                     ? 'Start with notation, holding, and the white daisy.'
                     : id === 'cfop-beginner'
                       ? 'Build a bottom cross, pair F2L, and learn two-look last-layer steps.'
-                      : 'Explore shortest cross, full F2L, OLL and PLL formulas.'}
+                      : id === 'roux-beginner'
+                        ? 'Build two blocks, solve the corners, then finish with the middle slice. Fixed white-bottom, blue-left hold. Preview.'
+                        : 'Explore shortest cross, full F2L, OLL and PLL formulas.'}
                 </span>
               </button>
             ))}

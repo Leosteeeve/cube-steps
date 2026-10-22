@@ -16,6 +16,24 @@ afterEach(() => {
   cleanup();
   vi.unstubAllGlobals();
 });
+it('does not describe wide and slice turns as whole-cube rotations', () => {
+  const before = engine.solved();
+  const action: TraceAction = {
+    kind: 'algorithm',
+    ruleId: 'wide',
+    caseId: 'wide',
+    targets: [],
+    recognition: '',
+    explanation: '',
+    moves: ['Rw', 'M'],
+    before,
+    after: engine.apply(before, ['Rw', 'M']),
+    checkpoint: { id: 'wide', description: '', passed: true },
+  };
+  render(<RegripGuide engine={engine} boundaryState={before} action={action} moving={false} />);
+  expect(screen.queryByText(/physical rotations inside/i)).toBeNull();
+  expect(screen.getByText(/layer.*slice/i)).toBeVisible();
+});
 it('keeps the current hold distinct from the pending rotation destination', () => {
   const before = engine.apply(engine.solved(), ['z2']),
     after = engine.apply(before, ['y']);

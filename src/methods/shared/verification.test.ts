@@ -7,6 +7,12 @@ import { solveLBL } from '../lbl/solve';
 import { LBL_RUNTIME } from '../lbl/definition';
 import { verifyTrace } from './verification';
 let engine: CubeEngine, original: SolveTrace;
+it('requires the Roux runtime for a complete Roux trace', async()=>{
+ const [{solveRoux},{loadTestRouxAssets}]=await Promise.all([import('../roux/solve'),import('../../../tests/helpers/roux')]);
+ const result=solveRoux(engine,engine.solved(),await loadTestRouxAssets());
+ if(!result.ok)throw Error(result.message);
+ expect(()=>verifyTrace(engine,result.trace,LBL_RUNTIME)).toThrow(/method/i);
+});
 beforeAll(async () => {
   engine = await createCubeEngine();
   const parsed = parseScramble(GUIDED_SCRAMBLE);

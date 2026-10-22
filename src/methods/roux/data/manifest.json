@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "coordinateVersion": 1,
+  "block": {
+    "file": "block-policies.json",
+    "bytes": 96105,
+    "sha256": "098f9828b345505de128d2d10c44ee3eecb785aa9ad27360d6214a0ef6a1e041",
+    "catalogDigest": "f84231fe"
+  },
+  "lse": {
+    "file": "lse-policies.bin",
+    "bytes": 2211872,
+    "sha256": "a4c1ae088771ff1341f243299087a27377c5a3c39d1cfb51f7e667268c0fb74d",
+    "catalogDigest": "d39f0350",
+    "domainCount": 184320,
+    "coverage": {
+      "orientation": 184320,
+      "left-right": 2880,
+      "solved": 96
+    }
+  }
+}

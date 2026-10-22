@@ -1,0 +1,3403 @@
+[
+  {
+    "id": "hold",
+    "lessonId": "intro",
+    "input": {
+      "kind": "facelets",
+      "facelets": {
+        "F": [
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green"
+        ],
+        "R": [
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red"
+        ],
+        "B": [
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue"
+        ],
+        "L": [
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange"
+        ],
+        "U": [
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white"
+        ],
+        "D": [
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow"
+        ]
+      }
+    },
+    "expectedStage": "roux-frame",
+    "expectedRuleIds": [
+      "roux-starting-hold"
+    ],
+    "caption": "Start in the input hold, then follow the visible x2 y regrip. Camera orbit is only for looking."
+  },
+  {
+    "id": "left-base-displaced",
+    "lessonId": "roux-first-block",
+    "input": {
+      "kind": "facelets",
+      "facelets": {
+        "F": [
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green"
+        ],
+        "R": [
+          "red",
+          "red",
+          "yellow",
+          "red",
+          "red",
+          "yellow",
+          "red",
+          "red",
+          "yellow"
+        ],
+        "B": [
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue"
+        ],
+        "L": [
+          "white",
+          "orange",
+          "orange",
+          "white",
+          "orange",
+          "orange",
+          "white",
+          "orange",
+          "orange"
+        ],
+        "U": [
+          "red",
+          "red",
+          "red",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white"
+        ],
+        "D": [
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "orange",
+          "orange",
+          "orange"
+        ]
+      }
+    },
+    "expectedStage": "roux-first-block",
+    "expectedRuleIds": [
+      "roux-block-lp"
+    ],
+    "caption": "The white-blue base edge is displaced. Read both colors before moving it."
+  },
+  {
+    "id": "left-front-pair",
+    "lessonId": "roux-first-block",
+    "input": {
+      "kind": "facelets",
+      "facelets": {
+        "F": [
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "yellow",
+          "orange",
+          "orange"
+        ],
+        "R": [
+          "red",
+          "red",
+          "yellow",
+          "red",
+          "red",
+          "yellow",
+          "green",
+          "green",
+          "red"
+        ],
+        "B": [
+          "red",
+          "blue",
+          "blue",
+          "red",
+          "blue",
+          "blue",
+          "white",
+          "blue",
+          "blue"
+        ],
+        "L": [
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "blue",
+          "blue"
+        ],
+        "U": [
+          "white",
+          "white",
+          "green",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white"
+        ],
+        "D": [
+          "red",
+          "yellow",
+          "yellow",
+          "red",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "blue"
+        ]
+      }
+    },
+    "expectedStage": "roux-first-block",
+    "expectedRuleIds": [
+      "roux-block-lp-up-l"
+    ],
+    "caption": "Rebuild the front left pair while preserving the rear pair."
+  },
+  {
+    "id": "left-rear-pair",
+    "lessonId": "roux-first-block",
+    "input": {
+      "kind": "facelets",
+      "facelets": {
+        "F": [
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "white",
+          "orange",
+          "orange"
+        ],
+        "R": [
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "green",
+          "green",
+          "red"
+        ],
+        "B": [
+          "blue",
+          "blue",
+          "yellow",
+          "blue",
+          "blue",
+          "red",
+          "blue",
+          "blue",
+          "red"
+        ],
+        "L": [
+          "orange",
+          "orange",
+          "orange",
+          "yellow",
+          "orange",
+          "orange",
+          "yellow",
+          "blue",
+          "blue"
+        ],
+        "U": [
+          "blue",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white"
+        ],
+        "D": [
+          "orange",
+          "yellow",
+          "yellow",
+          "orange",
+          "yellow",
+          "yellow",
+          "green",
+          "yellow",
+          "yellow"
+        ]
+      }
+    },
+    "expectedStage": "roux-first-block",
+    "expectedRuleIds": [
+      "roux-block-l-up-lp"
+    ],
+    "caption": "Inspect the rear left pair with the camera; the physical hold stays fixed."
+  },
+  {
+    "id": "left-separated-trapped",
+    "lessonId": "roux-first-block",
+    "input": {
+      "kind": "facelets",
+      "facelets": {
+        "F": [
+          "red",
+          "red",
+          "red",
+          "white",
+          "green",
+          "yellow",
+          "white",
+          "blue",
+          "blue"
+        ],
+        "R": [
+          "blue",
+          "green",
+          "green",
+          "red",
+          "red",
+          "red",
+          "orange",
+          "orange",
+          "red"
+        ],
+        "B": [
+          "orange",
+          "orange",
+          "orange",
+          "blue",
+          "blue",
+          "white",
+          "blue",
+          "blue",
+          "white"
+        ],
+        "L": [
+          "white",
+          "green",
+          "yellow",
+          "red",
+          "orange",
+          "orange",
+          "red",
+          "orange",
+          "orange"
+        ],
+        "U": [
+          "blue",
+          "blue",
+          "yellow",
+          "white",
+          "white",
+          "yellow",
+          "green",
+          "green",
+          "white"
+        ],
+        "D": [
+          "green",
+          "yellow",
+          "yellow",
+          "green",
+          "yellow",
+          "yellow",
+          "green",
+          "white",
+          "yellow"
+        ]
+      }
+    },
+    "expectedStage": "roux-first-block",
+    "expectedRuleIds": [
+      "roux-block-l2",
+      "roux-block-bp-u-b",
+      "roux-block-f-u-fp",
+      "roux-block-f2-up-f2"
+    ],
+    "caption": "Separate the jobs: locate a trapped target, extract it, then join and insert the correct pair."
+  },
+  {
+    "id": "left-base-flipped",
+    "lessonId": "roux-first-block",
+    "input": {
+      "kind": "facelets",
+      "facelets": {
+        "F": [
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green"
+        ],
+        "R": [
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "yellow",
+          "red"
+        ],
+        "B": [
+          "blue",
+          "white",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue"
+        ],
+        "L": [
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange"
+        ],
+        "U": [
+          "white",
+          "blue",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white"
+        ],
+        "D": [
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "red",
+          "yellow",
+          "yellow",
+          "yellow"
+        ]
+      }
+    },
+    "expectedStage": "roux-first-block",
+    "expectedRuleIds": [
+      "roux-block-d",
+      "roux-block-mp",
+      "roux-block-l2-u-l2",
+      "roux-block-f2-up-f2",
+      "roux-block-u2",
+      "roux-block-b2-up-b2"
+    ],
+    "caption": "The white-blue edge is in its slot but flipped. A correct location is not yet a correct piece."
+  },
+  {
+    "id": "left-skip",
+    "lessonId": "roux-first-block",
+    "input": {
+      "kind": "facelets",
+      "facelets": {
+        "F": [
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green"
+        ],
+        "R": [
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red"
+        ],
+        "B": [
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue"
+        ],
+        "L": [
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange"
+        ],
+        "U": [
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white"
+        ],
+        "D": [
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow"
+        ]
+      }
+    },
+    "expectedStage": "roux-first-block",
+    "expectedRuleIds": [],
+    "caption": "A complete left block needs no turns. The base and both pairs already match."
+  },
+  {
+    "id": "right-base-displaced",
+    "lessonId": "roux-second-block",
+    "input": {
+      "kind": "facelets",
+      "facelets": {
+        "F": [
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green"
+        ],
+        "R": [
+          "orange",
+          "red",
+          "red",
+          "orange",
+          "red",
+          "red",
+          "orange",
+          "red",
+          "red"
+        ],
+        "B": [
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue"
+        ],
+        "L": [
+          "orange",
+          "orange",
+          "red",
+          "orange",
+          "orange",
+          "red",
+          "orange",
+          "orange",
+          "red"
+        ],
+        "U": [
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "yellow",
+          "yellow",
+          "yellow"
+        ],
+        "D": [
+          "white",
+          "white",
+          "white",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow"
+        ]
+      }
+    },
+    "expectedStage": "roux-second-block",
+    "expectedRuleIds": [
+      "roux-block-r2"
+    ],
+    "caption": "Place the white-green base edge while the left block stays intact."
+  },
+  {
+    "id": "right-front-pair",
+    "lessonId": "roux-second-block",
+    "input": {
+      "kind": "facelets",
+      "facelets": {
+        "F": [
+          "green",
+          "green",
+          "yellow",
+          "green",
+          "green",
+          "orange",
+          "green",
+          "green",
+          "orange"
+        ],
+        "R": [
+          "red",
+          "red",
+          "red",
+          "yellow",
+          "red",
+          "red",
+          "yellow",
+          "green",
+          "green"
+        ],
+        "B": [
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "white",
+          "red",
+          "red"
+        ],
+        "L": [
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "blue",
+          "blue",
+          "orange"
+        ],
+        "U": [
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "green"
+        ],
+        "D": [
+          "yellow",
+          "yellow",
+          "blue",
+          "yellow",
+          "yellow",
+          "red",
+          "yellow",
+          "yellow",
+          "red"
+        ]
+      }
+    },
+    "expectedStage": "roux-second-block",
+    "expectedRuleIds": [
+      "roux-block-r-up-rp"
+    ],
+    "caption": "Join and insert the front right pair with the left block protected."
+  },
+  {
+    "id": "right-rear-pair",
+    "lessonId": "roux-second-block",
+    "input": {
+      "kind": "facelets",
+      "facelets": {
+        "F": [
+          "orange",
+          "green",
+          "green",
+          "orange",
+          "green",
+          "green",
+          "white",
+          "green",
+          "green"
+        ],
+        "R": [
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "green",
+          "green"
+        ],
+        "B": [
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "yellow",
+          "red",
+          "red"
+        ],
+        "L": [
+          "orange",
+          "orange",
+          "yellow",
+          "orange",
+          "orange",
+          "yellow",
+          "blue",
+          "blue",
+          "orange"
+        ],
+        "U": [
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "blue",
+          "white",
+          "white"
+        ],
+        "D": [
+          "green",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "orange",
+          "yellow",
+          "yellow",
+          "orange"
+        ]
+      }
+    },
+    "expectedStage": "roux-second-block",
+    "expectedRuleIds": [
+      "roux-block-rp-up-r"
+    ],
+    "caption": "Choose the rear right pair because it is ready; inspect behind without turning the whole cube."
+  },
+  {
+    "id": "right-extraction",
+    "lessonId": "roux-second-block",
+    "input": {
+      "kind": "facelets",
+      "facelets": {
+        "F": [
+          "orange",
+          "red",
+          "white",
+          "blue",
+          "green",
+          "green",
+          "yellow",
+          "orange",
+          "yellow"
+        ],
+        "R": [
+          "green",
+          "red",
+          "red",
+          "orange",
+          "red",
+          "red",
+          "green",
+          "green",
+          "yellow"
+        ],
+        "B": [
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "green",
+          "green"
+        ],
+        "L": [
+          "orange",
+          "orange",
+          "green",
+          "orange",
+          "orange",
+          "yellow",
+          "orange",
+          "green",
+          "blue"
+        ],
+        "U": [
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "yellow",
+          "yellow",
+          "red"
+        ],
+        "D": [
+          "red",
+          "yellow",
+          "red",
+          "yellow",
+          "yellow",
+          "red",
+          "white",
+          "white",
+          "orange"
+        ]
+      }
+    },
+    "expectedStage": "roux-second-block",
+    "expectedRuleIds": [
+      "roux-block-r2-u2-r2",
+      "roux-block-rp-u-r",
+      "roux-block-r-u-rp",
+      "roux-block-rp-up-r"
+    ],
+    "caption": "Extract and rebuild the right pair through its working area."
+  },
+  {
+    "id": "roux-ocll-21",
+    "lessonId": "roux-corner-orientation",
+    "input": {
+      "kind": "facelets",
+      "facelets": {
+        "F": [
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "orange",
+          "yellow",
+          "red"
+        ],
+        "R": [
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "yellow",
+          "yellow",
+          "yellow"
+        ],
+        "B": [
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "red",
+          "green",
+          "orange"
+        ],
+        "L": [
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "yellow",
+          "blue",
+          "yellow"
+        ],
+        "U": [
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white"
+        ],
+        "D": [
+          "green",
+          "orange",
+          "green",
+          "yellow",
+          "yellow",
+          "red",
+          "blue",
+          "yellow",
+          "blue"
+        ]
+      }
+    },
+    "expectedStage": "roux-corner-orientation",
+    "expectedRuleIds": [
+      "roux-ocll-21"
+    ],
+    "caption": "Match the yellow corner stickers only. The top edges are deliberately not a yellow cross."
+  },
+  {
+    "id": "roux-ocll-22",
+    "lessonId": "roux-corner-orientation",
+    "input": {
+      "kind": "facelets",
+      "facelets": {
+        "F": [
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "red",
+          "yellow",
+          "orange"
+        ],
+        "R": [
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "yellow",
+          "yellow",
+          "green"
+        ],
+        "B": [
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "yellow",
+          "red",
+          "yellow"
+        ],
+        "L": [
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "green",
+          "blue",
+          "yellow"
+        ],
+        "U": [
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white"
+        ],
+        "D": [
+          "blue",
+          "green",
+          "blue",
+          "yellow",
+          "yellow",
+          "orange",
+          "red",
+          "yellow",
+          "orange"
+        ]
+      }
+    },
+    "expectedStage": "roux-corner-orientation",
+    "expectedRuleIds": [
+      "roux-ocll-22"
+    ],
+    "caption": "Match the yellow corner stickers only. The top edges are deliberately not a yellow cross."
+  },
+  {
+    "id": "roux-ocll-23",
+    "lessonId": "roux-corner-orientation",
+    "input": {
+      "kind": "facelets",
+      "facelets": {
+        "F": [
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "red",
+          "yellow",
+          "blue"
+        ],
+        "R": [
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "yellow",
+          "yellow",
+          "yellow"
+        ],
+        "B": [
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "orange",
+          "blue",
+          "blue"
+        ],
+        "L": [
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "green"
+        ],
+        "U": [
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white"
+        ],
+        "D": [
+          "yellow",
+          "green",
+          "red",
+          "yellow",
+          "yellow",
+          "red",
+          "yellow",
+          "yellow",
+          "green"
+        ]
+      }
+    },
+    "expectedStage": "roux-corner-orientation",
+    "expectedRuleIds": [
+      "roux-ocll-23"
+    ],
+    "caption": "Match the yellow corner stickers only. The top edges are deliberately not a yellow cross."
+  },
+  {
+    "id": "roux-ocll-24",
+    "lessonId": "roux-corner-orientation",
+    "input": {
+      "kind": "facelets",
+      "facelets": {
+        "F": [
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "yellow",
+          "yellow",
+          "orange"
+        ],
+        "R": [
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "green",
+          "yellow",
+          "red"
+        ],
+        "B": [
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "yellow"
+        ],
+        "L": [
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "green",
+          "orange",
+          "orange"
+        ],
+        "U": [
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white"
+        ],
+        "D": [
+          "blue",
+          "green",
+          "yellow",
+          "yellow",
+          "yellow",
+          "red",
+          "red",
+          "yellow",
+          "yellow"
+        ]
+      }
+    },
+    "expectedStage": "roux-corner-orientation",
+    "expectedRuleIds": [
+      "roux-ocll-24"
+    ],
+    "caption": "Match the yellow corner stickers only. The top edges are deliberately not a yellow cross."
+  },
+  {
+    "id": "roux-ocll-25",
+    "lessonId": "roux-corner-orientation",
+    "input": {
+      "kind": "facelets",
+      "facelets": {
+        "F": [
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "yellow",
+          "yellow",
+          "green"
+        ],
+        "R": [
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "yellow",
+          "yellow"
+        ],
+        "B": [
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "orange",
+          "blue",
+          "red"
+        ],
+        "L": [
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "blue",
+          "orange",
+          "orange"
+        ],
+        "U": [
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white"
+        ],
+        "D": [
+          "blue",
+          "green",
+          "yellow",
+          "yellow",
+          "yellow",
+          "red",
+          "yellow",
+          "yellow",
+          "green"
+        ]
+      }
+    },
+    "expectedStage": "roux-corner-orientation",
+    "expectedRuleIds": [
+      "roux-ocll-25"
+    ],
+    "caption": "Match the yellow corner stickers only. The top edges are deliberately not a yellow cross."
+  },
+  {
+    "id": "roux-ocll-26",
+    "lessonId": "roux-corner-orientation",
+    "input": {
+      "kind": "facelets",
+      "facelets": {
+        "F": [
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "blue",
+          "yellow",
+          "yellow"
+        ],
+        "R": [
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "blue",
+          "yellow",
+          "yellow"
+        ],
+        "B": [
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "orange",
+          "orange",
+          "yellow"
+        ],
+        "L": [
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "green",
+          "green",
+          "red"
+        ],
+        "U": [
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white"
+        ],
+        "D": [
+          "yellow",
+          "blue",
+          "orange",
+          "yellow",
+          "yellow",
+          "red",
+          "red",
+          "yellow",
+          "green"
+        ]
+      }
+    },
+    "expectedStage": "roux-corner-orientation",
+    "expectedRuleIds": [
+      "roux-ocll-26"
+    ],
+    "caption": "Match the yellow corner stickers only. The top edges are deliberately not a yellow cross."
+  },
+  {
+    "id": "roux-ocll-27",
+    "lessonId": "roux-corner-orientation",
+    "input": {
+      "kind": "facelets",
+      "facelets": {
+        "F": [
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "yellow",
+          "yellow",
+          "orange"
+        ],
+        "R": [
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "yellow",
+          "yellow",
+          "orange"
+        ],
+        "B": [
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "green",
+          "green",
+          "red"
+        ],
+        "L": [
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "yellow",
+          "blue",
+          "blue"
+        ],
+        "U": [
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white"
+        ],
+        "D": [
+          "red",
+          "orange",
+          "blue",
+          "yellow",
+          "yellow",
+          "red",
+          "green",
+          "yellow",
+          "yellow"
+        ]
+      }
+    },
+    "expectedStage": "roux-corner-orientation",
+    "expectedRuleIds": [
+      "roux-ocll-27"
+    ],
+    "caption": "Match the yellow corner stickers only. The top edges are deliberately not a yellow cross."
+  },
+  {
+    "id": "roux-t",
+    "lessonId": "roux-corner-permutation",
+    "input": {
+      "kind": "facelets",
+      "facelets": {
+        "F": [
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "red",
+          "yellow",
+          "orange"
+        ],
+        "R": [
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "green",
+          "yellow",
+          "red"
+        ],
+        "B": [
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "green",
+          "blue"
+        ],
+        "L": [
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "green"
+        ],
+        "U": [
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white"
+        ],
+        "D": [
+          "yellow",
+          "blue",
+          "yellow",
+          "yellow",
+          "yellow",
+          "red",
+          "yellow",
+          "yellow",
+          "yellow"
+        ]
+      }
+    },
+    "expectedStage": "roux-corner-permutation",
+    "expectedRuleIds": [
+      "roux-t"
+    ],
+    "caption": "Match the two corner headlights and hold them on the left for T-perm."
+  },
+  {
+    "id": "roux-y",
+    "lessonId": "roux-corner-permutation",
+    "input": {
+      "kind": "facelets",
+      "facelets": {
+        "F": [
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "yellow",
+          "blue"
+        ],
+        "R": [
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "orange",
+          "yellow",
+          "red"
+        ],
+        "B": [
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "orange",
+          "green"
+        ],
+        "L": [
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "red",
+          "blue",
+          "orange"
+        ],
+        "U": [
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white"
+        ],
+        "D": [
+          "yellow",
+          "green",
+          "yellow",
+          "yellow",
+          "yellow",
+          "red",
+          "yellow",
+          "yellow",
+          "yellow"
+        ]
+      }
+    },
+    "expectedStage": "roux-corner-permutation",
+    "expectedRuleIds": [
+      "roux-y"
+    ],
+    "caption": "No matching corner headlights: use the verified Y-perm hold."
+  },
+  {
+    "id": "orientation-skip",
+    "lessonId": "roux-corner-orientation",
+    "input": {
+      "kind": "facelets",
+      "facelets": {
+        "F": [
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green"
+        ],
+        "R": [
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red"
+        ],
+        "B": [
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue"
+        ],
+        "L": [
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange"
+        ],
+        "U": [
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white"
+        ],
+        "D": [
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow"
+        ]
+      }
+    },
+    "expectedStage": "roux-corner-orientation",
+    "expectedRuleIds": [],
+    "caption": "All yellow corner stickers already face up; leave the edges for later."
+  },
+  {
+    "id": "permutation-skip",
+    "lessonId": "roux-corner-permutation",
+    "input": {
+      "kind": "facelets",
+      "facelets": {
+        "F": [
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green"
+        ],
+        "R": [
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red"
+        ],
+        "B": [
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue"
+        ],
+        "L": [
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange"
+        ],
+        "U": [
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white"
+        ],
+        "D": [
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow"
+        ]
+      }
+    },
+    "expectedStage": "roux-corner-permutation",
+    "expectedRuleIds": [],
+    "caption": "The corner ring already matches the blocks; no permutation formula is needed."
+  },
+  {
+    "id": "corner-alignment",
+    "lessonId": "roux-corner-permutation",
+    "input": {
+      "kind": "facelets",
+      "facelets": {
+        "F": [
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "orange",
+          "orange",
+          "orange"
+        ],
+        "R": [
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "green",
+          "green",
+          "green"
+        ],
+        "B": [
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "red",
+          "red",
+          "red"
+        ],
+        "L": [
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "blue",
+          "blue",
+          "blue"
+        ],
+        "U": [
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white"
+        ],
+        "D": [
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow"
+        ]
+      }
+    },
+    "expectedStage": "roux-corner-permutation",
+    "expectedRuleIds": [
+      "roux-corner-align"
+    ],
+    "caption": "The corners have the right cyclic order. Align U with the block frame."
+  },
+  {
+    "id": "corner-setup",
+    "lessonId": "roux-corner-orientation",
+    "input": {
+      "kind": "facelets",
+      "facelets": {
+        "F": [
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "yellow",
+          "blue",
+          "blue"
+        ],
+        "R": [
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "yellow",
+          "orange",
+          "orange"
+        ],
+        "B": [
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "yellow",
+          "red",
+          "orange"
+        ],
+        "L": [
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "green",
+          "green",
+          "red"
+        ],
+        "U": [
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white"
+        ],
+        "D": [
+          "green",
+          "yellow",
+          "red",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "blue"
+        ]
+      }
+    },
+    "expectedStage": "roux-corner-orientation",
+    "expectedRuleIds": [
+      "roux-corner-setup",
+      "roux-ocll-27"
+    ],
+    "caption": "A separate U setup puts the pattern in its execution hold; then apply the whole formula."
+  },
+  {
+    "id": "eo-0-skip",
+    "lessonId": "roux-edge-orientation",
+    "input": {
+      "kind": "facelets",
+      "facelets": {
+        "F": [
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green"
+        ],
+        "R": [
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red"
+        ],
+        "B": [
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue"
+        ],
+        "L": [
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange"
+        ],
+        "U": [
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white"
+        ],
+        "D": [
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow"
+        ]
+      }
+    },
+    "expectedStage": "roux-edge-orientation",
+    "expectedRuleIds": [],
+    "caption": "0 edges need orientation under the yellow-up reference. Position and orientation are different questions."
+  },
+  {
+    "id": "eo-2",
+    "lessonId": "roux-edge-orientation",
+    "input": {
+      "kind": "facelets",
+      "facelets": {
+        "F": [
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "yellow",
+          "green"
+        ],
+        "R": [
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "yellow",
+          "red"
+        ],
+        "B": [
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue"
+        ],
+        "L": [
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange"
+        ],
+        "U": [
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white"
+        ],
+        "D": [
+          "yellow",
+          "green",
+          "yellow",
+          "yellow",
+          "yellow",
+          "red",
+          "yellow",
+          "yellow",
+          "yellow"
+        ]
+      }
+    },
+    "expectedStage": "roux-edge-orientation",
+    "expectedRuleIds": [
+      "roux-lse-back-arrow-inverse",
+      "roux-lse-u2",
+      "roux-lse-back-arrow"
+    ],
+    "caption": "2 edges need orientation under the yellow-up reference. Position and orientation are different questions."
+  },
+  {
+    "id": "eo-4",
+    "lessonId": "roux-edge-orientation",
+    "input": {
+      "kind": "facelets",
+      "facelets": {
+        "F": [
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "yellow",
+          "green"
+        ],
+        "R": [
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "yellow",
+          "red"
+        ],
+        "B": [
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "yellow",
+          "blue"
+        ],
+        "L": [
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "yellow",
+          "orange"
+        ],
+        "U": [
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white"
+        ],
+        "D": [
+          "yellow",
+          "green",
+          "yellow",
+          "orange",
+          "yellow",
+          "red",
+          "yellow",
+          "blue",
+          "yellow"
+        ]
+      }
+    },
+    "expectedStage": "roux-edge-orientation",
+    "expectedRuleIds": [
+      "roux-lse-front-arrow",
+      "roux-lse-u2",
+      "roux-lse-front-arrow-inverse"
+    ],
+    "caption": "4 edges need orientation under the yellow-up reference. Position and orientation are different questions."
+  },
+  {
+    "id": "eo-6",
+    "lessonId": "roux-edge-orientation",
+    "input": {
+      "kind": "facelets",
+      "facelets": {
+        "F": [
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "yellow",
+          "green"
+        ],
+        "R": [
+          "red",
+          "white",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "yellow",
+          "red"
+        ],
+        "B": [
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "yellow",
+          "blue"
+        ],
+        "L": [
+          "orange",
+          "white",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "yellow",
+          "orange"
+        ],
+        "U": [
+          "white",
+          "white",
+          "white",
+          "orange",
+          "white",
+          "red",
+          "white",
+          "white",
+          "white"
+        ],
+        "D": [
+          "yellow",
+          "green",
+          "yellow",
+          "orange",
+          "yellow",
+          "red",
+          "yellow",
+          "blue",
+          "yellow"
+        ]
+      }
+    },
+    "expectedStage": "roux-edge-orientation",
+    "expectedRuleIds": [
+      "roux-lse-back-arrow-inverse",
+      "roux-lse-u2",
+      "roux-lse-front-arrow-inverse",
+      "roux-lse-up",
+      "roux-lse-front-arrow"
+    ],
+    "caption": "6 edges need orientation under the yellow-up reference. Position and orientation are different questions."
+  },
+  {
+    "id": "eo-front-arrow",
+    "lessonId": "roux-edge-orientation",
+    "input": {
+      "kind": "facelets",
+      "facelets": {
+        "F": [
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "red",
+          "white",
+          "red"
+        ],
+        "R": [
+          "red",
+          "yellow",
+          "red",
+          "red",
+          "red",
+          "red",
+          "blue",
+          "yellow",
+          "blue"
+        ],
+        "B": [
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "orange",
+          "yellow",
+          "orange"
+        ],
+        "L": [
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "green",
+          "orange",
+          "green"
+        ],
+        "U": [
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "blue",
+          "white",
+          "white",
+          "white"
+        ],
+        "D": [
+          "yellow",
+          "red",
+          "yellow",
+          "yellow",
+          "yellow",
+          "green",
+          "yellow",
+          "red",
+          "yellow"
+        ]
+      }
+    },
+    "expectedStage": "roux-edge-orientation",
+    "expectedRuleIds": [
+      "roux-lse-up",
+      "roux-lse-front-arrow"
+    ],
+    "caption": "Watch the front arrow preparation, the middle slice direction and the restored reference."
+  },
+  {
+    "id": "eo-back-arrow",
+    "lessonId": "roux-edge-orientation",
+    "input": {
+      "kind": "facelets",
+      "facelets": {
+        "F": [
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "orange",
+          "white",
+          "orange"
+        ],
+        "R": [
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "green",
+          "red",
+          "green"
+        ],
+        "B": [
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "red",
+          "yellow",
+          "red"
+        ],
+        "L": [
+          "orange",
+          "yellow",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "blue",
+          "yellow",
+          "blue"
+        ],
+        "U": [
+          "white",
+          "white",
+          "white",
+          "blue",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white"
+        ],
+        "D": [
+          "yellow",
+          "orange",
+          "yellow",
+          "green",
+          "yellow",
+          "yellow",
+          "yellow",
+          "orange",
+          "yellow"
+        ]
+      }
+    },
+    "expectedStage": "roux-edge-orientation",
+    "expectedRuleIds": [
+      "roux-lse-u",
+      "roux-lse-back-arrow"
+    ],
+    "caption": "Watch the back arrow preparation, the middle slice direction and the restored reference."
+  },
+  {
+    "id": "lr-skip",
+    "lessonId": "roux-left-right-edges",
+    "input": {
+      "kind": "facelets",
+      "facelets": {
+        "F": [
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green"
+        ],
+        "R": [
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red"
+        ],
+        "B": [
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue"
+        ],
+        "L": [
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange"
+        ],
+        "U": [
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white"
+        ],
+        "D": [
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow"
+        ]
+      }
+    },
+    "expectedStage": "roux-left-right-edges",
+    "expectedRuleIds": [],
+    "caption": "Both target edges already match the corner ring; continue to the last four."
+  },
+  {
+    "id": "finish-residual",
+    "lessonId": "roux-last-four-edges",
+    "input": {
+      "kind": "facelets",
+      "facelets": {
+        "F": [
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green"
+        ],
+        "R": [
+          "red",
+          "orange",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "orange",
+          "red"
+        ],
+        "B": [
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue"
+        ],
+        "L": [
+          "orange",
+          "red",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "red",
+          "orange"
+        ],
+        "U": [
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white"
+        ],
+        "D": [
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow"
+        ]
+      }
+    },
+    "expectedStage": "roux-last-four-edges",
+    "expectedRuleIds": [
+      "roux-lse-m2",
+      "roux-lse-u2"
+    ],
+    "caption": "Finish a remaining middle-edge cycle and restore the final centers and U alignment."
+  },
+  {
+    "id": "finish-skip",
+    "lessonId": "roux-last-four-edges",
+    "input": {
+      "kind": "facelets",
+      "facelets": {
+        "F": [
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green"
+        ],
+        "R": [
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red"
+        ],
+        "B": [
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue"
+        ],
+        "L": [
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange"
+        ],
+        "U": [
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white"
+        ],
+        "D": [
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow"
+        ]
+      }
+    },
+    "expectedStage": "roux-last-four-edges",
+    "expectedRuleIds": [],
+    "caption": "All faces already match. Check every face before putting the cube down."
+  },
+  {
+    "id": "finish-centers",
+    "lessonId": "roux-last-four-edges",
+    "input": {
+      "kind": "facelets",
+      "facelets": {
+        "F": [
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "red",
+          "yellow",
+          "red"
+        ],
+        "R": [
+          "red",
+          "yellow",
+          "red",
+          "red",
+          "red",
+          "red",
+          "blue",
+          "red",
+          "blue"
+        ],
+        "B": [
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "orange",
+          "blue",
+          "orange"
+        ],
+        "L": [
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "green",
+          "orange",
+          "green"
+        ],
+        "U": [
+          "white",
+          "white",
+          "white",
+          "yellow",
+          "white",
+          "green",
+          "white",
+          "white",
+          "white"
+        ],
+        "D": [
+          "yellow",
+          "red",
+          "yellow",
+          "white",
+          "yellow",
+          "white",
+          "yellow",
+          "yellow",
+          "yellow"
+        ]
+      }
+    },
+    "expectedStage": "roux-last-four-edges",
+    "expectedRuleIds": [
+      "roux-lse-u",
+      "roux-lse-front-through"
+    ],
+    "caption": "The side blocks and left/right targets are complete, but the middle centers need a half turn. Follow the final alignment and check all six faces."
+  },
+  {
+    "id": "lr-top-targets",
+    "lessonId": "roux-left-right-edges",
+    "input": {
+      "kind": "facelets",
+      "facelets": {
+        "F": [
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "red",
+          "yellow",
+          "red"
+        ],
+        "R": [
+          "red",
+          "yellow",
+          "red",
+          "red",
+          "red",
+          "red",
+          "blue",
+          "red",
+          "blue"
+        ],
+        "B": [
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "orange",
+          "blue",
+          "orange"
+        ],
+        "L": [
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "green",
+          "orange",
+          "green"
+        ],
+        "U": [
+          "white",
+          "white",
+          "white",
+          "yellow",
+          "white",
+          "green",
+          "white",
+          "white",
+          "white"
+        ],
+        "D": [
+          "yellow",
+          "red",
+          "yellow",
+          "white",
+          "yellow",
+          "white",
+          "yellow",
+          "yellow",
+          "yellow"
+        ]
+      }
+    },
+    "expectedStage": "roux-left-right-edges",
+    "expectedRuleIds": [
+      "roux-lse-u",
+      "roux-lse-m2",
+      "roux-lse-back-transport"
+    ],
+    "caption": "Both targets are on top but are not both matched to their corner neighbors. Upper location alone is not enough."
+  },
+  {
+    "id": "lr-one-complete",
+    "lessonId": "roux-left-right-edges",
+    "input": {
+      "kind": "facelets",
+      "facelets": {
+        "F": [
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "orange",
+          "green"
+        ],
+        "R": [
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "yellow",
+          "red"
+        ],
+        "B": [
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "yellow",
+          "blue"
+        ],
+        "L": [
+          "orange",
+          "white",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "yellow",
+          "orange"
+        ],
+        "U": [
+          "white",
+          "white",
+          "white",
+          "orange",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white"
+        ],
+        "D": [
+          "yellow",
+          "yellow",
+          "yellow",
+          "blue",
+          "yellow",
+          "red",
+          "yellow",
+          "green",
+          "yellow"
+        ]
+      }
+    },
+    "expectedStage": "roux-left-right-edges",
+    "expectedRuleIds": [
+      "roux-lse-u",
+      "roux-lse-front-through"
+    ],
+    "caption": "One target already matches its neighboring corners. Place the other and restore that relationship."
+  },
+  {
+    "id": "lr-bottom-targets",
+    "lessonId": "roux-left-right-edges",
+    "input": {
+      "kind": "facelets",
+      "facelets": {
+        "F": [
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "green",
+          "orange",
+          "green"
+        ],
+        "R": [
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "yellow",
+          "red"
+        ],
+        "B": [
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "yellow",
+          "blue"
+        ],
+        "L": [
+          "orange",
+          "white",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "yellow",
+          "orange"
+        ],
+        "U": [
+          "white",
+          "white",
+          "white",
+          "orange",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white"
+        ],
+        "D": [
+          "yellow",
+          "yellow",
+          "yellow",
+          "blue",
+          "yellow",
+          "red",
+          "yellow",
+          "green",
+          "yellow"
+        ]
+      }
+    },
+    "expectedStage": "roux-left-right-edges",
+    "expectedRuleIds": [
+      "roux-lse-u",
+      "roux-lse-front-through"
+    ],
+    "caption": "A yellow-side target starts in the bottom middle slice. Follow the full transport, not a pretend two-edge swap."
+  },
+  {
+    "id": "eo-reference",
+    "lessonId": "roux-edge-orientation",
+    "input": {
+      "kind": "facelets",
+      "facelets": {
+        "F": [
+          "orange",
+          "red",
+          "red",
+          "orange",
+          "green",
+          "yellow",
+          "white",
+          "green",
+          "white"
+        ],
+        "R": [
+          "green",
+          "green",
+          "orange",
+          "red",
+          "red",
+          "orange",
+          "green",
+          "blue",
+          "blue"
+        ],
+        "B": [
+          "white",
+          "orange",
+          "white",
+          "green",
+          "blue",
+          "red",
+          "yellow",
+          "yellow",
+          "yellow"
+        ],
+        "L": [
+          "red",
+          "orange",
+          "green",
+          "white",
+          "orange",
+          "yellow",
+          "blue",
+          "blue",
+          "green"
+        ],
+        "U": [
+          "blue",
+          "blue",
+          "blue",
+          "white",
+          "white",
+          "yellow",
+          "yellow",
+          "green",
+          "yellow"
+        ],
+        "D": [
+          "red",
+          "white",
+          "orange",
+          "red",
+          "yellow",
+          "white",
+          "orange",
+          "blue",
+          "red"
+        ]
+      }
+    },
+    "expectedStage": "roux-edge-orientation",
+    "expectedRuleIds": [
+      "roux-lse-m",
+      "roux-lse-back-arrow-inverse",
+      "roux-lse-up"
+    ],
+    "caption": "The preceding work leaves a red or orange top center. Follow the visible M setup before judging edge orientation."
+  },
+  {
+    "id": "right-m-prime",
+    "lessonId": "roux-second-block",
+    "input": {
+      "kind": "facelets",
+      "facelets": {
+        "F": [
+          "orange",
+          "red",
+          "red",
+          "orange",
+          "green",
+          "yellow",
+          "white",
+          "green",
+          "white"
+        ],
+        "R": [
+          "green",
+          "green",
+          "orange",
+          "red",
+          "red",
+          "orange",
+          "green",
+          "blue",
+          "blue"
+        ],
+        "B": [
+          "white",
+          "orange",
+          "white",
+          "green",
+          "blue",
+          "red",
+          "yellow",
+          "yellow",
+          "yellow"
+        ],
+        "L": [
+          "red",
+          "orange",
+          "green",
+          "white",
+          "orange",
+          "yellow",
+          "blue",
+          "blue",
+          "green"
+        ],
+        "U": [
+          "blue",
+          "blue",
+          "blue",
+          "white",
+          "white",
+          "yellow",
+          "yellow",
+          "green",
+          "yellow"
+        ],
+        "D": [
+          "red",
+          "white",
+          "orange",
+          "red",
+          "yellow",
+          "white",
+          "orange",
+          "blue",
+          "red"
+        ]
+      }
+    },
+    "expectedStage": "roux-second-block",
+    "expectedRuleIds": [
+      "roux-block-rp",
+      "roux-block-r-u-rp",
+      "roux-block-m2",
+      "roux-block-u2",
+      "roux-block-rp-up-r",
+      "roux-block-r-u2-rp",
+      "roux-block-u",
+      "roux-block-mp",
+      "roux-block-r-up-rp"
+    ],
+    "caption": "A useful M' moves a real block target. Read the recognition and protected pieces; this is not an extra decorative turn."
+  },
+  {
+    "id": "right-m",
+    "lessonId": "roux-second-block",
+    "input": {
+      "kind": "facelets",
+      "facelets": {
+        "F": [
+          "orange",
+          "yellow",
+          "blue",
+          "blue",
+          "green",
+          "orange",
+          "blue",
+          "yellow",
+          "blue"
+        ],
+        "R": [
+          "red",
+          "green",
+          "white",
+          "blue",
+          "red",
+          "red",
+          "white",
+          "yellow",
+          "green"
+        ],
+        "B": [
+          "green",
+          "green",
+          "green",
+          "white",
+          "blue",
+          "white",
+          "orange",
+          "red",
+          "blue"
+        ],
+        "L": [
+          "yellow",
+          "white",
+          "green",
+          "blue",
+          "orange",
+          "yellow",
+          "orange",
+          "orange",
+          "white"
+        ],
+        "U": [
+          "red",
+          "orange",
+          "red",
+          "green",
+          "white",
+          "red",
+          "yellow",
+          "orange",
+          "yellow"
+        ],
+        "D": [
+          "red",
+          "red",
+          "orange",
+          "white",
+          "yellow",
+          "green",
+          "yellow",
+          "blue",
+          "white"
+        ]
+      }
+    },
+    "expectedStage": "roux-second-block",
+    "expectedRuleIds": [
+      "roux-block-m",
+      "roux-block-r2-u-r2",
+      "roux-block-mp",
+      "roux-block-u2",
+      "roux-block-r-u-rp",
+      "roux-block-rp-u2-r",
+      "roux-block-m2",
+      "roux-block-rp-up-r"
+    ],
+    "caption": "A useful M moves a real block target. Read the recognition and protected pieces; this is not an extra decorative turn."
+  },
+  {
+    "id": "left-m",
+    "lessonId": "roux-first-block",
+    "input": {
+      "kind": "facelets",
+      "facelets": {
+        "F": [
+          "green",
+          "yellow",
+          "blue",
+          "yellow",
+          "green",
+          "blue",
+          "white",
+          "red",
+          "orange"
+        ],
+        "R": [
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "red",
+          "green",
+          "yellow",
+          "white",
+          "orange"
+        ],
+        "B": [
+          "yellow",
+          "green",
+          "yellow",
+          "yellow",
+          "blue",
+          "white",
+          "white",
+          "green",
+          "yellow"
+        ],
+        "L": [
+          "blue",
+          "blue",
+          "white",
+          "blue",
+          "orange",
+          "blue",
+          "green",
+          "red",
+          "red"
+        ],
+        "U": [
+          "red",
+          "white",
+          "green",
+          "red",
+          "white",
+          "green",
+          "red",
+          "orange",
+          "white"
+        ],
+        "D": [
+          "blue",
+          "white",
+          "blue",
+          "yellow",
+          "yellow",
+          "orange",
+          "red",
+          "red",
+          "green"
+        ]
+      }
+    },
+    "expectedStage": "roux-first-block",
+    "expectedRuleIds": [
+      "roux-block-bp-up-b",
+      "roux-block-l2",
+      "roux-block-fp",
+      "roux-block-bp-u2-b",
+      "roux-block-m",
+      "roux-block-f-u2-fp"
+    ],
+    "caption": "A useful M moves a real block target. Read the recognition and protected pieces; this is not an extra decorative turn."
+  },
+  {
+    "id": "left-m-prime",
+    "lessonId": "roux-first-block",
+    "input": {
+      "kind": "facelets",
+      "facelets": {
+        "F": [
+          "red",
+          "white",
+          "red",
+          "red",
+          "green",
+          "green",
+          "green",
+          "green",
+          "blue"
+        ],
+        "R": [
+          "blue",
+          "white",
+          "orange",
+          "yellow",
+          "red",
+          "red",
+          "orange",
+          "orange",
+          "blue"
+        ],
+        "B": [
+          "white",
+          "white",
+          "orange",
+          "blue",
+          "blue",
+          "green",
+          "yellow",
+          "orange",
+          "green"
+        ],
+        "L": [
+          "yellow",
+          "orange",
+          "yellow",
+          "orange",
+          "orange",
+          "yellow",
+          "orange",
+          "blue",
+          "red"
+        ],
+        "U": [
+          "green",
+          "green",
+          "blue",
+          "white",
+          "white",
+          "blue",
+          "green",
+          "red",
+          "white"
+        ],
+        "D": [
+          "white",
+          "red",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "white",
+          "blue",
+          "red"
+        ]
+      }
+    },
+    "expectedStage": "roux-first-block",
+    "expectedRuleIds": [
+      "roux-block-mp",
+      "roux-block-l2-u-l2",
+      "roux-block-f2-up-f2",
+      "roux-block-l-u-lp"
+    ],
+    "caption": "A useful M' moves a real block target. Read the recognition and protected pieces; this is not an extra decorative turn."
+  }
+]

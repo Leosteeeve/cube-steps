@@ -9,6 +9,49 @@ beforeAll(async () => {
   engine = await createCubeEngine();
 });
 afterEach(() => vi.restoreAllMocks());
+it('admits only valid club Roux input before loading and preserves failed input', async () => {
+  const loader = vi.fn(async () => {
+    throw Error('Roux checksum mismatch');
+  });
+  const input = { kind: 'scramble', moves: ['R'] };
+  const before = structuredClone(input);
+  for (const request of [
+    { requestId: 1, method: 'roux-beginner', input },
+    { requestId: 1, method: 'roux-beginner', edition: 'global', input },
+    {
+      requestId: 1,
+      method: 'roux-beginner',
+      edition: 'club',
+      input: { kind: 'facelets', facelets: {} },
+    },
+    {
+      requestId: 1,
+      method: 'roux-beginner',
+      edition: 'club',
+      input: { kind: 'scramble', moves: ['M'] },
+    },
+    { requestId: 1, method: 'lbl', input },
+    { requestId: 1, method: 'cfop-beginner', input },
+  ])
+    await handleSolveMessage(engine, request, undefined, loader);
+  expect(loader).not.toHaveBeenCalled();
+  expect(
+    await handleSolveMessage(
+      engine,
+      { requestId: 9, method: 'roux-beginner', edition: 'club', input },
+      undefined,
+      loader,
+    ),
+  ).toMatchObject({
+    requestId: 9,
+    result: {
+      ok: false,
+      error: { kind: 'solver', message: expect.stringContaining('Roux checksum mismatch') },
+    },
+  });
+  expect(loader).toHaveBeenCalledTimes(1);
+  expect(input).toEqual(before);
+});
 it('loads_assets_only_for_a_valid_advanced_request_and_reports_load_failure', async () => {
   const loader = vi.fn(async () => {
     throw new Error('checksum mismatch');

@@ -7,6 +7,22 @@ import { GuideImage } from './GuideImage';
 import { TutorialProvider } from '../tutorial/TutorialProvider';
 import { GUIDE_CHAPTERS } from './chapters';
 afterEach(cleanup);
+it('opens Roux help with separate lessons and solver links', () => {
+  render(
+    <TutorialProvider>
+      <GuidePage section={'roux' as never} />
+    </TutorialProvider>,
+  );
+  expect(screen.getByRole('heading', { name: 'Build with Beginner Roux' })).toHaveFocus();
+  expect(screen.getByRole('link', { name: /Open Beginner Roux/ })).toHaveAttribute(
+    'href',
+    '#/learn/roux/intro',
+  );
+  expect(screen.getByRole('link', { name: /Solve with Beginner Roux/ })).toHaveAttribute(
+    'href',
+    '#/solve/roux',
+  );
+});
 const image = {
   id: 'home',
   src: 'club-guide/home.png',

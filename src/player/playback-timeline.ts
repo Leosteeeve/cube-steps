@@ -3,7 +3,7 @@ import type { PlaybackSource, PlaybackSectionId } from './playback-source';
 import type { AdvancedAssets } from '../methods/advanced/assets';
 import { createTimeline } from './timeline';
 import { assertSessionInput } from '../core/solve-input';
-import { getMethod } from '../methods/registry';
+import { getMethod, getRegisteredRuntime } from '../methods/registry';
 import { verifyTrace } from '../methods/shared/verification';
 import { LBL_RUNTIME } from '../methods/lbl/definition';
 import { CFOP_RUNTIME } from '../methods/cfop/definition';
@@ -41,7 +41,10 @@ export function createPlaybackTimeline(
         ? LBL_RUNTIME
         : session.trace.method === 'cfop-beginner'
           ? CFOP_RUNTIME
-          : createAdvancedRuntime(assets!.crossTable);
+          : session.trace.method === 'roux-beginner'
+            ? getRegisteredRuntime('roux-beginner')
+            : createAdvancedRuntime(assets!.crossTable);
+    if (!runtime) throw new Error('Roux playback requires its registered verification runtime.');
     verifyTrace(engine, session.trace, runtime);
     return {
       moves: flat.moves,
