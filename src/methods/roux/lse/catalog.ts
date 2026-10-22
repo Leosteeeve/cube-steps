@@ -119,7 +119,9 @@ export const ROUX_LSE_MANEUVERS: readonly LseManeuver[] = definitions.map(
               : family === 'transport'
                 ? 'Open the middle slice, turn the upper layer halfway, then move the slice as shown. This transports several edges; it is not a two-edge swap.'
                 : family === 'upper'
-                  ? 'Move the top edges and corner ring together into the next execution hold.'
+                  ? goal === 'solved' && model.goal(after, 'solved')
+                    ? 'Align the top edges and corner ring with the blue-left, green-right block frame. The centers are also restored.'
+                    : 'Move the top edges and corner ring together into the next execution hold.'
                   : 'Move the four middle-slice edges halfway around while keeping the corner ring still.';
         const outcome =
           then === null
@@ -137,7 +139,7 @@ export const ROUX_LSE_MANEUVERS: readonly LseManeuver[] = definitions.map(
             ':' +
             (bad?.join('-') ?? 'setup'),
           targets: affected.map((p) => p.id),
-          recognition: `${reference} The corner ring has U offset ${before.offset}.`,
+          recognition: `${reference} The top corners are ${['aligned with', 'one U turn from', 'a U2 turn from', "one U' turn from"][before.offset]} their final positions.`,
           explanation: `${purpose} ${effect}. ${outcome} Keep blue left and green right.`,
         };
       },

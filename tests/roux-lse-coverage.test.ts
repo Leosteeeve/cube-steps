@@ -45,6 +45,20 @@ it('matches the independent full domain and physically replays every primitive a
         throw Error(`Broken policy ${code}/${goal}`);
       if (!e.equals(e.apply(state, m.moves), decodeLse(e, after)))
         throw Error(`LSE maneuver ${code}/${m.id}`);
+      const actualAfter = e.apply(state, m.moves),
+        match = m.match(e, state, goal);
+      if (!match || !m.check(e, state, actualAfter, goal))
+        throw Error(`Unmatched physical rule ${code}/${m.id}`);
+      const a = e.observe(state),
+        b = e.observe(actualAfter),
+        pieces = [...a.edges, ...a.corners],
+        next = [...b.edges, ...b.corners];
+      const affected = pieces
+        .filter((p) => JSON.stringify(p) !== JSON.stringify(next.find((q) => q.id === p.id)))
+        .map((p) => p.id)
+        .sort();
+      if (JSON.stringify([...match.targets].sort()) !== JSON.stringify(affected))
+        throw Error(`Incomplete affected targets ${code}/${m.id}`);
       policyEdges++;
     }
     let cursor = c,
@@ -63,5 +77,5 @@ it('matches the independent full domain and physically replays every primitive a
   }
   expect(primitives).toBe(1105920);
   // Each policy has one outgoing edge for every non-goal state in its partition.
-  expect(policyEdges).toBe((184320 - 2880) + (2880 - 96) + (96 - 1));
+  expect(policyEdges).toBe(184320 - 2880 + (2880 - 96) + (96 - 1));
 }, 240000);
