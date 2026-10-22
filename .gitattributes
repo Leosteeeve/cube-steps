@@ -1,0 +1,3 @@
+# Generated policy hashes and verification are identical on Windows and CI.
+src/methods/roux/data/*.json text eol=lf
+src/methods/roux/data/*.bin binary

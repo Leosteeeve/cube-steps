@@ -1,8 +1,36 @@
 import assert from 'node:assert/strict';
-import type { CubeEngine, CubeState } from '../../src/core/types';
+import type { CubeEngine, CubeState, SolveTrace } from '../../src/core/types';
 import type { RouxPlanResult } from '../../src/methods/roux/types';
 import { readFileSync } from 'node:fs';
 import { loadRouxAssets } from '../../src/methods/roux/assets';
+import { verifyTrace } from '../../src/methods/shared/verification';
+import { ROUX_RUNTIME } from '../../src/methods/roux/definition';
+import { ROUX_STAGE_IDS } from '../../src/methods/roux/stages';
+import { rouxSolved } from '../../src/methods/roux/predicates';
+import { encodeLse } from '../../src/methods/roux/lse/coordinates';
+export function assertCompleteRouxTrace(
+  engine: CubeEngine,
+  initial: CubeState,
+  trace: SolveTrace,
+): void {
+  assert(engine.equals(initial, trace.initial));
+  assert.equal(trace.method, 'roux-beginner');
+  assert.deepEqual(
+    trace.stages.map((s) => s.id),
+    ROUX_STAGE_IDS,
+  );
+  verifyTrace(engine, trace, ROUX_RUNTIME);
+  assert(rouxSolved(engine, trace.final));
+  assert(encodeLse(engine, trace.stages[4].after));
+  const actions = trace.stages.flatMap((s) => s.actions);
+  assert(actions.length <= 160);
+  assert(actions.reduce((n, a) => n + a.moves.length, 0) <= 400);
+  for (const s of trace.stages) {
+    assert(s.checkpoint.passed);
+    if (s.status === 'skipped') assert(s.skipReason && s.actions.length === 0);
+    for (const a of s.actions) assert(a.roux && a.checkpoint.passed);
+  }
+}
 export const loadTestRouxAssets = () =>
   loadRouxAssets((async (input) => {
     const name = String(input).includes('block-policies')
