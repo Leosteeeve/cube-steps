@@ -209,12 +209,15 @@ export function PlaybackView({
   const range = player?.timeline.actions[s?.actionIndex ?? -1],
     action = Boolean(currentStage?.skipReason) ? undefined : range?.action;
   const alg = action?.algorithmId ? method.algorithms[action.algorithmId] : undefined;
+  const connectedPairs =
+    action?.joined?.sources.flatMap((source) => (source.pair ? [source.pair] : [])) ?? [];
   const replayIndex = action
     ? s!.actionIndex
     : source.kind === 'algorithm' && s?.currentMove === null && player
       ? player.timeline.actions.length - 1
       : -1;
-  const replayAlgorithm = player?.timeline.actions[replayIndex]?.action.algorithmId;
+  const replayAction = player?.timeline.actions[replayIndex]?.action;
+  const replayAlgorithm = replayAction?.algorithmId;
   const segment = alg?.segments?.find(
     (part) =>
       s && range && s.moveIndex - range.start >= part.start && s.moveIndex - range.start < part.end,
@@ -316,7 +319,8 @@ export function PlaybackView({
               disabled={!ready || replayIndex < 0}
               onClick={() => player?.replayAction(replayIndex)}
             >
-              Replay {replayAlgorithm ? 'formula' : 'action'} ↺
+              Replay{' '}
+              {replayAction?.joined ? 'connected moves' : replayAlgorithm ? 'formula' : 'action'} ↺
             </button>
           </div>
         </div>
@@ -378,6 +382,19 @@ export function PlaybackView({
                 </p>
               </div>
             )}
+            {!action.pair && connectedPairs.length > 0 && (
+              <div className="notice">
+                <h3>
+                  Pair {connectedPairs[0].ordinal} of 4 → Pair {connectedPairs.at(-1)!.ordinal} of 4
+                  · Connected sequence
+                </h3>
+                <p>
+                  {connectedPairs[0].solvedBefore} complete before this sequence;{' '}
+                  {connectedPairs.at(-1)!.solvedAfter} after. Follow all highlighted targets and
+                  check them at the end.
+                </p>
+              </div>
+            )}
             {currentStage?.id === 'white-cross' && (
               <h3 className="notice">
                 {action.ruleId.startsWith('cross-')
@@ -398,9 +415,11 @@ export function PlaybackView({
                 <h3>
                   {action.kind === 'regrip'
                     ? 'Regrip the whole cube'
-                    : action.kind === 'setup'
-                      ? 'Prepare'
-                      : 'Apply the formula'}
+                    : action.kind === 'joined'
+                      ? 'Connect the moves'
+                      : action.kind === 'setup'
+                        ? 'Prepare'
+                        : 'Apply the formula'}
                 </h3>
                 <p>{action.explanation}</p>
               </div>
@@ -413,7 +432,12 @@ export function PlaybackView({
               data-action-end={range?.end}
             >
               <span>
-                {alg?.name ?? (action.kind === 'regrip' ? 'Whole-cube rotation' : 'Setup moves')}
+                {alg?.name ??
+                  (action.kind === 'joined'
+                    ? 'Connected moves'
+                    : action.kind === 'regrip'
+                      ? 'Whole-cube rotation'
+                      : 'Setup moves')}
                 {repetitions ? ` · ${action.repetition!.index} of ${repetitions}` : ''}
               </span>
               <div className="algorithm-moves">
@@ -430,6 +454,33 @@ export function PlaybackView({
                 </strong>
               </small>
               {segment && <p>Segment: {segment.label}</p>}
+              {action.joined && (
+                <details className="connected-reference">
+                  <summary>Why these steps are connected</summary>
+                  <p>
+                    Reference only — do not perform these again. The original steps below explain
+                    the route; the connected moves above replace them and save{' '}
+                    {action.joined.savedMoves} moves.
+                  </p>
+                  <ol>
+                    {action.joined.sources.map((source, i) => (
+                      <li key={i}>
+                        <strong>
+                          {source.algorithmId
+                            ? method.algorithms[source.algorithmId]?.name
+                            : source.kind === 'regrip'
+                              ? 'Whole-cube rotation'
+                              : 'Setup'}
+                        </strong>
+                        <p>
+                          <code>{source.moves.join(' ').replaceAll("'", '′')}</code>
+                        </p>
+                        <p>{source.explanation}</p>
+                      </li>
+                    ))}
+                  </ol>
+                </details>
+              )}
               {source.kind !== 'lab' &&
                 action.algorithmId &&
                 ALGORITHM_REGISTRY.variants[action.algorithmId] && (

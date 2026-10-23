@@ -11,7 +11,11 @@ export function RegripGuide({
   moving: boolean;
 }) {
   const now = engine.observe(boundaryState).centers;
-  const destination = action?.kind === 'regrip' ? engine.observe(action.after).centers : undefined;
+  const destination =
+    action?.kind === 'regrip' ||
+    (action?.kind === 'joined' && action.moves.every((m) => /^[xyz]/.test(m)))
+      ? engine.observe(action.after).centers
+      : undefined;
   const pairColors = action?.pair
     ? Object.values(
         engine.observe(boundaryState).corners.find((p) => p.id === action.pair!.cornerId)!.stickers,
@@ -26,7 +30,9 @@ export function RegripGuide({
         )
       : undefined;
   const hasInternalRotation =
-    action?.kind === 'algorithm' && action.moves.some((m) => /^[xyz]/.test(m));
+    !destination &&
+    (action?.kind === 'algorithm' || action?.kind === 'joined') &&
+    action.moves.some((m) => /^[xyz]/.test(m));
   const hasLayerTurn = action?.moves.some((m) => /w|^[MES]/.test(m));
   return (
     <section className="regrip-guide" aria-label="Holding guide">

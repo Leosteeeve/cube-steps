@@ -1,6 +1,7 @@
 import type { CubeEngine, CubeState, SolveLimits, SolveResult } from '../../core/types';
 import { createMethodTrace, RuleError } from '../shared/trace';
 import { verifyTrace } from '../shared/verification';
+import { compactTeachingTrace } from '../shared/compact-trace';
 import { CFOP_RUNTIME } from './definition';
 import { CFOP_STAGE_IDS } from './stages';
 import { solveCFOPCross } from './cross';
@@ -34,7 +35,7 @@ export function solveCFOP(
       if (!result.ok) return result;
       trace.endStage();
     }
-    const result = trace.finish();
+    const result = compactTeachingTrace(engine, trace.finish());
     verifyTrace(engine, result, CFOP_RUNTIME);
     return { ok: true, trace: result };
   } catch (error) {
