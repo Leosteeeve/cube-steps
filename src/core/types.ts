@@ -71,7 +71,9 @@ export interface ExecutionMetrics {
 }
 export interface TraceAction {
   roux?: RouxActionMetadata;
-  kind: 'setup' | 'algorithm' | 'regrip';
+  kind: 'setup' | 'algorithm' | 'regrip' | 'joined';
+  /** Verified reference actions; execute moves, not these uncombined references. */
+  joined?: { sources: TraceAction[]; savedMoves: number };
   ruleId: string;
   caseId: string;
   targets: string[];

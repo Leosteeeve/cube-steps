@@ -3055,7 +3055,7 @@
       "roux-lse-back-arrow-inverse",
       "roux-lse-up"
     ],
-    "caption": "The preceding work leaves a red or orange top center. Follow the visible M setup before judging edge orientation."
+    "caption": "The preceding work leaves a red or orange top center. A reference setup may join the arrow into one connected sequence. Follow the displayed moves once and judge edge orientation only at its checkpoint; the separate reference actions are not extra moves."
   },
   {
     "id": "right-m-prime",

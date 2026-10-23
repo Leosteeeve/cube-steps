@@ -2,6 +2,7 @@ import type { CubeEngine, CubeState, SolveLimits, SolveResult } from '../../core
 import type { AdvancedAssets } from './assets';
 import { createMethodTrace, RuleError } from '../shared/trace';
 import { verifyTrace } from '../shared/verification';
+import { compactTeachingTrace } from '../shared/compact-trace';
 import { createAdvancedRuntime } from './definition';
 import { ADVANCED_STAGE_IDS, checkAdvancedStage } from './stages';
 import { planShortestCross, crossMoveEvidence } from './cross/solve';
@@ -52,7 +53,7 @@ export function solveAdvancedCFOP(
       if (!r.ok) return r;
       trace.endStage();
     }
-    const result = trace.finish();
+    const result = compactTeachingTrace(engine, trace.finish(), runtime);
     verifyTrace(engine, result, runtime);
     return { ok: true, trace: result };
   } catch (error) {

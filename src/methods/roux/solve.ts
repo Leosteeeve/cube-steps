@@ -1,6 +1,7 @@
 import type { CubeEngine, CubeState, SolveResult } from '../../core/types';
 import { createMethodTrace, RuleError } from '../shared/trace';
 import { verifyTrace } from '../shared/verification';
+import { compactTeachingTrace } from '../shared/compact-trace';
 import { validateRouxAssets, type RouxAssets } from './assets';
 import { createRouxRuntime } from './definition';
 import { ROUX_STAGE_IDS } from './stages';
@@ -88,7 +89,7 @@ export function solveRoux(
       trace.endStage(skips[i + 1]);
       budget.check(stageId);
     }
-    const result = trace.finish();
+    const result = compactTeachingTrace(engine, trace.finish(), runtime);
     verifyTrace(engine, result, runtime);
     budget.check(stageId);
     return { ok: true, trace: result };

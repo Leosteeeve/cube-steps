@@ -40,7 +40,11 @@ try {
     const r = solveRoux(e, canonical, assets);
     if (!r.ok) throw Error(id + ': ' + r.message);
     const s = r.trace.stages.find((s: TraceStage) => s.id === stage)!;
-    const ids = [...new Set<string>(s.actions.map((a: any) => a.ruleId))];
+    const ids = [
+      ...new Set<string>(
+        s.actions.flatMap((a: any) => a.joined?.sources ?? [a]).map((a: any) => a.ruleId),
+      ),
+    ];
     for (const rule of required)
       if (!ids.includes(rule)) throw Error(id + ' did not reach ' + rule);
     if (claim && !claim(s)) throw Error(id + ' did not demonstrate its claim');
@@ -284,7 +288,7 @@ try {
       if (
         !s.actions.some((a: any) =>
           token === 'reference'
-            ? a.caseId.includes('reference')
+            ? (a.joined?.sources ?? [a]).some((source: any) => source.caseId.includes('reference'))
             : a.moves.length === 1 && a.moves[0] === token,
         )
       )
@@ -294,14 +298,14 @@ try {
         id,
         stage as RouxStageId,
         token === 'reference'
-          ? 'The preceding work leaves a red or orange top center. Follow the visible M setup before judging edge orientation.'
+          ? 'The preceding work leaves a red or orange top center. A reference setup may join the arrow into one connected sequence. Follow the displayed moves once and judge edge orientation only at its checkpoint; the separate reference actions are not extra moves.'
           : `A useful ${token} moves a real block target. Read the recognition and protected pieces; this is not an extra decorative turn.`,
         held,
         [],
         (s) =>
           s.actions.some((a) =>
             token === 'reference'
-              ? a.caseId.includes('reference')
+              ? (a.joined?.sources ?? [a]).some((source) => source.caseId.includes('reference'))
               : a.moves.length === 1 && a.moves[0] === token,
           ),
       );
