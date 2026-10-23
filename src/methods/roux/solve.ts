@@ -89,7 +89,7 @@ export function solveRoux(
       trace.endStage(skips[i + 1]);
       budget.check(stageId);
     }
-    const result = compactTeachingTrace(engine, trace.finish());
+    const result = compactTeachingTrace(engine, trace.finish(), runtime);
     verifyTrace(engine, result, runtime);
     budget.check(stageId);
     return { ok: true, trace: result };

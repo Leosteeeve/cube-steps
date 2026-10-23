@@ -1,7 +1,8 @@
 import { beforeAll, expect, it } from 'vitest';
 import { createCubeEngine } from '../../core/cube';
 import type { CubeEngine, SolveTrace, TeachingMove, TraceAction } from '../../core/types';
-import { combineAdjacentTurns, compactTeachingTrace, joinTeachingActions } from './compact-trace';
+import { compactTeachingTrace } from './compact-trace';
+import { combineAdjacentTurns, joinTeachingActions } from './connected-actions';
 import { solveCFOP } from '../cfop/solve';
 import { CFOP_RUNTIME } from '../cfop/definition';
 import { verifyTrace } from './verification';
@@ -40,7 +41,7 @@ it('keeps original catalog formulas intact and verifies them, then checks the co
         );
   }
   expect(() => verifyTrace(engine, trace, CFOP_RUNTIME)).not.toThrow();
-  expect(compactTeachingTrace(engine, trace)).toEqual(trace);
+  expect(compactTeachingTrace(engine, trace, CFOP_RUNTIME)).toEqual(trace);
 });
 it.each([
   'moves',
@@ -69,15 +70,18 @@ it.each([
   if (field === 'check') action.checkpoint.passed = false;
   expect(() => verifyTrace(engine, damaged, CFOP_RUNTIME)).toThrow();
 });
-it('never combines across a stage checkpoint or rewrites an individual catalog formula', () => {
-  const original = trace.stages.flatMap((s) => s.actions).find((a) => a.joined)!.joined!.sources;
-  const a = { ...original[0], moves: ['U'] as TeachingMove[] },
-    b = { ...original[1], moves: ["U'"] as TeachingMove[] };
-  const partial = {
+it('preserves every stage boundary in an independently verified complete solve', () => {
+  const raw = {
     ...trace,
-    stages: trace.stages.slice(0, 2).map((s, i) => ({ ...s, actions: [i ? b : a] })),
+    stages: trace.stages.map((s) => ({
+      ...s,
+      actions: s.actions.flatMap((a) => a.joined?.sources ?? [a]),
+    })),
   };
-  expect(compactTeachingTrace(engine, partial)).toEqual(partial);
+  const compact = compactTeachingTrace(engine, raw, CFOP_RUNTIME);
+  expect(compact.stages.map((s) => [s.id, s.before, s.after, s.checkpoint])).toEqual(
+    raw.stages.map((s) => [s.id, s.before, s.after, s.checkpoint]),
+  );
 });
 it('can omit a completely cancelling setup pair without inventing a turn', () => {
   const start = engine.solved(),
@@ -88,4 +92,38 @@ it('can omit a completely cancelling setup pair without inventing a turn', () =>
     { ...base, moves: ["U'"], before: middle, after: start },
   ];
   expect(joinTeachingActions(engine, sources).moves).toEqual([]);
+});
+it('rejects invalid original actions even when their turns completely cancel', () => {
+  const result = solveCFOP(engine, engine.solved());
+  if (!result.ok) throw Error(result.message);
+  const damaged = structuredClone(result.trace),
+    stage = damaged.stages[1];
+  const start = stage.before,
+    middle = engine.apply(start, ['R']);
+  const base = trace.stages.flatMap((s) => s.actions).find((a) => a.joined)!.joined!.sources[0];
+  stage.status = 'completed';
+  stage.actions = [
+    {
+      ...base,
+      kind: 'setup',
+      algorithmId: undefined,
+      ruleId: 'forged-rule',
+      moves: ['R'],
+      before: start,
+      after: middle,
+      checkpoint: { ...base.checkpoint, passed: false },
+    },
+    {
+      ...base,
+      kind: 'setup',
+      algorithmId: undefined,
+      ruleId: 'forged-rule',
+      moves: ["R'"],
+      before: middle,
+      after: start,
+      checkpoint: { ...base.checkpoint, passed: false },
+    },
+  ];
+  expect(() => verifyTrace(engine, damaged, CFOP_RUNTIME)).toThrow();
+  expect(() => compactTeachingTrace(engine, damaged, CFOP_RUNTIME)).toThrow();
 });

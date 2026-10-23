@@ -53,7 +53,7 @@ export function solveAdvancedCFOP(
       if (!r.ok) return r;
       trace.endStage();
     }
-    const result = compactTeachingTrace(engine, trace.finish());
+    const result = compactTeachingTrace(engine, trace.finish(), runtime);
     verifyTrace(engine, result, runtime);
     return { ok: true, trace: result };
   } catch (error) {

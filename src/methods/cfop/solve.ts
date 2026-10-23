@@ -35,7 +35,7 @@ export function solveCFOP(
       if (!result.ok) return result;
       trace.endStage();
     }
-    const result = compactTeachingTrace(engine, trace.finish());
+    const result = compactTeachingTrace(engine, trace.finish(), CFOP_RUNTIME);
     verifyTrace(engine, result, CFOP_RUNTIME);
     return { ok: true, trace: result };
   } catch (error) {

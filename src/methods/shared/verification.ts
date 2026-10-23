@@ -1,5 +1,5 @@
 import type { CubeEngine, SolveTrace, StageId, TraceAction } from '../../core/types';
-import { joinTeachingActions } from './compact-trace';
+import { joinTeachingActions } from './connected-actions';
 import { isTeachingMove } from '../../core/teaching-moves';
 import type { MethodRuntime } from '../contracts';
 import { RuleError } from './trace';

@@ -188,7 +188,7 @@ export const ROUX_LESSON_TEXT: Record<string, Text> = {
     goal: 'Establish a center reference, then orient every remaining edge with M and U.',
     overview:
       'LSE means last six edges: the four upper edges plus the two bottom edges in the middle slice. The blocks and corner ring are complete. We first orient these edges; we will put them in the correct positions afterward.',
-    look: 'First look at the up center. If it is red or orange, follow the visible M setup to bring a white or yellow center to U. Under this reference, an edge is oriented when its white or yellow sticker faces U or D. Count 0, 2, 4 or 6 bad edges.',
+    look: 'First look at the up center. If it is red or orange, a reference setup brings a white or yellow center to U. The player may connect that setup with the next maneuver to save turns; follow its displayed moves once and wait for the complete checkpoint before judging orientation. Under a white or yellow up-center reference, an edge is oriented when its white or yellow sticker faces U or D. Count 0, 2, 4 or 6 bad edges.',
     prepare:
       'Use the shown U setup to arrange a prepared arrow. The front and rear forms use different slice directions. During a quarter-M position the center reference changes: read “Middle-slice setup in progress” and wait until the declared checkpoint before recounting bad edges.',
     do: 'Follow the conditional arrow maneuver, such as M′ U M or M U′ M′, in the recognized hold. Some setups temporarily increase the number of bad edges to produce a useful arrow. The explanation identifies that purpose; do not repeat an arrow blindly from an unmatched position.',
@@ -200,7 +200,7 @@ export const ROUX_LESSON_TEXT: Record<string, Text> = {
         symptom: 'All my edges suddenly seem bad after M.',
         explanation: 'You are judging orientation at an intermediate red/orange-up center state.',
         recovery:
-          'Finish the reference setup and use the displayed checkpoint before classifying again.',
+          'Finish the displayed setup or connected sequence and use its checkpoint before classifying again. Do not execute the reference formulas a second time.',
       },
       {
         symptom: 'The bad-edge count went up.',
