@@ -10,13 +10,15 @@ for (const width of [360, 390, 768, 1024, 1440])
     await dismissTutorialForTest(page);
     await expect(page.locator('.notation-player')).toHaveAttribute('data-phase', 'ready');
     await expect(page.locator('.notation-player')).toHaveAttribute('data-progress', '0');
-    await expect(
-      page.getByRole('navigation', { name: 'Main navigation' }).getByRole('link'),
-    ).toHaveText(['Home', 'Moves', 'Learn', 'Timer ↗', 'Guide', 'CFOP Lab']);
-    await expect(page.getByRole('link', { name: 'Moves', exact: true })).toHaveAttribute(
+    const navigation = page.getByRole('navigation', { name: 'Main navigation' });
+    await expect(navigation.getByRole('link')).toHaveText(['Home', 'Learn', 'Guide']);
+    await navigation.getByRole('button', { name: 'Practice', exact: true }).click();
+    await expect(navigation.getByRole('link', { name: 'Moves', exact: true })).toHaveAttribute(
       'aria-current',
       'page',
     );
+    await expect(navigation.getByRole('link', { name: 'Timer', exact: true })).toHaveAttribute('href', '#/timer');
+    await page.keyboard.press('Escape');
     await renderNotationFrame(page);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
       true,

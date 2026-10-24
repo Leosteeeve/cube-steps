@@ -105,6 +105,7 @@ test('a rejected production lazy module has a visible reload recovery and usable
   await expect(page.getByRole('alert')).toContainText('could not load');
   await page.getByRole('link', { name: 'Home', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'One turn. A new possibility.' })).toBeVisible();
+  await page.getByRole('button', { name: 'Practice', exact: true }).click();
   await page.getByRole('link', { name: 'Moves', exact: true }).click();
   await expect(page.getByRole('button', { name: 'Reload move explorer' })).toBeVisible();
   await page.unroute(modulePattern);
