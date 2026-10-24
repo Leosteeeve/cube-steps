@@ -16,6 +16,13 @@ afterEach(() => {
   cleanup();
   vi.unstubAllGlobals();
 });
+it('labels shifted Roux centers without asking the member to change their block hold', () => {
+  const state = engine.apply(engine.solved(), ['x2', 'y', 'M']);
+  render(<RegripGuide engine={engine} boundaryState={state} moving={false} sliceMethod />);
+  expect(screen.getByLabelText('Current centers')).toHaveTextContent('Centers now:');
+  expect(screen.queryByText('Holding now:')).not.toBeInTheDocument();
+  expect(screen.getByText(/keep your block frame/i)).toBeVisible();
+});
 it('does not describe wide and slice turns as whole-cube rotations', () => {
   const before = engine.solved();
   const action: TraceAction = {

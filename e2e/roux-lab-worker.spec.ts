@@ -22,7 +22,7 @@ test('Roux analysis stop keeps complete verified routes; editing cancels stale w
   await page.getByRole('button', { name: 'Analyze cube', exact: true }).click();
   await expect(page.locator('[data-roux-route]').first()).toBeVisible({ timeout: 35000 });
   await expect(page.getByRole('region', { name: 'Selected Roux route' })).toContainText(
-    'white / blue',
+    /white bottom.*blue left/,
   );
   await page.getByRole('button', { name: 'Face colors', exact: true }).click();
   await page.getByRole('button', { name: 'Check colors', exact: true }).click();

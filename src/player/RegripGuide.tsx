@@ -4,11 +4,13 @@ export function RegripGuide({
   boundaryState,
   action,
   moving,
+  sliceMethod = false,
 }: {
   engine: CubeEngine;
   boundaryState: CubeState;
   action?: TraceAction;
   moving: boolean;
+  sliceMethod?: boolean;
 }) {
   const now = engine.observe(boundaryState).centers;
   const destination =
@@ -36,9 +38,19 @@ export function RegripGuide({
   const hasLayerTurn = action?.moves.some((m) => /w|^[MES]/.test(m));
   return (
     <section className="regrip-guide" aria-label="Holding guide">
-      <p aria-label="Current holding" data-front-color={now.F} data-up-color={now.U}>
-        <strong>Holding now:</strong> {now.U} up · {now.F} front
+      <p
+        aria-label={sliceMethod ? 'Current centers' : 'Current holding'}
+        data-front-color={now.F}
+        data-up-color={now.U}
+      >
+        <strong>{sliceMethod ? 'Centers now:' : 'Holding now:'}</strong> {now.U} up · {now.F} front
       </p>
+      {sliceMethod && (
+        <small>
+          M / M′ move centers inside your held cube. Keep your block frame unless x / y / z asks for
+          a physical whole-cube turn.
+        </small>
+      )}
       {moving && <small>Showing the last completed move while the cube turns.</small>}
       {destination && (
         <>

@@ -33,6 +33,11 @@ import type { CmllVariant } from './cmll/types';
 import type { AdvancedRouxAssets } from './assets';
 import type { FirstBlockEvidence, RouxFrame, RouxInput, RouxSearchBudget } from './types';
 const equal = (a: unknown, b: unknown) => JSON.stringify(a) === JSON.stringify(b);
+const verifiedRoutes = new WeakSet<object>();
+/** Process-local admission only; JSON and structured clones must be replay-verified again. */
+export function isVerifiedRouxRoute(route: RouxRoute): boolean {
+  return verifiedRoutes.has(route);
+}
 /** Admit data only. Accessors, functions, exotic prototypes and cycles never run. */
 function* scanRouxData(
   raw: unknown,
@@ -275,7 +280,9 @@ export function* validateRouxRouteSteps(
   if (!equal(score, r.score)) throw Error('Roux execution score does not match physical moves.');
   r.evidence = checkedFirstBlockEvidence(e, input, frame, r.evidence, assets);
   r.trace.rouxAdvanced = rouxTraceMetadata(r);
-  return freezeLabValue(r);
+  const verified = freezeLabValue(r);
+  verifiedRoutes.add(verified);
+  return verified;
 }
 export function validateRouxRoute(...args: Parameters<typeof validateRouxRouteSteps>): RouxRoute {
   return drainTeachingSteps(validateRouxRouteSteps(...args));

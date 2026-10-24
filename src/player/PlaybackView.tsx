@@ -350,6 +350,14 @@ export function PlaybackView({
             s && (
               <RegripGuide
                 engine={engine}
+                sliceMethod={
+                  source.kind === 'roux-lab' ||
+                  source.kind === 'roux-lesson' ||
+                  source.kind === 'cmll' ||
+                  (source.kind === 'solve' &&
+                    (source.session.trace.method === 'roux-beginner' ||
+                      source.session.trace.method === 'roux-advanced'))
+                }
                 boundaryState={s.boundaryState}
                 action={action}
                 moving={s.progress > 0}
