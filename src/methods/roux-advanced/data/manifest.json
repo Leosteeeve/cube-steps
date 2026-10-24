@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "coordinateVersion": 1,
+  "moveSetVersion": "roux-stm-v1",
+  "file": "block-distance.bin",
+  "bytes": 5322240,
+  "sha256": "d49228defc979d35244b45b73b7a5510f9faaa7340da4b0899a13c253fee8a38",
+  "moveEffectsSha256": "c4abe76adab22e2445c747862ca0a935cef9f329714185c3bb6d2c9a0bd00db4",
+  "goalIndex": 3465360,
+  "reachable": 5322240,
+  "maximum": 8
+}

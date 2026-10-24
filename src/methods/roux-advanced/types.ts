@@ -3,6 +3,8 @@ import type { ActionInput } from '../shared/trace';
 import type { Quarter } from '../roux/types';
 export type { Quarter } from '../roux/types';
 export type { RouxAssets } from '../roux/assets';
+export type { FirstBlockEvidence } from './blocks/reference';
+export type { BlockSearchAssets } from './blocks/distance';
 export type RouxFrameId = `${'white' | 'yellow'}-${'blue' | 'green' | 'red' | 'orange'}`;
 export interface RouxFrame {
   readonly id: RouxFrameId;
