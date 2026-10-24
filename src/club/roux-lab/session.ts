@@ -5,6 +5,7 @@ import type { RouxClientEvent } from '../../roux-lab/client';
 import { freezeLabValue } from '../../lab/input';
 import { pinRouxComparison, type RouxPinnedComparison } from '../../roux-lab/comparison';
 import { isVerifiedRouxRoute } from '../../methods/roux-advanced/validate';
+import type { RouxExperiment } from '../../roux-lab/experiments/types';
 export interface RouxLabSession {
   input: RouxInput | null;
   settings: RouxSettings;
@@ -15,6 +16,7 @@ export interface RouxLabSession {
   error: string;
   comparisonA: RouxRoute | null;
   comparison: RouxPinnedComparison | null;
+  experimentId: string | null;
 }
 export function initialRouxLabSession(
   frames: readonly RouxFrameId[] = ROUX_FRAMES.map((f) => f.id),
@@ -33,6 +35,7 @@ export function initialRouxLabSession(
     error: '',
     comparisonA: null,
     comparison: null,
+    experimentId: null,
   };
 }
 export type RouxSessionEvent =
@@ -41,6 +44,8 @@ export type RouxSessionEvent =
   | { type: 'reset'; frames?: readonly RouxFrameId[] }
   | { type: 'select'; id: string }
   | { type: 'adopt'; route: RouxRoute }
+  | { type: 'load'; experiment: RouxExperiment }
+  | { type: 'saved'; experiment: RouxExperiment }
   | { type: 'compare'; id: string }
   | { type: 'clear-comparison' }
   | { type: 'stop' }
@@ -73,6 +78,25 @@ export function reduceRouxLabSession(s: RouxLabSession, event: RouxSessionEvent)
     return { ...s, routes, selectedId: s.selectedId ?? route.id, status };
   }
   switch (event.type) {
+    case 'load': {
+      const e = event.experiment;
+      if (e.routes.some((r) => !isVerifiedRouxRoute(r)))
+        throw Error('Only verified experiment routes can be loaded.');
+      return {
+        ...initialRouxLabSession(e.settings.allowedFrames),
+        input: e.input,
+        settings: e.settings,
+        coverage: e.coverage,
+        routes: e.routes,
+        selectedId: e.routes[0].id,
+        status: 'complete',
+        experimentId: e.id,
+      };
+    }
+    case 'saved':
+      return event.experiment.input.fingerprint === s.input?.fingerprint
+        ? { ...s, experimentId: event.experiment.id }
+        : s;
     case 'adopt': {
       const route = event.route;
       if (

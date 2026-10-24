@@ -1,3 +1,4 @@
+import { csvCell as cell } from '../../shared/csv';
 import { assertGraph, demand, emptyLabData } from './schema';
 import type { LabAttempt, LabData, LabRepositorySnapshot } from './types';
 import {
@@ -84,15 +85,6 @@ export function buildLabExport(
   };
   assertTransfer(file);
   return file;
-}
-function cell(v: unknown): string {
-  if (typeof v === 'number') {
-    demand(Number.isFinite(v), 'Invalid numeric CSV value.');
-    return String(v);
-  }
-  let s = v === null || v === undefined ? '' : String(v);
-  if (/^[\s\x00-\x1f\x7f-\x9f]*[=+\-@]/u.test(s)) s = "'" + s;
-  return '"' + s.replaceAll('"', '""') + '"';
 }
 export function exportLabCsv(
   snapshot: LabRepositorySnapshot,

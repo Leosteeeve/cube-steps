@@ -136,6 +136,21 @@
   width: 100%;
   min-width: 0;
 }
+.roux-export-choice {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  min-height: 44px;
+}
+[aria-label='Roux experiment notebook'] {
+  display: grid;
+  gap: 0.8rem;
+  margin-bottom: 1.4rem;
+}
+[aria-label='Roux experiment notebook'] summary {
+  cursor: pointer;
+  font-weight: 700;
+}
 .roux-lab-player .player-area {
   grid-template-columns: minmax(0, 1fr);
 }

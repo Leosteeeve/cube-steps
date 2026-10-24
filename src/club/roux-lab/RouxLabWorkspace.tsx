@@ -11,6 +11,10 @@ import { AnalyzePage } from './AnalyzePage';
 import { ResultSummary } from './ResultSummary';
 import { ComparePage } from './ComparePage';
 import { RouxLabPlayer } from './RouxLabPlayer';
+import { RouxNotebookProvider } from './RouxNotebookProvider';
+import { ExperimentPanel } from './ExperimentPanel';
+import type { RouxExperiment } from '../../roux-lab/experiments/types';
+import type { PlaybackHandle } from '../../player/PlaybackView';
 import './roux-lab.css';
 export type RouxLabView = 'analyze' | 'compare' | 'trials';
 function Body({
@@ -28,6 +32,7 @@ function Body({
   const [state, dispatch] = useReducer(reduceRouxLabSession, loaded.frames, initialRouxLabSession),
     epoch = useRef(0),
     handle = useRef<ReturnType<RouxSearchClient['start']> | null>(null);
+  const playbackHandle = useRef<PlaybackHandle | null>(null);
   const selected = [state.comparison?.A, state.comparison?.B, ...state.routes].find(
     (r) => r?.id === state.selectedId,
   );
@@ -87,6 +92,21 @@ function Body({
     if (handle.current) handle.current.stop();
     else epoch.current++;
     dispatch({ type: 'stop' });
+  }
+  function quiesce() {
+    playbackHandle.current?.pause();
+    stop();
+  }
+  async function loadExperiment(raw: RouxExperiment) {
+    quiesce();
+    const token = ++epoch.current;
+    handle.current = null;
+    const [{ loadRouxLabAssets }, { verifyRouxExperiment }] = await Promise.all([
+      import('../../roux-lab/browser-assets'),
+      import('../../roux-lab/experiments/snapshots'),
+    ]);
+    const experiment = await verifyRouxExperiment(engine, raw, await loadRouxLabAssets());
+    if (token === epoch.current) dispatch({ type: 'load', experiment });
   }
   async function start(source: SolveInput) {
     const token = ++epoch.current;
@@ -148,6 +168,13 @@ function Body({
         </p>
       )}
       <ResultSummary state={state} onStop={stop} />
+      <ExperimentPanel
+        engine={engine}
+        state={state}
+        onLoad={loadExperiment}
+        onSaved={(experiment) => dispatch({ type: 'saved', experiment })}
+        quiesce={quiesce}
+      />
       <div hidden={view !== 'analyze'}>
         <AnalyzePage
           engine={engine}
@@ -205,7 +232,15 @@ function Body({
         </div>
       )}
       <div hidden={view === 'trials'}>
-        {selected && <RouxLabPlayer engine={engine} route={selected} />}
+        {selected && (
+          <RouxLabPlayer
+            engine={engine}
+            route={selected}
+            onHandle={(h) => {
+              playbackHandle.current = h;
+            }}
+          />
+        )}
       </div>
     </section>
   );
@@ -220,7 +255,9 @@ export function RouxLabWorkspace({ owner, view }: { owner: RouxLabOwner; view: R
       </section>
     );
   return engine ? (
-    <Body engine={engine} owner={owner} view={view} />
+    <RouxNotebookProvider owner={owner}>
+      <Body engine={engine} owner={owner} view={view} />
+    </RouxNotebookProvider>
   ) : (
     <p role="status">Loading Roux Lab…</p>
   );

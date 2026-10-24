@@ -5,6 +5,10 @@ import { afterEach, expect, it, vi } from 'vitest';
 afterEach(cleanup);
 import type { RouxLabOwner } from './owner';
 import { RouxLabWorkspace } from './RouxLabWorkspace';
+vi.mock('./RouxNotebookProvider', () => ({
+  RouxNotebookProvider: ({ children }: { children: import('react').ReactNode }) => children,
+  useRouxNotebook: () => null,
+}));
 const stubs = vi.hoisted(() => ({
   engine: {},
   prepare: vi.fn(() => ({ fingerprint: 'input', source: { kind: 'scramble', moves: [] } })),

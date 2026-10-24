@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { CubeEngine, SolveInput } from '../../core/types';
 import { ColorEntry } from '../../app/color-entry/ColorEntry';
 import { createDraftState, reduceDraft } from '../../app/color-entry/draft';
@@ -33,6 +33,21 @@ export function AnalyzePage({
     [randomizing, setRandomizing] = useState(false),
     generation = useRef(0);
   const busy = state.status === 'initializing' || state.status === 'searching';
+  useEffect(() => {
+    const source = state.input?.source;
+    if (!source) return;
+    generation.current++;
+    setRandomizing(false);
+    setError('');
+    if (source.kind === 'scramble') {
+      setMode('scramble');
+      setText(source.moves.join(' '));
+    } else {
+      setMode('colors');
+      setDraft(createDraftState({ facelets: source.facelets, face: 'F', selection: 'white' }));
+      setValidation(validateFacelets(source.facelets, engine.solved()));
+    }
+  }, [state.input, engine]);
   const edit = () => {
     generation.current++;
     setRandomizing(false);
