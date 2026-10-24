@@ -2,12 +2,17 @@ import { chromium, expect, type Page } from '@playwright/test';
 import { mkdir, readFile, writeFile, realpath } from 'node:fs/promises';
 import { resolve, relative, isAbsolute, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { verifyGuideManifest } from './capture-contract.mts';
-import { prepareTutorialScene, renderTutorialFrame } from './capture-fixtures.mts';
+import { verifyGuideManifest, actualGuideCaptureRoute } from './capture-contract.mts';
+import {
+  prepareTutorialScene,
+  renderTutorialFrame,
+  prepareRouxGuideScene,
+} from './capture-fixtures.mts';
 import type { GuideScreenshot } from '../../src/club/guide/types.ts';
 export type CaptureScenario = {
   id: string;
   route: string;
+  finalRoute?: string;
   viewport: { width: number; height: number };
   prepare(page: Page): Promise<void>;
   ready(page: Page): Promise<void>;
@@ -17,6 +22,57 @@ export type CaptureScenario = {
 const desktop = { width: 1360, height: 1000 },
   phone = { width: 390, height: 844 };
 const scenes: (CaptureScenario & { caption: string; alt: string })[] = [
+  {
+    id: 'advanced-roux-lesson',
+    route: 'club/#/learn/advanced-roux/block-strategies',
+    target: '.player-area',
+    exampleData: true,
+    caption:
+      'Example late-base-edge construction: follow the printed hold and real block checkpoints. Advanced Roux remains Preview.',
+    alt: 'Advanced Roux worked block example with bright cube stickers and step controls',
+    prepare: (p: Page) => prepareRouxGuideScene(p, 'advanced-roux-lesson'),
+  },
+  {
+    id: 'cmll-library',
+    route: 'club/#/cmll',
+    target: '.cmll-page',
+    exampleData: false,
+    caption: 'Filter the complete CMLL library by family, then inspect the corners and exact hold.',
+    alt: 'CMLL reference filtered to the four H-family cases',
+    prepare: (p: Page) => prepareRouxGuideScene(p, 'cmll-library'),
+  },
+  {
+    id: 'roux-lab-analyze',
+    route: 'club/#/roux-lab',
+    target: '.roux-analyze-grid',
+    exampleData: true,
+    caption:
+      'Example bounded analysis: compare complete verified block routes and read the proof scope for each hold.',
+    alt: 'Roux Test Lab sample input, eight frame choices and real candidate routes',
+    prepare: (p: Page) => prepareRouxGuideScene(p, 'roux-lab-analyze'),
+  },
+  {
+    id: 'roux-lab-compare',
+    route: 'club/#/roux-lab',
+    finalRoute: 'club/#/roux-lab/compare',
+    target: '[aria-label="Fixed Roux comparison"]',
+    exampleData: true,
+    caption:
+      'Example fixed A/B comparison: moves and handling estimates describe these exact route snapshots, not universal human speed.',
+    alt: 'Two fixed Roux route cards showing first-block, second-block and handling differences',
+    prepare: (p: Page) => prepareRouxGuideScene(p, 'roux-lab-compare'),
+  },
+  {
+    id: 'roux-lab-trials',
+    route: 'club/#/roux-lab',
+    finalRoute: 'club/#/roux-lab/trials',
+    target: '.roux-notebook',
+    exampleData: true,
+    caption:
+      'Example trial plan: alternate AB/BA, check the original cube and hold, then stop at both blocks before CMLL. No physical results are claimed.',
+    alt: 'Roux trial conditions, actual six-face setup diagram and unchecked timing confirmations',
+    prepare: (p: Page) => prepareRouxGuideScene(p, 'roux-lab-trials'),
+  },
   {
     id: 'roux-learning',
     route: 'club/#/learn/roux/roux-first-block',
@@ -74,6 +130,7 @@ const scenes: (CaptureScenario & { caption: string; alt: string })[] = [
   {
     id: 'lab-compare',
     route: 'club/#/lab',
+    finalRoute: 'club/#/lab/compare',
     target: '.lab-grid',
     exampleData: true,
     caption:
@@ -84,6 +141,7 @@ const scenes: (CaptureScenario & { caption: string; alt: string })[] = [
   {
     id: 'lab-trials',
     route: 'club/#/lab',
+    finalRoute: 'club/#/lab/trials',
     target: '.lab-notebook',
     exampleData: true,
     caption:
@@ -209,7 +267,14 @@ const scenes: (CaptureScenario & { caption: string; alt: string })[] = [
     if (s.target) await expect(p.locator(s.target)).toBeVisible();
   },
 }));
-for (const id of ['home', 'moves', 'timer', 'roux-learning']) {
+for (const id of [
+  'home',
+  'moves',
+  'timer',
+  'roux-learning',
+  'advanced-roux-lesson',
+  'roux-lab-analyze',
+]) {
   const original = scenes.find((s) => s.id === id)!;
   scenes.push({
     ...original,
@@ -243,6 +308,12 @@ export async function captureGuide({
         errors: string[] = [];
       page.on('pageerror', (e) => errors.push(e.message));
       try {
+        await context.addInitScript(() =>
+          localStorage.setItem(
+            'cubesteps.club.tutorial.v1',
+            JSON.stringify({ version: 1, welcome: 'never', dismissed: {}, tours: {} }),
+          ),
+        );
         await page.goto(new URL(s.route, baseUrl).href);
         await s.prepare(page);
         await s.ready(page);
@@ -256,15 +327,15 @@ export async function captureGuide({
           rel = relative(root, path);
         if (rel.startsWith('..') || isAbsolute(rel)) throw Error('Unsafe capture path');
         const bytes = s.target
-          ? await page.locator(s.target).screenshot({ path })
-          : await page.screenshot({ path });
+          ? await page.locator(s.target).screenshot({ path, animations: 'disabled' })
+          : await page.screenshot({ path, animations: 'disabled' });
         if (errors.length) throw Error(errors.join('\n'));
         images.push({
           id: s.id,
           src: 'club-guide/' + s.id + '.png',
           alt: s.alt,
           caption: s.caption,
-          route: s.route,
+          route: actualGuideCaptureRoute(baseUrl, page.url(), s.finalRoute ?? s.route),
           width: bytes.readUInt32BE(16),
           height: bytes.readUInt32BE(20),
           sourceRevision,

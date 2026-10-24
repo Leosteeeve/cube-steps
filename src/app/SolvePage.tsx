@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useId, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import type { CubeEngine, SolveSession, StageId, MethodId } from '../core/types';
 import { parseScramble } from '../core/notation';
 import { CubePlayer } from '../player/CubePlayer';
@@ -14,7 +14,21 @@ import { FACE_ENTRY_ORDER } from '../core/facelet-layout';
 import { getMethodInfo as getMethod } from '../methods/info';
 import { MethodSelector } from './MethodSelector';
 import { useGuidanceTarget } from '../ui/guidance';
-export function SolvePage({ engine, method = 'lbl' }: { engine: CubeEngine; method?: MethodId }) {
+import type { RouxFrameId } from '../methods/roux-advanced/types';
+export function SolvePage({
+  engine,
+  method = 'lbl',
+  rouxOptions,
+}: {
+  engine: CubeEngine;
+  method?: MethodId;
+  rouxOptions?: {
+    allowedFrames: readonly RouxFrameId[];
+    onAllowedFramesChange: (ids: readonly RouxFrameId[]) => void;
+  };
+}) {
+  const framesKey =
+    method === 'roux-advanced' ? (rouxOptions?.allowedFrames ?? ['white-blue']).join(',') : '';
   const inputTarget = useGuidanceTarget('solve.input'),
     validationTarget = useGuidanceTarget('solve.validation'),
     explanationTarget = useGuidanceTarget('solve.explanation');
@@ -37,6 +51,9 @@ export function SolvePage({ engine, method = 'lbl' }: { engine: CubeEngine; meth
   const [draft, setDraft] = useState(() => createDraftState(recovered.draft));
   const [storageAvailable, setStorageAvailable] = useState(recovered.available);
   const [mode, setMode] = useState<'scramble' | 'colors'>('scramble');
+  const [inputExpanded, setInputExpanded] = useState(true);
+  const inputPanelId = useId(),
+    inputToggle = useRef<HTMLButtonElement>(null);
   const [validation, setValidation] = useState<{
     revision: number;
     result: FaceletValidation;
@@ -57,11 +74,15 @@ export function SolvePage({ engine, method = 'lbl' }: { engine: CubeEngine; meth
     setRandomizing(false);
     setError('');
     setSession(null);
+    setInputExpanded(true);
     setStage(firstStage);
     setActive(firstStage);
-  }, [client, method, firstStage]);
+  }, [client, method, firstStage, framesKey]);
   const parsedDraft = mode === 'scramble' ? parseScramble(text) : null;
   const session = storedSession?.trace.method === method ? storedSession : null;
+  useLayoutEffect(() => {
+    if (session) inputToggle.current?.focus();
+  }, [session]);
   const recordedInput = session?.input;
   const inputMatches =
     recordedInput &&
@@ -148,14 +169,27 @@ export function SolvePage({ engine, method = 'lbl' }: { engine: CubeEngine; meth
       }
       if (token !== epoch.current || methodRef.current !== method) return;
     }
+    const options =
+      method === 'roux-advanced'
+        ? Object.freeze({
+            allowedFrames: Object.freeze([
+              ...(rouxOptions?.allowedFrames ?? (['white-blue'] as RouxFrameId[])),
+            ]),
+          })
+        : undefined;
     const result =
       mode === 'colors' && checked?.ok
-        ? await client.solveFacelets(checked.facelets, method)
-        : await client.solveScramble(text, method);
+        ? options
+          ? await client.solveFacelets(checked.facelets, method, options)
+          : await client.solveFacelets(checked.facelets, method)
+        : options
+          ? await client.solveScramble(text, method, options)
+          : await client.solveScramble(text, method);
     if (token !== epoch.current || methodRef.current !== method) return;
     setBusy(false);
     if (result.ok) {
       setSession(result.session);
+      setInputExpanded(false);
       setStage(firstStage);
       setActive(firstStage);
     } else if (result.error.kind !== 'cancelled') {
@@ -222,94 +256,116 @@ export function SolvePage({ engine, method = 'lbl' }: { engine: CubeEngine; meth
         <h1>A clear path for your cube.</h1>
         <p>Get a complete {presentation.label} solution, with a reason behind every move.</p>
       </div>
-      <div
-        ref={mode === 'scramble' ? inputTarget : undefined}
-        className="input-mode-switch"
-        role="group"
-        aria-label="Cube input"
-      >
-        <button
-          type="button"
-          aria-pressed={mode === 'scramble'}
-          onClick={() => changeMode('scramble')}
-        >
-          Scramble
-        </button>
-        <button type="button" aria-pressed={mode === 'colors'} onClick={() => changeMode('colors')}>
-          Enter colors
-        </button>
-      </div>
-      {mode === 'colors' ? (
-        <>
-          <ColorEntry
-            state={draft}
-            onAction={editColors}
-            validation={checked}
-            onCheck={checkColors}
-            onSolve={() => void solve()}
-            busy={busy}
-            storageAvailable={storageAvailable}
-            solveLabel={`Explain with ${presentation.label}`}
-          />
-          {busy && (
-            <button type="button" onClick={cancelPending}>
-              Cancel
-            </button>
-          )}
-        </>
-      ) : (
-        <form
-          className="scramble-form"
-          onSubmit={(e) => {
-            e.preventDefault();
-            void solve();
-          }}
-        >
-          <div className="form-top">
-            <label htmlFor="scramble">Scramble sequence</label>
+      <section className="solve-input-panel" aria-label="Starting cube">
+        {session && (
+          <button
+            ref={inputToggle}
+            className="input-disclosure"
+            type="button"
+            aria-expanded={inputExpanded}
+            aria-controls={inputPanelId}
+            onClick={() => setInputExpanded((value) => !value)}
+          >
+            {inputExpanded ? 'Hide cube input' : 'Edit cube input'}
+            <span aria-hidden="true">{inputExpanded ? '−' : '+'}</span>
+          </button>
+        )}
+        <div id={inputPanelId} hidden={!!session && !inputExpanded}>
+          <div
+            ref={mode === 'scramble' ? inputTarget : undefined}
+            className="input-mode-switch"
+            role="group"
+            aria-label="Cube input"
+          >
             <button
               type="button"
-              className="text-button"
-              disabled={randomizing}
-              onClick={() => void random()}
+              aria-pressed={mode === 'scramble'}
+              onClick={() => changeMode('scramble')}
             >
-              {randomizing ? 'Generating…' : 'Random scramble'} <span aria-hidden="true">↝</span>
+              Scramble
+            </button>
+            <button
+              type="button"
+              aria-pressed={mode === 'colors'}
+              onClick={() => changeMode('colors')}
+            >
+              Enter colors
             </button>
           </div>
-          <textarea
-            id="scramble"
-            value={text}
-            onChange={(e) => updateText(e.target.value)}
-            placeholder="R U R' U' F2…"
-            spellCheck={false}
-            rows={2}
-            aria-describedby="scramble-help"
-          />
-          <div className="form-bottom">
-            <p ref={!error ? validationTarget : undefined} id="scramble-help">
-              Start solved, white up & green front. Use U D L R F B with ′ or 2.
-              <br />
-              Leave blank to explore an already solved cube.
-            </p>
-            <button className="primary-button" type="submit" disabled={busy || randomizing}>
-              {busy ? 'Finding your steps…' : `Explain with ${presentation.label}`}{' '}
-              <span aria-hidden="true">→</span>
-            </button>
-            {busy && (
-              <button
-                type="button"
-                onClick={() => {
-                  epoch.current++;
-                  client.cancel();
-                  setBusy(false);
-                }}
-              >
-                Cancel
-              </button>
-            )}
-          </div>
-        </form>
-      )}
+          {mode === 'colors' ? (
+            <>
+              <ColorEntry
+                state={draft}
+                onAction={editColors}
+                validation={checked}
+                onCheck={checkColors}
+                onSolve={() => void solve()}
+                busy={busy}
+                storageAvailable={storageAvailable}
+                solveLabel={`Explain with ${presentation.label}`}
+              />
+              {busy && (
+                <button type="button" onClick={cancelPending}>
+                  Cancel
+                </button>
+              )}
+            </>
+          ) : (
+            <form
+              className="scramble-form"
+              onSubmit={(e) => {
+                e.preventDefault();
+                void solve();
+              }}
+            >
+              <div className="form-top">
+                <label htmlFor="scramble">Scramble sequence</label>
+                <button
+                  type="button"
+                  className="text-button"
+                  disabled={randomizing}
+                  onClick={() => void random()}
+                >
+                  {randomizing ? 'Generating…' : 'Random scramble'}{' '}
+                  <span aria-hidden="true">↝</span>
+                </button>
+              </div>
+              <textarea
+                id="scramble"
+                value={text}
+                onChange={(e) => updateText(e.target.value)}
+                placeholder="R U R' U' F2…"
+                spellCheck={false}
+                rows={2}
+                aria-describedby="scramble-help"
+              />
+              <div className="form-bottom">
+                <p ref={!error ? validationTarget : undefined} id="scramble-help">
+                  Start solved, white up & green front. Use U D L R F B with ′ or 2.
+                  <br />
+                  Leave blank to explore an already solved cube.
+                </p>
+                <button className="primary-button" type="submit" disabled={busy || randomizing}>
+                  {busy ? 'Finding your steps…' : `Explain with ${presentation.label}`}{' '}
+                  <span aria-hidden="true">→</span>
+                </button>
+                {busy && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      epoch.current++;
+                      client.cancel();
+                      setBusy(false);
+                    }}
+                  >
+                    Cancel
+                  </button>
+                )}
+              </div>
+            </form>
+          )}
+        </div>
+      </section>
       {error && (
         <p ref={mode === 'scramble' ? validationTarget : undefined} className="error" role="alert">
           {error}
@@ -334,6 +390,25 @@ export function SolvePage({ engine, method = 'lbl' }: { engine: CubeEngine; meth
               )}
             </details>
           </div>
+          {session.trace.rouxAdvanced && (
+            <aside className="notice" aria-label="Roux search evidence">
+              <p>
+                {session.trace.rouxAdvanced.basis === 'optimized'
+                  ? 'Optimized route within the search budget.'
+                  : 'Verified baseline fallback — optimization did not improve this route within the budget.'}{' '}
+                Holding frame: {session.trace.rouxAdvanced.frameId.replace('-', ' bottom / ')} left.
+                The two blocks use {session.trace.rouxAdvanced.counts.combined} slice turns; this is
+                not a claim of the shortest complete solve.
+              </p>
+              <p>
+                {session.trace.rouxAdvanced.evidence.status === 'not-explored'
+                  ? 'The independent shortest-left-block search was not completed.'
+                  : session.trace.rouxAdvanced.evidence.status === 'proven-minimum'
+                    ? `Independent left-block minimum: ${session.trace.rouxAdvanced.evidence.minimum} slice turns. The chosen route may spend more here for a smoother second block.`
+                    : `Independent left-block bound: ${session.trace.rouxAdvanced.evidence.lowerBound}–${session.trace.rouxAdvanced.evidence.upperBound} slice turns. A minimum has not been proved.`}
+              </p>
+            </aside>
+          )}
           {!inputMatches && (
             <p className="notice" role="status">
               The draft has changed. The solution below still uses its saved input.

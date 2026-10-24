@@ -53,11 +53,24 @@ export function planBlockGoal(
   policies: RouxBlockPolicies,
   budget: RouxBudget,
 ): RouxPlanResult {
+  const run = planBlockGoalSteps(engine, initial, goal, policies, budget);
+  let step = run.next();
+  while (!step.done) step = run.next();
+  return step.value;
+}
+export function* planBlockGoalSteps(
+  engine: CubeEngine,
+  initial: CubeState,
+  goal: BlockGoal,
+  policies: RouxBlockPolicies,
+  budget: RouxBudget,
+): Generator<{ kind: 'work' }, RouxPlanResult> {
   const stageId: RouxStageId = goal.side === 'left' ? 'roux-first-block' : 'roux-second-block';
   let state = initial;
   const actions: RouxActionDraft[] = [];
   try {
-    validateBlockPolicies(policies);
+    if (budget.validateBlocks) budget.validateBlocks(policies);
+    else validateBlockPolicies(policies);
     if (!locksCorrect(engine, state, goal))
       throw new RouxPlanningError(
         'verification',
@@ -80,7 +93,11 @@ export function planBlockGoal(
         stageId,
         'The block policy does not describe this legal target state.',
       );
-    const maps = maneuvers.map((m) => blockTransition(engine, m.moves));
+    const maps = [];
+    for (const m of maneuvers) {
+      maps.push(blockTransition(engine, m.moves));
+      yield { kind: 'work' };
+    }
     let routes: Route[] = [{ state, steps: [], rear: 0, tokens: 0, ids: '' }];
     const nextReadiness = (s: CubeState) => {
       const next = policies.tables.filter(
@@ -103,6 +120,7 @@ export function planBlockGoal(
       for (const route of routes) {
         const coordinate = readBlockCoordinate(engine, route.state, goal);
         for (let i = 0; i < maneuvers.length; i++) {
+          yield { kind: 'work' };
           budget.node(stageId);
           if (
             table.rank[coordinateIndex(stepCoordinate(coordinate, maps[i], goal), goal)] !==
@@ -126,21 +144,20 @@ export function planBlockGoal(
         }
       }
       // Every retained route reaches the same policy depth; rank strictly decreases.
-      const scores = new Map(
-        candidates.map((r) => [
-          r,
-          [
-            r.steps.length,
-            r.rear,
-            rank === 1 ? nextReadiness(r.state) : 0,
-            r.tokens +
-              (rank === 1
-                ? 0
-                : table.cost[coordinateIndex(readBlockCoordinate(engine, r.state, goal), goal)]),
-            r.ids,
-          ],
-        ]),
-      );
+      const scores = new Map<Route, (number | string)[]>();
+      for (const r of candidates) {
+        scores.set(r, [
+          r.steps.length,
+          r.rear,
+          rank === 1 ? nextReadiness(r.state) : 0,
+          r.tokens +
+            (rank === 1
+              ? 0
+              : table.cost[coordinateIndex(readBlockCoordinate(engine, r.state, goal), goal)]),
+          r.ids,
+        ]);
+        yield { kind: 'work' };
+      }
       routes = candidates.sort((a, b) => compare(scores.get(a)!, scores.get(b)!)).slice(0, width);
       if (!routes.length)
         throw new RouxPlanningError(
@@ -157,6 +174,7 @@ export function planBlockGoal(
         'Block route did not reach its checkpoint.',
       );
     for (const chosen of best.steps) {
+      yield { kind: 'work' };
       const { before, rank } = chosen;
       state = chosen.after;
       const phaseBefore = observeRouxFrame(engine, before).centerPhase,

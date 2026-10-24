@@ -4,6 +4,7 @@ import { ClubApp } from './ClubApp';
 import { ClubProgressProvider } from './learning/use-club-progress';
 import '../styles.css';
 import './club.css';
+import '../ui/workspace.css';
 import { MotionProvider } from '../ui/motion';
 import { TutorialProvider } from './tutorial/TutorialProvider';
 document.documentElement.dataset.edition = 'club';

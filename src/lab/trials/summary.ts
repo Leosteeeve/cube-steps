@@ -1,23 +1,25 @@
 import type { LabAttempt, LabComparison, TimingMethod, TrialBlock } from '../experiments/types';
-import { latestAttempts, selectEligibleAttempts } from './blocks';
+import { latestAttempts, selectEligibleAttemptsFor } from './blocks';
+import type { TrialAttemptBase } from './types';
 const median = (values: number[]) => {
   const a = values.slice().sort((a, b) => a - b),
     m = Math.floor(a.length / 2);
   return a.length % 2 ? a[m] : (a[m - 1] + a[m]) / 2;
 };
-const distribution = (attempts: LabAttempt[], key: 'flow' | 'recognition') => {
+const distribution = (attempts: TrialAttemptBase[], key: 'flow' | 'recognition') => {
   const bins = [0, 0, 0, 0, 0];
   for (const a of attempts)
     if (a[key] !== undefined && Number.isInteger(a[key]) && a[key]! >= 1 && a[key]! <= 5)
       bins[a[key]! - 1]++;
   return { count: bins.reduce((a, b) => a + b, 0), distribution: bins };
 };
-export function summarizeComparison(
+export function summarizeComparisonFor<A extends TrialAttemptBase>(
   c: LabComparison,
   testerId: string,
   method: TimingMethod,
   blocks: readonly TrialBlock[],
-  raw: readonly LabAttempt[],
+  raw: readonly A[],
+  endpoint: TrialAttemptBase['endpoint'],
 ) {
   const attempts = latestAttempts(raw),
     matching = attempts.filter(
@@ -27,11 +29,13 @@ export function summarizeComparison(
         [c.routeAId, c.routeBId].includes(a.routeId) &&
         a.testerId === testerId &&
         a.timingMethod === method &&
-        a.endpoint === 'cross-f2l',
+        a.endpoint === endpoint &&
+        (endpoint !== 'roux-blocks' || a.method === 'roux-advanced'),
     );
-  const selection = selectEligibleAttempts(
+  const selection = selectEligibleAttemptsFor(
       matching,
       blocks.filter((b) => b.comparisonId === c.id),
+      endpoint,
     ),
     pairs = blocks
       .filter((b) => b.comparisonId === c.id)
@@ -71,4 +75,11 @@ export function summarizeComparison(
     selection,
   };
 }
+export const summarizeComparison = (
+  c: LabComparison,
+  testerId: string,
+  method: TimingMethod,
+  blocks: readonly TrialBlock[],
+  raw: readonly LabAttempt[],
+) => summarizeComparisonFor(c, testerId, method, blocks, raw, 'cross-f2l');
 export type ComparisonSummary = ReturnType<typeof summarizeComparison>;

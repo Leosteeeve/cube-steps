@@ -28,6 +28,7 @@ test('solves pasted, random and empty inputs while preserving useful parse error
   await input.fill("R U2 F'");
   await page.getByRole('button', { name: 'Explain with LBL', exact: true }).click();
   await expect(page.getByRole('button', { name: 'Next move', exact: true })).toBeEnabled();
+  await page.getByRole('button', { name: 'Edit cube input', exact: true }).click();
   await input.fill('R M');
   await page.getByRole('button', { name: 'Explain with LBL', exact: true }).click();
   await expect(page.getByRole('alert')).toContainText('character 3');
@@ -35,6 +36,7 @@ test('solves pasted, random and empty inputs while preserving useful parse error
   await input.fill('');
   await page.getByRole('button', { name: 'Explain with LBL', exact: true }).click();
   await expect(page.getByTestId('move-position')).toHaveText('Move 0 of 0');
+  await page.getByRole('button', { name: 'Edit cube input', exact: true }).click();
   await page.getByRole('button', { name: 'Random scramble', exact: true }).click();
   await expect(input).not.toHaveValue('');
   await page.getByRole('button', { name: 'Explain with LBL', exact: true }).click();

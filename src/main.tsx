@@ -2,6 +2,7 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { App } from './app/App';
 import './styles.css';
+import './ui/workspace.css';
 import { MotionProvider } from './ui/motion';
 document.documentElement.dataset.edition = 'global';
 const PlayerFixture = import.meta.env.DEV

@@ -65,7 +65,7 @@ it('shows the actual odd-M checkpoint and reverses it under reduced motion', asy
   await waitFor(() => expect(screen.getByRole('button', { name: 'Next move' })).toBeEnabled());
   fireEvent.change(screen.getByLabelText('Move position'), { target: { value: index + 1 } });
   expect(await screen.findByText(/Middle-slice setup in progress/)).toBeVisible();
-  expect(screen.getByLabelText('Current holding')).toHaveTextContent(
+  expect(screen.getByLabelText('Current centers')).toHaveTextContent(
     engine.observe(p.timeline.states[index + 1]).centers.U + ' up',
   );
   fireEvent.click(screen.getByRole('button', { name: 'Previous move' }));

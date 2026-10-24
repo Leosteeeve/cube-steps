@@ -24,11 +24,13 @@ it('covers every tour section with substantial original instructions and valid d
     'moves',
     'lessons',
     'roux',
+    'advanced-roux',
     'solve',
     'algorithms',
     'practice',
     'timer',
     'lab',
+    'roux-lab',
     'help',
   ]);
   for (const c of GUIDE_CHAPTERS) {
@@ -39,6 +41,31 @@ it('covers every tour section with substantial original instructions and valid d
   }
   for (const t of Object.values(TOURS))
     for (const s of t.steps) expect(GUIDE_CHAPTERS.some((c) => c.id === s.guideSection)).toBe(true);
+});
+it('explains bounded Roux search, both-block trials and the original accepted video context', () => {
+  const advanced = GUIDE_CHAPTERS.find((c) => c.id === 'advanced-roux')!,
+    lab = GUIDE_CHAPTERS.find((c) => c.id === 'roux-lab')!;
+  expect(advanced).toBeDefined();
+  expect(lab).toBeDefined();
+  expect(advanced.href).toBe('#/learn/advanced-roux/intro');
+  expect(lab.href).toBe('#/roux-lab');
+  for (const phrase of ['42', 'eight', 'M′', 'basic LSE', 'Preview'])
+    expect(JSON.stringify(advanced)).toContain(phrase);
+  for (const phrase of [
+    'both blocks',
+    'five complete',
+    '300',
+    'Import preview',
+    'tester labels',
+    'not proved',
+    'AB/BA',
+  ])
+    expect(JSON.stringify(lab).toLowerCase()).toContain(phrase.toLowerCase());
+  expect(parseClubRoute('#/guide/advanced-roux')).toEqual({
+    kind: 'guide',
+    section: 'advanced-roux',
+  });
+  expect(parseClubRoute('#/guide/roux-lab')).toEqual({ kind: 'guide', section: 'roux-lab' });
 });
 it('documents the fixed Roux hold, middle centers and full lesson/solver destinations', () => {
   const roux = GUIDE_CHAPTERS.find((c) => c.id === 'roux')!;

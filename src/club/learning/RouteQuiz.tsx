@@ -18,6 +18,26 @@ const questions: { key: keyof QuizAnswers; title: string; options: [string, stri
     ],
   },
   {
+    key: 'preference',
+    title: 'Which way of thinking would you like to explore?',
+    options: [
+      ['layers', 'Build layers and pair pieces'],
+      ['blocks', 'Build small blocks and use the middle slice'],
+      ['unsure', 'I am not sure yet'],
+    ],
+  },
+  {
+    key: 'foundation',
+    title: 'Which foundation can you use on your own?',
+    options: [
+      ['none', 'I still need help completing a solve'],
+      ['independent', 'I can solve, but these method skills are new to me'],
+      ['cfop-two-look', 'CFOP: F2L and two-look last layer'],
+      ['roux-blocks', 'Roux: both blocks; still learning corners or LSE'],
+      ['roux-basic', 'Roux: both blocks, corners and basic LSE'],
+    ],
+  },
+  {
     key: 'goal',
     title: 'What would you like to work toward?',
     options: [
@@ -58,7 +78,7 @@ export function RouteQuiz() {
   useEffect(() => {
     title.current?.focus();
   }, [step, chooser]);
-  const recommendation = step === 4 ? recommendRoute(answers as QuizAnswers) : null;
+  const recommendation = step === questions.length ? recommendRoute(answers as QuizAnswers) : null;
   const method = override ?? recommendation?.method;
   const q = questions[step];
   return (
@@ -92,7 +112,9 @@ export function RouteQuiz() {
                       ? 'Build a bottom cross, pair F2L, and learn two-look last-layer steps.'
                       : id === 'roux-beginner'
                         ? 'Build two blocks, solve the corners, then finish with the middle slice. Fixed white-bottom, blue-left hold. Preview.'
-                        : 'Explore shortest cross, full F2L, OLL and PLL formulas.'}
+                        : id === 'roux-advanced'
+                          ? 'Explore flexible blocks, full CMLL and connected LSE. Keep a comfortable starting hold. Preview.'
+                          : 'Explore shortest cross, full F2L, OLL and PLL formulas.'}
                 </span>
               </button>
             ))}
@@ -110,6 +132,18 @@ export function RouteQuiz() {
               </ul>
               <h2>Your next small step</h2>
               <p>{recommendation.nextStep}</p>
+              <p>
+                This suggests a starting point, not an aptitude score or a promise of faster solves.
+              </p>
+              <h2>Another route to explore</h2>
+              {recommendation.alternatives.map((id) => (
+                <p key={id}>
+                  <a href={methodRoute(id, 'learn')} onClick={() => chooseMethod(id)}>
+                    {label(id)}
+                  </a>
+                  {id === 'roux-beginner' ? ' — start with notation, the fixed hold and M/M′.' : ''}
+                </p>
+              ))}
             </>
           ) : (
             <p>You chose this route. Start at the introduction, and switch whenever you need.</p>
@@ -127,7 +161,9 @@ export function RouteQuiz() {
         </>
       ) : (
         <>
-          <p>Question {step + 1} of 4 · Your answers stay in this page.</p>
+          <p>
+            Question {step + 1} of {questions.length} · Your answers stay in this page.
+          </p>
           <fieldset>
             <legend className="sr-only">{q.title}</legend>
             {q.options.map(([value, text]) => (
@@ -150,7 +186,7 @@ export function RouteQuiz() {
               disabled={!answers[q.key]}
               onClick={() => setStep((n) => n + 1)}
             >
-              {step === 3 ? 'Show my route' : 'Next'}
+              {step === questions.length - 1 ? 'Show my route' : 'Next'}
             </button>
             <button className="club-text-button" onClick={() => setChooser(true)}>
               Skip questions

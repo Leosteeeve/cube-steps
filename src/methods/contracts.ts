@@ -31,4 +31,9 @@ export interface MethodRuntime {
   presentation: MethodPresentation;
   checkStage(engine: CubeEngine, state: CubeState, id: StageId): boolean;
   checkAction(engine: CubeEngine, action: TraceAction, stage: StageId): boolean;
+  checkActionSteps?(
+    engine: CubeEngine,
+    action: TraceAction,
+    stage: StageId,
+  ): Generator<{ kind: 'work' }, boolean>;
 }

@@ -7,14 +7,7 @@ const positions: Record<Face, [number, number]> = {
   B: [3, 1],
   D: [1, 2],
 };
-const colors: Record<Color, string> = {
-  white: '#fff',
-  yellow: '#ffda24',
-  green: '#20a65a',
-  blue: '#1969d2',
-  red: '#e33443',
-  orange: '#ff9529',
-};
+import { CUBE_COLORS as colors } from '../../ui/cube-colors';
 export function LabCubeNet({ facelets, label }: { facelets: FaceletSnapshot; label: string }) {
   return (
     <figure className="lab-net">

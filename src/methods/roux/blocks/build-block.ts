@@ -4,7 +4,7 @@ import { observeRouxFrame } from '../frame';
 import { blockComplete } from '../predicates';
 import type { RouxBudget } from '../budget';
 import { blockGoals } from './policies';
-import { planBlockGoal } from './planner';
+import { planBlockGoalSteps } from './planner';
 import type { RouxBlockPolicies } from './types';
 export function planSideBlock(
   engine: CubeEngine,
@@ -13,6 +13,18 @@ export function planSideBlock(
   policies: RouxBlockPolicies,
   budget: RouxBudget,
 ): RouxPlanResult {
+  const run = planSideBlockSteps(engine, initial, side, policies, budget);
+  let step = run.next();
+  while (!step.done) step = run.next();
+  return step.value;
+}
+export function* planSideBlockSteps(
+  engine: CubeEngine,
+  initial: CubeState,
+  side: 'left' | 'right',
+  policies: RouxBlockPolicies,
+  budget: RouxBudget,
+): Generator<{ kind: 'work' }, RouxPlanResult> {
   const stageId = side === 'left' ? 'roux-first-block' : 'roux-second-block';
   if (!observeRouxFrame(engine, initial).sideFrameValid)
     return {
@@ -31,7 +43,7 @@ export function planSideBlock(
   if (blockComplete(engine, initial, side)) return { ok: true, state: initial, actions: [] };
   const goals = blockGoals(engine).filter((g) => g.side === side),
     base = goals.find((g) => g.phase === 'base')!;
-  const baseResult = planBlockGoal(engine, initial, base, policies, budget);
+  const baseResult = yield* planBlockGoalSteps(engine, initial, base, policies, budget);
   if (!baseResult.ok) return baseResult;
   const pairGoals = goals.filter(
     (g) =>
@@ -45,7 +57,7 @@ export function planSideBlock(
     id: string;
   }[] = [];
   for (const first of pairGoals) {
-    const a = planBlockGoal(engine, baseResult.state, first, policies, budget);
+    const a = yield* planBlockGoalSteps(engine, baseResult.state, first, policies, budget);
     if (!a.ok) return a;
     const second = goals.find(
       (g) =>
@@ -53,7 +65,7 @@ export function planSideBlock(
         !g.targetIds.some((id) => first.targetIds.includes(id)) &&
         first.targetIds.every((id) => g.lockedIds.includes(id)),
     )!;
-    const b = planBlockGoal(engine, a.state, second, policies, budget);
+    const b = yield* planBlockGoalSteps(engine, a.state, second, policies, budget);
     if (!b.ok) return b;
     const actions = [...baseResult.actions, ...a.actions, ...b.actions];
     let state = initial,
@@ -64,6 +76,7 @@ export function planSideBlock(
         (p) => action.targets.includes(p.id) && p.slot.includes('B'),
       ).length;
       state = engine.apply(state, action.moves);
+      yield { kind: 'work' };
     }
     candidates.push({
       state: b.state,

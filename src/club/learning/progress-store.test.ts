@@ -2,6 +2,25 @@
 import { beforeEach, expect, it } from 'vitest';
 import { createClubProgressStore, PROGRESS_KEY } from './progress-store';
 beforeEach(() => localStorage.clear());
+it('preserves every older method and a valid unloaded Advanced Roux conceptual lesson', () => {
+  const fixture = {
+    version: 1,
+    selectedMethod: 'roux-advanced',
+    lastLesson: { method: 'roux-advanced', lessonId: 'block-strategies' },
+    practiced: {
+      lbl: ['notation'],
+      'cfop-beginner': ['intro'],
+      'cfop-advanced': ['intro'],
+      'roux-beginner': ['intro', 'roux-first-block'],
+      'roux-advanced': ['block-strategies', 'starting-block'],
+    },
+  };
+  localStorage.setItem(PROGRESS_KEY, JSON.stringify(fixture));
+  const store = createClubProgressStore(() => localStorage);
+  expect(store.load()).toMatchObject({ value: fixture, writable: true });
+  expect(store.save(store.load().value)).toBe(true);
+  expect(JSON.parse(localStorage.getItem(PROGRESS_KEY)!)).toEqual(fixture);
+});
 const value = {
   version: 1 as const,
   selectedMethod: 'lbl' as const,

@@ -23,6 +23,10 @@ it('supports keyboard completion, Back, explanations and an explicit route chang
   fireEvent.click(screen.getByRole('button', { name: 'Back' }));
   expect(first).toBeChecked();
   fireEvent.click(screen.getByRole('button', { name: 'Next' }));
+  fireEvent.click(screen.getByLabelText('Build small blocks and use the middle slice'));
+  fireEvent.click(screen.getByRole('button', { name: 'Next' }));
+  fireEvent.click(screen.getByLabelText('I still need help completing a solve'));
+  fireEvent.click(screen.getByRole('button', { name: 'Next' }));
   fireEvent.click(screen.getByLabelText('Learn advanced formulas and reduce steps'));
   fireEvent.click(screen.getByRole('button', { name: 'Next' }));
   fireEvent.click(screen.getByLabelText('Short sessions'));

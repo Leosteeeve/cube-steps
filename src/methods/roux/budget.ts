@@ -1,5 +1,6 @@
 import type { SolveFailure, TeachingMove } from '../../core/types';
 import type { RouxStageId } from './types';
+import type { RouxBlockPolicies } from './blocks/types';
 export interface RouxLimits {
   maxNodes: number;
   maxMs: number;
@@ -22,6 +23,8 @@ export class RouxPlanningError extends Error {
   }
 }
 export interface RouxBudget {
+  /** Optional admitted-asset cache used by the shared-budget cooperative bridge. */
+  validateBlocks?(policies: RouxBlockPolicies): void;
   check(stage: RouxStageId): void;
   node(stage: RouxStageId): void;
   action(stage: RouxStageId, moves: readonly TeachingMove[]): void;

@@ -1,5 +1,30 @@
 import { dismissTutorialForTest } from './helpers/tutorial';
 import { test, expect } from '@playwright/test';
+
+test('grouped navigation preserves Timer and Moves destinations through browser Back', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('club/');
+  await dismissTutorialForTest(page);
+  const nav = page.getByRole('navigation', { name: 'Main navigation' });
+  const practice = nav.getByRole('button', { name: 'Practice', exact: true });
+  await practice.click();
+  await nav.getByRole('link', { name: 'Timer', exact: true }).click();
+  await expect(page).toHaveURL(/#\/timer$/);
+  await expect(practice).toHaveAttribute('aria-expanded', 'false');
+  await practice.click();
+  await nav.getByRole('link', { name: 'Moves', exact: true }).click();
+  await expect(page).toHaveURL(/#\/moves$/);
+  await page.goBack();
+  await expect(page).toHaveURL(/#\/timer$/);
+  await expect(practice).toHaveAttribute('aria-expanded', 'false');
+  await nav.getByRole('button', { name: 'Labs', exact: true }).click();
+  await expect(nav.getByRole('link', { name: 'CFOP Lab', exact: true })).toHaveAttribute(
+    'href',
+    '#/lab',
+  );
+});
 test('club homepage fits phones and desktop with clear learning actions', async ({
   page,
 }, info) => {
@@ -8,7 +33,7 @@ test('club homepage fits phones and desktop with clear learning actions', async 
   for (const width of [1280, 390, 360]) {
     await page.setViewportSize({ width, height: 900 });
     await page.goto('club/');
-  await dismissTutorialForTest(page);
+    await dismissTutorialForTest(page);
     await expect(page.getByRole('heading', { name: 'One turn. A new possibility.' })).toBeVisible();
     await expect(page.getByRole('link', { name: 'Find my starting point' })).toHaveAttribute(
       'href',

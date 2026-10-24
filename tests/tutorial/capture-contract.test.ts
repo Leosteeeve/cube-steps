@@ -2,7 +2,33 @@ import { afterEach, expect, it } from 'vitest';
 import { mkdtemp, mkdir, writeFile, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { verifyGuideManifest } from '../../scripts/tutorial/capture-contract.mts';
+import {
+  verifyGuideManifest,
+  actualGuideCaptureRoute,
+} from '../../scripts/tutorial/capture-contract.mts';
+it('records the final browser route and rejects a scene that landed elsewhere', () => {
+  expect(
+    actualGuideCaptureRoute(
+      'http://localhost:5187/cube-steps/',
+      'http://localhost:5187/cube-steps/club/#/roux-lab/compare',
+      'club/#/roux-lab/compare',
+    ),
+  ).toBe('club/#/roux-lab/compare');
+  expect(() =>
+    actualGuideCaptureRoute(
+      'http://localhost:5187/cube-steps/',
+      'http://localhost:5187/cube-steps/club/#/roux-lab',
+      'club/#/roux-lab/compare',
+    ),
+  ).toThrow(/route/);
+  expect(() =>
+    actualGuideCaptureRoute(
+      'http://localhost:5187/cube-steps/',
+      'https://example.com/club/',
+      'club/',
+    ),
+  ).toThrow();
+});
 import type { GuideScreenshot } from '../../src/club/guide/types';
 const roots: string[] = [];
 afterEach(async () => {
@@ -27,7 +53,7 @@ const image: GuideScreenshot = {
   route: 'club/#/timer',
   width: 100,
   height: 80,
-  sourceRevision: 'abc',
+  sourceRevision: 'fabe1d88482875ab8cb63ebd8b548b9c3a04b185',
   scenario: 'timer',
   exampleData: true,
 };
@@ -53,4 +79,13 @@ it('accepts a complete manifest and rejects missing, duplicate, traversal, metad
   expect(errors).toContain('absent: missing image');
   expect(errors).toContain('size: dimensions do not match PNG');
   expect(errors).toContain('alt: alt required');
+});
+it('rejects uncaptured revision placeholders', async () => {
+  const root = await setup();
+  expect(
+    await verifyGuideManifest(
+      { version: 1, images: [{ ...image, sourceRevision: 'uncommitted' }] },
+      root,
+    ),
+  ).toContain('timer: invalid source revision');
 });

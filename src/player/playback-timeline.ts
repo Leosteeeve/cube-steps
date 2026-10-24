@@ -3,12 +3,17 @@ import type { PlaybackSource, PlaybackSectionId } from './playback-source';
 import type { AdvancedAssets } from '../methods/advanced/assets';
 import { createTimeline } from './timeline';
 import { assertSessionInput } from '../core/solve-input';
-import { getMethod, getRegisteredRuntime } from '../methods/registry';
+import {
+  getMethod,
+  getRegisteredRuntime,
+  getRegisteredAdvancedRouxFrameRuntime,
+} from '../methods/registry';
 import { verifyTrace } from '../methods/shared/verification';
 import { LBL_RUNTIME } from '../methods/lbl/definition';
 import { CFOP_RUNTIME } from '../methods/cfop/definition';
 import { createAdvancedRuntime } from '../methods/advanced/definition';
 import { verifyDemonstration } from '../algorithms/demonstration';
+import { rouxStageConnection } from './roux-stage-connections';
 export interface PlaybackTimeline {
   moves: TeachingMove[];
   states: CubeState[];
@@ -19,6 +24,7 @@ export interface PlaybackTimeline {
     start: number;
     end: number;
     skipReason?: string;
+    connection?: string;
   }[];
   completion: { title: string; description: string };
 }
@@ -27,7 +33,13 @@ export function createPlaybackTimeline(
   source: PlaybackSource,
   assets?: AdvancedAssets,
 ): PlaybackTimeline {
-  if (source.kind === 'lab') return source.prepared.timeline;
+  if (
+    source.kind === 'lab' ||
+    source.kind === 'roux-lab' ||
+    source.kind === 'cmll' ||
+    source.kind === 'roux-lesson'
+  )
+    return source.prepared.timeline;
   if (source.kind === 'solve') {
     const { session } = source;
     assertSessionInput(engine, session);
@@ -43,7 +55,10 @@ export function createPlaybackTimeline(
           ? CFOP_RUNTIME
           : session.trace.method === 'roux-beginner'
             ? getRegisteredRuntime('roux-beginner')
-            : createAdvancedRuntime(assets!.crossTable);
+            : session.trace.method === 'roux-advanced'
+              ? session.trace.rouxAdvanced &&
+                getRegisteredAdvancedRouxFrameRuntime(session.trace.rouxAdvanced.frameId)
+              : createAdvancedRuntime(assets!.crossTable);
     if (!runtime) throw new Error('Roux playback requires its registered verification runtime.');
     verifyTrace(engine, session.trace, runtime);
     return {
@@ -54,6 +69,7 @@ export function createPlaybackTimeline(
         ...s,
         label: method.stages[i].label,
         skipReason: session.trace.stages[i].skipReason,
+        connection: rouxStageConnection(session.trace, i),
       })),
       completion: {
         title: 'Cube solved.',

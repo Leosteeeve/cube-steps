@@ -1,6 +1,20 @@
 import { readFile, realpath } from 'node:fs/promises';
 import { resolve, relative, isAbsolute } from 'node:path';
 import type { GuideScreenshot } from '../../src/club/guide/types.ts';
+export function actualGuideCaptureRoute(
+  baseUrl: string,
+  pageUrl: string,
+  expected: string,
+): string {
+  const base = new URL(baseUrl),
+    actual = new URL(pageUrl);
+  if (actual.origin !== base.origin || !actual.pathname.startsWith(base.pathname))
+    throw Error('Capture left the intended website.');
+  const route = actual.pathname.slice(base.pathname.length) + actual.search + actual.hash;
+  if (route !== expected)
+    throw Error(`Capture route mismatch: expected ${expected}, received ${route}`);
+  return route;
+}
 export async function verifyGuideManifest(
   manifest: { version: 1; images: GuideScreenshot[] },
   assetRoot: string,
@@ -19,6 +33,8 @@ export async function verifyGuideManifest(
     paths.add(src);
     for (const field of ['id', 'alt', 'caption', 'sourceRevision', 'scenario', 'route'] as const)
       if (!image[field]?.trim()) errors.push(`${id}: ${field} required`);
+    if (!/^[a-f0-9]{40}(?:-dirty)?$/.test(image.sourceRevision))
+      errors.push(`${id}: invalid source revision`);
     if (image.exampleData && !/example|sample/i.test(image.caption))
       errors.push(`${id}: example caption required`);
     if (!/^club-guide\/[a-z0-9-]+\.png$/.test(src)) {

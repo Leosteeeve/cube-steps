@@ -33,6 +33,12 @@ function prepareSolveRequest(
     requestId,
     result: { ok: false, error: { kind: 'input', message } },
   });
+  if ('method' in request && request.method === 'roux-advanced')
+    return fail(
+      'edition' in request && request.edition === 'club'
+        ? 'Advanced Roux uses the progressive club worker. Please start a new solve.'
+        : 'Advanced Roux is available only in the club edition.',
+    );
   if (
     !('method' in request) ||
     (request.method !== 'lbl' &&

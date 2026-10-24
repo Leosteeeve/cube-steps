@@ -11,13 +11,14 @@ writeFileSync(
         execFileSync('git', ['status', '--porcelain', '--untracked-files=no'], {
           encoding: 'utf8',
         }).trim().length > 0,
-      release: 'CubeSteps club edition and human-friendly F2L preview',
+      release: 'CubeSteps refreshed UI and club Advanced Roux preview',
       entries: { global: './', club: './club/' },
       teachingStatus: {
         lbl: 'accepted',
         'cfop-beginner': 'accepted',
         'cfop-advanced': 'preview',
         'roux-beginner': 'preview',
+        'roux-advanced': 'preview',
       },
     },
     null,

@@ -2,7 +2,7 @@
 
 Learn to solve the 3×3 cube with step-by-step animations and explained algorithms, starting with the beginner's method.
 
-**Status: Advanced CFOP and its revised F2L holding strategy are a preview pending renewed physical-cube acceptance. LBL and Beginner CFOP retain their existing acceptance. A separate club edition adds guided learning and a personal timer.**
+**Status: Shared UI refresh and club Advanced Roux Preview. The new method and Roux Test Lab await physical-cube acceptance. Existing teaching acceptance stays method-specific; LBL and Beginner CFOP retain theirs.**
 
 [Open CubeSteps](https://leosteeeve.github.io/cube-steps/) — use it directly in your browser, with no account or installation.
 
@@ -17,7 +17,7 @@ Learn to solve the 3×3 cube with step-by-step animations and explained algorith
 - A shared library with recognition diagrams, holding instructions, formula segments, references and alternative demonstrations. Practice selected cases without a timer or scores; reveal the answer when ready.
 - Switch methods without losing the scramble, painted draft, selected face, or current color validation. Switching clears the old solution and cancels pending work; solve again explicitly.
 - The same fixed formulas in lessons and generated solutions, with recognition, setup, repetition counts, and result checks.
-- A refreshed green-and-white learning workspace with a complete expandable phone lesson path, a clear current-turn display and the full teaching formula.
+- A refreshed green-and-white learning workspace with clearer reading hierarchy, expandable cube input, a complete phone lesson path, brighter stickers and restrained motion. Blue-and-white club styling uses the same accessible player.
 - An interactive 3D cube: orbit, play/pause, single-step backward/forward, replay, speed, stage navigation, and target highlighting.
 - Browser-only computation, no account, responsive layouts, and keyboard controls.
 
@@ -76,7 +76,13 @@ This separate edition is intended for our club members. Please share the link wi
 
 The club edition shares the same courses, formulas, solvers and player. It adds a blue-and-white layout, a short route questionnaire, self-reported lesson progress, and an independent timer with real scrambles, matching six-face diagrams, optional inspection, ao5/ao12, corrections, history, trends, and CSV/JSON export. All quiz recommendations use available methods. No questionnaire answers are saved.
 
-**Beginner Roux · Preview** is available only in the club edition through the method selector or manual route choice: `#/learn/roux/intro`, `#/solve/roux` and `#/guide/roux`. Eight detailed chapters and the complete explained solver share a fixed white-bottom, blue-left block frame, useful M/M′ setups, seven corner-only OCLL cases plus T/Y, and M/U last-six-edge rules. Random scrambles, pasted outer-face scrambles and legal six-face input are supported. The questionnaire keeps its existing LBL/CFOP recommendations; the algorithm library and drills remain CFOP resources. Existing lesson progress is preserved. Physical follow-along acceptance is pending; automated replay is not a claim of optimal moves or universally best fingertricks. See [Roux validation](docs/validation/2026-10-21-beginner-roux.md) and the [design references](docs/superpowers/specs/2026-10-21-beginner-roux-design.md#12-sources-and-original-teaching-material).
+**Beginner Roux · Preview** remains available only in the club edition: `#/learn/roux/intro`, `#/solve/roux` and `#/guide/roux`. Eight detailed chapters and the explained solver share a fixed white-bottom, blue-left block frame, useful M/M′ setups, seven corner-only OCLL cases plus T/Y, and M/U last-six-edge rules. Random scrambles, pasted outer-face scrambles and legal six-face input are supported. Existing lesson progress is preserved. See [Roux validation](docs/validation/2026-10-21-beginner-roux.md).
+
+**Advanced Roux · Preview** adds nine chapters, complete solving, 42 CMLL classes, validated formula alternatives and combined EOLR with basic LSE demonstrations. Open `#/learn/advanced-roux/intro`, `#/solve/advanced-roux`, `#/cmll` or `#/cmll-practice`. Choose white/yellow bottom with any of four left colors: eight possible frames, with a familiar white/blue default. Find your route now asks six questions and includes beginner or advanced Roux when foundations and preferences fit. The original CFOP library and practice remain separate.
+
+**Roux Test Lab · Experimental** is under **Labs → Roux Test Lab** (`#/roux-lab`), with written help at `#/guide/roux-lab`. It searches the two blocks together and reports a shortest-first-block reference with its actual proof scope. A baseline full solution is verified before optional optimization; stopping or reaching a limit preserves admitted routes. Best found is not a proof of the global minimum. Handling scores are right-leading two-handed estimates, not a promise of the fastest fingertricks.
+
+Pin A/B routes, save the immutable experiment, and use **Trials & notes** to rehearse and measure **both blocks, before CMLL**. Initial positioning is untimed; later rotations are real moves. Five matched AB/BA blocks summarize one tester and timing method with paired medians. Deviations, interruptions and absent ratings stay explicit. Roux notebooks use an independent IndexedDB store and explicit validated JSON import; routes-only export is the default, with trials and tester labels opt-in. The personal full-solve Timer remains separate. See the [Advanced Roux validation record](docs/validation/2026-10-23-advanced-roux.md) and [physical acceptance worksheet](docs/lab/roux-physical-review.md). Human comfort and physical-phone responsiveness still require owner testing.
 
 First-time members can choose a short tour, postpone it, or stop automatic offers. **Page tour** stays available on each feature page; **Guide** collects written steps, control references, real screenshots, and links to start, resume or restart a walkthrough. Simple Moves and lesson steps invite hands-on practice; input drafts, practice answers and Timer history are protected. Timer help opens only while idle and locks timing inputs until a fresh press after exit. Tutorial choices use their own local-storage key and never mark a lesson mastered.
 
@@ -104,8 +110,16 @@ Pages uses GitHub Actions. Run **Publish CubeSteps to Pages** manually on `main`
 npm run typecheck
 npm run verify:cross
 npm run verify:cases
+npm run verify:roux
+npm run verify:roux:examples
+npm run verify:advanced-roux
+npm run verify:advanced-roux:examples
 npm run test:unit
 npm run test:corpus
+npm run test:roux:coverage
+npm run test:roux:corpus
+npm run test:advanced-roux:coverage
+npm run test:advanced-roux:corpus
 npm run test:lab:corpus
 npm run test:efficiency
 npm run test:lab:efficiency
@@ -122,13 +136,14 @@ Cube state, teaching rules, course content, and playback are separate modules. S
 
 ## Roadmap
 
-| Version track | Planned work |
-| --- | --- |
-| V1 | LBL lessons and formula-based solving are available; physical-cube teaching acceptance is complete |
-| V1.1 | Guided six-face colors, legality checks, and LBL playback; new physical-input acceptance pending |
-| V1.2 | Beginner CFOP: intuitive F2L, two-look OLL and PLL, with lessons and generated solutions; physical teaching acceptance complete |
-| V1.3 preview | Advanced CFOP alongside Beginner CFOP: shortest white cross, efficient F2L formulas, full OLL/PLL, and a shared library with selected-case practice; Advanced physical teaching acceptance pending |
-| Later methods and inputs | Roux → ZZ, then camera scanning with correction, in separate versions |
+| Version track            | Planned work                                                                                                                                                                                       |
+| ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| V1                       | LBL lessons and formula-based solving are available; physical-cube teaching acceptance is complete                                                                                                 |
+| V1.1                     | Guided six-face colors, legality checks, and LBL playback; new physical-input acceptance pending                                                                                                   |
+| V1.2                     | Beginner CFOP: intuitive F2L, two-look OLL and PLL, with lessons and generated solutions; physical teaching acceptance complete                                                                    |
+| V1.3 preview             | Advanced CFOP alongside Beginner CFOP: shortest white cross, efficient F2L formulas, full OLL/PLL, and a shared library with selected-case practice; Advanced physical teaching acceptance pending |
+| Club Roux preview        | Beginner Roux, Advanced Roux and Roux Test Lab; separate physical acceptance and handling calibration pending                                                                                      |
+| Later methods and inputs | Further Roux refinements, ZZ and camera scanning with correction, in separate versions                                                                                                             |
 
 Future roadmap items are not available yet. Scanning, user-turn scoring, offline installation, and desktop packages are not included. The 3D view needs WebGL; color entry, validation, and textual steps remain available if rendering is unavailable.
 

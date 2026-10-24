@@ -2,6 +2,8 @@ import { expect, type Page } from '@playwright/test';
 import type { FaceletSnapshot } from '../../src/core/types';
 const names = { F: 'Front', R: 'Right', B: 'Back', L: 'Left', U: 'Up', D: 'Down' } as const;
 export async function enterFacelets(page: Page, facelets: FaceletSnapshot): Promise<void> {
+  const edit = page.getByRole('button', { name: 'Edit cube input', exact: true });
+  if (await edit.isVisible()) await edit.click();
   await page.getByRole('button', { name: 'Enter colors', exact: true }).click();
   for (const face of ['F', 'R', 'B', 'L', 'U', 'D'] as const) {
     await page.getByRole('button', { name: `${names[face]} face`, exact: true }).click();

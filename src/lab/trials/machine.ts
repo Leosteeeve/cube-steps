@@ -1,7 +1,18 @@
 import { parseTrialDuration } from './parse-duration';
-import type { TrialConditions, TrialDraft, TrialEffect, TrialEvent, TrialState } from './types';
+import type { TrialInterruption } from '../experiments/types';
+import type {
+  TrialConditions,
+  TrialConditionsBase,
+  TrialDraft,
+  TrialEffect,
+  TrialEvent,
+  TrialState,
+} from './types';
 export const TRIAL_HOLD_MS = 300;
-export function createTrial(conditions: TrialConditions, token = 0): TrialState {
+export function createTrialFor<C extends TrialConditionsBase>(
+  conditions: C,
+  token = 0,
+): TrialState<C> {
   return {
     status: 'preparing',
     conditions: { ...conditions },
@@ -11,16 +22,16 @@ export function createTrial(conditions: TrialConditions, token = 0): TrialState 
     inputLocked: false,
   };
 }
-export function trialIsActive(s: TrialState) {
+export function trialIsActive(s: TrialState<TrialConditionsBase>) {
   return ['holding', 'ready', 'running'].includes(s.status);
 }
-export function reduceTrial(
-  state: TrialState,
-  event: TrialEvent,
-): { state: TrialState; effects: TrialEffect[] } {
-  const unchanged = () => ({ state, effects: [] as TrialEffect[] });
-  const review = (rawMs: number | null, reason: TrialDraft['interruption'] = null) => {
-    const draft: TrialDraft = {
+export function reduceTrialFor<C extends TrialConditionsBase>(
+  state: TrialState<C>,
+  event: TrialEvent<C>,
+): { state: TrialState<C>; effects: TrialEffect<C>[] } {
+  const unchanged = () => ({ state, effects: [] as TrialEffect<C>[] });
+  const review = (rawMs: number | null, reason: TrialInterruption | null = null) => {
+    const draft: TrialDraft<C> = {
       ...state.conditions,
       rawMs,
       setupConfirmed: state.setupConfirmed,
@@ -29,14 +40,14 @@ export function reduceTrial(
       interruption: reason,
     };
     return {
-      state: { ...state, status: 'review', draft, token: state.token + 1 } as TrialState,
-      effects: [{ type: reason ? 'interrupted' : 'draft', draft }] as TrialEffect[],
+      state: { ...state, status: 'review', draft, token: state.token + 1 } as TrialState<C>,
+      effects: [{ type: reason ? 'interrupted' : 'draft', draft }] as TrialEffect<C>[],
     };
   };
   if ('now' in event && (!Number.isFinite(event.now) || event.now < 0)) return unchanged();
   if (event.type === 'lock') {
     if (event.locked && trialIsActive(state)) {
-      const next = reduceTrial(state, { type: 'interrupt', now: event.now, reason: 'help' });
+      const next = reduceTrialFor(state, { type: 'interrupt', now: event.now, reason: 'help' });
       return { ...next, state: { ...next.state, inputLocked: true } };
     }
     return { state: { ...state, inputLocked: event.locked }, effects: [] };
@@ -51,7 +62,7 @@ export function reduceTrial(
       ? unchanged()
       : {
           state: {
-            ...createTrial(event.conditions ?? state.conditions, state.token + 1),
+            ...createTrialFor(event.conditions ?? state.conditions, state.token + 1),
             inputLocked: state.inputLocked,
           },
           effects: [],
@@ -129,3 +140,7 @@ export function reduceTrial(
     return review(event.now - state.startedAt);
   return unchanged();
 }
+/** Keep the original CFOP entry points and literal endpoint intact. */
+export const createTrial = (conditions: TrialConditions, token = 0): TrialState =>
+  createTrialFor(conditions, token);
+export const reduceTrial = (state: TrialState, event: TrialEvent) => reduceTrialFor(state, event);

@@ -19,6 +19,7 @@ test('random, pasted and live-generated six-face inputs preserve provenance and 
   await page.getByLabel('Scramble sequence').fill('R U F2');
   await solve.click();
   await expect(page.getByText('Verified Beginner Roux solution')).toBeVisible();
+  await page.getByRole('button', { name: 'Edit cube input', exact: true }).click();
   await page.getByRole('button', { name: 'Random scramble', exact: true }).click();
   await expect(page.getByRole('button', { name: 'Random scramble', exact: true })).toBeEnabled({
     timeout: 30000,

@@ -1,9 +1,14 @@
 import type { CubeEngine, SolveTrace, StageId, TraceAction } from '../../core/types';
-import { joinTeachingActions } from './connected-actions';
+import { joinTeachingActionsSteps } from './connected-actions';
+import { TEACHING_WORK, drainTeachingSteps, applyTeachingSteps, type TeachingWork } from './work';
 import { isTeachingMove } from '../../core/teaching-moves';
 import type { MethodRuntime } from '../contracts';
 import { RuleError } from './trace';
-export function verifyTrace(engine: CubeEngine, trace: SolveTrace, runtime: MethodRuntime): void {
+export function* verifyTraceSteps(
+  engine: CubeEngine,
+  trace: SolveTrace,
+  runtime: MethodRuntime,
+): Generator<TeachingWork, void> {
   const expected = runtime.presentation.stages;
   let stageId: StageId = expected[0].id;
   const require = (ok: boolean, message: string) => {
@@ -21,7 +26,11 @@ export function verifyTrace(engine: CubeEngine, trace: SolveTrace, runtime: Meth
       (stage.actions.length ? 'completed' : 'skipped'), 'Stage status does not match its actions.');
     require(stage.status !== 'skipped' ||
       Boolean(stage.skipReason), 'A skipped stage needs an explanation.');
-    const verifyAction = (action: TraceAction, allowJoined = true) => {
+    const verifyAction = function* (
+      action: TraceAction,
+      allowJoined = true,
+    ): Generator<TeachingWork, void> {
+      yield TEACHING_WORK;
       require(action.moves.length > 0 &&
         action.moves.every(isTeachingMove), 'Invalid teaching moves.');
       require(Boolean(
@@ -35,8 +44,8 @@ export function verifyTrace(engine: CubeEngine, trace: SolveTrace, runtime: Meth
           Array.isArray(action.joined.sources) &&
           action.joined.sources.length >= 2 &&
           action.joined.sources.length <= 512, 'Invalid connected teaching references.');
-        for (const source of action.joined!.sources) verifyAction(source, false);
-        const expected = joinTeachingActions(engine, action.joined!.sources);
+        for (const source of action.joined!.sources) yield* verifyAction(source, false);
+        const expected = yield* joinTeachingActionsSteps(engine, action.joined!.sources);
         for (const key of [
           'kind',
           'ruleId',
@@ -48,6 +57,7 @@ export function verifyTrace(engine: CubeEngine, trace: SolveTrace, runtime: Meth
           'checkpoint',
           'pair',
           'roux',
+          'rouxAdvanced',
           'algorithmId',
           'selection',
           'cross',
@@ -70,25 +80,28 @@ export function verifyTrace(engine: CubeEngine, trace: SolveTrace, runtime: Meth
         require(action.algorithmId ===
           undefined, 'Only algorithm actions may reference a formula.');
       require(engine.equals(
-        engine.apply(action.before, action.moves),
+        yield* applyTeachingSteps(engine, action.before, action.moves),
         action.after,
       ), 'Action endpoint mismatch.');
+      const checked = runtime.checkActionSteps
+        ? yield* runtime.checkActionSteps(engine, action, stageId)
+        : runtime.checkAction(engine, action, stageId);
       require(action.checkpoint.passed &&
-        runtime.checkAction(
-          engine,
-          action,
-          stageId,
-        ), 'Action precondition or effect failed verification.');
+        checked, 'Action precondition or effect failed verification.');
     };
     for (const action of stage.actions) {
       require(engine.equals(state, action.before), 'Action starting state mismatch.');
-      verifyAction(action);
-      state = engine.apply(state, action.moves);
+      yield* verifyAction(action);
+      state = yield* applyTeachingSteps(engine, state, action.moves);
     }
     require(engine.equals(state, stage.after), 'Stage endpoint mismatch.');
     require(stage.checkpoint.passed &&
       runtime.checkStage(engine, state, stageId), 'Stage goal failed verification.');
+    yield TEACHING_WORK;
   }
   require(engine.equals(state, trace.final) &&
     engine.isSolved(state), 'The replay must finish solved at its recorded endpoint.');
+}
+export function verifyTrace(engine: CubeEngine, trace: SolveTrace, runtime: MethodRuntime): void {
+  return drainTeachingSteps(verifyTraceSteps(engine, trace, runtime));
 }

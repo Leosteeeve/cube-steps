@@ -1,6 +1,7 @@
 import { freezeLabValue } from '../input';
 import { demand } from '../experiments/schema';
 import type { LabAttempt, LabComparison, TrialBlock } from '../experiments/types';
+import type { TrialAttemptBase } from './types';
 export function createComparisonBlocks(c: LabComparison, count = 5): readonly TrialBlock[] {
   demand(
     Number.isSafeInteger(count) && count >= 1 && count <= 100,
@@ -20,18 +21,21 @@ export function createComparisonBlocks(c: LabComparison, count = 5): readonly Tr
     })),
   );
 }
-export function latestAttempts(attempts: readonly LabAttempt[]) {
-  const map = new Map<string, LabAttempt>();
+export function latestAttempts<A extends TrialAttemptBase>(attempts: readonly A[]) {
+  const map = new Map<string, A>();
   for (const a of attempts)
     if (!map.has(a.id) || map.get(a.id)!.revision < a.revision) map.set(a.id, a);
   return [...map.values()];
 }
-export interface BlockSelection {
-  slots: { blockId: string; slotId: string; label: 'A' | 'B'; attempt?: LabAttempt }[];
+export interface BlockSelection<A extends TrialAttemptBase = LabAttempt> {
+  slots: { blockId: string; slotId: string; label: 'A' | 'B'; attempt?: A }[];
   excluded: { attemptId: string; reason: string }[];
   rawCount: number;
 }
-export function attemptExclusion(a: LabAttempt): string | undefined {
+export function attemptExclusionFor(
+  a: TrialAttemptBase,
+  endpoint: TrialAttemptBase['endpoint'],
+): string | undefined {
   if (a.deletedAt) return 'Deleted';
   if (a.kind !== 'measured') return 'Warmup';
   if (a.outcome !== 'followed')
@@ -43,13 +47,15 @@ export function attemptExclusion(a: LabAttempt): string | undefined {
   if (a.interruption) return 'Interrupted';
   if (!a.setupConfirmed || !a.holdConfirmed) return 'Setup not confirmed';
   if (!a.rawMs || !Number.isFinite(a.rawMs) || a.rawMs <= 0) return 'No valid duration';
-  if (a.endpoint !== 'cross-f2l') return 'Different endpoint';
+  if (a.endpoint !== endpoint) return 'Different endpoint';
+  if (endpoint === 'roux-blocks' && a.method !== 'roux-advanced') return 'Different method';
   return undefined;
 }
-export function selectEligibleAttempts(
-  raw: readonly LabAttempt[],
+export function selectEligibleAttemptsFor<A extends TrialAttemptBase>(
+  raw: readonly A[],
   blocks: readonly TrialBlock[],
-): BlockSelection {
+  endpoint: TrialAttemptBase['endpoint'],
+): BlockSelection<A> {
   const attempts = latestAttempts(raw),
     byId = new Map(attempts.map((a) => [a.id, a])),
     reasons = new Map<string, string>(),
@@ -63,8 +69,9 @@ export function selectEligibleAttempts(
     'testerId',
     'timingMethod',
     'endpoint',
+    'method',
   ] as const;
-  function root(a: LabAttempt): LabAttempt | undefined {
+  function root(a: A): A | undefined {
     let p = a;
     const seen = new Set([a.id]);
     while (p.retryOf) {
@@ -99,9 +106,9 @@ export function selectEligibleAttempts(
             a.id.localeCompare(b.id),
         );
       const original = members.find((a) => a.kind === 'measured' && !a.retryOf);
-      let selected: LabAttempt | undefined;
+      let selected: A | undefined;
       for (const a of members) {
-        const why = attemptExclusion(a),
+        const why = attemptExclusionFor(a, endpoint),
           first = root(a);
         if (!first) reasons.set(a.id, 'Invalid retry link');
         else if (why) reasons.set(a.id, why);
@@ -118,10 +125,13 @@ export function selectEligibleAttempts(
   );
   for (const a of attempts)
     if (!chosen.has(a.id) && !reasons.has(a.id))
-      reasons.set(a.id, attemptExclusion(a) ?? 'Unmatched exploratory attempt');
+      reasons.set(a.id, attemptExclusionFor(a, endpoint) ?? 'Unmatched exploratory attempt');
   return {
     slots,
     rawCount: attempts.length,
     excluded: [...reasons].map(([attemptId, reason]) => ({ attemptId, reason })),
   };
 }
+export const attemptExclusion = (a: LabAttempt) => attemptExclusionFor(a, 'cross-f2l');
+export const selectEligibleAttempts = (raw: readonly LabAttempt[], blocks: readonly TrialBlock[]) =>
+  selectEligibleAttemptsFor(raw, blocks, 'cross-f2l');

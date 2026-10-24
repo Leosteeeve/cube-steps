@@ -15,7 +15,16 @@ import { TutorialRouteBoundary } from './tutorial/TutorialProvider';
 import { TourEntry } from './tutorial/TourEntry';
 import { tourForRoute } from './tutorial/catalog';
 import { createLabOwner } from './lab-owner';
+import { createRouxLabOwner } from './roux-lab/owner';
+const RouxLabWorkspace = lazy(() =>
+  import('./roux-lab/RouxLabWorkspace').then((m) => ({ default: m.RouxLabWorkspace })),
+);
 const TimerPage = lazy(() => import('./timer/TimerPage').then((m) => ({ default: m.TimerPage })));
+const AdvancedRouxFeaturePage = lazy(() =>
+  import('./roux-advanced/AdvancedRouxFeaturePage').then((m) => ({
+    default: m.AdvancedRouxFeaturePage,
+  })),
+);
 const RouxFeaturePage = lazy(() =>
   import('./roux/RouxFeaturePage').then((m) => ({ default: m.RouxFeaturePage })),
 );
@@ -28,6 +37,8 @@ const ClubLearnPage = lazy(() =>
 );
 export function ClubApp() {
   const [labOwner] = useState(createLabOwner);
+  const [rouxLabOwner] = useState(createRouxLabOwner);
+  useEffect(() => () => rouxLabOwner.dispose(), [rouxLabOwner]);
   useEffect(() => () => labOwner.dispose(), [labOwner]);
   const [timerRepository] = useState(() => createTimerRepository());
   useEffect(() => () => timerRepository.dispose(), [timerRepository]);
@@ -39,7 +50,7 @@ export function ClubApp() {
     return () => removeEventListener('hashchange', change);
   }, []);
   const { engine, error, retry } = useCubeEngine(
-    !['home', 'quiz', 'guide', 'lab', 'not-found'].includes(route.kind),
+    !['home', 'quiz', 'guide', 'lab', 'roux-lab', 'not-found'].includes(route.kind),
   );
   const tourId = tourForRoute(
     route,
@@ -67,7 +78,7 @@ export function ClubApp() {
                 ? 'moves'
                 : route.kind === 'guide'
                   ? 'guide'
-                  : route.kind === 'lab'
+                  : route.kind === 'lab' || route.kind === 'roux-lab'
                     ? 'lab'
                     : 'learn'
         }
@@ -75,13 +86,13 @@ export function ClubApp() {
       />
       <main id="main" tabIndex={-1}>
         <TutorialRouteBoundary routeKey={JSON.stringify(route)} tourId={tourId}>
-          {tourId && route.kind !== 'timer' && route.kind !== 'lab' && (
+          {tourId && !['timer', 'lab', 'roux-lab'].includes(route.kind) && (
             <TourEntry
               tourId={tourId}
               ready={route.kind === 'home' || route.kind === 'quiz' || !!engine}
             />
           )}
-          {!['home', 'quiz', 'timer', 'moves', 'guide', 'lab', 'not-found'].includes(
+          {!['home', 'quiz', 'timer', 'moves', 'guide', 'lab', 'roux-lab', 'not-found'].includes(
             route.kind,
           ) && (
             <nav className="club-tools" aria-label="Learning tools">
@@ -115,6 +126,8 @@ export function ClubApp() {
                 <a href="#/guide/roux">Roux guide</a>
               )}
               <a href="#/moves">Move explorer</a>
+              <a href="#/cmll">CMLL library</a>
+              <a href="#/cmll-practice">CMLL practice</a>
               <a href="#/find-your-route">Find your route</a>
             </nav>
           )}
@@ -131,6 +144,10 @@ export function ClubApp() {
           ) : route.kind === 'guide' ? (
             <Suspense fallback={<p role="status">Loading the guide…</p>}>
               <GuidePage section={route.section} />
+            </Suspense>
+          ) : route.kind === 'roux-lab' ? (
+            <Suspense fallback={<p role="status">Loading Roux Lab…</p>}>
+              <RouxLabWorkspace owner={rouxLabOwner} view={route.view} />
             </Suspense>
           ) : route.kind === 'lab' ? (
             <Suspense fallback={<p role="status">Loading CFOP Lab…</p>}>
@@ -163,6 +180,14 @@ export function ClubApp() {
               ) : route.kind === 'timer' ? (
                 <Suspense fallback={<p role="status">Loading your practice space…</p>}>
                   <TimerPage engine={engine} repository={timerRepository} />
+                </Suspense>
+              ) : route.kind === 'cmll-library' ||
+                route.kind === 'cmll-case' ||
+                route.kind === 'cmll-practice' ||
+                ((route.kind === 'solve' || route.kind === 'learn') &&
+                  route.method === 'roux-advanced') ? (
+                <Suspense fallback={<p role="status">Loading Advanced Roux…</p>}>
+                  <AdvancedRouxFeaturePage engine={engine} route={route} />
                 </Suspense>
               ) : route.kind === 'learn' && route.method === 'roux-beginner' ? (
                 <Suspense fallback={<p role="status">Loading Beginner Roux…</p>}>

@@ -9,7 +9,9 @@ export type TourId =
   | 'algorithm'
   | 'practice'
   | 'timer'
-  | 'lab';
+  | 'lab'
+  | 'advanced-roux'
+  | 'roux-lab';
 import type { GuidanceAction } from '../../ui/guidance';
 export type { GuidanceAction } from '../../ui/guidance';
 export type TourStep = {

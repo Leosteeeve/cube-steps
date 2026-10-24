@@ -26,13 +26,15 @@ function tick(time: number) {
     batch.forEach((f) => f(time));
   });
 }
-function mount() {
-  return render(
+function mount(reveal = true) {
+  const view = render(
     <MotionProvider edition="club">
       <HeroCube />
       <MotionPreference />
     </MotionProvider>,
   );
+  if (reveal) act(() => intersect([{ isIntersecting: true } as IntersectionObserverEntry]));
+  return view;
 }
 beforeEach(() => {
   frames.clear();
@@ -111,6 +113,30 @@ it('pauses locally, suspends offscreen and avoids a hidden-frame backlog', () =>
   expect(draw.moveTo.mock.calls.at(-1)).toEqual(last);
   unmount();
   expect(frames.size).toBe(0);
+});
+it('waits for the first visibility observation before starting any loop', () => {
+  mount(false);
+  expect(frames.size).toBe(0);
+  act(() => intersect([{ isIntersecting: false } as IntersectionObserverEntry]));
+  expect(frames.size).toBe(0);
+  act(() => intersect([{ isIntersecting: true } as IntersectionObserverEntry]));
+  expect(frames.size).toBe(1);
+});
+it('begins static under reduced motion and preserves a manual pause across visibility changes', () => {
+  reduced = true;
+  mount();
+  expect(frames.size).toBe(0);
+  expect(screen.queryByRole('button', { name: 'Play motion' })).toBeNull();
+  act(() => {
+    reduced = false;
+    media.forEach((f) => f());
+  });
+  fireEvent.click(screen.getByRole('button', { name: 'Pause motion' }));
+  act(() => intersect([{ isIntersecting: false } as IntersectionObserverEntry]));
+  act(() => intersect([{ isIntersecting: true } as IntersectionObserverEntry]));
+  expect(frames.size).toBe(0);
+  fireEvent.click(screen.getByRole('button', { name: 'Play motion' }));
+  expect(frames.size).toBe(1);
 });
 it('resets to the assembled pose and does not offer Play when decoration is disabled', () => {
   mount();

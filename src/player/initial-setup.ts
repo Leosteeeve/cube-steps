@@ -8,7 +8,13 @@ export function buildPlaybackInitialSetup(
   engine: CubeEngine,
   source: PlaybackSource,
 ): TeachingMove[] {
-  if (source.kind === 'lab') return [...source.prepared.setup];
+  if (
+    source.kind === 'lab' ||
+    source.kind === 'roux-lab' ||
+    source.kind === 'cmll' ||
+    source.kind === 'roux-lesson'
+  )
+    return [...source.prepared.setup];
   if (source.kind === 'solve') return buildInitialSetup(engine, source.session);
   verifyDemonstration(engine, source.demonstration);
   return [...source.demonstration.setup, ...source.demonstration.holdingMoves];

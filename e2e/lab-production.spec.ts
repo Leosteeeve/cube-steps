@@ -136,6 +136,7 @@ test('production ordinary pages never load the experimental Lab worker or execut
     .getByRole('link', { name: 'Guide', exact: true })
     .click();
   await expect(page.getByRole('heading', { name: 'Explore CFOP Lab', exact: true })).toBeVisible();
+  await page.getByRole('button', { name: 'Practice', exact: true }).click();
   await page
     .getByRole('navigation', { name: 'Main navigation' })
     .getByRole('link', { name: /Timer/ })

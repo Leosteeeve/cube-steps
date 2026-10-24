@@ -9,6 +9,38 @@ beforeAll(async () => {
   engine = await createCubeEngine();
 });
 afterEach(() => vi.restoreAllMocks());
+it('keeps Advanced Roux on its club-only progressive worker path', async () => {
+  const load = vi.fn(async () => {
+    throw Error('wrong loader');
+  });
+  const global = await handleSolveMessage(
+    engine,
+    {
+      requestId: 31,
+      method: 'roux-advanced',
+      edition: 'global',
+      input: { kind: 'scramble', moves: [] },
+    },
+    load,
+  );
+  expect(global).toMatchObject({
+    result: { ok: false, error: { message: expect.stringContaining('club') } },
+  });
+  const club = await handleSolveMessage(
+    engine,
+    {
+      requestId: 32,
+      method: 'roux-advanced',
+      edition: 'club',
+      input: { kind: 'scramble', moves: [] },
+    },
+    load,
+  );
+  expect(club).toMatchObject({
+    result: { ok: false, error: { message: expect.stringContaining('progressive') } },
+  });
+  expect(load).not.toHaveBeenCalled();
+});
 it('admits only valid club Roux input before loading and preserves failed input', async () => {
   const loader = vi.fn(async () => {
     throw Error('Roux checksum mismatch');

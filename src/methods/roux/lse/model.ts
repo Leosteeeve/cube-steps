@@ -1,5 +1,6 @@
 import type { CubeEngine, CubeState, TeachingMove } from '../../../core/types';
 import { rouxReferenceState } from '../frame';
+import { TEACHING_WORK, drainTeachingSteps, type TeachingWork } from '../../shared/work';
 import {
   encodeLse,
   decodeLse,
@@ -30,7 +31,7 @@ export function applyLseTransform(c: LseCoordinate, t: LseTransform): LseCoordin
     offset: (c.offset + t.offset) % 4,
   };
 }
-export function createLseModel(engine: CubeEngine): LseModel {
+export function* createLseModelSteps(engine: CubeEngine): Generator<TeachingWork, LseModel> {
   const existing = models.get(engine);
   if (existing) return existing;
   const transforms = new Map<string, LseTransform>(),
@@ -54,6 +55,7 @@ export function createLseModel(engine: CubeEngine): LseModel {
     return t;
   };
   const good = Array.from({ length: 6 }, () => Array.from({ length: 6 }, () => [false, false]));
+  const referenceEdges = engine.observe(reference).edges;
   for (let slot = 0; slot < 6; slot++)
     for (let edge = 0; edge < 6; edge++)
       for (let flip = 0; flip < 2; flip++) {
@@ -68,13 +70,13 @@ export function createLseModel(engine: CubeEngine): LseModel {
             .edges.find(
               (p) =>
                 p.id ===
-                engine
-                  .observe(reference)
-                  .edges.find((p) => p.slot === ['UF', 'UR', 'UB', 'UL', 'DF', 'DB'][edge])!.id,
+                referenceEdges.find((p) => p.slot === ['UF', 'UR', 'UB', 'UL', 'DF', 'DB'][edge])!
+                  .id,
             )!;
         good[slot][edge][flip] = [p.stickers.U, p.stickers.D].some(
           (color) => color === 'white' || color === 'yellow',
         );
+        yield TEACHING_WORK;
       }
   const badSlots = (c: LseCoordinate) =>
     c.phase % 2
@@ -108,6 +110,9 @@ export function createLseModel(engine: CubeEngine): LseModel {
   };
   models.set(engine, model);
   return model;
+}
+export function createLseModel(engine: CubeEngine): LseModel {
+  return drainTeachingSteps(createLseModelSteps(engine));
 }
 export function lseGoalReached(engine: CubeEngine, state: CubeState, goal: LseGoal): boolean {
   const c = encodeLse(engine, state);
