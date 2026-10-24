@@ -122,6 +122,10 @@ export interface SolveTrace {
   initial: CubeState;
   stages: TraceStage[];
   final: CubeState;
+  rouxAdvanced?: Pick<
+    import('../roux-lab/types').RouxRoute,
+    'frameId' | 'basis' | 'evidence' | 'counts' | 'lseMode'
+  > & { modelVersion: 'roux-execution-v1' };
 }
 export interface SolveLimits {
   maxActions: number;

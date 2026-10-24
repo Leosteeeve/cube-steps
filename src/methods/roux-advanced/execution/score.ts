@@ -171,6 +171,7 @@ export function improveBlockExecution(
   frame: RouxFrame,
   catalog: RouxExecutionCatalog,
   budget: RouxSearchBudget,
+  allow: (segment: RouxExecutionSegment, index: number) => boolean = () => true,
 ): { segments: readonly RouxExecutionSegment[]; score: RouxExecutionScore } {
   const e = meterRouxEngine(engine, budget);
   let best = { segments, score: scoreRouxExecution(e, segments, frame, catalog, budget) };
@@ -179,7 +180,12 @@ export function improveBlockExecution(
     mapping = new Map<string, TeachingMove>();
   for (let i = 0; i < segments.length; i++) {
     const s = segments[i];
-    if (s.phase !== 'blocks' || s.moves.length < 3 || s.moves.some((m) => /^[xyz]/.test(m)))
+    if (
+      !allow(s, i) ||
+      s.phase !== 'blocks' ||
+      s.moves.length < 3 ||
+      s.moves.some((m) => /^[xyz]/.test(m))
+    )
       continue;
     for (const turn of ['y', 'y2', "y'"] as TeachingMove[]) {
       const undo = invertTeachingMoves([turn]),

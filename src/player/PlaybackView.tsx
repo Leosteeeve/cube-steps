@@ -75,7 +75,7 @@ export function PlaybackView({
   const method =
     source.kind === 'solve'
       ? getMethod(source.session.trace.method)
-      : source.kind === 'lab'
+      : source.kind === 'lab' || source.kind === 'roux-lab'
         ? { label: source.prepared.label, algorithms: source.prepared.algorithms }
         : {
             label: ALGORITHM_REGISTRY.cases[source.demonstration.caseId]?.label ?? 'Algorithm',
@@ -576,6 +576,7 @@ export function PlaybackView({
                 </details>
               )}
               {source.kind !== 'lab' &&
+                source.kind !== 'roux-lab' &&
                 action.algorithmId &&
                 ALGORITHM_REGISTRY.variants[action.algorithmId] && (
                   <p>

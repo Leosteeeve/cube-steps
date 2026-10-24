@@ -50,6 +50,10 @@ export function joinTeachingActions(engine: CubeEngine, sources: TraceAction[]):
       (a) => a.pair?.cornerId === first.pair!.cornerId && a.pair?.edgeId === first.pair!.edgeId,
     );
   const allRoux = first.roux && last.roux && sources.every((a) => a.roux);
+  const allAdvancedRoux =
+    first.rouxAdvanced &&
+    last.rouxAdvanced &&
+    sources.every((a) => a.rouxAdvanced?.frameId === first.rouxAdvanced!.frameId);
   return {
     kind: 'joined',
     ruleId: 'connected-teaching-actions',
@@ -65,6 +69,19 @@ export function joinTeachingActions(engine: CubeEngine, sources: TraceAction[]):
       description: `After the complete connected sequence: ${last.checkpoint.description}`,
     },
     joined: { sources, savedMoves },
+    ...(allAdvancedRoux
+      ? {
+          rouxAdvanced: {
+            ...last.rouxAdvanced!,
+            protectedIds: first.rouxAdvanced!.protectedIds.filter((id) =>
+              sources.every((a) => a.rouxAdvanced!.protectedIds.includes(id)),
+            ),
+            protection: 'endpoint' as const,
+            centerPhaseBefore: first.rouxAdvanced!.centerPhaseBefore,
+            cornerOffsetBefore: first.rouxAdvanced!.cornerOffsetBefore,
+          },
+        }
+      : {}),
     ...(samePair
       ? {
           pair: {

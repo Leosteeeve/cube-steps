@@ -48,6 +48,7 @@ export function verifyTrace(engine: CubeEngine, trace: SolveTrace, runtime: Meth
           'checkpoint',
           'pair',
           'roux',
+          'rouxAdvanced',
           'algorithmId',
           'selection',
           'cross',

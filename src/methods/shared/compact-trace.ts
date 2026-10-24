@@ -15,7 +15,8 @@ export function compactTeachingTrace(
     ...trace,
     stages: trace.stages.map((stage) => {
       // Cross distance evidence and the initial holding lesson stay atomic.
-      if (stage.id === 'advanced-cross' || stage.id === 'roux-frame') return stage;
+      if (stage.id === 'advanced-cross' || stage.id === 'roux-frame' || stage.id === 'ar-position')
+        return stage;
       const actions: TraceAction[] = [];
       for (const action of stage.actions) {
         actions.push(action);

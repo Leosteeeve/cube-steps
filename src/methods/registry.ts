@@ -4,6 +4,13 @@ import { LBL_PRESENTATION } from './lbl/presentation';
 import { CFOP_PRESENTATION } from './cfop/presentation';
 import { ADVANCED_PRESENTATION } from './advanced/presentation';
 const registered = new Map<MethodId, MethodRuntime>();
+const presentations = new Map<MethodId, MethodPresentation>();
+export function registerMethodPresentation(presentation: MethodPresentation): void {
+  const prior = presentations.get(presentation.id);
+  if (prior && prior !== presentation)
+    throw Error(`Conflicting presentation already registered for ${presentation.id}.`);
+  presentations.set(presentation.id, presentation);
+}
 export function registerMethodRuntime(runtime: MethodRuntime): void {
   const id = runtime.presentation.id,
     old = registered.get(id);
@@ -16,5 +23,6 @@ export function getMethod(id: MethodId): MethodPresentation {
   if (id === 'cfop-beginner') return CFOP_PRESENTATION;
   if (id === 'cfop-advanced') return ADVANCED_PRESENTATION;
   if (id === 'roux-beginner' && registered.has(id)) return registered.get(id)!.presentation;
+  if (presentations.has(id)) return presentations.get(id)!;
   throw new Error(`Method ${id} is not registered.`);
 }
