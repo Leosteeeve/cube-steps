@@ -1,0 +1,14 @@
+{
+  "schema": 1,
+  "coordinateVersion": 1,
+  "bytes": 3686416,
+  "sha256": "a1cf4d9f5c49d45f62f73872b8c1258ce2acdfde4757b1372144c326a71da233",
+  "reachable": 184320,
+  "maximums": {
+    "eo": 12,
+    "lr": 6,
+    "last": 8,
+    "nearest": 15,
+    "combined": 20
+  }
+}
