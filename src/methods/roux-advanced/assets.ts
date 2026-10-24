@@ -15,6 +15,11 @@ export interface AdvancedRouxAssets {
   execution: RouxExecutionCatalog;
   version: string;
 }
+const admitted = new WeakSet<object>();
+export function assertAdvancedRouxAssets(assets: AdvancedRouxAssets): void {
+  if (!admitted.has(assets))
+    throw Error('Advanced Roux assets have not passed integrity verification.');
+}
 /** Conservative retained size, including the public/private LSE copies and parsed JSON. */
 export function advancedRouxAssetBytes(a: AdvancedRouxAssets): number {
   return (
@@ -47,5 +52,6 @@ export async function loadAdvancedRouxAssets(
   };
   if (advancedRouxAssetBytes(assets) > 32 * 1024 * 1024)
     throw Error('Roux static assets exceed 32 MiB.');
+  admitted.add(assets);
   return Object.freeze(assets);
 }

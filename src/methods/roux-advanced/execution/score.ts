@@ -3,7 +3,13 @@ import { invertTeachingMoves } from '../../../core/teaching-moves';
 import { meterRouxEngine, RouxBudgetStop } from '../budget';
 import type { RouxFrame, RouxSearchBudget } from '../types';
 import { STM_MOVES } from '../blocks/coordinates';
-import { validateRouxExecutionCatalog } from './catalog';
+import { validateRouxExecutionCatalogSteps } from './catalog';
+import {
+  TEACHING_WORK,
+  drainTeachingSteps,
+  applyTeachingSteps,
+  type TeachingWork,
+} from '../../shared/work';
 import type {
   RouxExecutionCatalog,
   RouxExecutionEvent,
@@ -33,7 +39,10 @@ const rank = (a: Path, b: Path) =>
     a.score.events.map((e) => e.profileId).join('|'),
     b.score.events.map((e) => e.profileId).join('|'),
   );
-function regrips(c: RouxExecutionCatalog, b: RouxSearchBudget) {
+function* regrips(
+  c: RouxExecutionCatalog,
+  b: RouxSearchBudget,
+): Generator<TeachingWork, Map<string, Map<string, readonly RouxExecutionEvent[]>>> {
   const all = new Map<string, Map<string, readonly RouxExecutionEvent[]>>();
   for (const grip of c.grips) {
     const paths = new Map<string, readonly RouxExecutionEvent[]>([[grip.id, []]]),
@@ -42,6 +51,7 @@ function regrips(c: RouxExecutionCatalog, b: RouxSearchBudget) {
       for (const p of c.profiles) {
         if (p.moves.length || p.entryGrip !== queue[i]) continue;
         b.charge('score');
+        yield TEACHING_WORK;
         if (!paths.has(p.exitGrip)) {
           paths.set(p.exitGrip, [...paths.get(p.entryGrip)!, ...p.events]);
           queue.push(p.exitGrip);
@@ -64,19 +74,19 @@ function needsLook(e: CubeEngine, s: RouxExecutionSegment): boolean {
     targets.every((p) => Object.keys(p.stickers).filter((f) => view.includes(f)).length >= 2),
   );
 }
-export function scoreRouxExecution(
+export function* scoreRouxExecutionSteps(
   engine: CubeEngine,
   segments: readonly RouxExecutionSegment[],
   frame: RouxFrame,
   catalog: RouxExecutionCatalog,
   budget: RouxSearchBudget,
-): RouxExecutionScore {
+): Generator<TeachingWork, RouxExecutionScore> {
   const e = meterRouxEngine(engine, budget);
   try {
-    validateRouxExecutionCatalog(catalog, budget);
+    yield* validateRouxExecutionCatalogSteps(catalog, budget);
     if (!frame.id) throw Error('Missing execution frame.');
-    const handling = regrips(catalog, budget),
-      tokens = new Map<string, RouxExecutionProfile[]>();
+    const handling = yield* regrips(catalog, budget);
+    const tokens = new Map<string, RouxExecutionProfile[]>();
     for (const p of catalog.profiles)
       if (p.moves.length) {
         const list = tokens.get(p.moves[0]) ?? [];
@@ -89,7 +99,7 @@ export function scoreRouxExecution(
     for (const segment of segments) {
       if (expected && !e.equals(expected, segment.before))
         throw Error('Execution segments do not replay continuously.');
-      expected = e.apply(segment.before, segment.moves);
+      expected = yield* applyTeachingSteps(e, segment.before, segment.moves);
       if (segment.phase === 'corners-edges') {
         boundary += segment.moves.length;
         continue;
@@ -124,6 +134,7 @@ export function scoreRouxExecution(
         for (const path of paths)
           for (const profile of profiles) {
             budget.charge('score');
+            yield TEACHING_WORK;
             const rotation = /^[xyz]/.test(move);
             const hands = rotation
               ? path.grip === profile.entryGrip
@@ -164,17 +175,28 @@ export function scoreRouxExecution(
     };
   }
 }
+export function scoreRouxExecution(
+  ...args: Parameters<typeof scoreRouxExecutionSteps>
+): RouxExecutionScore {
+  return drainTeachingSteps(scoreRouxExecutionSteps(...args));
+}
 /** Preserve actual turns and final hold. Camera movement never enters this function. */
-export function improveBlockExecution(
+export function* improveBlockExecutionSteps(
   engine: CubeEngine,
   segments: readonly RouxExecutionSegment[],
   frame: RouxFrame,
   catalog: RouxExecutionCatalog,
   budget: RouxSearchBudget,
   allow: (segment: RouxExecutionSegment, index: number) => boolean = () => true,
-): { segments: readonly RouxExecutionSegment[]; score: RouxExecutionScore } {
+): Generator<
+  TeachingWork,
+  { segments: readonly RouxExecutionSegment[]; score: RouxExecutionScore }
+> {
   const e = meterRouxEngine(engine, budget);
-  let best = { segments, score: scoreRouxExecution(e, segments, frame, catalog, budget) };
+  let best = {
+    segments,
+    score: yield* scoreRouxExecutionSteps(e, segments, frame, catalog, budget),
+  };
   if (!best.score.rated) return best;
   const solved = e.solved(),
     mapping = new Map<string, TeachingMove>();
@@ -195,17 +217,23 @@ export function improveBlockExecution(
         let mapped = mapping.get(key);
         if (!mapped) {
           const want = e.apply(solved, [move]);
-          mapped = STM_MOVES.find((candidate) =>
-            e.equals(e.apply(solved, [turn, candidate, ...undo]), want),
-          );
+          for (const candidate of STM_MOVES) {
+            const matches = e.equals(e.apply(solved, [turn, candidate, ...undo]), want);
+            yield TEACHING_WORK;
+            if (matches) {
+              mapped = candidate;
+              break;
+            }
+          }
           if (!mapped) throw Error('No physical conjugate for execution variant.');
           mapping.set(key, mapped);
         }
         inner.push(mapped);
       }
       const held = e.apply(s.before, [turn]),
-        after = e.apply(held, inner);
-      if (!e.equals(e.apply(after, undo), e.apply(s.before, s.moves)))
+        after = yield* applyTeachingSteps(e, held, inner),
+        original = yield* applyTeachingSteps(e, s.before, s.moves);
+      if (!e.equals(e.apply(after, undo), original))
         throw Error('Execution variant changed the physical endpoint.');
       const replacement: RouxExecutionSegment[] = [
         { before: s.before, moves: [turn], phase: 'blocks', targets: [] },
@@ -213,10 +241,13 @@ export function improveBlockExecution(
         { before: after, moves: undo, phase: 'blocks', targets: [] },
       ];
       const candidate = [...segments.slice(0, i), ...replacement, ...segments.slice(i + 1)],
-        score = scoreRouxExecution(e, candidate, frame, catalog, budget);
+        score = yield* scoreRouxExecutionSteps(e, candidate, frame, catalog, budget);
       if (score.rated && best.score.rated && score.cost < best.score.cost)
         best = { segments: candidate, score };
     }
   }
   return best;
+}
+export function improveBlockExecution(...args: Parameters<typeof improveBlockExecutionSteps>) {
+  return drainTeachingSteps(improveBlockExecutionSteps(...args));
 }

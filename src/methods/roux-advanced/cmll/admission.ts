@@ -6,16 +6,17 @@ import { ROUX_FRAMES } from '../frames';
 import { rouxReferenceState, observeRouxFrame } from '../../roux/frame';
 import { blockComplete, cornerOffset, blockTargets } from '../../roux/predicates';
 import { cmllDigest, deeplyFrozen } from './catalog';
-import { cmllIndex, cmllCornerKey } from './recognize';
+import { cmllIndexSteps, cmllCornerKey } from './recognize';
 import { ROUX_EXECUTION_CATALOG } from '../execution/catalog';
-import { scoreRouxExecution } from '../execution/score';
+import { scoreRouxExecutionSteps } from '../execution/score';
+import { TEACHING_WORK, drainTeachingSteps, type TeachingWork } from '../../shared/work';
 import type { CmllCatalog } from './types';
 const admitted = new WeakSet<CmllCatalog>();
-export function admitCmllCatalog(
+export function* admitCmllCatalogSteps(
   engine: CubeEngine,
   c: CmllCatalog,
   budget: RouxSearchBudget,
-): void {
+): Generator<TeachingWork, void> {
   budget.charge('score');
   if (admitted.has(c)) return;
   const e = meterRouxEngine(engine, budget),
@@ -27,6 +28,7 @@ export function admitCmllCatalog(
     variants = new Set<string>();
   for (const group of c.cases) {
     budget.charge('score');
+    yield TEACHING_WORK;
     counts[group.family] = (counts[group.family] ?? 0) + 1;
     if (
       ids.has(group.id) ||
@@ -49,8 +51,8 @@ export function admitCmllCatalog(
     variants.size !== Object.keys(c.variants).length
   )
     throw Error('Invalid CMLL families or orphan variants.');
-  const index = cmllIndex(e, c),
-    ref = rouxReferenceState(e),
+  const index = yield* cmllIndexSteps(e, c);
+  const ref = rouxReferenceState(e),
     frame = ROUX_FRAMES.find((f) => f.id === 'white-blue')!,
     locks = [...blockTargets(e, 'left'), ...blockTargets(e, 'right')].map((p) => p.id).sort();
   if (index.size !== 644) throw Error(`CMLL non-solved coverage is ${index.size}, expected 644.`);
@@ -102,8 +104,9 @@ export function admitCmllCatalog(
         throw Error('CMLL does not restore both blocks and its stated phase.');
       const solved = e.apply(e.apply(before, invertTeachingMoves(v.moves)), v.moves);
       if (cornerOffset(e, solved) === null) throw Error('CMLL endpoint has unsolved corners.');
+      yield TEACHING_WORK;
     }
-    const profile = scoreRouxExecution(
+    const profile = yield* scoreRouxExecutionSteps(
       e,
       [{ before: initial, moves: v.moves, targets: [], phase: 'blocks' }],
       frame,
@@ -113,4 +116,7 @@ export function admitCmllCatalog(
     if (!profile.rated) throw Error(`CMLL has no feasible execution profile: ${v.id}.`);
   }
   if (deeplyFrozen(c)) admitted.add(c);
+}
+export function admitCmllCatalog(...args: Parameters<typeof admitCmllCatalogSteps>): void {
+  return drainTeachingSteps(admitCmllCatalogSteps(...args));
 }

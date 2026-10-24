@@ -2,11 +2,18 @@ import type { CubeEngine, TeachingMove } from '../../core/types';
 import type { RouxRoute } from '../../roux-lab/types';
 import { isTeachingMove, invertTeachingMoves } from '../../core/teaching-moves';
 import { freezeLabValue } from '../../lab/input';
-import { verifyTrace } from '../shared/verification';
+import { verifyTraceSteps } from '../shared/verification';
+import {
+  TEACHING_WORK,
+  drainTeachingSteps,
+  applyTeachingSteps,
+  type TeachingWork,
+} from '../shared/work';
 import { flattenTrace } from '../shared/trace';
 import { rouxReferenceState, observeRouxFrame } from '../roux/frame';
 import { blockComplete, blockTargets } from '../roux/predicates';
-import { prepareRouxInput } from './input';
+import { createLseModelSteps } from '../roux/lse/model';
+import { prepareRouxInputSteps } from './input';
 import { ROUX_FRAMES } from './frames';
 import { blockCompleteInFrame } from './predicates';
 import { firstBlockLowerBound } from './blocks/distance';
@@ -20,29 +27,35 @@ import {
   rouxTraceMeasures,
   rouxTraceMetadata,
 } from './finalize';
-import { scoreRouxExecution } from './execution/score';
-import { recognizeCmll } from './cmll/recognize';
+import { scoreRouxExecutionSteps } from './execution/score';
+import { recognizeCmll, cmllIndexSteps } from './cmll/recognize';
 import type { CmllVariant } from './cmll/types';
 import type { AdvancedRouxAssets } from './assets';
 import type { FirstBlockEvidence, RouxFrame, RouxInput, RouxSearchBudget } from './types';
 const equal = (a: unknown, b: unknown) => JSON.stringify(a) === JSON.stringify(b);
 /** Admit data only. Accessors, functions, exotic prototypes and cycles never run. */
-export function assertRouxPlainData(raw: unknown): void {
+function* scanRouxData(
+  raw: unknown,
+  copy: boolean,
+  budget?: RouxSearchBudget,
+): Generator<TeachingWork, unknown> {
   let nodes = 0,
     characters = 0;
   const stack = new Set<object>();
-  const visit = (v: unknown, depth: number) => {
+  const visit = function* (v: unknown, depth: number): Generator<TeachingWork, unknown> {
     if (++nodes > 200000 || depth > 24) throw Error('Roux data exceeds its structure limit.');
-    if (v === null || v === undefined || typeof v === 'boolean') return;
+    budget?.charge('score');
+    yield TEACHING_WORK;
+    if (v === null || v === undefined || typeof v === 'boolean') return v;
     if (typeof v === 'number') {
       if (!Number.isFinite(v)) throw Error('Non-finite Roux value.');
-      return;
+      return v;
     }
     if (typeof v === 'string') {
       characters += v.length;
       if (v.length > 16384 || characters > 4 * 1024 * 1024)
         throw Error('Roux text limit exceeded.');
-      return;
+      return v;
     }
     if (
       typeof v !== 'object' ||
@@ -52,16 +65,22 @@ export function assertRouxPlainData(raw: unknown): void {
     if (stack.has(v) || (Array.isArray(v) && v.length > 1024))
       throw Error('Invalid Roux container.');
     stack.add(v);
+    const result = Array.isArray(v) ? [] : Object.create(null);
     for (const key of Reflect.ownKeys(v)) {
       if (typeof key !== 'string' || ['__proto__', 'prototype', 'constructor'].includes(key))
         throw Error('Invalid Roux property.');
       const d = Object.getOwnPropertyDescriptor(v, key)!;
       if (!('value' in d)) throw Error('Roux data cannot contain accessors.');
-      visit(d.value, depth + 1);
+      const child = yield* visit(d.value, depth + 1);
+      if (copy) result[key] = child;
     }
     stack.delete(v);
+    return copy ? result : undefined;
   };
-  visit(raw, 0);
+  return yield* visit(raw, 0);
+}
+export function assertRouxPlainData(raw: unknown): void {
+  drainTeachingSteps(scanRouxData(raw, false));
 }
 export function checkedFirstBlockEvidence(
   e: CubeEngine,
@@ -117,7 +136,12 @@ export function checkedFirstBlockEvidence(
     completedDepth: lowerBound - 1,
   };
 }
-function admitFormulaSnapshots(e: CubeEngine, route: RouxRoute, assets: AdvancedRouxAssets): void {
+function* admitFormulaSnapshots(
+  e: CubeEngine,
+  route: RouxRoute,
+  assets: AdvancedRouxAssets,
+): Generator<TeachingWork, void> {
+  yield* cmllIndexSteps(e, assets.cmll);
   const used = new Set(
     originalRouxActions(route.trace)
       .map((a) => a.algorithmId)
@@ -173,6 +197,7 @@ function admitFormulaSnapshots(e: CubeEngine, route: RouxRoute, assets: Advanced
       )
         throw Error('Invalid archival CMLL transformation.');
       for (let phase = 0; phase < 4; phase++) {
+        yield TEACHING_WORK;
         const result = e.apply(ref, [...(Array(phase).fill('M') as TeachingMove[]), ...alg.moves]);
         if (
           !blockComplete(e, result, 'left') ||
@@ -190,14 +215,13 @@ function admitFormulaSnapshots(e: CubeEngine, route: RouxRoute, assets: Advanced
     }
   }
 }
-export function validateRouxRoute(
+export function* validateRouxRouteSteps(
   rawEngine: CubeEngine,
   raw: unknown,
   assets: AdvancedRouxAssets,
   budget: RouxSearchBudget = createRouxSearchBudget('normal'),
-): RouxRoute {
-  assertRouxPlainData(raw);
-  const r = structuredClone(raw) as RouxRoute,
+): Generator<TeachingWork, RouxRoute> {
+  const r = (yield* scanRouxData(raw, true, budget)) as RouxRoute,
     e = meterRouxEngine(rawEngine, budget);
   if (
     !r ||
@@ -214,12 +238,12 @@ export function validateRouxRoute(
     throw Error('Incomplete Roux route.');
   const allActions = r.trace.stages.flatMap((s) => s.actions);
   if (
-    allActions.length > 512 ||
-    originalRouxActions(r.trace).length > 512 ||
+    allActions.length > 128 ||
+    originalRouxActions(r.trace).length > 128 ||
     flattenTrace(r.trace).moves.length > 512
   )
     throw Error('Roux route exceeds replay limits.');
-  const input = prepareRouxInput(e, r.input.source);
+  const input = yield* prepareRouxInputSteps(e, r.input.source);
   if (
     input.fingerprint !== r.input.fingerprint ||
     !e.equals(input.initial, r.input.initial) ||
@@ -227,11 +251,12 @@ export function validateRouxRoute(
     !Array.isArray(r.input.setupMoves) ||
     r.input.setupMoves.length > 520 ||
     r.input.setupMoves.some((m) => !isTeachingMove(m)) ||
-    !e.equals(e.apply(e.solved(), r.input.setupMoves), input.initial)
+    !e.equals(yield* applyTeachingSteps(e, e.solved(), r.input.setupMoves), input.initial)
   )
     throw Error('Roux input or setup witness mismatch.');
-  admitFormulaSnapshots(e, r, assets);
-  verifyTrace(e, r.trace, createAdvancedRouxRuntime(assets, frame.id, r.formulas));
+  yield* admitFormulaSnapshots(e, r, assets);
+  yield* createLseModelSteps(e);
+  yield* verifyTraceSteps(e, r.trace, createAdvancedRouxRuntime(assets, frame.id, r.formulas));
   const measures = rouxTraceMeasures(r.trace);
   if (
     !equal(measures.counts, r.counts) ||
@@ -240,7 +265,7 @@ export function validateRouxRoute(
     rouxRouteId(r) !== r.id
   )
     throw Error('Roux route counts, boundaries or metadata mismatch.');
-  const score = scoreRouxExecution(
+  const score = yield* scoreRouxExecutionSteps(
     e,
     rouxBlockSegments(r.trace, e),
     frame,
@@ -251,4 +276,7 @@ export function validateRouxRoute(
   r.evidence = checkedFirstBlockEvidence(e, input, frame, r.evidence, assets);
   r.trace.rouxAdvanced = rouxTraceMetadata(r);
   return freezeLabValue(r);
+}
+export function validateRouxRoute(...args: Parameters<typeof validateRouxRouteSteps>): RouxRoute {
+  return drainTeachingSteps(validateRouxRouteSteps(...args));
 }

@@ -7,13 +7,19 @@ import { blockCompleteInFrame, observeAdvancedFrame } from '../predicates';
 import type { AdvancedRouxActionDraft, RouxFrame, RouxInput } from '../types';
 import { observeConnections } from './connections';
 import { makeSecondBlockAction } from './continuation';
+import {
+  TEACHING_WORK,
+  drainTeachingSteps,
+  applyTeachingSteps,
+  type TeachingWork,
+} from '../../shared/work';
 
 /** Remove only physically verified closed loops and adjacent same-layer turns. */
-export function compactBlockMoves(
+export function* compactBlockMovesSteps(
   e: CubeEngine,
   initial: CubeState,
   moves: readonly TeachingMove[],
-): TeachingMove[] {
+): Generator<TeachingWork, TeachingMove[]> {
   const stack: TeachingMove[] = [],
     states = [initial],
     seen = new Map([[fingerprintLabState(initial), 0]]);
@@ -30,11 +36,16 @@ export function compactBlockMoves(
       states.push(after);
       seen.set(key, stack.length);
     }
+    yield TEACHING_WORK;
   }
   const compact = combineAdjacentTurns(stack);
-  if (!e.equals(e.apply(initial, moves), e.apply(initial, compact)))
-    throw Error('Block compaction changed its endpoint.');
+  const original = yield* applyTeachingSteps(e, initial, moves),
+    after = yield* applyTeachingSteps(e, initial, compact);
+  if (!e.equals(original, after)) throw Error('Block compaction changed its endpoint.');
   return compact;
+}
+export function compactBlockMoves(...args: Parameters<typeof compactBlockMovesSteps>) {
+  return drainTeachingSteps(compactBlockMovesSteps(...args));
 }
 function position(e: CubeEngine, state: CubeState, ids: readonly string[]): string {
   const o = e.observe(state);
@@ -50,17 +61,17 @@ function position(e: CubeEngine, state: CubeState, ids: readonly string[]): stri
     )
     .join('; ');
 }
-export function explainBlockRoute(
+export function* explainBlockRouteSteps(
   e: CubeEngine,
   input: RouxInput,
   frame: RouxFrame,
   firstMoves: readonly TeachingMove[],
   secondMoves: readonly TeachingMove[],
-): AdvancedRouxActionDraft[] {
+): Generator<TeachingWork, AdvancedRouxActionDraft[]> {
   const held = e.apply(input.initial, frame.positioningMoves),
     map = createRouxFrameMap(e, frame.id),
-    firstEnd = e.apply(held, firstMoves),
-    end = e.apply(firstEnd, secondMoves);
+    firstEnd = yield* applyTeachingSteps(e, held, firstMoves),
+    end = yield* applyTeachingSteps(e, firstEnd, secondMoves);
   if (
     !blockCompleteInFrame(e, firstEnd, frame, 'left') ||
     !blockCompleteInFrame(e, end, frame, 'left') ||
@@ -78,12 +89,14 @@ export function explainBlockRoute(
     let start = state,
       pending: TeachingMove[] = [],
       prior = observeConnections(e, state, frame);
+    yield TEACHING_WORK;
     for (let index = 0; index < moves.length; index++) {
       pending.push(moves[index]);
       state = e.apply(state, [moves[index]]);
       const key = fingerprintLabState(state);
       if (seen.has(key)) throw Error('A block route repeated physical state without progress.');
       seen.add(key);
+      yield TEACHING_WORK;
       const phase = observeAdvancedFrame(e, state, frame).centerPhase;
       if (phase === null) continue;
       if (side === 'right') {
@@ -133,4 +146,7 @@ export function explainBlockRoute(
     if (pending.length) throw Error('No restored side-frame checkpoint at the block endpoint.');
   }
   return actions;
+}
+export function explainBlockRoute(...args: Parameters<typeof explainBlockRouteSteps>) {
+  return drainTeachingSteps(explainBlockRouteSteps(...args));
 }

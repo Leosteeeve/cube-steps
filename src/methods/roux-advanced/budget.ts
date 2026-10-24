@@ -14,6 +14,8 @@ interface Options {
   cancelled?: () => boolean;
   maxOperations?: number;
   deadlineMs?: number;
+  maxEntries?: number;
+  maxRetainedBytes?: number;
 }
 const integer = (n: number, max = Number.MAX_SAFE_INTEGER) => {
   if (!Number.isSafeInteger(n) || n < 0 || n > max) throw Error('Invalid Roux resource value.');
@@ -37,6 +39,8 @@ export function createRouxSearchBudget(
       options.deadlineMs ?? (mode === 'normal' ? 8000 : 30000),
       mode === 'normal' ? 8000 : 30000,
     );
+  const maxEntries = integer(options.maxEntries ?? 25000, 25000),
+    maxRetainedBytes = integer(options.maxRetainedBytes ?? 128 * 1024 * 1024, 128 * 1024 * 1024);
   let operations = 0,
     retainedBytes = 0,
     reason: RouxStopReason | undefined;
@@ -81,9 +85,9 @@ export function createRouxSearchBudget(
       integer(bytes);
       checkpoint();
       if (typeof key !== 'string') throw Error('Invalid Roux retained entry key.');
-      if (!entries.has(key) && entries.size >= 25000) stop('frontier-limit');
+      if (!entries.has(key) && entries.size >= maxEntries) stop('frontier-limit');
       const total = retainedBytes - (entries.get(key) ?? 0) + bytes;
-      if (total > 128 * 1024 * 1024) stop('memory-limit');
+      if (total > maxRetainedBytes) stop('memory-limit');
       entries.set(key, bytes);
       retainedBytes = total;
     },

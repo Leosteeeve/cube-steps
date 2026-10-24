@@ -8,6 +8,7 @@ import type { BlockCandidate, RouxFrame, RouxInput, RouxSearchBudget } from '../
 import { STM_MOVES, readFirstBlockCoordinate } from './coordinates';
 import { assertBlockSearchAssets, type BlockSearchAssets } from './distance';
 import { observeConnections, type RouxConnection } from './connections';
+import { TEACHING_WORK, drainTeachingSteps, type TeachingWork } from '../../shared/work';
 function construction(connections: readonly RouxConnection[]): BlockCandidate['construction'] {
   const pairs = connections.filter((c) => c.kind === 'pair'),
     squares = connections.filter((c) => c.kind === 'square'),
@@ -18,12 +19,12 @@ function construction(connections: readonly RouxConnection[]): BlockCandidate['c
   if (pairs.length === 2 && !squares.length) return 'pairs-base';
   return 'free';
 }
-export function describeBlockCandidate(
+export function* describeBlockCandidateSteps(
   e: CubeEngine,
   held: CubeState,
   frame: RouxFrame,
   moves: readonly TeachingMove[],
-): BlockCandidate {
+): Generator<TeachingWork, BlockCandidate> {
   if (moves.some((move) => !STM_MOVES.includes(move)))
     throw Error('First-block constructions require STM primitive turns.');
   let state = held,
@@ -31,6 +32,7 @@ export function describeBlockCandidate(
   const milestones: { index: number; kind: string; pieceIds: readonly string[] }[] = [],
     seen = new Set<string>();
   for (let index = 0; index <= moves.length; index++) {
+    yield TEACHING_WORK;
     if (index) state = e.apply(state, [moves[index - 1]]);
     const connections = observeConnections(e, state, frame);
     if (index < moves.length && label === 'free') label = construction(connections);
@@ -53,6 +55,11 @@ export function describeBlockCandidate(
     construction: label,
     milestones,
   });
+}
+export function describeBlockCandidate(
+  ...args: Parameters<typeof describeBlockCandidateSteps>
+): BlockCandidate {
+  return drainTeachingSteps(describeBlockCandidateSteps(...args));
 }
 export function retainDiverseBlocks(
   e: CubeEngine,
@@ -123,7 +130,7 @@ export function* generateFirstBlocks(
     yield { kind: 'work' };
     if (assets.distances[coordinate] > left) return;
     if (assets.distances[coordinate] === 0 && blockCompleteInFrame(e, state, frame, 'left')) {
-      const candidate = describeBlockCandidate(e, held, frame, path);
+      const candidate = yield* describeBlockCandidateSteps(e, held, frame, path);
       if (retained.some((c) => c.id === candidate.id && c.turns <= candidate.turns)) return;
       const next = retainDiverseBlocks(e, [...retained, candidate], frame, cap);
       const keys = new Set(next.map((c) => c.id));

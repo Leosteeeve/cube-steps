@@ -1,12 +1,13 @@
 import type { CubeEngine, SolveTrace, TraceAction } from '../../core/types';
 import { invertTeachingMoves } from '../../core/teaching-moves';
 import { fingerprintLabState, freezeLabValue } from '../../lab/input';
-import { compactTeachingTrace } from '../shared/compact-trace';
-import { verifyTrace } from '../shared/verification';
+import { compactTeachingTraceSteps } from '../shared/compact-trace';
+import { verifyTraceSteps } from '../shared/verification';
+import { drainTeachingSteps, applyTeachingSteps, type TeachingWork } from '../shared/work';
 import { flattenTrace } from '../shared/trace';
 import type { RouxRoute } from '../../roux-lab/types';
 import { createAdvancedRouxRuntime } from './definition';
-import { scoreRouxExecution } from './execution/score';
+import { scoreRouxExecutionSteps } from './execution/score';
 import { meterRouxEngine } from './budget';
 import type { AdvancedRouxAssets } from './assets';
 import type { FirstBlockEvidence, RouxFrame, RouxInput, RouxSearchBudget } from './types';
@@ -85,7 +86,7 @@ export function rouxRouteId(
   for (let i = 0; i < text.length; i++) hash = Math.imul(hash ^ text.charCodeAt(i), 16777619);
   return `roux-v1:${route.frameId}:${(hash >>> 0).toString(16)}`;
 }
-export function finalizeRouxRoute(
+export function* finalizeRouxRouteSteps(
   raw: CubeEngine,
   input: RouxInput,
   frame: RouxFrame,
@@ -96,27 +97,37 @@ export function finalizeRouxRoute(
   evidence: FirstBlockEvidence,
   basis: RouxRoute['basis'] = 'optimized',
   archivedFormulas: RouxRoute['formulas'] = {},
-): RouxRoute {
+): Generator<TeachingWork, RouxRoute> {
   const e = meterRouxEngine(raw, budget),
     runtime = createAdvancedRouxRuntime(assets, frame.id, archivedFormulas),
-    trace = compactTeachingTrace(e, source, runtime);
-  verifyTrace(e, trace, runtime);
+    trace = yield* compactTeachingTraceSteps(e, source, runtime);
+  yield* verifyTraceSteps(e, trace, runtime);
   const measures = rouxTraceMeasures(trace),
     moves = flattenTrace(trace).moves;
-  if (moves.length > 512) throw Error('Advanced Roux route exceeds 512 moves.');
-  const setupMoves = input.setupMoves ?? [...frame.positioningMoves, ...invertTeachingMoves(moves)];
+  if (moves.length > 512 || originalRouxActions(trace).length > 128)
+    throw Error('Advanced Roux route exceeds 512 moves or 128 teaching actions.');
+  const setupMoves =
+    input.setupMoves && input.setupMoves.length <= 520
+      ? input.setupMoves
+      : [...frame.positioningMoves, ...invertTeachingMoves(moves)];
   if (
     setupMoves.length > 520 ||
-    !e.equals(e.apply(e.solved(), setupMoves), input.initial) ||
+    !e.equals(yield* applyTeachingSteps(e, e.solved(), setupMoves), input.initial) ||
     input.fingerprint !== fingerprintLabState(input.initial)
   )
     throw Error('Roux setup witness does not reproduce its input.');
-  const score = scoreRouxExecution(e, rouxBlockSegments(trace, e), frame, assets.execution, budget),
-    formulas: RouxRoute['formulas'] = Object.fromEntries(
-      originalRouxActions(trace)
-        .filter((a) => a.algorithmId)
-        .map((a) => [a.algorithmId!, runtime.presentation.algorithms[a.algorithmId!]]),
-    );
+  const score = yield* scoreRouxExecutionSteps(
+    e,
+    rouxBlockSegments(trace, e),
+    frame,
+    assets.execution,
+    budget,
+  );
+  const formulas: RouxRoute['formulas'] = Object.fromEntries(
+    originalRouxActions(trace)
+      .filter((a) => a.algorithmId)
+      .map((a) => [a.algorithmId!, runtime.presentation.algorithms[a.algorithmId!]]),
+  );
   const route: RouxRoute = {
     kind: 'roux-lab',
     schemaVersion: 1,
@@ -140,4 +151,7 @@ export function finalizeRouxRoute(
   trace.rouxAdvanced = rouxTraceMetadata(route);
   route.id = rouxRouteId(route);
   return freezeLabValue(route);
+}
+export function finalizeRouxRoute(...args: Parameters<typeof finalizeRouxRouteSteps>): RouxRoute {
+  return drainTeachingSteps(finalizeRouxRouteSteps(...args));
 }

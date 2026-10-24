@@ -13,7 +13,7 @@ import { planBaselineBlocks } from './blocks/baseline';
 import { searchFirstBlockReference } from './blocks/reference';
 import { generateFirstBlocks } from './blocks/candidates';
 import { continueSecondBlock } from './blocks/second-block';
-import { completeRouxCandidate } from './complete';
+import { completeRouxCandidateSteps } from './complete';
 import { rouxTraceMetadata } from './finalize';
 import { selectRouxRoutes } from './selection';
 import type { FirstBlockEvidence, RouxFrame, RouxInput, RouxSearchBudget } from './types';
@@ -54,12 +54,12 @@ export function* searchAdvancedRoux(
   };
   function* frameJob(frame: RouxFrame): Generator<Event, void> {
     const blocks = yield* planBaselineBlocks(e, input, frame, assets.beginner, budget);
-    const raw = completeRouxCandidate(e, input, frame, blocks, assets, budget),
-      fallback: RouxRoute = {
-        ...raw,
-        basis: 'baseline-fallback',
-        trace: { ...raw.trace },
-      };
+    const raw = yield* completeRouxCandidateSteps(e, input, frame, blocks, assets, budget);
+    const fallback: RouxRoute = {
+      ...raw,
+      basis: 'baseline-fallback',
+      trace: { ...raw.trace },
+    };
     fallback.trace.rouxAdvanced = rouxTraceMetadata(fallback);
     // Complete/verified results remain usable if optional continuation consumed the final budget.
     if (budget.snapshot().reason) {
@@ -124,7 +124,7 @@ export function* searchAdvancedRoux(
                   yield step;
                   continue;
                 }
-                const route = completeRouxCandidate(
+                const route = yield* completeRouxCandidateSteps(
                   e,
                   input,
                   frame,

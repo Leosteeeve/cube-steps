@@ -7,6 +7,7 @@ import { createRouxFrameMap } from '../frames';
 import type { RouxFrame } from '../types';
 import type { CmllCatalog, CmllMatch } from './types';
 import { CMLL_CATALOG, deeplyFrozen } from './catalog';
+import { TEACHING_WORK, drainTeachingSteps, type TeachingWork } from '../../shared/work';
 const parity = (p: readonly number[]) =>
   p.reduce((n, x, i) => n + p.slice(i + 1).filter((y) => y < x).length, 0) % 2;
 export function assertPieceCoordinates(s: CubeState): void {
@@ -48,7 +49,10 @@ const indexes = new WeakMap<
   CmllCatalog,
   Map<string, { caseId: string; setup: (typeof U_SETUPS)[number] }>
 >();
-export function cmllIndex(e: CubeEngine, c: CmllCatalog) {
+export function* cmllIndexSteps(
+  e: CubeEngine,
+  c: CmllCatalog,
+): Generator<TeachingWork, Map<string, { caseId: string; setup: (typeof U_SETUPS)[number] }>> {
   const cached = indexes.get(c);
   if (cached) return cached;
   const index = new Map<string, { caseId: string; setup: (typeof U_SETUPS)[number] }>(),
@@ -68,10 +72,14 @@ export function cmllIndex(e: CubeEngine, c: CmllCatalog) {
         if (prior && prior.caseId !== group.id)
           throw Error(`Duplicate CMLL classes: ${group.id} and ${prior.caseId}.`);
         if (!prior) index.set(key, { caseId: group.id, setup });
+        yield TEACHING_WORK;
       }
   }
   if (deeplyFrozen(c)) indexes.set(c, index);
   return index;
+}
+export function cmllIndex(e: CubeEngine, c: CmllCatalog) {
+  return drainTeachingSteps(cmllIndexSteps(e, c));
 }
 export function recognizeCmll(
   e: CubeEngine,

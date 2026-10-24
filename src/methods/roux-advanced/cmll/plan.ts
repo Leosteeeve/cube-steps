@@ -7,16 +7,20 @@ import { observeAdvancedFrame, blockCompleteInFrame } from '../predicates';
 import type { AdvancedRouxActionDraft, RouxFrame, RouxSearchBudget } from '../types';
 import type { CmllCatalog } from './types';
 import { recognizeCmll } from './recognize';
-import { admitCmllCatalog } from './admission';
-export function planCmllVariants(
+import { admitCmllCatalogSteps } from './admission';
+import { TEACHING_WORK, drainTeachingSteps, type TeachingWork } from '../../shared/work';
+export function* planCmllVariantsSteps(
   engine: CubeEngine,
   state: CubeState,
   frame: RouxFrame,
   catalog: CmllCatalog,
   budget: RouxSearchBudget,
-): readonly { variantId: string | null; actions: AdvancedRouxActionDraft[]; state: CubeState }[] {
+): Generator<
+  TeachingWork,
+  readonly { variantId: string | null; actions: AdvancedRouxActionDraft[]; state: CubeState }[]
+> {
   const e = meterRouxEngine(engine, budget);
-  admitCmllCatalog(e, catalog, budget);
+  yield* admitCmllCatalogSteps(e, catalog, budget);
   const match = recognizeCmll(e, state, frame, catalog);
   if (!('family' in match)) return [{ variantId: null, actions: [], state }];
   const group = catalog.cases.find((c) => c.id === match.caseId)!,
@@ -26,6 +30,7 @@ export function planCmllVariants(
   for (const id of group.variantIds.slice(0, 2))
     for (const setup of U_SETUPS) {
       budget.charge('expand');
+      yield TEACHING_WORK;
       const v = catalog.variants[id],
         held = e.apply(state, setup),
         after = e.apply(held, v.moves),
@@ -85,4 +90,7 @@ export function planCmllVariants(
     }
   if (!result.length) throw Error('Recognized CMLL case has no verified continuation.');
   return result;
+}
+export function planCmllVariants(...args: Parameters<typeof planCmllVariantsSteps>) {
+  return drainTeachingSteps(planCmllVariantsSteps(...args));
 }

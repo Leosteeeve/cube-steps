@@ -10,6 +10,7 @@ import {
 } from 'react';
 import { useGuidanceAction, useGuidanceScope, useGuidanceTarget } from '../ui/guidance';
 import type { CubeEngine } from '../core/types';
+import type { MethodRuntime, MethodPresentation } from '../methods/contracts';
 import type { PlaybackSource, PlaybackSectionId } from './playback-source';
 import { ALGORITHM_REGISTRY } from '../algorithms/registry';
 import { loadAdvancedAssets, type AdvancedAssets } from '../methods/advanced/assets';
@@ -70,11 +71,24 @@ export function PlaybackView({
     adapterRef.current?.setViewOptions(view);
   }, [view]);
   const needsAdvanced = source.kind === 'solve' && source.session.trace.method === 'cfop-advanced';
+  const needsAdvancedRoux =
+    source.kind === 'solve' && source.session.trace.method === 'roux-advanced';
+  const rouxFrame =
+    source.kind === 'solve' ? source.session.trace.rouxAdvanced?.frameId : undefined;
+  const [rouxPlayback, setRouxPlayback] = useState<{
+    source: PlaybackSource;
+    runtime: MethodRuntime;
+  }>();
+  const rouxPrepared = rouxPlayback?.source === source;
   const [assets, setAssets] = useState<AdvancedAssets>(),
     [assetError, setAssetError] = useState('');
-  const method =
+  const method: Pick<MethodPresentation, 'label' | 'algorithms'> =
     source.kind === 'solve'
-      ? getMethod(source.session.trace.method)
+      ? needsAdvancedRoux
+        ? rouxPrepared
+          ? rouxPlayback.runtime.presentation
+          : { label: 'Advanced Roux', algorithms: {} }
+        : getMethod(source.session.trace.method)
       : source.kind === 'lab' || source.kind === 'roux-lab'
         ? { label: source.prepared.label, algorithms: source.prepared.algorithms }
         : {
@@ -95,6 +109,29 @@ export function PlaybackView({
       });
     return () => abort.abort();
   }, [needsAdvanced, assets, source]);
+  useEffect(() => {
+    if (!needsAdvancedRoux) return;
+    let cancelled = false;
+    setAssetError('');
+    if (!rouxFrame) {
+      setAssetError('This Advanced Roux trace is missing its holding frame.');
+      return;
+    }
+    void import('../methods/roux-advanced/browser-runtime')
+      .then((m) => m.prepareAdvancedRouxPlayback(rouxFrame))
+      .then((runtime) => {
+        if (!cancelled) setRouxPlayback({ source, runtime });
+      })
+      .catch((error) => {
+        if (!cancelled)
+          setAssetError(
+            error instanceof Error ? error.message : 'Unable to prepare Advanced Roux playback.',
+          );
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [needsAdvancedRoux, rouxFrame, source]);
   const host = useRef<HTMLDivElement>(null),
     controller = useRef<SourcePlaybackController | null>(null);
   const [snapshot, setSnapshot] = useState<SourcePlaybackSnapshot | null>(null),
@@ -116,7 +153,7 @@ export function PlaybackView({
   positionCallback.current = onPosition;
   // Install each replacement controller before the positioning effect below.
   useLayoutEffect(() => {
-    if (needsAdvanced && !assets) {
+    if ((needsAdvanced && !assets) || (needsAdvancedRoux && !rouxPrepared)) {
       controller.current = null;
       setSnapshot(null);
       setReady(false);
@@ -196,7 +233,7 @@ export function PlaybackView({
       controller.current = null;
       handleCallback.current?.(null);
     };
-  }, [engine, source, assets, needsAdvanced, assetError]);
+  }, [engine, source, assets, needsAdvanced, needsAdvancedRoux, rouxPrepared, assetError]);
   // Position the lesson before enabled controls can accept the first user input.
   useLayoutEffect(() => {
     const restored = restoredSection.current;

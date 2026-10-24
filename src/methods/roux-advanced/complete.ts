@@ -2,14 +2,20 @@ import type { CubeEngine, SolveTrace, TraceAction } from '../../core/types';
 import type { RouxRoute } from '../../roux-lab/types';
 import { createMethodTrace, type ActionInput } from '../shared/trace';
 import { createAdvancedRouxRuntime, rouxPositionAction } from './definition';
-import { finalizeRouxRoute, rouxBlockSegments } from './finalize';
-import { planCmllVariants } from './cmll/plan';
-import { planAdvancedLse, type AdvancedLsePlan } from './lse/plan';
+import { finalizeRouxRoute, finalizeRouxRouteSteps, rouxBlockSegments } from './finalize';
+import { planCmllVariantsSteps } from './cmll/plan';
+import { planAdvancedLse, planAdvancedLseSteps, type AdvancedLsePlan } from './lse/plan';
+import {
+  TEACHING_WORK,
+  drainTeachingSteps,
+  applyTeachingSteps,
+  type TeachingWork,
+} from '../shared/work';
 import { firstBlockLowerBound } from './blocks/distance';
-import { compactBlockMoves, explainBlockRoute } from './blocks/explain';
-import { describeBlockCandidate } from './blocks/candidates';
+import { compactBlockMovesSteps, explainBlockRouteSteps } from './blocks/explain';
+import { describeBlockCandidateSteps } from './blocks/candidates';
 import { blockCompleteInFrame } from './predicates';
-import { improveBlockExecution, scoreRouxExecution } from './execution/score';
+import { improveBlockExecutionSteps, scoreRouxExecutionSteps } from './execution/score';
 import { ROUX_FRAMES } from './frames';
 import { meterRouxEngine, RouxBudgetStop } from './budget';
 import { validateRouxRoute } from './validate';
@@ -40,21 +46,21 @@ function appendLse(builder: ReturnType<typeof createMethodTrace>, lse: AdvancedL
   }
   builder.endStage();
 }
-export function completeRouxCandidate(
+export function* completeRouxCandidateSteps(
   raw: CubeEngine,
   input: RouxInput,
   frame: RouxFrame,
   blocks: TwoBlockCandidate,
   assets: AdvancedRouxAssets,
   budget: RouxSearchBudget,
-): RouxRoute {
+): Generator<TeachingWork, RouxRoute> {
   const e = meterRouxEngine(raw, budget),
     runtime = createAdvancedRouxRuntime(assets, frame.id),
     held = e.apply(input.initial, frame.positioningMoves);
   if (
     blocks.first.frameId !== frame.id ||
-    !e.equals(e.apply(held, blocks.first.moves), blocks.first.state) ||
-    !e.equals(e.apply(blocks.first.state, blocks.secondMoves), blocks.state)
+    !e.equals(yield* applyTeachingSteps(e, held, blocks.first.moves), blocks.first.state) ||
+    !e.equals(yield* applyTeachingSteps(e, blocks.first.state, blocks.secondMoves), blocks.state)
   )
     throw Error('Disconnected two-block candidate.');
   const allMoves = [...blocks.first.moves, ...blocks.secondMoves];
@@ -63,12 +69,12 @@ export function completeRouxCandidate(
   let cursor = held,
     boundary = 0;
   for (const draft of blocks.actions) {
-    const after = e.apply(cursor, draft.moves),
-      stage = boundary < blocks.first.moves.length ? 'ar-first-block' : 'ar-second-block';
+    const after = yield* applyTeachingSteps(e, cursor, draft.moves);
+    const stage = boundary < blocks.first.moves.length ? 'ar-first-block' : 'ar-second-block';
     const { check, ...action } = draft;
     if (
       (check && !check.test(after)) ||
-      !runtime.checkAction(
+      !(yield* runtime.checkActionSteps!(
         e,
         {
           ...action,
@@ -77,28 +83,31 @@ export function completeRouxCandidate(
           checkpoint: { id: 'candidate', description: 'Candidate endpoint', passed: true },
         },
         stage,
-      )
+      ))
     )
       throw Error('Block candidate source failed verification.');
     cursor = after;
     boundary += draft.moves.length;
+    yield TEACHING_WORK;
   }
-  const compact = compactBlockMoves(e, held, allMoves);
+  const compact = yield* compactBlockMovesSteps(e, held, allMoves);
   if (compact.join(' ') !== allMoves.join(' ')) {
     // A cancelled cross-stage turn can erase the original FB checkpoint. Find
     // the first real complete block on the compact replay instead of inventing it.
     let state = held,
       split = 0;
-    while (!blockCompleteInFrame(e, state, frame, 'left') && split < compact.length)
+    while (!blockCompleteInFrame(e, state, frame, 'left') && split < compact.length) {
       state = e.apply(state, [compact[split++]]);
-    const first = describeBlockCandidate(e, held, frame, compact.slice(0, split)),
-      secondMoves = compact.slice(split);
+      yield TEACHING_WORK;
+    }
+    const first = yield* describeBlockCandidateSteps(e, held, frame, compact.slice(0, split));
+    const secondMoves = compact.slice(split);
     blocks = {
       ...blocks,
       first,
       secondMoves,
       secondTurns: secondMoves.length,
-      actions: explainBlockRoute(e, input, frame, first.moves, secondMoves),
+      actions: yield* explainBlockRouteSteps(e, input, frame, first.moves, secondMoves),
     };
   }
   const lowerBound = firstBlockLowerBound(e, held, frame, assets.blocks),
@@ -125,9 +134,10 @@ export function completeRouxCandidate(
   let best: RouxRoute | undefined,
     bestTail = Infinity;
   try {
-    const choices = planCmllVariants(e, blocks.state, frame, assets.cmll, budget);
+    yield TEACHING_WORK;
+    const choices = yield* planCmllVariantsSteps(e, blocks.state, frame, assets.cmll, budget);
     for (const cmll of choices) {
-      const lse = planAdvancedLse(
+      const lse = yield* planAdvancedLseSteps(
         e,
         cmll.state,
         frame,
@@ -137,7 +147,7 @@ export function completeRouxCandidate(
         'combined',
       );
       const builder = createMethodTrace(e, input.initial, runtime, {
-        maxActions: 512,
+        maxActions: 128,
         maxMoves: 512,
       });
       builder.beginStage('ar-position');
@@ -150,6 +160,7 @@ export function completeRouxCandidate(
         if (n === blocks.first.moves.length) break;
         builder.append(action);
         n += action.moves.length;
+        yield TEACHING_WORK;
       }
       if (n !== blocks.first.moves.length || !e.equals(builder.current, blocks.first.state))
         throw Error('First-block action boundary mismatch.');
@@ -159,15 +170,20 @@ export function completeRouxCandidate(
       for (const action of blocks.actions) {
         if (n >= blocks.first.moves.length) builder.append(action);
         n += action.moves.length;
+        yield TEACHING_WORK;
       }
       if (!e.equals(builder.current, blocks.state))
         throw Error('Second-block action endpoint mismatch.');
       builder.endStage();
       builder.beginStage('ar-cmll');
-      for (const action of cmll.actions) builder.append(action);
+      for (const action of cmll.actions) {
+        builder.append(action);
+        yield TEACHING_WORK;
+      }
       builder.endStage();
       appendLse(builder, lse);
-      const route = finalizeRouxRoute(
+      yield TEACHING_WORK;
+      const route = yield* finalizeRouxRouteSteps(
         e,
         input,
         frame,
@@ -178,7 +194,7 @@ export function completeRouxCandidate(
         evidence,
       );
       if (!best) best = route;
-      const tailScore = scoreRouxExecution(
+      const tailScore = yield* scoreRouxExecutionSteps(
         e,
         route.trace.stages.slice(3).flatMap((s) =>
           s.actions.map((a) => ({
@@ -205,7 +221,7 @@ export function completeRouxCandidate(
   try {
     const actions = best.trace.stages.slice(0, 3).flatMap((s) => s.actions),
       segments = rouxBlockSegments(best.trace, e);
-    const improved = improveBlockExecution(
+    const improved = yield* improveBlockExecutionSteps(
       e,
       segments,
       frame,
@@ -236,7 +252,7 @@ export function completeRouxCandidate(
           actions: s.actions.map((a) => (a === original ? changed : a)),
         })),
       };
-      const candidate = finalizeRouxRoute(
+      const candidate = yield* finalizeRouxRouteSteps(
         e,
         input,
         frame,
@@ -252,6 +268,11 @@ export function completeRouxCandidate(
     if (!(error instanceof RouxBudgetStop)) throw error;
   }
   return best;
+}
+export function completeRouxCandidate(
+  ...args: Parameters<typeof completeRouxCandidateSteps>
+): RouxRoute {
+  return drainTeachingSteps(completeRouxCandidateSteps(...args));
 }
 export function withBasicLse(
   raw: CubeEngine,

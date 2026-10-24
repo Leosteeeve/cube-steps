@@ -3,6 +3,58 @@ import { createSolveClient, type WorkerPort } from './solve-client';
 import { createCubeEngine } from '../core/cube';
 import { handleSolveRequest } from '../workers/solve-request';
 import { GOLDEN_CASES } from '../../tests/fixtures/facelet-cases';
+import type { RouxSearchClient } from '../roux-lab/client';
+import type { AdvancedRouxOutcome } from '../roux-lab/types';
+it('delegates Advanced Roux only for club requests with normal default or explicit frames', async () => {
+  const start = vi.fn<RouxSearchClient['start']>(() => ({
+    stop() {},
+    done: Promise.resolve({
+      ok: false,
+      code: 'budget',
+      message: 'fixture stop',
+      coverage: {
+        elapsedMs: 0,
+        operations: 0,
+        entries: 0,
+        retainedBytes: 0,
+        frames: {},
+        verifiedRoutes: 0,
+        reason: 'work-limit',
+      },
+    }),
+  }));
+  const advanced = vi.fn(() => ({ start, dispose() {} })),
+    ordinary = vi.fn(() => new ControlledWorker());
+  const global = createSolveClient(ordinary, 'global', advanced);
+  expect((await global.solveScramble('R', 'roux-advanced')).ok).toBe(false);
+  expect(advanced).not.toHaveBeenCalled();
+  expect(ordinary).not.toHaveBeenCalled();
+  const club = createSolveClient(ordinary, 'club', advanced);
+  await club.solveScramble('R', 'roux-advanced');
+  expect(start.mock.calls[0][1]).toEqual({
+    allowedFrames: ['white-blue'],
+    mode: 'normal',
+    modelVersion: 'roux-execution-v1',
+  });
+  expect(start.mock.calls[0][3]?.startedAtEpochMs).toBeGreaterThan(0);
+  await club.solveScramble('U', 'roux-advanced', { allowedFrames: ['yellow-red', 'white-green'] });
+  expect(start.mock.calls[1][1].allowedFrames).toEqual(['yellow-red', 'white-green']);
+  expect(ordinary).not.toHaveBeenCalled();
+  club.cancel();
+});
+it('invalidates Advanced Roux after import or a replacement method and resolves cancellation', async () => {
+  const start = vi.fn<RouxSearchClient['start']>(() => ({
+      stop() {},
+      done: new Promise<AdvancedRouxOutcome>(() => {}),
+    })),
+    advanced = vi.fn(() => ({ start, dispose() {} }));
+  const client = createSolveClient(() => new ControlledWorker(), 'club', advanced),
+    old = client.solveScramble('R', 'roux-advanced');
+  client.cancel();
+  expect(await old).toMatchObject({ ok: false, error: { kind: 'cancelled' } });
+  await new Promise((r) => setTimeout(r, 0));
+  expect(start).not.toHaveBeenCalled();
+});
 class ControlledWorker implements WorkerPort {
   onmessage: WorkerPort['onmessage'] = null;
   onerror: WorkerPort['onerror'] = null;

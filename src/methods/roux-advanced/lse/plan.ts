@@ -1,6 +1,6 @@
 import type { CubeEngine, CubeState, TeachingMove } from '../../../core/types';
 import { encodeLse, lseIndex } from '../../roux/lse/coordinates';
-import { createLseModel } from '../../roux/lse/model';
+import { createLseModelSteps } from '../../roux/lse/model';
 import { createRouxFrameMap } from '../frames';
 import { meterRouxEngine } from '../budget';
 import type { AdvancedRouxActionDraft, RouxFrame, RouxSearchBudget } from '../types';
@@ -9,7 +9,8 @@ import type {
   RouxExecutionScore,
   RouxExecutionSegment,
 } from '../execution/types';
-import { scoreRouxExecution } from '../execution/score';
+import { scoreRouxExecutionSteps } from '../execution/score';
+import { TEACHING_WORK, drainTeachingSteps, type TeachingWork } from '../../shared/work';
 import { assertPieceCoordinates } from '../cmll/recognize';
 import { readLsePolicy, type AdvancedLseAssets, type AdvancedLseGoal } from './assets';
 import { lsePolicyMoves } from './model';
@@ -21,7 +22,7 @@ export interface AdvancedLsePlan {
   eolrBoundary: number;
   score: RouxExecutionScore;
 }
-function computeAdvancedLse(
+function* computeAdvancedLse(
   engine: CubeEngine,
   initial: CubeState,
   frame: RouxFrame,
@@ -29,12 +30,12 @@ function computeAdvancedLse(
   execution: RouxExecutionCatalog,
   budget: RouxSearchBudget,
   mode: 'combined' | 'basic',
-): AdvancedLsePlan {
+): Generator<TeachingWork, AdvancedLsePlan> {
   if (mode !== 'combined' && mode !== 'basic') throw Error('Unknown advanced LSE mode.');
   assertPieceCoordinates(initial);
   const e = meterRouxEngine(engine, budget),
     map = createRouxFrameMap(e, frame.id),
-    model = createLseModel(e);
+    model = yield* createLseModelSteps(e);
   let c = encodeLse(e, map.toCanonical(initial));
   budget.checkpoint();
   if (!c) throw Error('Complete both blocks and the corner ring before the LSE domain.');
@@ -43,10 +44,11 @@ function computeAdvancedLse(
     total = 0;
   const actions: AdvancedRouxActionDraft[] = [],
     segments: RouxExecutionSegment[] = [];
-  const walk = (goal: AdvancedLseGoal) => {
+  const walk = function* (goal: AdvancedLseGoal): Generator<TeachingWork, void> {
     const seen = new Set<number>();
     for (;;) {
       budget.charge('score');
+      yield TEACHING_WORK;
       const code = lseIndex(c!),
         p = readLsePolicy(assets, goal, code);
       if (p.cost === 255) throw Error(`LSE policy hole ${goal}/${code}.`);
@@ -75,23 +77,28 @@ function computeAdvancedLse(
     }
   };
   if (mode === 'basic') {
-    walk('eo');
-    walk('lr');
-  } else walk('combined');
+    yield* walk('eo');
+    yield* walk('lr');
+  } else yield* walk('combined');
   eolrBoundary = total;
-  walk('last');
+  yield* walk('last');
   if (!e.equals(state, e.apply(e.solved(), frame.positioningMoves)))
     throw Error('LSE did not restore the full state and hold.');
-  const score = scoreRouxExecution(e, segments, frame, execution, budget);
+  const score = yield* scoreRouxExecutionSteps(e, segments, frame, execution, budget);
   return { mode, actions, state, eolrBoundary, score };
 }
-export function planAdvancedLse(...args: Parameters<typeof computeAdvancedLse>): AdvancedLsePlan {
+export function* planAdvancedLseSteps(
+  ...args: Parameters<typeof computeAdvancedLse>
+): Generator<TeachingWork, AdvancedLsePlan> {
   try {
-    return computeAdvancedLse(...args);
+    return yield* computeAdvancedLse(...args);
   } catch (error) {
     // Reused beginner coordinate helpers intentionally return null on malformed
     // states. A sticky outer stop must not become a misleading domain failure.
     args[5].checkpoint();
     throw error;
   }
+}
+export function planAdvancedLse(...args: Parameters<typeof computeAdvancedLse>): AdvancedLsePlan {
+  return drainTeachingSteps(planAdvancedLseSteps(...args));
 }

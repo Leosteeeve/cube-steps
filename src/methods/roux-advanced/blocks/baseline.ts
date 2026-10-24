@@ -11,8 +11,8 @@ import type {
   RouxSearchBudget,
   TwoBlockCandidate,
 } from '../types';
-import { describeBlockCandidate } from './candidates';
-import { compactBlockMoves, explainBlockRoute } from './explain';
+import { describeBlockCandidateSteps } from './candidates';
+import { compactBlockMovesSteps, explainBlockRouteSteps } from './explain';
 const admitted = new WeakMap<RouxSearchBudget, WeakSet<RouxAssets>>();
 
 export function* planBaselineBlocks(
@@ -64,12 +64,12 @@ export function* planBaselineBlocks(
   );
   budget.checkpoint();
   if (!left.ok) throw Error(`Baseline first block failed: ${left.message}`);
-  const firstMoves = compactBlockMoves(
+  const firstMoves = yield* compactBlockMovesSteps(
     e,
     held,
     map.toPhysicalMoves(left.actions.flatMap((a) => a.moves)),
   );
-  const first = describeBlockCandidate(e, held, frame, firstMoves);
+  const first = yield* describeBlockCandidateSteps(e, held, frame, firstMoves);
   yield { kind: 'work' };
   const right = yield* planSideBlockSteps(
     e,
@@ -80,13 +80,13 @@ export function* planBaselineBlocks(
   );
   budget.checkpoint();
   if (!right.ok) throw Error(`Baseline second block failed: ${right.message}`);
-  const secondMoves = compactBlockMoves(
+  const secondMoves = yield* compactBlockMovesSteps(
     e,
     first.state,
     map.toPhysicalMoves(right.actions.flatMap((a) => a.moves)),
   );
   const state = e.apply(first.state, secondMoves),
-    actions = explainBlockRoute(e, input, frame, first.moves, secondMoves);
+    actions = yield* explainBlockRouteSteps(e, input, frame, first.moves, secondMoves);
   if (!e.equals(state, map.fromCanonical(right.state)))
     throw Error('Baseline color mapping changed the physical endpoint.');
   return { first, secondMoves, state, secondTurns: secondMoves.length, actions };

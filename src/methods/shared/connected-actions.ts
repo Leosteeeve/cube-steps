@@ -1,4 +1,5 @@
 import type { CubeEngine, TeachingMove, TraceAction } from '../../core/types';
+import { TEACHING_WORK, drainTeachingSteps, applyTeachingSteps, type TeachingWork } from './work';
 
 const family = (move: TeachingMove) => move.replace(/[2']/g, '');
 const amount = (move: TeachingMove) => (move.endsWith('2') ? 2 : move.endsWith("'") ? 3 : 1);
@@ -20,7 +21,10 @@ export function combineAdjacentTurns(moves: readonly TeachingMove[]): TeachingMo
   return result;
 }
 
-export function joinTeachingActions(engine: CubeEngine, sources: TraceAction[]): TraceAction {
+export function* joinTeachingActionsSteps(
+  engine: CubeEngine,
+  sources: TraceAction[],
+): Generator<TeachingWork, TraceAction> {
   if (
     sources.length < 2 ||
     sources.length > 512 ||
@@ -32,15 +36,16 @@ export function joinTeachingActions(engine: CubeEngine, sources: TraceAction[]):
   let state = first.before;
   for (const source of sources) {
     if (!engine.equals(state, source.before)) throw Error('Disconnected reference actions.');
-    state = engine.apply(state, source.moves);
+    state = yield* applyTeachingSteps(engine, state, source.moves);
     if (!engine.equals(state, source.after)) throw Error('Incorrect reference endpoint.');
   }
   const original = sources.flatMap((a) => a.moves),
     moves = combineAdjacentTurns(original);
+  const endpoint = yield* applyTeachingSteps(engine, first.before, moves);
   if (
     original.length > 4096 ||
     moves.length >= original.length ||
-    !engine.equals(engine.apply(first.before, moves), last.after)
+    !engine.equals(endpoint, last.after)
   )
     throw Error('The connected sequence must save turns and preserve its endpoint.');
   const savedMoves = original.length - moves.length;
@@ -108,4 +113,7 @@ export function joinTeachingActions(engine: CubeEngine, sources: TraceAction[]):
         }
       : {}),
   };
+}
+export function joinTeachingActions(engine: CubeEngine, sources: TraceAction[]): TraceAction {
+  return drainTeachingSteps(joinTeachingActionsSteps(engine, sources));
 }

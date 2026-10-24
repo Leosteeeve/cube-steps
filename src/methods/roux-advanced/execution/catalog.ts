@@ -1,4 +1,5 @@
 import { isTeachingMove } from '../../../core/teaching-moves';
+import { TEACHING_WORK, drainTeachingSteps, type TeachingWork } from '../../shared/work';
 import type { TeachingMove } from '../../../core/types';
 import type { RouxSearchBudget } from '../types';
 import type { RouxExecutionCatalog, RouxExecutionProfile, RouxGrip } from './types';
@@ -158,10 +159,10 @@ export const ROUX_EXECUTION_CATALOG: RouxExecutionCatalog = {
   grips,
   profiles,
 };
-export function validateRouxExecutionCatalog(
+export function* validateRouxExecutionCatalogSteps(
   c: RouxExecutionCatalog,
   budget: RouxSearchBudget,
-): void {
+): Generator<TeachingWork, void> {
   if (c.version !== 'roux-execution-v1' || c.neutralGrip !== id(0, 0))
     throw Error('Unknown execution model.');
   const known = new Set<string>(),
@@ -171,6 +172,7 @@ export function validateRouxExecutionCatalog(
     pose(g.id);
     if (known.has(g.id) || !g.description) throw Error('Invalid grip.');
     known.add(g.id);
+    yield TEACHING_WORK;
   }
   if (!known.has(c.neutralGrip)) throw Error('Missing neutral grip.');
   for (const p of c.profiles) {
@@ -212,5 +214,11 @@ export function validateRouxExecutionCatalog(
       )
     )
       throw Error('Invalid profile event boundary or transition.');
+    yield TEACHING_WORK;
   }
+}
+export function validateRouxExecutionCatalog(
+  ...args: Parameters<typeof validateRouxExecutionCatalogSteps>
+): void {
+  return drainTeachingSteps(validateRouxExecutionCatalogSteps(...args));
 }
