@@ -52,10 +52,10 @@ test('nine chapters play their actual worked cases and retain conceptual progres
     .toBe(true);
   await page.locator('twisty-player').scrollIntoViewIfNeeded();
   await page.evaluate(async()=>{const player=document.querySelector('twisty-player') as any;await player.experimentalCurrentThreeJSPuzzleObject();await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));});
-  await page.locator('.cube-stage').screenshot({path:info.outputPath('brighter-cube-phone.png')});
+  await page.locator('.cube-stage').screenshot({path:info.outputPath('brighter-cube-phone.png'), animations:'disabled'});
   await page.screenshot({
     path: info.outputPath('advanced-roux-lesson-phone.png'),
-    fullPage: true,
+    fullPage: true, animations:'disabled',
   });
   await page.getByRole('combobox', {name:'Worked example'}).selectOption('late-base');
   await expect(page.getByRole('button', { name: 'Next move', exact: true })).toBeEnabled();
