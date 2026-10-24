@@ -1,10 +1,12 @@
 # Advanced Roux, Roux Test Lab, and the Next UI
 
-Status: **Written design for owner review. Not implementation approval.**
+Status: **Owner-approved written design (2026-10-23). Implementation plans are awaiting separate review.**
+
+Implementation handoff: [Five plans and 26 tasks](../plans/2026-10-23-roux-ui-upgrade-plan.md), preserving Native execution and the separate video acceptance checkpoints.
 
 Independent builder check: complete. The two material questions were resolved by making complete baseline fallback availability explicit (Section 7) and separating preview deployment from physical acceptance and replacement-video acceptance (Section 13). No material planning ambiguity remained in the focused recheck.
 
-Date: 2026-10-23. Repository baseline: `5305a54` (the released redundant-move improvements). This design extends the existing club edition and the shared global player. The owner has selected the combined-block recommendation strategy, advanced LSE scope, and the visual direction below. Engineering defaults are proposals to be approved with this document.
+Date: 2026-10-23. Repository baseline: `5305a54` (the released redundant-move improvements). This design extends the existing club edition and the shared global player. The owner has approved the combined-block recommendation strategy, advanced LSE scope, visual direction and engineering defaults in this document.
 
 ## 1. Intent and delivery order
 
