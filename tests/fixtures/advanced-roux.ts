@@ -4,6 +4,9 @@ export const ADVANCED_ROUX_SETUPS = {
   'slice-phase': ['M'],
   'upper-offset': ['U2'],
   mixed: ['R', 'U', "F'", 'L2', 'D', 'B2', "U'"],
+  'square-pair': ['F'],
+  'line-line': ['L'],
+  'late-base': ['L2', 'M2', 'U', 'M', 'U2', "M'", 'U', 'M2', 'L2'],
 } as const satisfies Record<string, readonly TeachingMove[]>;
 export function advancedRouxFixture(
   engine: CubeEngine,

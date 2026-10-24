@@ -63,6 +63,7 @@ export function createRouxSearchBudget(
     if (reason) stop(reason);
   };
   return {
+    mode,
     checkpoint,
     snapshot,
     charge(kind, n = 1) {

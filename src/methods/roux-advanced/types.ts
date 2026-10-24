@@ -59,10 +59,20 @@ export interface RouxBudgetSnapshot {
   reason?: RouxStopReason;
 }
 export interface RouxSearchBudget {
+  readonly mode: RouxSearchMode;
   charge(kind: 'expand' | 'simulate' | 'score', n?: number): void;
   checkpoint(): void;
   remaining(): { operations: number; milliseconds: number };
   retain(key: string, bytes: number): void;
   release(key: string): void;
   snapshot(): RouxBudgetSnapshot;
+}
+export interface BlockCandidate {
+  readonly id: string;
+  readonly frameId: RouxFrameId;
+  readonly moves: readonly TeachingMove[];
+  readonly state: CubeState;
+  readonly turns: number;
+  readonly construction: 'square-pair' | 'line-line' | 'pairs-base' | 'free';
+  readonly milestones: readonly { index: number; kind: string; pieceIds: readonly string[] }[];
 }
