@@ -1,5 +1,6 @@
 import type { RouxLabSession } from './session';
 import type { FirstBlockEvidence } from '../../methods/roux-advanced/types';
+import { useGuidanceTarget } from '../../ui/guidance';
 export function evidenceText(e: FirstBlockEvidence | undefined): string {
   return !e || e.status === 'not-explored'
     ? 'Not explored'
@@ -9,11 +10,13 @@ export function evidenceText(e: FirstBlockEvidence | undefined): string {
 }
 export function ResultSummary({ state, onStop }: { state: RouxLabSession; onStop: () => void }) {
   const busy = state.status === 'initializing' || state.status === 'searching';
+  const target = useGuidanceTarget('roux-lab.coverage');
   return (
     <section
       className="roux-lab-status"
       aria-label="Search coverage"
       data-roux-phase={state.status}
+      ref={target}
     >
       <div className="roux-lab-actions">
         <strong role="status">

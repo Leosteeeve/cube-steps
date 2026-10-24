@@ -10,6 +10,66 @@ const step = (
 ): TourStep => ({ id, targetId, title, body, guideSection, action });
 const tour = (id: TourId, steps: TourStep[]): TourDefinition => ({ id, contentVersion: 1, steps });
 export const TOURS: Readonly<Record<TourId, TourDefinition>> = {
+  'advanced-roux': tour('advanced-roux', [
+    step(
+      'read',
+      'advanced-roux.heading',
+      'Build on what you know',
+      'Keep Beginner Roux available. These nine chapters explore block choices, full CMLL and combined LSE. Read the goal and checks before turning.',
+      'advanced-roux',
+    ),
+    step(
+      'example',
+      'advanced-roux.example',
+      'Use the exact setup and hold',
+      'Choose a worked example, set up a solved cube with the printed sequence, and match its bottom and left colors. The example is a partial demonstration, not always a whole solve.',
+      'advanced-roux',
+    ),
+    step(
+      'watch',
+      'player.controls',
+      'One turn at a time',
+      'Follow the actual moves and explicit rotations; dragging only changes the camera. M and M′ move the middle centers while you keep the side-block frame. Rewind or replay freely.',
+      'advanced-roux',
+    ),
+  ]),
+  'roux-lab': tour('roux-lab', [
+    step(
+      'input',
+      'roux-lab.input',
+      'Bring a cube you can repeat',
+      'Use a scramble or all six face colors. This informational tour never changes your input or starts a search.',
+      'roux-lab',
+    ),
+    step(
+      'frames',
+      'roux-lab.frames',
+      'Choose familiar holds',
+      'White or yellow bottom with four possible left colors gives eight frames. White / blue only is a useful first comparison. At least one stays selected.',
+      'roux-lab',
+    ),
+    step(
+      'coverage',
+      'roux-lab.coverage',
+      'Read the evidence',
+      'A complete verified route appears first. Search then improves within work and time limits. Best found is not a proof of the shortest block; a proof applies only to the displayed frame and move metric.',
+      'roux-lab',
+    ),
+    step(
+      'routes',
+      'roux-lab.routes',
+      'Compare both blocks together',
+      'Keep A and B fixed while ranking changes. Handling scores estimate right-leading two-handed execution; your own trials decide what feels smoother.',
+      'roux-lab',
+    ),
+    step(
+      'views',
+      'roux-lab.views',
+      'Save, rehearse, then measure',
+      'Save the exact experiment before Trials & notes. Stop timing at both blocks, before CMLL. Five matched AB/BA blocks summarize one tester and timing method; the ordinary Timer stays separate.',
+      'roux-lab',
+    ),
+  ]),
   lab: tour('lab', [
     step(
       'input',
@@ -96,7 +156,7 @@ export const TOURS: Readonly<Record<TourId, TourDefinition>> = {
       'route',
       'quiz.route',
       'Find a comfortable route',
-      'Your answers suggest LBL, Beginner CFOP, or Advanced CFOP, with a reason and a first lesson.',
+      'Six short answers suggest an available LBL, CFOP or Roux route from your foundations and interests, with a reason and a first lesson.',
       'start',
     ),
     step(
@@ -346,6 +406,8 @@ export const TOURS: Readonly<Record<TourId, TourDefinition>> = {
   ]),
 };
 export function tourForRoute(route: ClubRoute, playableLesson: boolean): TourId | null {
+  if (route.kind === 'roux-lab') return route.view === 'analyze' ? 'roux-lab' : null;
+  if (route.kind === 'learn' && route.method === 'roux-advanced') return 'advanced-roux';
   if (route.kind === 'lab') return route.view === 'analyze' ? 'lab' : null;
   if (route.kind === 'learn') return playableLesson ? 'lesson-player' : 'lesson-intro';
   return route.kind in TOURS ? (route.kind as TourId) : null;

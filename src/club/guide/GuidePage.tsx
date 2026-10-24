@@ -59,27 +59,38 @@ export function GuidePage({ section }: { section?: GuideSectionId }) {
                 {c.href && c.id !== 'help' && (
                   <a className="club-primary" href={c.href}>
                     Open{' '}
-                    {c.id === 'start'
-                      ? 'Home'
-                      : c.id === 'lessons'
-                        ? 'Lessons'
-                        : c.id === 'roux'
-                          ? 'Beginner Roux'
-                          : c.id === 'solve'
-                            ? 'Solve your cube'
-                            : c.id === 'algorithms'
-                              ? 'Algorithms'
-                              : c.id === 'practice'
-                                ? 'Practice'
-                                : c.id === 'timer'
-                                  ? 'Timer'
-                                  : c.id === 'lab'
-                                    ? 'CFOP Lab'
-                                    : 'Moves'}{' '}
+                    {c.id === 'advanced-roux'
+                      ? 'Advanced Roux'
+                      : c.id === 'roux-lab'
+                        ? 'Roux Test Lab'
+                        : c.id === 'start'
+                          ? 'Home'
+                          : c.id === 'lessons'
+                            ? 'Lessons'
+                            : c.id === 'roux'
+                              ? 'Beginner Roux'
+                              : c.id === 'solve'
+                                ? 'Solve your cube'
+                                : c.id === 'algorithms'
+                                  ? 'Algorithms'
+                                  : c.id === 'practice'
+                                    ? 'Practice'
+                                    : c.id === 'timer'
+                                      ? 'Timer'
+                                      : c.id === 'lab'
+                                        ? 'CFOP Lab'
+                                        : 'Moves'}{' '}
                     →
                   </a>
                 )}
                 {c.id === 'roux' && <a href="#/solve/roux">Solve with Beginner Roux →</a>}
+                {c.id === 'advanced-roux' && (
+                  <>
+                    <a href="#/solve/advanced-roux">Solve with Advanced Roux →</a>
+                    <a href="#/cmll">CMLL library →</a>
+                    <a href="#/cmll-practice">CMLL practice →</a>
+                  </>
+                )}
               </div>
               {!!c.tourIds.length && (
                 <div className="guide-tour-directory" aria-label={`${c.title} tours`}>

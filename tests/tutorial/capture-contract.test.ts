@@ -27,7 +27,7 @@ const image: GuideScreenshot = {
   route: 'club/#/timer',
   width: 100,
   height: 80,
-  sourceRevision: 'abc',
+  sourceRevision: 'fabe1d88482875ab8cb63ebd8b548b9c3a04b185',
   scenario: 'timer',
   exampleData: true,
 };
@@ -53,4 +53,13 @@ it('accepts a complete manifest and rejects missing, duplicate, traversal, metad
   expect(errors).toContain('absent: missing image');
   expect(errors).toContain('size: dimensions do not match PNG');
   expect(errors).toContain('alt: alt required');
+});
+it('rejects uncaptured revision placeholders', async () => {
+  const root = await setup();
+  expect(
+    await verifyGuideManifest(
+      { version: 1, images: [{ ...image, sourceRevision: 'uncommitted' }] },
+      root,
+    ),
+  ).toContain('timer: invalid source revision');
 });

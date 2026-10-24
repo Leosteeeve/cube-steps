@@ -14,6 +14,8 @@ import { RouxLabPlayer } from './RouxLabPlayer';
 import { RouxNotebookProvider } from './RouxNotebookProvider';
 import { ExperimentPanel } from './ExperimentPanel';
 import { TrialsPage } from './TrialsPage';
+import { TourEntry } from '../tutorial/TourEntry';
+import { useGuidanceTarget } from '../../ui/guidance';
 import type { RouxExperiment } from '../../roux-lab/experiments/types';
 import type { PlaybackHandle } from '../../player/PlaybackView';
 import './roux-lab.css';
@@ -40,6 +42,7 @@ function Body({
   const [basicBusy, setBasicBusy] = useState(false),
     [basicError, setBasicError] = useState('');
   const [trialLocked, setTrialLocked] = useState(false);
+  const viewsTarget = useGuidanceTarget('roux-lab.views');
   useEffect(
     () => () => {
       epoch.current++;
@@ -144,6 +147,7 @@ function Body({
   }
   return (
     <section className="roux-lab-workspace">
+      {view === 'analyze' && <TourEntry tourId="roux-lab" ready={!trialLocked} />}
       <header className="roux-lab-intro">
         <span className="eyebrow">ROUX TEST LAB · EXPERIMENTAL</span>
         <h1>Build less. Connect better.</h1>
@@ -152,7 +156,7 @@ function Body({
           handling in your own hands.
         </p>
       </header>
-      <nav className="roux-lab-tabs" aria-label="Roux Lab workspace">
+      <nav className="roux-lab-tabs" aria-label="Roux Lab workspace" ref={viewsTarget}>
         {(['analyze', 'compare', 'trials'] as const).map((v) => (
           <a
             key={v}

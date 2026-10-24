@@ -19,6 +19,8 @@ export async function verifyGuideManifest(
     paths.add(src);
     for (const field of ['id', 'alt', 'caption', 'sourceRevision', 'scenario', 'route'] as const)
       if (!image[field]?.trim()) errors.push(`${id}: ${field} required`);
+    if (!/^[a-f0-9]{40}(?:-dirty)?$/.test(image.sourceRevision))
+      errors.push(`${id}: invalid source revision`);
     if (image.exampleData && !/example|sample/i.test(image.caption))
       errors.push(`${id}: example caption required`);
     if (!/^club-guide\/[a-z0-9-]+\.png$/.test(src)) {

@@ -11,6 +11,60 @@ export type TutorialScene =
   | 'lab-analyze'
   | 'lab-compare'
   | 'lab-trials';
+export async function prepareRouxGuideScene(
+  page: Page,
+  scene:
+    | 'advanced-roux-lesson'
+    | 'cmll-library'
+    | 'roux-lab-analyze'
+    | 'roux-lab-compare'
+    | 'roux-lab-trials',
+) {
+  await dismissCaptureWelcome(page);
+  if (scene === 'advanced-roux-lesson') {
+    await page.getByRole('combobox', { name: 'Worked example' }).selectOption('late-base');
+    await expect(page.getByRole('button', { name: 'Next move', exact: true })).toBeEnabled();
+    await renderTutorialFrame(page);
+    return;
+  }
+  if (scene === 'cmll-library') {
+    await expect(page.locator('.cmll-card')).toHaveCount(42);
+    await page.getByLabel('CMLL family').selectOption('H');
+    return;
+  }
+  await page.getByLabel('Scramble sequence').fill("D2 F' R' D");
+  await page.getByRole('button', { name: 'Analyze cube', exact: true }).click();
+  const cards = page.getByRole('region', { name: 'Roux routes' }).locator('[data-roux-route]');
+  await expect.poll(() => cards.count(), { timeout: 35000 }).toBeGreaterThanOrEqual(2);
+  const stop = page.getByRole('button', { name: 'Stop search', exact: true });
+  if (await stop.isVisible()) await stop.click();
+  await cards.nth(0).getByRole('button', { name: 'Compare this route', exact: true }).click();
+  await cards.nth(1).getByRole('button', { name: 'Compare this route', exact: true }).click();
+  await renderTutorialFrame(page);
+  if (scene === 'roux-lab-compare')
+    await page
+      .getByRole('navigation', { name: 'Roux Lab workspace' })
+      .getByRole('link', { name: 'Compare', exact: true })
+      .click();
+  if (scene === 'roux-lab-trials') {
+    await page.getByText('Save & open experiments', { exact: true }).click();
+    await page.getByLabel('Experiment label (optional)').fill('Example session · sample routes');
+    await page.getByRole('button', { name: 'Save Roux experiment', exact: true }).click();
+    await expect(
+      page.getByText('Roux experiment saved on this device.', { exact: true }),
+    ).toBeVisible();
+    await page
+      .getByRole('navigation', { name: 'Roux Lab workspace' })
+      .getByRole('link', { name: 'Trials & notes', exact: true })
+      .click();
+    const select = page.getByRole('combobox', { name: 'Comparison', exact: true });
+    await expect(select.locator('option')).toHaveCount(2);
+    await select.selectOption({ index: 1 });
+    await page.getByRole('button', { name: 'Plan five alternating blocks' }).click();
+    await expect(page.getByLabel('Planned block slot')).toBeVisible();
+    await labelExample(page, '.roux-notebook');
+  }
+}
 export async function renderTutorialFrame(page: Page) {
   await page.locator('twisty-player').scrollIntoViewIfNeeded();
   await expect

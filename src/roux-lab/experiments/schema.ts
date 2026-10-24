@@ -251,7 +251,10 @@ export function assertExperiment(raw: unknown): asserts raw is RouxExperiment {
     );
     for (const [formulaId, formula] of Object.entries(route.formulas) as [string, any][]) {
       demand(
-        formula.id === formulaId &&
+        // Shared TeachingAlgorithm maneuvers are keyed by the catalog; CMLL
+        // variants additionally carry their own identity. Replay checks both.
+        formula &&
+          (formula.id === undefined ? !('caseId' in formula) : formula.id === formulaId) &&
           text(formula.name, 200, 1) &&
           Array.isArray(formula.moves) &&
           formula.moves.length <= 128 &&

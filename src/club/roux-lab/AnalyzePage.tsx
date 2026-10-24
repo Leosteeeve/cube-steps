@@ -8,6 +8,7 @@ import type { RouxFrameId } from '../../methods/roux-advanced/types';
 import type { RouxLabSession } from './session';
 import { OrientationPicker } from './OrientationPicker';
 import { RouteSummary } from './RouteSummary';
+import { useGuidanceTarget } from '../../ui/guidance';
 export function AnalyzePage({
   engine,
   state,
@@ -33,6 +34,9 @@ export function AnalyzePage({
     [randomizing, setRandomizing] = useState(false),
     generation = useRef(0);
   const busy = state.status === 'initializing' || state.status === 'searching';
+  const inputTarget = useGuidanceTarget('roux-lab.input'),
+    frameTarget = useGuidanceTarget('roux-lab.frames'),
+    routeTarget = useGuidanceTarget('roux-lab.routes');
   useEffect(() => {
     const source = state.input?.source;
     if (!source) return;
@@ -83,7 +87,7 @@ export function AnalyzePage({
   }
   return (
     <div className="roux-analyze-grid">
-      <aside className="roux-lab-card">
+      <aside className="roux-lab-card" ref={inputTarget}>
         <h2>Your starting cube</h2>
         <div className="roux-lab-actions">
           {(['scramble', 'colors'] as const).map((m) => (
@@ -143,13 +147,15 @@ export function AnalyzePage({
             />
           </>
         )}
-        <OrientationPicker
-          frames={state.settings.allowedFrames}
-          onChange={(ids) => {
-            edit();
-            onFrames(ids);
-          }}
-        />
+        <div ref={frameTarget}>
+          <OrientationPicker
+            frames={state.settings.allowedFrames}
+            onChange={(ids) => {
+              edit();
+              onFrames(ids);
+            }}
+          />
+        </div>
         {error && <p role="alert">{error}</p>}
         {mode === 'scramble' && (
           <button className="primary-button" disabled={busy || randomizing} onClick={start}>
@@ -162,7 +168,7 @@ export function AnalyzePage({
         </p>
       </aside>
       <div className="roux-results">
-        <section aria-label="Roux routes">
+        <section aria-label="Roux routes" ref={routeTarget}>
           {state.routes.length ? (
             <div className="roux-route-cards">
               {state.routes.map((r, i) => (

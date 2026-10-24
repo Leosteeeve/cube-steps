@@ -5,7 +5,13 @@ import { parseRoute } from '../app/routes';
 import { parseClubRoute } from '../club/routes';
 it('keeps Roux in the club edition with lightweight preview metadata', () => {
   expect(availableMethods('global')).toEqual(['lbl', 'cfop-beginner', 'cfop-advanced']);
-  expect(availableMethods('club')).toEqual([...availableMethods('global'), 'roux-beginner']);
+  expect(availableMethods('club')).toEqual([
+    ...availableMethods('global'),
+    'roux-beginner',
+    'roux-advanced',
+  ]);
+  expect(methodAvailable('roux-advanced', 'global')).toBe(false);
+  expect(getMethodInfo('roux-advanced')).toMatchObject({ teachingStatus: 'preview' });
   expect(methodAvailable('roux-beginner', 'global')).toBe(false);
   expect(getMethodInfo('roux-beginner')).toMatchObject({ teachingStatus: 'preview' });
   expect(getMethodInfo('roux-beginner').stages).toHaveLength(8);

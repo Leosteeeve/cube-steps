@@ -14,6 +14,8 @@ export const TOUR_DESTINATIONS: Record<TourId, { label: string; href: string }> 
   practice: { label: 'Formula practice', href: '#/practice' },
   timer: { label: 'Timer', href: '#/timer' },
   lab: { label: 'CFOP Lab', href: '#/lab' },
+  'advanced-roux': { label: 'Advanced Roux', href: '#/learn/advanced-roux/intro' },
+  'roux-lab': { label: 'Roux Test Lab', href: '#/roux-lab' },
 };
 export const GUIDE_CHAPTERS: readonly GuideChapter[] = [
   {
@@ -24,7 +26,7 @@ export const GUIDE_CHAPTERS: readonly GuideChapter[] = [
     tourIds: ['home', 'quiz'],
     screenshotIds: ['home', 'quiz', 'home-phone'],
     steps: [
-      'Open Find your route and answer four short questions. The result explains a suggested starting point; it is not a test and it does not lock you into a method.',
+      'Open Find your route and answer six short questions. The result explains a suggested starting point from your foundations and preferred style; it is not a test and it does not lock you into a method.',
       'If you cannot yet solve a cube alone, start with LBL: holding and notation, a white daisy, then one layer at a time. Beginner CFOP introduces a bottom cross, F2L and two-look last-layer steps. Advanced CFOP adds shortest cross, a larger F2L catalog and full OLL / PLL.',
       'A small daily routine: review one unfamiliar move in Moves, follow one lesson with your cube, then repeat that stage once without the animation. When you can solve independently, try a few untimed solves before using Timer.',
       'In a club session, follow the leader’s chosen lesson. At home, use Resume learning to return to your last lesson. Your progress belongs to this browser; no account is needed.',
@@ -36,7 +38,7 @@ export const GUIDE_CHAPTERS: readonly GuideChapter[] = [
       ],
       [
         'Find your route',
-        'Open the four-question route recommendation. Choose one answer before pressing Next; Back revisits a previous answer.',
+        'Open the six-question route recommendation. Choose one answer before pressing Next; Back revisits a previous answer.',
       ],
       [
         'Show my route / Start lesson',
@@ -44,7 +46,7 @@ export const GUIDE_CHAPTERS: readonly GuideChapter[] = [
       ],
       [
         'Skip questions / Change route',
-        'Choose LBL, Beginner CFOP, Advanced CFOP or the club Beginner Roux preview yourself. The questionnaire keeps its established recommendations; you can switch later.',
+        'Choose LBL, Beginner CFOP, Advanced CFOP, Beginner Roux or Advanced Roux yourself. The questionnaire includes Roux when your foundations and interests fit; you can switch later.',
       ],
       [
         'Resume learning',
@@ -201,6 +203,53 @@ export const GUIDE_CHAPTERS: readonly GuideChapter[] = [
       [
         'Replay formula / action',
         'Start the current full maneuver again. Check protected pieces at its declared endpoint.',
+      ],
+    ]),
+  },
+  {
+    id: 'advanced-roux',
+    title: 'Connect better Roux blocks',
+    summary:
+      'Advanced Roux · Preview. Explore block choices, all 42 CMLL cases and advanced LSE with the basic explanations still available.',
+    href: '#/learn/advanced-roux/intro',
+    tourIds: ['advanced-roux'],
+    screenshotIds: ['advanced-roux-lesson', 'advanced-roux-lesson-phone', 'cmll-library'],
+    steps: [
+      'Start with the nine-chapter course. If two blocks and basic LSE are unfamiliar, review Beginner Roux first. Worked examples show squares, pairs, lines and late base edges, not one fixed 3+3 construction. Read Observe, Prepare and Check before copying moves.',
+      'There are eight starting frames: white or yellow bottom, with blue, green, red or orange left. Each example states its own frame. For solving, select a nonempty set of allowed frames, then provide a random scramble, pasted six-face scramble or legal face colors. Start from white up and green front before following the printed positioning.',
+      'Use M and M′ when they help connect pieces. Keep the stated side-block hold while middle centers move; Centers now reports the real intermediate colors. Camera orbit changes only your view. Follow x/y/z as physical rotations when the player prints them.',
+      'The CMLL library contains 42 cases across eight families. Inspect only the corners and solved blocks: the last six edges may be disturbed. Choose a case, read its hold and recognition, then play the preferred formula or a validated alternative. CMLL practice lets you choose cases, recognize first, and reveal the animation without a timer or score.',
+      'Combined EOLR connects edge orientation and left/right edge placement before the final four edges. The course pairs a combined example with basic LSE on the same state. In Roux Test Lab, Show basic LSE as a separate route creates a newly verified full route; your fixed A/B snapshots stay unchanged.',
+      'Finish examples at their stated checkpoints. Example complete and CMLL complete describe partial exercises; only a complete solver trace ends at Cube solved. Mark as practiced records your own practice, not an automatic skill assessment. This release remains Preview until physical follow-along acceptance.',
+    ],
+    controls: controls([
+      [
+        'Method selector / chapter navigation',
+        'Move between beginner and advanced methods or open any of the nine chapters. Existing lesson progress remains on this device.',
+      ],
+      [
+        'Worked example',
+        'Change to another verified setup. Reset your physical cube with its setup sequence before following it.',
+      ],
+      [
+        'Initial positioning / actual rotations',
+        'Set the printed bottom and left colors before the measured block segment. Later rotations are real moves; dragging the camera is not.',
+      ],
+      [
+        'Route section / single-step / replay',
+        'Jump the on-screen position, inspect one move, or replay an action. A jump does not turn your physical cube for you.',
+      ],
+      [
+        'CMLL library / CMLL practice',
+        'Browse all 42 cases, select a small set, and practice recognition. The suggested formulas are starting choices, not a promise of universal fastest fingertricks.',
+      ],
+      [
+        'Show basic LSE as a separate route',
+        'In Lab, select a route to add its independently checked basic LSE continuation. Compare uses fixed route identities and does not silently replace them.',
+      ],
+      [
+        'Mark as practiced',
+        'Store a personal practice check on this browser. It does not alter quiz answers or Timer records.',
       ],
     ]),
   },
@@ -530,6 +579,64 @@ export const GUIDE_CHAPTERS: readonly GuideChapter[] = [
       [
         'Import experiment JSON / Import preview / Commit validated import',
         'Select a file, review counts, source-unsaved labels and archive warnings, then commit once. Identical records are reused. Different content never overwrites a stored identity: choose Skip or Import a separate copy. If another tab changes the notebook, Refresh preview and resolve again. Discard preview writes nothing.',
+      ],
+    ]),
+  },
+  {
+    id: 'roux-lab',
+    title: 'Try Roux routes in your hands',
+    summary:
+      'Roux Test Lab · Experimental. Compare how the two blocks connect, then keep an honest record of your own practice.',
+    href: '#/roux-lab',
+    tourIds: ['roux-lab'],
+    screenshotIds: [
+      'roux-lab-analyze',
+      'roux-lab-compare',
+      'roux-lab-trials',
+      'roux-lab-analyze-phone',
+    ],
+    steps: [
+      'Open Labs → Roux Test Lab. Enter a scramble or face colors and choose allowed starting frames. Analyze cube first builds a full verified route, then searches within its work/time limits. Stop search keeps admitted routes. Coverage shows actual work; best found is not proved minimal. A proven first-block minimum applies only to that frame and the stated slice-turn metric, not the whole solve or human execution speed.',
+      'Compare the first, second and combined block move counts, later rotations and estimated handling. Initial positioning is outside the subtotal. A left-block reference may be shorter while its second block is less convenient. Compare this route fixes A, then a different route fixes B. New rankings do not change these snapshots or the current playback.',
+      'Save & open experiments records the original state, setup, frames, full route moves, formulas and versions. In Compare, play either fixed route through the block endpoint, then rehearse it on your own cube. Show basic LSE as a separate route adds another full continuation without editing the saved comparison.',
+      'In Trials & notes, choose the saved experiment, tester and timing method. Create a fixed comparison and five alternating AB/BA blocks, or plan blocks for a previously saved comparison. Warmups and exploratory single routes are welcome. Before every attempt, reconstruct the saved state, check its six-face diagram, and confirm the printed starting hold and neutral grip. Both confirmations start unchecked.',
+      'Hold Space or the touch pad for 300 milliseconds, release to start, then press to stop when both blocks are complete, before CMLL. Initial positioning is untimed. Search and playback pause while timing. The timer cannot sense turns or certify completion. External timer / manual entry accepts seconds or minutes:seconds; it is kept separate from keyboard and touch times.',
+      'Review each attempt: followed, deviated, incomplete or interrupted. Flow and recognition ratings are optional; absent ratings stay absent. Five complete matched A/B blocks for one tester and timing method are needed for descriptive medians and paired B minus A differences. Other inputs, routes, methods, interruptions and warmups are excluded with reasons. These observations do not establish a scientific winner.',
+      'Corrections create revisions; deletion can be undone. Losing focus, hiding the page or navigating interrupts active timing. A review stays available on return, and Export unsaved review preserves its draft and route for recovery. Failed writes stay visibly unsaved until Retry save succeeds. Keep the tab open or export before closing.',
+      'Import, export & recovery starts with routes only: trials and tester labels are opt-in. Import preview checks the entire route, then Review before saving offers the explicit Save imported experiments button. A conflicting ID is not overwritten; keep the files separate and reconcile deliberately. CFOP files belong in CFOP Lab. Unknown local records can be exported for recovery. Roux, CFOP and personal Timer records use separate stores on this browser.',
+    ],
+    controls: controls([
+      [
+        'All eight / White / blue only / individual frames',
+        'Choose a nonempty frame set; changing it starts a new analysis rather than changing saved routes.',
+      ],
+      [
+        'Analyze cube / Stop search',
+        'Run bounded exploration or keep the complete verified choices already found. Search coverage is not an invented percentage.',
+      ],
+      [
+        'Compare this route / Clear comparison',
+        'Fix two exact route snapshots, or deliberately clear the pair. Playing A or B resets playback to that route.',
+      ],
+      [
+        'Save Roux experiment / Saved Roux experiments',
+        'Commit a frozen snapshot locally, or load it without restarting search. A saved route replays its own formula versions.',
+      ],
+      [
+        'Create comparison and five blocks / Planned block slot',
+        'Save alternating AB/BA slots before timing. A valid explicitly linked retry can fill an invalid slot while keeping the original visible.',
+      ],
+      [
+        'Outcome / ratings / Trial note',
+        'Classify your actual attempt after timing. Keep optional feedback separate from durations. Notes are limited to 2,000 characters.',
+      ],
+      [
+        'Correct trial / Delete trial / Undo last deletion',
+        'Retain revision history and recover a deletion. A stale edit from another tab must be reconciled rather than overwritten.',
+      ],
+      [
+        'Import Roux file / Save imported experiments / Export Roux experiments / Export trial CSV',
+        'Review a validated file before atomic saving. Exports include only selected experiments; trials and tester labels require explicit inclusion.',
       ],
     ]),
   },

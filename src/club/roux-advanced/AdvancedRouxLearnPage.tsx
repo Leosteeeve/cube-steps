@@ -9,6 +9,8 @@ import { lessonRoute } from '../../app/routes';
 import { PlaybackView } from '../../player/PlaybackView';
 import { RouxCaseDiagram } from '../roux/RouxCaseDiagram';
 import { useClubProgress, ProgressStatus } from '../learning/use-club-progress';
+import { useGuidanceTarget } from '../../ui/guidance';
+import { TourEntry } from '../tutorial/TourEntry';
 export function AdvancedRouxLearnPage({
   engine,
   lessonId,
@@ -26,12 +28,15 @@ export function AdvancedRouxLearnPage({
   const source = useMemo(() => createRouxLessonDemonstration(engine, example), [engine, example]),
     diagram = useMemo(() => advancedRouxExampleDiagram(engine, example), [engine, example]);
   const { progress, visitLesson, setPracticed } = useClubProgress();
+  const headingTarget = useGuidanceTarget('advanced-roux.heading'),
+    exampleTarget = useGuidanceTarget('advanced-roux.example');
   useEffect(() => visitLesson('roux-advanced', lessonId), [visitLesson, lessonId]);
   return (
     <LessonLayout method="roux-advanced" selected={lessonId} presentation="club">
       <MethodSelector method="roux-advanced" kind="learn" />
+      <TourEntry tourId="advanced-roux" />
       <article className="advanced-roux-lesson">
-        <div className="lesson-heading">
+        <div className="lesson-heading" ref={headingTarget}>
           <span className="eyebrow">CHAPTER {index + 1} / 9 · ADVANCED ROUX</span>
           <h1>{lesson.title}</h1>
           <p>{lesson.goal}</p>
@@ -56,7 +61,7 @@ export function AdvancedRouxLearnPage({
             </section>
           ))}
         </div>
-        <section aria-label="Worked example">
+        <section aria-label="Worked example" ref={exampleTarget}>
           <h2>Try it with your cube</h2>
           <label className="cmll-control">
             Worked example

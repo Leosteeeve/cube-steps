@@ -4,11 +4,13 @@ export const GUIDE_SECTION_IDS = [
   'moves',
   'lessons',
   'roux',
+  'advanced-roux',
   'solve',
   'algorithms',
   'practice',
   'timer',
   'lab',
+  'roux-lab',
   'help',
 ] as const;
 export type GuideSectionId = (typeof GUIDE_SECTION_IDS)[number];
