@@ -3,7 +3,8 @@ import {
   type ExperimentalLeafIndex,
   type ExperimentalMillisecondTimestamp,
 } from 'cubing/twisty';
-import type { CubeEngine, SolveSession } from '../core/types';
+import type { CubeEngine, CubeState, SolveSession } from '../core/types';
+import type { CubeViewPreferences } from './view-preferences';
 import { buildPlaybackInitialSetup } from './initial-setup';
 import type { PlaybackSource } from './playback-source';
 import { EDGE_SLOTS, CORNER_SLOTS } from '../core/observations';
@@ -50,12 +51,22 @@ export async function createCubingAdapter(
   );
   boundaries.push(indexer.algDuration());
   let lastTargets = '';
-  return {
+  const adapter = {
     boundaries,
     setTimestamp(time: number) {
       player.timestamp = time as ExperimentalMillisecondTimestamp;
     },
-    highlight(targets: string[]) {
+    resetView() {
+      player.cameraLatitude = 28;
+      player.cameraLongitude = 32;
+    },
+    setViewOptions(options: CubeViewPreferences) {
+      player.hintFacelets = options.showBackFaces ? 'floating' : 'none';
+    },
+    setTargets(ids: readonly string[], _state: CubeState) {
+      adapter.highlight(ids);
+    },
+    highlight(targets: readonly string[]) {
       const key = targets.join(',');
       if (key === lastTargets) return;
       lastTargets = key;
@@ -79,4 +90,5 @@ export async function createCubingAdapter(
       player.remove();
     },
   };
+  return adapter;
 }

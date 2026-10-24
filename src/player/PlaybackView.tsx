@@ -1,4 +1,13 @@
-import { lazy, Suspense, useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import {
+  lazy,
+  Suspense,
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import { useGuidanceAction, useGuidanceScope, useGuidanceTarget } from '../ui/guidance';
 import type { CubeEngine } from '../core/types';
 import type { PlaybackSource, PlaybackSectionId } from './playback-source';
@@ -12,6 +21,8 @@ import {
 } from './controller';
 import { createCubingAdapter } from './cubing-adapter';
 import { RegripGuide } from './RegripGuide';
+import { CubeStage } from './CubeStage';
+import { createCubeViewStore, type CubeViewPreferences } from './view-preferences';
 const RouxPlaybackGuide = lazy(() =>
   import('./RouxHoldingGuide').then((m) => ({ default: m.RouxPlaybackGuide })),
 );
@@ -43,6 +54,18 @@ export function PlaybackView({
   onHandle,
   onPosition,
 }: Props) {
+  const viewStore = useMemo(() => createCubeViewStore(() => localStorage), []);
+  const [view, setView] = useState(() => viewStore.load());
+  const viewRef = useRef(view);
+  viewRef.current = view;
+  const adapterRef = useRef<Awaited<ReturnType<typeof createCubingAdapter>> | null>(null);
+  function changeView(value: CubeViewPreferences) {
+    setView(value);
+    viewStore.save(value);
+  }
+  useEffect(() => {
+    adapterRef.current?.setViewOptions(view);
+  }, [view]);
   const needsAdvanced = source.kind === 'solve' && source.session.trace.method === 'cfop-advanced';
   const [assets, setAssets] = useState<AdvancedAssets>(),
     [assetError, setAssetError] = useState('');
@@ -132,6 +155,8 @@ export function PlaybackView({
           return;
         }
         adapter = result;
+        adapterRef.current = result;
+        result.setViewOptions(viewRef.current);
         player.setBoundaries(result.boundaries);
         setReady(true);
       })
@@ -146,6 +171,7 @@ export function PlaybackView({
       unsubscribe();
       player.dispose();
       adapter?.dispose();
+      if (adapterRef.current === adapter) adapterRef.current = null;
       controller.current = null;
       handleCallback.current?.(null);
     };
@@ -227,11 +253,13 @@ export function PlaybackView({
         (a) => a.action.repetition?.group === action.repetition?.group,
       ).length
     : undefined;
+  const nearbyStart = s ? Math.max(0, Math.min(s.moveIndex - 2, s.total - 5)) : 0;
   return (
     <div className="player-area">
       <section
         className="cube-panel"
         aria-label="Cube player"
+        data-background={view.background}
         data-boundary-state={s ? JSON.stringify(s.boundaryState.data) : undefined}
       >
         <div className="cube-meta">
@@ -240,90 +268,128 @@ export function PlaybackView({
             Move {s?.moveIndex ?? 0} of {s?.total ?? 0}
           </span>
         </div>
-        <div className="cube-canvas" ref={host} />
-        {error && (
-          <p className="error" role="alert">
-            {error}
-          </p>
-        )}
-        {!ready && !error && <p role="status">Preparing the cube…</p>}
-        <p className="orbit-note">Drag to look around · View changes do not turn the cube</p>
-        <div ref={controlsTarget} className="playback-toolbar">
-          <div className="playback-controls">
-            <button
-              className="icon-button"
-              aria-label="Previous move"
-              disabled={!ready || !s || (s.moveIndex === 0 && s.progress === 0)}
-              onClick={() => player?.step(-1)}
-            >
-              ←
-            </button>
-            <button
-              className="play-button"
-              disabled={!ready || !s?.total}
-              onClick={() => (s?.playing ? player?.pause() : player?.play())}
-            >
-              {s?.playing ? 'Pause' : 'Play'}{' '}
-              <span aria-hidden="true">{s?.playing ? 'Ⅱ' : '▶'}</span>
-            </button>
-            <button
-              className="icon-button"
-              aria-label="Next move"
-              ref={nextTarget}
-              disabled={!ready || !s || s.moveIndex >= s.total}
-              onClick={() => {
-                if (!player) return;
-                const before = player.snapshot().moveIndex;
-                player.step(1);
-                if (player.snapshot().moveIndex > before) emit({ name: 'player-next' });
-              }}
-            >
-              →
-            </button>
-            <label className="speed">
-              Speed
-              <select
-                aria-label="Playback speed"
-                value={s?.speed ?? 1}
-                onChange={(e) => player?.setSpeed(Number(e.target.value))}
+        <CubeStage
+          hostRef={host}
+          preferences={view}
+          onPreferencesChange={changeView}
+          onResetView={() => adapterRef.current?.resetView()}
+          holding={
+            s && (
+              <RegripGuide
+                engine={engine}
+                boundaryState={s.boundaryState}
+                action={action}
+                moving={s.progress > 0}
+              />
+            )
+          }
+        >
+          {error && (
+            <p className="error" role="alert">
+              {error}
+            </p>
+          )}
+          {!ready && !error && <p role="status">Preparing the cube…</p>}
+          <div ref={controlsTarget} className="playback-toolbar">
+            {s && player && s.total > 0 && (
+              <ol className="nearby-moves" aria-label="Nearby moves">
+                {player.timeline.moves
+                  .slice(nearbyStart, nearbyStart + 5)
+                  .map((move, offset) => {
+                    const index = nearbyStart + offset;
+                    return (
+                      <li key={index}>
+                        <button
+                          type="button"
+                          aria-label={`Go to move ${index + 1}: ${move.replaceAll("'", '′')}`}
+                          aria-current={index === s.moveIndex ? 'step' : undefined}
+                          disabled={!ready}
+                          onClick={() => player.seekMove(index)}
+                        >
+                          {move.replaceAll("'", '′')}
+                        </button>
+                      </li>
+                    );
+                  })}
+              </ol>
+            )}
+            <div className="playback-controls">
+              <button
+                className="icon-button"
+                aria-label="Previous move"
+                disabled={!ready || !s || (s.moveIndex === 0 && s.progress === 0)}
+                onClick={() => player?.step(-1)}
               >
-                {[0.25, 0.5, 1, 2].map((v) => (
-                  <option key={v} value={v}>
-                    {v}×
-                  </option>
-                ))}
-              </select>
-            </label>
+                ←
+              </button>
+              <button
+                className="play-button"
+                disabled={!ready || !s?.total}
+                onClick={() => (s?.playing ? player?.pause() : player?.play())}
+              >
+                {s?.playing ? 'Pause' : 'Play'}{' '}
+                <span aria-hidden="true">{s?.playing ? 'Ⅱ' : '▶'}</span>
+              </button>
+              <button
+                className="icon-button"
+                aria-label="Next move"
+                ref={nextTarget}
+                disabled={!ready || !s || s.moveIndex >= s.total}
+                onClick={() => {
+                  if (!player) return;
+                  const before = player.snapshot().moveIndex;
+                  player.step(1);
+                  if (player.snapshot().moveIndex > before) emit({ name: 'player-next' });
+                }}
+              >
+                →
+              </button>
+              <label className="speed">
+                Speed
+                <select
+                  aria-label="Playback speed"
+                  value={s?.speed ?? 1}
+                  onChange={(e) => player?.setSpeed(Number(e.target.value))}
+                >
+                  {[0.25, 0.5, 1, 2].map((v) => (
+                    <option key={v} value={v}>
+                      {v}×
+                    </option>
+                  ))}
+                </select>
+              </label>
+            </div>
+            <input
+              className="move-range"
+              type="range"
+              aria-label="Move position"
+              min="0"
+              max={s?.total ?? 0}
+              value={s?.moveIndex ?? 0}
+              disabled={!ready || !s?.total}
+              onChange={(e) => player?.seekMove(Number(e.target.value))}
+            />
+            <div className="player-options">
+              <label>
+                <input
+                  type="checkbox"
+                  checked={focused}
+                  onChange={(e) => setFocused(e.target.checked)}
+                />{' '}
+                Highlight target pieces
+              </label>
+              <button
+                className="text-button"
+                disabled={!ready || replayIndex < 0}
+                onClick={() => player?.replayAction(replayIndex)}
+              >
+                Replay{' '}
+                {replayAction?.joined ? 'connected moves' : replayAlgorithm ? 'formula' : 'action'}{' '}
+                ↺
+              </button>
+            </div>
           </div>
-          <input
-            className="move-range"
-            type="range"
-            aria-label="Move position"
-            min="0"
-            max={s?.total ?? 0}
-            value={s?.moveIndex ?? 0}
-            disabled={!ready || !s?.total}
-            onChange={(e) => player?.seekMove(Number(e.target.value))}
-          />
-          <div className="player-options">
-            <label>
-              <input
-                type="checkbox"
-                checked={focused}
-                onChange={(e) => setFocused(e.target.checked)}
-              />{' '}
-              Highlight target pieces
-            </label>
-            <button
-              className="text-button"
-              disabled={!ready || replayIndex < 0}
-              onClick={() => player?.replayAction(replayIndex)}
-            >
-              Replay{' '}
-              {replayAction?.joined ? 'connected moves' : replayAlgorithm ? 'formula' : 'action'} ↺
-            </button>
-          </div>
-        </div>
+        </CubeStage>
       </section>
       <aside className="explanation" aria-label="Step explanation">
         {s && source.kind === 'solve' && source.session.trace.method === 'roux-beginner' && (
@@ -340,14 +406,6 @@ export function PlaybackView({
               moving={s.progress > 0}
             />
           </Suspense>
-        )}
-        {s && (
-          <RegripGuide
-            engine={engine}
-            boundaryState={s.boundaryState}
-            action={action}
-            moving={s.progress > 0}
-          />
         )}
         <span className="eyebrow">YOUR NEXT STEP</span>
         <h2>{currentStage ? currentStage.label : 'Preparing your solve'}</h2>

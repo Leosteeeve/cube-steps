@@ -232,10 +232,180 @@
 [data-edition] .face-card p {
   font-size: 16px;
 }
+/* The stage is focused; the reading surface remains bright. */
+[data-edition] .player-area {
+  grid-template-columns: minmax(0, 1.35fr) minmax(275px, 0.85fr);
+  gap: 24px;
+  align-items: start;
+}
+[data-edition] .cube-panel[data-background] {
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: none;
+}
+[data-edition] .cube-panel[data-background='dark'] {
+  --stage-ink: #ecf3fc;
+  --stage-muted: #bccbdc;
+  --stage-line: #ffffff24;
+  --stage-control: #ffffff0d;
+  color: var(--stage-ink);
+  background: #12283e;
+}
+[data-edition='global'] .cube-panel[data-background='dark'] {
+  background: #17372e;
+}
+[data-edition] .cube-panel[data-background='light'] {
+  --stage-ink: var(--ink);
+  --stage-muted: var(--muted);
+  --stage-line: var(--line);
+  --stage-control: #ffffff;
+  background: #f3f6fa;
+}
+[data-edition] .cube-panel[data-background] .cube-meta {
+  padding: 20px 22px 0;
+  gap: 12px;
+  color: var(--stage-muted);
+}
+[data-edition] .cube-panel[data-background] .cube-meta .pill {
+  color: var(--stage-ink);
+  background: var(--stage-control);
+  border-color: var(--stage-line);
+}
+[data-edition] .cube-panel[data-background] .cube-meta .muted {
+  color: var(--stage-muted);
+  font-size: 12px;
+}
+.cube-view-bar {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 6px 22px 0;
+  font-size: 12px;
+  color: var(--stage-muted);
+}
+.cube-view-bar > button,
+.cube-view-settings > summary {
+  min-height: 44px;
+  padding: 10px 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+.cube-view-options {
+  position: absolute;
+  z-index: 3;
+  top: 44px;
+  left: 0;
+  right: 0;
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #fff;
+  color: var(--ink);
+  box-shadow: 0 12px 32px #0002;
+}
+.cube-view-options label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  font-size: 14px;
+}
+.cube-view-options p {
+  margin: 6px 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+[data-edition] .cube-panel[data-background] .cube-canvas {
+  height: 390px;
+  background: transparent;
+}
+[data-edition] .cube-panel[data-background] .orbit-note {
+  margin: 0 22px 18px;
+  color: var(--stage-muted);
+  font-size: 12px;
+}
+.cube-holding {
+  margin: 0 22px 22px;
+}
+[data-edition] .cube-holding .regrip-guide {
+  background: var(--stage-control);
+  color: var(--stage-ink);
+  border: 1px solid var(--stage-line);
+  border-radius: 14px;
+  padding: 12px 16px;
+  margin: 0;
+  font-size: 14px;
+}
+[data-edition] .cube-holding .regrip-guide p {
+  color: inherit;
+  font-size: 14px;
+  margin-block: 5px;
+}
+[data-edition] .cube-holding .regrip-guide small {
+  color: var(--stage-muted);
+  font-size: 12px;
+}
+[data-edition] .cube-stage .playback-toolbar {
+  background: #fff;
+  color: var(--ink);
+  padding: 18px 22px;
+  border-top: 0;
+}
+.nearby-moves {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 18px;
+  overflow-x: auto;
+}
+.nearby-moves button {
+  min-width: 44px;
+  min-height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: white;
+  color: var(--muted);
+  font-family: Consolas, monospace;
+  font-size: 19px;
+}
+.nearby-moves button[aria-current] {
+  background: var(--green);
+  border-color: var(--green);
+  color: #fff;
+}
+[data-edition] .explanation {
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: #fff;
+  padding: 24px;
+}
+[data-edition] .step-section p {
+  font-size: 16px;
+  line-height: 1.7;
+}
+[data-edition] .step-section h3 {
+  font-size: 15px;
+}
+[data-edition] .explanation > h2 {
+  font-size: 28px;
+}
 @media (max-width: 1000px) {
   [data-edition='club'] .club-hero {
     gap: 20px;
     padding-inline: 26px;
+  }
+  [data-edition] .player-area {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 @media (max-width: 850px) {
@@ -294,5 +464,23 @@
   }
   [data-edition='club'] .club-home-cards > a {
     padding: 24px;
+  }
+  [data-edition] .cube-panel[data-background] .cube-canvas {
+    height: 300px;
+  }
+  [data-edition] .cube-panel[data-background] .cube-meta {
+    padding: 18px 16px 0;
+  }
+  .cube-view-bar {
+    margin-inline: 16px;
+  }
+  .cube-holding {
+    margin: 0 16px 18px;
+  }
+  [data-edition] .cube-stage .playback-toolbar {
+    padding: 18px 16px;
+  }
+  [data-edition] .explanation {
+    padding: 22px 18px;
   }
 }
