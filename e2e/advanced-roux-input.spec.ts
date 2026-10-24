@@ -37,6 +37,11 @@ test('Advanced Roux verifies solved, text, random and six-color inputs in the ch
   const engine = await createCubeEngine(),
     facelets = stateToFacelets(engine.apply(engine.solved(), parsed.moves));
   await solve.click();
+  // The previous solution remains playable while the new bounded search runs.
+  // Input collapses only when the new request has committed its result.
+  await expect(page.getByRole('button', { name: 'Edit cube input', exact: true })).toBeVisible({
+    timeout: 30000,
+  });
   await expect(page.getByRole('button', { name: 'Next move', exact: true })).toBeEnabled({
     timeout: 30000,
   });
@@ -50,6 +55,9 @@ test('Advanced Roux verifies solved, text, random and six-color inputs in the ch
   await page.getByLabel('yellow bottom · red left', { exact: true }).check();
   await page.getByLabel('white bottom · blue left', { exact: true }).uncheck();
   await solve.click();
+  await expect(page.getByRole('button', { name: 'Edit cube input', exact: true })).toBeVisible({
+    timeout: 30000,
+  });
   await expect(page.getByRole('button', { name: 'Next move', exact: true })).toBeEnabled({
     timeout: 30000,
   });
