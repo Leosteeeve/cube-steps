@@ -69,6 +69,34 @@ function seed() {
     }),
   );
 }
+it('snapshots Advanced Roux frames and cancels a pending request when they change', async () => {
+  client.solveScramble.mockImplementation(() => new Promise(() => {}));
+  const onChange = vi.fn();
+  const page = render(
+    <SolvePage
+      engine={engine}
+      method="roux-advanced"
+      rouxOptions={{ allowedFrames: ['white-blue'], onAllowedFramesChange: onChange }}
+    />,
+  );
+  fireEvent.click(screen.getByRole('button', { name: 'Explain with Advanced Roux' }));
+  expect(client.solveScramble).toHaveBeenCalledWith('', 'roux-advanced', {
+    allowedFrames: ['white-blue'],
+  });
+  const passed = client.solveScramble.mock.calls[0][2];
+  expect(Object.isFrozen(passed.allowedFrames)).toBe(true);
+  const before = client.cancel.mock.calls.length;
+  page.rerender(
+    <SolvePage
+      engine={engine}
+      method="roux-advanced"
+      rouxOptions={{ allowedFrames: ['yellow-red'], onAllowedFramesChange: onChange }}
+    />,
+  );
+  expect(client.cancel.mock.calls.length).toBeGreaterThan(before);
+  expect(screen.getByRole('button', { name: 'Explain with Advanced Roux' })).toBeEnabled();
+  expect(passed.allowedFrames).toEqual(['white-blue']);
+});
 function deferred<T>() {
   let resolve!: (value: T) => void;
   const promise = new Promise<T>((r) => {

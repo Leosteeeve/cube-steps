@@ -53,7 +53,7 @@ The 43.4 ms probe gap is an observed event-loop interval, not a claim that every
 
 ## Pending acceptance
 
-- An additional CFOP Lab 1,000-input/six-color corpus is running separately; inspect its result before final review and publication. It is supplementary to the required 174-test Lab regression above.
+- The supplementary CFOP Lab 1,000-input/six-color corpus also passed: 3 tests in 2 files, 589.63 seconds. It supplements the required 174-test Lab regression above.
 - Integrated desktop/mobile viewport, keyboard, reduced-motion, storage and publication checks follow the club-page implementation.
 - Physical phone responsiveness and human finger-trick/block-choice calibration remain pending.
 - Short and full no-narration films retain their separate user approval gates.

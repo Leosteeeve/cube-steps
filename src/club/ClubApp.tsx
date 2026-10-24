@@ -16,6 +16,11 @@ import { TourEntry } from './tutorial/TourEntry';
 import { tourForRoute } from './tutorial/catalog';
 import { createLabOwner } from './lab-owner';
 const TimerPage = lazy(() => import('./timer/TimerPage').then((m) => ({ default: m.TimerPage })));
+const AdvancedRouxFeaturePage = lazy(() =>
+  import('./roux-advanced/AdvancedRouxFeaturePage').then((m) => ({
+    default: m.AdvancedRouxFeaturePage,
+  })),
+);
 const RouxFeaturePage = lazy(() =>
   import('./roux/RouxFeaturePage').then((m) => ({ default: m.RouxFeaturePage })),
 );
@@ -115,6 +120,8 @@ export function ClubApp() {
                 <a href="#/guide/roux">Roux guide</a>
               )}
               <a href="#/moves">Move explorer</a>
+              <a href="#/cmll">CMLL library</a>
+              <a href="#/cmll-practice">CMLL practice</a>
               <a href="#/find-your-route">Find your route</a>
             </nav>
           )}
@@ -163,6 +170,13 @@ export function ClubApp() {
               ) : route.kind === 'timer' ? (
                 <Suspense fallback={<p role="status">Loading your practice space…</p>}>
                   <TimerPage engine={engine} repository={timerRepository} />
+                </Suspense>
+              ) : route.kind === 'cmll-library' ||
+                route.kind === 'cmll-case' ||
+                route.kind === 'cmll-practice' ||
+                (route.kind === 'solve' && route.method === 'roux-advanced') ? (
+                <Suspense fallback={<p role="status">Loading Advanced Roux…</p>}>
+                  <AdvancedRouxFeaturePage engine={engine} route={route} />
                 </Suspense>
               ) : route.kind === 'learn' && route.method === 'roux-beginner' ? (
                 <Suspense fallback={<p role="status">Loading Beginner Roux…</p>}>

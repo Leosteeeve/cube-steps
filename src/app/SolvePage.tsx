@@ -14,7 +14,21 @@ import { FACE_ENTRY_ORDER } from '../core/facelet-layout';
 import { getMethodInfo as getMethod } from '../methods/info';
 import { MethodSelector } from './MethodSelector';
 import { useGuidanceTarget } from '../ui/guidance';
-export function SolvePage({ engine, method = 'lbl' }: { engine: CubeEngine; method?: MethodId }) {
+import type { RouxFrameId } from '../methods/roux-advanced/types';
+export function SolvePage({
+  engine,
+  method = 'lbl',
+  rouxOptions,
+}: {
+  engine: CubeEngine;
+  method?: MethodId;
+  rouxOptions?: {
+    allowedFrames: readonly RouxFrameId[];
+    onAllowedFramesChange: (ids: readonly RouxFrameId[]) => void;
+  };
+}) {
+  const framesKey =
+    method === 'roux-advanced' ? (rouxOptions?.allowedFrames ?? ['white-blue']).join(',') : '';
   const inputTarget = useGuidanceTarget('solve.input'),
     validationTarget = useGuidanceTarget('solve.validation'),
     explanationTarget = useGuidanceTarget('solve.explanation');
@@ -63,7 +77,7 @@ export function SolvePage({ engine, method = 'lbl' }: { engine: CubeEngine; meth
     setInputExpanded(true);
     setStage(firstStage);
     setActive(firstStage);
-  }, [client, method, firstStage]);
+  }, [client, method, firstStage, framesKey]);
   const parsedDraft = mode === 'scramble' ? parseScramble(text) : null;
   const session = storedSession?.trace.method === method ? storedSession : null;
   useLayoutEffect(() => {
@@ -155,10 +169,22 @@ export function SolvePage({ engine, method = 'lbl' }: { engine: CubeEngine; meth
       }
       if (token !== epoch.current || methodRef.current !== method) return;
     }
+    const options =
+      method === 'roux-advanced'
+        ? Object.freeze({
+            allowedFrames: Object.freeze([
+              ...(rouxOptions?.allowedFrames ?? (['white-blue'] as RouxFrameId[])),
+            ]),
+          })
+        : undefined;
     const result =
       mode === 'colors' && checked?.ok
-        ? await client.solveFacelets(checked.facelets, method)
-        : await client.solveScramble(text, method);
+        ? options
+          ? await client.solveFacelets(checked.facelets, method, options)
+          : await client.solveFacelets(checked.facelets, method)
+        : options
+          ? await client.solveScramble(text, method, options)
+          : await client.solveScramble(text, method);
     if (token !== epoch.current || methodRef.current !== method) return;
     setBusy(false);
     if (result.ok) {
@@ -364,6 +390,25 @@ export function SolvePage({ engine, method = 'lbl' }: { engine: CubeEngine; meth
               )}
             </details>
           </div>
+          {session.trace.rouxAdvanced && (
+            <aside className="notice" aria-label="Roux search evidence">
+              <p>
+                {session.trace.rouxAdvanced.basis === 'optimized'
+                  ? 'Optimized route within the search budget.'
+                  : 'Verified baseline fallback — optimization did not improve this route within the budget.'}{' '}
+                Holding frame: {session.trace.rouxAdvanced.frameId.replace('-', ' bottom / ')} left.
+                The two blocks use {session.trace.rouxAdvanced.counts.combined} slice turns; this is
+                not a claim of the shortest complete solve.
+              </p>
+              <p>
+                {session.trace.rouxAdvanced.evidence.status === 'not-explored'
+                  ? 'The independent shortest-left-block search was not completed.'
+                  : session.trace.rouxAdvanced.evidence.status === 'proven-minimum'
+                    ? `Independent left-block minimum: ${session.trace.rouxAdvanced.evidence.minimum} slice turns. The chosen route may spend more here for a smoother second block.`
+                    : `Independent left-block bound: ${session.trace.rouxAdvanced.evidence.lowerBound}–${session.trace.rouxAdvanced.evidence.upperBound} slice turns. A minimum has not been proved.`}
+              </p>
+            </aside>
+          )}
           {!inputMatches && (
             <p className="notice" role="status">
               The draft has changed. The solution below still uses its saved input.

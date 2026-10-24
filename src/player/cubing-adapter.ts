@@ -25,7 +25,7 @@ export async function createCubingAdapter(
   const flat =
     source.kind === 'solve'
       ? flattenTrace(source.session.trace)
-      : source.kind === 'lab' || source.kind === 'roux-lab'
+      : source.kind === 'lab' || source.kind === 'roux-lab' || source.kind === 'cmll'
         ? source.prepared.timeline
         : { moves: source.demonstration.actions.flatMap((a) => a.moves) };
   const player = new TwistyPlayer({

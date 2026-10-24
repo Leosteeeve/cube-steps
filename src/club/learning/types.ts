@@ -16,4 +16,5 @@ export const CLUB_METHODS: readonly MethodId[] = [
   'cfop-beginner',
   'cfop-advanced',
   'roux-beginner',
+  'roux-advanced',
 ];
