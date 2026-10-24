@@ -1,0 +1,4877 @@
+{
+  "version": "cmll-v1",
+  "cases": [
+    {
+      "id": "cmll-o-1",
+      "family": "O",
+      "label": "Adjacent Swap",
+      "variantIds": [
+        "cmll-o-1-primary",
+        "cmll-o-1-alternate"
+      ]
+    },
+    {
+      "id": "cmll-o-2",
+      "family": "O",
+      "label": "Diagonal Swap",
+      "variantIds": [
+        "cmll-o-2-primary"
+      ]
+    },
+    {
+      "id": "cmll-h-1",
+      "family": "H",
+      "label": "Columns",
+      "variantIds": [
+        "cmll-h-1-primary",
+        "cmll-h-1-alternate"
+      ]
+    },
+    {
+      "id": "cmll-h-2",
+      "family": "H",
+      "label": "Rows",
+      "variantIds": [
+        "cmll-h-2-primary"
+      ]
+    },
+    {
+      "id": "cmll-h-3",
+      "family": "H",
+      "label": "Column",
+      "variantIds": [
+        "cmll-h-3-primary"
+      ]
+    },
+    {
+      "id": "cmll-h-4",
+      "family": "H",
+      "label": "Row",
+      "variantIds": [
+        "cmll-h-4-primary"
+      ]
+    },
+    {
+      "id": "cmll-pi-1",
+      "family": "Pi",
+      "label": "Right Bar",
+      "variantIds": [
+        "cmll-pi-1-primary"
+      ]
+    },
+    {
+      "id": "cmll-pi-2",
+      "family": "Pi",
+      "label": "Back Slash",
+      "variantIds": [
+        "cmll-pi-2-primary"
+      ]
+    },
+    {
+      "id": "cmll-pi-3",
+      "family": "Pi",
+      "label": "X Checkerboard",
+      "variantIds": [
+        "cmll-pi-3-primary"
+      ]
+    },
+    {
+      "id": "cmll-pi-4",
+      "family": "Pi",
+      "label": "Forward Slash",
+      "variantIds": [
+        "cmll-pi-4-primary"
+      ]
+    },
+    {
+      "id": "cmll-pi-5",
+      "family": "Pi",
+      "label": "Columns",
+      "variantIds": [
+        "cmll-pi-5-primary"
+      ]
+    },
+    {
+      "id": "cmll-pi-6",
+      "family": "Pi",
+      "label": "Left Bar",
+      "variantIds": [
+        "cmll-pi-6-primary"
+      ]
+    },
+    {
+      "id": "cmll-u-1",
+      "family": "U",
+      "label": "Forward Slash",
+      "variantIds": [
+        "cmll-u-1-primary"
+      ]
+    },
+    {
+      "id": "cmll-u-2",
+      "family": "U",
+      "label": "Back Slash",
+      "variantIds": [
+        "cmll-u-2-primary"
+      ]
+    },
+    {
+      "id": "cmll-u-3",
+      "family": "U",
+      "label": "Front Row",
+      "variantIds": [
+        "cmll-u-3-primary"
+      ]
+    },
+    {
+      "id": "cmll-u-4",
+      "family": "U",
+      "label": "Rows",
+      "variantIds": [
+        "cmll-u-4-primary"
+      ]
+    },
+    {
+      "id": "cmll-u-5",
+      "family": "U",
+      "label": "X Checkerboard",
+      "variantIds": [
+        "cmll-u-5-primary"
+      ]
+    },
+    {
+      "id": "cmll-u-6",
+      "family": "U",
+      "label": "Back Row",
+      "variantIds": [
+        "cmll-u-6-primary"
+      ]
+    },
+    {
+      "id": "cmll-t-1",
+      "family": "T",
+      "label": "Left Bar",
+      "variantIds": [
+        "cmll-t-1-primary"
+      ]
+    },
+    {
+      "id": "cmll-t-2",
+      "family": "T",
+      "label": "Right Bar",
+      "variantIds": [
+        "cmll-t-2-primary"
+      ]
+    },
+    {
+      "id": "cmll-t-3",
+      "family": "T",
+      "label": "Rows",
+      "variantIds": [
+        "cmll-t-3-primary"
+      ]
+    },
+    {
+      "id": "cmll-t-4",
+      "family": "T",
+      "label": "Front Row",
+      "variantIds": [
+        "cmll-t-4-primary"
+      ]
+    },
+    {
+      "id": "cmll-t-5",
+      "family": "T",
+      "label": "Back Row",
+      "variantIds": [
+        "cmll-t-5-primary"
+      ]
+    },
+    {
+      "id": "cmll-t-6",
+      "family": "T",
+      "label": "Columns",
+      "variantIds": [
+        "cmll-t-6-primary"
+      ]
+    },
+    {
+      "id": "cmll-sune-1",
+      "family": "Sune",
+      "label": "Left Bar",
+      "variantIds": [
+        "cmll-sune-1-primary",
+        "cmll-sune-1-alternate"
+      ]
+    },
+    {
+      "id": "cmll-sune-2",
+      "family": "Sune",
+      "label": "X Checkerboard",
+      "variantIds": [
+        "cmll-sune-2-primary"
+      ]
+    },
+    {
+      "id": "cmll-sune-3",
+      "family": "Sune",
+      "label": "Forward Slash",
+      "variantIds": [
+        "cmll-sune-3-primary"
+      ]
+    },
+    {
+      "id": "cmll-sune-4",
+      "family": "Sune",
+      "label": "Columns",
+      "variantIds": [
+        "cmll-sune-4-primary"
+      ]
+    },
+    {
+      "id": "cmll-sune-5",
+      "family": "Sune",
+      "label": "Right Bar",
+      "variantIds": [
+        "cmll-sune-5-primary"
+      ]
+    },
+    {
+      "id": "cmll-sune-6",
+      "family": "Sune",
+      "label": "Back Slash",
+      "variantIds": [
+        "cmll-sune-6-primary"
+      ]
+    },
+    {
+      "id": "cmll-anti-sune-1",
+      "family": "Anti-Sune",
+      "label": "Right Bar",
+      "variantIds": [
+        "cmll-anti-sune-1-primary"
+      ]
+    },
+    {
+      "id": "cmll-anti-sune-2",
+      "family": "Anti-Sune",
+      "label": "Columns",
+      "variantIds": [
+        "cmll-anti-sune-2-primary"
+      ]
+    },
+    {
+      "id": "cmll-anti-sune-3",
+      "family": "Anti-Sune",
+      "label": "Back Slash",
+      "variantIds": [
+        "cmll-anti-sune-3-primary"
+      ]
+    },
+    {
+      "id": "cmll-anti-sune-4",
+      "family": "Anti-Sune",
+      "label": "X Checkerboard",
+      "variantIds": [
+        "cmll-anti-sune-4-primary"
+      ]
+    },
+    {
+      "id": "cmll-anti-sune-5",
+      "family": "Anti-Sune",
+      "label": "Forward Slash",
+      "variantIds": [
+        "cmll-anti-sune-5-primary"
+      ]
+    },
+    {
+      "id": "cmll-anti-sune-6",
+      "family": "Anti-Sune",
+      "label": "Left Bar",
+      "variantIds": [
+        "cmll-anti-sune-6-primary"
+      ]
+    },
+    {
+      "id": "cmll-l-1",
+      "family": "L",
+      "label": "Mirror",
+      "variantIds": [
+        "cmll-l-1-primary"
+      ]
+    },
+    {
+      "id": "cmll-l-2",
+      "family": "L",
+      "label": "Inverse",
+      "variantIds": [
+        "cmll-l-2-primary"
+      ]
+    },
+    {
+      "id": "cmll-l-3",
+      "family": "L",
+      "label": "Pure",
+      "variantIds": [
+        "cmll-l-3-primary"
+      ]
+    },
+    {
+      "id": "cmll-l-4",
+      "family": "L",
+      "label": "Front Commutator",
+      "variantIds": [
+        "cmll-l-4-primary"
+      ]
+    },
+    {
+      "id": "cmll-l-5",
+      "family": "L",
+      "label": "Diag",
+      "variantIds": [
+        "cmll-l-5-primary",
+        "cmll-l-5-alternate"
+      ]
+    },
+    {
+      "id": "cmll-l-6",
+      "family": "L",
+      "label": "Back Commutator",
+      "variantIds": [
+        "cmll-l-6-primary"
+      ]
+    }
+  ],
+  "variants": {
+    "cmll-o-1-primary": {
+      "id": "cmll-o-1-primary",
+      "caseId": "cmll-o-1",
+      "name": "O · Adjacent Swap",
+      "moves": [
+        "R",
+        "U",
+        "R'",
+        "F'",
+        "R",
+        "U",
+        "R'",
+        "U'",
+        "R'",
+        "F",
+        "R2",
+        "U'",
+        "R'"
+      ],
+      "holdingMoves": [],
+      "recognition": "UFR: yellow on U, red on F, green on R; URB: yellow on U, blue on R, red on B; UBL: yellow on U, green on B, orange on L; ULF: yellow on U, orange on L, blue on F",
+      "precondition": "Both side blocks complete. Match the top-corner orientation AND the side-color arrangement; ignore the six remaining edges.",
+      "effect": "Restore both blocks and solve the top corners in cyclic order. The U offset, middle centers and remaining edges are checked afterward.",
+      "segments": [
+        {
+          "label": "Sequence 1",
+          "start": 0,
+          "end": 3
+        },
+        {
+          "label": "Sequence 2",
+          "start": 3,
+          "end": 8
+        },
+        {
+          "label": "Finish, then check both blocks",
+          "start": 8,
+          "end": 13
+        }
+      ],
+      "sourceRefs": [
+        {
+          "url": "https://docs.google.com/document/d/1S_y2evAxJ2vMMFDtfGSOsgHuDMYR-sEjoEU_mtSD7Qc/edit",
+          "title": "Kian's CMLLs",
+          "accessed": "2026-10-23",
+          "usageNotes": "Source bold selection for the initial right-leading default; physical calibration pending. Source notation: R U R' F' R U R' U' R' F R2 U' R'. Parenthesized U setup is recognized from the actual state; prime half turns are equivalent half turns and lowercase r is Rw."
+        },
+        {
+          "url": "https://sites.google.com/view/kianroux/cmll",
+          "title": "Kian Roux Method Guide: CMLL and execution video",
+          "accessed": "2026-10-23",
+          "usageNotes": "Original author companion execution resource. Explanations and diagrams in CubeSteps are original."
+        }
+      ],
+      "executionProfileId": "roux-execution-v1/primitive-composition",
+      "protectedIds": [
+        "UB",
+        "BR",
+        "BL",
+        "URB",
+        "UBL",
+        "UF",
+        "FR",
+        "FL",
+        "UFR",
+        "ULF"
+      ],
+      "centerPhaseDelta": 0,
+      "edgeTransform": {
+        "permutation": [
+          0,
+          2,
+          3,
+          1,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "orientationDelta": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "default": true
+    },
+    "cmll-o-1-alternate": {
+      "id": "cmll-o-1-alternate",
+      "caseId": "cmll-o-1",
+      "name": "O · Adjacent Swap (alternative)",
+      "moves": [
+        "Rw",
+        "U",
+        "R'",
+        "F'",
+        "R",
+        "U",
+        "R'",
+        "U'",
+        "R'",
+        "F",
+        "R2",
+        "U'",
+        "Rw'"
+      ],
+      "holdingMoves": [],
+      "recognition": "UFR: yellow on U, red on F, green on R; URB: yellow on U, blue on R, red on B; UBL: yellow on U, green on B, orange on L; ULF: yellow on U, orange on L, blue on F",
+      "precondition": "Both side blocks complete. Match the top-corner orientation AND the side-color arrangement; ignore the six remaining edges.",
+      "effect": "Restore both blocks and solve the top corners in cyclic order. The U offset, middle centers and remaining edges are checked afterward.",
+      "segments": [
+        {
+          "label": "Sequence 1",
+          "start": 0,
+          "end": 4
+        },
+        {
+          "label": "Sequence 2",
+          "start": 4,
+          "end": 8
+        },
+        {
+          "label": "Finish, then check both blocks",
+          "start": 8,
+          "end": 13
+        }
+      ],
+      "sourceRefs": [
+        {
+          "url": "https://docs.google.com/document/d/1S_y2evAxJ2vMMFDtfGSOsgHuDMYR-sEjoEU_mtSD7Qc/edit",
+          "title": "Kian's CMLLs",
+          "accessed": "2026-10-23",
+          "usageNotes": "Verified source alternative; compare handling and remaining edges. Source notation: r U R' F' R U R' U' R' F R2 U' r'. Parenthesized U setup is recognized from the actual state; prime half turns are equivalent half turns and lowercase r is Rw."
+        },
+        {
+          "url": "https://sites.google.com/view/kianroux/cmll",
+          "title": "Kian Roux Method Guide: CMLL and execution video",
+          "accessed": "2026-10-23",
+          "usageNotes": "Original author companion execution resource. Explanations and diagrams in CubeSteps are original."
+        }
+      ],
+      "executionProfileId": "roux-execution-v1/primitive-composition",
+      "protectedIds": [
+        "UB",
+        "BR",
+        "BL",
+        "URB",
+        "UBL",
+        "UF",
+        "FR",
+        "FL",
+        "UFR",
+        "ULF"
+      ],
+      "centerPhaseDelta": 0,
+      "edgeTransform": {
+        "permutation": [
+          3,
+          0,
+          2,
+          1,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "orientationDelta": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "default": false
+    },
+    "cmll-o-2-primary": {
+      "id": "cmll-o-2-primary",
+      "caseId": "cmll-o-2",
+      "name": "O · Diagonal Swap",
+      "moves": [
+        "F",
+        "R",
+        "U'",
+        "R'",
+        "U'",
+        "R",
+        "U",
+        "R'",
+        "F'",
+        "R",
+        "U",
+        "R'",
+        "U'",
+        "R'",
+        "F",
+        "R",
+        "F'"
+      ],
+      "holdingMoves": [],
+      "recognition": "UFR: yellow on U, orange on F, blue on R; URB: yellow on U, green on R, orange on B; UBL: yellow on U, red on B, green on L; ULF: yellow on U, blue on L, red on F",
+      "precondition": "Both side blocks complete. Match the top-corner orientation AND the side-color arrangement; ignore the six remaining edges.",
+      "effect": "Restore both blocks and solve the top corners in cyclic order. The U offset, middle centers and remaining edges are checked afterward.",
+      "segments": [
+        {
+          "label": "Sequence 1",
+          "start": 0,
+          "end": 9
+        },
+        {
+          "label": "Finish, then check both blocks",
+          "start": 9,
+          "end": 17
+        }
+      ],
+      "sourceRefs": [
+        {
+          "url": "https://docs.google.com/document/d/1S_y2evAxJ2vMMFDtfGSOsgHuDMYR-sEjoEU_mtSD7Qc/edit",
+          "title": "Kian's CMLLs",
+          "accessed": "2026-10-23",
+          "usageNotes": "Source bold selection for the initial right-leading default; physical calibration pending. Source notation: F R U' R' U' R U R' F' R U R' U' R' F R F'. Parenthesized U setup is recognized from the actual state; prime half turns are equivalent half turns and lowercase r is Rw."
+        },
+        {
+          "url": "https://sites.google.com/view/kianroux/cmll",
+          "title": "Kian Roux Method Guide: CMLL and execution video",
+          "accessed": "2026-10-23",
+          "usageNotes": "Original author companion execution resource. Explanations and diagrams in CubeSteps are original."
+        }
+      ],
+      "executionProfileId": "roux-execution-v1/primitive-composition",
+      "protectedIds": [
+        "UB",
+        "BR",
+        "BL",
+        "URB",
+        "UBL",
+        "UF",
+        "FR",
+        "FL",
+        "UFR",
+        "ULF"
+      ],
+      "centerPhaseDelta": 0,
+      "edgeTransform": {
+        "permutation": [
+          0,
+          1,
+          3,
+          2,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "orientationDelta": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "default": true
+    },
+    "cmll-h-1-primary": {
+      "id": "cmll-h-1-primary",
+      "caseId": "cmll-h-1",
+      "name": "H · Columns",
+      "moves": [
+        "R",
+        "U2",
+        "R'",
+        "U'",
+        "R",
+        "U",
+        "R'",
+        "U'",
+        "R",
+        "U'",
+        "R'"
+      ],
+      "holdingMoves": [],
+      "recognition": "UFR: green on U, yellow on F, red on R; URB: green on U, orange on R, yellow on B; UBL: blue on U, yellow on B, orange on L; ULF: blue on U, red on L, yellow on F",
+      "precondition": "Both side blocks complete. Match the top-corner orientation AND the side-color arrangement; ignore the six remaining edges.",
+      "effect": "Restore both blocks and solve the top corners in cyclic order. The U offset, middle centers and remaining edges are checked afterward.",
+      "segments": [
+        {
+          "label": "Sequence 1",
+          "start": 0,
+          "end": 3
+        },
+        {
+          "label": "Sequence 2",
+          "start": 3,
+          "end": 7
+        },
+        {
+          "label": "Finish, then check both blocks",
+          "start": 7,
+          "end": 11
+        }
+      ],
+      "sourceRefs": [
+        {
+          "url": "https://docs.google.com/document/d/1S_y2evAxJ2vMMFDtfGSOsgHuDMYR-sEjoEU_mtSD7Qc/edit",
+          "title": "Kian's CMLLs",
+          "accessed": "2026-10-23",
+          "usageNotes": "Source bold selection for the initial right-leading default; physical calibration pending. Source notation: R U2 R’ U’ R U R’ U’ R U’ R’. Parenthesized U setup is recognized from the actual state; prime half turns are equivalent half turns and lowercase r is Rw."
+        },
+        {
+          "url": "https://sites.google.com/view/kianroux/cmll",
+          "title": "Kian Roux Method Guide: CMLL and execution video",
+          "accessed": "2026-10-23",
+          "usageNotes": "Original author companion execution resource. Explanations and diagrams in CubeSteps are original."
+        }
+      ],
+      "executionProfileId": "roux-execution-v1/primitive-composition",
+      "protectedIds": [
+        "UB",
+        "BR",
+        "BL",
+        "URB",
+        "UBL",
+        "UF",
+        "FR",
+        "FL",
+        "UFR",
+        "ULF"
+      ],
+      "centerPhaseDelta": 0,
+      "edgeTransform": {
+        "permutation": [
+          0,
+          3,
+          1,
+          2,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "orientationDelta": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "default": true
+    },
+    "cmll-h-1-alternate": {
+      "id": "cmll-h-1-alternate",
+      "caseId": "cmll-h-1",
+      "name": "H · Columns (alternative)",
+      "moves": [
+        "R",
+        "U",
+        "R'",
+        "U",
+        "R",
+        "U'",
+        "R'",
+        "U",
+        "R",
+        "U2",
+        "R'"
+      ],
+      "holdingMoves": [],
+      "recognition": "UFR: red on U, green on F, yellow on R; URB: orange on U, yellow on R, green on B; UBL: orange on U, blue on B, yellow on L; ULF: red on U, yellow on L, blue on F",
+      "precondition": "Both side blocks complete. Match the top-corner orientation AND the side-color arrangement; ignore the six remaining edges.",
+      "effect": "Restore both blocks and solve the top corners in cyclic order. The U offset, middle centers and remaining edges are checked afterward.",
+      "segments": [
+        {
+          "label": "Sequence 1",
+          "start": 0,
+          "end": 4
+        },
+        {
+          "label": "Sequence 2",
+          "start": 4,
+          "end": 8
+        },
+        {
+          "label": "Finish, then check both blocks",
+          "start": 8,
+          "end": 11
+        }
+      ],
+      "sourceRefs": [
+        {
+          "url": "https://docs.google.com/document/d/1S_y2evAxJ2vMMFDtfGSOsgHuDMYR-sEjoEU_mtSD7Qc/edit",
+          "title": "Kian's CMLLs",
+          "accessed": "2026-10-23",
+          "usageNotes": "Verified source alternative; compare handling and remaining edges. Source notation: (U) R U R' U R U' R' U R U2' R'. Parenthesized U setup is recognized from the actual state; prime half turns are equivalent half turns and lowercase r is Rw."
+        },
+        {
+          "url": "https://sites.google.com/view/kianroux/cmll",
+          "title": "Kian Roux Method Guide: CMLL and execution video",
+          "accessed": "2026-10-23",
+          "usageNotes": "Original author companion execution resource. Explanations and diagrams in CubeSteps are original."
+        }
+      ],
+      "executionProfileId": "roux-execution-v1/primitive-composition",
+      "protectedIds": [
+        "UB",
+        "BR",
+        "BL",
+        "URB",
+        "UBL",
+        "UF",
+        "FR",
+        "FL",
+        "UFR",
+        "ULF"
+      ],
+      "centerPhaseDelta": 0,
+      "edgeTransform": {
+        "permutation": [
+          0,
+          2,
+          3,
+          1,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "orientationDelta": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "default": false
+    },
+    "cmll-h-2-primary": {
+      "id": "cmll-h-2-primary",
+      "caseId": "cmll-h-2",
+      "name": "H · Rows",
+      "moves": [
+        "F",
+        "R",
+        "U",
+        "R'",
+        "U'",
+        "R",
+        "U",
+        "R'",
+        "U'",
+        "R",
+        "U",
+        "R'",
+        "U'",
+        "F'"
+      ],
+      "holdingMoves": [],
+      "recognition": "UFR: red on U, yellow on F, blue on R; URB: orange on U, blue on R, yellow on B; UBL: orange on U, yellow on B, green on L; ULF: red on U, green on L, yellow on F",
+      "precondition": "Both side blocks complete. Match the top-corner orientation AND the side-color arrangement; ignore the six remaining edges.",
+      "effect": "Restore both blocks and solve the top corners in cyclic order. The U offset, middle centers and remaining edges are checked afterward.",
+      "segments": [
+        {
+          "label": "Sequence 1",
+          "start": 0,
+          "end": 1
+        },
+        {
+          "label": "Sequence 2",
+          "start": 1,
+          "end": 5
+        },
+        {
+          "label": "Sequence 3",
+          "start": 5,
+          "end": 9
+        },
+        {
+          "label": "Finish, then check both blocks",
+          "start": 9,
+          "end": 14
+        }
+      ],
+      "sourceRefs": [
+        {
+          "url": "https://docs.google.com/document/d/1S_y2evAxJ2vMMFDtfGSOsgHuDMYR-sEjoEU_mtSD7Qc/edit",
+          "title": "Kian's CMLLs",
+          "accessed": "2026-10-23",
+          "usageNotes": "Source bold selection for the initial right-leading default; physical calibration pending. Source notation: F R U R' U' R U R' U' R U R' U' F'. Parenthesized U setup is recognized from the actual state; prime half turns are equivalent half turns and lowercase r is Rw."
+        },
+        {
+          "url": "https://sites.google.com/view/kianroux/cmll",
+          "title": "Kian Roux Method Guide: CMLL and execution video",
+          "accessed": "2026-10-23",
+          "usageNotes": "Original author companion execution resource. Explanations and diagrams in CubeSteps are original."
+        }
+      ],
+      "executionProfileId": "roux-execution-v1/primitive-composition",
+      "protectedIds": [
+        "UB",
+        "BR",
+        "BL",
+        "URB",
+        "UBL",
+        "UF",
+        "FR",
+        "FL",
+        "UFR",
+        "ULF"
+      ],
+      "centerPhaseDelta": 0,
+      "edgeTransform": {
+        "permutation": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "orientationDelta": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "default": true
+    },
+    "cmll-h-3-primary": {
+      "id": "cmll-h-3-primary",
+      "caseId": "cmll-h-3",
+      "name": "H · Column",
+      "moves": [
+        "R",
+        "U2",
+        "R2",
+        "F",
+        "R",
+        "F'",
+        "U2",
+        "R'",
+        "F",
+        "R",
+        "F'"
+      ],
+      "holdingMoves": [],
+      "recognition": "UFR: green on U, orange on F, yellow on R; URB: red on U, yellow on R, blue on B; UBL: orange on U, blue on B, yellow on L; ULF: green on U, yellow on L, red on F",
+      "precondition": "Both side blocks complete. Match the top-corner orientation AND the side-color arrangement; ignore the six remaining edges.",
+      "effect": "Restore both blocks and solve the top corners in cyclic order. The U offset, middle centers and remaining edges are checked afterward.",
+      "segments": [
+        {
+          "label": "Sequence 1",
+          "start": 0,
+          "end": 3
+        },
+        {
+          "label": "Sequence 2",
+          "start": 3,
+          "end": 6
+        },
+        {
+          "label": "Sequence 3",
+          "start": 6,
+          "end": 8
+        },
+        {
+          "label": "Finish, then check both blocks",
+          "start": 8,
+          "end": 11
+        }
+      ],
+      "sourceRefs": [
+        {
+          "url": "https://docs.google.com/document/d/1S_y2evAxJ2vMMFDtfGSOsgHuDMYR-sEjoEU_mtSD7Qc/edit",
+          "title": "Kian's CMLLs",
+          "accessed": "2026-10-23",
+          "usageNotes": "Source bold selection for the initial right-leading default; physical calibration pending. Source notation: (U) R U2' R2' F R F' U2 R' F R F'. Parenthesized U setup is recognized from the actual state; prime half turns are equivalent half turns and lowercase r is Rw."
+        },
+        {
+          "url": "https://sites.google.com/view/kianroux/cmll",
+          "title": "Kian Roux Method Guide: CMLL and execution video",
+          "accessed": "2026-10-23",
+          "usageNotes": "Original author companion execution resource. Explanations and diagrams in CubeSteps are original."
+        }
+      ],
+      "executionProfileId": "roux-execution-v1/primitive-composition",
+      "protectedIds": [
+        "UB",
+        "BR",
+        "BL",
+        "URB",
+        "UBL",
+        "UF",
+        "FR",
+        "FL",
+        "UFR",
+        "ULF"
+      ],
+      "centerPhaseDelta": 0,
+      "edgeTransform": {
+        "permutation": [
+          1,
+          0,
+          3,
+          2,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "orientationDelta": [
+          1,
+          1,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "default": true
+    },
+    "cmll-h-4-primary": {
+      "id": "cmll-h-4-primary",
+      "caseId": "cmll-h-4",
+      "name": "H · Row",
+      "moves": [
+        "Rw",
+        "U'",
+        "Rw2",
+        "D'",
+        "Rw",
+        "U'",
+        "Rw'",
+        "D",
+        "Rw2",
+        "U",
+        "Rw'"
+      ],
+      "holdingMoves": [],
+      "recognition": "UFR: blue on U, yellow on F, orange on R; URB: red on U, green on R, yellow on B; UBL: red on U, yellow on B, blue on L; ULF: green on U, orange on L, yellow on F",
+      "precondition": "Both side blocks complete. Match the top-corner orientation AND the side-color arrangement; ignore the six remaining edges.",
+      "effect": "Restore both blocks and solve the top corners in cyclic order. The U offset, middle centers and remaining edges are checked afterward.",
+      "segments": [
+        {
+          "label": "Sequence 1",
+          "start": 0,
+          "end": 3
+        },
+        {
+          "label": "Sequence 2",
+          "start": 3,
+          "end": 7
+        },
+        {
+          "label": "Sequence 3",
+          "start": 7,
+          "end": 9
+        },
+        {
+          "label": "Finish, then check both blocks",
+          "start": 9,
+          "end": 11
+        }
+      ],
+      "sourceRefs": [
+        {
+          "url": "https://docs.google.com/document/d/1S_y2evAxJ2vMMFDtfGSOsgHuDMYR-sEjoEU_mtSD7Qc/edit",
+          "title": "Kian's CMLLs",
+          "accessed": "2026-10-23",
+          "usageNotes": "Source bold selection for the initial right-leading default; physical calibration pending. Source notation: (U2) r U' r2' D' r U' r' D r2 U r'. Parenthesized U setup is recognized from the actual state; prime half turns are equivalent half turns and lowercase r is Rw."
+        },
+        {
+          "url": "https://sites.google.com/view/kianroux/cmll",
+          "title": "Kian Roux Method Guide: CMLL and execution video",
+          "accessed": "2026-10-23",
+          "usageNotes": "Original author companion execution resource. Explanations and diagrams in CubeSteps are original."
+        }
+      ],
+      "executionProfileId": "roux-execution-v1/primitive-composition",
+      "protectedIds": [
+        "UB",
+        "BR",
+        "BL",
+        "URB",
+        "UBL",
+        "UF",
+        "FR",
+        "FL",
+        "UFR",
+        "ULF"
+      ],
+      "centerPhaseDelta": 0,
+      "edgeTransform": {
+        "permutation": [
+          2,
+          4,
+          1,
+          3,
+          0,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "orientationDelta": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "default": true
+    },
+    "cmll-pi-1-primary": {
+      "id": "cmll-pi-1-primary",
+      "caseId": "cmll-pi-1",
+      "name": "Pi · Right Bar",
+      "moves": [
+        "F",
+        "R",
+        "U",
+        "R'",
+        "U'",
+        "R",
+        "U",
+        "R'",
+        "U'",
+        "F'"
+      ],
+      "holdingMoves": [],
+      "recognition": "UFR: green on U, yellow on F, red on R; URB: green on U, orange on R, yellow on B; UBL: orange on U, blue on B, yellow on L; ULF: red on U, yellow on L, blue on F",
+      "precondition": "Both side blocks complete. Match the top-corner orientation AND the side-color arrangement; ignore the six remaining edges.",
+      "effect": "Restore both blocks and solve the top corners in cyclic order. The U offset, middle centers and remaining edges are checked afterward.",
+      "segments": [
+        {
+          "label": "Sequence 1",
+          "start": 0,
+          "end": 1
+        },
+        {
+          "label": "Sequence 2",
+          "start": 1,
+          "end": 5
+        },
+        {
+          "label": "Sequence 3",
+          "start": 5,
+          "end": 9
+        },
+        {
+          "label": "Finish, then check both blocks",
+          "start": 9,
+          "end": 10
+        }
+      ],
+      "sourceRefs": [
+        {
+          "url": "https://docs.google.com/document/d/1S_y2evAxJ2vMMFDtfGSOsgHuDMYR-sEjoEU_mtSD7Qc/edit",
+          "title": "Kian's CMLLs",
+          "accessed": "2026-10-23",
+          "usageNotes": "Source bold selection for the initial right-leading default; physical calibration pending. Source notation: F R U R' U' R U R' U' F'. Parenthesized U setup is recognized from the actual state; prime half turns are equivalent half turns and lowercase r is Rw."
+        },
+        {
+          "url": "https://sites.google.com/view/kianroux/cmll",
+          "title": "Kian Roux Method Guide: CMLL and execution video",
+          "accessed": "2026-10-23",
+          "usageNotes": "Original author companion execution resource. Explanations and diagrams in CubeSteps are original."
+        }
+      ],
+      "executionProfileId": "roux-execution-v1/primitive-composition",
+      "protectedIds": [
+        "UB",
+        "BR",
+        "BL",
+        "URB",
+        "UBL",
+        "UF",
+        "FR",
+        "FL",
+        "UFR",
+        "ULF"
+      ],
+      "centerPhaseDelta": 0,
+      "edgeTransform": {
+        "permutation": [
+          1,
+          2,
+          0,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "orientationDelta": [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "default": true
+    },
+    "cmll-pi-2-primary": {
+      "id": "cmll-pi-2-primary",
+      "caseId": "cmll-pi-2",
+      "name": "Pi · Back Slash",
+      "moves": [
+        "F",
+        "R'",
+        "F'",
+        "R",
+        "U2",
+        "R",
+        "U'",
+        "R'",
+        "U",
+        "R",
+        "U2",
+        "R'"
+      ],
+      "holdingMoves": [],
+      "recognition": "UFR: red on U, green on F, yellow on R; URB: blue on U, red on R, yellow on B; UBL: orange on U, yellow on B, green on L; ULF: blue on U, yellow on L, orange on F",
+      "precondition": "Both side blocks complete. Match the top-corner orientation AND the side-color arrangement; ignore the six remaining edges.",
+      "effect": "Restore both blocks and solve the top corners in cyclic order. The U offset, middle centers and remaining edges are checked afterward.",
+      "segments": [
+        {
+          "label": "Sequence 1",
+          "start": 0,
+          "end": 4
+        },
+        {
+          "label": "Sequence 2",
+          "start": 4,
+          "end": 8
+        },
+        {
+          "label": "Finish, then check both blocks",
+          "start": 8,
+          "end": 12
+        }
+      ],
+      "sourceRefs": [
+        {
+          "url": "https://docs.google.com/document/d/1S_y2evAxJ2vMMFDtfGSOsgHuDMYR-sEjoEU_mtSD7Qc/edit",
+          "title": "Kian's CMLLs",
+          "accessed": "2026-10-23",
+          "usageNotes": "Source bold selection for the initial right-leading default; physical calibration pending. Source notation: (U) F R' F' R U2 R U' R' U R U2' R'. Parenthesized U setup is recognized from the actual state; prime half turns are equivalent half turns and lowercase r is Rw."
+        },
+        {
+          "url": "https://sites.google.com/view/kianroux/cmll",
+          "title": "Kian Roux Method Guide: CMLL and execution video",
+          "accessed": "2026-10-23",
+          "usageNotes": "Original author companion execution resource. Explanations and diagrams in CubeSteps are original."
+        }
+      ],
+      "executionProfileId": "roux-execution-v1/primitive-composition",
+      "protectedIds": [
+        "UB",
+        "BR",
+        "BL",
+        "URB",
+        "UBL",
+        "UF",
+        "FR",
+        "FL",
+        "UFR",
+        "ULF"
+      ],
+      "centerPhaseDelta": 0,
+      "edgeTransform": {
+        "permutation": [
+          1,
+          0,
+          3,
+          2,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "orientationDelta": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "default": true
+    },
+    "cmll-pi-3-primary": {
+      "id": "cmll-pi-3-primary",
+      "caseId": "cmll-pi-3",
+      "name": "Pi · X Checkerboard",
+      "moves": [
+        "R'",
+        "F",
+        "R",
+        "U",
+        "F",
+        "U'",
+        "R",
+        "U",
+        "R'",
+        "U'",
+        "F'"
+      ],
+      "holdingMoves": [],
+      "recognition": "UFR: green on U, yellow on F, red on R; URB: blue on U, yellow on R, orange on B; UBL: green on U, orange on B, yellow on L; ULF: blue on U, red on L, yellow on F",
+      "precondition": "Both side blocks complete. Match the top-corner orientation AND the side-color arrangement; ignore the six remaining edges.",
+      "effect": "Restore both blocks and solve the top corners in cyclic order. The U offset, middle centers and remaining edges are checked afterward.",
+      "segments": [
+        {
+          "label": "Sequence 1",
+          "start": 0,
+          "end": 3
+        },
+        {
+          "label": "Sequence 2",
+          "start": 3,
+          "end": 6
+        },
+        {
+          "label": "Finish, then check both blocks",
+          "start": 6,
+          "end": 11
+        }
+      ],
+      "sourceRefs": [
+        {
+          "url": "https://docs.google.com/document/d/1S_y2evAxJ2vMMFDtfGSOsgHuDMYR-sEjoEU_mtSD7Qc/edit",
+          "title": "Kian's CMLLs",
+          "accessed": "2026-10-23",
+          "usageNotes": "Source bold selection for the initial right-leading default; physical calibration pending. Source notation: (U') R' F R U F U' R U R' U' F'. Parenthesized U setup is recognized from the actual state; prime half turns are equivalent half turns and lowercase r is Rw."
+        },
+        {
+          "url": "https://sites.google.com/view/kianroux/cmll",
+          "title": "Kian Roux Method Guide: CMLL and execution video",
+          "accessed": "2026-10-23",
+          "usageNotes": "Original author companion execution resource. Explanations and diagrams in CubeSteps are original."
+        }
+      ],
+      "executionProfileId": "roux-execution-v1/primitive-composition",
+      "protectedIds": [
+        "UB",
+        "BR",
+        "BL",
+        "URB",
+        "UBL",
+        "UF",
+        "FR",
+        "FL",
+        "UFR",
+        "ULF"
+      ],
+      "centerPhaseDelta": 0,
+      "edgeTransform": {
+        "permutation": [
+          2,
+          0,
+          4,
+          3,
+          1,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "orientationDelta": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "default": true
+    },
+    "cmll-pi-4-primary": {
+      "id": "cmll-pi-4-primary",
+      "caseId": "cmll-pi-4",
+      "name": "Pi · Forward Slash",
+      "moves": [
+        "R",
+        "U2",
+        "R'",
+        "U'",
+        "R",
+        "U",
+        "R'",
+        "U2",
+        "R'",
+        "F",
+        "R",
+        "F'"
+      ],
+      "holdingMoves": [],
+      "recognition": "UFR: green on U, yellow on F, red on R; URB: orange on U, blue on R, yellow on B; UBL: blue on U, red on B, yellow on L; ULF: orange on U, yellow on L, green on F",
+      "precondition": "Both side blocks complete. Match the top-corner orientation AND the side-color arrangement; ignore the six remaining edges.",
+      "effect": "Restore both blocks and solve the top corners in cyclic order. The U offset, middle centers and remaining edges are checked afterward.",
+      "segments": [
+        {
+          "label": "Sequence 1",
+          "start": 0,
+          "end": 4
+        },
+        {
+          "label": "Sequence 2",
+          "start": 4,
+          "end": 8
+        },
+        {
+          "label": "Finish, then check both blocks",
+          "start": 8,
+          "end": 12
+        }
+      ],
+      "sourceRefs": [
+        {
+          "url": "https://docs.google.com/document/d/1S_y2evAxJ2vMMFDtfGSOsgHuDMYR-sEjoEU_mtSD7Qc/edit",
+          "title": "Kian's CMLLs",
+          "accessed": "2026-10-23",
+          "usageNotes": "Source bold selection for the initial right-leading default; physical calibration pending. Source notation: R U2 R' U' R U R' U2' R' F R F'. Parenthesized U setup is recognized from the actual state; prime half turns are equivalent half turns and lowercase r is Rw."
+        },
+        {
+          "url": "https://sites.google.com/view/kianroux/cmll",
+          "title": "Kian Roux Method Guide: CMLL and execution video",
+          "accessed": "2026-10-23",
+          "usageNotes": "Original author companion execution resource. Explanations and diagrams in CubeSteps are original."
+        }
+      ],
+      "executionProfileId": "roux-execution-v1/primitive-composition",
+      "protectedIds": [
+        "UB",
+        "BR",
+        "BL",
+        "URB",
+        "UBL",
+        "UF",
+        "FR",
+        "FL",
+        "UFR",
+        "ULF"
+      ],
+      "centerPhaseDelta": 0,
+      "edgeTransform": {
+        "permutation": [
+          1,
+          0,
+          3,
+          2,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "orientationDelta": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "default": true
+    },
+    "cmll-pi-5-primary": {
+      "id": "cmll-pi-5-primary",
+      "caseId": "cmll-pi-5",
+      "name": "Pi · Columns",
+      "moves": [
+        "Rw",
+        "U'",
+        "Rw2",
+        "D'",
+        "Rw",
+        "U",
+        "Rw'",
+        "D",
+        "Rw2",
+        "U",
+        "Rw'"
+      ],
+      "holdingMoves": [],
+      "recognition": "UFR: orange on U, yellow on F, green on R; URB: red on U, yellow on R, blue on B; UBL: red on U, green on B, yellow on L; ULF: orange on U, blue on L, yellow on F",
+      "precondition": "Both side blocks complete. Match the top-corner orientation AND the side-color arrangement; ignore the six remaining edges.",
+      "effect": "Restore both blocks and solve the top corners in cyclic order. The U offset, middle centers and remaining edges are checked afterward.",
+      "segments": [
+        {
+          "label": "Sequence 1",
+          "start": 0,
+          "end": 3
+        },
+        {
+          "label": "Sequence 2",
+          "start": 3,
+          "end": 7
+        },
+        {
+          "label": "Sequence 3",
+          "start": 7,
+          "end": 9
+        },
+        {
+          "label": "Finish, then check both blocks",
+          "start": 9,
+          "end": 11
+        }
+      ],
+      "sourceRefs": [
+        {
+          "url": "https://docs.google.com/document/d/1S_y2evAxJ2vMMFDtfGSOsgHuDMYR-sEjoEU_mtSD7Qc/edit",
+          "title": "Kian's CMLLs",
+          "accessed": "2026-10-23",
+          "usageNotes": "Source bold selection for the initial right-leading default; physical calibration pending. Source notation: (U’) r U' r2' D' r U r' D r2 U r'. Parenthesized U setup is recognized from the actual state; prime half turns are equivalent half turns and lowercase r is Rw."
+        },
+        {
+          "url": "https://sites.google.com/view/kianroux/cmll",
+          "title": "Kian Roux Method Guide: CMLL and execution video",
+          "accessed": "2026-10-23",
+          "usageNotes": "Original author companion execution resource. Explanations and diagrams in CubeSteps are original."
+        }
+      ],
+      "executionProfileId": "roux-execution-v1/primitive-composition",
+      "protectedIds": [
+        "UB",
+        "BR",
+        "BL",
+        "URB",
+        "UBL",
+        "UF",
+        "FR",
+        "FL",
+        "UFR",
+        "ULF"
+      ],
+      "centerPhaseDelta": 0,
+      "edgeTransform": {
+        "permutation": [
+          4,
+          2,
+          0,
+          3,
+          1,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "orientationDelta": [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "default": true
+    },
+    "cmll-pi-6-primary": {
+      "id": "cmll-pi-6-primary",
+      "caseId": "cmll-pi-6",
+      "name": "Pi · Left Bar",
+      "moves": [
+        "R'",
+        "U'",
+        "R'",
+        "F",
+        "R",
+        "F'",
+        "R",
+        "U'",
+        "R'",
+        "U2",
+        "R"
+      ],
+      "holdingMoves": [],
+      "recognition": "UFR: orange on U, yellow on F, green on R; URB: green on U, yellow on R, red on B; UBL: blue on U, red on B, yellow on L; ULF: orange on U, blue on L, yellow on F",
+      "precondition": "Both side blocks complete. Match the top-corner orientation AND the side-color arrangement; ignore the six remaining edges.",
+      "effect": "Restore both blocks and solve the top corners in cyclic order. The U offset, middle centers and remaining edges are checked afterward.",
+      "segments": [
+        {
+          "label": "Sequence 1",
+          "start": 0,
+          "end": 3
+        },
+        {
+          "label": "Sequence 2",
+          "start": 3,
+          "end": 6
+        },
+        {
+          "label": "Sequence 3",
+          "start": 6,
+          "end": 8
+        },
+        {
+          "label": "Finish, then check both blocks",
+          "start": 8,
+          "end": 11
+        }
+      ],
+      "sourceRefs": [
+        {
+          "url": "https://docs.google.com/document/d/1S_y2evAxJ2vMMFDtfGSOsgHuDMYR-sEjoEU_mtSD7Qc/edit",
+          "title": "Kian's CMLLs",
+          "accessed": "2026-10-23",
+          "usageNotes": "Source bold selection for the initial right-leading default; physical calibration pending. Source notation: (U') R' U' R' F R F' R U' R' U2 R. Parenthesized U setup is recognized from the actual state; prime half turns are equivalent half turns and lowercase r is Rw."
+        },
+        {
+          "url": "https://sites.google.com/view/kianroux/cmll",
+          "title": "Kian Roux Method Guide: CMLL and execution video",
+          "accessed": "2026-10-23",
+          "usageNotes": "Original author companion execution resource. Explanations and diagrams in CubeSteps are original."
+        }
+      ],
+      "executionProfileId": "roux-execution-v1/primitive-composition",
+      "protectedIds": [
+        "UB",
+        "BR",
+        "BL",
+        "URB",
+        "UBL",
+        "UF",
+        "FR",
+        "FL",
+        "UFR",
+        "ULF"
+      ],
+      "centerPhaseDelta": 0,
+      "edgeTransform": {
+        "permutation": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "orientationDelta": [
+          0,
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "default": true
+    },
+    "cmll-u-1-primary": {
+      "id": "cmll-u-1-primary",
+      "caseId": "cmll-u-1",
+      "name": "U · Forward Slash",
+      "moves": [
+        "R2",
+        "D",
+        "R'",
+        "U2",
+        "R",
+        "D'",
+        "R'",
+        "U2",
+        "R'"
+      ],
+      "holdingMoves": [],
+      "recognition": "UFR: red on U, yellow on F, blue on R; URB: yellow on U, red on R, green on B; UBL: yellow on U, orange on B, blue on L; ULF: green on U, orange on L, yellow on F",
+      "precondition": "Both side blocks complete. Match the top-corner orientation AND the side-color arrangement; ignore the six remaining edges.",
+      "effect": "Restore both blocks and solve the top corners in cyclic order. The U offset, middle centers and remaining edges are checked afterward.",
+      "segments": [
+        {
+          "label": "Sequence 1",
+          "start": 0,
+          "end": 2
+        },
+        {
+          "label": "Sequence 2",
+          "start": 2,
+          "end": 5
+        },
+        {
+          "label": "Sequence 3",
+          "start": 5,
+          "end": 6
+        },
+        {
+          "label": "Finish, then check both blocks",
+          "start": 6,
+          "end": 9
+        }
+      ],
+      "sourceRefs": [
+        {
+          "url": "https://docs.google.com/document/d/1S_y2evAxJ2vMMFDtfGSOsgHuDMYR-sEjoEU_mtSD7Qc/edit",
+          "title": "Kian's CMLLs",
+          "accessed": "2026-10-23",
+          "usageNotes": "Source bold selection for the initial right-leading default; physical calibration pending. Source notation: (U2) R2 D R' U2 R D' R' U2 R'. Parenthesized U setup is recognized from the actual state; prime half turns are equivalent half turns and lowercase r is Rw."
+        },
+        {
+          "url": "https://sites.google.com/view/kianroux/cmll",
+          "title": "Kian Roux Method Guide: CMLL and execution video",
+          "accessed": "2026-10-23",
+          "usageNotes": "Original author companion execution resource. Explanations and diagrams in CubeSteps are original."
+        }
+      ],
+      "executionProfileId": "roux-execution-v1/primitive-composition",
+      "protectedIds": [
+        "UB",
+        "BR",
+        "BL",
+        "URB",
+        "UBL",
+        "UF",
+        "FR",
+        "FL",
+        "UFR",
+        "ULF"
+      ],
+      "centerPhaseDelta": 0,
+      "edgeTransform": {
+        "permutation": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "orientationDelta": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "default": true
+    },
+    "cmll-u-2-primary": {
+      "id": "cmll-u-2-primary",
+      "caseId": "cmll-u-2",
+      "name": "U · Back Slash",
+      "moves": [
+        "R2",
+        "D'",
+        "R",
+        "U2",
+        "R'",
+        "D",
+        "R",
+        "U2",
+        "R"
+      ],
+      "holdingMoves": [],
+      "recognition": "UFR: yellow on U, green on F, orange on R; URB: orange on U, blue on R, yellow on B; UBL: green on U, yellow on B, red on L; ULF: yellow on U, blue on L, red on F",
+      "precondition": "Both side blocks complete. Match the top-corner orientation AND the side-color arrangement; ignore the six remaining edges.",
+      "effect": "Restore both blocks and solve the top corners in cyclic order. The U offset, middle centers and remaining edges are checked afterward.",
+      "segments": [
+        {
+          "label": "Sequence 1",
+          "start": 0,
+          "end": 2
+        },
+        {
+          "label": "Sequence 2",
+          "start": 2,
+          "end": 5
+        },
+        {
+          "label": "Sequence 3",
+          "start": 5,
+          "end": 6
+        },
+        {
+          "label": "Finish, then check both blocks",
+          "start": 6,
+          "end": 9
+        }
+      ],
+      "sourceRefs": [
+        {
+          "url": "https://docs.google.com/document/d/1S_y2evAxJ2vMMFDtfGSOsgHuDMYR-sEjoEU_mtSD7Qc/edit",
+          "title": "Kian's CMLLs",
+          "accessed": "2026-10-23",
+          "usageNotes": "Source bold selection for the initial right-leading default; physical calibration pending. Source notation: R2' D' R U2 R' D R U2 R. Parenthesized U setup is recognized from the actual state; prime half turns are equivalent half turns and lowercase r is Rw."
+        },
+        {
+          "url": "https://sites.google.com/view/kianroux/cmll",
+          "title": "Kian Roux Method Guide: CMLL and execution video",
+          "accessed": "2026-10-23",
+          "usageNotes": "Original author companion execution resource. Explanations and diagrams in CubeSteps are original."
+        }
+      ],
+      "executionProfileId": "roux-execution-v1/primitive-composition",
+      "protectedIds": [
+        "UB",
+        "BR",
+        "BL",
+        "URB",
+        "UBL",
+        "UF",
+        "FR",
+        "FL",
+        "UFR",
+        "ULF"
+      ],
+      "centerPhaseDelta": 0,
+      "edgeTransform": {
+        "permutation": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "orientationDelta": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "default": true
+    },
+    "cmll-u-3-primary": {
+      "id": "cmll-u-3-primary",
+      "caseId": "cmll-u-3",
+      "name": "U · Front Row",
+      "moves": [
+        "R2",
+        "F",
+        "U'",
+        "F",
+        "U",
+        "F2",
+        "R2",
+        "U'",
+        "R'",
+        "F",
+        "R"
+      ],
+      "holdingMoves": [],
+      "recognition": "UFR: yellow on U, red on F, green on R; URB: green on U, orange on R, yellow on B; UBL: blue on U, yellow on B, orange on L; ULF: yellow on U, blue on L, red on F",
+      "precondition": "Both side blocks complete. Match the top-corner orientation AND the side-color arrangement; ignore the six remaining edges.",
+      "effect": "Restore both blocks and solve the top corners in cyclic order. The U offset, middle centers and remaining edges are checked afterward.",
+      "segments": [
+        {
+          "label": "Sequence 1",
+          "start": 0,
+          "end": 2
+        },
+        {
+          "label": "Sequence 2",
+          "start": 2,
+          "end": 6
+        },
+        {
+          "label": "Sequence 3",
+          "start": 6,
+          "end": 8
+        },
+        {
+          "label": "Finish, then check both blocks",
+          "start": 8,
+          "end": 11
+        }
+      ],
+      "sourceRefs": [
+        {
+          "url": "https://docs.google.com/document/d/1S_y2evAxJ2vMMFDtfGSOsgHuDMYR-sEjoEU_mtSD7Qc/edit",
+          "title": "Kian's CMLLs",
+          "accessed": "2026-10-23",
+          "usageNotes": "Source bold selection for the initial right-leading default; physical calibration pending. Source notation: R2' F U' F U F2 R2 U' R' F R. Parenthesized U setup is recognized from the actual state; prime half turns are equivalent half turns and lowercase r is Rw."
+        },
+        {
+          "url": "https://sites.google.com/view/kianroux/cmll",
+          "title": "Kian Roux Method Guide: CMLL and execution video",
+          "accessed": "2026-10-23",
+          "usageNotes": "Original author companion execution resource. Explanations and diagrams in CubeSteps are original."
+        }
+      ],
+      "executionProfileId": "roux-execution-v1/primitive-composition",
+      "protectedIds": [
+        "UB",
+        "BR",
+        "BL",
+        "URB",
+        "UBL",
+        "UF",
+        "FR",
+        "FL",
+        "UFR",
+        "ULF"
+      ],
+      "centerPhaseDelta": 0,
+      "edgeTransform": {
+        "permutation": [
+          3,
+          4,
+          1,
+          2,
+          0,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "orientationDelta": [
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "default": true
+    },
+    "cmll-u-4-primary": {
+      "id": "cmll-u-4-primary",
+      "caseId": "cmll-u-4",
+      "name": "U · Rows",
+      "moves": [
+        "F",
+        "R2",
+        "D",
+        "R'",
+        "U",
+        "R",
+        "D'",
+        "R2",
+        "U'",
+        "F'"
+      ],
+      "holdingMoves": [],
+      "recognition": "UFR: yellow on U, blue on F, red on R; URB: yellow on U, red on R, green on B; UBL: orange on U, blue on B, yellow on L; ULF: orange on U, yellow on L, green on F",
+      "precondition": "Both side blocks complete. Match the top-corner orientation AND the side-color arrangement; ignore the six remaining edges.",
+      "effect": "Restore both blocks and solve the top corners in cyclic order. The U offset, middle centers and remaining edges are checked afterward.",
+      "segments": [
+        {
+          "label": "Sequence 1",
+          "start": 0,
+          "end": 3
+        },
+        {
+          "label": "Sequence 2",
+          "start": 3,
+          "end": 6
+        },
+        {
+          "label": "Sequence 3",
+          "start": 6,
+          "end": 8
+        },
+        {
+          "label": "Finish, then check both blocks",
+          "start": 8,
+          "end": 10
+        }
+      ],
+      "sourceRefs": [
+        {
+          "url": "https://docs.google.com/document/d/1S_y2evAxJ2vMMFDtfGSOsgHuDMYR-sEjoEU_mtSD7Qc/edit",
+          "title": "Kian's CMLLs",
+          "accessed": "2026-10-23",
+          "usageNotes": "Source bold selection for the initial right-leading default; physical calibration pending. Source notation: (U') F R2 D R' U R D' R2' U' F'. Parenthesized U setup is recognized from the actual state; prime half turns are equivalent half turns and lowercase r is Rw."
+        },
+        {
+          "url": "https://sites.google.com/view/kianroux/cmll",
+          "title": "Kian Roux Method Guide: CMLL and execution video",
+          "accessed": "2026-10-23",
+          "usageNotes": "Original author companion execution resource. Explanations and diagrams in CubeSteps are original."
+        }
+      ],
+      "executionProfileId": "roux-execution-v1/primitive-composition",
+      "protectedIds": [
+        "UB",
+        "BR",
+        "BL",
+        "URB",
+        "UBL",
+        "UF",
+        "FR",
+        "FL",
+        "UFR",
+        "ULF"
+      ],
+      "centerPhaseDelta": 0,
+      "edgeTransform": {
+        "permutation": [
+          2,
+          0,
+          1,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "orientationDelta": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "default": true
+    },
+    "cmll-u-5-primary": {
+      "id": "cmll-u-5-primary",
+      "caseId": "cmll-u-5",
+      "name": "U · X Checkerboard",
+      "moves": [
+        "Rw",
+        "U'",
+        "Rw'",
+        "U",
+        "Rw'",
+        "D'",
+        "Rw",
+        "U'",
+        "Rw'",
+        "D",
+        "Rw"
+      ],
+      "holdingMoves": [],
+      "recognition": "UFR: blue on U, yellow on F, orange on R; URB: yellow on U, red on R, green on B; UBL: yellow on U, blue on B, red on L; ULF: green on U, orange on L, yellow on F",
+      "precondition": "Both side blocks complete. Match the top-corner orientation AND the side-color arrangement; ignore the six remaining edges.",
+      "effect": "Restore both blocks and solve the top corners in cyclic order. The U offset, middle centers and remaining edges are checked afterward.",
+      "segments": [
+        {
+          "label": "Sequence 1",
+          "start": 0,
+          "end": 3
+        },
+        {
+          "label": "Sequence 2",
+          "start": 3,
+          "end": 6
+        },
+        {
+          "label": "Sequence 3",
+          "start": 6,
+          "end": 9
+        },
+        {
+          "label": "Finish, then check both blocks",
+          "start": 9,
+          "end": 11
+        }
+      ],
+      "sourceRefs": [
+        {
+          "url": "https://docs.google.com/document/d/1S_y2evAxJ2vMMFDtfGSOsgHuDMYR-sEjoEU_mtSD7Qc/edit",
+          "title": "Kian's CMLLs",
+          "accessed": "2026-10-23",
+          "usageNotes": "Source bold selection for the initial right-leading default; physical calibration pending. Source notation: (U2) r U' r' U r' D' r U' r' D r. Parenthesized U setup is recognized from the actual state; prime half turns are equivalent half turns and lowercase r is Rw."
+        },
+        {
+          "url": "https://sites.google.com/view/kianroux/cmll",
+          "title": "Kian Roux Method Guide: CMLL and execution video",
+          "accessed": "2026-10-23",
+          "usageNotes": "Original author companion execution resource. Explanations and diagrams in CubeSteps are original."
+        }
+      ],
+      "executionProfileId": "roux-execution-v1/primitive-composition",
+      "protectedIds": [
+        "UB",
+        "BR",
+        "BL",
+        "URB",
+        "UBL",
+        "UF",
+        "FR",
+        "FL",
+        "UFR",
+        "ULF"
+      ],
+      "centerPhaseDelta": 0,
+      "edgeTransform": {
+        "permutation": [
+          1,
+          4,
+          2,
+          0,
+          3,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "orientationDelta": [
+          0,
+          0,
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "default": true
+    },
+    "cmll-u-6-primary": {
+      "id": "cmll-u-6-primary",
+      "caseId": "cmll-u-6",
+      "name": "U · Back Row",
+      "moves": [
+        "F",
+        "R",
+        "U",
+        "R'",
+        "U'",
+        "F'"
+      ],
+      "holdingMoves": [],
+      "recognition": "UFR: yellow on U, blue on F, red on R; URB: yellow on U, orange on R, blue on B; UBL: green on U, orange on B, yellow on L; ULF: green on U, yellow on L, red on F",
+      "precondition": "Both side blocks complete. Match the top-corner orientation AND the side-color arrangement; ignore the six remaining edges.",
+      "effect": "Restore both blocks and solve the top corners in cyclic order. The U offset, middle centers and remaining edges are checked afterward.",
+      "segments": [
+        {
+          "label": "Sequence 1",
+          "start": 0,
+          "end": 1
+        },
+        {
+          "label": "Sequence 2",
+          "start": 1,
+          "end": 5
+        },
+        {
+          "label": "Finish, then check both blocks",
+          "start": 5,
+          "end": 6
+        }
+      ],
+      "sourceRefs": [
+        {
+          "url": "https://docs.google.com/document/d/1S_y2evAxJ2vMMFDtfGSOsgHuDMYR-sEjoEU_mtSD7Qc/edit",
+          "title": "Kian's CMLLs",
+          "accessed": "2026-10-23",
+          "usageNotes": "Source bold selection for the initial right-leading default; physical calibration pending. Source notation: (U') F R U R' U' F'. Parenthesized U setup is recognized from the actual state; prime half turns are equivalent half turns and lowercase r is Rw."
+        },
+        {
+          "url": "https://sites.google.com/view/kianroux/cmll",
+          "title": "Kian Roux Method Guide: CMLL and execution video",
+          "accessed": "2026-10-23",
+          "usageNotes": "Original author companion execution resource. Explanations and diagrams in CubeSteps are original."
+        }
+      ],
+      "executionProfileId": "roux-execution-v1/primitive-composition",
+      "protectedIds": [
+        "UB",
+        "BR",
+        "BL",
+        "URB",
+        "UBL",
+        "UF",
+        "FR",
+        "FL",
+        "UFR",
+        "ULF"
+      ],
+      "centerPhaseDelta": 0,
+      "edgeTransform": {
+        "permutation": [
+          2,
+          0,
+          1,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "orientationDelta": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "default": true
+    },
+    "cmll-t-1-primary": {
+      "id": "cmll-t-1-primary",
+      "caseId": "cmll-t-1",
+      "name": "T · Left Bar",
+      "moves": [
+        "R",
+        "U",
+        "R'",
+        "U'",
+        "R'",
+        "F",
+        "R",
+        "F'"
+      ],
+      "holdingMoves": [],
+      "recognition": "UFR: yellow on U, red on F, green on R; URB: yellow on U, orange on R, blue on B; UBL: red on U, yellow on B, blue on L; ULF: green on U, orange on L, yellow on F",
+      "precondition": "Both side blocks complete. Match the top-corner orientation AND the side-color arrangement; ignore the six remaining edges.",
+      "effect": "Restore both blocks and solve the top corners in cyclic order. The U offset, middle centers and remaining edges are checked afterward.",
+      "segments": [
+        {
+          "label": "Sequence 1",
+          "start": 0,
+          "end": 4
+        },
+        {
+          "label": "Finish, then check both blocks",
+          "start": 4,
+          "end": 8
+        }
+      ],
+      "sourceRefs": [
+        {
+          "url": "https://docs.google.com/document/d/1S_y2evAxJ2vMMFDtfGSOsgHuDMYR-sEjoEU_mtSD7Qc/edit",
+          "title": "Kian's CMLLs",
+          "accessed": "2026-10-23",
+          "usageNotes": "Source bold selection for the initial right-leading default; physical calibration pending. Source notation: (U') R U R' U' R' F R F'. Parenthesized U setup is recognized from the actual state; prime half turns are equivalent half turns and lowercase r is Rw."
+        },
+        {
+          "url": "https://sites.google.com/view/kianroux/cmll",
+          "title": "Kian Roux Method Guide: CMLL and execution video",
+          "accessed": "2026-10-23",
+          "usageNotes": "Original author companion execution resource. Explanations and diagrams in CubeSteps are original."
+        }
+      ],
+      "executionProfileId": "roux-execution-v1/primitive-composition",
+      "protectedIds": [
+        "UB",
+        "BR",
+        "BL",
+        "URB",
+        "UBL",
+        "UF",
+        "FR",
+        "FL",
+        "UFR",
+        "ULF"
+      ],
+      "centerPhaseDelta": 0,
+      "edgeTransform": {
+        "permutation": [
+          2,
+          0,
+          1,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "orientationDelta": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "default": true
+    },
+    "cmll-t-2-primary": {
+      "id": "cmll-t-2-primary",
+      "caseId": "cmll-t-2",
+      "name": "T · Right Bar",
+      "moves": [
+        "L'",
+        "U'",
+        "L",
+        "U",
+        "L",
+        "F'",
+        "L'",
+        "F"
+      ],
+      "holdingMoves": [],
+      "recognition": "UFR: blue on U, yellow on F, orange on R; URB: red on U, green on R, yellow on B; UBL: yellow on U, green on B, orange on L; ULF: yellow on U, blue on L, red on F",
+      "precondition": "Both side blocks complete. Match the top-corner orientation AND the side-color arrangement; ignore the six remaining edges.",
+      "effect": "Restore both blocks and solve the top corners in cyclic order. The U offset, middle centers and remaining edges are checked afterward.",
+      "segments": [
+        {
+          "label": "Sequence 1",
+          "start": 0,
+          "end": 4
+        },
+        {
+          "label": "Finish, then check both blocks",
+          "start": 4,
+          "end": 8
+        }
+      ],
+      "sourceRefs": [
+        {
+          "url": "https://docs.google.com/document/d/1S_y2evAxJ2vMMFDtfGSOsgHuDMYR-sEjoEU_mtSD7Qc/edit",
+          "title": "Kian's CMLLs",
+          "accessed": "2026-10-23",
+          "usageNotes": "Source bold selection for the initial right-leading default; physical calibration pending. Source notation: (U) L' U' L U L F' L' F. Parenthesized U setup is recognized from the actual state; prime half turns are equivalent half turns and lowercase r is Rw."
+        },
+        {
+          "url": "https://sites.google.com/view/kianroux/cmll",
+          "title": "Kian Roux Method Guide: CMLL and execution video",
+          "accessed": "2026-10-23",
+          "usageNotes": "Original author companion execution resource. Explanations and diagrams in CubeSteps are original."
+        }
+      ],
+      "executionProfileId": "roux-execution-v1/primitive-composition",
+      "protectedIds": [
+        "UB",
+        "BR",
+        "BL",
+        "URB",
+        "UBL",
+        "UF",
+        "FR",
+        "FL",
+        "UFR",
+        "ULF"
+      ],
+      "centerPhaseDelta": 0,
+      "edgeTransform": {
+        "permutation": [
+          2,
+          1,
+          3,
+          0,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "orientationDelta": [
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "default": true
+    },
+    "cmll-t-3-primary": {
+      "id": "cmll-t-3-primary",
+      "caseId": "cmll-t-3",
+      "name": "T · Rows",
+      "moves": [
+        "F",
+        "R'",
+        "F",
+        "R2",
+        "U'",
+        "R'",
+        "U'",
+        "R",
+        "U",
+        "R'",
+        "F2"
+      ],
+      "holdingMoves": [],
+      "recognition": "UFR: yellow on U, green on F, orange on R; URB: blue on U, yellow on R, orange on B; UBL: blue on U, red on B, yellow on L; ULF: yellow on U, red on L, green on F",
+      "precondition": "Both side blocks complete. Match the top-corner orientation AND the side-color arrangement; ignore the six remaining edges.",
+      "effect": "Restore both blocks and solve the top corners in cyclic order. The U offset, middle centers and remaining edges are checked afterward.",
+      "segments": [
+        {
+          "label": "Sequence 1",
+          "start": 0,
+          "end": 4
+        },
+        {
+          "label": "Sequence 2",
+          "start": 4,
+          "end": 7
+        },
+        {
+          "label": "Finish, then check both blocks",
+          "start": 7,
+          "end": 11
+        }
+      ],
+      "sourceRefs": [
+        {
+          "url": "https://docs.google.com/document/d/1S_y2evAxJ2vMMFDtfGSOsgHuDMYR-sEjoEU_mtSD7Qc/edit",
+          "title": "Kian's CMLLs",
+          "accessed": "2026-10-23",
+          "usageNotes": "Source bold selection for the initial right-leading default; physical calibration pending. Source notation: F R' F R2 U' R' U' R U R' F2. Parenthesized U setup is recognized from the actual state; prime half turns are equivalent half turns and lowercase r is Rw."
+        },
+        {
+          "url": "https://sites.google.com/view/kianroux/cmll",
+          "title": "Kian Roux Method Guide: CMLL and execution video",
+          "accessed": "2026-10-23",
+          "usageNotes": "Original author companion execution resource. Explanations and diagrams in CubeSteps are original."
+        }
+      ],
+      "executionProfileId": "roux-execution-v1/primitive-composition",
+      "protectedIds": [
+        "UB",
+        "BR",
+        "BL",
+        "URB",
+        "UBL",
+        "UF",
+        "FR",
+        "FL",
+        "UFR",
+        "ULF"
+      ],
+      "centerPhaseDelta": 0,
+      "edgeTransform": {
+        "permutation": [
+          1,
+          3,
+          0,
+          2,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "orientationDelta": [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "default": true
+    },
+    "cmll-t-4-primary": {
+      "id": "cmll-t-4-primary",
+      "caseId": "cmll-t-4",
+      "name": "T · Front Row",
+      "moves": [
+        "Rw'",
+        "U",
+        "Rw",
+        "U2",
+        "R2",
+        "F",
+        "R",
+        "F'",
+        "R"
+      ],
+      "holdingMoves": [],
+      "recognition": "UFR: yellow on U, orange on F, blue on R; URB: green on U, yellow on R, red on B; UBL: blue on U, red on B, yellow on L; ULF: yellow on U, green on L, orange on F",
+      "precondition": "Both side blocks complete. Match the top-corner orientation AND the side-color arrangement; ignore the six remaining edges.",
+      "effect": "Restore both blocks and solve the top corners in cyclic order. The U offset, middle centers and remaining edges are checked afterward.",
+      "segments": [
+        {
+          "label": "Sequence 1",
+          "start": 0,
+          "end": 3
+        },
+        {
+          "label": "Sequence 2",
+          "start": 3,
+          "end": 5
+        },
+        {
+          "label": "Finish, then check both blocks",
+          "start": 5,
+          "end": 9
+        }
+      ],
+      "sourceRefs": [
+        {
+          "url": "https://docs.google.com/document/d/1S_y2evAxJ2vMMFDtfGSOsgHuDMYR-sEjoEU_mtSD7Qc/edit",
+          "title": "Kian's CMLLs",
+          "accessed": "2026-10-23",
+          "usageNotes": "Source bold selection for the initial right-leading default; physical calibration pending. Source notation: r' U r U2’ R2’ F R F' R. Parenthesized U setup is recognized from the actual state; prime half turns are equivalent half turns and lowercase r is Rw."
+        },
+        {
+          "url": "https://sites.google.com/view/kianroux/cmll",
+          "title": "Kian Roux Method Guide: CMLL and execution video",
+          "accessed": "2026-10-23",
+          "usageNotes": "Original author companion execution resource. Explanations and diagrams in CubeSteps are original."
+        }
+      ],
+      "executionProfileId": "roux-execution-v1/primitive-composition",
+      "protectedIds": [
+        "UB",
+        "BR",
+        "BL",
+        "URB",
+        "UBL",
+        "UF",
+        "FR",
+        "FL",
+        "UFR",
+        "ULF"
+      ],
+      "centerPhaseDelta": 0,
+      "edgeTransform": {
+        "permutation": [
+          2,
+          6,
+          0,
+          1,
+          4,
+          5,
+          3,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "orientationDelta": [
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "default": true
+    },
+    "cmll-t-5-primary": {
+      "id": "cmll-t-5-primary",
+      "caseId": "cmll-t-5",
+      "name": "T · Back Row",
+      "moves": [
+        "Rw'",
+        "D'",
+        "Rw",
+        "U",
+        "Rw'",
+        "D",
+        "Rw",
+        "U'",
+        "Rw",
+        "U",
+        "Rw'"
+      ],
+      "holdingMoves": [],
+      "recognition": "UFR: yellow on U, green on F, orange on R; URB: red on U, yellow on R, blue on B; UBL: red on U, green on B, yellow on L; ULF: yellow on U, orange on L, blue on F",
+      "precondition": "Both side blocks complete. Match the top-corner orientation AND the side-color arrangement; ignore the six remaining edges.",
+      "effect": "Restore both blocks and solve the top corners in cyclic order. The U offset, middle centers and remaining edges are checked afterward.",
+      "segments": [
+        {
+          "label": "Sequence 1",
+          "start": 0,
+          "end": 3
+        },
+        {
+          "label": "Sequence 2",
+          "start": 3,
+          "end": 7
+        },
+        {
+          "label": "Finish, then check both blocks",
+          "start": 7,
+          "end": 11
+        }
+      ],
+      "sourceRefs": [
+        {
+          "url": "https://docs.google.com/document/d/1S_y2evAxJ2vMMFDtfGSOsgHuDMYR-sEjoEU_mtSD7Qc/edit",
+          "title": "Kian's CMLLs",
+          "accessed": "2026-10-23",
+          "usageNotes": "Source bold selection for the initial right-leading default; physical calibration pending. Source notation: r' D' r U r' D r U' r U r'. Parenthesized U setup is recognized from the actual state; prime half turns are equivalent half turns and lowercase r is Rw."
+        },
+        {
+          "url": "https://sites.google.com/view/kianroux/cmll",
+          "title": "Kian Roux Method Guide: CMLL and execution video",
+          "accessed": "2026-10-23",
+          "usageNotes": "Original author companion execution resource. Explanations and diagrams in CubeSteps are original."
+        }
+      ],
+      "executionProfileId": "roux-execution-v1/primitive-composition",
+      "protectedIds": [
+        "UB",
+        "BR",
+        "BL",
+        "URB",
+        "UBL",
+        "UF",
+        "FR",
+        "FL",
+        "UFR",
+        "ULF"
+      ],
+      "centerPhaseDelta": 0,
+      "edgeTransform": {
+        "permutation": [
+          3,
+          0,
+          2,
+          4,
+          1,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "orientationDelta": [
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "default": true
+    },
+    "cmll-t-6-primary": {
+      "id": "cmll-t-6-primary",
+      "caseId": "cmll-t-6",
+      "name": "T · Columns",
+      "moves": [
+        "Rw2",
+        "D'",
+        "Rw",
+        "U",
+        "Rw'",
+        "D",
+        "Rw2",
+        "U'",
+        "Rw'",
+        "U'",
+        "Rw"
+      ],
+      "holdingMoves": [],
+      "recognition": "UFR: red on U, green on F, yellow on R; URB: yellow on U, blue on R, red on B; UBL: yellow on U, orange on B, blue on L; ULF: orange on U, yellow on L, green on F",
+      "precondition": "Both side blocks complete. Match the top-corner orientation AND the side-color arrangement; ignore the six remaining edges.",
+      "effect": "Restore both blocks and solve the top corners in cyclic order. The U offset, middle centers and remaining edges are checked afterward.",
+      "segments": [
+        {
+          "label": "Sequence 1",
+          "start": 0,
+          "end": 2
+        },
+        {
+          "label": "Sequence 2",
+          "start": 2,
+          "end": 6
+        },
+        {
+          "label": "Sequence 3",
+          "start": 6,
+          "end": 8
+        },
+        {
+          "label": "Finish, then check both blocks",
+          "start": 8,
+          "end": 11
+        }
+      ],
+      "sourceRefs": [
+        {
+          "url": "https://docs.google.com/document/d/1S_y2evAxJ2vMMFDtfGSOsgHuDMYR-sEjoEU_mtSD7Qc/edit",
+          "title": "Kian's CMLLs",
+          "accessed": "2026-10-23",
+          "usageNotes": "Source bold selection for the initial right-leading default; physical calibration pending. Source notation: (U2) r2’ D' r U r' D r2 U' r' U' r. Parenthesized U setup is recognized from the actual state; prime half turns are equivalent half turns and lowercase r is Rw."
+        },
+        {
+          "url": "https://sites.google.com/view/kianroux/cmll",
+          "title": "Kian Roux Method Guide: CMLL and execution video",
+          "accessed": "2026-10-23",
+          "usageNotes": "Original author companion execution resource. Explanations and diagrams in CubeSteps are original."
+        }
+      ],
+      "executionProfileId": "roux-execution-v1/primitive-composition",
+      "protectedIds": [
+        "UB",
+        "BR",
+        "BL",
+        "URB",
+        "UBL",
+        "UF",
+        "FR",
+        "FL",
+        "UFR",
+        "ULF"
+      ],
+      "centerPhaseDelta": 0,
+      "edgeTransform": {
+        "permutation": [
+          1,
+          0,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "orientationDelta": [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "default": true
+    },
+    "cmll-sune-1-primary": {
+      "id": "cmll-sune-1-primary",
+      "caseId": "cmll-sune-1",
+      "name": "Sune · Left Bar",
+      "moves": [
+        "R",
+        "U",
+        "R'",
+        "U",
+        "R",
+        "U2",
+        "R'"
+      ],
+      "holdingMoves": [],
+      "recognition": "UFR: blue on U, yellow on F, orange on R; URB: red on U, yellow on R, blue on B; UBL: green on U, yellow on B, red on L; ULF: yellow on U, green on L, orange on F",
+      "precondition": "Both side blocks complete. Match the top-corner orientation AND the side-color arrangement; ignore the six remaining edges.",
+      "effect": "Restore both blocks and solve the top corners in cyclic order. The U offset, middle centers and remaining edges are checked afterward.",
+      "segments": [
+        {
+          "label": "Sequence 1",
+          "start": 0,
+          "end": 3
+        },
+        {
+          "label": "Sequence 2",
+          "start": 3,
+          "end": 4
+        },
+        {
+          "label": "Finish, then check both blocks",
+          "start": 4,
+          "end": 7
+        }
+      ],
+      "sourceRefs": [
+        {
+          "url": "https://docs.google.com/document/d/1S_y2evAxJ2vMMFDtfGSOsgHuDMYR-sEjoEU_mtSD7Qc/edit",
+          "title": "Kian's CMLLs",
+          "accessed": "2026-10-23",
+          "usageNotes": "Source bold selection for the initial right-leading default; physical calibration pending. Source notation: (U) R U R' U R U2 R'. Parenthesized U setup is recognized from the actual state; prime half turns are equivalent half turns and lowercase r is Rw."
+        },
+        {
+          "url": "https://sites.google.com/view/kianroux/cmll",
+          "title": "Kian Roux Method Guide: CMLL and execution video",
+          "accessed": "2026-10-23",
+          "usageNotes": "Original author companion execution resource. Explanations and diagrams in CubeSteps are original."
+        }
+      ],
+      "executionProfileId": "roux-execution-v1/primitive-composition",
+      "protectedIds": [
+        "UB",
+        "BR",
+        "BL",
+        "URB",
+        "UBL",
+        "UF",
+        "FR",
+        "FL",
+        "UFR",
+        "ULF"
+      ],
+      "centerPhaseDelta": 0,
+      "edgeTransform": {
+        "permutation": [
+          0,
+          3,
+          1,
+          2,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "orientationDelta": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "default": true
+    },
+    "cmll-sune-1-alternate": {
+      "id": "cmll-sune-1-alternate",
+      "caseId": "cmll-sune-1",
+      "name": "Sune · Left Bar (alternative)",
+      "moves": [
+        "Rw",
+        "U",
+        "R'",
+        "U",
+        "R",
+        "U2",
+        "Rw'"
+      ],
+      "holdingMoves": [],
+      "recognition": "UFR: blue on U, yellow on F, orange on R; URB: red on U, yellow on R, blue on B; UBL: green on U, yellow on B, red on L; ULF: yellow on U, green on L, orange on F",
+      "precondition": "Both side blocks complete. Match the top-corner orientation AND the side-color arrangement; ignore the six remaining edges.",
+      "effect": "Restore both blocks and solve the top corners in cyclic order. The U offset, middle centers and remaining edges are checked afterward.",
+      "segments": [
+        {
+          "label": "Sequence 1",
+          "start": 0,
+          "end": 4
+        },
+        {
+          "label": "Finish, then check both blocks",
+          "start": 4,
+          "end": 7
+        }
+      ],
+      "sourceRefs": [
+        {
+          "url": "https://docs.google.com/document/d/1S_y2evAxJ2vMMFDtfGSOsgHuDMYR-sEjoEU_mtSD7Qc/edit",
+          "title": "Kian's CMLLs",
+          "accessed": "2026-10-23",
+          "usageNotes": "Verified source alternative; compare handling and remaining edges. Source notation: (U) r U R' U R U2 r'. Parenthesized U setup is recognized from the actual state; prime half turns are equivalent half turns and lowercase r is Rw."
+        },
+        {
+          "url": "https://sites.google.com/view/kianroux/cmll",
+          "title": "Kian Roux Method Guide: CMLL and execution video",
+          "accessed": "2026-10-23",
+          "usageNotes": "Original author companion execution resource. Explanations and diagrams in CubeSteps are original."
+        }
+      ],
+      "executionProfileId": "roux-execution-v1/primitive-composition",
+      "protectedIds": [
+        "UB",
+        "BR",
+        "BL",
+        "URB",
+        "UBL",
+        "UF",
+        "FR",
+        "FL",
+        "UFR",
+        "ULF"
+      ],
+      "centerPhaseDelta": 0,
+      "edgeTransform": {
+        "permutation": [
+          1,
+          3,
+          2,
+          0,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "orientationDelta": [
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "default": false
+    },
+    "cmll-sune-2-primary": {
+      "id": "cmll-sune-2-primary",
+      "caseId": "cmll-sune-2",
+      "name": "Sune · X Checkerboard",
+      "moves": [
+        "L'",
+        "U2",
+        "L",
+        "U2",
+        "L",
+        "F'",
+        "L'",
+        "F"
+      ],
+      "holdingMoves": [],
+      "recognition": "UFR: orange on U, yellow on F, green on R; URB: red on U, yellow on R, blue on B; UBL: blue on U, yellow on B, orange on L; ULF: yellow on U, red on L, green on F",
+      "precondition": "Both side blocks complete. Match the top-corner orientation AND the side-color arrangement; ignore the six remaining edges.",
+      "effect": "Restore both blocks and solve the top corners in cyclic order. The U offset, middle centers and remaining edges are checked afterward.",
+      "segments": [
+        {
+          "label": "Sequence 1",
+          "start": 0,
+          "end": 4
+        },
+        {
+          "label": "Finish, then check both blocks",
+          "start": 4,
+          "end": 8
+        }
+      ],
+      "sourceRefs": [
+        {
+          "url": "https://docs.google.com/document/d/1S_y2evAxJ2vMMFDtfGSOsgHuDMYR-sEjoEU_mtSD7Qc/edit",
+          "title": "Kian's CMLLs",
+          "accessed": "2026-10-23",
+          "usageNotes": "Source bold selection for the initial right-leading default; physical calibration pending. Source notation: (U) L' U2 L U2’ L F' L' F. Parenthesized U setup is recognized from the actual state; prime half turns are equivalent half turns and lowercase r is Rw."
+        },
+        {
+          "url": "https://sites.google.com/view/kianroux/cmll",
+          "title": "Kian Roux Method Guide: CMLL and execution video",
+          "accessed": "2026-10-23",
+          "usageNotes": "Original author companion execution resource. Explanations and diagrams in CubeSteps are original."
+        }
+      ],
+      "executionProfileId": "roux-execution-v1/primitive-composition",
+      "protectedIds": [
+        "UB",
+        "BR",
+        "BL",
+        "URB",
+        "UBL",
+        "UF",
+        "FR",
+        "FL",
+        "UFR",
+        "ULF"
+      ],
+      "centerPhaseDelta": 0,
+      "edgeTransform": {
+        "permutation": [
+          1,
+          3,
+          2,
+          0,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "orientationDelta": [
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "default": true
+    },
+    "cmll-sune-3-primary": {
+      "id": "cmll-sune-3-primary",
+      "caseId": "cmll-sune-3",
+      "name": "Sune · Forward Slash",
+      "moves": [
+        "F",
+        "R'",
+        "F'",
+        "R",
+        "U2",
+        "R",
+        "U2",
+        "R'"
+      ],
+      "holdingMoves": [],
+      "recognition": "UFR: blue on U, yellow on F, orange on R; URB: orange on U, yellow on R, green on B; UBL: red on U, yellow on B, blue on L; ULF: yellow on U, red on L, green on F",
+      "precondition": "Both side blocks complete. Match the top-corner orientation AND the side-color arrangement; ignore the six remaining edges.",
+      "effect": "Restore both blocks and solve the top corners in cyclic order. The U offset, middle centers and remaining edges are checked afterward.",
+      "segments": [
+        {
+          "label": "Sequence 1",
+          "start": 0,
+          "end": 4
+        },
+        {
+          "label": "Finish, then check both blocks",
+          "start": 4,
+          "end": 8
+        }
+      ],
+      "sourceRefs": [
+        {
+          "url": "https://docs.google.com/document/d/1S_y2evAxJ2vMMFDtfGSOsgHuDMYR-sEjoEU_mtSD7Qc/edit",
+          "title": "Kian's CMLLs",
+          "accessed": "2026-10-23",
+          "usageNotes": "Source bold selection for the initial right-leading default; physical calibration pending. Source notation: (U) F R' F' R U2 R U2’ R'. Parenthesized U setup is recognized from the actual state; prime half turns are equivalent half turns and lowercase r is Rw."
+        },
+        {
+          "url": "https://sites.google.com/view/kianroux/cmll",
+          "title": "Kian Roux Method Guide: CMLL and execution video",
+          "accessed": "2026-10-23",
+          "usageNotes": "Original author companion execution resource. Explanations and diagrams in CubeSteps are original."
+        }
+      ],
+      "executionProfileId": "roux-execution-v1/primitive-composition",
+      "protectedIds": [
+        "UB",
+        "BR",
+        "BL",
+        "URB",
+        "UBL",
+        "UF",
+        "FR",
+        "FL",
+        "UFR",
+        "ULF"
+      ],
+      "centerPhaseDelta": 0,
+      "edgeTransform": {
+        "permutation": [
+          1,
+          3,
+          2,
+          0,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "orientationDelta": [
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "default": true
+    },
+    "cmll-sune-4-primary": {
+      "id": "cmll-sune-4-primary",
+      "caseId": "cmll-sune-4",
+      "name": "Sune · Columns",
+      "moves": [
+        "R",
+        "U",
+        "R'",
+        "U'",
+        "R'",
+        "F",
+        "R",
+        "F'",
+        "R",
+        "U",
+        "R'",
+        "U",
+        "R",
+        "U2",
+        "R'"
+      ],
+      "holdingMoves": [],
+      "recognition": "UFR: blue on U, yellow on F, orange on R; URB: green on U, yellow on R, red on B; UBL: orange on U, yellow on B, green on L; ULF: yellow on U, blue on L, red on F",
+      "precondition": "Both side blocks complete. Match the top-corner orientation AND the side-color arrangement; ignore the six remaining edges.",
+      "effect": "Restore both blocks and solve the top corners in cyclic order. The U offset, middle centers and remaining edges are checked afterward.",
+      "segments": [
+        {
+          "label": "Sequence 1",
+          "start": 0,
+          "end": 4
+        },
+        {
+          "label": "Sequence 2",
+          "start": 4,
+          "end": 8
+        },
+        {
+          "label": "Sequence 3",
+          "start": 8,
+          "end": 11
+        },
+        {
+          "label": "Finish, then check both blocks",
+          "start": 11,
+          "end": 15
+        }
+      ],
+      "sourceRefs": [
+        {
+          "url": "https://docs.google.com/document/d/1S_y2evAxJ2vMMFDtfGSOsgHuDMYR-sEjoEU_mtSD7Qc/edit",
+          "title": "Kian's CMLLs",
+          "accessed": "2026-10-23",
+          "usageNotes": "Source bold selection for the initial right-leading default; physical calibration pending. Source notation: (U) R U R' U' R' F R F' R U R' U R U2’ R'. Parenthesized U setup is recognized from the actual state; prime half turns are equivalent half turns and lowercase r is Rw."
+        },
+        {
+          "url": "https://sites.google.com/view/kianroux/cmll",
+          "title": "Kian Roux Method Guide: CMLL and execution video",
+          "accessed": "2026-10-23",
+          "usageNotes": "Original author companion execution resource. Explanations and diagrams in CubeSteps are original."
+        }
+      ],
+      "executionProfileId": "roux-execution-v1/primitive-composition",
+      "protectedIds": [
+        "UB",
+        "BR",
+        "BL",
+        "URB",
+        "UBL",
+        "UF",
+        "FR",
+        "FL",
+        "UFR",
+        "ULF"
+      ],
+      "centerPhaseDelta": 0,
+      "edgeTransform": {
+        "permutation": [
+          2,
+          3,
+          0,
+          1,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "orientationDelta": [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "default": true
+    },
+    "cmll-sune-5-primary": {
+      "id": "cmll-sune-5-primary",
+      "caseId": "cmll-sune-5",
+      "name": "Sune · Right Bar",
+      "moves": [
+        "R",
+        "U",
+        "R'",
+        "U",
+        "R'",
+        "F",
+        "R",
+        "F'",
+        "R",
+        "U2",
+        "R'"
+      ],
+      "holdingMoves": [],
+      "recognition": "UFR: red on U, yellow on F, blue on R; URB: yellow on U, orange on R, blue on B; UBL: orange on U, yellow on B, green on L; ULF: green on U, yellow on L, red on F",
+      "precondition": "Both side blocks complete. Match the top-corner orientation AND the side-color arrangement; ignore the six remaining edges.",
+      "effect": "Restore both blocks and solve the top corners in cyclic order. The U offset, middle centers and remaining edges are checked afterward.",
+      "segments": [
+        {
+          "label": "Sequence 1",
+          "start": 0,
+          "end": 4
+        },
+        {
+          "label": "Sequence 2",
+          "start": 4,
+          "end": 8
+        },
+        {
+          "label": "Finish, then check both blocks",
+          "start": 8,
+          "end": 11
+        }
+      ],
+      "sourceRefs": [
+        {
+          "url": "https://docs.google.com/document/d/1S_y2evAxJ2vMMFDtfGSOsgHuDMYR-sEjoEU_mtSD7Qc/edit",
+          "title": "Kian's CMLLs",
+          "accessed": "2026-10-23",
+          "usageNotes": "Source bold selection for the initial right-leading default; physical calibration pending. Source notation: (U') R U R' U R' F R F' R U2’ R'. Parenthesized U setup is recognized from the actual state; prime half turns are equivalent half turns and lowercase r is Rw."
+        },
+        {
+          "url": "https://sites.google.com/view/kianroux/cmll",
+          "title": "Kian Roux Method Guide: CMLL and execution video",
+          "accessed": "2026-10-23",
+          "usageNotes": "Original author companion execution resource. Explanations and diagrams in CubeSteps are original."
+        }
+      ],
+      "executionProfileId": "roux-execution-v1/primitive-composition",
+      "protectedIds": [
+        "UB",
+        "BR",
+        "BL",
+        "URB",
+        "UBL",
+        "UF",
+        "FR",
+        "FL",
+        "UFR",
+        "ULF"
+      ],
+      "centerPhaseDelta": 0,
+      "edgeTransform": {
+        "permutation": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "orientationDelta": [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "default": true
+    },
+    "cmll-sune-6-primary": {
+      "id": "cmll-sune-6-primary",
+      "caseId": "cmll-sune-6",
+      "name": "Sune · Back Slash",
+      "moves": [
+        "R",
+        "U'",
+        "L'",
+        "U",
+        "R'",
+        "U'",
+        "L"
+      ],
+      "holdingMoves": [],
+      "recognition": "UFR: blue on U, yellow on F, orange on R; URB: red on U, yellow on R, blue on B; UBL: orange on U, yellow on B, green on L; ULF: yellow on U, red on L, green on F",
+      "precondition": "Both side blocks complete. Match the top-corner orientation AND the side-color arrangement; ignore the six remaining edges.",
+      "effect": "Restore both blocks and solve the top corners in cyclic order. The U offset, middle centers and remaining edges are checked afterward.",
+      "segments": [
+        {
+          "label": "Sequence 1",
+          "start": 0,
+          "end": 3
+        },
+        {
+          "label": "Sequence 2",
+          "start": 3,
+          "end": 4
+        },
+        {
+          "label": "Finish, then check both blocks",
+          "start": 4,
+          "end": 7
+        }
+      ],
+      "sourceRefs": [
+        {
+          "url": "https://docs.google.com/document/d/1S_y2evAxJ2vMMFDtfGSOsgHuDMYR-sEjoEU_mtSD7Qc/edit",
+          "title": "Kian's CMLLs",
+          "accessed": "2026-10-23",
+          "usageNotes": "Source bold selection for the initial right-leading default; physical calibration pending. Source notation: (U) R U' L' U R' U' L. Parenthesized U setup is recognized from the actual state; prime half turns are equivalent half turns and lowercase r is Rw."
+        },
+        {
+          "url": "https://sites.google.com/view/kianroux/cmll",
+          "title": "Kian Roux Method Guide: CMLL and execution video",
+          "accessed": "2026-10-23",
+          "usageNotes": "Original author companion execution resource. Explanations and diagrams in CubeSteps are original."
+        }
+      ],
+      "executionProfileId": "roux-execution-v1/primitive-composition",
+      "protectedIds": [
+        "UB",
+        "BR",
+        "BL",
+        "URB",
+        "UBL",
+        "UF",
+        "FR",
+        "FL",
+        "UFR",
+        "ULF"
+      ],
+      "centerPhaseDelta": 0,
+      "edgeTransform": {
+        "permutation": [
+          3,
+          0,
+          1,
+          2,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "orientationDelta": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "default": true
+    },
+    "cmll-anti-sune-1-primary": {
+      "id": "cmll-anti-sune-1-primary",
+      "caseId": "cmll-anti-sune-1",
+      "name": "Anti-Sune · Right Bar",
+      "moves": [
+        "R'",
+        "U'",
+        "R",
+        "U'",
+        "R'",
+        "U2",
+        "R"
+      ],
+      "holdingMoves": [],
+      "recognition": "UFR: orange on U, blue on F, yellow on R; URB: blue on U, red on R, yellow on B; UBL: yellow on U, red on B, green on L; ULF: green on U, orange on L, yellow on F",
+      "precondition": "Both side blocks complete. Match the top-corner orientation AND the side-color arrangement; ignore the six remaining edges.",
+      "effect": "Restore both blocks and solve the top corners in cyclic order. The U offset, middle centers and remaining edges are checked afterward.",
+      "segments": [
+        {
+          "label": "Sequence 1",
+          "start": 0,
+          "end": 3
+        },
+        {
+          "label": "Sequence 2",
+          "start": 3,
+          "end": 4
+        },
+        {
+          "label": "Finish, then check both blocks",
+          "start": 4,
+          "end": 7
+        }
+      ],
+      "sourceRefs": [
+        {
+          "url": "https://docs.google.com/document/d/1S_y2evAxJ2vMMFDtfGSOsgHuDMYR-sEjoEU_mtSD7Qc/edit",
+          "title": "Kian's CMLLs",
+          "accessed": "2026-10-23",
+          "usageNotes": "Source bold selection for the initial right-leading default; physical calibration pending. Source notation: (U) R' U' R U' R' U2’ R. Parenthesized U setup is recognized from the actual state; prime half turns are equivalent half turns and lowercase r is Rw."
+        },
+        {
+          "url": "https://sites.google.com/view/kianroux/cmll",
+          "title": "Kian Roux Method Guide: CMLL and execution video",
+          "accessed": "2026-10-23",
+          "usageNotes": "Original author companion execution resource. Explanations and diagrams in CubeSteps are original."
+        }
+      ],
+      "executionProfileId": "roux-execution-v1/primitive-composition",
+      "protectedIds": [
+        "UB",
+        "BR",
+        "BL",
+        "URB",
+        "UBL",
+        "UF",
+        "FR",
+        "FL",
+        "UFR",
+        "ULF"
+      ],
+      "centerPhaseDelta": 0,
+      "edgeTransform": {
+        "permutation": [
+          1,
+          3,
+          2,
+          0,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "orientationDelta": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "default": true
+    },
+    "cmll-anti-sune-2-primary": {
+      "id": "cmll-anti-sune-2-primary",
+      "caseId": "cmll-anti-sune-2",
+      "name": "Anti-Sune · Columns",
+      "moves": [
+        "R2",
+        "D",
+        "R'",
+        "U",
+        "R",
+        "D'",
+        "R'",
+        "U",
+        "R'",
+        "U'",
+        "R",
+        "U'",
+        "R'"
+      ],
+      "holdingMoves": [],
+      "recognition": "UFR: yellow on U, red on F, green on R; URB: orange on U, blue on R, yellow on B; UBL: blue on U, red on B, yellow on L; ULF: green on U, orange on L, yellow on F",
+      "precondition": "Both side blocks complete. Match the top-corner orientation AND the side-color arrangement; ignore the six remaining edges.",
+      "effect": "Restore both blocks and solve the top corners in cyclic order. The U offset, middle centers and remaining edges are checked afterward.",
+      "segments": [
+        {
+          "label": "Sequence 1",
+          "start": 0,
+          "end": 2
+        },
+        {
+          "label": "Sequence 2",
+          "start": 2,
+          "end": 6
+        },
+        {
+          "label": "Sequence 3",
+          "start": 6,
+          "end": 9
+        },
+        {
+          "label": "Finish, then check both blocks",
+          "start": 9,
+          "end": 13
+        }
+      ],
+      "sourceRefs": [
+        {
+          "url": "https://docs.google.com/document/d/1S_y2evAxJ2vMMFDtfGSOsgHuDMYR-sEjoEU_mtSD7Qc/edit",
+          "title": "Kian's CMLLs",
+          "accessed": "2026-10-23",
+          "usageNotes": "Source bold selection for the initial right-leading default; physical calibration pending. Source notation: (U') R2 D R' U R D' R' U R' U' R U' R'. Parenthesized U setup is recognized from the actual state; prime half turns are equivalent half turns and lowercase r is Rw."
+        },
+        {
+          "url": "https://sites.google.com/view/kianroux/cmll",
+          "title": "Kian Roux Method Guide: CMLL and execution video",
+          "accessed": "2026-10-23",
+          "usageNotes": "Original author companion execution resource. Explanations and diagrams in CubeSteps are original."
+        }
+      ],
+      "executionProfileId": "roux-execution-v1/primitive-composition",
+      "protectedIds": [
+        "UB",
+        "BR",
+        "BL",
+        "URB",
+        "UBL",
+        "UF",
+        "FR",
+        "FL",
+        "UFR",
+        "ULF"
+      ],
+      "centerPhaseDelta": 0,
+      "edgeTransform": {
+        "permutation": [
+          0,
+          2,
+          3,
+          1,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "orientationDelta": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "default": true
+    },
+    "cmll-anti-sune-3-primary": {
+      "id": "cmll-anti-sune-3-primary",
+      "caseId": "cmll-anti-sune-3",
+      "name": "Anti-Sune · Back Slash",
+      "moves": [
+        "F'",
+        "L",
+        "F",
+        "L'",
+        "U2",
+        "L'",
+        "U2",
+        "L"
+      ],
+      "holdingMoves": [],
+      "recognition": "UFR: yellow on U, blue on F, red on R; URB: red on U, green on R, yellow on B; UBL: orange on U, blue on B, yellow on L; ULF: green on U, orange on L, yellow on F",
+      "precondition": "Both side blocks complete. Match the top-corner orientation AND the side-color arrangement; ignore the six remaining edges.",
+      "effect": "Restore both blocks and solve the top corners in cyclic order. The U offset, middle centers and remaining edges are checked afterward.",
+      "segments": [
+        {
+          "label": "Sequence 1",
+          "start": 0,
+          "end": 4
+        },
+        {
+          "label": "Finish, then check both blocks",
+          "start": 4,
+          "end": 8
+        }
+      ],
+      "sourceRefs": [
+        {
+          "url": "https://docs.google.com/document/d/1S_y2evAxJ2vMMFDtfGSOsgHuDMYR-sEjoEU_mtSD7Qc/edit",
+          "title": "Kian's CMLLs",
+          "accessed": "2026-10-23",
+          "usageNotes": "Source bold selection for the initial right-leading default; physical calibration pending. Source notation: (U') F' L F L' U2’ L' U2 L. Parenthesized U setup is recognized from the actual state; prime half turns are equivalent half turns and lowercase r is Rw."
+        },
+        {
+          "url": "https://sites.google.com/view/kianroux/cmll",
+          "title": "Kian Roux Method Guide: CMLL and execution video",
+          "accessed": "2026-10-23",
+          "usageNotes": "Original author companion execution resource. Explanations and diagrams in CubeSteps are original."
+        }
+      ],
+      "executionProfileId": "roux-execution-v1/primitive-composition",
+      "protectedIds": [
+        "UB",
+        "BR",
+        "BL",
+        "URB",
+        "UBL",
+        "UF",
+        "FR",
+        "FL",
+        "UFR",
+        "ULF"
+      ],
+      "centerPhaseDelta": 0,
+      "edgeTransform": {
+        "permutation": [
+          3,
+          0,
+          2,
+          1,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "orientationDelta": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "default": true
+    },
+    "cmll-anti-sune-4-primary": {
+      "id": "cmll-anti-sune-4-primary",
+      "caseId": "cmll-anti-sune-4",
+      "name": "Anti-Sune · X Checkerboard",
+      "moves": [
+        "R",
+        "U2",
+        "R'",
+        "U2",
+        "R'",
+        "F",
+        "R",
+        "F'"
+      ],
+      "holdingMoves": [],
+      "recognition": "UFR: yellow on U, blue on F, red on R; URB: green on U, orange on R, yellow on B; UBL: red on U, green on B, yellow on L; ULF: orange on U, blue on L, yellow on F",
+      "precondition": "Both side blocks complete. Match the top-corner orientation AND the side-color arrangement; ignore the six remaining edges.",
+      "effect": "Restore both blocks and solve the top corners in cyclic order. The U offset, middle centers and remaining edges are checked afterward.",
+      "segments": [
+        {
+          "label": "Sequence 1",
+          "start": 0,
+          "end": 4
+        },
+        {
+          "label": "Finish, then check both blocks",
+          "start": 4,
+          "end": 8
+        }
+      ],
+      "sourceRefs": [
+        {
+          "url": "https://docs.google.com/document/d/1S_y2evAxJ2vMMFDtfGSOsgHuDMYR-sEjoEU_mtSD7Qc/edit",
+          "title": "Kian's CMLLs",
+          "accessed": "2026-10-23",
+          "usageNotes": "Source bold selection for the initial right-leading default; physical calibration pending. Source notation: (U') R U2’ R' U2 R' F R F'. Parenthesized U setup is recognized from the actual state; prime half turns are equivalent half turns and lowercase r is Rw."
+        },
+        {
+          "url": "https://sites.google.com/view/kianroux/cmll",
+          "title": "Kian Roux Method Guide: CMLL and execution video",
+          "accessed": "2026-10-23",
+          "usageNotes": "Original author companion execution resource. Explanations and diagrams in CubeSteps are original."
+        }
+      ],
+      "executionProfileId": "roux-execution-v1/primitive-composition",
+      "protectedIds": [
+        "UB",
+        "BR",
+        "BL",
+        "URB",
+        "UBL",
+        "UF",
+        "FR",
+        "FL",
+        "UFR",
+        "ULF"
+      ],
+      "centerPhaseDelta": 0,
+      "edgeTransform": {
+        "permutation": [
+          3,
+          0,
+          2,
+          1,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "orientationDelta": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "default": true
+    },
+    "cmll-anti-sune-5-primary": {
+      "id": "cmll-anti-sune-5-primary",
+      "caseId": "cmll-anti-sune-5",
+      "name": "Anti-Sune · Forward Slash",
+      "moves": [
+        "L'",
+        "U",
+        "R",
+        "U'",
+        "L",
+        "U",
+        "R'"
+      ],
+      "holdingMoves": [],
+      "recognition": "UFR: yellow on U, blue on F, red on R; URB: orange on U, blue on R, yellow on B; UBL: red on U, green on B, yellow on L; ULF: green on U, orange on L, yellow on F",
+      "precondition": "Both side blocks complete. Match the top-corner orientation AND the side-color arrangement; ignore the six remaining edges.",
+      "effect": "Restore both blocks and solve the top corners in cyclic order. The U offset, middle centers and remaining edges are checked afterward.",
+      "segments": [
+        {
+          "label": "Sequence 1",
+          "start": 0,
+          "end": 3
+        },
+        {
+          "label": "Sequence 2",
+          "start": 3,
+          "end": 4
+        },
+        {
+          "label": "Finish, then check both blocks",
+          "start": 4,
+          "end": 7
+        }
+      ],
+      "sourceRefs": [
+        {
+          "url": "https://docs.google.com/document/d/1S_y2evAxJ2vMMFDtfGSOsgHuDMYR-sEjoEU_mtSD7Qc/edit",
+          "title": "Kian's CMLLs",
+          "accessed": "2026-10-23",
+          "usageNotes": "Source bold selection for the initial right-leading default; physical calibration pending. Source notation: (U') L' U R U' L U R'. Parenthesized U setup is recognized from the actual state; prime half turns are equivalent half turns and lowercase r is Rw."
+        },
+        {
+          "url": "https://sites.google.com/view/kianroux/cmll",
+          "title": "Kian Roux Method Guide: CMLL and execution video",
+          "accessed": "2026-10-23",
+          "usageNotes": "Original author companion execution resource. Explanations and diagrams in CubeSteps are original."
+        }
+      ],
+      "executionProfileId": "roux-execution-v1/primitive-composition",
+      "protectedIds": [
+        "UB",
+        "BR",
+        "BL",
+        "URB",
+        "UBL",
+        "UF",
+        "FR",
+        "FL",
+        "UFR",
+        "ULF"
+      ],
+      "centerPhaseDelta": 0,
+      "edgeTransform": {
+        "permutation": [
+          1,
+          2,
+          3,
+          0,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "orientationDelta": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "default": true
+    },
+    "cmll-anti-sune-6-primary": {
+      "id": "cmll-anti-sune-6-primary",
+      "caseId": "cmll-anti-sune-6",
+      "name": "Anti-Sune · Left Bar",
+      "moves": [
+        "R'",
+        "U'",
+        "R",
+        "U'",
+        "R'",
+        "U",
+        "R'",
+        "F",
+        "R",
+        "F'",
+        "U",
+        "R"
+      ],
+      "holdingMoves": [],
+      "recognition": "UFR: green on U, orange on F, yellow on R; URB: red on U, green on R, yellow on B; UBL: blue on U, red on B, yellow on L; ULF: yellow on U, orange on L, blue on F",
+      "precondition": "Both side blocks complete. Match the top-corner orientation AND the side-color arrangement; ignore the six remaining edges.",
+      "effect": "Restore both blocks and solve the top corners in cyclic order. The U offset, middle centers and remaining edges are checked afterward.",
+      "segments": [
+        {
+          "label": "Sequence 1",
+          "start": 0,
+          "end": 4
+        },
+        {
+          "label": "Sequence 2",
+          "start": 4,
+          "end": 7
+        },
+        {
+          "label": "Sequence 3",
+          "start": 7,
+          "end": 10
+        },
+        {
+          "label": "Finish, then check both blocks",
+          "start": 10,
+          "end": 12
+        }
+      ],
+      "sourceRefs": [
+        {
+          "url": "https://docs.google.com/document/d/1S_y2evAxJ2vMMFDtfGSOsgHuDMYR-sEjoEU_mtSD7Qc/edit",
+          "title": "Kian's CMLLs",
+          "accessed": "2026-10-23",
+          "usageNotes": "Source bold selection for the initial right-leading default; physical calibration pending. Source notation: R' U' R U' R' U R' F R F' U R. Parenthesized U setup is recognized from the actual state; prime half turns are equivalent half turns and lowercase r is Rw."
+        },
+        {
+          "url": "https://sites.google.com/view/kianroux/cmll",
+          "title": "Kian Roux Method Guide: CMLL and execution video",
+          "accessed": "2026-10-23",
+          "usageNotes": "Original author companion execution resource. Explanations and diagrams in CubeSteps are original."
+        }
+      ],
+      "executionProfileId": "roux-execution-v1/primitive-composition",
+      "protectedIds": [
+        "UB",
+        "BR",
+        "BL",
+        "URB",
+        "UBL",
+        "UF",
+        "FR",
+        "FL",
+        "UFR",
+        "ULF"
+      ],
+      "centerPhaseDelta": 0,
+      "edgeTransform": {
+        "permutation": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "orientationDelta": [
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "default": true
+    },
+    "cmll-l-1-primary": {
+      "id": "cmll-l-1-primary",
+      "caseId": "cmll-l-1",
+      "name": "L · Mirror",
+      "moves": [
+        "F",
+        "R",
+        "U'",
+        "R'",
+        "U'",
+        "R",
+        "U",
+        "R'",
+        "F'"
+      ],
+      "holdingMoves": [],
+      "recognition": "UFR: yellow on U, green on F, orange on R; URB: red on U, yellow on R, blue on B; UBL: yellow on U, red on B, green on L; ULF: orange on U, blue on L, yellow on F",
+      "precondition": "Both side blocks complete. Match the top-corner orientation AND the side-color arrangement; ignore the six remaining edges.",
+      "effect": "Restore both blocks and solve the top corners in cyclic order. The U offset, middle centers and remaining edges are checked afterward.",
+      "segments": [
+        {
+          "label": "Sequence 1",
+          "start": 0,
+          "end": 1
+        },
+        {
+          "label": "Sequence 2",
+          "start": 1,
+          "end": 5
+        },
+        {
+          "label": "Sequence 3",
+          "start": 5,
+          "end": 8
+        },
+        {
+          "label": "Finish, then check both blocks",
+          "start": 8,
+          "end": 9
+        }
+      ],
+      "sourceRefs": [
+        {
+          "url": "https://docs.google.com/document/d/1S_y2evAxJ2vMMFDtfGSOsgHuDMYR-sEjoEU_mtSD7Qc/edit",
+          "title": "Kian's CMLLs",
+          "accessed": "2026-10-23",
+          "usageNotes": "Source bold selection for the initial right-leading default; physical calibration pending. Source notation: (U2) F R U' R' U' R U R' F'. Parenthesized U setup is recognized from the actual state; prime half turns are equivalent half turns and lowercase r is Rw."
+        },
+        {
+          "url": "https://sites.google.com/view/kianroux/cmll",
+          "title": "Kian Roux Method Guide: CMLL and execution video",
+          "accessed": "2026-10-23",
+          "usageNotes": "Original author companion execution resource. Explanations and diagrams in CubeSteps are original."
+        }
+      ],
+      "executionProfileId": "roux-execution-v1/primitive-composition",
+      "protectedIds": [
+        "UB",
+        "BR",
+        "BL",
+        "URB",
+        "UBL",
+        "UF",
+        "FR",
+        "FL",
+        "UFR",
+        "ULF"
+      ],
+      "centerPhaseDelta": 0,
+      "edgeTransform": {
+        "permutation": [
+          1,
+          3,
+          0,
+          2,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "orientationDelta": [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "default": true
+    },
+    "cmll-l-2-primary": {
+      "id": "cmll-l-2-primary",
+      "caseId": "cmll-l-2",
+      "name": "L · Inverse",
+      "moves": [
+        "F",
+        "R'",
+        "F'",
+        "R",
+        "U",
+        "R",
+        "U'",
+        "R'"
+      ],
+      "holdingMoves": [],
+      "recognition": "UFR: yellow on U, red on F, green on R; URB: red on U, yellow on R, blue on B; UBL: yellow on U, green on B, orange on L; ULF: orange on U, blue on L, yellow on F",
+      "precondition": "Both side blocks complete. Match the top-corner orientation AND the side-color arrangement; ignore the six remaining edges.",
+      "effect": "Restore both blocks and solve the top corners in cyclic order. The U offset, middle centers and remaining edges are checked afterward.",
+      "segments": [
+        {
+          "label": "Sequence 1",
+          "start": 0,
+          "end": 4
+        },
+        {
+          "label": "Finish, then check both blocks",
+          "start": 4,
+          "end": 8
+        }
+      ],
+      "sourceRefs": [
+        {
+          "url": "https://docs.google.com/document/d/1S_y2evAxJ2vMMFDtfGSOsgHuDMYR-sEjoEU_mtSD7Qc/edit",
+          "title": "Kian's CMLLs",
+          "accessed": "2026-10-23",
+          "usageNotes": "Source bold selection for the initial right-leading default; physical calibration pending. Source notation: (U2) F R' F' R U R U' R'. Parenthesized U setup is recognized from the actual state; prime half turns are equivalent half turns and lowercase r is Rw."
+        },
+        {
+          "url": "https://sites.google.com/view/kianroux/cmll",
+          "title": "Kian Roux Method Guide: CMLL and execution video",
+          "accessed": "2026-10-23",
+          "usageNotes": "Original author companion execution resource. Explanations and diagrams in CubeSteps are original."
+        }
+      ],
+      "executionProfileId": "roux-execution-v1/primitive-composition",
+      "protectedIds": [
+        "UB",
+        "BR",
+        "BL",
+        "URB",
+        "UBL",
+        "UF",
+        "FR",
+        "FL",
+        "UFR",
+        "ULF"
+      ],
+      "centerPhaseDelta": 0,
+      "edgeTransform": {
+        "permutation": [
+          1,
+          2,
+          0,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "orientationDelta": [
+          1,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "default": true
+    },
+    "cmll-l-3-primary": {
+      "id": "cmll-l-3-primary",
+      "caseId": "cmll-l-3",
+      "name": "L · Pure",
+      "moves": [
+        "R",
+        "U2",
+        "R'",
+        "U'",
+        "R",
+        "U",
+        "R'",
+        "U'",
+        "R",
+        "U",
+        "R'",
+        "U'",
+        "R",
+        "U'",
+        "R'"
+      ],
+      "holdingMoves": [],
+      "recognition": "UFR: yellow on U, orange on F, blue on R; URB: blue on U, red on R, yellow on B; UBL: yellow on U, red on B, green on L; ULF: orange on U, yellow on L, green on F",
+      "precondition": "Both side blocks complete. Match the top-corner orientation AND the side-color arrangement; ignore the six remaining edges.",
+      "effect": "Restore both blocks and solve the top corners in cyclic order. The U offset, middle centers and remaining edges are checked afterward.",
+      "segments": [
+        {
+          "label": "Sequence 1",
+          "start": 0,
+          "end": 4
+        },
+        {
+          "label": "Sequence 2",
+          "start": 4,
+          "end": 8
+        },
+        {
+          "label": "Sequence 3",
+          "start": 8,
+          "end": 12
+        },
+        {
+          "label": "Finish, then check both blocks",
+          "start": 12,
+          "end": 15
+        }
+      ],
+      "sourceRefs": [
+        {
+          "url": "https://docs.google.com/document/d/1S_y2evAxJ2vMMFDtfGSOsgHuDMYR-sEjoEU_mtSD7Qc/edit",
+          "title": "Kian's CMLLs",
+          "accessed": "2026-10-23",
+          "usageNotes": "Source bold selection for the initial right-leading default; physical calibration pending. Source notation: R U2 R’ U’ R U R’ U’ R U R’ U’ R U’ R’. Parenthesized U setup is recognized from the actual state; prime half turns are equivalent half turns and lowercase r is Rw."
+        },
+        {
+          "url": "https://sites.google.com/view/kianroux/cmll",
+          "title": "Kian Roux Method Guide: CMLL and execution video",
+          "accessed": "2026-10-23",
+          "usageNotes": "Original author companion execution resource. Explanations and diagrams in CubeSteps are original."
+        }
+      ],
+      "executionProfileId": "roux-execution-v1/primitive-composition",
+      "protectedIds": [
+        "UB",
+        "BR",
+        "BL",
+        "URB",
+        "UBL",
+        "UF",
+        "FR",
+        "FL",
+        "UFR",
+        "ULF"
+      ],
+      "centerPhaseDelta": 0,
+      "edgeTransform": {
+        "permutation": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "orientationDelta": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "default": true
+    },
+    "cmll-l-4-primary": {
+      "id": "cmll-l-4-primary",
+      "caseId": "cmll-l-4",
+      "name": "L · Front Commutator",
+      "moves": [
+        "R",
+        "U2",
+        "R",
+        "D",
+        "R'",
+        "U2",
+        "R",
+        "D'",
+        "R2"
+      ],
+      "holdingMoves": [],
+      "recognition": "UFR: yellow on U, green on F, orange on R; URB: red on U, yellow on R, blue on B; UBL: yellow on U, orange on B, blue on L; ULF: red on U, green on L, yellow on F",
+      "precondition": "Both side blocks complete. Match the top-corner orientation AND the side-color arrangement; ignore the six remaining edges.",
+      "effect": "Restore both blocks and solve the top corners in cyclic order. The U offset, middle centers and remaining edges are checked afterward.",
+      "segments": [
+        {
+          "label": "Sequence 1",
+          "start": 0,
+          "end": 3
+        },
+        {
+          "label": "Sequence 2",
+          "start": 3,
+          "end": 4
+        },
+        {
+          "label": "Sequence 3",
+          "start": 4,
+          "end": 7
+        },
+        {
+          "label": "Finish, then check both blocks",
+          "start": 7,
+          "end": 9
+        }
+      ],
+      "sourceRefs": [
+        {
+          "url": "https://docs.google.com/document/d/1S_y2evAxJ2vMMFDtfGSOsgHuDMYR-sEjoEU_mtSD7Qc/edit",
+          "title": "Kian's CMLLs",
+          "accessed": "2026-10-23",
+          "usageNotes": "Source bold selection for the initial right-leading default; physical calibration pending. Source notation: (U2) R U2 R D R' U2 R D' R2’. Parenthesized U setup is recognized from the actual state; prime half turns are equivalent half turns and lowercase r is Rw."
+        },
+        {
+          "url": "https://sites.google.com/view/kianroux/cmll",
+          "title": "Kian Roux Method Guide: CMLL and execution video",
+          "accessed": "2026-10-23",
+          "usageNotes": "Original author companion execution resource. Explanations and diagrams in CubeSteps are original."
+        }
+      ],
+      "executionProfileId": "roux-execution-v1/primitive-composition",
+      "protectedIds": [
+        "UB",
+        "BR",
+        "BL",
+        "URB",
+        "UBL",
+        "UF",
+        "FR",
+        "FL",
+        "UFR",
+        "ULF"
+      ],
+      "centerPhaseDelta": 0,
+      "edgeTransform": {
+        "permutation": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "orientationDelta": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "default": true
+    },
+    "cmll-l-5-primary": {
+      "id": "cmll-l-5-primary",
+      "caseId": "cmll-l-5",
+      "name": "L · Diag",
+      "moves": [
+        "R'",
+        "U'",
+        "R",
+        "U",
+        "R'",
+        "F'",
+        "R",
+        "U",
+        "R'",
+        "U'",
+        "R'",
+        "F",
+        "R2"
+      ],
+      "holdingMoves": [],
+      "recognition": "UFR: yellow on U, blue on F, red on R; URB: orange on U, blue on R, yellow on B; UBL: yellow on U, green on B, orange on L; ULF: green on U, yellow on L, red on F",
+      "precondition": "Both side blocks complete. Match the top-corner orientation AND the side-color arrangement; ignore the six remaining edges.",
+      "effect": "Restore both blocks and solve the top corners in cyclic order. The U offset, middle centers and remaining edges are checked afterward.",
+      "segments": [
+        {
+          "label": "Sequence 1",
+          "start": 0,
+          "end": 4
+        },
+        {
+          "label": "Sequence 2",
+          "start": 4,
+          "end": 6
+        },
+        {
+          "label": "Sequence 3",
+          "start": 6,
+          "end": 10
+        },
+        {
+          "label": "Finish, then check both blocks",
+          "start": 10,
+          "end": 13
+        }
+      ],
+      "sourceRefs": [
+        {
+          "url": "https://docs.google.com/document/d/1S_y2evAxJ2vMMFDtfGSOsgHuDMYR-sEjoEU_mtSD7Qc/edit",
+          "title": "Kian's CMLLs",
+          "accessed": "2026-10-23",
+          "usageNotes": "Source bold selection for the initial right-leading default; physical calibration pending. Source notation: R' U' R U R’ F' R U R' U' R' F R2. Parenthesized U setup is recognized from the actual state; prime half turns are equivalent half turns and lowercase r is Rw."
+        },
+        {
+          "url": "https://sites.google.com/view/kianroux/cmll",
+          "title": "Kian Roux Method Guide: CMLL and execution video",
+          "accessed": "2026-10-23",
+          "usageNotes": "Original author companion execution resource. Explanations and diagrams in CubeSteps are original."
+        }
+      ],
+      "executionProfileId": "roux-execution-v1/primitive-composition",
+      "protectedIds": [
+        "UB",
+        "BR",
+        "BL",
+        "URB",
+        "UBL",
+        "UF",
+        "FR",
+        "FL",
+        "UFR",
+        "ULF"
+      ],
+      "centerPhaseDelta": 0,
+      "edgeTransform": {
+        "permutation": [
+          1,
+          2,
+          0,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "orientationDelta": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "default": true
+    },
+    "cmll-l-5-alternate": {
+      "id": "cmll-l-5-alternate",
+      "caseId": "cmll-l-5",
+      "name": "L · Diag (alternative)",
+      "moves": [
+        "R",
+        "U2",
+        "R2",
+        "F",
+        "R",
+        "F'",
+        "R",
+        "U2",
+        "R'"
+      ],
+      "holdingMoves": [],
+      "recognition": "UFR: yellow on U, green on F, orange on R; URB: green on U, yellow on R, red on B; UBL: yellow on U, blue on B, red on L; ULF: orange on U, blue on L, yellow on F",
+      "precondition": "Both side blocks complete. Match the top-corner orientation AND the side-color arrangement; ignore the six remaining edges.",
+      "effect": "Restore both blocks and solve the top corners in cyclic order. The U offset, middle centers and remaining edges are checked afterward.",
+      "segments": [
+        {
+          "label": "Sequence 1",
+          "start": 0,
+          "end": 4
+        },
+        {
+          "label": "Sequence 2",
+          "start": 4,
+          "end": 8
+        },
+        {
+          "label": "Finish, then check both blocks",
+          "start": 8,
+          "end": 9
+        }
+      ],
+      "sourceRefs": [
+        {
+          "url": "https://docs.google.com/document/d/1S_y2evAxJ2vMMFDtfGSOsgHuDMYR-sEjoEU_mtSD7Qc/edit",
+          "title": "Kian's CMLLs",
+          "accessed": "2026-10-23",
+          "usageNotes": "Verified source alternative; compare handling and remaining edges. Source notation: (U2) R U2’ R2’ F R F' R U2’ R'. Parenthesized U setup is recognized from the actual state; prime half turns are equivalent half turns and lowercase r is Rw."
+        },
+        {
+          "url": "https://sites.google.com/view/kianroux/cmll",
+          "title": "Kian Roux Method Guide: CMLL and execution video",
+          "accessed": "2026-10-23",
+          "usageNotes": "Original author companion execution resource. Explanations and diagrams in CubeSteps are original."
+        }
+      ],
+      "executionProfileId": "roux-execution-v1/primitive-composition",
+      "protectedIds": [
+        "UB",
+        "BR",
+        "BL",
+        "URB",
+        "UBL",
+        "UF",
+        "FR",
+        "FL",
+        "UFR",
+        "ULF"
+      ],
+      "centerPhaseDelta": 0,
+      "edgeTransform": {
+        "permutation": [
+          0,
+          2,
+          3,
+          1,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "orientationDelta": [
+          0,
+          1,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "default": false
+    },
+    "cmll-l-6-primary": {
+      "id": "cmll-l-6-primary",
+      "caseId": "cmll-l-6",
+      "name": "L · Back Commutator",
+      "moves": [
+        "R'",
+        "U2",
+        "R'",
+        "D'",
+        "R",
+        "U2",
+        "R'",
+        "D",
+        "R2"
+      ],
+      "holdingMoves": [],
+      "recognition": "UFR: orange on U, blue on F, yellow on R; URB: yellow on U, red on R, green on B; UBL: orange on U, yellow on B, green on L; ULF: yellow on U, blue on L, red on F",
+      "precondition": "Both side blocks complete. Match the top-corner orientation AND the side-color arrangement; ignore the six remaining edges.",
+      "effect": "Restore both blocks and solve the top corners in cyclic order. The U offset, middle centers and remaining edges are checked afterward.",
+      "segments": [
+        {
+          "label": "Sequence 1",
+          "start": 0,
+          "end": 3
+        },
+        {
+          "label": "Sequence 2",
+          "start": 3,
+          "end": 4
+        },
+        {
+          "label": "Sequence 3",
+          "start": 4,
+          "end": 7
+        },
+        {
+          "label": "Finish, then check both blocks",
+          "start": 7,
+          "end": 9
+        }
+      ],
+      "sourceRefs": [
+        {
+          "url": "https://docs.google.com/document/d/1S_y2evAxJ2vMMFDtfGSOsgHuDMYR-sEjoEU_mtSD7Qc/edit",
+          "title": "Kian's CMLLs",
+          "accessed": "2026-10-23",
+          "usageNotes": "Source bold selection for the initial right-leading default; physical calibration pending. Source notation: (U) R' U2 R' D' R U2 R' D R2. Parenthesized U setup is recognized from the actual state; prime half turns are equivalent half turns and lowercase r is Rw."
+        },
+        {
+          "url": "https://sites.google.com/view/kianroux/cmll",
+          "title": "Kian Roux Method Guide: CMLL and execution video",
+          "accessed": "2026-10-23",
+          "usageNotes": "Original author companion execution resource. Explanations and diagrams in CubeSteps are original."
+        }
+      ],
+      "executionProfileId": "roux-execution-v1/primitive-composition",
+      "protectedIds": [
+        "UB",
+        "BR",
+        "BL",
+        "URB",
+        "UBL",
+        "UF",
+        "FR",
+        "FL",
+        "UFR",
+        "ULF"
+      ],
+      "centerPhaseDelta": 0,
+      "edgeTransform": {
+        "permutation": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "orientationDelta": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "default": true
+    }
+  },
+  "digest": "97b13cdd"
+}
