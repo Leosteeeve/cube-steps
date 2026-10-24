@@ -13,6 +13,7 @@ import { ComparePage } from './ComparePage';
 import { RouxLabPlayer } from './RouxLabPlayer';
 import { RouxNotebookProvider } from './RouxNotebookProvider';
 import { ExperimentPanel } from './ExperimentPanel';
+import { TrialsPage } from './TrialsPage';
 import type { RouxExperiment } from '../../roux-lab/experiments/types';
 import type { PlaybackHandle } from '../../player/PlaybackView';
 import './roux-lab.css';
@@ -38,6 +39,7 @@ function Body({
   );
   const [basicBusy, setBasicBusy] = useState(false),
     [basicError, setBasicError] = useState('');
+  const [trialLocked, setTrialLocked] = useState(false);
   useEffect(
     () => () => {
       epoch.current++;
@@ -168,13 +170,15 @@ function Body({
         </p>
       )}
       <ResultSummary state={state} onStop={stop} />
-      <ExperimentPanel
-        engine={engine}
-        state={state}
-        onLoad={loadExperiment}
-        onSaved={(experiment) => dispatch({ type: 'saved', experiment })}
-        quiesce={quiesce}
-      />
+      <fieldset className="roux-notebook-lock" disabled={trialLocked}>
+        <ExperimentPanel
+          engine={engine}
+          state={state}
+          onLoad={loadExperiment}
+          onSaved={(experiment) => dispatch({ type: 'saved', experiment })}
+          quiesce={quiesce}
+        />
+      </fieldset>
       <div hidden={view !== 'analyze'}>
         <AnalyzePage
           engine={engine}
@@ -205,13 +209,20 @@ function Body({
           onClear={() => dispatch({ type: 'clear-comparison' })}
         />
       )}
-      {view === 'trials' && (
-        <section className="roux-lab-card">
-          <h2>Trials & notes</h2>
-          <p>Choose a fixed A/B comparison before starting physical trials.</p>
-          <a href="#/roux-lab/compare">Review your routes</a>
-        </section>
-      )}
+      <div hidden={view !== 'trials'}>
+        <TrialsPage
+          active={view === 'trials'}
+          memory={owner.trialMemory}
+          selectedExperimentId={state.experimentId}
+          quiesce={quiesce}
+          onLock={setTrialLocked}
+          onStudy={async (e, id) => {
+            await loadExperiment(e);
+            dispatch({ type: 'select', id });
+            location.hash = '#/roux-lab/compare';
+          }}
+        />
+      </div>
       {selected && view !== 'trials' && (
         <div>
           <p>

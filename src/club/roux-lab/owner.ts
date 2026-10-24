@@ -1,6 +1,7 @@
 import type { CubeEngine } from '../../core/types';
 import type { RouxSearchClient } from '../../roux-lab/client';
 import type { RouxRepository } from '../../roux-lab/experiments/repository';
+import type { RouxTrialMemory } from '../../roux-lab/trials/types';
 /** Importing the club shell loads neither search assets nor an IndexedDB store. */
 export function createRouxLabOwner(
   factory: (e: CubeEngine) => Promise<RouxSearchClient> = async (e) =>
@@ -12,6 +13,7 @@ export function createRouxLabOwner(
     repository: Promise<RouxRepository> | undefined,
     closed = false;
   return {
+    trialMemory: { current: null } as RouxTrialMemory,
     getRepository(): Promise<RouxRepository> {
       if (closed) return Promise.reject(Error('Roux Lab is closed.'));
       return (repository ??= repositoryFactory()

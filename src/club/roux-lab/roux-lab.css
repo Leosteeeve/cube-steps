@@ -154,6 +154,121 @@
 .roux-lab-player .player-area {
   grid-template-columns: minmax(0, 1fr);
 }
+.roux-notebook-lock {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+.roux-notebook,
+.roux-trial-review,
+.roux-notebook fieldset {
+  display: grid;
+  gap: 1rem;
+  min-width: 0;
+}
+.roux-notebook label {
+  display: grid;
+  gap: 0.35rem;
+}
+.roux-notebook label:has(input[type='checkbox']) {
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+}
+.roux-notebook input:not([type='checkbox']),
+.roux-notebook select,
+.roux-notebook textarea {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  font: inherit;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid #c6d6e9;
+  border-radius: 10px;
+  background: #fff;
+  color: #153451;
+}
+.roux-notebook fieldset {
+  border: 1px solid #dce6f5;
+  border-radius: 14px;
+  padding: 1rem;
+}
+.roux-notebook code {
+  overflow-wrap: anywhere;
+}
+.roux-trial-work {
+  display: grid;
+  gap: 1.25rem;
+  min-width: 0;
+  align-items: start;
+}
+.roux-trial-setup svg {
+  max-width: 360px;
+  width: 100%;
+  height: auto;
+}
+.roux-trial-setup .lab-net {
+  margin: 1rem 0;
+}
+.roux-timing-surface {
+  width: 100%;
+  min-height: 160px;
+  font-size: clamp(1.6rem, 6vw, 3rem);
+  font-variant-numeric: tabular-nums;
+  touch-action: none;
+  user-select: none;
+}
+.roux-timing-surface.ready {
+  background: #d9f4e2;
+  color: #155d35;
+}
+.roux-timing-surface.running {
+  background: #e4eeff;
+  color: #12396b;
+}
+.roux-history {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+.roux-history li {
+  border-top: 1px solid #dce6f5;
+  padding-top: 1rem;
+}
+.roux-history button {
+  margin-right: 0.5rem;
+}
+.roux-card {
+  background: #fff;
+  border: 1px solid #dce6f5;
+  border-radius: 20px;
+  padding: 1.4rem;
+  min-width: 0;
+}
+.roux-metrics {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.roux-metrics dd {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+@media (min-width: 900px) {
+  .roux-trial-work {
+    grid-template-columns: 1fr 1fr;
+  }
+  .roux-notebook fieldset {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: end;
+  }
+  .roux-notebook fieldset details {
+    grid-column: 1 / -1;
+  }
+}
 @media (max-width: 1000px) {
   .roux-analyze-grid {
     grid-template-columns: minmax(0, 1fr);

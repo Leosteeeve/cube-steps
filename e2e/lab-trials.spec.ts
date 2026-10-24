@@ -112,10 +112,8 @@ test('keyboard timing requires review, excludes note typing and keeps navigation
     .getByRole('navigation', { name: 'Main navigation' })
     .getByRole('link', { name: 'Guide', exact: true })
     .click();
-  await page
-    .getByRole('navigation', { name: 'Main navigation' })
-    .getByRole('link', { name: 'CFOP Lab', exact: true })
-    .click();
+  await page.getByRole('button', { name: 'Labs', exact: true }).click();
+  await page.getByRole('link', { name: 'CFOP Lab', exact: true }).click();
   await page
     .getByRole('navigation', { name: 'Lab workspace' })
     .getByRole('link', { name: 'Trials & notes' })
