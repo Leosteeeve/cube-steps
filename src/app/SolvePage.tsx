@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useId, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import type { CubeEngine, SolveSession, StageId, MethodId } from '../core/types';
 import { parseScramble } from '../core/notation';
 import { CubePlayer } from '../player/CubePlayer';
@@ -37,6 +37,9 @@ export function SolvePage({ engine, method = 'lbl' }: { engine: CubeEngine; meth
   const [draft, setDraft] = useState(() => createDraftState(recovered.draft));
   const [storageAvailable, setStorageAvailable] = useState(recovered.available);
   const [mode, setMode] = useState<'scramble' | 'colors'>('scramble');
+  const [inputExpanded, setInputExpanded] = useState(true);
+  const inputPanelId = useId(),
+    inputToggle = useRef<HTMLButtonElement>(null);
   const [validation, setValidation] = useState<{
     revision: number;
     result: FaceletValidation;
@@ -57,11 +60,15 @@ export function SolvePage({ engine, method = 'lbl' }: { engine: CubeEngine; meth
     setRandomizing(false);
     setError('');
     setSession(null);
+    setInputExpanded(true);
     setStage(firstStage);
     setActive(firstStage);
   }, [client, method, firstStage]);
   const parsedDraft = mode === 'scramble' ? parseScramble(text) : null;
   const session = storedSession?.trace.method === method ? storedSession : null;
+  useLayoutEffect(() => {
+    if (session) inputToggle.current?.focus();
+  }, [session]);
   const recordedInput = session?.input;
   const inputMatches =
     recordedInput &&
@@ -156,6 +163,7 @@ export function SolvePage({ engine, method = 'lbl' }: { engine: CubeEngine; meth
     setBusy(false);
     if (result.ok) {
       setSession(result.session);
+      setInputExpanded(false);
       setStage(firstStage);
       setActive(firstStage);
     } else if (result.error.kind !== 'cancelled') {
@@ -222,94 +230,116 @@ export function SolvePage({ engine, method = 'lbl' }: { engine: CubeEngine; meth
         <h1>A clear path for your cube.</h1>
         <p>Get a complete {presentation.label} solution, with a reason behind every move.</p>
       </div>
-      <div
-        ref={mode === 'scramble' ? inputTarget : undefined}
-        className="input-mode-switch"
-        role="group"
-        aria-label="Cube input"
-      >
-        <button
-          type="button"
-          aria-pressed={mode === 'scramble'}
-          onClick={() => changeMode('scramble')}
-        >
-          Scramble
-        </button>
-        <button type="button" aria-pressed={mode === 'colors'} onClick={() => changeMode('colors')}>
-          Enter colors
-        </button>
-      </div>
-      {mode === 'colors' ? (
-        <>
-          <ColorEntry
-            state={draft}
-            onAction={editColors}
-            validation={checked}
-            onCheck={checkColors}
-            onSolve={() => void solve()}
-            busy={busy}
-            storageAvailable={storageAvailable}
-            solveLabel={`Explain with ${presentation.label}`}
-          />
-          {busy && (
-            <button type="button" onClick={cancelPending}>
-              Cancel
-            </button>
-          )}
-        </>
-      ) : (
-        <form
-          className="scramble-form"
-          onSubmit={(e) => {
-            e.preventDefault();
-            void solve();
-          }}
-        >
-          <div className="form-top">
-            <label htmlFor="scramble">Scramble sequence</label>
+      <section className="solve-input-panel" aria-label="Starting cube">
+        {session && (
+          <button
+            ref={inputToggle}
+            className="input-disclosure"
+            type="button"
+            aria-expanded={inputExpanded}
+            aria-controls={inputPanelId}
+            onClick={() => setInputExpanded((value) => !value)}
+          >
+            {inputExpanded ? 'Hide cube input' : 'Edit cube input'}
+            <span aria-hidden="true">{inputExpanded ? '−' : '+'}</span>
+          </button>
+        )}
+        <div id={inputPanelId} hidden={!!session && !inputExpanded}>
+          <div
+            ref={mode === 'scramble' ? inputTarget : undefined}
+            className="input-mode-switch"
+            role="group"
+            aria-label="Cube input"
+          >
             <button
               type="button"
-              className="text-button"
-              disabled={randomizing}
-              onClick={() => void random()}
+              aria-pressed={mode === 'scramble'}
+              onClick={() => changeMode('scramble')}
             >
-              {randomizing ? 'Generating…' : 'Random scramble'} <span aria-hidden="true">↝</span>
+              Scramble
+            </button>
+            <button
+              type="button"
+              aria-pressed={mode === 'colors'}
+              onClick={() => changeMode('colors')}
+            >
+              Enter colors
             </button>
           </div>
-          <textarea
-            id="scramble"
-            value={text}
-            onChange={(e) => updateText(e.target.value)}
-            placeholder="R U R' U' F2…"
-            spellCheck={false}
-            rows={2}
-            aria-describedby="scramble-help"
-          />
-          <div className="form-bottom">
-            <p ref={!error ? validationTarget : undefined} id="scramble-help">
-              Start solved, white up & green front. Use U D L R F B with ′ or 2.
-              <br />
-              Leave blank to explore an already solved cube.
-            </p>
-            <button className="primary-button" type="submit" disabled={busy || randomizing}>
-              {busy ? 'Finding your steps…' : `Explain with ${presentation.label}`}{' '}
-              <span aria-hidden="true">→</span>
-            </button>
-            {busy && (
-              <button
-                type="button"
-                onClick={() => {
-                  epoch.current++;
-                  client.cancel();
-                  setBusy(false);
-                }}
-              >
-                Cancel
-              </button>
-            )}
-          </div>
-        </form>
-      )}
+          {mode === 'colors' ? (
+            <>
+              <ColorEntry
+                state={draft}
+                onAction={editColors}
+                validation={checked}
+                onCheck={checkColors}
+                onSolve={() => void solve()}
+                busy={busy}
+                storageAvailable={storageAvailable}
+                solveLabel={`Explain with ${presentation.label}`}
+              />
+              {busy && (
+                <button type="button" onClick={cancelPending}>
+                  Cancel
+                </button>
+              )}
+            </>
+          ) : (
+            <form
+              className="scramble-form"
+              onSubmit={(e) => {
+                e.preventDefault();
+                void solve();
+              }}
+            >
+              <div className="form-top">
+                <label htmlFor="scramble">Scramble sequence</label>
+                <button
+                  type="button"
+                  className="text-button"
+                  disabled={randomizing}
+                  onClick={() => void random()}
+                >
+                  {randomizing ? 'Generating…' : 'Random scramble'}{' '}
+                  <span aria-hidden="true">↝</span>
+                </button>
+              </div>
+              <textarea
+                id="scramble"
+                value={text}
+                onChange={(e) => updateText(e.target.value)}
+                placeholder="R U R' U' F2…"
+                spellCheck={false}
+                rows={2}
+                aria-describedby="scramble-help"
+              />
+              <div className="form-bottom">
+                <p ref={!error ? validationTarget : undefined} id="scramble-help">
+                  Start solved, white up & green front. Use U D L R F B with ′ or 2.
+                  <br />
+                  Leave blank to explore an already solved cube.
+                </p>
+                <button className="primary-button" type="submit" disabled={busy || randomizing}>
+                  {busy ? 'Finding your steps…' : `Explain with ${presentation.label}`}{' '}
+                  <span aria-hidden="true">→</span>
+                </button>
+                {busy && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      epoch.current++;
+                      client.cancel();
+                      setBusy(false);
+                    }}
+                  >
+                    Cancel
+                  </button>
+                )}
+              </div>
+            </form>
+          )}
+        </div>
+      </section>
       {error && (
         <p ref={mode === 'scramble' ? validationTarget : undefined} className="error" role="alert">
           {error}

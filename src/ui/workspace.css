@@ -1,0 +1,298 @@
+/* Shared geometry; each edition keeps its own colors and identity. */
+:root {
+  font-size: 16px;
+  --workspace-radius: 22px;
+  --workspace-width: 1440px;
+}
+[data-edition='global'] {
+  --ink: #173d31;
+  --muted: #557167;
+  --line: #dde7df;
+  --soft: #edf4ef;
+  --green: #196c50;
+  --global-ink: var(--ink);
+  --global-muted: var(--muted);
+  --global-line: var(--line);
+  --global-radius: var(--workspace-radius);
+  background: #f7f9f6;
+}
+[data-edition='club'] {
+  --ink: #142d49;
+  --muted: #5d7088;
+  --green: #215bd8;
+  --soft: #eef3fc;
+  --line: #e1e8f1;
+  background: #fbfcfe;
+}
+[data-edition] .site-header,
+[data-edition] .club-header {
+  position: relative;
+  z-index: 25;
+  padding: 22px max(24px, calc((100vw - var(--workspace-width)) / 2));
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+}
+[data-edition] .site-header nav,
+[data-edition] .club-header nav {
+  position: relative;
+  gap: 4px;
+  align-items: center;
+}
+[data-edition] .site-header nav > a,
+[data-edition] .club-header nav > a,
+[data-edition] .section-menu > button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 44px;
+  gap: 8px;
+  padding: 9px 15px;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 550;
+}
+[data-edition] nav > a[aria-current],
+[data-edition] .section-menu > button[data-current],
+[data-edition] .section-menu > button[aria-expanded='true'] {
+  background: var(--soft);
+  color: var(--ink);
+}
+.section-menu {
+  position: relative;
+}
+.section-menu-chevron {
+  font-size: 16px;
+}
+.section-menu-panel {
+  position: absolute;
+  z-index: 30;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 250px;
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 16px 45px #142d491a;
+}
+[data-edition] .section-menu-panel a {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  min-height: 44px;
+  padding: 11px 12px;
+  font-size: 14px;
+  border-radius: 9px;
+  color: var(--ink);
+}
+.section-menu-panel a:hover,
+.section-menu-panel a[aria-current] {
+  background: var(--soft);
+}
+.section-menu-panel a span {
+  color: var(--muted);
+}
+[data-edition] main {
+  scroll-margin-top: 16px;
+}
+[data-edition='global'] main {
+  max-width: var(--workspace-width);
+  margin-inline: auto;
+  padding: 24px 32px 56px;
+}
+[data-edition] .course-banner {
+  margin-bottom: 20px;
+}
+[data-edition] .lesson-layout {
+  grid-template-columns: 205px minmax(0, 1fr);
+  gap: clamp(24px, 3vw, 46px);
+}
+[data-edition] .lesson-body {
+  min-width: 0;
+}
+[data-edition] .lesson-heading {
+  margin-bottom: 26px;
+}
+[data-edition] .lesson-heading h1 {
+  font-size: clamp(30px, 3.1vw, 46px);
+  letter-spacing: -1.3px;
+  line-height: 1.14;
+  text-wrap: balance;
+}
+[data-edition] .lesson-heading p {
+  max-width: 62ch;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+[data-edition] .stage-nav {
+  border-radius: 16px;
+}
+[data-edition] .stage-nav .stage-link {
+  min-height: 44px;
+  font-size: 14px;
+  padding-block: 10px;
+}
+[data-edition] .method-selector {
+  margin-bottom: 22px;
+}
+[data-edition] .method-selector a {
+  min-height: 44px;
+}
+.solve-input-panel {
+  margin-bottom: 22px;
+  min-width: 0;
+}
+.input-disclosure {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 18px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: white;
+  color: var(--ink);
+  text-align: left;
+  font-weight: 600;
+}
+.input-disclosure[aria-expanded='true'] {
+  margin-bottom: 16px;
+}
+[data-edition] .scramble-form {
+  border-radius: 16px;
+  box-shadow: none;
+  padding: 22px;
+}
+[data-edition] .scramble-form textarea {
+  font-size: 17px;
+  line-height: 1.7;
+}
+[data-edition] .empty-solve {
+  padding: 40px 24px;
+  border-radius: 18px;
+}
+[data-edition='club'] .club-hero {
+  max-width: 1280px;
+  padding: 76px 36px 64px;
+  gap: 50px;
+}
+[data-edition='club'] .club-hero h1 {
+  font-size: clamp(45px, 5.8vw, 80px);
+  line-height: 1.02;
+}
+[data-edition='club'] .club-intro {
+  font-size: 17px;
+  line-height: 1.8;
+}
+[data-edition='club'] .club-kicker {
+  font-size: 11px;
+  letter-spacing: 1.8px;
+}
+[data-edition='club'] .club-primary,
+[data-edition='club'] .club-secondary {
+  border-radius: 12px;
+  font-size: 14px;
+}
+[data-edition='club'] .club-home-cards > a {
+  border-radius: 20px;
+  padding: 30px;
+  border: 1px solid var(--line);
+  box-shadow: none;
+  background: #fff;
+}
+[data-edition='club'] .club-home-cards p {
+  font-size: 16px;
+}
+[data-edition='club'] .club-together {
+  border-radius: 22px;
+}
+[data-edition='club'] .club-tools {
+  border-bottom: 1px solid var(--line);
+}
+[data-edition='club'] .club-home .club-help-note {
+  max-width: 1220px;
+  margin: 24px auto;
+  padding-inline: 24px;
+}
+[data-edition='club'] main > .tour-entry,
+[data-edition='club'] main > [data-guidance-route] > .tour-entry {
+  padding-inline: 24px;
+}
+[data-edition] .notation-content,
+[data-edition] .face-card,
+[data-edition] .case-tile {
+  box-shadow: none;
+}
+[data-edition] .notation-content p,
+[data-edition] .face-card p {
+  font-size: 16px;
+}
+@media (max-width: 1000px) {
+  [data-edition='club'] .club-hero {
+    gap: 20px;
+    padding-inline: 26px;
+  }
+}
+@media (max-width: 850px) {
+  [data-edition] .lesson-layout {
+    display: block;
+  }
+  [data-edition] .lesson-path {
+    margin-bottom: 20px;
+  }
+  [data-edition] .lesson-heading h1 {
+    letter-spacing: -0.8px;
+  }
+}
+@media (max-width: 620px) {
+  [data-edition] .site-header,
+  [data-edition] .club-header {
+    padding: 20px 20px 12px;
+    gap: 18px;
+  }
+  [data-edition] .club-header nav {
+    width: 100%;
+    justify-content: space-between;
+    gap: 0;
+  }
+  [data-edition] .club-header nav > a,
+  [data-edition] .section-menu > button {
+    padding-inline: 8px;
+    font-size: 13px;
+  }
+  .section-menu {
+    position: static;
+  }
+  .section-menu-panel {
+    width: auto;
+    left: 0;
+    right: 0;
+  }
+  [data-edition='global'] main {
+    padding: 20px 16px 40px;
+  }
+  [data-edition] .scramble-form {
+    padding: 18px;
+  }
+  [data-edition] .form-bottom {
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  [data-edition='club'] .club-hero {
+    padding: 46px 24px 30px;
+  }
+  [data-edition='club'] .club-hero h1 {
+    font-size: clamp(43px, 11vw, 64px);
+  }
+  [data-edition='club'] .club-intro {
+    font-size: 16px;
+  }
+  [data-edition='club'] .club-home-cards > a {
+    padding: 24px;
+  }
+}

@@ -76,6 +76,18 @@ function deferred<T>() {
   });
   return { promise, resolve };
 }
+it('collapses a successful input without losing the draft and lets the member reopen it', async () => {
+  const user = userEvent.setup();
+  render(<SolvePage engine={engine} />);
+  const input = screen.getByLabelText('Scramble sequence');
+  await user.type(input, 'R U');
+  await user.click(screen.getByRole('button', { name: 'Explain with LBL' }));
+  expect(await screen.findByText('Verified LBL solution')).toBeVisible();
+  expect(input).not.toBeVisible();
+  await user.click(screen.getByRole('button', { name: 'Edit cube input' }));
+  expect(input).toBeVisible();
+  expect(input).toHaveValue('R U');
+});
 it('preserves_input_across_three_methods', async () => {
   seed();
   render(<App />);
@@ -245,6 +257,8 @@ it('cancels late work across methods without changing the new draft or busy stat
 });
 async function showColors() {
   const user = userEvent.setup();
+  const edit = screen.queryByRole('button', { name: 'Edit cube input' });
+  if (edit) await user.click(edit);
   await user.click(screen.getByRole('button', { name: 'Enter colors' }));
   return user;
 }
@@ -258,6 +272,7 @@ it('checks invalid drafts and enables only a verified snapshot, retaining the pr
   await user.click(await screen.findByText('Colors used for this solution'));
   const summary = screen.getByText('Colors used for this solution').closest('details')!;
   const old = summary.innerHTML;
+  await user.click(screen.getByRole('button', { name: 'Edit cube input' }));
   await user.click(screen.getByRole('button', { name: 'Eraser' }));
   await user.click(screen.getByRole('button', { name: /^Front, row 1, column 1,/ }));
   expect(summary.innerHTML).toBe(old);

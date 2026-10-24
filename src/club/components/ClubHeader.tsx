@@ -1,4 +1,5 @@
 import { ClubLogo } from './ClubLogo';
+import { SectionMenu } from '../../ui/SectionMenu';
 export function ClubHeader({
   active,
   timerAvailable,
@@ -15,22 +16,26 @@ export function ClubHeader({
         <a href="#/" aria-current={active === 'home' ? 'page' : undefined}>
           Home
         </a>
-        <a href="#/moves" aria-current={active === 'moves' ? 'page' : undefined}>
-          Moves
-        </a>
         <a href="#/learn/notation" aria-current={active === 'learn' ? 'page' : undefined}>
           Learn
         </a>
-        {timerAvailable && (
-          <a href="#/timer" aria-current={active === 'timer' ? 'page' : undefined}>
-            Timer <span aria-hidden="true">↗</span>
-          </a>
-        )}
+        <SectionMenu
+          label="Practice"
+          currentHref={location.hash}
+          items={[
+            { label: 'Moves', href: '#/moves' },
+            ...(timerAvailable ? [{ label: 'Timer', href: '#/timer' }] : []),
+            { label: 'Algorithm library', href: '#/algorithms' },
+            { label: 'Recognition practice', href: '#/practice' },
+          ]}
+        />
+        <SectionMenu
+          label="Labs"
+          currentHref={location.hash}
+          items={[{ label: 'CFOP Lab', href: '#/lab' }]}
+        />
         <a href="#/guide" aria-current={active === 'guide' ? 'page' : undefined}>
           Guide
-        </a>
-        <a href="#/lab" aria-current={active === 'lab' ? 'page' : undefined}>
-          CFOP Lab
         </a>
       </nav>
     </header>

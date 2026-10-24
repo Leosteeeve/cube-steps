@@ -1,6 +1,6 @@
 # Advanced Roux, Roux Test Lab, and the Next UI
 
-Status: **Owner-approved written design (2026-10-23). Implementation plans are awaiting separate review.**
+Status: **Owner-approved design and implementation plans (2026-10-23). Native implementation is in progress.**
 
 Implementation handoff: [Five plans and 26 tasks](../plans/2026-10-23-roux-ui-upgrade-plan.md), preserving Native execution and the separate video acceptance checkpoints.
 

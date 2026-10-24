@@ -33,7 +33,7 @@
 
 ## Execution order and milestones
 
-The owner selected **Native**: implement sequentially in this chat with `superpowers:executing-plans`, then obtain an independent whole-branch review. These plans require owner review before execution; do not ask again which execution mode to use.
+The owner approved all five plans and selected **Native** on 2026-10-23: implement sequentially in this chat with `superpowers:executing-plans`, then obtain an independent whole-branch review. No additional execution-mode approval is needed. Short/full media acceptance remains separate.
 
 | Plan                                                               | Tasks | Independently checkable deliverable                                                             |
 | ------------------------------------------------------------------ | ----- | ----------------------------------------------------------------------------------------------- |
