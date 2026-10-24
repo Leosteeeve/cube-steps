@@ -92,6 +92,8 @@ export function retainDiverseBlocks(
   }
   return result;
 }
+export type FirstBlockEvent =
+  { kind: 'work' } | { kind: 'block'; candidate: BlockCandidate; removedIds: readonly string[] };
 export function* generateFirstBlocks(
   raw: CubeEngine,
   input: RouxInput,
@@ -99,7 +101,7 @@ export function* generateFirstBlocks(
   assets: BlockSearchAssets,
   budget: RouxSearchBudget,
   maxLength: number,
-): Generator<{ kind: 'work' } | { kind: 'block'; candidate: BlockCandidate }, void> {
+): Generator<FirstBlockEvent, void> {
   if (!Number.isInteger(maxLength) || maxLength < 0 || maxLength > 30)
     throw Error('Invalid first-block search length.');
   assertBlockSearchAssets(assets);
@@ -114,7 +116,7 @@ export function* generateFirstBlocks(
     state: CubeState,
     left: number,
     previous: string,
-  ): Generator<{ kind: 'work' }, void> {
+  ): Generator<FirstBlockEvent, void> {
     budget.charge('expand');
     budget.charge('score');
     const coordinate = readFirstBlockCoordinate(e, state, frame);
@@ -122,18 +124,21 @@ export function* generateFirstBlocks(
     if (assets.distances[coordinate] > left) return;
     if (assets.distances[coordinate] === 0 && blockCompleteInFrame(e, state, frame, 'left')) {
       const candidate = describeBlockCandidate(e, held, frame, path);
+      if (retained.some((c) => c.id === candidate.id && c.turns <= candidate.turns)) return;
       const next = retainDiverseBlocks(e, [...retained, candidate], frame, cap);
       const keys = new Set(next.map((c) => c.id));
+      const removedIds = retained.filter((c) => !keys.has(c.id)).map((c) => c.id);
       for (const old of retained)
         if (!keys.has(old.id)) {
-          budget.release(old.id);
-          allocated.delete(old.id);
+          budget.release('fb-pool/' + old.id);
+          allocated.delete('fb-pool/' + old.id);
         }
       if (keys.has(candidate.id)) {
-        budget.retain(candidate.id, 2400 + JSON.stringify(candidate).length * 2);
-        allocated.add(candidate.id);
+        budget.retain('fb-pool/' + candidate.id, 2400 + JSON.stringify(candidate).length * 2);
+        allocated.add('fb-pool/' + candidate.id);
       }
       retained = next;
+      if (keys.has(candidate.id)) yield { kind: 'block', candidate, removedIds };
       return;
     }
     if (!left) return;
@@ -171,5 +176,4 @@ export function* generateFirstBlocks(
   } finally {
     for (const id of allocated) budget.release(id);
   }
-  for (const candidate of retained) yield { kind: 'block', candidate };
 }

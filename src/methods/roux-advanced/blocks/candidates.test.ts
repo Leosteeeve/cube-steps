@@ -7,6 +7,7 @@ import type { CubeEngine } from '../../../core/types';
 import { ROUX_FRAMES } from '../frames';
 import { prepareRouxInput } from '../input';
 import { createRouxSearchBudget } from '../budget';
+import type { BlockCandidate } from '../types';
 import {
   ADVANCED_ROUX_SETUPS,
   advancedRouxFixture,
@@ -61,8 +62,15 @@ it('emits only verified complete candidates within the normal cap without a forc
     createRouxSearchBudget('normal', { now: () => 0, maxOperations: 100000 }),
     3,
   );
-  const results = [];
-  for (const event of run) if (event.kind === 'block') results.push(event.candidate);
+  const results: BlockCandidate[] = [];
+  const pool = new Map<string, (typeof results)[number]>();
+  for (const event of run)
+    if (event.kind === 'block') {
+      for (const id of event.removedIds) pool.delete(id);
+      pool.set(event.candidate.id, event.candidate);
+      expect(pool.size).toBeLessThanOrEqual(16);
+    }
+  results.push(...pool.values());
   expect(results.length).toBeGreaterThan(0);
   expect(results.length).toBeLessThanOrEqual(16);
   for (const c of results) {
@@ -70,6 +78,20 @@ it('emits only verified complete candidates within the normal cap without a forc
     expect(blockCompleteInFrame(e, c.state, f, 'left')).toBe(true);
   }
   expect(results.some((c) => c.moves.length === 1 && c.moves[0] === "F'")).toBe(true);
+});
+it('yields a first candidate while work remains for its second-block continuation', () => {
+  const held = advancedRouxFixture(e, 'square-pair');
+  const input = prepareRouxInput(e, {
+    kind: 'facelets',
+    facelets: stateToFacelets(e.apply(held, invertTeachingMoves(f.positioningMoves))),
+  });
+  const budget = createRouxSearchBudget('normal', { now: () => 0, maxOperations: 10000 });
+  const run = generateFirstBlocks(e, input, f, assets, budget, 10);
+  let step = run.next();
+  while (!step.done && step.value.kind !== 'block') step = run.next();
+  expect(step.done).toBe(false);
+  expect(budget.remaining().operations).toBeGreaterThan(5000);
+  run.return();
 });
 it('returns an already complete block with no invented setup moves', () => {
   const input = prepareRouxInput(e, { kind: 'scramble', moves: [] });
