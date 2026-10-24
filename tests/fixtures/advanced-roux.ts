@@ -1,4 +1,9 @@
 import type { CubeEngine, CubeState, TeachingMove } from '../../src/core/types';
+export const ADVANCED_ROUX_TRADEOFF = {
+  scramble: ['D2', "F'", "R'", 'D'],
+  shortestFirst: ['F'],
+  connectedFirst: ["U'", 'F'],
+} as const;
 export const ADVANCED_ROUX_SETUPS = {
   solved: [],
   'slice-phase': ['M'],

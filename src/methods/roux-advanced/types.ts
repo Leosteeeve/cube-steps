@@ -76,3 +76,10 @@ export interface BlockCandidate {
   readonly construction: 'square-pair' | 'line-line' | 'pairs-base' | 'free';
   readonly milestones: readonly { index: number; kind: string; pieceIds: readonly string[] }[];
 }
+export interface TwoBlockCandidate {
+  readonly first: BlockCandidate;
+  readonly secondMoves: readonly TeachingMove[];
+  readonly state: CubeState;
+  readonly secondTurns: number;
+  readonly actions: readonly AdvancedRouxActionDraft[];
+}
