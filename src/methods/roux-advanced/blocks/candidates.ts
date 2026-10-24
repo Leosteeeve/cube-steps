@@ -6,7 +6,11 @@ import { blockCompleteInFrame } from '../predicates';
 import { RouxBudgetStop, meterRouxEngine } from '../budget';
 import type { BlockCandidate, RouxFrame, RouxInput, RouxSearchBudget } from '../types';
 import { STM_MOVES, readFirstBlockCoordinate } from './coordinates';
-import { assertBlockSearchAssets, type BlockSearchAssets } from './distance';
+import {
+  assertBlockSearchAssets,
+  blockProjectionDistance,
+  type BlockSearchAssets,
+} from './distance';
 import { observeConnections, type RouxConnection } from './connections';
 import { TEACHING_WORK, drainTeachingSteps, type TeachingWork } from '../../shared/work';
 function construction(connections: readonly RouxConnection[]): BlockCandidate['construction'] {
@@ -128,8 +132,9 @@ export function* generateFirstBlocks(
     budget.charge('score');
     const coordinate = readFirstBlockCoordinate(e, state, frame);
     yield { kind: 'work' };
-    if (assets.distances[coordinate] > left) return;
-    if (assets.distances[coordinate] === 0 && blockCompleteInFrame(e, state, frame, 'left')) {
+    const distance = blockProjectionDistance(assets, coordinate);
+    if (distance > left) return;
+    if (distance === 0 && blockCompleteInFrame(e, state, frame, 'left')) {
       const candidate = yield* describeBlockCandidateSteps(e, held, frame, path);
       if (retained.some((c) => c.id === candidate.id && c.turns <= candidate.turns)) return;
       const next = retainDiverseBlocks(e, [...retained, candidate], frame, cap);
@@ -173,7 +178,7 @@ export function* generateFirstBlocks(
   try {
     held = e.apply(input.initial, frame.positioningMoves);
     budget.charge('score');
-    const lower = assets.distances[readFirstBlockCoordinate(e, held, frame)];
+    const lower = blockProjectionDistance(assets, readFirstBlockCoordinate(e, held, frame));
     for (let length = lower; length <= maxLength; length++) {
       yield* visit(held, length, '');
       if (retained.some((c) => c.turns === 0)) break;

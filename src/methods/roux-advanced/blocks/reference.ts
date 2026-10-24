@@ -3,7 +3,11 @@ import { blockCompleteInFrame } from '../predicates';
 import { meterRouxEngine, RouxBudgetStop } from '../budget';
 import type { RouxFrame, RouxInput, RouxSearchBudget } from '../types';
 import { STM_MOVES, readFirstBlockCoordinate } from './coordinates';
-import { assertBlockSearchAssets, type BlockSearchAssets } from './distance';
+import {
+  assertBlockSearchAssets,
+  blockProjectionDistance,
+  type BlockSearchAssets,
+} from './distance';
 export type FirstBlockEvidence =
   | { status: 'not-explored' }
   | {
@@ -49,7 +53,7 @@ export function* searchFirstBlockReference(
     const coordinate = readFirstBlockCoordinate(engine, state, frame);
     budget.charge('score');
     yield { kind: 'work' };
-    const distance = assets.distances[coordinate];
+    const distance = blockProjectionDistance(assets, coordinate);
     if (distance > remaining) return null;
     if (distance === 0 && blockCompleteInFrame(engine, state, frame, 'left')) return [...path];
     if (remaining === 0) return null;
@@ -82,7 +86,7 @@ export function* searchFirstBlockReference(
   try {
     const held = engine.apply(input.initial, frame.positioningMoves);
     budget.charge('score');
-    let depth = assets.distances[readFirstBlockCoordinate(engine, held, frame)];
+    let depth = blockProjectionDistance(assets, readFirstBlockCoordinate(engine, held, frame));
     if (upperWitness) {
       let checked = held;
       for (const move of upperWitness) {

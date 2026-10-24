@@ -482,6 +482,7 @@ export function PlaybackView({
         )}
         <span className="eyebrow">YOUR NEXT STEP</span>
         <h2>{currentStage ? currentStage.label : 'Preparing your solve'}</h2>
+        {currentStage?.connection && <p className="notice">{currentStage.connection}</p>}
         {currentStage?.skipReason ? (
           <div className="notice">
             <h3>Already complete</h3>

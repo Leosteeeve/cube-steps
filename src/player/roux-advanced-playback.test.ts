@@ -10,6 +10,32 @@ import { createAdvancedRouxRuntime } from '../methods/roux-advanced/definition';
 import { ADVANCED_ROUX_PRESENTATION } from '../methods/roux-advanced/presentation';
 import { registerAdvancedRouxFrameRuntime, registerMethodPresentation } from '../methods/registry';
 import { createPlaybackTimeline } from './playback-timeline';
+import {
+  runAdvancedRouxFixture,
+  advancedRouxScramble,
+} from '../../tests/helpers/advanced-roux-corpus';
+import { prepareRouxPlayback } from '../roux-lab/playback';
+it('shows the same truthful checkpoint connection in normal and Lab playback', async () => {
+  const e = await createCubeEngine(),
+    assets = await loadTestAdvancedRouxAssets(),
+    { route } = runAdvancedRouxFixture(
+      e,
+      assets,
+      { kind: 'scramble', moves: advancedRouxScramble(15) },
+      'white-orange',
+    );
+  registerMethodPresentation(ADVANCED_ROUX_PRESENTATION);
+  registerAdvancedRouxFrameRuntime(route.frameId, createAdvancedRouxRuntime(assets, route.frameId));
+  const normal = createPlaybackTimeline(e, {
+      kind: 'solve',
+      session: { input: route.input.source, trace: route.trace },
+    }),
+    lab = prepareRouxPlayback(e, route, assets).timeline;
+  expect(normal.sections[3].connection).toContain('connect them as R2');
+  expect(lab.sections[3].connection).toEqual(normal.sections[3].connection);
+  expect(normal.moves).toEqual(lab.moves);
+  expect(e.equals(normal.states[normal.sections[3].start], route.trace.stages[2].after)).toBe(true);
+});
 it('requires the prepared frame-specific runtime and never falls through to CFOP assets', async () => {
   const e = await createCubeEngine(),
     assets = await loadTestAdvancedRouxAssets(),

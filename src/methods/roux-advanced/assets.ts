@@ -23,7 +23,7 @@ export function assertAdvancedRouxAssets(assets: AdvancedRouxAssets): void {
 /** Conservative retained size, including the public/private LSE copies and parsed JSON. */
 export function advancedRouxAssetBytes(a: AdvancedRouxAssets): number {
   return (
-    a.blocks.distances.byteLength +
+    2 * a.blocks.distances.byteLength +
     2 * ADVANCED_LSE_BYTES +
     beginnerManifest.lse.bytes * 2 +
     beginnerManifest.block.bytes * 8 +

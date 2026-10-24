@@ -13,6 +13,7 @@ import { LBL_RUNTIME } from '../methods/lbl/definition';
 import { CFOP_RUNTIME } from '../methods/cfop/definition';
 import { createAdvancedRuntime } from '../methods/advanced/definition';
 import { verifyDemonstration } from '../algorithms/demonstration';
+import { rouxStageConnection } from './roux-stage-connections';
 export interface PlaybackTimeline {
   moves: TeachingMove[];
   states: CubeState[];
@@ -23,6 +24,7 @@ export interface PlaybackTimeline {
     start: number;
     end: number;
     skipReason?: string;
+    connection?: string;
   }[];
   completion: { title: string; description: string };
 }
@@ -61,6 +63,7 @@ export function createPlaybackTimeline(
         ...s,
         label: method.stages[i].label,
         skipReason: session.trace.stages[i].skipReason,
+        connection: rouxStageConnection(session.trace, i),
       })),
       completion: {
         title: 'Cube solved.',

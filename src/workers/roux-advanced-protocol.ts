@@ -28,7 +28,21 @@ export const ROUX_BATCH_MS = 8,
 export const ROUX_WORKER_OPERATIONS = { normal: 400000, lab: 1500000 } as const;
 export const ROUX_CLIENT_OPERATIONS = { normal: 100000, lab: 500000 } as const;
 export const rouxNow = () => performance.timeOrigin + performance.now();
-export const rouxYieldTask = () => new Promise<void>((resolve) => setTimeout(resolve, 0));
+/** A real task boundary without the nested setTimeout minimum delay. */
+export const rouxYieldTask = () =>
+  new Promise<void>((resolve) => {
+    if (typeof MessageChannel === 'undefined') {
+      setTimeout(resolve, 0);
+      return;
+    }
+    const channel = new MessageChannel();
+    channel.port1.onmessage = () => {
+      channel.port1.close();
+      channel.port2.close();
+      resolve();
+    };
+    channel.port2.postMessage(null);
+  });
 export const rouxDuration = (s: RouxSettings) => (s.mode === 'normal' ? 8000 : 30000);
 export const ROUX_STOP_REASONS: readonly RouxStopReason[] = [
   'complete',

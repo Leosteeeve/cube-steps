@@ -5,6 +5,7 @@ import type { AdvancedRouxAssets } from '../methods/roux-advanced/assets';
 import { validateRouxRoute } from '../methods/roux-advanced/validate';
 import { ADVANCED_ROUX_PRESENTATION } from '../methods/roux-advanced/presentation';
 import type { RouxRoute } from './types';
+import { rouxStageConnection } from '../player/roux-stage-connections';
 export function prepareRouxPlayback(e: CubeEngine, raw: RouxRoute, assets: AdvancedRouxAssets) {
   const route = validateRouxRoute(e, raw, assets),
     timeline: PlaybackTimeline = {
@@ -38,6 +39,7 @@ export function prepareRouxPlayback(e: CubeEngine, raw: RouxRoute, assets: Advan
       label: ADVANCED_ROUX_PRESENTATION.stages[i].label,
       start,
       end: timeline.moves.length,
+      connection: rouxStageConnection(route.trace, i),
       ...(stage.skipReason ? { skipReason: stage.skipReason } : {}),
     });
   }

@@ -8,7 +8,7 @@ export interface BlockSearchAssets {
   readonly distances: Uint8Array;
   readonly digest: string;
 }
-const admitted = new WeakSet<object>();
+const admitted = new WeakMap<BlockSearchAssets, Uint8Array>();
 export function assertBlockSearchAssets(assets: BlockSearchAssets): void {
   if (
     !admitted.has(assets) ||
@@ -35,10 +35,10 @@ export async function validateBlockSearchBytes(
   const assets: BlockSearchAssets = Object.freeze({
     coordinateVersion: 1,
     moveSetVersion: 'roux-stm-v1',
-    distances: copy,
+    distances: copy.slice(),
     digest,
   });
-  admitted.add(assets);
+  admitted.set(assets, copy);
   return assets;
 }
 export async function loadBlockSearchAssets(
@@ -55,14 +55,19 @@ export async function loadBlockSearchAssets(
   signal?.throwIfAborted();
   return assets;
 }
+export function blockProjectionDistance(assets: BlockSearchAssets, coordinate: number): number {
+  assertBlockSearchAssets(assets);
+  if (!Number.isInteger(coordinate) || coordinate < 0 || coordinate >= BLOCK_COORDINATES)
+    throw Error('Invalid Roux block coordinate.');
+  const value = admitted.get(assets)![coordinate];
+  if (value === 255) throw Error('Unreachable Roux block projection.');
+  return value;
+}
 export function firstBlockLowerBound(
   engine: CubeEngine,
   state: CubeState,
   frame: RouxFrame,
   assets: BlockSearchAssets,
 ): number {
-  assertBlockSearchAssets(assets);
-  const value = assets.distances[readFirstBlockCoordinate(engine, state, frame)];
-  if (value === 255) throw Error('Unreachable Roux block projection.');
-  return value;
+  return blockProjectionDistance(assets, readFirstBlockCoordinate(engine, state, frame));
 }
