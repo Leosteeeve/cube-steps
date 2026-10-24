@@ -10,6 +10,7 @@ export type ClubRoute =
   | { kind: 'cmll-case'; caseId: string }
   | { kind: 'cmll-practice' }
   | { kind: 'lab'; view: 'analyze' | 'compare' | 'trials' }
+  | { kind: 'roux-lab'; view: 'analyze' | 'compare' | 'trials' }
   | { kind: 'guide'; section?: GuideSectionId }
   | AppRoute;
 export function parseClubRoute(hash: string): ClubRoute {
@@ -28,6 +29,10 @@ export function parseClubRoute(hash: string): ClubRoute {
   if (value === 'lab/compare') return { kind: 'lab', view: 'compare' };
   if (value === 'lab/trials') return { kind: 'lab', view: 'trials' };
   if (value.startsWith('lab/')) return { kind: 'not-found' };
+  if (value === 'roux-lab') return { kind: 'roux-lab', view: 'analyze' };
+  if (value === 'roux-lab/compare') return { kind: 'roux-lab', view: 'compare' };
+  if (value === 'roux-lab/trials') return { kind: 'roux-lab', view: 'trials' };
+  if (value.startsWith('roux-lab/')) return { kind: 'not-found' };
   if (value === 'guide') return { kind: 'guide' };
   if (value.startsWith('guide/')) {
     const section = value.slice(6) as GuideSectionId;

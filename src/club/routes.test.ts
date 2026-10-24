@@ -1,6 +1,17 @@
 import { expect, it } from 'vitest';
 import { parseClubRoute } from './routes';
 import { parseRoute } from '../app/routes';
+it('routes the club Roux workspace separately from CFOP and the global edition', () => {
+  for (const [suffix, view] of [
+    ['', 'analyze'],
+    ['/compare', 'compare'],
+    ['/trials', 'trials'],
+  ] as const) {
+    expect(parseClubRoute(`#/roux-lab${suffix}`)).toEqual({ kind: 'roux-lab', view });
+    expect(parseRoute(`#/roux-lab${suffix}`)).toEqual({ kind: 'not-found' });
+  }
+  expect(parseClubRoute('#/roux-lab/missing')).toEqual({ kind: 'not-found' });
+});
 it('keeps all Lab links club-only and rejects unknown Lab suffixes', () => {
   for (const [hash, view] of [
     ['#/lab', 'analyze'],

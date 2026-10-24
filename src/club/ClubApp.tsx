@@ -15,6 +15,10 @@ import { TutorialRouteBoundary } from './tutorial/TutorialProvider';
 import { TourEntry } from './tutorial/TourEntry';
 import { tourForRoute } from './tutorial/catalog';
 import { createLabOwner } from './lab-owner';
+import { createRouxLabOwner } from './roux-lab/owner';
+const RouxLabWorkspace = lazy(() =>
+  import('./roux-lab/RouxLabWorkspace').then((m) => ({ default: m.RouxLabWorkspace })),
+);
 const TimerPage = lazy(() => import('./timer/TimerPage').then((m) => ({ default: m.TimerPage })));
 const AdvancedRouxFeaturePage = lazy(() =>
   import('./roux-advanced/AdvancedRouxFeaturePage').then((m) => ({
@@ -33,6 +37,8 @@ const ClubLearnPage = lazy(() =>
 );
 export function ClubApp() {
   const [labOwner] = useState(createLabOwner);
+  const [rouxLabOwner] = useState(createRouxLabOwner);
+  useEffect(() => () => rouxLabOwner.dispose(), [rouxLabOwner]);
   useEffect(() => () => labOwner.dispose(), [labOwner]);
   const [timerRepository] = useState(() => createTimerRepository());
   useEffect(() => () => timerRepository.dispose(), [timerRepository]);
@@ -44,7 +50,7 @@ export function ClubApp() {
     return () => removeEventListener('hashchange', change);
   }, []);
   const { engine, error, retry } = useCubeEngine(
-    !['home', 'quiz', 'guide', 'lab', 'not-found'].includes(route.kind),
+    !['home', 'quiz', 'guide', 'lab', 'roux-lab', 'not-found'].includes(route.kind),
   );
   const tourId = tourForRoute(
     route,
@@ -72,7 +78,7 @@ export function ClubApp() {
                 ? 'moves'
                 : route.kind === 'guide'
                   ? 'guide'
-                  : route.kind === 'lab'
+                  : route.kind === 'lab' || route.kind === 'roux-lab'
                     ? 'lab'
                     : 'learn'
         }
@@ -86,7 +92,7 @@ export function ClubApp() {
               ready={route.kind === 'home' || route.kind === 'quiz' || !!engine}
             />
           )}
-          {!['home', 'quiz', 'timer', 'moves', 'guide', 'lab', 'not-found'].includes(
+          {!['home', 'quiz', 'timer', 'moves', 'guide', 'lab', 'roux-lab', 'not-found'].includes(
             route.kind,
           ) && (
             <nav className="club-tools" aria-label="Learning tools">
@@ -138,6 +144,10 @@ export function ClubApp() {
           ) : route.kind === 'guide' ? (
             <Suspense fallback={<p role="status">Loading the guide…</p>}>
               <GuidePage section={route.section} />
+            </Suspense>
+          ) : route.kind === 'roux-lab' ? (
+            <Suspense fallback={<p role="status">Loading Roux Lab…</p>}>
+              <RouxLabWorkspace owner={rouxLabOwner} view={route.view} />
             </Suspense>
           ) : route.kind === 'lab' ? (
             <Suspense fallback={<p role="status">Loading CFOP Lab…</p>}>

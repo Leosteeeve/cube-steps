@@ -27,12 +27,17 @@ export function ClubHeader({
             ...(timerAvailable ? [{ label: 'Timer', href: '#/timer' }] : []),
             { label: 'Algorithm library', href: '#/algorithms' },
             { label: 'Recognition practice', href: '#/practice' },
+            { label: 'CMLL library', href: '#/cmll' },
+            { label: 'CMLL practice', href: '#/cmll-practice' },
           ]}
         />
         <SectionMenu
           label="Labs"
           currentHref={location.hash}
-          items={[{ label: 'CFOP Lab', href: '#/lab' }]}
+          items={[
+            { label: 'CFOP Lab', href: '#/lab' },
+            { label: 'Roux Test Lab', href: '#/roux-lab' },
+          ]}
         />
         <a href="#/guide" aria-current={active === 'guide' ? 'page' : undefined}>
           Guide
