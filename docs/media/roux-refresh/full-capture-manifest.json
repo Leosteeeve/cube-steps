@@ -1,0 +1,587 @@
+{
+  "version": 1,
+  "sourceRevision": "bfd04215416f9498380c6dca316edd88468e4831",
+  "captures": [
+    {
+      "id": "home",
+      "from": 120,
+      "sourceRevision": "bfd04215416f9498380c6dca316edd88468e4831",
+      "url": "http://127.0.0.1:4199/cube-steps/club/",
+      "scenario": "No account needed. Pause whenever you want to try a step.",
+      "file": "public/captures/home.mp4",
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "durationSeconds": 12,
+      "events": [],
+      "sha256": "8e557f48200612b1d63e47d01e2074cec3442eb7ffe5228116b50bbe286fd89e"
+    },
+    {
+      "id": "quiz",
+      "from": 480,
+      "sourceRevision": "bfd04215416f9498380c6dca316edd88468e4831",
+      "url": "http://127.0.0.1:4199/cube-steps/club/#/find-your-route",
+      "scenario": "This is a recommendation, not a test. You can change routes later.",
+      "file": "public/captures/quiz.mp4",
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "durationSeconds": 36,
+      "events": [
+        {
+          "frame": 60,
+          "label": "Choose I cannot solve independently yet",
+          "target": {
+            "x": 574.8,
+            "y": 430.53749999999997,
+            "width": 21.599999999999998,
+            "height": 21.599999999999998
+          }
+        },
+        {
+          "frame": 120,
+          "label": "Next question",
+          "target": {
+            "x": 548.4,
+            "y": 756.09375,
+            "width": 83.1375,
+            "height": 63.1125
+          }
+        },
+        {
+          "frame": 210,
+          "label": "Choose Build layers and pair pieces",
+          "target": {
+            "x": 574.8,
+            "y": 512.85,
+            "width": 21.599999999999998,
+            "height": 21.599999999999998
+          }
+        },
+        {
+          "frame": 270,
+          "label": "Next question",
+          "target": {
+            "x": 642.7875,
+            "y": 755.85,
+            "width": 83.1375,
+            "height": 63.1125
+          }
+        },
+        {
+          "frame": 360,
+          "label": "Choose I still need help completing a solve",
+          "target": {
+            "x": 574.8,
+            "y": 458.1375,
+            "width": 21.599999999999998,
+            "height": 21.599999999999998
+          }
+        },
+        {
+          "frame": 420,
+          "label": "Next question",
+          "target": {
+            "x": 642.7875,
+            "y": 866.25,
+            "width": 83.1375,
+            "height": 63.1125
+          }
+        },
+        {
+          "frame": 510,
+          "label": "Choose My first independent solve",
+          "target": {
+            "x": 574.8,
+            "y": 467.73749999999995,
+            "width": 21.599999999999998,
+            "height": 21.599999999999998
+          }
+        },
+        {
+          "frame": 570,
+          "label": "Next question",
+          "target": {
+            "x": 642.7875,
+            "y": 710.7375,
+            "width": 83.1375,
+            "height": 63.1125
+          }
+        },
+        {
+          "frame": 630,
+          "label": "Choose Short sessions",
+          "target": {
+            "x": 574.8,
+            "y": 467.73749999999995,
+            "width": 21.599999999999998,
+            "height": 21.599999999999998
+          }
+        },
+        {
+          "frame": 690,
+          "label": "Next question",
+          "target": {
+            "x": 642.7875,
+            "y": 628.18125,
+            "width": 83.1375,
+            "height": 63.1125
+          }
+        },
+        {
+          "frame": 750,
+          "label": "Choose Both",
+          "target": {
+            "x": 574.8,
+            "y": 632.85,
+            "width": 21.599999999999998,
+            "height": 21.599999999999998
+          }
+        },
+        {
+          "frame": 780,
+          "label": "Show my route",
+          "target": {
+            "x": 642.7875,
+            "y": 710.7375,
+            "width": 152.85,
+            "height": 63.1125
+          }
+        }
+      ],
+      "sha256": "24ad0ef249d0e887871129f205106c95256e7ba73f0f5466849a0a5f56a8921f"
+    },
+    {
+      "id": "moves",
+      "from": 1560,
+      "sourceRevision": "bfd04215416f9498380c6dca316edd88468e4831",
+      "url": "http://127.0.0.1:4199/cube-steps/club/#/moves",
+      "scenario": "Read direction while looking straight at the face being turned.",
+      "file": "public/captures/moves.mp4",
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "durationSeconds": 34,
+      "events": [
+        {
+          "frame": 480,
+          "label": "Choose U′",
+          "target": {
+            "x": 1576.8,
+            "y": 36.20625,
+            "width": 69.6,
+            "height": 58.8
+          }
+        },
+        {
+          "frame": 570,
+          "label": "Direction view",
+          "target": {
+            "x": 825.7875,
+            "y": 650.4,
+            "width": 153.6,
+            "height": 56.15625
+          }
+        },
+        {
+          "frame": 660,
+          "label": "Play move",
+          "target": {
+            "x": 628.1625,
+            "y": 776.3249999999999,
+            "width": 146.75625,
+            "height": 56.15625
+          }
+        },
+        {
+          "frame": 840,
+          "label": "Replay",
+          "target": {
+            "x": 784.51875,
+            "y": 776.3249999999999,
+            "width": 89.56875,
+            "height": 56.15625
+          }
+        },
+        {
+          "frame": 930,
+          "label": "Holding view",
+          "target": {
+            "x": 671.90625,
+            "y": 650.4,
+            "width": 144.28125,
+            "height": 56.15625
+          }
+        }
+      ],
+      "sha256": "363d24ebe14a88ea3871f21bba3817a4da8bd1fde36cccf5ad7ea861f6568ba4"
+    },
+    {
+      "id": "lesson",
+      "from": 2580,
+      "sourceRevision": "bfd04215416f9498380c6dca316edd88468e4831",
+      "url": "http://127.0.0.1:4199/cube-steps/club/#/learn/white-cross",
+      "scenario": "Prepared lesson example: set up your physical cube before copying its moves.",
+      "file": "public/captures/lesson.mp4",
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "durationSeconds": 38,
+      "events": [
+        {
+          "frame": 240,
+          "label": "View example scramble",
+          "target": {
+            "x": 487.2,
+            "y": 82.85625,
+            "width": 1257.6,
+            "height": 22.3125
+          }
+        },
+        {
+          "frame": 540,
+          "label": "Close example setup",
+          "target": {
+            "x": 487.2,
+            "y": 82.85625,
+            "width": 1257.6,
+            "height": 22.3125
+          }
+        },
+        {
+          "frame": 750,
+          "label": "Next move",
+          "target": {
+            "x": 712.8,
+            "y": 952.70625,
+            "width": 52.8,
+            "height": 52.8
+          }
+        },
+        {
+          "frame": 960,
+          "label": "Next move",
+          "target": {
+            "x": 712.8,
+            "y": 862.63125,
+            "width": 52.8,
+            "height": 52.8
+          }
+        }
+      ],
+      "sha256": "a6f09e797dde4c816f28bfbbbfc43a9b5383a106910e0cb0bf55dbc12e5514d5"
+    },
+    {
+      "id": "solve",
+      "from": 3720,
+      "sourceRevision": "bfd04215416f9498380c6dca316edd88468e4831",
+      "url": "http://127.0.0.1:4199/cube-steps/club/#/solve",
+      "scenario": "Prepared input example. The solution shown comes from the entered scramble.",
+      "file": "public/captures/solve.mp4",
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "durationSeconds": 28,
+      "events": [
+        {
+          "frame": 180,
+          "label": "Paste known scramble"
+        },
+        {
+          "frame": 360,
+          "label": "Explain with LBL",
+          "target": {
+            "x": 1531.8374999999999,
+            "y": 423.22499999999997,
+            "width": 187.7625,
+            "height": 53.512499999999996
+          }
+        },
+        {
+          "frame": 600,
+          "label": "Next move",
+          "target": {
+            "x": 712.8,
+            "y": 953.26875,
+            "width": 52.8,
+            "height": 52.8
+          }
+        },
+        {
+          "frame": 720,
+          "label": "Next move",
+          "target": {
+            "x": 712.8,
+            "y": 863.19375,
+            "width": 52.8,
+            "height": 52.8
+          }
+        }
+      ],
+      "sha256": "4ad611013ae5004b1b914282cf258f8a48a81a39bc5f7a97f0445dc086851cc9"
+    },
+    {
+      "id": "colors",
+      "from": 4560,
+      "sourceRevision": "bfd04215416f9498380c6dca316edd88468e4831",
+      "url": "http://127.0.0.1:4199/cube-steps/club/#/solve",
+      "scenario": "Input demonstration: this clip does not complete all six faces.",
+      "file": "public/captures/colors.mp4",
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "durationSeconds": 18,
+      "events": [
+        {
+          "frame": 150,
+          "label": "Choose Green",
+          "target": {
+            "x": 1485.7875,
+            "y": 600.375,
+            "width": 226.575,
+            "height": 52.8
+          }
+        },
+        {
+          "frame": 180,
+          "label": "Paint one sticker",
+          "target": {
+            "x": 592.51875,
+            "y": 477.525,
+            "width": 99.1875,
+            "height": 99.1875
+          }
+        },
+        {
+          "frame": 300,
+          "label": "Next face",
+          "target": {
+            "x": 866.90625,
+            "y": 811.14375,
+            "width": 80.53125,
+            "height": 58.55625
+          }
+        },
+        {
+          "frame": 390,
+          "label": "Next face",
+          "target": {
+            "x": 866.90625,
+            "y": 811.14375,
+            "width": 80.53125,
+            "height": 58.55625
+          }
+        }
+      ],
+      "sha256": "923f49df7f9b35a6071df4db8c704bc1924e720a4b4bfaa533f25c0b0a4ae1d8"
+    },
+    {
+      "id": "timer",
+      "from": 5400,
+      "sourceRevision": "bfd04215416f9498380c6dca316edd88468e4831",
+      "url": "http://127.0.0.1:4199/cube-steps/club/#/timer",
+      "scenario": "Timer control demonstration only. The short run shown is not a real solve.",
+      "file": "public/captures/timer.mp4",
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "durationSeconds": 30,
+      "events": [
+        {
+          "frame": 360,
+          "label": "Hold Space"
+        },
+        {
+          "frame": 390,
+          "label": "Release to start"
+        },
+        {
+          "frame": 570,
+          "label": "Stop timer"
+        },
+        {
+          "frame": 720,
+          "label": "Inspection option",
+          "target": {
+            "x": 611.68125,
+            "y": 619.1062499999999,
+            "width": 21.599999999999998,
+            "height": 21.599999999999998
+          }
+        }
+      ],
+      "sha256": "a0be55f1ba8ae9eb1182851ba15bfae5653472223f12795fae390d7dfc707450"
+    },
+    {
+      "id": "history",
+      "from": 6300,
+      "sourceRevision": "bfd04215416f9498380c6dca316edd88468e4831",
+      "url": "http://127.0.0.1:4199/cube-steps/club/#/timer",
+      "scenario": "Sample records, not member results. History stays in this browser on this device.",
+      "file": "public/captures/history.mp4",
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "durationSeconds": 18,
+      "events": [
+        {
+          "frame": 180,
+          "label": "View sample solve",
+          "target": {
+            "x": 1079.45625,
+            "y": 955.5,
+            "width": 64.78125,
+            "height": 52.8
+          }
+        },
+        {
+          "frame": 240,
+          "label": "Correct sample result +2"
+        },
+        {
+          "frame": 420,
+          "label": "Export CSV",
+          "target": {
+            "x": 1425.95625,
+            "y": 846.1875,
+            "width": 107.19375,
+            "height": 52.8
+          }
+        }
+      ],
+      "sha256": "742ca2fdd3b9ccee270828a4a5b9611627af8efbfba91e46ab08d859d1d5a643"
+    },
+    {
+      "id": "roux",
+      "from": 6840,
+      "sourceRevision": "bfd04215416f9498380c6dca316edd88468e4831",
+      "url": "http://127.0.0.1:4199/cube-steps/club/#/learn/advanced-roux/block-strategies",
+      "scenario": "Advanced Roux is Preview. Start with Beginner Roux if these ideas are new.",
+      "file": "public/captures/roux.mp4",
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "durationSeconds": 20,
+      "events": [
+        {
+          "frame": 360,
+          "label": "Next move",
+          "target": {
+            "x": 712.8,
+            "y": 906.28125,
+            "width": 52.8,
+            "height": 52.8
+          }
+        },
+        {
+          "frame": 480,
+          "label": "Replay action",
+          "target": {
+            "x": 1123.89375,
+            "y": 1016.3812499999999,
+            "width": 91.74374999999999,
+            "height": 37.5
+          }
+        }
+      ],
+      "sha256": "ab795a490bc9bd27efa3dae1ee65cd6bd0d1c7155e8d658a6703eca3d0082a54"
+    },
+    {
+      "id": "lab",
+      "from": 7440,
+      "sourceRevision": "bfd04215416f9498380c6dca316edd88468e4831",
+      "url": "http://127.0.0.1:4199/cube-steps/club/#/roux-lab",
+      "scenario": "Search completed before this shot. Real verified route; original playback speed.",
+      "file": "public/captures/lab.mp4",
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "durationSeconds": 24,
+      "events": [
+        {
+          "frame": 360,
+          "label": "Next move",
+          "target": {
+            "x": 357.59999999999997,
+            "y": 898.2375,
+            "width": 52.8,
+            "height": 52.8
+          }
+        },
+        {
+          "frame": 480,
+          "label": "Next move",
+          "target": {
+            "x": 357.59999999999997,
+            "y": 847.36875,
+            "width": 52.8,
+            "height": 52.8
+          }
+        },
+        {
+          "frame": 600,
+          "label": "Next move",
+          "target": {
+            "x": 357.59999999999997,
+            "y": 847.36875,
+            "width": 52.8,
+            "height": 52.8
+          }
+        }
+      ],
+      "routeId": "roux-v1:white-blue:8a95ed70",
+      "inputFingerprint": "d5340a9a1322a2bd40063b8da54ba0671eb2ca04ff48addfdb2a92c22f2159dc",
+      "sha256": "62ddf4a8d6b8bfb19bcb81b529b620008914dd1cc7e5501b126f151ac8d52320"
+    },
+    {
+      "id": "guide",
+      "from": 8160,
+      "sourceRevision": "bfd04215416f9498380c6dca316edd88468e4831",
+      "url": "http://127.0.0.1:4199/cube-steps/club/#/guide/moves",
+      "scenario": "Open Guide from the club navigation. Tours can be skipped or exited at any time.",
+      "file": "public/captures/guide.mp4",
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "durationSeconds": 18,
+      "events": [
+        {
+          "frame": 180,
+          "label": "Every control, explained",
+          "target": {
+            "x": 624,
+            "y": 144.13125,
+            "width": 1027.2,
+            "height": 72.95625
+          }
+        }
+      ],
+      "sha256": "d046f7977be9e96cb70fa9a31bb80d535f1106b87b9eee9ca30dd84dd189984d"
+    },
+    {
+      "id": "practice",
+      "from": 5100,
+      "sourceRevision": "bfd04215416f9498380c6dca316edd88468e4831",
+      "url": "http://127.0.0.1:4199/cube-steps/club/#/practice",
+      "scenario": "CFOP practice is useful once you have learned the corresponding method.",
+      "file": "public/captures/practice.mp4",
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "durationSeconds": 10,
+      "events": [
+        {
+          "frame": 150,
+          "label": "Show solution",
+          "target": {
+            "x": 280.8,
+            "y": 846.3375,
+            "width": 172.44375,
+            "height": 58.55625
+          }
+        }
+      ],
+      "sha256": "5334f3f25fa3a0291e2caf1141cce56dac20884ab96ae305cbaee84fa31846b4"
+    }
+  ]
+}

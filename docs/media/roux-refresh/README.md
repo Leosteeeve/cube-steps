@@ -13,3 +13,11 @@ Status: Short cut accepted on 2026-10-24 with the requested closing-card privacy
 See [storyboard](storyboard.md) and [real-capture manifest](capture-manifest.json). No capture is a prototype search result. Preview/Experimental status and pending physical ergonomic acceptance are retained.
 
 Owner decision (2026-10-24): “通过，最后一个画面可以减少一点我的信息”. Removed the GitHub username/site address from the closing and replaced it with “Full guide: open Guide”; retained the club mark, accepted ending and required audio credits. The requested edit was rendered, decoded and visually inspected. Task24 may proceed; full-film owner acceptance is still required before Guide replacement.
+
+## Full walkthrough review cut
+
+Accepted full film: 300.011 seconds, 1920×1080, 30 fps, 27,968,918 bytes (26.67 MiB). SHA-256: `24be7ff7f23507cd514c21a2591894afe1dd20d2300c70ca1f75b3550eeceaf1`.
+
+Status: accepted by the owner on 2026-10-24; the manifest identifies the accepted replacement. The current Guide video is unchanged. No new upload or embed. Source workspace: `sharing/club-website-introduction/roux-refresh-full-v1/`, outside Git. See [film manifest](film-manifest.json), [capture manifest](full-capture-manifest.json), [chapters](full-chapters.txt) and [timed prompts](full-on-screen-guide.txt).
+
+Full decode, 9,000-frame scan, PCM checks, 10 source-contract fixtures and desktop/phone Chromium playback passed. Encoded actions, boundaries and closing were visually inspected; subjective music and physical-device acceptance remain separate. The closing omits the owner GitHub username/address per the accepted short-film revision.
