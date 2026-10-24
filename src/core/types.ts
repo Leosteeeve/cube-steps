@@ -3,8 +3,13 @@ export type FaceMove = `${Face}${'' | "'" | '2'}`;
 export type TeachingMove =
   FaceMove | `${`${Face}w` | 'x' | 'y' | 'z' | 'M' | 'E' | 'S'}${'' | "'" | '2'}`;
 import type { RouxActionMetadata, RouxStageId } from '../methods/roux/types';
+import type {
+  AdvancedRouxActionMetadata,
+  AdvancedRouxStageId,
+} from '../methods/roux-advanced/types';
 export type { RouxStageId } from '../methods/roux/types';
-export type MethodId = 'lbl' | 'cfop-beginner' | 'cfop-advanced' | 'roux-beginner';
+export type MethodId =
+  'lbl' | 'cfop-beginner' | 'cfop-advanced' | 'roux-beginner' | 'roux-advanced';
 export type Color = 'white' | 'yellow' | 'green' | 'blue' | 'red' | 'orange';
 export type Facelets = Readonly<Record<Face, readonly (Color | null)[]>>;
 export type FaceletSnapshot = Readonly<Record<Face, readonly Color[]>>;
@@ -47,7 +52,8 @@ export type CFOPStageId =
   | 'cfop-auf';
 export type AdvancedStageId =
   'advanced-cross' | 'advanced-f2l' | 'advanced-oll' | 'advanced-pll' | 'advanced-auf';
-export type StageId = LBLStageId | CFOPStageId | AdvancedStageId | RouxStageId;
+export type StageId =
+  LBLStageId | CFOPStageId | AdvancedStageId | RouxStageId | AdvancedRouxStageId;
 export interface PairTrace {
   cornerId: string;
   edgeId: string;
@@ -71,6 +77,7 @@ export interface ExecutionMetrics {
 }
 export interface TraceAction {
   roux?: RouxActionMetadata;
+  rouxAdvanced?: AdvancedRouxActionMetadata;
   kind: 'setup' | 'algorithm' | 'regrip' | 'joined';
   /** Verified reference actions; execute moves, not these uncombined references. */
   joined?: { sources: TraceAction[]; savedMoves: number };

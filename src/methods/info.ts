@@ -64,5 +64,19 @@ export function getMethodInfo(id: MethodId): MethodInfo {
   if (id === 'cfop-beginner') return CFOP_INFO;
   if (id === 'cfop-advanced') return ADVANCED_INFO;
   if (id === 'roux-beginner') return ROUX_INFO;
+  if (id === 'roux-advanced') return ADVANCED_ROUX_INFO;
   throw new Error(`Method ${id} is not registered.`);
 }
+export const ADVANCED_ROUX_INFO: MethodInfo = {
+  id: 'roux-advanced',
+  label: 'Advanced Roux',
+  teachingStatus: 'preview',
+  stages: [
+    { id: 'ar-position', label: 'Choose your hold', group: 'Foundation' },
+    { id: 'ar-first-block', label: 'Build the first block', group: 'Blocks' },
+    { id: 'ar-second-block', label: 'Connect the second block', group: 'Blocks' },
+    { id: 'ar-cmll', label: 'Solve the corners', group: 'CMLL' },
+    { id: 'ar-eolr', label: 'Orient and place side edges', group: 'LSE' },
+    { id: 'ar-last-four', label: 'Finish the last four edges', group: 'Finish' },
+  ],
+};

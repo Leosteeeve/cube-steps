@@ -13,6 +13,7 @@ const slugs: Record<MethodId, string> = {
   'cfop-beginner': 'cfop',
   'cfop-advanced': 'advanced-cfop',
   'roux-beginner': 'roux',
+  'roux-advanced': 'advanced-roux',
 };
 const fromSlug = (slug: string): MethodId | undefined =>
   slug === 'cfop'
@@ -21,7 +22,9 @@ const fromSlug = (slug: string): MethodId | undefined =>
       ? 'cfop-advanced'
       : slug === 'roux'
         ? 'roux-beginner'
-        : undefined;
+        : slug === 'advanced-roux'
+          ? 'roux-advanced'
+          : undefined;
 export function parseRoute(hash: string, edition: MethodEdition = 'global'): AppRoute {
   const value = hash.replace(/^#\/?/, '').replace(/\/$/, '');
   if (!value || value === 'learn') return { kind: 'learn', method: 'lbl', lessonId: 'notation' };
