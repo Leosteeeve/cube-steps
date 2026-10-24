@@ -18,4 +18,4 @@ and source playback speed. Original capture timings are retained in source/captu
 Prepared lesson/solver examples, Timer control runs and sample history are labeled.
 Closing composition is adapted from the original full tutorial at the owner's request.
 
-Created 2026-10-24. Local full-video review cut; not uploaded or published by this edit.
+Created 2026-10-24. Accepted by the owner for publication as club-guide-video-v3.
