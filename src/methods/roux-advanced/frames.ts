@@ -25,6 +25,15 @@ for (const flipped of [true, false]) {
   }
 }
 export const ROUX_FRAMES: readonly RouxFrame[] = Object.freeze(frames);
+export function selectRouxFrames(allowed: readonly string[]): readonly RouxFrame[] {
+  if (!allowed.length) throw Error('Choose at least one Roux frame.');
+  if (new Set(allowed).size !== allowed.length) throw Error('Duplicate Roux frame.');
+  return allowed.map((id) => {
+    const frame = ROUX_FRAMES.find((frame) => frame.id === id);
+    if (!frame) throw Error('Unknown Roux frame.');
+    return frame;
+  });
+}
 const maps = new WeakMap<CubeEngine, Map<RouxFrameId, RouxFrameMap>>();
 export function createRouxFrameMap(engine: CubeEngine, frameId: RouxFrameId): RouxFrameMap {
   let saved = maps.get(engine);
