@@ -49,7 +49,7 @@ test('global navigation exposes the active destination and keeps the LBL introdu
   await expect(page.getByRole('link', { name: /Roux Lab|Webb Cubing Club/i })).toHaveCount(0);
   await expect(page.locator('a[href*="/club/"]')).toHaveCount(0);
 });
-for (const width of [360, 390, 768, 1024, 1440])
+for (const width of [320, 390, 430, 768, 1024, 1440])
   test(`global cards and controls fit ${width}`, async ({ page }, info) => {
     test.setTimeout(60000);
     await page.setViewportSize({ width, height: 1000 });

@@ -409,6 +409,12 @@
   border-color: var(--green);
   color: #fff;
 }
+[data-edition] :is(button, a, input, select, summary) {
+  scroll-margin-block: 24px;
+}
+[data-edition] .cube-stage .playback-toolbar {
+  padding-bottom: max(18px, env(safe-area-inset-bottom));
+}
 [data-edition] .explanation {
   border: 1px solid var(--line);
   border-radius: 22px;

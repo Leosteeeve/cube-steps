@@ -34,7 +34,8 @@ test('keyboard timer arms, saves once, ignores controls and interrupts route cha
   await page.keyboard.up('Space');
   await expect(surface).toHaveAttribute('data-phase', 'running');
   await page.getByRole('link', { name: 'Home', exact: true }).click();
-  await page.getByRole('link', { name: 'Timer', exact: false }).click();
+  await page.getByRole('button', { name: 'Practice', exact: true }).click();
+  await page.getByRole('link', { name: 'Timer', exact: true }).click();
   await expect(page.getByText('2 solves', { exact: true })).toBeVisible();
   await expect(page.locator('.timer-last')).toBeVisible();
 });

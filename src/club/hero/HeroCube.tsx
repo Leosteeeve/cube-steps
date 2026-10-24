@@ -11,7 +11,7 @@ export function HeroCube() {
     container = useRef<HTMLDivElement>(null);
   const elapsed = useRef(0);
   const [paused, setPaused] = useState(false),
-    [inView, setInView] = useState(true),
+    [inView, setInView] = useState(() => typeof IntersectionObserver !== 'function'),
     [failed, setFailed] = useState(false);
   const motion = useMotion(),
     reduced = useSystemReducedMotion();

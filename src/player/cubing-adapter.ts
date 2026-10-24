@@ -52,20 +52,49 @@ export async function createCubingAdapter(
   );
   boundaries.push(indexer.algDuration());
   let lastTargets = '',
-    lost = false;
-  // The indexer can be ready before the asynchronous 3D wrapper exists.
-  await player.experimentalCurrentThreeJSPuzzleObject();
-  const canvases = [...(await player.experimentalCurrentCanvases())];
-  const contextLost = (event: Event) => {
-    event.preventDefault();
-    if (lost) return;
+    lost = false,
+    disposed = false,
+    rendered = false;
+  let renderTimer: ReturnType<typeof setTimeout> | undefined;
+  let canvases: HTMLCanvasElement[] = [];
+  const fail = (error: Error) => {
+    if (disposed || lost) return;
     lost = true;
     player.pause();
-    onRenderFailure?.(
-      new Error('3D rendering stopped. Continue with the synchronized six-face view below.'),
-    );
+    onRenderFailure?.(error);
   };
-  for (const canvas of canvases) canvas.addEventListener('webglcontextlost', contextLost);
+  const contextLost = (event: Event) => {
+    event.preventDefault();
+    fail(new Error('3D rendering stopped. Continue with the synchronized six-face view below.'));
+  };
+  // Twisty waits for intersection before creating 3D. Indexer readiness must
+  // enable controls independently; only time out rendering after it is visible.
+  const visibility = new IntersectionObserver((entries) => {
+    if (!entries.some((entry) => entry.isIntersecting) || rendered || disposed) return;
+    visibility.disconnect();
+    renderTimer = setTimeout(
+      () =>
+        fail(
+          new Error(
+            '3D initialization timed out. Continue with the synchronized six-face view below.',
+          ),
+        ),
+      8000,
+    );
+  });
+  visibility.observe(player);
+  void player
+    .experimentalCurrentThreeJSPuzzleObject()
+    .then(async () => {
+      const current = await player.experimentalCurrentCanvases();
+      if (disposed || lost) return;
+      canvases = [...current];
+      for (const canvas of canvases) canvas.addEventListener('webglcontextlost', contextLost);
+      rendered = true;
+      clearTimeout(renderTimer);
+      visibility.disconnect();
+    })
+    .catch((error) => fail(error instanceof Error ? error : new Error('3D rendering failed.')));
   const adapter = {
     boundaries,
     setTimestamp(time: number) {
@@ -103,6 +132,9 @@ export async function createCubingAdapter(
       };
     },
     dispose() {
+      disposed = true;
+      clearTimeout(renderTimer);
+      visibility.disconnect();
       for (const canvas of canvases) canvas.removeEventListener('webglcontextlost', contextLost);
       player.pause();
       player.remove();
