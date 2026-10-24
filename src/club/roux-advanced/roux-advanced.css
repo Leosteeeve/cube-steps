@@ -1,10 +1,10 @@
 .cmll-page {
   --roux-white: #fff;
-  --roux-yellow: #ffe16a;
-  --roux-red: #e77a72;
-  --roux-orange: #f6ad69;
-  --roux-blue: #538cda;
-  --roux-green: #65ba8f;
+  --roux-yellow: #ffe34d;
+  --roux-red: #ff625b;
+  --roux-orange: #ffad3d;
+  --roux-blue: #4d94ff;
+  --roux-green: #35d58a;
   max-width: 1320px;
   margin: auto;
   padding: clamp(1rem, 3vw, 3rem);
@@ -115,4 +115,33 @@
 }
 .roux-frame-options .cmll-selection {
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+}
+.advanced-roux-lesson {
+  --roux-white: #fff;
+  --roux-yellow: #ffe34d;
+  --roux-red: #ff625b;
+  --roux-orange: #ffad3d;
+  --roux-blue: #4d94ff;
+  --roux-green: #35d58a;
+  line-height: 1.75;
+  min-width: 0;
+}
+.advanced-roux-lesson .roux-four-steps section {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 1.2rem;
+  background: #f8faff;
+}
+.advanced-example-diagram {
+  max-width: 400px;
+  margin: 1.4rem auto;
+}
+.advanced-checks {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: #eef5fc;
+  border-radius: 20px;
+}
+.advanced-checks li {
+  margin: 0.6rem 0;
 }

@@ -22,6 +22,7 @@
     "test:roux:coverage": "vitest run tests/roux-block-coverage.test.ts tests/roux-corner-coverage.test.ts tests/roux-lse-coverage.test.ts --maxWorkers=1",
     "test:roux:corpus": "vitest run tests/roux-corpus.test.ts tests/roux-color-input.test.ts --maxWorkers=1",
     "verify:advanced-roux": "node scripts/roux-advanced/build-block-distance.mts --verify && node scripts/roux-advanced/build-lse.mts --verify && node scripts/roux-advanced/verify-cmll.mts",
+    "verify:advanced-roux:examples": "node scripts/roux-advanced/build-examples.mts --verify",
     "test:advanced-roux:coverage": "vitest run tests/advanced-roux-proof.test.ts tests/advanced-roux-cmll-coverage.test.ts tests/advanced-roux-lse-coverage.test.ts --maxWorkers=1",
     "test:advanced-roux:corpus": "vitest run tests/advanced-roux-corpus.test.ts tests/advanced-roux-color-input.test.ts tests/advanced-roux-efficiency.test.ts tests/advanced-roux-trace.test.ts --maxWorkers=1",
     "benchmark:advanced-roux": "node scripts/roux-advanced/benchmark.mts",

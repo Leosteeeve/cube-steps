@@ -1,13 +1,6 @@
 import type { Face, FaceletSnapshot, Color } from '../../core/types';
 import { FACE_NAMES } from '../../core/facelet-layout';
-const colors: Record<Color, string> = {
-  white: '#fff',
-  yellow: '#ffda24',
-  green: '#20a65a',
-  blue: '#1969d2',
-  red: '#e33443',
-  orange: '#ff9529',
-};
+import { CUBE_COLORS as colors } from '../../ui/cube-colors';
 const positions: Record<Face, [number, number]> = {
   U: [1, 0],
   L: [0, 1],

@@ -7,14 +7,7 @@ const positions: Record<Face, readonly [number, number]> = {
   B: [3, 1],
   D: [1, 2],
 };
-const colors: Record<Color, string> = {
-  white: '#f8fafc',
-  yellow: '#f5d83d',
-  red: '#ed5142',
-  orange: '#f99b36',
-  blue: '#377ada',
-  green: '#27a76c',
-};
+import { CUBE_COLORS as colors } from '../ui/cube-colors';
 export function CubeNet({
   facelets,
   targets,

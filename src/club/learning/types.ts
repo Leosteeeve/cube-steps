@@ -1,5 +1,7 @@
 import type { MethodId } from '../../core/types';
 export interface QuizAnswers {
+  preference?: 'layers' | 'blocks' | 'unsure';
+  foundation?: 'none' | 'independent' | 'cfop-two-look' | 'roux-blocks' | 'roux-basic';
   ability: 'new' | 'beginner' | 'f2l' | 'two-look';
   goal: 'first-solve' | 'smooth' | 'advanced';
   duration: 'short' | 'long';

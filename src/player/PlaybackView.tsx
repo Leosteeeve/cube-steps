@@ -89,7 +89,10 @@ export function PlaybackView({
           ? rouxPlayback.runtime.presentation
           : { label: 'Advanced Roux', algorithms: {} }
         : getMethod(source.session.trace.method)
-      : source.kind === 'lab' || source.kind === 'roux-lab' || source.kind === 'cmll'
+      : source.kind === 'lab' ||
+          source.kind === 'roux-lab' ||
+          source.kind === 'cmll' ||
+          source.kind === 'roux-lesson'
         ? { label: source.prepared.label, algorithms: source.prepared.algorithms }
         : {
             label: ALGORITHM_REGISTRY.cases[source.demonstration.caseId]?.label ?? 'Algorithm',
@@ -297,7 +300,9 @@ export function PlaybackView({
     action?.joined?.sources.flatMap((source) => (source.pair ? [source.pair] : [])) ?? [];
   const replayIndex = action
     ? s!.actionIndex
-    : (source.kind === 'algorithm' || source.kind === 'cmll') && s?.currentMove === null && player
+    : (source.kind === 'algorithm' || source.kind === 'cmll' || source.kind === 'roux-lesson') &&
+        s?.currentMove === null &&
+        player
       ? player.timeline.actions.length - 1
       : -1;
   const replayAction = player?.timeline.actions[replayIndex]?.action;

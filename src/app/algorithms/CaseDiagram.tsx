@@ -2,14 +2,7 @@ import { useId } from 'react';
 import type { CubeState, Face, Color } from '../../core/types';
 import { observeState, CENTER_SLOTS } from '../../core/observations';
 import { FACELET_LAYOUT, FACE_NAMES } from '../../core/facelet-layout';
-const palette: Record<Color, string> = {
-  white: '#ffffff',
-  yellow: '#ffdf58',
-  green: '#54ac7b',
-  blue: '#5596dc',
-  red: '#ef7d73',
-  orange: '#f1ad58',
-};
+import { CUBE_COLORS as palette } from '../../ui/cube-colors';
 const letters: Record<Color, string> = {
   white: 'W',
   yellow: 'Y',

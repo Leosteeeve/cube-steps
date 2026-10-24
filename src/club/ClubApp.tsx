@@ -174,7 +174,8 @@ export function ClubApp() {
               ) : route.kind === 'cmll-library' ||
                 route.kind === 'cmll-case' ||
                 route.kind === 'cmll-practice' ||
-                (route.kind === 'solve' && route.method === 'roux-advanced') ? (
+                ((route.kind === 'solve' || route.kind === 'learn') &&
+                  route.method === 'roux-advanced') ? (
                 <Suspense fallback={<p role="status">Loading Advanced Roux…</p>}>
                   <AdvancedRouxFeaturePage engine={engine} route={route} />
                 </Suspense>

@@ -7,6 +7,10 @@ import type { ClubRoute } from '../routes';
 import { CmllLibrary } from './CmllLibrary';
 import { CmllCasePage } from './CmllCasePage';
 import { CmllPractice } from './CmllPractice';
+import { AdvancedRouxLearnPage } from './AdvancedRouxLearnPage';
+import { registerAdvancedRouxCourse } from '../../content/courses';
+import { ADVANCED_ROUX_COURSE } from '../../content/roux-advanced-course';
+registerAdvancedRouxCourse(ADVANCED_ROUX_COURSE);
 export function AdvancedRouxFeaturePage({
   engine,
   route,
@@ -15,6 +19,8 @@ export function AdvancedRouxFeaturePage({
   route: ClubRoute;
 }) {
   const [allowedFrames, setFrames] = useState<readonly RouxFrameId[]>(['white-blue']);
+  if (route.kind === 'learn')
+    return <AdvancedRouxLearnPage key={route.lessonId} engine={engine} lessonId={route.lessonId} />;
   if (route.kind === 'cmll-library') return <CmllLibrary engine={engine} />;
   if (route.kind === 'cmll-case') return <CmllCasePage engine={engine} caseId={route.caseId} />;
   if (route.kind === 'cmll-practice') return <CmllPractice engine={engine} />;

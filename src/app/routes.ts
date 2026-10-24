@@ -1,6 +1,7 @@
 import type { MethodId } from '../core/types';
 import { getMethodInfo as getMethod } from '../methods/info';
 import { methodAvailable, type MethodEdition } from '../methods/availability';
+import { ADVANCED_ROUX_LESSON_IDS } from '../content/roux-advanced/lesson-ids';
 export type AppRoute =
   | { kind: 'practice' }
   | { kind: 'algorithms' }
@@ -48,6 +49,10 @@ export function parseRoute(hash: string, edition: MethodEdition = 'global'): App
   if (!methodAvailable(method, edition)) return { kind: 'not-found' };
   if (parts.length > (specific ? 3 : 2)) return { kind: 'not-found' };
   const lessonId = parts[specific ? 2 : 1] ?? intro;
+  if (method === 'roux-advanced')
+    return (ADVANCED_ROUX_LESSON_IDS as readonly string[]).includes(lessonId)
+      ? { kind: 'learn', method, lessonId }
+      : { kind: 'not-found' };
   if (method === 'roux-beginner' && lessonId === 'roux-frame') return { kind: 'not-found' };
   if (lessonId !== intro && !getMethod(method).stages.some((s) => s.id === lessonId))
     return { kind: 'not-found' };

@@ -1,0 +1,629 @@
+[
+  {
+    "id": "slice-forward",
+    "title": "M: move the middle, keep both sides",
+    "lessonIds": ["intro", "ar-second-block"],
+    "frameId": "white-blue",
+    "expectedCaseId": "slice-M",
+    "scramble": "",
+    "setup": ["x2", "y", "M'"],
+    "moves": ["M"],
+    "stageId": "ar-second-block",
+    "recognition": "Both side blocks are complete. The middle slice is one M′ away from its reference.",
+    "physicalChecks": [
+      "Show the two unchanged blocks.",
+      "Check which center returns to the bottom."
+    ],
+    "stepNotes": ["Turn M. Check the completed target against both side colors."]
+  },
+  {
+    "id": "slice-back",
+    "title": "M′: the other direction is useful too",
+    "lessonIds": ["intro", "ar-second-block"],
+    "frameId": "white-blue",
+    "expectedCaseId": "slice-M-prime",
+    "scramble": "",
+    "setup": ["x2", "y", "M"],
+    "moves": ["M'"],
+    "stageId": "ar-second-block",
+    "recognition": "Both blocks are intact. The highlighted middle cycle needs the inverse direction.",
+    "physicalChecks": [
+      "M′ undoes this displacement in one turn.",
+      "Do not add three M turns just because M is familiar."
+    ],
+    "stepNotes": ["Turn M'. Check the completed target against both side colors."]
+  },
+  {
+    "id": "square-pair",
+    "title": "A square and a ready pair",
+    "lessonIds": ["ar-first-block", "block-strategies"],
+    "frameId": "white-blue",
+    "expectedCaseId": "square-pair",
+    "scramble": "",
+    "setup": ["x2", "y", "F"],
+    "moves": ["F'"],
+    "stageId": "ar-first-block",
+    "recognition": "The back square stays solved; the matching front pair is joined off its slot.",
+    "physicalChecks": [
+      "Check all five left-block pieces, including the base edge.",
+      "This is a recognition exercise, not a claim that the displayed maneuver is globally shortest."
+    ],
+    "stepNotes": ["Turn F'. Check the completed target against both side colors."]
+  },
+  {
+    "id": "joined-pair",
+    "title": "Use the pair that is already joined",
+    "lessonIds": ["ar-first-block", "block-strategies"],
+    "frameId": "white-blue",
+    "expectedCaseId": "joined-pair",
+    "scramble": "",
+    "setup": ["x2", "y", "F"],
+    "moves": ["F'"],
+    "stageId": "ar-first-block",
+    "recognition": "Read both shared colors on the front corner-edge pair before inserting it.",
+    "physicalChecks": [
+      "Check all five left-block pieces, including the base edge.",
+      "This is a recognition exercise, not a claim that the displayed maneuver is globally shortest."
+    ],
+    "stepNotes": ["Turn F'. Check the completed target against both side colors."]
+  },
+  {
+    "id": "line",
+    "title": "Recognize a line inside a turned block",
+    "lessonIds": ["ar-first-block", "block-strategies"],
+    "frameId": "white-blue",
+    "expectedCaseId": "line",
+    "scramble": "",
+    "setup": ["x2", "y", "L"],
+    "moves": ["L'"],
+    "stageId": "ar-first-block",
+    "recognition": "The bottom row and the two side edges retain their relative connection. Restore the rigid group, instead of rebuilding its pieces.",
+    "physicalChecks": [
+      "Check all five left-block pieces, including the base edge.",
+      "This is a recognition exercise, not a claim that the displayed maneuver is globally shortest."
+    ],
+    "stepNotes": ["Turn L'. Check the completed target against both side colors."]
+  },
+  {
+    "id": "late-base",
+    "title": "Two pairs first; the base edge later",
+    "lessonIds": ["ar-first-block", "block-strategies"],
+    "frameId": "white-blue",
+    "expectedCaseId": "two-pairs-late-base",
+    "scramble": "",
+    "setup": ["x2", "y", "L2", "M2", "U", "M", "U2", "M'", "U", "M2", "L2"],
+    "moves": ["L2", "M2", "U'", "M", "U2", "M'", "U'", "M2", "L2"],
+    "stageId": "ar-first-block",
+    "recognition": "Two corner-edge pairs are connected, but the base edge is displaced. This teaching sequence opens and restores the pairs around a middle-slice correction.",
+    "physicalChecks": [
+      "Check all five left-block pieces, including the base edge.",
+      "This is a recognition exercise, not a claim that the displayed maneuver is globally shortest."
+    ],
+    "stepNotes": [
+      "Turn L2. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn M2. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn U'. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn M. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn U2. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn M'. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn U'. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn M2. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn L2. Check the completed target against both side colors."
+    ]
+  },
+  {
+    "id": "right-block",
+    "title": "Finish the right block without losing the left",
+    "lessonIds": ["ar-second-block"],
+    "frameId": "white-blue",
+    "expectedCaseId": "second-block",
+    "scramble": "",
+    "setup": ["x2", "y", "R", "U", "R'"],
+    "moves": ["R", "U'", "R'"],
+    "stageId": "ar-second-block",
+    "recognition": "The left block is already complete. The right-side opening uses only R/U work.",
+    "physicalChecks": [
+      "Watch the entire left block remain unchanged.",
+      "Check both side blocks at the end."
+    ],
+    "stepNotes": [
+      "Turn R. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn U'. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn R'. Check the completed target against both side colors."
+    ]
+  },
+  {
+    "id": "connected-blocks",
+    "title": "One extra first-block turn can help the next block",
+    "lessonIds": ["block-lookahead", "practice-compare"],
+    "frameId": "white-blue",
+    "expectedCaseId": "lookahead",
+    "scramble": "",
+    "setup": ["D2", "F'", "R'", "D", "x2", "y"],
+    "moves": ["U'", "F", "Rw"],
+    "stageId": "ar-first-block",
+    "recognition": "For this fixed input, a two-turn first block leaves a one-turn second-block continuation. The independent one-turn first-block reference does not determine the best combined route.",
+    "physicalChecks": [
+      "After U′ F, inspect the completed left block.",
+      "After Rw, both blocks are complete. Compare the three-turn total in your hands."
+    ],
+    "stepNotes": [
+      "Turn U'. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn F. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn Rw. Check the completed target against both side colors."
+    ]
+  },
+  {
+    "id": "cmll-o-1",
+    "title": "O: Adjacent Swap",
+    "lessonIds": ["ar-cmll"],
+    "frameId": "white-blue",
+    "expectedCaseId": "cmll:cmll-o-1",
+    "scramble": "",
+    "setup": [
+      "x2",
+      "y",
+      "M",
+      "U2",
+      "M'",
+      "U2",
+      "R",
+      "U",
+      "R2",
+      "F'",
+      "R",
+      "U",
+      "R",
+      "U'",
+      "R'",
+      "F",
+      "R",
+      "U'",
+      "R'"
+    ],
+    "moves": ["R", "U", "R'", "F'", "R", "U", "R'", "U'", "R'", "F", "R2", "U'", "R'"],
+    "stageId": "ar-cmll",
+    "recognition": "Ignore the last six edges. Inspect the yellow corner stickers on U and the side-color pattern: UFR U yellow, F red, R green; URB U yellow, R blue, B red; UBL U yellow, B green, L orange; ULF U yellow, L orange, F blue. This is O — Adjacent Swap.",
+    "physicalChecks": [
+      "Both blocks are restored.",
+      "The corners are in cyclic order; the remaining edges still belong to LSE."
+    ],
+    "stepNotes": [
+      "Turn R. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn U. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn R'. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn F'. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn R. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn U. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn R'. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn U'. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn R'. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn F. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn R2. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn U'. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn R'. Check the completed target against both side colors."
+    ],
+    "formulaId": "cmll-o-1-primary"
+  },
+  {
+    "id": "cmll-h-1",
+    "title": "H: Columns",
+    "lessonIds": ["ar-cmll"],
+    "frameId": "white-blue",
+    "expectedCaseId": "cmll:cmll-h-1",
+    "scramble": "",
+    "setup": [
+      "x2",
+      "y",
+      "M",
+      "U2",
+      "M'",
+      "U2",
+      "R",
+      "U",
+      "R'",
+      "U",
+      "R",
+      "U'",
+      "R'",
+      "U",
+      "R",
+      "U2",
+      "R'"
+    ],
+    "moves": ["R", "U2", "R'", "U'", "R", "U", "R'", "U'", "R", "U'", "R'"],
+    "stageId": "ar-cmll",
+    "recognition": "Ignore the last six edges. Inspect the yellow corner stickers on U and the side-color pattern: UFR U green, F yellow, R red; URB U green, R orange, B yellow; UBL U blue, B yellow, L orange; ULF U blue, L red, F yellow. This is H — Columns.",
+    "physicalChecks": [
+      "Both blocks are restored.",
+      "The corners are in cyclic order; the remaining edges still belong to LSE."
+    ],
+    "stepNotes": [
+      "Turn R. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn U2. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn R'. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn U'. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn R. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn U. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn R'. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn U'. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn R. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn U'. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn R'. Check the completed target against both side colors."
+    ],
+    "formulaId": "cmll-h-1-primary"
+  },
+  {
+    "id": "cmll-pi-1",
+    "title": "Pi: Right Bar",
+    "lessonIds": ["ar-cmll"],
+    "frameId": "white-blue",
+    "expectedCaseId": "cmll:cmll-pi-1",
+    "scramble": "",
+    "setup": [
+      "x2",
+      "y",
+      "M",
+      "U2",
+      "M'",
+      "U2",
+      "F",
+      "U",
+      "R",
+      "U'",
+      "R'",
+      "U",
+      "R",
+      "U'",
+      "R'",
+      "F'"
+    ],
+    "moves": ["F", "R", "U", "R'", "U'", "R", "U", "R'", "U'", "F'"],
+    "stageId": "ar-cmll",
+    "recognition": "Ignore the last six edges. Inspect the yellow corner stickers on U and the side-color pattern: UFR U green, F yellow, R red; URB U green, R orange, B yellow; UBL U orange, B blue, L yellow; ULF U red, L yellow, F blue. This is Pi — Right Bar.",
+    "physicalChecks": [
+      "Both blocks are restored.",
+      "The corners are in cyclic order; the remaining edges still belong to LSE."
+    ],
+    "stepNotes": [
+      "Turn F. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn R. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn U. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn R'. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn U'. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn R. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn U. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn R'. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn U'. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn F'. Check the completed target against both side colors."
+    ],
+    "formulaId": "cmll-pi-1-primary"
+  },
+  {
+    "id": "cmll-u-1",
+    "title": "U: Forward Slash",
+    "lessonIds": ["ar-cmll"],
+    "frameId": "white-blue",
+    "expectedCaseId": "cmll:cmll-u-1",
+    "scramble": "",
+    "setup": ["x2", "y", "M", "U2", "M'", "U2", "R", "U2", "R", "D", "R'", "U2", "R", "D'", "R2"],
+    "moves": ["R2", "D", "R'", "U2", "R", "D'", "R'", "U2", "R'"],
+    "stageId": "ar-cmll",
+    "recognition": "Ignore the last six edges. Inspect the yellow corner stickers on U and the side-color pattern: UFR U red, F yellow, R blue; URB U yellow, R red, B green; UBL U yellow, B orange, L blue; ULF U green, L orange, F yellow. This is U — Forward Slash.",
+    "physicalChecks": [
+      "Both blocks are restored.",
+      "The corners are in cyclic order; the remaining edges still belong to LSE."
+    ],
+    "stepNotes": [
+      "Turn R2. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn D. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn R'. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn U2. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn R. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn D'. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn R'. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn U2. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn R'. Check the completed target against both side colors."
+    ],
+    "formulaId": "cmll-u-1-primary"
+  },
+  {
+    "id": "cmll-t-1",
+    "title": "T: Left Bar",
+    "lessonIds": ["ar-cmll"],
+    "frameId": "white-blue",
+    "expectedCaseId": "cmll:cmll-t-1",
+    "scramble": "",
+    "setup": ["x2", "y", "M", "U2", "M'", "U2", "F", "R'", "F'", "R", "U", "R", "U'", "R'"],
+    "moves": ["R", "U", "R'", "U'", "R'", "F", "R", "F'"],
+    "stageId": "ar-cmll",
+    "recognition": "Ignore the last six edges. Inspect the yellow corner stickers on U and the side-color pattern: UFR U yellow, F red, R green; URB U yellow, R orange, B blue; UBL U red, B yellow, L blue; ULF U green, L orange, F yellow. This is T — Left Bar.",
+    "physicalChecks": [
+      "Both blocks are restored.",
+      "The corners are in cyclic order; the remaining edges still belong to LSE."
+    ],
+    "stepNotes": [
+      "Turn R. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn U. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn R'. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn U'. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn R'. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn F. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn R. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn F'. Check the completed target against both side colors."
+    ],
+    "formulaId": "cmll-t-1-primary"
+  },
+  {
+    "id": "cmll-sune-1",
+    "title": "Sune: Left Bar",
+    "lessonIds": ["ar-cmll"],
+    "frameId": "white-blue",
+    "expectedCaseId": "cmll:cmll-sune-1",
+    "scramble": "",
+    "setup": ["x2", "y", "M", "U2", "M'", "U2", "R", "U2", "R'", "U'", "R", "U'", "R'"],
+    "moves": ["R", "U", "R'", "U", "R", "U2", "R'"],
+    "stageId": "ar-cmll",
+    "recognition": "Ignore the last six edges. Inspect the yellow corner stickers on U and the side-color pattern: UFR U blue, F yellow, R orange; URB U red, R yellow, B blue; UBL U green, B yellow, L red; ULF U yellow, L green, F orange. This is Sune — Left Bar.",
+    "physicalChecks": [
+      "Both blocks are restored.",
+      "The corners are in cyclic order; the remaining edges still belong to LSE."
+    ],
+    "stepNotes": [
+      "Turn R. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn U. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn R'. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn U. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn R. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn U2. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn R'. Check the completed target against both side colors."
+    ],
+    "formulaId": "cmll-sune-1-primary"
+  },
+  {
+    "id": "cmll-anti-sune-1",
+    "title": "Anti-Sune: Right Bar",
+    "lessonIds": ["ar-cmll"],
+    "frameId": "white-blue",
+    "expectedCaseId": "cmll:cmll-anti-sune-1",
+    "scramble": "",
+    "setup": ["x2", "y", "M", "U2", "M'", "U2", "R'", "U2", "R", "U", "R'", "U", "R"],
+    "moves": ["R'", "U'", "R", "U'", "R'", "U2", "R"],
+    "stageId": "ar-cmll",
+    "recognition": "Ignore the last six edges. Inspect the yellow corner stickers on U and the side-color pattern: UFR U orange, F blue, R yellow; URB U blue, R red, B yellow; UBL U yellow, B red, L green; ULF U green, L orange, F yellow. This is Anti-Sune — Right Bar.",
+    "physicalChecks": [
+      "Both blocks are restored.",
+      "The corners are in cyclic order; the remaining edges still belong to LSE."
+    ],
+    "stepNotes": [
+      "Turn R'. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn U'. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn R. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn U'. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn R'. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn U2. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn R. Check the completed target against both side colors."
+    ],
+    "formulaId": "cmll-anti-sune-1-primary"
+  },
+  {
+    "id": "cmll-l-1",
+    "title": "L: Mirror",
+    "lessonIds": ["ar-cmll"],
+    "frameId": "white-blue",
+    "expectedCaseId": "cmll:cmll-l-1",
+    "scramble": "",
+    "setup": ["x2", "y", "M", "U2", "M'", "U2", "F", "R", "U'", "R'", "U", "R", "U", "R'", "F'"],
+    "moves": ["F", "R", "U'", "R'", "U'", "R", "U", "R'", "F'"],
+    "stageId": "ar-cmll",
+    "recognition": "Ignore the last six edges. Inspect the yellow corner stickers on U and the side-color pattern: UFR U yellow, F green, R orange; URB U red, R yellow, B blue; UBL U yellow, B red, L green; ULF U orange, L blue, F yellow. This is L — Mirror.",
+    "physicalChecks": [
+      "Both blocks are restored.",
+      "The corners are in cyclic order; the remaining edges still belong to LSE."
+    ],
+    "stepNotes": [
+      "Turn F. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn R. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn U'. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn R'. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn U'. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn R. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn U. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn R'. Track the joined pieces in the next displayed position; keep the printed physical hold.",
+      "Turn F'. Check the completed target against both side colors."
+    ],
+    "formulaId": "cmll-l-1-primary"
+  },
+  {
+    "id": "lse-combined",
+    "title": "Connect EOLR to the final four edges",
+    "lessonIds": ["ar-eolr"],
+    "frameId": "white-blue",
+    "expectedCaseId": "eolr-combined",
+    "scramble": "",
+    "setup": ["x2", "y", "M", "U2", "M'", "U", "M2", "U'", "M", "U"],
+    "moves": ["U'", "M'", "U", "M2", "U'", "M", "U2", "M'"],
+    "stageId": "ar-eolr",
+    "recognition": "Both blocks and the corner ring are complete. Compare the same six-edge state in the two explanations.",
+    "physicalChecks": [
+      "At the marked boundary, edges are oriented and the lateral edges are placed relative to the corner ring.",
+      "At the final endpoint, centers and the corner U offset are restored too."
+    ],
+    "stepNotes": [
+      "Coordinate edge orientation and lateral-edge placement together; this endpoint was compared with the remaining last-four work. Follow U'. Both side blocks stay intact during these M/U turns. The middle-center reference is still in progress. Continue to the next observed edge case.",
+      "Coordinate edge orientation and lateral-edge placement together; this endpoint was compared with the remaining last-four work. Follow M'. Both side blocks stay intact during these M/U turns. At this checkpoint 0 edges need orientation. Continue to the next observed edge case.",
+      "Coordinate edge orientation and lateral-edge placement together; this endpoint was compared with the remaining last-four work. Follow U. Both side blocks stay intact during these M/U turns. At this checkpoint 0 edges need orientation. Continue to the next observed edge case.",
+      "Coordinate edge orientation and lateral-edge placement together; this endpoint was compared with the remaining last-four work. Follow M2. Both side blocks stay intact during these M/U turns. At this checkpoint 0 edges need orientation. Orient six edges and place the upper lateral edges beside their matching corners: checkpoint reached.",
+      "Cycle the remaining middle-slice edges and finish the center and U alignment. Follow U'. Both side blocks stay intact during these M/U turns. At this checkpoint 0 edges need orientation. Continue to the next observed edge case.",
+      "Cycle the remaining middle-slice edges and finish the center and U alignment. Follow M. Both side blocks stay intact during these M/U turns. The middle-center reference is still in progress. Continue to the next observed edge case.",
+      "Cycle the remaining middle-slice edges and finish the center and U alignment. Follow U2. Both side blocks stay intact during these M/U turns. The middle-center reference is still in progress. Continue to the next observed edge case.",
+      "Cycle the remaining middle-slice edges and finish the center and U alignment. Follow M'. Both side blocks stay intact during these M/U turns. At this checkpoint 0 edges need orientation. Restore the last four edges, centers and U alignment: checkpoint reached."
+    ],
+    "eolrBoundary": 4
+  },
+  {
+    "id": "lse-basic",
+    "title": "Keep the basic EO → LR checkpoints",
+    "lessonIds": ["ar-eolr"],
+    "frameId": "white-blue",
+    "expectedCaseId": "lse-basic",
+    "scramble": "",
+    "setup": ["x2", "y", "M", "U2", "M'", "U", "M2", "U'", "M", "U"],
+    "moves": ["M'", "M", "U'", "M'", "U", "M2", "U'", "M", "U2", "M'"],
+    "stageId": "ar-eolr",
+    "recognition": "Both blocks and the corner ring are complete. Compare the same six-edge state in the two explanations.",
+    "physicalChecks": [
+      "At the marked boundary, edges are oriented and the lateral edges are placed relative to the corner ring.",
+      "At the final endpoint, centers and the corner U offset are restored too."
+    ],
+    "stepNotes": [
+      "Use the middle slice to prepare and orient the edges before arranging the lateral pair. Follow M'. Both side blocks stay intact during these M/U turns. At this checkpoint 4 edges need orientation. Continue to the next observed edge case.",
+      "Use the middle slice to prepare and orient the edges before arranging the lateral pair. Follow M U' M'. Both side blocks stay intact during these M/U turns. At this checkpoint 0 edges need orientation. Orient all six remaining edges: checkpoint reached.",
+      "Use the middle slice to prepare and orient the edges before arranging the lateral pair. Follow M U' M'. Both side blocks stay intact during these M/U turns. At this checkpoint 0 edges need orientation. Orient all six remaining edges: checkpoint reached.",
+      "Use the middle slice to prepare and orient the edges before arranging the lateral pair. Follow M U' M'. Both side blocks stay intact during these M/U turns. At this checkpoint 0 edges need orientation. Orient all six remaining edges: checkpoint reached.",
+      "Keep the established edge orientation while moving the lateral edges beside their matching upper corners. Follow U. Both side blocks stay intact during these M/U turns. At this checkpoint 0 edges need orientation. Continue to the next observed edge case.",
+      "Keep the established edge orientation while moving the lateral edges beside their matching upper corners. Follow M2. Both side blocks stay intact during these M/U turns. At this checkpoint 0 edges need orientation. Orient six edges and place the upper lateral edges beside their matching corners: checkpoint reached.",
+      "Cycle the remaining middle-slice edges and finish the center and U alignment. Follow U'. Both side blocks stay intact during these M/U turns. At this checkpoint 0 edges need orientation. Continue to the next observed edge case.",
+      "Cycle the remaining middle-slice edges and finish the center and U alignment. Follow M. Both side blocks stay intact during these M/U turns. The middle-center reference is still in progress. Continue to the next observed edge case.",
+      "Cycle the remaining middle-slice edges and finish the center and U alignment. Follow U2. Both side blocks stay intact during these M/U turns. The middle-center reference is still in progress. Continue to the next observed edge case.",
+      "Cycle the remaining middle-slice edges and finish the center and U alignment. Follow M'. Both side blocks stay intact during these M/U turns. At this checkpoint 0 edges need orientation. Restore the last four edges, centers and U alignment: checkpoint reached."
+    ],
+    "eolrBoundary": 6
+  },
+  {
+    "id": "hold-white-orange",
+    "title": "white bottom, orange left",
+    "lessonIds": ["starting-block"],
+    "frameId": "white-orange",
+    "expectedCaseId": "holding",
+    "scramble": "",
+    "setup": ["x2", "M"],
+    "moves": ["M'"],
+    "stageId": "ar-position",
+    "recognition": "Keep white as your block-bottom color, orange left and blue front. The middle centers can move.",
+    "physicalChecks": [
+      "Identify both side centers and the bottom color of the block pieces.",
+      "The formula letters refer to the chosen physical hold, not to a camera orbit."
+    ],
+    "stepNotes": ["Turn M'. Check the completed target against both side colors."]
+  },
+  {
+    "id": "hold-white-blue",
+    "title": "white bottom, blue left",
+    "lessonIds": ["starting-block"],
+    "frameId": "white-blue",
+    "expectedCaseId": "holding",
+    "scramble": "",
+    "setup": ["x2", "y", "M"],
+    "moves": ["M'"],
+    "stageId": "ar-position",
+    "recognition": "Keep white as your block-bottom color, blue left and red front. The middle centers can move.",
+    "physicalChecks": [
+      "Identify both side centers and the bottom color of the block pieces.",
+      "The formula letters refer to the chosen physical hold, not to a camera orbit."
+    ],
+    "stepNotes": ["Turn M'. Check the completed target against both side colors."]
+  },
+  {
+    "id": "hold-white-red",
+    "title": "white bottom, red left",
+    "lessonIds": ["starting-block"],
+    "frameId": "white-red",
+    "expectedCaseId": "holding",
+    "scramble": "",
+    "setup": ["x2", "y2", "M"],
+    "moves": ["M'"],
+    "stageId": "ar-position",
+    "recognition": "Keep white as your block-bottom color, red left and green front. The middle centers can move.",
+    "physicalChecks": [
+      "Identify both side centers and the bottom color of the block pieces.",
+      "The formula letters refer to the chosen physical hold, not to a camera orbit."
+    ],
+    "stepNotes": ["Turn M'. Check the completed target against both side colors."]
+  },
+  {
+    "id": "hold-white-green",
+    "title": "white bottom, green left",
+    "lessonIds": ["starting-block"],
+    "frameId": "white-green",
+    "expectedCaseId": "holding",
+    "scramble": "",
+    "setup": ["x2", "y'", "M"],
+    "moves": ["M'"],
+    "stageId": "ar-position",
+    "recognition": "Keep white as your block-bottom color, green left and orange front. The middle centers can move.",
+    "physicalChecks": [
+      "Identify both side centers and the bottom color of the block pieces.",
+      "The formula letters refer to the chosen physical hold, not to a camera orbit."
+    ],
+    "stepNotes": ["Turn M'. Check the completed target against both side colors."]
+  },
+  {
+    "id": "hold-yellow-orange",
+    "title": "yellow bottom, orange left",
+    "lessonIds": ["starting-block"],
+    "frameId": "yellow-orange",
+    "expectedCaseId": "holding",
+    "scramble": "",
+    "setup": ["M"],
+    "moves": ["M'"],
+    "stageId": "ar-position",
+    "recognition": "Keep yellow as your block-bottom color, orange left and green front. The middle centers can move.",
+    "physicalChecks": [
+      "Identify both side centers and the bottom color of the block pieces.",
+      "The formula letters refer to the chosen physical hold, not to a camera orbit."
+    ],
+    "stepNotes": ["Turn M'. Check the completed target against both side colors."]
+  },
+  {
+    "id": "hold-yellow-green",
+    "title": "yellow bottom, green left",
+    "lessonIds": ["starting-block"],
+    "frameId": "yellow-green",
+    "expectedCaseId": "holding",
+    "scramble": "",
+    "setup": ["y", "M"],
+    "moves": ["M'"],
+    "stageId": "ar-position",
+    "recognition": "Keep yellow as your block-bottom color, green left and red front. The middle centers can move.",
+    "physicalChecks": [
+      "Identify both side centers and the bottom color of the block pieces.",
+      "The formula letters refer to the chosen physical hold, not to a camera orbit."
+    ],
+    "stepNotes": ["Turn M'. Check the completed target against both side colors."]
+  },
+  {
+    "id": "hold-yellow-red",
+    "title": "yellow bottom, red left",
+    "lessonIds": ["starting-block"],
+    "frameId": "yellow-red",
+    "expectedCaseId": "holding",
+    "scramble": "",
+    "setup": ["y2", "M"],
+    "moves": ["M'"],
+    "stageId": "ar-position",
+    "recognition": "Keep yellow as your block-bottom color, red left and blue front. The middle centers can move.",
+    "physicalChecks": [
+      "Identify both side centers and the bottom color of the block pieces.",
+      "The formula letters refer to the chosen physical hold, not to a camera orbit."
+    ],
+    "stepNotes": ["Turn M'. Check the completed target against both side colors."]
+  },
+  {
+    "id": "hold-yellow-blue",
+    "title": "yellow bottom, blue left",
+    "lessonIds": ["starting-block"],
+    "frameId": "yellow-blue",
+    "expectedCaseId": "holding",
+    "scramble": "",
+    "setup": ["y'", "M"],
+    "moves": ["M'"],
+    "stageId": "ar-position",
+    "recognition": "Keep yellow as your block-bottom color, blue left and orange front. The middle centers can move.",
+    "physicalChecks": [
+      "Identify both side centers and the bottom color of the block pieces.",
+      "The formula letters refer to the chosen physical hold, not to a camera orbit."
+    ],
+    "stepNotes": ["Turn M'. Check the completed target against both side colors."]
+  }
+]

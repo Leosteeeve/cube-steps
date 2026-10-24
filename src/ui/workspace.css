@@ -516,3 +516,5 @@
     padding: 22px 18px;
   }
 }
+/* A gentle lift for the renderer; controls and dimmed target cues stay separate. */
+[data-edition] twisty-player { filter: brightness(1.16) saturate(1.08); }

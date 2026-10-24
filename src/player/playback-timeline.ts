@@ -33,7 +33,12 @@ export function createPlaybackTimeline(
   source: PlaybackSource,
   assets?: AdvancedAssets,
 ): PlaybackTimeline {
-  if (source.kind === 'lab' || source.kind === 'roux-lab' || source.kind === 'cmll')
+  if (
+    source.kind === 'lab' ||
+    source.kind === 'roux-lab' ||
+    source.kind === 'cmll' ||
+    source.kind === 'roux-lesson'
+  )
     return source.prepared.timeline;
   if (source.kind === 'solve') {
     const { session } = source;

@@ -1,10 +1,10 @@
 .roux-lesson-details {
   --roux-white: #fff;
-  --roux-yellow: #ffe16a;
-  --roux-red: #e77a72;
-  --roux-orange: #f6ad69;
-  --roux-blue: #538cda;
-  --roux-green: #65ba8f;
+  --roux-yellow: #ffe34d;
+  --roux-red: #ff625b;
+  --roux-orange: #ffad3d;
+  --roux-blue: #4d94ff;
+  --roux-green: #35d58a;
   margin: 1.5rem 0;
   line-height: 1.75;
 }
