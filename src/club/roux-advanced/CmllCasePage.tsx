@@ -56,14 +56,16 @@ export function CmllAnswer({
   caseId,
   frameId,
   auf = 0,
+  initialVariantId,
 }: {
   engine: CubeEngine;
   caseId: string;
   frameId: RouxFrameId;
   auf?: Quarter;
+  initialVariantId?: string;
 }) {
   const group = CMLL_CATALOG.cases.find((c) => c.id === caseId)!;
-  const [selected, setSelected] = useState(group.variantIds[0]);
+  const [selected, setSelected] = useState(initialVariantId ?? group.variantIds[0]);
   const variantId = group.variantIds.includes(selected) ? selected : group.variantIds[0],
     variant = CMLL_CATALOG.variants[variantId];
   const demo = useMemo(
@@ -126,11 +128,21 @@ export function CmllAnswer({
     </section>
   );
 }
-export function CmllCasePage({ engine, caseId }: { engine: CubeEngine; caseId: string }) {
-  const [frameId, setFrame] = useState<RouxFrameId>('white-blue'),
+export function CmllCasePage({
+  engine,
+  caseId,
+  initialVariantId,
+  initialFrameId = 'white-blue',
+}: {
+  engine: CubeEngine;
+  caseId: string;
+  initialVariantId?: string;
+  initialFrameId?: RouxFrameId;
+}) {
+  const [frameId, setFrame] = useState<RouxFrameId>(initialFrameId),
     [auf, setAuf] = useState<Quarter>(0);
   const group = CMLL_CATALOG.cases.find((c) => c.id === caseId);
-  if (!group)
+  if (!group || (initialVariantId && !group.variantIds.includes(initialVariantId)))
     return (
       <section>
         <h1>Case not found.</h1>
@@ -156,7 +168,14 @@ export function CmllCasePage({ engine, caseId }: { engine: CubeEngine; caseId: s
           </select>
         </label>
       </div>
-      <CmllAnswer key={caseId} engine={engine} caseId={caseId} frameId={frameId} auf={auf} />
+      <CmllAnswer
+        key={caseId}
+        engine={engine}
+        caseId={caseId}
+        frameId={frameId}
+        auf={auf}
+        initialVariantId={initialVariantId}
+      />
     </section>
   );
 }

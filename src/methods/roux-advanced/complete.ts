@@ -1,5 +1,6 @@
 import type { CubeEngine, SolveTrace, TraceAction } from '../../core/types';
 import type { RouxRoute } from '../../roux-lab/types';
+import { freezeLabValue } from '../../lab/input';
 import { createMethodTrace, type ActionInput } from '../shared/trace';
 import { createAdvancedRouxRuntime, rouxPositionAction } from './definition';
 import { finalizeRouxRoute, finalizeRouxRouteSteps, rouxBlockSegments } from './finalize';
@@ -133,6 +134,7 @@ export function* completeRouxCandidateSteps(
           };
   let best: RouxRoute | undefined,
     bestTail = Infinity;
+  const compared: { variantId: string | null; cost: number }[] = [];
   try {
     yield TEACHING_WORK;
     const choices = yield* planCmllVariantsSteps(e, blocks.state, frame, assets.cmll, budget);
@@ -209,6 +211,7 @@ export function* completeRouxCandidateSteps(
         budget,
       );
       const tail = tailScore.rated ? tailScore.cost : Infinity;
+      compared.push({ variantId: cmll.variantId, cost: tail });
       if (!best || tail < bestTail) {
         best = route;
         bestTail = tail;
@@ -218,6 +221,28 @@ export function* completeRouxCandidateSteps(
     if (!(error instanceof RouxBudgetStop) || !best) throw error;
   }
   if (!best) throw Error('No verified CMLL and LSE continuation.');
+  const primaryCosts = compared
+      .filter((c) => c.variantId?.endsWith('-primary') && Number.isFinite(c.cost))
+      .map((c) => c.cost),
+    why = Number.isFinite(bestTail)
+      ? `For CMLL + combined LSE, compared ${compared.length} complete continuations within this search. Selected modeled cost ${bestTail}${primaryCosts.length ? `; the best completed primary continuation cost ${Math.min(...primaryCosts)}` : '; no rated primary continuation completed'}. This includes the formula setup and its remaining-edge continuation, not a measured human speed.`
+      : 'Kept the first verified CMLL + combined LSE continuation because the bounded comparison ended before a rated choice was available; this is not a measured human speed.';
+  best = freezeLabValue({
+    ...best,
+    trace: {
+      ...best.trace,
+      stages: best.trace.stages.map((s) =>
+        s.id !== 'ar-cmll'
+          ? s
+          : {
+              ...s,
+              actions: s.actions.map((a) =>
+                a.algorithmId ? { ...a, explanation: `${a.explanation} ${why}` } : a,
+              ),
+            },
+      ),
+    },
+  });
   try {
     const actions = best.trace.stages.slice(0, 3).flatMap((s) => s.actions),
       segments = rouxBlockSegments(best.trace, e);

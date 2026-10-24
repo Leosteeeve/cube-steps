@@ -20,6 +20,10 @@ test('new Guide chapters, advanced tours and retained film work without altering
   await page.getByRole('button', { name: 'Next', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'One turn at a time' })).toBeVisible();
   await page.getByRole('button', { name: 'Exit tour', exact: true }).click();
+  await expect(page.getByRole('button', { name: 'Page tour', exact: true })).toHaveCount(1);
+  await page.getByRole('button', { name: 'Page tour', exact: true }).click();
+  await expect(page.getByRole('dialog')).toBeVisible();
+  await page.getByRole('button', { name: 'Exit tour', exact: true }).click();
   await page.goto('club/#/guide/roux-lab');
   await expect(page.getByRole('heading', { name: 'Try Roux routes in your hands' })).toBeVisible();
   await page.getByRole('button', { name: 'Start Roux Test Lab tour', exact: true }).click();
@@ -39,6 +43,8 @@ test('new Guide chapters, advanced tours and retained film work without altering
       .click();
   }
   await expect(page.getByLabel('Scramble sequence')).toHaveValue('');
+  await expect(page.getByRole('button', { name: 'Page tour', exact: true })).toHaveCount(1);
+  await expect(page.getByRole('button', { name: 'Page tour', exact: true })).toBeEnabled();
   await expect(page.getByRole('region', { name: 'Selected Roux route' })).toHaveCount(0);
   for (const section of ['roux', 'lab', 'timer', 'moves']) {
     await page.goto('club/#/guide/' + section);

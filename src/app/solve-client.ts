@@ -5,7 +5,8 @@ import type { SolveRequest, SolveRequestInput, WorkerReply } from '../workers/so
 import type { CubeEngine, SolveInput } from '../core/types';
 import type { RouxSearchClient } from '../roux-lab/client';
 import type { RouxRoute } from '../roux-lab/types';
-import type { RouxFrameId } from '../methods/roux-advanced/types';
+import type { RouxFrameId, FirstBlockEvidence } from '../methods/roux-advanced/types';
+import { selectRouxRoutes, currentRouxEvidence } from '../methods/roux-advanced/selection';
 export type { WorkerReply } from '../workers/solve-protocol';
 export interface WorkerPort {
   onmessage: ((e: MessageEvent<WorkerReply>) => void) | null;
@@ -55,7 +56,8 @@ export function createSolveClient(
         timer: ReturnType<typeof setTimeout>;
         client?: RouxSearchClient;
         handle?: ReturnType<RouxSearchClient['start']>;
-        incumbent?: RouxRoute;
+        routes: RouxRoute[];
+        evidence: Partial<Record<RouxFrameId, FirstBlockEvidence>>;
       }
     | undefined;
   function cancel() {
@@ -103,16 +105,29 @@ export function createSolveClient(
         old.client?.dispose();
         resolve(result);
       };
-      const success = (route: RouxRoute): SessionResult => ({
+      const success = (
+        route: RouxRoute,
+        evidence = advancedActive?.evidence ?? {},
+      ): SessionResult => ({
         ok: true,
-        session: freezeReceived({ input: route.input.source, trace: route.trace }),
+        session: freezeReceived({
+          input: route.input.source,
+          trace: {
+            ...route.trace,
+            rouxAdvanced: {
+              ...route.trace.rouxAdvanced!,
+              evidence: currentRouxEvidence(route, evidence),
+            },
+          },
+        }),
       });
       const timer = setTimeout(() => {
         const r = advancedActive;
         if (r?.id !== id) return;
+        const chosen = selectRouxRoutes(r.routes, r.evidence, 1)[0];
         finish(
-          r.incumbent
-            ? success(r.incumbent)
+          chosen
+            ? success(chosen)
             : {
                 ok: false,
                 error: {
@@ -123,7 +138,7 @@ export function createSolveClient(
               },
         );
       }, 8000);
-      advancedActive = { id, resolve, timer };
+      advancedActive = { id, resolve, timer, routes: [], evidence: {} };
       void (async () => {
         try {
           const snapshot = structuredClone(input);
@@ -163,7 +178,16 @@ export function createSolveClient(
             source,
             { allowedFrames, mode: 'normal', modelVersion: 'roux-execution-v1' },
             (event) => {
-              if (advancedActive?.id !== id || event.kind !== 'candidate') return;
+              if (advancedActive?.id !== id) return;
+              if (event.kind === 'progress') {
+                advancedActive.evidence = event.coverage.frames;
+                advancedActive.routes = selectRouxRoutes(
+                  advancedActive.routes,
+                  advancedActive.evidence,
+                  4,
+                );
+                return;
+              }
               if (!agrees(event.route)) {
                 finish({
                   ok: false,
@@ -174,13 +198,11 @@ export function createSolveClient(
                 });
                 return;
               }
-              const prior = advancedActive.incumbent,
-                next = event.route;
-              if (
-                !prior ||
-                (next.score.rated && (!prior.score.rated || next.score.cost < prior.score.cost))
-              )
-                advancedActive.incumbent = next;
+              advancedActive.routes = selectRouxRoutes(
+                [...advancedActive.routes, event.route],
+                advancedActive.evidence,
+                4,
+              );
             },
             { startedAtEpochMs },
           );
@@ -199,7 +221,7 @@ export function createSolveClient(
           const route = result.routes[0];
           finish(
             route && agrees(route)
-              ? success(route)
+              ? success(route, result.coverage.frames)
               : {
                   ok: false,
                   error: {

@@ -1,6 +1,7 @@
 import type { RouxRoute } from '../../roux-lab/types';
 import { ROUX_FRAMES } from '../../methods/roux-advanced/frames';
 import { evidenceText } from './ResultSummary';
+import type { FirstBlockEvidence } from '../../methods/roux-advanced/types';
 export function RouteSummary({
   route: r,
   label,
@@ -8,6 +9,8 @@ export function RouteSummary({
   onSelect,
   onCompare,
   comparisonSlot,
+  referenceOnly = false,
+  currentEvidence,
 }: {
   route: RouxRoute;
   label: string;
@@ -15,6 +18,8 @@ export function RouteSummary({
   onSelect: () => void;
   onCompare?: () => void;
   comparisonSlot?: string;
+  referenceOnly?: boolean;
+  currentEvidence?: FirstBlockEvidence;
 }) {
   const f = ROUX_FRAMES.find((f) => f.id === r.frameId)!,
     events = r.score.rated ? r.score.events.filter((e) => e.kind !== 'turn').slice(0, 2) : [];
@@ -45,7 +50,13 @@ export function RouteSummary({
           <dd>{r.counts.rotations}</dd>
         </div>
       </dl>
-      <p>{evidenceText(r.evidence)}</p>
+      <p>{evidenceText(currentEvidence ?? r.evidence)}</p>
+      {referenceOnly && (
+        <p>
+          This fixed playback is outside the current recommendation window or was superseded by
+          another route. Its original moves remain available for comparison.
+        </p>
+      )}
       <p>
         {r.score.rated
           ? `Modeled handling: ${r.score.G} regrips, ${r.score.V} visibility flags, ${r.score.A} awkward-transition flags.`

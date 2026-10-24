@@ -86,7 +86,7 @@ export function ClubApp() {
       />
       <main id="main" tabIndex={-1}>
         <TutorialRouteBoundary routeKey={JSON.stringify(route)} tourId={tourId}>
-          {tourId && route.kind !== 'timer' && route.kind !== 'lab' && (
+          {tourId && !['timer', 'lab', 'roux-lab'].includes(route.kind) && (
             <TourEntry
               tourId={tourId}
               ready={route.kind === 'home' || route.kind === 'quiz' || !!engine}

@@ -4,7 +4,78 @@ import { createCubeEngine } from '../core/cube';
 import { handleSolveRequest } from '../workers/solve-request';
 import { GOLDEN_CASES } from '../../tests/fixtures/facelet-cases';
 import type { RouxSearchClient } from '../roux-lab/client';
-import type { AdvancedRouxOutcome } from '../roux-lab/types';
+import type { AdvancedRouxOutcome, RouxRoute } from '../roux-lab/types';
+import type { RouxClientEvent } from '../roux-lab/client';
+it('normal Roux watchdog reconciles tightened evidence and retains the baseline', async () => {
+  await createCubeEngine();
+  vi.useFakeTimers();
+  try {
+    let emit!: (e: RouxClientEvent) => void;
+    const advanced: RouxSearchClient = {
+      start(_input, _settings, onEvent) {
+        emit = onEvent;
+        return { stop() {}, done: new Promise(() => {}) };
+      },
+      dispose() {},
+    };
+    const client = createSolveClient(
+      () => new ControlledWorker(),
+      'club',
+      () => advanced,
+    );
+    const pending = client.solveScramble('R', 'roux-advanced');
+    await vi.waitFor(() => expect(emit).toBeTypeOf('function'));
+    const loose = {
+      status: 'best-found' as const,
+      lowerBound: 2,
+      upperBound: 5,
+      witness: ['F'] as const,
+      completedDepth: 1,
+    };
+    const r = (id: string, basis: RouxRoute['basis'], first: number, cost: number) =>
+      ({
+        id,
+        basis,
+        frameId: 'white-blue',
+        input: { source: { kind: 'scramble', moves: ['R'] } },
+        evidence: loose,
+        counts: { first, second: 1, combined: first + 1, rotations: 0 },
+        score: { rated: true, cost, T: cost, R: 0, G: 0, V: 0, A: 0 },
+        trace: {
+          method: 'roux-advanced',
+          rouxAdvanced: { frameId: 'white-blue', basis, evidence: loose },
+        },
+      }) as unknown as RouxRoute; // Already-admitted event seam; physical replay is tested separately.
+    emit({ kind: 'candidate', route: r('baseline', 'baseline-fallback', 3, 30) });
+    emit({ kind: 'candidate', route: r('optimized', 'optimized', 5, 5) });
+    const evidence = { ...loose, upperBound: 2, witness: ['F', 'U'] as const };
+    emit({
+      kind: 'progress',
+      coverage: {
+        elapsedMs: 7000,
+        operations: 100,
+        entries: 0,
+        retainedBytes: 0,
+        verifiedRoutes: 2,
+        frames: { 'white-blue': evidence },
+      },
+    });
+    await vi.advanceTimersByTimeAsync(8000);
+    expect(await pending).toMatchObject({
+      ok: true,
+      session: {
+        trace: {
+          rouxAdvanced: {
+            basis: 'baseline-fallback',
+            evidence: { upperBound: 2 },
+          },
+        },
+      },
+    });
+  } finally {
+    vi.useRealTimers();
+  }
+});
 it('delegates Advanced Roux only for club requests with normal default or explicit frames', async () => {
   const start = vi.fn<RouxSearchClient['start']>(() => ({
     stop() {},

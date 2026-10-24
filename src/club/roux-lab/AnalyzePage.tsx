@@ -9,6 +9,7 @@ import type { RouxLabSession } from './session';
 import { OrientationPicker } from './OrientationPicker';
 import { RouteSummary } from './RouteSummary';
 import { useGuidanceTarget } from '../../ui/guidance';
+import { selectRouxRoutes, currentRouxEvidence } from '../../methods/roux-advanced/selection';
 export function AnalyzePage({
   engine,
   state,
@@ -34,6 +35,7 @@ export function AnalyzePage({
     [randomizing, setRandomizing] = useState(false),
     generation = useRef(0);
   const busy = state.status === 'initializing' || state.status === 'searching';
+  const recommendations = selectRouxRoutes(state.routes, state.coverage?.frames ?? {}, 4);
   const inputTarget = useGuidanceTarget('roux-lab.input'),
     frameTarget = useGuidanceTarget('roux-lab.frames'),
     routeTarget = useGuidanceTarget('roux-lab.routes');
@@ -171,11 +173,19 @@ export function AnalyzePage({
         <section aria-label="Roux routes" ref={routeTarget}>
           {state.routes.length ? (
             <div className="roux-route-cards">
-              {state.routes.map((r, i) => (
+              {state.routes.map((r) => (
                 <RouteSummary
                   key={r.id}
                   route={r}
-                  label={i === 0 ? 'CURRENT LEADING ROUTE' : 'ALTERNATIVE'}
+                  label={
+                    !recommendations.includes(r)
+                      ? 'PLAYBACK REFERENCE'
+                      : recommendations[0] === r
+                        ? 'CURRENT LEADING ROUTE'
+                        : 'ALTERNATIVE'
+                  }
+                  referenceOnly={!recommendations.includes(r)}
+                  currentEvidence={currentRouxEvidence(r, state.coverage?.frames ?? {})}
                   selected={state.selectedId === r.id}
                   onSelect={() => onSelect(r.id)}
                   onCompare={() => onCompare(r.id)}

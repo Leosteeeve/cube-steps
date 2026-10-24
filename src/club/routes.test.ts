@@ -1,6 +1,19 @@
 import { expect, it } from 'vitest';
 import { parseClubRoute } from './routes';
 import { parseRoute } from '../app/routes';
+it('deep-links a CMLL variant and physical frame without changing global routing', () => {
+  expect(parseClubRoute('#/cmll/cmll-h-1?variant=cmll-h-1-alternate&frame=yellow-red')).toEqual({
+    kind: 'cmll-case',
+    caseId: 'cmll-h-1',
+    variantId: 'cmll-h-1-alternate',
+    frameId: 'yellow-red',
+  });
+  expect(parseClubRoute('#/cmll/cmll-h-1?variant=cmll-o-1-primary')).toEqual({ kind: 'not-found' });
+  expect(parseClubRoute('#/cmll/cmll-h-1?frame=white-yellow')).toEqual({ kind: 'not-found' });
+  expect(parseRoute('#/cmll/cmll-h-1?variant=cmll-h-1-alternate&frame=yellow-red')).toEqual({
+    kind: 'not-found',
+  });
+});
 it('routes the club Roux workspace separately from CFOP and the global edition', () => {
   for (const [suffix, view] of [
     ['', 'analyze'],

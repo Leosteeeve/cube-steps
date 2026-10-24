@@ -6,6 +6,7 @@ import { freezeLabValue } from '../../lab/input';
 import { pinRouxComparison, type RouxPinnedComparison } from '../../roux-lab/comparison';
 import { isVerifiedRouxRoute } from '../../methods/roux-advanced/validate';
 import type { RouxExperiment } from '../../roux-lab/experiments/types';
+import { selectRouxRoutes } from '../../methods/roux-advanced/selection';
 export interface RouxLabSession {
   input: RouxInput | null;
   settings: RouxSettings;
@@ -51,11 +52,32 @@ export type RouxSessionEvent =
   | { type: 'stop' }
   | { type: 'complete'; coverage: RouxCoverage }
   | { type: 'failed'; error: string };
+function reconcileRoutes(
+  s: RouxLabSession,
+  pool: readonly RouxRoute[],
+  coverage = s.coverage,
+  selectedId = s.selectedId,
+) {
+  const evidence = coverage?.frames ?? {},
+    selected = pool.find((r) => r.id === selectedId);
+  let routes = selectRouxRoutes(pool, evidence, 4);
+  if (selected && !routes.includes(selected)) {
+    if (routes.length === 4) routes = selectRouxRoutes(pool, evidence, 3);
+    routes.push(selected);
+  }
+  return routes;
+}
 export function reduceRouxLabSession(s: RouxLabSession, event: RouxSessionEvent): RouxLabSession {
   if ('kind' in event) {
     if (!s.input) return s;
     const status = s.status === 'stopped' ? 'stopped' : 'searching';
-    if (event.kind === 'progress') return { ...s, coverage: event.coverage, status };
+    if (event.kind === 'progress')
+      return {
+        ...s,
+        coverage: event.coverage,
+        routes: reconcileRoutes(s, s.routes, event.coverage),
+        status,
+      };
     const route = event.route;
     if (
       route.input.fingerprint !== s.input.fingerprint ||
@@ -64,17 +86,8 @@ export function reduceRouxLabSession(s: RouxLabSession, event: RouxSessionEvent)
       return s;
     const existing = s.routes.find((r) => r.id === route.id);
     if (existing && existing.id === s.selectedId) return s;
-    const pool = [...s.routes.filter((r) => r.id !== route.id), route].sort(
-      (a, b) =>
-        (a.score.rated ? a.score.cost : Infinity) - (b.score.rated ? b.score.cost : Infinity) ||
-        a.counts.combined - b.counts.combined,
-    );
-    const selected = s.routes.find((r) => r.id === s.selectedId),
-      routes = pool.slice(0, 4);
-    if (selected && !routes.some((r) => r.id === selected.id)) {
-      routes.pop();
-      routes.push(selected);
-    }
+    const pool = [...s.routes.filter((r) => r.id !== route.id), route],
+      routes = reconcileRoutes(s, pool);
     return { ...s, routes, selectedId: s.selectedId ?? route.id, status };
   }
   switch (event.type) {
@@ -105,10 +118,11 @@ export function reduceRouxLabSession(s: RouxLabSession, event: RouxSessionEvent)
         !s.settings.allowedFrames.includes(route.frameId)
       )
         return s;
-      const routes = [...s.routes.filter((r) => r.id !== route.id).slice(0, 3), route].sort(
-        (a, b) =>
-          (a.score.rated ? a.score.cost : Infinity) - (b.score.rated ? b.score.cost : Infinity) ||
-          a.counts.combined - b.counts.combined,
+      const routes = reconcileRoutes(
+        s,
+        [...s.routes.filter((r) => r.id !== route.id), route],
+        s.coverage,
+        route.id,
       );
       return { ...s, routes, selectedId: route.id };
     }
@@ -140,6 +154,7 @@ export function reduceRouxLabSession(s: RouxLabSession, event: RouxSessionEvent)
       return {
         ...s,
         coverage: event.coverage,
+        routes: reconcileRoutes(s, s.routes, event.coverage),
         status: s.status === 'stopped' ? 'stopped' : 'complete',
       };
     case 'failed':

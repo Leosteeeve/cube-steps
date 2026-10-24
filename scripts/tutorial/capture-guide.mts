@@ -2,7 +2,7 @@ import { chromium, expect, type Page } from '@playwright/test';
 import { mkdir, readFile, writeFile, realpath } from 'node:fs/promises';
 import { resolve, relative, isAbsolute, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { verifyGuideManifest } from './capture-contract.mts';
+import { verifyGuideManifest, actualGuideCaptureRoute } from './capture-contract.mts';
 import {
   prepareTutorialScene,
   renderTutorialFrame,
@@ -12,6 +12,7 @@ import type { GuideScreenshot } from '../../src/club/guide/types.ts';
 export type CaptureScenario = {
   id: string;
   route: string;
+  finalRoute?: string;
   viewport: { width: number; height: number };
   prepare(page: Page): Promise<void>;
   ready(page: Page): Promise<void>;
@@ -53,6 +54,7 @@ const scenes: (CaptureScenario & { caption: string; alt: string })[] = [
   {
     id: 'roux-lab-compare',
     route: 'club/#/roux-lab',
+    finalRoute: 'club/#/roux-lab/compare',
     target: '[aria-label="Fixed Roux comparison"]',
     exampleData: true,
     caption:
@@ -63,6 +65,7 @@ const scenes: (CaptureScenario & { caption: string; alt: string })[] = [
   {
     id: 'roux-lab-trials',
     route: 'club/#/roux-lab',
+    finalRoute: 'club/#/roux-lab/trials',
     target: '.roux-notebook',
     exampleData: true,
     caption:
@@ -127,6 +130,7 @@ const scenes: (CaptureScenario & { caption: string; alt: string })[] = [
   {
     id: 'lab-compare',
     route: 'club/#/lab',
+    finalRoute: 'club/#/lab/compare',
     target: '.lab-grid',
     exampleData: true,
     caption:
@@ -137,6 +141,7 @@ const scenes: (CaptureScenario & { caption: string; alt: string })[] = [
   {
     id: 'lab-trials',
     route: 'club/#/lab',
+    finalRoute: 'club/#/lab/trials',
     target: '.lab-notebook',
     exampleData: true,
     caption:
@@ -330,7 +335,7 @@ export async function captureGuide({
           src: 'club-guide/' + s.id + '.png',
           alt: s.alt,
           caption: s.caption,
-          route: s.route,
+          route: actualGuideCaptureRoute(baseUrl, page.url(), s.finalRoute ?? s.route),
           width: bytes.readUInt32BE(16),
           height: bytes.readUInt32BE(20),
           sourceRevision,

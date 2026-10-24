@@ -1,6 +1,20 @@
 import { readFile, realpath } from 'node:fs/promises';
 import { resolve, relative, isAbsolute } from 'node:path';
 import type { GuideScreenshot } from '../../src/club/guide/types.ts';
+export function actualGuideCaptureRoute(
+  baseUrl: string,
+  pageUrl: string,
+  expected: string,
+): string {
+  const base = new URL(baseUrl),
+    actual = new URL(pageUrl);
+  if (actual.origin !== base.origin || !actual.pathname.startsWith(base.pathname))
+    throw Error('Capture left the intended website.');
+  const route = actual.pathname.slice(base.pathname.length) + actual.search + actual.hash;
+  if (route !== expected)
+    throw Error(`Capture route mismatch: expected ${expected}, received ${route}`);
+  return route;
+}
 export async function verifyGuideManifest(
   manifest: { version: 1; images: GuideScreenshot[] },
   assetRoot: string,

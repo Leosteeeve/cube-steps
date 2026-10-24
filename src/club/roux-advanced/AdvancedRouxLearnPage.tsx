@@ -10,7 +10,6 @@ import { PlaybackView } from '../../player/PlaybackView';
 import { RouxCaseDiagram } from '../roux/RouxCaseDiagram';
 import { useClubProgress, ProgressStatus } from '../learning/use-club-progress';
 import { useGuidanceTarget } from '../../ui/guidance';
-import { TourEntry } from '../tutorial/TourEntry';
 export function AdvancedRouxLearnPage({
   engine,
   lessonId,
@@ -34,7 +33,6 @@ export function AdvancedRouxLearnPage({
   return (
     <LessonLayout method="roux-advanced" selected={lessonId} presentation="club">
       <MethodSelector method="roux-advanced" kind="learn" />
-      <TourEntry tourId="advanced-roux" />
       <article className="advanced-roux-lesson">
         <div className="lesson-heading" ref={headingTarget}>
           <span className="eyebrow">CHAPTER {index + 1} / 9 · ADVANCED ROUX</span>

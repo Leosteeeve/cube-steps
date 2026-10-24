@@ -57,3 +57,18 @@ The 43.4 ms probe gap is an observed event-loop interval, not a claim that every
 - Integrated desktop/mobile viewport, keyboard, reduced-motion, storage and publication checks follow the club-page implementation.
 - Physical phone responsiveness and human finger-trick/block-choice calibration remain pending.
 - Short and full no-narration films retain their separate user approval gates.
+
+## Club integration evidence (2026-10-24, release checks in progress)
+
+Tasks 16–21 add the club-only advanced solver, 42-case CMLL reference and untimed practice, nine original chapters with 26 independently replayed examples, method-aware learning recommendations, fixed Lab comparisons, separate experiments and two-block trials. The shared player uses brighter stickers following the owner's feedback. The accepted Guide film remains `club-guide-video-v2`; replacement films require their own approvals.
+
+- Task 16: 38 focused tests in five files; real solved/text/random/color inputs, eight holds, CMLL preference recovery and playback checked in Chromium.
+- Task 17: 35 focused tests in eight files; generated example verification, all nine chapters, neutral quiz and retained progress checked in the browser.
+- Task 18: 15 focused tests in six files and four browser flows covering lazy initialization, edits/cancellation, actual coverage and old CFOP Lab links.
+- Task 19: fixed A/B snapshots, exact block endpoints, reverse rotations and a separate basic LSE route checked in three desktop/phone browser cases.
+- Task 20: 24 targeted tests in seven files and ten browser cases including actual IndexedDB transaction abort, retry, immutable identity conflicts, atomic imports, corrupt-data recovery and separation from CFOP/Timer stores.
+- Task 21: 78 related unit tests in 19 files and 22 browser cases including keyboard/touch cancellation, timing quiescence, retained unsaved review, five matched AB/BA blocks and reversible deletion.
+- Task 22: the first full unit run passed 1,060 tests in 233 files. A subsequent real basic-LSE save/export flow exposed a mismatch between shared maneuver snapshots (catalog-key identity) and CMLL variants (embedded identity). The new regression failed before the schema fix, then all 13 experiment tests passed. A real search → basic route → save → export → fresh browser import → full replay → 12.34-second manual trial → export flow passed.
+- Twenty-eight real Guide scenes were captured at source revision `2470dfea51c79aea419fe1a17f641c389b1d44c6`, including phone layouts. Example sessions are marked as sample data. Captures and their dimensions are recorded in the capture manifest; inspected images include the brighter player, full CMLL family cards, fixed comparisons, trial setup and legacy CFOP/Timer/Guide screens.
+
+These are automated and desktop-browser observations. Full final regression, independent review, GitHub checks, deployment and live verification must be recorded before publication is claimed. The reproducible [physical review worksheet](../lab/roux-physical-review.md) remains for owner/Josh testing; no physical comfort, fastest-human-route or real-phone performance acceptance is implied.

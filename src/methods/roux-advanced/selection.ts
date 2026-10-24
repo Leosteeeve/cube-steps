@@ -1,5 +1,16 @@
 import type { RouxRoute } from '../../roux-lab/types';
 import type { FirstBlockEvidence, RouxFrameId } from './types';
+export function currentRouxEvidence(
+  route: RouxRoute,
+  evidence: Partial<Record<RouxFrameId, FirstBlockEvidence>>,
+): FirstBlockEvidence {
+  const next = evidence[route.frameId],
+    prior = route.evidence;
+  if (!next || next.status === 'not-explored') return prior;
+  if (prior.status === 'not-explored' || next.status === 'proven-minimum') return next;
+  if (prior.status === 'proven-minimum') return prior;
+  return next.upperBound < prior.upperBound ? next : prior;
+}
 export function isRouxRecommendationEligible(
   route: RouxRoute,
   evidence: FirstBlockEvidence,
@@ -27,7 +38,7 @@ export function selectRouxRoutes(
     a.counts.combined - b.counts.combined ||
     a.id.localeCompare(b.id);
   const eligible = unique.filter((r) =>
-    isRouxRecommendationEligible(r, evidence[r.frameId] ?? r.evidence),
+    isRouxRecommendationEligible(r, currentRouxEvidence(r, evidence)),
   );
   const frontier = eligible
     .filter((r) => !eligible.some((q) => q !== r && dominates(q, r)))

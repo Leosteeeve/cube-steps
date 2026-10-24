@@ -22,7 +22,16 @@ export function AdvancedRouxFeaturePage({
   if (route.kind === 'learn')
     return <AdvancedRouxLearnPage key={route.lessonId} engine={engine} lessonId={route.lessonId} />;
   if (route.kind === 'cmll-library') return <CmllLibrary engine={engine} />;
-  if (route.kind === 'cmll-case') return <CmllCasePage engine={engine} caseId={route.caseId} />;
+  if (route.kind === 'cmll-case')
+    return (
+      <CmllCasePage
+        key={`${route.caseId}/${route.variantId}/${route.frameId}`}
+        engine={engine}
+        caseId={route.caseId}
+        initialVariantId={route.variantId}
+        initialFrameId={route.frameId}
+      />
+    );
   if (route.kind === 'cmll-practice') return <CmllPractice engine={engine} />;
   return (
     <>

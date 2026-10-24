@@ -15,6 +15,10 @@ test('CMLL filters and variant/hold animation remain independent of CFOP', async
   await page.goto('club/#/cmll/cmll-o-1');
   const next = page.getByRole('button', { name: 'Next move', exact: true });
   await expect(next).toBeEnabled({ timeout: 30000 });
+  await page.goto('club/#/cmll/cmll-o-1?variant=cmll-o-1-alternate&frame=yellow-red');
+  await expect(page.getByLabel('Formula variant')).toHaveValue('cmll-o-1-alternate');
+  await expect(page.getByLabel('Holding frame')).toHaveValue('yellow-red');
+  await expect(next).toBeEnabled();
   for (const frame of [
     'white-blue',
     'white-green',
@@ -42,7 +46,23 @@ test('CMLL filters and variant/hold animation remain independent of CFOP', async
   }
   await page.setViewportSize({ width: 390, height: 844 });
   await page.screenshot({ path: info.outputPath('cmll-phone.png'), fullPage: true });
-  expect(await page.evaluate(() => Array.from(document.querySelectorAll('main *')).filter(el=>el.getBoundingClientRect().right>innerWidth+1&&el.getBoundingClientRect().width>0).slice(0,12).map(el=>({tag:el.tagName,cls:el.className,width:el.getBoundingClientRect().width,right:el.getBoundingClientRect().right})))).toEqual([]);
+  expect(
+    await page.evaluate(() =>
+      Array.from(document.querySelectorAll('main *'))
+        .filter(
+          (el) =>
+            el.getBoundingClientRect().right > innerWidth + 1 &&
+            el.getBoundingClientRect().width > 0,
+        )
+        .slice(0, 12)
+        .map((el) => ({
+          tag: el.tagName,
+          cls: el.className,
+          width: el.getBoundingClientRect().width,
+          right: el.getBoundingClientRect().right,
+        })),
+    ),
+  ).toEqual([]);
   await page.goto('club/#/cmll/not-a-case');
   await expect(page.getByRole('heading', { name: 'Page not found.' })).toBeVisible();
   expect(errors).toEqual([]);

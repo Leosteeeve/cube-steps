@@ -6,7 +6,8 @@ test('hero visibly turns a layer and keeps its paused frame', async ({ page }, i
   await page.goto('club/');
   await dismissTutorialForTest(page);
   await expect(page.getByRole('button', { name: 'Pause motion' })).toBeVisible();
-  const pixels = () => page.locator('canvas.hero-canvas').evaluate((canvas: HTMLCanvasElement) => canvas.toDataURL());
+  const pixels = () =>
+    page.locator('canvas.hero-canvas').evaluate((canvas: HTMLCanvasElement) => canvas.toDataURL());
   const initial = await pixels();
   await page.clock.runFor(3000);
   await page.getByRole('button', { name: 'Pause motion' }).click();
@@ -35,12 +36,18 @@ for (const width of [360, 390, 768, 1024, 1440])
     page.on('request', (req) => requests.push(req.url()));
     page.on('pageerror', (error) => errors.push(error.message));
     await page.goto('club/');
-  await dismissTutorialForTest(page);
+    await dismissTutorialForTest(page);
     await expect(page.getByRole('link', { name: 'Resume learning' })).toHaveAttribute(
       'href',
       '#/learn/white-cross',
     );
-    await expect(page.getByRole('link', { name: 'Timer', exact: true })).toBeVisible();
+    const navigation = page.getByRole('navigation', { name: 'Main navigation' });
+    await navigation.getByRole('button', { name: 'Practice', exact: true }).click();
+    await expect(navigation.getByRole('link', { name: 'Timer', exact: true })).toHaveAttribute(
+      'href',
+      '#/timer',
+    );
+    await page.keyboard.press('Escape');
     const pause = page.getByRole('button', { name: 'Pause motion' });
     await expect(pause).toBeVisible();
     await pause.click();

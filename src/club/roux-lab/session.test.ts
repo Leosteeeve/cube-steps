@@ -77,3 +77,46 @@ it('rejects foreign inputs/frames and preserves exact coverage without invented 
   expect(s.routes).toHaveLength(0);
   expect(() => initialRouxLabSession([])).toThrow();
 });
+it('reconciles tighter evidence while preserving the selected reference and baseline', () => {
+  let s = reduceRouxLabSession(initialRouxLabSession(['white-blue']), { type: 'start', input });
+  const loose = {
+    status: 'best-found' as const,
+    lowerBound: 2,
+    upperBound: 5,
+    witness: ['F'] as const,
+    completedDepth: 1,
+  };
+  const baseline = { ...route('baseline', 30), evidence: loose };
+  const optimized = {
+    ...route('optimized', 5),
+    basis: 'optimized' as const,
+    evidence: loose,
+    counts: { first: 5, second: 1, combined: 6, rotations: 0 },
+  };
+  s = reduceRouxLabSession(s, { kind: 'candidate', route: baseline });
+  s = reduceRouxLabSession(s, { kind: 'candidate', route: optimized });
+  s = reduceRouxLabSession(s, { type: 'select', id: optimized.id });
+  const coverage = {
+    elapsedMs: 20,
+    operations: 100,
+    entries: 0,
+    retainedBytes: 0,
+    verifiedRoutes: 2,
+    frames: {
+      'white-blue': {
+        status: 'best-found' as const,
+        lowerBound: 2,
+        upperBound: 2,
+        witness: ['F', 'U'] as const,
+        completedDepth: 1,
+      },
+    },
+  };
+  s = reduceRouxLabSession(s, { kind: 'progress', coverage });
+  expect(s.routes[0]).toBe(baseline);
+  expect(s.selectedId).toBe(optimized.id);
+  expect(s.routes.find((r) => r.id === optimized.id)).toBe(optimized);
+  s = reduceRouxLabSession(s, { type: 'complete', coverage });
+  expect(s.routes[0]).toBe(baseline);
+  expect(s.routes).toContain(optimized);
+});

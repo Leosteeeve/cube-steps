@@ -635,6 +635,18 @@ export function PlaybackView({
                     <a href={'#/algorithms/' + action.caseId}>Explore this case →</a>
                   </p>
                 )}
+              {source.kind !== 'cmll' &&
+                action.rouxAdvanced &&
+                action.caseId &&
+                action.algorithmId?.startsWith('cmll-') && (
+                  <p>
+                    <a
+                      href={`#/cmll/${encodeURIComponent(action.caseId)}?variant=${encodeURIComponent(action.algorithmId)}&frame=${encodeURIComponent(action.rouxAdvanced.frameId)}`}
+                    >
+                      Explore this CMLL variant →
+                    </a>
+                  </p>
+                )}
               {action.moves.some((move) => move.startsWith('M')) && (
                 <p>
                   M turns the middle slice between L and R in the same direction as L. M′ reverses
