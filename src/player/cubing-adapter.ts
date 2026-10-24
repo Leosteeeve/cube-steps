@@ -13,6 +13,7 @@ export async function createCubingAdapter(
   host: HTMLElement,
   engine: CubeEngine,
   input: SolveSession | PlaybackSource,
+  onRenderFailure?: (error: Error) => void,
 ) {
   const source: PlaybackSource = 'kind' in input ? input : { kind: 'solve', session: input };
   const setup = buildPlaybackInitialSetup(engine, source);
@@ -50,10 +51,25 @@ export async function createCubingAdapter(
     indexer.indexToMoveStartTimestamp(i as ExperimentalLeafIndex),
   );
   boundaries.push(indexer.algDuration());
-  let lastTargets = '';
+  let lastTargets = '',
+    lost = false;
+  // The indexer can be ready before the asynchronous 3D wrapper exists.
+  await player.experimentalCurrentThreeJSPuzzleObject();
+  const canvases = [...(await player.experimentalCurrentCanvases())];
+  const contextLost = (event: Event) => {
+    event.preventDefault();
+    if (lost) return;
+    lost = true;
+    player.pause();
+    onRenderFailure?.(
+      new Error('3D rendering stopped. Continue with the synchronized six-face view below.'),
+    );
+  };
+  for (const canvas of canvases) canvas.addEventListener('webglcontextlost', contextLost);
   const adapter = {
     boundaries,
     setTimestamp(time: number) {
+      if (lost) return;
       player.timestamp = time as ExperimentalMillisecondTimestamp;
     },
     resetView() {
@@ -67,6 +83,7 @@ export async function createCubingAdapter(
       adapter.highlight(ids);
     },
     highlight(targets: readonly string[]) {
+      if (lost) return;
       const key = targets.join(',');
       if (key === lastTargets) return;
       lastTargets = key;
@@ -86,6 +103,7 @@ export async function createCubingAdapter(
       };
     },
     dispose() {
+      for (const canvas of canvases) canvas.removeEventListener('webglcontextlost', contextLost);
       player.pause();
       player.remove();
     },

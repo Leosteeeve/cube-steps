@@ -23,6 +23,9 @@ import { createCubingAdapter } from './cubing-adapter';
 import { RegripGuide } from './RegripGuide';
 import { CubeStage } from './CubeStage';
 import { createCubeViewStore, type CubeViewPreferences } from './view-preferences';
+import { CubeNet } from './CubeNet';
+import { targetFacelets } from './target-view';
+import { stateToFacelets } from '../core/facelets';
 const RouxPlaybackGuide = lazy(() =>
   import('./RouxHoldingGuide').then((m) => ({ default: m.RouxPlaybackGuide })),
 );
@@ -133,6 +136,7 @@ export function PlaybackView({
     controller.current = player;
     handleCallback.current?.({ pause: () => player.pause() });
     let cancelled = false,
+      expired = false,
       adapter: Awaited<ReturnType<typeof createCubingAdapter>> | undefined;
     setReady(false);
     setError('');
@@ -142,15 +146,30 @@ export function PlaybackView({
       positionCallback.current?.(s);
       if (adapter) {
         adapter.setTimestamp(reduced.matches ? adapter.boundaries[s.moveIndex] : s.timestamp);
-        adapter.highlight(
+        adapter.setTargets(
           focusRef.current ? (player.timeline.actions[s.actionIndex]?.action.targets ?? []) : [],
+          s.boundaryState,
         );
       }
       sectionCallback.current?.(s.sectionId);
     });
-    createCubingAdapter(host.current!, engine, source)
+    const renderFailure = (e: Error) => {
+      if (!cancelled) {
+        setError(e.message);
+        setReady(true);
+      }
+    };
+    const initializationTimer = setTimeout(() => {
+      expired = true;
+      renderFailure(
+        new Error(
+          '3D initialization timed out. Continue with the synchronized six-face view below.',
+        ),
+      );
+    }, 8000);
+    createCubingAdapter(host.current!, engine, source, renderFailure)
       .then((result) => {
-        if (cancelled) {
+        if (cancelled || expired) {
           result.dispose();
           return;
         }
@@ -165,9 +184,11 @@ export function PlaybackView({
           setError(e instanceof Error ? e.message : 'Unable to display the cube.');
           setReady(true);
         }
-      });
+      })
+      .finally(() => clearTimeout(initializationTimer));
     return () => {
       cancelled = true;
+      clearTimeout(initializationTimer);
       unsubscribe();
       player.dispose();
       adapter?.dispose();
@@ -254,6 +275,15 @@ export function PlaybackView({
       ).length
     : undefined;
   const nearbyStart = s ? Math.max(0, Math.min(s.moveIndex - 2, s.total - 5)) : 0;
+  const netFacelets = useMemo(
+    () => (s ? stateToFacelets(s.boundaryState) : null),
+    [s?.boundaryState],
+  );
+  const netTargets = useMemo(
+    () => (s && focused ? targetFacelets(engine, s.boundaryState, action?.targets ?? []) : []),
+    [engine, s?.boundaryState, action, focused],
+  );
+  const centers = s ? engine.observe(s.boundaryState).centers : null;
   return (
     <div className="player-area">
       <section
@@ -273,6 +303,7 @@ export function PlaybackView({
           preferences={view}
           onPreferencesChange={changeView}
           onResetView={() => adapterRef.current?.resetView()}
+          renderUnavailable={!!error}
           holding={
             s && (
               <RegripGuide
@@ -290,27 +321,32 @@ export function PlaybackView({
             </p>
           )}
           {!ready && !error && <p role="status">Preparing the cube…</p>}
+          {netFacelets && centers && (view.showNet || !!error) && (
+            <CubeNet
+              facelets={netFacelets}
+              targets={netTargets}
+              holdingLabel={`${s?.progress ? 'Last completed move · ' : ''}${centers.U} up · ${centers.F} front`}
+            />
+          )}
           <div ref={controlsTarget} className="playback-toolbar">
             {s && player && s.total > 0 && (
               <ol className="nearby-moves" aria-label="Nearby moves">
-                {player.timeline.moves
-                  .slice(nearbyStart, nearbyStart + 5)
-                  .map((move, offset) => {
-                    const index = nearbyStart + offset;
-                    return (
-                      <li key={index}>
-                        <button
-                          type="button"
-                          aria-label={`Go to move ${index + 1}: ${move.replaceAll("'", '′')}`}
-                          aria-current={index === s.moveIndex ? 'step' : undefined}
-                          disabled={!ready}
-                          onClick={() => player.seekMove(index)}
-                        >
-                          {move.replaceAll("'", '′')}
-                        </button>
-                      </li>
-                    );
-                  })}
+                {player.timeline.moves.slice(nearbyStart, nearbyStart + 5).map((move, offset) => {
+                  const index = nearbyStart + offset;
+                  return (
+                    <li key={index}>
+                      <button
+                        type="button"
+                        aria-label={`Go to move ${index + 1}: ${move.replaceAll("'", '′')}`}
+                        aria-current={index === s.moveIndex ? 'step' : undefined}
+                        disabled={!ready}
+                        onClick={() => player.seekMove(index)}
+                      >
+                        {move.replaceAll("'", '′')}
+                      </button>
+                    </li>
+                  );
+                })}
               </ol>
             )}
             <div className="playback-controls">

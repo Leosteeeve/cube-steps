@@ -6,6 +6,7 @@ export function CubeStage({
   preferences,
   onPreferencesChange,
   onResetView,
+  renderUnavailable = false,
   holding,
   children,
 }: {
@@ -13,6 +14,7 @@ export function CubeStage({
   preferences: CubeViewPreferences;
   onPreferencesChange: (value: CubeViewPreferences) => void;
   onResetView: () => void;
+  renderUnavailable?: boolean;
   holding: ReactNode;
   children: ReactNode;
 }) {
@@ -45,15 +47,25 @@ export function CubeStage({
               />{' '}
               Back-face view aid
             </label>
+            <label>
+              <input
+                type="checkbox"
+                checked={preferences.showNet}
+                onChange={(e) => onPreferencesChange({ ...preferences, showNet: e.target.checked })}
+              />
+              Six-face diagram
+            </label>
             <p>These options change your view. Your cube and moves stay the same.</p>
           </div>
         </details>
-        <button type="button" onClick={onResetView}>
+        <button type="button" onClick={onResetView} disabled={renderUnavailable}>
           Reset view <span aria-hidden="true">↺</span>
         </button>
       </div>
-      <div className="cube-canvas" ref={hostRef} />
-      <p className="orbit-note">Drag to look around · View changes do not turn the cube</p>
+      <div className="cube-canvas" ref={hostRef} hidden={renderUnavailable} />
+      {!renderUnavailable && (
+        <p className="orbit-note">Drag to look around · View changes do not turn the cube</p>
+      )}
       <div className="cube-holding">{holding}</div>
       {children}
     </div>

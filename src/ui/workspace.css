@@ -334,6 +334,32 @@
 .cube-holding {
   margin: 0 22px 22px;
 }
+.cube-stage .cube-canvas[hidden] {
+  display: none;
+}
+.cube-net {
+  max-width: 410px;
+  width: calc(100% - 40px);
+  margin: 20px auto;
+  padding: 16px;
+  border-radius: 16px;
+  background: #f8fafc;
+  color: #173047;
+}
+.cube-net svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.cube-net figcaption {
+  font-size: 12px;
+  line-height: 1.7;
+  margin-top: 8px;
+  text-align: center;
+}
+.cube-net figcaption span {
+  white-space: nowrap;
+}
 [data-edition] .cube-holding .regrip-guide {
   background: var(--stage-control);
   color: var(--stage-ink);
