@@ -1,6 +1,6 @@
 # Advanced Roux validation
 
-Status: required core corpus and coverage gates verified; final integrated browser checks are in progress. This report is not physical acceptance or a claim of globally optimal two-block solving.
+Status: local core, coverage and integrated browser gates verified. Release status is determined separately by GitHub checks and the deployed build revision. This report is not physical acceptance or a claim of globally optimal two-block solving.
 
 ## Reproducible gates
 
@@ -54,11 +54,11 @@ The 43.4 ms probe gap is an observed event-loop interval, not a claim that every
 ## Pending acceptance
 
 - The supplementary CFOP Lab 1,000-input/six-color corpus also passed: 3 tests in 2 files, 589.63 seconds. It supplements the required 174-test Lab regression above.
-- Integrated desktop/mobile viewport, keyboard, reduced-motion, storage and publication checks follow the club-page implementation.
+- Integrated desktop/mobile viewport, keyboard, reduced-motion and storage checks passed. Live publication is verified separately against the merged build revision.
 - Physical phone responsiveness and human finger-trick/block-choice calibration remain pending.
 - Short and full no-narration films retain their separate user approval gates.
 
-## Club integration evidence (2026-10-24, release checks in progress)
+## Club integration evidence (2026-10-24)
 
 Tasks 16–21 add the club-only advanced solver, 42-case CMLL reference and untimed practice, nine original chapters with 26 independently replayed examples, method-aware learning recommendations, fixed Lab comparisons, separate experiments and two-block trials. The shared player uses brighter stickers following the owner's feedback. The accepted Guide film remains `club-guide-video-v2`; replacement films require their own approvals.
 
@@ -81,8 +81,10 @@ Integrated browser failures are being handled separately: legacy checks now reop
 
 A real WebKit notebook run also exposed a legitimate result burst before independent admission completed: the eight-pending-route bound previously ended the request with no verified result. At that same bound, the client now stops the worker and finishes independent admission of its active route and retained queue, within the original time/work/memory limits. The resulting search is honestly labeled `frontier-limit`; slow admission can stop optional optimization early. Unverified routes never reach the UI. The burst regression reproduced the original error and now passes alongside malformed-route rejection. The final full unit run passed 1,069 tests in 236 files; typechecking and the real Guide manifest check also passed.
 
-The complete development sweep ran 322 browser cases (303 passed on the initial sweep). After the fixes, all 32 affected input, notation, Lab, lesson and notebook cases passed serially across Chromium and WebKit in 8.7 minutes. Separate earlier repairs passed all 18 navigation/Beginner Roux input cases, and the unchanged club-entry readiness retry passed. The 54-move renderer and partial-turn camera checks passed in both browsers without relaxing timeouts. All original failures and retries remain in external validation logs. Three capture-contract tests passed. The initial production sweep ran 80 cases; a clean final production rerun is still required.
+The complete development sweep ran 322 browser cases (303 passed on the initial sweep). After the fixes, all 32 affected input, notation, Lab, lesson and notebook cases passed serially across Chromium and WebKit in 8.7 minutes. Separate earlier repairs passed all 18 navigation/Beginner Roux input cases, and the unchanged club-entry readiness retry passed. The 54-move renderer and partial-turn camera checks passed in both browsers without relaxing timeouts. All original failures and retries remain in external validation logs. Three capture-contract tests passed. The clean production build at `921013be8cee8d059127a7d495ca95c83f541b9e` then passed all 80 production cases across both browsers in 13.1 minutes, including old/new methods, actual colors, Guide/video, failed assets, notebook transfer, Timer, keyboard and responsive layouts.
 
 Final desktop benchmark at `fbc416eec67e03eca2e2ea2816cf0acad2c0a267`, with no concurrent browser suite: all 11 requests succeeded, no browser errors, and every pinned snapshot stayed unchanged. Cold first result was 0.88 s; seven warm normal first results ranged from 0.46–0.57 s, with complete bounded normal requests taking 1.03–1.95 s. The two full-budget Lab requests took 7.17 s and 6.91 s, each ending at the work ceiling with six verified frames and two honestly not explored. Their first results arrived in 0.53 s and 0.48 s. Explicit stop settled in 0.10 ms; the largest 16 ms main-thread probe interval was 43.2 ms. These are measured desktop samples of the actual worker/client protocol, not phone acceptance, universal latency guarantees or a claim that every main-thread task lasts less than 8 ms. The external JSON retains each route, budget and proof receipt.
 
-These are automated and desktop-browser observations. Full final regression, independent review, GitHub checks, deployment and live verification must be recorded before publication is claimed. The reproducible [physical review worksheet](../lab/roux-physical-review.md) remains for owner/Josh testing; no physical comfort, fastest-human-route or real-phone performance acceptance is implied.
+Visual QA additionally caught a screenshot taken inside the renderer's native 0.25-second fade-in. The capture now uses the established renderer/animation readiness helper. Both lesson browser reruns passed (2/2), and final Chromium/WebKit images were inspected with the fully visible brighter cube. This was a capture-timing correction, not an application color or state change.
+
+These are automated and desktop-browser observations. Independent review and local regression are complete; GitHub checks, deployment and live verification are recorded separately before publication is claimed. The reproducible [physical review worksheet](../lab/roux-physical-review.md) remains for owner/Josh testing; no physical comfort, fastest-human-route or real-phone performance acceptance is implied.

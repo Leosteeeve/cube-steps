@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { dismissTutorialForTest } from './helpers/tutorial';
 import { matchesBoundary } from './helpers/color-entry';
+import { renderLessonFrame } from './helpers/notation';
 const ids = [
   'intro',
   'ar-first-block',
@@ -50,8 +51,7 @@ test('nine chapters play their actual worked cases and retain conceptual progres
   await expect
     .poll(() => page.evaluate(() => document.documentElement.scrollWidth <= innerWidth))
     .toBe(true);
-  await page.locator('twisty-player').scrollIntoViewIfNeeded();
-  await page.evaluate(async()=>{const player=document.querySelector('twisty-player') as any;await player.experimentalCurrentThreeJSPuzzleObject();await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));});
+  await renderLessonFrame(page);
   await page.locator('.cube-stage').screenshot({path:info.outputPath('brighter-cube-phone.png'), animations:'disabled'});
   await page.screenshot({
     path: info.outputPath('advanced-roux-lesson-phone.png'),
