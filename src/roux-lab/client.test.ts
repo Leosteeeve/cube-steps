@@ -48,6 +48,37 @@ class Port implements RouxWorkerPort {
 const flush = async () => {
   for (let i = 0; i < 50; i++) await Promise.resolve();
 };
+it('stops a burst producer at the queue bound and finishes independent admission of its baseline', async () => {
+  const p = new Port(),
+    events: RouxRoute[] = [];
+  const client = createRouxSearchClient(e, {
+    workerFactory: () => p,
+    now: () => 1000,
+    loadAssets: async () => assets,
+    yieldTask: async () => {},
+  });
+  const work = client.start(source, settings, (event) => {
+    if (event.kind === 'candidate') events.push(event.route);
+  });
+  await flush();
+  const requestId = p.sent[0].requestId;
+  // Physically identical snapshots with distinct producer build labels arrive
+  // before independent admission gets its next task. None may be shown unchecked.
+  for (let i = 0; i < 12; i++) {
+    const candidate = structuredClone(route);
+    candidate.versions.app = `admission-burst-fixture-${i}`;
+    p.reply({ kind: 'candidate', requestId, route: candidate });
+  }
+  expect(events).toHaveLength(0);
+  const result = await work.done;
+  expect(result.ok, JSON.stringify(result)).toBe(true);
+  expect(result.coverage.reason).toBe('frontier-limit');
+  expect(result.coverage.verifiedRoutes).toBe(9); // one active plus eight queued
+  expect(events).toHaveLength(9);
+  expect(events.every(Object.isFrozen)).toBe(true);
+  expect(p.terminated).toBe(true);
+  client.dispose();
+});
 it('exposes only independently verified immutable routes and retains the incumbent when stopped', async () => {
   const p = new Port(),
     events: unknown[] = [];

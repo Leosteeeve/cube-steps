@@ -51,9 +51,11 @@ test('built Guide loads no engine, enlarges real screenshots, and survives image
     (r) => r.abort(),
   );
   await page.goto('club/#/guide');
-  await expect(page.locator('.guide-chapter')).toHaveCount(10);
+  await expect(page.locator('.guide-chapter')).toHaveCount(12);
   await expect(page.locator('#guide-lab')).toBeVisible();
   await expect(page.locator('#guide-roux')).toBeVisible();
+  await expect(page.locator('#guide-advanced-roux')).toBeVisible();
+  await expect(page.locator('#guide-roux-lab')).toBeVisible();
   await expect(
     page.getByRole('link', { name: 'Open Beginner Roux →', exact: true }),
   ).toHaveAttribute('href', '#/learn/roux/intro');

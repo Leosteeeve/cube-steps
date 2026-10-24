@@ -87,6 +87,7 @@ test('production base path loads worker, 3D renderer, random scrambles and refre
       }),
     )
     .toBe(true);
+  await page.getByRole('button', { name: 'Edit cube input', exact: true }).click();
   await page.getByRole('button', { name: 'Random scramble', exact: true }).click();
   await expect(page.getByLabel('Scramble sequence')).not.toHaveValue("R U2 F' L2 B D'");
   await page.getByRole('button', { name: 'Explain with LBL', exact: true }).click();

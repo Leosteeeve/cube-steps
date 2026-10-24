@@ -229,7 +229,23 @@ export function createRouxSearchClient(
   function enqueue(r: Pending, route: RouxRoute) {
     const signature = JSON.stringify(route);
     if (r.seen.has(signature)) return;
-    if (r.queue.length >= 8) throw Error('Too many unverified Roux results.');
+    if (r.queue.length >= 8) {
+      // A busy renderer can admit routes more slowly than the worker finds them.
+      // Freeze the producer at the existing bound, then verify the active route
+      // and queued snapshots. In particular, do not discard the first baseline.
+      if (r.worker) {
+        r.worker.onmessage = null;
+        r.worker.onerror = null;
+        r.worker.terminate();
+      }
+      r.terminal = {
+        ok: false,
+        code: 'budget',
+        message: 'The route verification queue reached its limit.',
+        coverage: { ...r.coverage, reason: 'frontier-limit' },
+      };
+      return;
+    }
     const serial = r.serial++,
       key = `queued/${serial}`,
       dedup = `dedup/${serial}`;

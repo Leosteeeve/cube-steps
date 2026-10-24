@@ -1,6 +1,6 @@
 # Advanced Roux validation
 
-Status: required core corpus, coverage, compatibility and browser benchmark gates verified. An additional CFOP Lab six-color corpus is running. This report is not physical acceptance or a claim of globally optimal two-block solving.
+Status: required core corpus and coverage gates verified; final integrated browser checks are in progress. This report is not physical acceptance or a claim of globally optimal two-block solving.
 
 ## Reproducible gates
 
@@ -34,7 +34,7 @@ Reference machine: Windows 11 build 26200, AMD Ryzen 9 8945HX, 32 logical CPUs, 
 
 The first scheduler used nested zero-delay timers. Initial results ranged from approximately 3.00–5.43 seconds in the normal requests. A regression test exposed that dependency. Using a MessageChannel task boundary removes timer clamping while preserving cancellation opportunities and closing both ports after each yield.
 
-After that change, the same eight-frame benchmark measured:
+At the Task 15 core milestone, after that change, the same eight-frame benchmark measured:
 
 | Measurement                           | Observed result                              |
 | ------------------------------------- | -------------------------------------------- |
@@ -69,6 +69,18 @@ Tasks 16–21 add the club-only advanced solver, 42-case CMLL reference and unti
 - Task 20: 24 targeted tests in seven files and ten browser cases including actual IndexedDB transaction abort, retry, immutable identity conflicts, atomic imports, corrupt-data recovery and separation from CFOP/Timer stores.
 - Task 21: 78 related unit tests in 19 files and 22 browser cases including keyboard/touch cancellation, timing quiescence, retained unsaved review, five matched AB/BA blocks and reversible deletion.
 - Task 22: the first full unit run passed 1,060 tests in 233 files. A subsequent real basic-LSE save/export flow exposed a mismatch between shared maneuver snapshots (catalog-key identity) and CMLL variants (embedded identity). The new regression failed before the schema fix, then all 13 experiment tests passed. A real search → basic route → save → export → fresh browser import → full replay → 12.34-second manual trial → export flow passed.
-- Twenty-eight real Guide scenes were captured at source revision `2470dfea51c79aea419fe1a17f641c389b1d44c6`, including phone layouts. Example sessions are marked as sample data. Captures and their dimensions are recorded in the capture manifest; inspected images include the brighter player, full CMLL family cards, fixed comparisons, trial setup and legacy CFOP/Timer/Guide screens.
+- Twenty-eight real Guide scenes were recaptured after review fixes at source revision `1b89a436a0342fd21235f523e50882362ba33ea6`, including phone layouts. Example sessions are marked as sample data. The capture manifest records the observed final route after navigation as well as image dimensions; inspected images include the brighter player, full CMLL family cards, fixed comparisons, trial setup and legacy CFOP/Timer/Guide screens.
+
+## Final review and regression record
+
+One independent whole-website review found three important issues. Current first-block proof now governs Lab recommendation eligibility while preserving pinned playback references. The normal client's eight-second deadline returns an already verified baseline when optimization is unfinished and applies current proof when choosing a route. CMLL variants now explain their selection and link to the exact formula/frame. Regression tests failed before each fix; the review fix suite passed 162 tests in 39 files, followed by 1,068 unit tests in 236 files. Actual capture routes and duplicated tutorial ownership were also corrected. A minor Guide introduction wording issue about navigation grouping is deferred.
+
+Final repeated core gates passed: generated cross/case/Beginner Roux/Advanced Roux assets and examples, the existing LBL/CFOP corpus, Beginner Roux coverage and its 1,000-seed corpus, advanced coverage and the 8,000 replay corpus, CFOP Lab corpus, both efficiency checks and legacy physical fixtures. The unchanged Beginner Roux corpus initially failed at seed 291 during a heavily loaded run, then passed all 12 tests in two files on an isolated retry; neither its seed set nor solver limits were relaxed. The failure is retained in external validation logs rather than counted as a pass.
+
+Integrated browser failures are being handled separately: legacy checks now reopen the intentionally collapsed input panel, follow the Practice menu, and expect all 12 Guide chapters. Live Lab comparison tests pin current cards rather than cached IDs from an evolving shortlist, explicitly choose A before checking the switch to B, and preserve playback across workspace navigation. The global-edition isolation assertion exposed a real eager import of Advanced Roux selection code; that dependency now loads inside the club-only request, within its original deadline. All corrected or affected checks require a passing focused rerun before publication.
+
+A real WebKit notebook run also exposed a legitimate result burst before independent admission completed: the eight-pending-route bound previously ended the request with no verified result. At that same bound, the client now stops the worker and finishes independent admission of its active route and retained queue, within the original time/work/memory limits. The resulting search is honestly labeled `frontier-limit`; slow admission can stop optional optimization early. Unverified routes never reach the UI. The burst regression reproduced the original error and now passes alongside malformed-route rejection. The final full unit run passed 1,069 tests in 236 files; typechecking and the real Guide manifest check also passed.
+
+The complete development sweep ran 322 browser cases (303 passed on the initial sweep). After the fixes, all 32 affected input, notation, Lab, lesson and notebook cases passed serially across Chromium and WebKit in 8.7 minutes. Separate earlier repairs passed all 18 navigation/Beginner Roux input cases, and the unchanged club-entry readiness retry passed. The 54-move renderer and partial-turn camera checks passed in both browsers without relaxing timeouts. All original failures and retries remain in external validation logs. Three capture-contract tests passed. The initial production sweep ran 80 cases; a clean final production rerun is still required.
 
 These are automated and desktop-browser observations. Full final regression, independent review, GitHub checks, deployment and live verification must be recorded before publication is claimed. The reproducible [physical review worksheet](../lab/roux-physical-review.md) remains for owner/Josh testing; no physical comfort, fastest-human-route or real-phone performance acceptance is implied.

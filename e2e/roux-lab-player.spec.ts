@@ -14,7 +14,7 @@ test('Roux playback reverses the physical hold and verifies a separate basic LSE
   await expect(page.getByRole('button', { name: 'Next move', exact: true })).toBeEnabled({
     timeout: 35000,
   });
-  await expect(page.getByLabel('Current centers',{exact:true})).toContainText('Centers now:');
+  await expect(page.getByLabel('Current centers', { exact: true })).toContainText('Centers now:');
   const old = await page
     .getByRole('region', { name: 'Selected Roux route' })
     .getAttribute('data-selected-route');
@@ -25,8 +25,9 @@ test('Roux playback reverses the physical hold and verifies a separate basic LSE
   await expect.poll(() => matchesBoundary(page)).toBe(true);
   await page.getByLabel('Route section', { exact: true }).selectOption('ar-second-block');
   await page.getByRole('button', { name: /^Replay (action|formula|connected moves)/ }).click();
-  const pause = page.getByRole('button', { name: /^Pause/ });
-  if (await pause.isVisible()) await pause.click();
+  // A short action can finish before a separate Pause click arrives. Seeking is
+  // an unconditional pause and does not race the label changing back to Play.
+  await page.getByLabel('Route section', { exact: true }).selectOption('ar-second-block');
   await page.getByRole('button', { name: 'Show basic LSE as a separate route' }).click();
   await expect(page.getByRole('button', { name: 'Basic LSE route selected' })).toBeDisabled({
     timeout: 35000,

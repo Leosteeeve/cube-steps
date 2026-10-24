@@ -6,7 +6,6 @@ import type { CubeEngine, SolveInput } from '../core/types';
 import type { RouxSearchClient } from '../roux-lab/client';
 import type { RouxRoute } from '../roux-lab/types';
 import type { RouxFrameId, FirstBlockEvidence } from '../methods/roux-advanced/types';
-import { selectRouxRoutes, currentRouxEvidence } from '../methods/roux-advanced/selection';
 export type { WorkerReply } from '../workers/solve-protocol';
 export interface WorkerPort {
   onmessage: ((e: MessageEvent<WorkerReply>) => void) | null;
@@ -96,6 +95,7 @@ export function createSolveClient(
       id = ++requestId,
       allowedFrames = [...(options?.allowedFrames ?? ['white-blue'])] as RouxFrameId[];
     return new Promise((resolve) => {
+      let selection: typeof import('../methods/roux-advanced/selection') | undefined;
       const finish = (result: SessionResult) => {
         if (advancedActive?.id !== id) return;
         const old = advancedActive;
@@ -116,7 +116,7 @@ export function createSolveClient(
             ...route.trace,
             rouxAdvanced: {
               ...route.trace.rouxAdvanced!,
-              evidence: currentRouxEvidence(route, evidence),
+              evidence: selection!.currentRouxEvidence(route, evidence),
             },
           },
         }),
@@ -124,7 +124,7 @@ export function createSolveClient(
       const timer = setTimeout(() => {
         const r = advancedActive;
         if (r?.id !== id) return;
-        const chosen = selectRouxRoutes(r.routes, r.evidence, 1)[0];
+        const chosen = selection?.selectRouxRoutes(r.routes, r.evidence, 1)[0];
         finish(
           chosen
             ? success(chosen)
@@ -142,10 +142,13 @@ export function createSolveClient(
       void (async () => {
         try {
           const snapshot = structuredClone(input);
-          const [{ createCubeEngine }, { validateFacelets }] = await Promise.all([
+          const [{ createCubeEngine }, { validateFacelets }, routeSelection] = await Promise.all([
             import('../core/cube'),
             import('../core/facelets'),
+            import('../methods/roux-advanced/selection'),
           ]);
+          selection = routeSelection;
+          const { selectRouxRoutes } = routeSelection;
           const engine = await createCubeEngine();
           if (advancedActive?.id !== id) return;
           let source: SolveInput;

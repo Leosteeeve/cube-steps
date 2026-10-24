@@ -14,23 +14,36 @@ for (const width of [1440, 390])
     await page.getByRole('button', { name: 'Analyze cube', exact: true }).click();
     const cards = page.getByRole('region', { name: 'Roux routes' }).locator('[data-roux-route]');
     await expect.poll(() => cards.count(), { timeout: 35000 }).toBeGreaterThanOrEqual(2);
-    const a = await cards.nth(0).getAttribute('data-roux-route'),
-      b = await cards.nth(1).getAttribute('data-roux-route');
-    await page
-      .locator(`[data-roux-route="${a}"]`)
-      .getByRole('button', { name: 'Compare this route', exact: true })
-      .click();
-    await page
-      .locator(`[data-roux-route="${b}"]`)
-      .getByRole('button', { name: 'Compare this route', exact: true })
-      .click();
-    await page.getByRole('button', { name: 'Next move', exact: true }).click();
-    await expect(page.getByLabel('Move position')).toHaveValue('1');
+    // Resolve the currently available cards at click time: search may replace an
+    // unpinned candidate between a DOM read and the subsequent click.
+    await cards.getByRole('button', { name: 'Compare this route', exact: true }).first().click();
+    await cards.getByRole('button', { name: 'Compare this route', exact: true }).first().click();
     await page
       .getByRole('navigation', { name: 'Roux Lab workspace' })
       .getByRole('link', { name: 'Compare', exact: true })
       .click();
     const comparison = page.getByRole('region', { name: 'Fixed Roux comparison' });
+    const a = await comparison.locator('[data-roux-route]').nth(0).getAttribute('data-roux-route'),
+      b = await comparison.locator('[data-roux-route]').nth(1).getAttribute('data-roux-route');
+    expect(a).not.toBe(b);
+    await comparison
+      .locator(`[data-roux-route="${a}"]`)
+      .getByRole('button', { name: 'Play full solve' })
+      .click();
+    await expect(page.getByRole('region', { name: 'Selected Roux route' })).toHaveAttribute(
+      'data-selected-route',
+      a!,
+    );
+    await page.getByRole('button', { name: 'Next move', exact: true }).click();
+    await expect(page.getByLabel('Move position')).toHaveValue('1');
+    await page
+      .getByRole('navigation', { name: 'Roux Lab workspace' })
+      .getByRole('link', { name: 'Analyze', exact: true })
+      .click();
+    await page
+      .getByRole('navigation', { name: 'Roux Lab workspace' })
+      .getByRole('link', { name: 'Compare', exact: true })
+      .click();
     await expect(comparison.locator(`[data-roux-route="${a}"]`)).toBeVisible();
     await expect(comparison.locator(`[data-roux-route="${b}"]`)).toBeVisible();
     await expect(page.getByLabel('Move position')).toHaveValue('1');
