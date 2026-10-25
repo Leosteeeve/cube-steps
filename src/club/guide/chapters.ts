@@ -38,7 +38,7 @@ export const GUIDE_CHAPTERS: readonly GuideChapter[] = [
       ],
       [
         'Find your route',
-        'Open the six-question route recommendation. Choose one answer before pressing Next; Back revisits a previous answer.',
+        'Open the short route questionnaire about your experience and learning preferences. Choose one answer before pressing Next; Back revisits a previous answer.',
       ],
       [
         'Show my route / Start lesson',
