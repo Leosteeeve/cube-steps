@@ -11,6 +11,7 @@ test('new students answer learning preferences and get LBL with Roux as a later 
   await expect(page.getByRole('button', { name: 'Next', exact: true })).toBeDisabled();
   await page.getByLabel('I cannot solve independently yet', { exact: true }).focus();
   await page.keyboard.press('Space');
+  await expect(page.getByLabel('I cannot solve independently yet', { exact: true })).toBeChecked();
   await page.getByRole('button', { name: 'Next', exact: true }).click();
   await page.getByLabel('I would rather remember fewer sequences', { exact: true }).check();
   for (const width of [1360, 390]) {

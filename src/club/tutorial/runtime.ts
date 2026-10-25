@@ -60,13 +60,18 @@ export function createTutorialRuntime(getStorage: () => Storage) {
           scope.lease = undefined;
         }
     setLock(false);
-    const focus = origin;
+    const focus = origin,
+      focusAtRelease = document.activeElement;
     origin = null;
     // Native document key events can precede React's overlay cleanup. Restore on
     // the next task so the departing focus scope cannot pull focus back inside.
     if (restore)
       setTimeout(() => {
         if (!locked && !disposed) {
+          // A user may have already moved to a page control after dismissal.
+          // Keep that newer focus instead of overriding their next key press.
+          if (document.activeElement !== focusAtRelease && document.activeElement !== document.body)
+            return;
           if (focus?.isConnected) focus.focus();
           else document.querySelector<HTMLElement>('main h1,main')?.focus();
         }
