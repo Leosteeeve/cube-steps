@@ -134,18 +134,6 @@
       "exampleData": false
     },
     {
-      "id": "quiz",
-      "src": "club-guide/quiz.png",
-      "alt": "First question in the route recommendation",
-      "caption": "Choose the answer that fits today; there is no score.",
-      "route": "club/#/find-your-route",
-      "width": 760,
-      "height": 621,
-      "sourceRevision": "1b89a436a0342fd21235f523e50882362ba33ea6",
-      "scenario": "quiz",
-      "exampleData": false
-    },
-    {
       "id": "moves",
       "src": "club-guide/moves.png",
       "alt": "U prime selected with the cube and explanation",
@@ -336,6 +324,18 @@
       "sourceRevision": "1b89a436a0342fd21235f523e50882362ba33ea6",
       "scenario": "roux-lab-analyze-phone",
       "exampleData": true
+    },
+    {
+      "id": "quiz",
+      "src": "club-guide/quiz.png",
+      "alt": "First question in the route recommendation",
+      "caption": "Choose the answer that fits today; there is no score.",
+      "route": "club/#/find-your-route",
+      "width": 760,
+      "height": 484,
+      "sourceRevision": "ef88fbd86e85a53561876b69c47724668df9e5ea-dirty",
+      "scenario": "quiz",
+      "exampleData": false
     }
   ]
 }

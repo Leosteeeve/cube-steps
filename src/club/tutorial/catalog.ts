@@ -156,7 +156,7 @@ export const TOURS: Readonly<Record<TourId, TourDefinition>> = {
       'route',
       'quiz.route',
       'Find a comfortable route',
-      'Six short answers suggest an available LBL, CFOP or Roux route from your foundations and interests, with a reason and a first lesson.',
+      'Tell us how you feel about remembering moves and understanding why they work. No method names to learn first. New solvers start with LBL; independent solvers get one extra experience question before a recommendation.',
       'start',
     ),
     step(
