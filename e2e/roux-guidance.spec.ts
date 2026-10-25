@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 import { dismissTutorialForTest } from './helpers/tutorial';
-test('new Guide chapters, advanced tours and retained film work without altering old links', async ({
+test('new Guide chapters, advanced tours and accepted film work without altering old links', async ({
   page,
 }) => {
   const errors: string[] = [];
@@ -10,8 +10,8 @@ test('new Guide chapters, advanced tours and retained film work without altering
   await page.goto('club/#/guide/advanced-roux');
   await expect(page.getByRole('heading', { name: 'Connect better Roux blocks' })).toBeVisible();
   await expect(
-    page.getByRole('link', { name: 'Download video (36 MB)', exact: true }),
-  ).toHaveAttribute('href', /club-guide-video-v2\.mp4$/);
+    page.getByRole('link', { name: 'Download video (28 MB)', exact: true }),
+  ).toHaveAttribute('href', /club-guide-video-v3\.mp4$/);
   await page.getByRole('button', { name: 'Start Advanced Roux tour', exact: true }).click();
   await expect(page.getByRole('dialog')).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Build on what you know' })).toBeVisible();

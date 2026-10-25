@@ -5,246 +5,206 @@
   },
   {
     "start": 4,
-    "text": "Bring your cube. Start small. A place to learn together, and practise at home. Take one small step. You do not need to know how to solve yet. No account needed. Pause this video whenever you want to try a step."
+    "text": "Start with one small step. You do not need to know how to solve yet. START HERE. No account needed. Pause whenever you want to try a step."
   },
   {
-    "start": 11,
-    "text": "Find your starting point. A short questionnaire suggests a route for you."
+    "start": 10,
+    "text": "Find your starting point. Or join a lesson if you already know where to begin."
   },
   {
     "start": 16,
-    "text": "Open the questionnaire. You can also go straight to a lesson."
+    "text": "Choose your current level. Pick what you can do on your own today. FIND YOUR ROUTE. This is a recommendation, not a test. You can change routes later."
   },
   {
-    "start": 20,
-    "text": "Where should you begin? Four questions. A useful starting point. Choose your current level. Pick what you can do today. This is not a test. The recommendation is a starting point. You can change your route later."
+    "start": 21,
+    "text": "Choose a way of thinking. Layers and pairs, or blocks and the middle slice?"
   },
   {
-    "start": 28,
-    "text": "Choose your goal. Your first solve, a steadier method, or faster practice?"
+    "start": 26,
+    "text": "Be honest about your foundation. Roux routes are included when they fit your experience."
   },
   {
-    "start": 33,
-    "text": "Choose a session length. A short practice session is enough to begin."
+    "start": 31,
+    "text": "Choose a goal. Here, we want a first independent solve."
   },
   {
-    "start": 38,
-    "text": "Choose how you practise. At a meeting, on your own, or a little of both."
+    "start": 36,
+    "text": "Choose your practice habits. Short sessions count. At the club, at home, or both."
   },
   {
-    "start": 42,
-    "text": "Read your recommended route. LBL is a good start if you cannot solve independently yet."
+    "start": 43,
+    "text": "Read the reason for your route. This example starts with LBL. Open the first lesson when ready."
   },
   {
-    "start": 49,
-    "text": "Start your first lesson. Or choose a different route whenever you want."
+    "start": 52,
+    "text": "Match the starting hold. Here: white on top, green in front. MEET THE MOVES. Read direction while looking straight at the face being turned."
   },
   {
-    "start": 55,
-    "text": "Read a move. Then try it. The letter names a face. The suffix tells you the turn. Match the starting hold. For this example: white on top, green in front. Direction is always read while looking directly at the face you are turning."
+    "start": 57,
+    "text": "U / D: up / down. L / R: left / right. F / B: front / back."
   },
   {
-    "start": 60,
-    "text": "U / D = Up / Down L / R = Left / Right. F / B = Front / Back."
+    "start": 62,
+    "text": "Plain letter: clockwise 90°. A prime mark reverses it. A 2 means a half turn."
   },
   {
-    "start": 66,
-    "text": "A plain letter means 90° clockwise. Look straight at that face, including the back or bottom."
+    "start": 68,
+    "text": "Choose U′, then Direction view. Look straight at the upper face to judge its direction."
   },
   {
-    "start": 72,
-    "text": "′ reverses the turn. 2 means 180°. For example: U′ is a counterclockwise upper-layer turn."
+    "start": 74,
+    "text": "Play the move. Watch the top layer, then copy it on your cube."
   },
   {
-    "start": 77,
-    "text": "Choose U′. Then choose Direction view to look straight at the upper face."
+    "start": 80,
+    "text": "Replay, or return to Holding view. Changing the camera changes your view, not the cube."
   },
   {
-    "start": 82,
-    "text": "Play the move slowly. Watch the upper layer. Copy it on your cube."
+    "start": 86,
+    "text": "Build a white daisy. Put white petals around the yellow centre first. LEARN ONE STAGE. Prepared lesson example: set up your physical cube before copying its moves."
   },
   {
-    "start": 87,
-    "text": "Replay if you need another look. Changing the camera changes your view, not your cube."
+    "start": 92,
+    "text": "Use the example setup. Open “Follow along with a physical cube”."
   },
   {
-    "start": 91,
-    "text": "Return to Holding view. Keep your physical cube aligned with the display."
-  },
-  {
-    "start": 95,
-    "text": "A little progress. Follow the club lesson, or learn at your own pace. Open Notation & holding. Learn how to hold the cube and read a short sequence. Start with notation and holding before following a sequence of moves."
-  },
-  {
-    "start": 101,
-    "text": "Read the moves from left to right. R U R′ U′ is four separate turns."
+    "start": 98,
+    "text": "Apply its scramble from solved. Start white-up, green-front. Pause the video to prepare."
   },
   {
     "start": 105,
-    "text": "Start with the white cross. Take the stages in order. Speed can come later."
+    "text": "Return to the player. Read Observe, Prepare and Check the result."
   },
   {
-    "start": 109,
-    "text": "One move at a time. Watch. Try. Check. Continue when you are ready. Build a white daisy. First, put white petals around the yellow centre. Prepared lesson example. Set up your physical cube before copying the moves."
+    "start": 110,
+    "text": "Try Next move. Copy one turn, then check what changed."
   },
   {
-    "start": 114,
-    "text": "Then match each petal. Line up its side colour with the centre, then turn it down."
-  },
-  {
-    "start": 119,
-    "text": "Open the example setup. Choose “Follow along with a physical cube”."
+    "start": 116,
+    "text": "Follow whole-cube rotations too. A shown x, y or z is a real regrip. Camera dragging is only a view change."
   },
   {
     "start": 124,
-    "text": "Apply its scramble from solved. Start white-up, green-front. Pause here to prepare your cube."
+    "text": "Start with a method you know. Choose LBL while learning your first independent solve. SOLVE YOUR CUBE. Prepared input example. The solution shown comes from the entered scramble."
   },
   {
-    "start": 130,
-    "text": "Return to the player. Our screen is already prepared for this lesson example."
+    "start": 129,
+    "text": "Paste the scramble you used. Only use this option if that sequence was applied from solved."
   },
   {
-    "start": 134,
-    "text": "Use Next move. Watch one turn, then copy it on your cube."
+    "start": 135,
+    "text": "Choose Explain with LBL. The site checks and builds your teaching steps."
   },
   {
-    "start": 138,
-    "text": "Follow any whole-cube rotation. A shown y2 is a real regrip. Camera dragging only changes the view."
+    "start": 141,
+    "text": "Follow the solution player. Match the holding, then use Next move."
   },
   {
-    "start": 142,
-    "text": "Read the result check. Stage jumps change the screen. Your cube still needs the earlier moves."
+    "start": 147,
+    "text": "Keep the physical cube in sync. A stage jump changes the display; it does not turn your cube."
   },
   {
-    "start": 146,
-    "text": "Find a case. Learn its pattern. When you are ready for more CFOP. Filter or search the library. Browse F2L, OLL and PLL cases. Beginner CFOP and Advanced CFOP are available when you want to progress."
+    "start": 152,
+    "text": "Choose Enter colors. Follow the holding diagram for the current face. ENTER COLOURS. Input demonstration: this clip does not complete all six faces."
   },
   {
-    "start": 150,
-    "text": "Choose cases to practise. Start with a small set you want to recognise."
+    "start": 157,
+    "text": "Pick a colour, then a sticker. Centres are fixed. Copy your actual cube."
   },
   {
-    "start": 154,
-    "text": "Look first. Then reveal. Learn to recognise before remembering moves. Name the case before revealing. Study the diagram, or prepare a real cube. For a physical example, follow both the setup and any shown regrip."
+    "start": 162,
+    "text": "Continue through all six faces. Keep the top and front directions shown for each face."
   },
   {
-    "start": 158,
-    "text": "Show the solution. Check the formula and practise it."
+    "start": 166,
+    "text": "Review and Check colors. Finish every face and correct errors before solving."
   },
   {
-    "start": 160,
-    "text": "Stuck on your own cube? Get an explained solution, one stage at a time. Choose a method. Start with LBL if you are still learning your first solve. This is a prepared example. Choose the input that matches your own cube."
+    "start": 170,
+    "text": "Try to name the case. Study the diagram before you reveal the answer. FORMULA PRACTICE. CFOP practice is useful once you have learned the corresponding method."
   },
   {
-    "start": 164,
-    "text": "Paste the scramble you used. This works when you know the sequence applied from solved."
+    "start": 175,
+    "text": "Show the solution. Check the holding and formula. Repeat when it feels familiar."
   },
   {
-    "start": 169,
-    "text": "Ask for an explained solution. Here we choose “Explain with LBL”."
+    "start": 180,
+    "text": "Scramble from solved. Start white-up, green-front and apply the printed moves. TIME YOUR PRACTICE. Timer control demonstration only. The short run shown is not a real solve."
   },
   {
-    "start": 174,
-    "text": "Follow the stages in the player. Use Next move to see one turn at a time."
-  },
-  {
-    "start": 179,
-    "text": "Keep the holding aligned. Follow shown whole-cube rotations as well as face turns."
-  },
-  {
-    "start": 185,
-    "text": "Use the cube in your hands. No scramble sequence? Copy the stickers instead. Choose Enter colors. Use the holding diagram for each face. The centres stay fixed. The clip shows the input process; it does not show a completed six-face entry."
-  },
-  {
-    "start": 188,
-    "text": "Choose a colour, then a sticker. Copy what you see on your physical cube."
+    "start": 186,
+    "text": "Check the six-face diagram. Compare its stickers with your cube."
   },
   {
     "start": 192,
-    "text": "Continue through all six faces. Keep the shown top and front orientation for every face."
+    "text": "Hold Space until Ready. Release to start the timer."
   },
   {
-    "start": 196,
-    "text": "Review, then Check colors. Complete all six faces and fix any errors before asking for a solution."
+    "start": 197,
+    "text": "Press again to stop. On a touch screen: hold, release, then tap to stop."
   },
   {
-    "start": 200,
-    "text": "Time your practice. A fresh scramble. Your own progress. Apply a fresh scramble from solved. Start white-up, green-front. Control demonstration only. These short runs are not real solves."
+    "start": 203,
+    "text": "Inspection is optional. Use the checkbox when you want inspection before timing."
   },
   {
-    "start": 205,
-    "text": "Check the six-face diagram. Compare it with your cube before you begin."
+    "start": 210,
+    "text": "Review your times and averages. ao5 and ao12 summarize five and twelve solves. YOUR PROGRESS. Sample records, not member results. History stays in this browser on this device."
   },
   {
-    "start": 211,
-    "text": "Hold Space until Ready. Then release to start."
+    "start": 216,
+    "text": "Correct a result when needed. Use +2 for a penalty or DNF for an unfinished solve."
   },
   {
-    "start": 214,
-    "text": "The timer is running. Press Space again to stop when you finish."
+    "start": 222,
+    "text": "Export a backup. Keep CSV or JSON before clearing data or changing devices."
   },
   {
-    "start": 219,
-    "text": "Press Space to stop. Try this once before timing a real solve."
+    "start": 228,
+    "text": "Roux builds two side blocks. It uses the middle slice instead of treating every layer separately. ANOTHER WAY TO THINK. Advanced Roux is Preview. Start with Beginner Roux if these ideas are new."
   },
   {
-    "start": 223,
-    "text": "On a touch screen: hold the timer. Wait for Ready, then release to start."
+    "start": 234,
+    "text": "Read the setup and block check. Different pieces can suggest a square, a pair, or another construction."
   },
   {
-    "start": 227,
-    "text": "Touch again to stop. The same large surface handles the whole run."
+    "start": 240,
+    "text": "Try one explained example. Follow the shown hold. M and M′ turn the middle slice."
   },
   {
-    "start": 232,
-    "text": "Optional: enable inspection. Use the checkbox to give yourself time to look before timing."
+    "start": 244,
+    "text": "Progress at your own pace. The lessons and CMLL library explain the next stages."
   },
   {
-    "start": 238,
-    "text": "Watch your progress. Look at the pattern, not just one result. Review times and the trend. These are sample results for the demonstration. Example results are shown here. Your records stay in this browser on this device."
+    "start": 248,
+    "text": "Lab explores candidate routes. It can compare white or yellow bottoms and different left colours. ROUX LAB · EXPERIMENTAL. Search completed before this shot. Real verified route; original playback speed."
   },
   {
-    "start": 242,
-    "text": "Compare ao5 and ao12. They show your averages of five and twelve solves."
+    "start": 254,
+    "text": "Read the recommendation carefully. Move counts and handling scores are references, not promises of speed."
   },
   {
-    "start": 247,
-    "text": "Correct a result if needed. Use +2 for a penalty, or DNF for a solve you did not finish."
+    "start": 260,
+    "text": "Follow the selected route. Use the player, then compare it with another on a physical cube."
   },
   {
-    "start": 252,
-    "text": "Keep a backup of your records. Your results are stored locally, not automatically synced."
+    "start": 266,
+    "text": "Keep notes about the feel. Trials help compare the same starting cube. Your records stay local."
   },
   {
-    "start": 257,
-    "text": "Export CSV or JSON. Do this before clearing browser data or changing devices."
+    "start": 272,
+    "text": "Open Guide and pick a chapter. Find the instructions for the page you are using. HELP WHEN YOU NEED IT. Open Guide from the club navigation. Tours can be skipped or exited at any time."
   },
   {
-    "start": 262,
-    "text": "Make practice a small routine. A few focused solves are a useful place to start."
+    "start": 278,
+    "text": "Expand Every control, explained. Look up a button without replaying the whole video."
   },
   {
-    "start": 265,
-    "text": "Need a reminder? Screenshots, written steps, and help beside the controls. Open Guide. Find the written walkthrough and screenshots for each page. Open Guide from the club navigation: leosteeeve.github.io/cube-steps/club/#/guide"
-  },
-  {
-    "start": 270,
-    "text": "Expand “Every control, explained”. Use it when you want to look up a particular button."
-  },
-  {
-    "start": 277,
-    "text": "Try a page tour. The bubbles explain controls where you actually use them."
-  },
-  {
-    "start": 282,
-    "text": "Go at your own pace. You can skip a step or exit the tour at any time."
-  },
-  {
-    "start": 287,
-    "text": "Pick one thing to try today. Learn one move. Try one lesson. Repeat it with your cube."
+    "start": 284,
+    "text": "Try a page tour if you need it. Choose one thing to practise today, then try it with your cube."
   },
   {
     "start": 290,
-    "text": "One small step, every day. Your turn. Keep your curiosity. Learn it here. Try it in your hands. Open Guide for full instructions. Music: Origami by Scott Buckley (CC BY 4.0), edited, repeated and faded. Interface sounds: Kenney (CC0)."
+    "text": "Your turn. Keep your curiosity. Learn it here. Try it in your hands. Full guide: open Guide."
   }
 ]

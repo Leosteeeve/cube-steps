@@ -1,0 +1,179 @@
+{
+  "version": 1,
+  "sourceRevision": "bfd04215416f9498380c6dca316edd88468e4831",
+  "captures": [
+    {
+      "id": "home",
+      "sourceRevision": "bfd04215416f9498380c6dca316edd88468e4831",
+      "url": "http://127.0.0.1:4199/cube-steps/club/",
+      "scenario": "A place for every first solve.",
+      "file": "public/captures/home.mp4",
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "durationSeconds": 4,
+      "crop": [
+        248,
+        172,
+        1424,
+        809
+      ],
+      "events": [],
+      "sha256": "c8d315f3f606398bf42b58f944680e296eb8ada2b8b7b8bd7f00efe9ce7f1973"
+    },
+    {
+      "id": "moves",
+      "sourceRevision": "bfd04215416f9498380c6dca316edd88468e4831",
+      "url": "http://127.0.0.1:4199/cube-steps/club/#/moves",
+      "scenario": "U′ · upper face, counterclockwise when viewed from above.",
+      "file": "public/captures/moves.mp4",
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "durationSeconds": 6,
+      "crop": [
+        424,
+        26,
+        1312,
+        910
+      ],
+      "events": [
+        {
+          "frame": 30,
+          "label": "Choose U′",
+          "target": {
+            "x": 1576.8,
+            "y": 36.20625,
+            "width": 69.6,
+            "height": 58.8
+          }
+        },
+        {
+          "frame": 75,
+          "label": "Play move",
+          "target": {
+            "x": 628.1625,
+            "y": 776.3249999999999,
+            "width": 146.75625,
+            "height": 56.15625
+          }
+        }
+      ],
+      "sha256": "aee8f37c402dc05d6ce5ca360e43b80ab3fcdd90c13c4778e37948b4f0c1e6d6"
+    },
+    {
+      "id": "lesson",
+      "sourceRevision": "bfd04215416f9498380c6dca316edd88468e4831",
+      "url": "http://127.0.0.1:4199/cube-steps/club/#/learn/white-cross",
+      "scenario": "Prepared lesson example · follow its setup.",
+      "file": "public/captures/lesson.mp4",
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "durationSeconds": 6,
+      "crop": [
+        474,
+        19,
+        779,
+        1061
+      ],
+      "events": [
+        {
+          "frame": 45,
+          "label": "Next move",
+          "target": {
+            "x": 712.8,
+            "y": 952.70625,
+            "width": 52.8,
+            "height": 52.8
+          }
+        },
+        {
+          "frame": 120,
+          "label": "Next move",
+          "target": {
+            "x": 712.8,
+            "y": 862.63125,
+            "width": 52.8,
+            "height": 52.8
+          }
+        }
+      ],
+      "sha256": "84e93d644ec9b1786f9863c360ddf9c457194bcff8e65a45401f724e257b831a"
+    },
+    {
+      "id": "timer",
+      "sourceRevision": "bfd04215416f9498380c6dca316edd88468e4831",
+      "url": "http://127.0.0.1:4199/cube-steps/club/#/timer",
+      "scenario": "Timer control demonstration · not a real solve.",
+      "file": "public/captures/timer.mp4",
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "durationSeconds": 5,
+      "crop": [
+        248,
+        38,
+        1424,
+        659
+      ],
+      "events": [
+        {
+          "frame": 0,
+          "label": "Hold Space"
+        },
+        {
+          "frame": 30,
+          "label": "Release to start"
+        },
+        {
+          "frame": 105,
+          "label": "Stop timer"
+        }
+      ],
+      "sha256": "b6b83d1117e2ce0a03023895d90b29abb7434c9ea5564841e6490f78c405c4e9"
+    },
+    {
+      "id": "roux",
+      "sourceRevision": "bfd04215416f9498380c6dca316edd88468e4831",
+      "url": "http://127.0.0.1:4199/cube-steps/club/#/roux-lab",
+      "scenario": "Real verified white-blue R F U route; completed search before shot; first block playback",
+      "file": "public/captures/roux.mp4",
+      "width": 1920,
+      "height": 1080,
+      "fps": 30,
+      "durationSeconds": 4,
+      "crop": [
+        119,
+        20,
+        1681,
+        1057
+      ],
+      "events": [
+        {
+          "frame": 30,
+          "label": "Next move",
+          "target": {
+            "x": 357.59999999999997,
+            "y": 898.2375,
+            "width": 52.8,
+            "height": 52.8
+          }
+        },
+        {
+          "frame": 75,
+          "label": "Next move",
+          "target": {
+            "x": 357.59999999999997,
+            "y": 847.36875,
+            "width": 52.8,
+            "height": 52.8
+          }
+        }
+      ],
+      "inputFingerprint": "d5340a9a1322a2bd40063b8da54ba0671eb2ca04ff48addfdb2a92c22f2159dc",
+      "routeId": "roux-v1:white-blue:8a95ed70",
+      "sha256": "cd46e10a5976e06080fa0c7c9b15d5ab26580d4b0d7ff935b4363873c22f320e"
+    }
+  ]
+}

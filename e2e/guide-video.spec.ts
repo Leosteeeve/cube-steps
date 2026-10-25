@@ -1,10 +1,12 @@
 import { test, expect } from '@playwright/test';
+import { createHash } from 'node:crypto';
+import accepted from '../docs/media/roux-refresh/film-manifest.json' with { type: 'json' };
 
 test('Guide loads the film only on request and keeps written help available', async ({ page }) => {
   const mediaRequests: string[] = [];
   const errors: string[] = [];
   page.on('request', (request) => {
-    if (request.url().includes('club-guide-video-v2.mp4')) mediaRequests.push(request.url());
+    if (/club-guide-video[^/]*\.mp4/.test(request.url())) mediaRequests.push(request.url());
   });
   page.on('pageerror', (error) => errors.push(error.message));
   await page.goto('club/#/guide');
@@ -23,9 +25,12 @@ test('Guide loads the film only on request and keeps written help available', as
   await watch.click();
   const video = page.locator('video');
   await expect(video).toBeVisible();
-  await expect(video).toHaveAttribute('src', /club-guide-video-v2\.mp4$/);
+  await expect(video).toHaveAttribute('src', /club-guide-video-v3\.mp4$/);
   await expect.poll(() => video.evaluate((v: HTMLVideoElement) => v.readyState)).toBeGreaterThan(1);
-  expect(await video.evaluate((v: HTMLVideoElement) => v.duration)).toBeCloseTo(300, 0);
+  expect(await video.evaluate((v: HTMLVideoElement) => v.duration)).toBeCloseTo(
+    accepted.durationSeconds,
+    1,
+  );
   await video.evaluate((v: HTMLVideoElement) => {
     v.muted = true;
     return v.play();
@@ -35,9 +40,11 @@ test('Guide loads the film only on request and keeps written help available', as
     .toBeGreaterThan(0);
   await video.evaluate((v: HTMLVideoElement) => {
     v.pause();
-    v.currentTime = 200;
+    v.currentTime = 294;
   });
   await expect.poll(() => video.evaluate((v: HTMLVideoElement) => v.seeking)).toBe(false);
+  expect(await video.evaluate((v: HTMLVideoElement) => v.paused)).toBe(true);
+  expect(await video.evaluate((v: HTMLVideoElement) => v.currentTime)).toBeCloseTo(294, 0);
   for (const width of [1360, 390]) {
     await page.setViewportSize({ width, height: 850 });
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
@@ -46,9 +53,17 @@ test('Guide loads the film only on request and keeps written help available', as
   }
   await page.getByText('Read the on-screen guide', { exact: true }).click();
   await expect(
-    page.getByText('Your results are stored locally, not automatically synced.', { exact: false }),
+    page.getByText('History stays in this browser on this device.', { exact: false }),
   ).toBeVisible();
   await expect(page.getByText('Your turn. Keep your curiosity.', { exact: false })).toBeVisible();
+  await expect(page.getByText('Full guide: open Guide', { exact: false })).toBeVisible();
+  const download = page.getByRole('link', { name: 'Download video (28 MB)' });
+  const response = await page.request.get((await download.getAttribute('href'))!);
+  expect(response.ok()).toBe(true);
+  expect(response.headers()['content-type']).toContain('video/mp4');
+  const bytes = await response.body();
+  expect(bytes.length).toBe(accepted.bytes);
+  expect(createHash('sha256').update(bytes).digest('hex')).toBe(accepted.sha256);
   expect(errors).toEqual([]);
 });
 
@@ -64,7 +79,7 @@ test('an unavailable film preserves the written Guide and a download alternative
     v.load();
   });
   await expect(page.getByRole('status')).toContainText('The video could not load');
-  await expect(page.getByRole('link', { name: 'Download video (36 MB)' })).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Download video (28 MB)' })).toBeVisible();
   await page
     .getByRole('navigation', { name: 'Guide chapters' })
     .getByRole('link', { name: /Read a move/ })

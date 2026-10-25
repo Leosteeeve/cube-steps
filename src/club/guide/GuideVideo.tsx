@@ -11,7 +11,10 @@ export function GuideVideo() {
       <div className="guide-video-heading">
         <p className="club-kicker">WATCH · TRY · COME BACK</p>
         <h2 id="guide-video-title">Your first five minutes.</h2>
-        <p>A gentle tour of Moves, lessons, solving help and Timer. Keep your cube nearby.</p>
+        <p>
+          Find a learning route, try Moves and lessons, practise with Timer, and discover Roux. Keep
+          your cube nearby.
+        </p>
       </div>
       <div className="guide-video-screen">
         {started ? (
@@ -20,8 +23,8 @@ export function GuideVideo() {
             autoPlay
             playsInline
             preload="none"
-            poster={`${media}poster-v2.webp`}
-            src={`${media}club-guide-video-v2.mp4`}
+            poster={`${media}poster-v3.webp`}
+            src={`${media}club-guide-video-v3.mp4`}
             aria-label="The five-minute club website guide, with English on-screen instructions, music and sound effects, and no narration"
             onError={() => setFailed(true)}
           >
@@ -29,7 +32,7 @@ export function GuideVideo() {
           </video>
         ) : (
           <button className="guide-video-play" onClick={() => setStarted(true)}>
-            <img src={`${media}poster-v2.webp`} alt="" width={1280} height={720} />
+            <img src={`${media}poster-v3.webp`} alt="" width={1280} height={720} />
             <span>
               <span aria-hidden="true">▶</span> Watch the 5-minute guide
             </span>
@@ -38,8 +41,11 @@ export function GuideVideo() {
       </div>
       <div className="guide-video-meta">
         <p>5 minutes · English on-screen instructions · Music & sound effects · No narration</p>
-        <a href={`${media}club-guide-video-v2.mp4`} download="Webb-Cubing-Club-Guide.mp4">
-          Download video (36 MB)
+        <a
+          href={`${media}club-guide-video-v3.mp4`}
+          download="Webb-Cubing-Club-Guide-Roux-Refresh.mp4"
+        >
+          Download video (28 MB)
         </a>
       </div>
       <p className="guide-video-credits">
