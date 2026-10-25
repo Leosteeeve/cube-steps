@@ -6,35 +6,58 @@ import { CLUB_METHODS, type QuizAnswers } from './types';
 import { recommendRoute } from './recommend';
 import { ProgressStatus, useClubProgress } from './use-club-progress';
 import { useGuidanceTarget } from '../../ui/guidance';
-const questions: { key: keyof QuizAnswers; title: string; options: [string, string][] }[] = [
+const allQuestions: {
+  key: keyof QuizAnswers;
+  title: string;
+  hint?: string;
+  options: [string, string][];
+}[] = [
   {
     key: 'ability',
     title: 'Where are you starting?',
     options: [
       ['new', 'I cannot solve independently yet'],
-      ['beginner', 'I can solve with a beginner method'],
-      ['f2l', 'I can pair F2L, but I am still learning last-layer basics'],
-      ['two-look', 'I am comfortable with F2L and two-look OLL / PLL'],
+      ['beginner', 'I can solve the whole cube on my own'],
     ],
   },
   {
-    key: 'preference',
-    title: 'Which way of thinking would you like to explore?',
+    key: 'memorization',
+    title: 'How do you feel about memorizing moves?',
+    hint: 'A move sequence is a short set of turns you learn and repeat. You do not need to know any yet.',
     options: [
-      ['layers', 'Build layers and pair pieces'],
-      ['blocks', 'Build small blocks and use the middle slice'],
+      ['enjoy', 'I enjoy learning and remembering move sequences'],
+      ['few', 'I would rather remember fewer sequences'],
       ['unsure', 'I am not sure yet'],
     ],
   },
   {
-    key: 'foundation',
-    title: 'Which foundation can you use on your own?',
+    key: 'understanding',
+    title: 'How do you like to understand something new?',
+    hint: 'Enjoying explanations and enjoying memorization can go together. There is no better answer.',
     options: [
-      ['none', 'I still need help completing a solve'],
-      ['independent', 'I can solve, but these method skills are new to me'],
-      ['cfop-two-look', 'CFOP: F2L and two-look last layer'],
-      ['roux-blocks', 'Roux: both blocks; still learning corners or LSE'],
-      ['roux-basic', 'Roux: both blocks, corners and basic LSE'],
+      ['explore', 'I like figuring out why moves work and trying my own ideas'],
+      ['guided', 'I prefer clear steps to follow, with explanations along the way'],
+      ['both', 'A mix of both, or I am still finding out'],
+    ],
+  },
+  {
+    key: 'foundation',
+    title: 'What can you already do without help?',
+    hint: 'This checks experience, not learning style. If these descriptions are unfamiliar, choose the first answer.',
+    options: [
+      ['independent', 'None of these yet, or I am not sure'],
+      [
+        'cfop-two-look',
+        'I solve the first two layers as corner-and-edge pairs, then finish the top in four stages',
+      ],
+      [
+        'roux-blocks',
+        'I build a small block on each side, but still need help finishing the cube that way',
+      ],
+      [
+        'roux-basic',
+        'I build both side blocks, solve the top corners, then finish the last six edges using the top and middle layers',
+      ],
     ],
   },
   {
@@ -43,7 +66,7 @@ const questions: { key: keyof QuizAnswers; title: string; options: [string, stri
     options: [
       ['first-solve', 'My first independent solve'],
       ['smooth', 'Understand and execute more smoothly'],
-      ['advanced', 'Learn advanced formulas and reduce steps'],
+      ['advanced', 'Explore more techniques and use fewer moves'],
     ],
   },
   {
@@ -75,6 +98,9 @@ export function RouteQuiz() {
     [override, setOverride] = useState<MethodId>();
   const { chooseMethod } = useClubProgress(),
     title = useRef<HTMLHeadingElement>(null);
+  const questions = allQuestions.filter(
+    (question) => question.key !== 'foundation' || answers.ability === 'beginner',
+  );
   useEffect(() => {
     title.current?.focus();
   }, [step, chooser]);
@@ -109,12 +135,12 @@ export function RouteQuiz() {
                   {id === 'lbl'
                     ? 'Start with notation, holding, and the white daisy.'
                     : id === 'cfop-beginner'
-                      ? 'Build a bottom cross, pair F2L, and learn two-look last-layer steps.'
+                      ? 'Build a bottom cross, solve matching corner-and-edge pairs, then finish the top in small steps.'
                       : id === 'roux-beginner'
                         ? 'Build two blocks, solve the corners, then finish with the middle slice. Fixed white-bottom, blue-left hold. Preview.'
                         : id === 'roux-advanced'
-                          ? 'Explore flexible blocks, full CMLL and connected LSE. Keep a comfortable starting hold. Preview.'
-                          : 'Explore shortest cross, full F2L, OLL and PLL formulas.'}
+                          ? 'Build on basic Roux with flexible blocks, more corner sequences and connected final-edge steps. Preview.'
+                          : 'Build on paired solving with a shortest cross and a wider library of top-layer sequences. Preview.'}
                 </span>
               </button>
             ))}
@@ -136,12 +162,15 @@ export function RouteQuiz() {
                 This suggests a starting point, not an aptitude score or a promise of faster solves.
               </p>
               <h2>Another route to explore</h2>
+              <p>{recommendation.alternativeReason}</p>
               {recommendation.alternatives.map((id) => (
                 <p key={id}>
                   <a href={methodRoute(id, 'learn')} onClick={() => chooseMethod(id)}>
                     {label(id)}
                   </a>
-                  {id === 'roux-beginner' ? ' — start with notation, the fixed hold and M/M′.' : ''}
+                  {id === 'roux-beginner'
+                    ? ' — start with holding the cube and turning its middle layer.'
+                    : ''}
                 </p>
               ))}
             </>
@@ -164,7 +193,8 @@ export function RouteQuiz() {
           <p>
             Question {step + 1} of {questions.length} · Your answers stay in this page.
           </p>
-          <fieldset>
+          {q.hint && <p id="quiz-question-hint">{q.hint}</p>}
+          <fieldset aria-describedby={q.hint ? 'quiz-question-hint' : undefined}>
             <legend className="sr-only">{q.title}</legend>
             {q.options.map(([value, text]) => (
               <label className="club-answer" key={value}>
@@ -173,7 +203,13 @@ export function RouteQuiz() {
                   name={q.key}
                   value={value}
                   checked={answers[q.key] === value}
-                  onChange={() => setAnswers((a) => ({ ...a, [q.key]: value }))}
+                  onChange={() =>
+                    setAnswers((a) => ({
+                      ...a,
+                      [q.key]: value,
+                      ...(q.key === 'ability' ? { foundation: undefined } : {}),
+                    }))
+                  }
                 />
                 <span>{text}</span>
               </label>

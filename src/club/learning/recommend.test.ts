@@ -2,6 +2,52 @@ import { expect, it } from 'vitest';
 import { recommendRoute } from './recommend';
 import { parseRoute } from '../../app/routes';
 import { parseClubRoute } from '../routes';
+import type { QuizAnswers } from './types';
+
+it.each([
+  ['new', 'none', 'few', 'explore', 'advanced', 'lbl'],
+  ['new', 'roux-basic', 'enjoy', 'guided', 'advanced', 'lbl'],
+  ['beginner', 'independent', 'few', 'explore', 'smooth', 'roux-beginner'],
+  ['beginner', 'independent', 'enjoy', 'guided', 'advanced', 'cfop-beginner'],
+  ['beginner', 'independent', 'enjoy', 'explore', 'smooth', 'cfop-beginner'],
+  ['beginner', 'independent', 'few', 'guided', 'smooth', 'cfop-beginner'],
+  ['beginner', 'roux-blocks', 'few', 'explore', 'advanced', 'roux-beginner'],
+  ['beginner', 'roux-basic', 'few', 'explore', 'advanced', 'roux-advanced'],
+  ['beginner', 'roux-basic', 'unsure', 'both', 'advanced', 'roux-advanced'],
+  ['beginner', 'roux-basic', 'enjoy', 'both', 'advanced', 'roux-advanced'],
+  ['beginner', 'cfop-two-look', 'enjoy', 'explore', 'advanced', 'cfop-advanced'],
+  ['beginner', 'none', 'enjoy', 'guided', 'advanced', 'lbl'],
+] as const)(
+  'uses learning preferences without inventing readiness: %s %s %s %s %s',
+  (ability, foundation, memorization, understanding, goal, method) => {
+    const answers: QuizAnswers = {
+      ability,
+      foundation,
+      memorization,
+      understanding,
+      goal,
+      duration: 'short',
+      setting: 'both',
+    };
+    const result = recommendRoute(answers);
+    expect(result.method).toBe(method);
+    expect(parseClubRoute(result.firstLessonHref)).toMatchObject({ kind: 'learn', method });
+  },
+);
+it("explains a concept-oriented novice's later Roux option without sending them to it first", () => {
+  const result = recommendRoute({
+    ability: 'new',
+    memorization: 'few',
+    understanding: 'explore',
+    goal: 'first-solve',
+    duration: 'short',
+    setting: 'club',
+  });
+  expect(result.method).toBe('lbl');
+  expect(result.alternatives).toContain('roux-beginner');
+  expect(result.alternativeReason).toMatch(/once you can solve independently/i);
+  expect(result.alternativeReason).toMatch(/fewer memorized/i);
+});
 it.each([
   ['new', 'none', 'blocks', 'advanced', 'lbl'],
   ['beginner', 'independent', 'blocks', 'smooth', 'roux-beginner'],

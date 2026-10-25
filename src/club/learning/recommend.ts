@@ -7,7 +7,18 @@ export function recommendRoute(a: QuizAnswers): {
   reasons: string[];
   nextStep: string;
   alternatives: readonly MethodId[];
+  alternativeReason: string;
 } {
+  const hasLearningPreferences = a.memorization !== undefined && a.understanding !== undefined;
+  // Preference is not readiness: learners may enjoy both memory and understanding.
+  const preference = hasLearningPreferences
+    ? a.understanding === 'guided'
+      ? 'layers'
+      : a.memorization === 'few' || (a.memorization === 'unsure' && a.understanding === 'explore')
+        ? 'blocks'
+        : 'unsure'
+    : a.preference;
+  const foundation = a.foundation ?? (hasLearningPreferences ? 'independent' : undefined);
   const legacyMethod: MethodId =
     a.ability === 'new'
       ? 'lbl'
@@ -16,30 +27,44 @@ export function recommendRoute(a: QuizAnswers): {
         : 'cfop-beginner';
   // Missing new answers preserve the old rule; they do not invent a preference.
   const method: MethodId =
-    a.foundation === undefined || a.preference === undefined
+    foundation === undefined || preference === undefined
       ? legacyMethod
-      : a.ability === 'new' || a.foundation === 'none'
+      : a.ability === 'new' || foundation === 'none'
         ? 'lbl'
-        : a.foundation === 'roux-basic' && a.goal === 'advanced' && a.preference !== 'layers'
+        : foundation === 'roux-basic' && a.goal === 'advanced' && preference !== 'layers'
           ? 'roux-advanced'
-          : a.preference === 'blocks' ||
-              (a.preference === 'unsure' && ['roux-blocks', 'roux-basic'].includes(a.foundation))
+          : preference === 'blocks' ||
+              (preference === 'unsure' && ['roux-blocks', 'roux-basic'].includes(foundation))
             ? 'roux-beginner'
-            : a.foundation === 'cfop-two-look' && a.goal === 'advanced'
+            : foundation === 'cfop-two-look' && a.goal === 'advanced'
               ? 'cfop-advanced'
               : 'cfop-beginner';
   const why =
     method === 'roux-advanced'
-      ? 'You can complete both blocks and basic LSE. Start by checking block choices and M/M′ control, then learn a small CMLL family; all 42 formulas are not a prerequisite.'
+      ? 'You already build both side blocks and finish the remaining edges. Advanced Roux builds on that experience with more flexible block choices and corner sequences. Learn a small group at a time; all 42 corner formulas are not a prerequisite.'
       : method === 'roux-beginner'
-        ? 'Your interest in blocks is a good reason to try Roux. Begin with the fixed hold, M/M′ and two small blocks before adding the corner and last-six-edge steps.'
-        : a.ability === 'new'
-          ? 'Build toward your first independent solve, starting with notation and the white daisy.'
+        ? 'Beginner Roux solves two small blocks of matching pieces, then the corners and remaining edges. It uses fewer memorized sequences, but asks for more understanding and exploration. Begin with holding the cube and turning its middle layer.'
+        : method === 'lbl'
+          ? 'LBL means layer by layer: follow a clear sequence of small goals toward your first independent solve, starting with notation and the white daisy.'
           : method === 'cfop-advanced'
-            ? 'Your F2L and two-look last-layer foundation makes a small set of full OLL and PLL formulas a useful next step.'
+            ? 'You already solve corner-and-edge pairs and finish the top in four stages. Advanced CFOP builds on those skills with more efficient choices and a larger library of top-layer sequences. Start with a small set.'
             : a.ability === 'f2l'
-              ? 'Keep your F2L foundation and strengthen two-look last-layer recognition.'
-              : 'Build on your independent solves with a direct-bottom cross, paired F2L, and two-look last-layer steps.';
+              ? 'Keep your corner-and-edge pairing skills and practice recognizing the final-layer steps.'
+              : 'Beginner CFOP builds on your independent solves: make a bottom cross, solve matching corner-and-edge pairs, then finish the top in small steps.';
+  const learningReason = hasLearningPreferences
+    ? [
+        a.memorization === 'few'
+          ? 'You prefer fewer sequences to remember; every route still uses some.'
+          : a.memorization === 'enjoy'
+            ? 'You enjoy remembering move sequences; you can build that library gradually.'
+            : 'You do not need to decide how much memorization suits you yet.',
+        a.understanding === 'explore'
+          ? 'You like understanding why moves work and exploring your own ideas.'
+          : a.understanding === 'guided'
+            ? 'You prefer clear instructions with explanations, so a structured starting route is a useful fit.'
+            : 'You can mix guided practice with exploring why moves work.',
+      ].join(' ')
+    : undefined;
   const setting =
     a.setting === 'club'
       ? 'Follow one club lesson with someone, then explain a move back to them.'
@@ -55,7 +80,17 @@ export function recommendRoute(a: QuizAnswers): {
           ? ['roux-beginner']
           : ['cfop-beginner'],
     firstLessonHref: methodRoute(method, 'learn'),
-    reasons: [why, setting],
+    alternativeReason:
+      method === 'lbl'
+        ? preference === 'blocks'
+          ? a.memorization === 'few'
+            ? 'Once you can solve independently, Beginner Roux may suit your preference for fewer memorized sequences and exploring how pieces move. It needs more understanding and practice, so we suggest building confidence with LBL first.'
+            : 'Once you can solve independently, Beginner Roux may suit your interest in exploring how pieces move. It uses fewer memorized sequences but needs more understanding and practice, so we suggest building confidence with LBL first.'
+          : 'Once you can solve independently, you can also try Beginner Roux: fewer memorized sequences, with more emphasis on understanding how pieces move.'
+        : method.startsWith('cfop')
+          ? 'Beginner Roux offers a different approach: fewer memorized sequences and more exploration of how pieces move. Both routes teach the reasons behind their moves.'
+          : 'Beginner CFOP offers a structured progression through layers and pairs, with short move sequences you can learn gradually. Both routes teach the reasons behind their moves.',
+    reasons: [why, ...(learningReason ? [learningReason] : []), setting],
     nextStep:
       a.duration === 'short'
         ? 'Practice one lesson segment or one small formula group. Stop at a clear checkpoint.'

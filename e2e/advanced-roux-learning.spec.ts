@@ -23,7 +23,7 @@ test('nine chapters play their actual worked cases and retain conceptual progres
   await dismissTutorialForTest(page);
   for (const id of ids) {
     await page.goto(`club/#/learn/advanced-roux/${id}`);
-    await expect(page.getByRole('combobox', {name:'Worked example'})).toBeVisible();
+    await expect(page.getByRole('combobox', { name: 'Worked example' })).toBeVisible();
     await expect(page.getByRole('button', { name: 'Next move', exact: true })).toBeEnabled();
     await page.getByRole('button', { name: 'Next move', exact: true }).click();
     await expect(page.getByLabel('Move position')).toHaveValue('1');
@@ -37,7 +37,7 @@ test('nine chapters play their actual worked cases and retain conceptual progres
   }
   await page.goto('club/#/learn/advanced-roux/ar-eolr');
   for (const example of ['lse-combined', 'lse-basic']) {
-    await page.getByRole('combobox', {name:'Worked example'}).selectOption(example);
+    await page.getByRole('combobox', { name: 'Worked example' }).selectOption(example);
     await page.getByRole('button', { name: 'Last four', exact: true }).click();
     await expect(
       page.getByRole('heading', { name: 'Finish the last four edges', exact: true }),
@@ -52,12 +52,15 @@ test('nine chapters play their actual worked cases and retain conceptual progres
     .poll(() => page.evaluate(() => document.documentElement.scrollWidth <= innerWidth))
     .toBe(true);
   await renderLessonFrame(page);
-  await page.locator('.cube-stage').screenshot({path:info.outputPath('brighter-cube-phone.png'), animations:'disabled'});
+  await page
+    .locator('.cube-stage')
+    .screenshot({ path: info.outputPath('brighter-cube-phone.png'), animations: 'disabled' });
   await page.screenshot({
     path: info.outputPath('advanced-roux-lesson-phone.png'),
-    fullPage: true, animations:'disabled',
+    fullPage: true,
+    animations: 'disabled',
   });
-  await page.getByRole('combobox', {name:'Worked example'}).selectOption('late-base');
+  await page.getByRole('combobox', { name: 'Worked example' }).selectOption('late-base');
   await expect(page.getByRole('button', { name: 'Next move', exact: true })).toBeEnabled();
   await page.getByLabel('Move position').focus();
   await page.keyboard.press('End');
@@ -70,10 +73,11 @@ test('neutral quiz recommends Roux from explicit foundations and leaves manual c
   await page.goto('club/#/find-your-route');
   await dismissTutorialForTest(page);
   for (const answer of [
-    'I can solve with a beginner method',
-    'Build small blocks and use the middle slice',
-    'Roux: both blocks, corners and basic LSE',
-    'Learn advanced formulas and reduce steps',
+    'I can solve the whole cube on my own',
+    'I would rather remember fewer sequences',
+    'I like figuring out why moves work and trying my own ideas',
+    'I build both side blocks, solve the top corners, then finish the last six edges using the top and middle layers',
+    'Explore more techniques and use fewer moves',
     'Short sessions',
   ]) {
     await page.getByLabel(answer, { exact: true }).check();
@@ -83,5 +87,5 @@ test('neutral quiz recommends Roux from explicit foundations and leaves manual c
   await page.getByRole('button', { name: 'Show my route', exact: true }).click();
   await expect(page.locator('.club-result-label')).toHaveText('Advanced Roux · Preview');
   await page.getByRole('link', { name: 'Start lesson', exact: true }).click();
-  await expect(page.getByRole('combobox', {name:'Worked example'})).toBeVisible();
+  await expect(page.getByRole('combobox', { name: 'Worked example' })).toBeVisible();
 });

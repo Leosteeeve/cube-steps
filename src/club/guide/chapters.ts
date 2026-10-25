@@ -26,7 +26,7 @@ export const GUIDE_CHAPTERS: readonly GuideChapter[] = [
     tourIds: ['home', 'quiz'],
     screenshotIds: ['home', 'quiz', 'home-phone'],
     steps: [
-      'Open Find your route and answer six short questions. The result explains a suggested starting point from your foundations and preferred style; it is not a test and it does not lock you into a method.',
+      'Open Find your route and answer six short questions about your experience, memorization and learning preferences. If you already solve independently, there is one extra experience question. You do not need to know any method names. New solvers start with LBL; students who prefer fewer sequences and understanding how pieces move can explore Roux afterward. The result explains a starting point, not a test score or a fixed choice.',
       'If you cannot yet solve a cube alone, start with LBL: holding and notation, a white daisy, then one layer at a time. Beginner CFOP introduces a bottom cross, F2L and two-look last-layer steps. Advanced CFOP adds shortest cross, a larger F2L catalog and full OLL / PLL.',
       'A small daily routine: review one unfamiliar move in Moves, follow one lesson with your cube, then repeat that stage once without the animation. When you can solve independently, try a few untimed solves before using Timer.',
       'In a club session, follow the leader’s chosen lesson. At home, use Resume learning to return to your last lesson. Your progress belongs to this browser; no account is needed.',
@@ -38,7 +38,7 @@ export const GUIDE_CHAPTERS: readonly GuideChapter[] = [
       ],
       [
         'Find your route',
-        'Open the six-question route recommendation. Choose one answer before pressing Next; Back revisits a previous answer.',
+        'Open the short route questionnaire about your experience and learning preferences. Choose one answer before pressing Next; Back revisits a previous answer.',
       ],
       [
         'Show my route / Start lesson',

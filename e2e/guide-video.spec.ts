@@ -38,10 +38,26 @@ test('Guide loads the film only on request and keeps written help available', as
   await expect
     .poll(() => video.evaluate((v: HTMLVideoElement) => v.currentTime))
     .toBeGreaterThan(0);
+  // Playing a frame does not guarantee the closing segment is seekable yet.
+  // A seek outside the available ranges can be clamped or ignored by the browser.
+  await expect
+    .poll(() =>
+      video.evaluate((v: HTMLVideoElement) => {
+        const ranges = v.seekable;
+        for (let i = 0; i < ranges.length; i++) {
+          if (ranges.start(i) <= 294 && ranges.end(i) >= 294) return true;
+        }
+        return false;
+      }),
+    )
+    .toBe(true);
   await video.evaluate((v: HTMLVideoElement) => {
     v.pause();
     v.currentTime = 294;
   });
+  await expect
+    .poll(() => video.evaluate((v: HTMLVideoElement) => v.currentTime))
+    .toBeCloseTo(294, 0);
   await expect.poll(() => video.evaluate((v: HTMLVideoElement) => v.seeking)).toBe(false);
   expect(await video.evaluate((v: HTMLVideoElement) => v.paused)).toBe(true);
   expect(await video.evaluate((v: HTMLVideoElement) => v.currentTime)).toBeCloseTo(294, 0);
