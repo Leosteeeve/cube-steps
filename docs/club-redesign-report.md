@@ -1,6 +1,6 @@
 # Webb Cubing Club redesign report
 
-28 October 2026. Isolated implementation branch: `codex/club-editorial-redesign`, based on `002aecba433ff82d938bd83c81ad2342895d7d5a`. The live publication remains separate from this local redesign.
+28 October 2026. Isolated implementation branch: `codex/club-editorial-redesign`, based on `002aecba433ff82d938bd83c81ad2342895d7d5a`. Publication uses the owner's authorized review/check/merge/Pages workflow; remote results are recorded in the external publication receipt.
 
 ## Design outcome
 
@@ -14,9 +14,9 @@ Research and the comparison of three directions are in [club-design-research.md]
 | --- | --- | --- |
 | Home hierarchy | Abstract slogan, decorative orbit and notes compete with the learning action | “Pick up a cube.” above the real next action; cube placed in a separate practice spread |
 | Page rhythm | Promotion strip, repeated rounded cards and repeated CTAs | One open headline, one two-column spread, ruled path rows, then a useful tool list |
-| Typography | Georgia/Segoe mix and several 9–12px label tiers | Self-hosted Manrope with IBM Plex Mono for notation; readable secondary text and consistent heading weights |
+| Typography | Georgia/Segoe mix and several 9–12px label tiers | Bricolage Grotesque headings, Instrument Sans body and IBM Plex Mono notation; readable secondary text and restrained hierarchy |
 | Color | Blue-tinted marketing and separate green/cream tool vocabulary | Warm paper, dark ink, deep green controls; cube colors provide restrained personality |
-| Motion | Decorative cube loop | Static by default; explicit Watch a turn, pause/resume, stops after one bounded sequence; reduced-motion and visibility safeguards retained |
+| Motion | Decorative cube loop | Explicit bounded cube turn; three below-fold homepage groups appear once over 420ms, cancel on focus and respect Off/reduced-motion; content is always available |
 | Navigation | Multiple rows of similar lesson links; five method pills crowd phone screens | Three direct learning links and a keyboard-operable More tools menu; scrollable method row on small screens |
 | Shared styling | Header/home rules repeated in base and lazy feature styles | Club tokens, shell and home have explicit ownership; lazy Moves no longer redefines the header |
 | Tools | Heading, surface, border and metadata treatments differ by feature | Selected lesson, quiz, Guide, Timer, Moves and Lab surfaces share the new vocabulary; workspace geometry and controllers retained |
@@ -29,7 +29,7 @@ The design retains useful cards where they identify a selectable answer or an in
 - `design-tokens.css`: paper `#f7f5ef`, surface `#fffefa`, ink `#242b28`, muted `#59635c`, wash `#e9eee4`, action `#245941`; spacing scale 8/16/24/40/64/96; 8px control radius; 1200px editorial measure and responsive gutters.
 - `shell.css`: header/footer, primary and text actions, menus, focus, tutorial feedback and selected shared learning surfaces. Geometry for dense workspaces remains in existing feature files.
 - `home.css`: editorial composition and deliberate 700/1024px reflow. Desktop and phone share one DOM order and one set of tutorial target refs.
-- Fonts add approximately 39KB of WOFF2 assets, served from this origin. Both OFL licenses are retained with the source and in `public/licenses/club-fonts`; the notices generator includes them. No runtime dependency was added.
+- Five WOFF2 assets total 88,536 bytes, served from this origin. All three OFL licenses are retained with the source and in `public/licenses/club-fonts`; the notices generator includes them. Bricolage uses static 600 / optical size 48, Instrument uses 400/600/700. Actual WebKit screenshots showed inconsistent variable weights, so the final static subsets preserve the intended hierarchy. No runtime dependency was added.
 - Interactive color transitions are 140ms and disabled under reduced motion. Important controls retain at least 44px targets. Facelet colors in learning engines and Lab inputs are unchanged.
 
 ## Changed code
@@ -38,7 +38,9 @@ Home and identity: `src/club/HomePage.tsx`, `design-tokens.css`, `home.css`, `sh
 
 Shared integration: `src/club/ClubApp.tsx`, `club.css`, `src/ui/workspace.css`. Selected feature refinements: `guide/GuidePage.tsx`, `guide/guide.css`, `timer/TimerPage.tsx`, `timer/timer.css`, `moves/moves.css`, `lab/lab.css`, `roux-lab/roux-lab.css`.
 
-Cube study: `hero/HeroCube.tsx`, geometry palette, regenerated original SVG fallback and `hero.css`. Tests cover static default, starting, pausing, bounded completion, visibility and reduced-motion behavior.
+Cube study: `hero/HeroCube.tsx`, geometry palette, regenerated original SVG fallback and `hero.css`. Tests cover static default, starting, pausing, bounded completion, visibility and reduced-motion behavior. `components/SectionReveal.tsx` adds once-only homepage entrances through the existing motion preference, with tests for observer cleanup, focus, disabled motion and missing APIs.
+
+Streaming route interactions: `roux-lab/useRouteInteraction.ts`, `AnalyzePage.tsx`, `RouxLabWorkspace.tsx` and `session.ts` retain the visible route snapshot during a primary pointer gesture or keyboard focus. Search progress continues; activation still occurs on native click. Actions carry the exact verified route, which must match the current input and allowed frame. A refresh action follows the cards, so it cannot displace a pressed target. Release/blur/input reset restore current results. Canceled gestures do not activate a route.
 
 Browser regression assertions were updated for intentionally changed copy. `e2e/club-editorial.spec.ts` adds four-width coverage of eight tools, arrow-key entry and Escape through More tools, and a header geometry comparison before/after loading Moves. `src/ui/SectionMenu.tsx` supports optional up/down entry into an open disclosure while retaining native Tab behavior. Existing player, timer, tutorial, persistence, quiz and global-edition assertions are retained.
 
@@ -76,6 +78,6 @@ The browser runs exposed a real 320px header overflow, corrected by compact spac
 
 This is expert visual and technical validation, not a student usability study or complete accessibility certification. Real students should still try the first lesson, method selection and a timed solve on their own phones. Existing accepted Guide video and embedded historical screenshots depict the previous visual skin; their routes and operations remain valid, and replacing the accepted film requires a separate media acceptance cycle. The redesign does not claim physical ergonomics or advanced solver teaching acceptance.
 
-One existing experimental Roux Lab race remains recorded: a leading candidate can be replaced between pointer-down and click during streaming, so the first comparison selection may not register. The saved trace shows the leading card replaced and only A selected after the second click. `AnalyzePage.tsx`, `RouteSummary.tsx` and the comparison test are unchanged from the baseline. A bounded focused reproduction passed all four desktop/phone Chromium/WebKit comparison cases, but that does not prove the race fixed; no such claim is made. Waiting for analysis to finish before selecting A/B avoids changing candidates during selection. This needs a separate stable-interaction treatment if experimental Lab testing is part of the launch.
+The previously recorded Roux streaming race is now fixed in commit `9c30279`. Two deterministic DOM regressions reproduced target removal during pointer-down and keyboard focus, and a reducer regression reproduced inability to pin a verified route removed from the latest recommendation window. Ten focused unit cases pass, including cancellation, release, input reset and rejecting foreign snapshots. Four real Chromium/WebKit cases at desktop/phone widths hold the pointer for 800ms during streaming and verify that comparison A is exactly the route pressed. No search budgets, timeout limits or existing solver assertions were weakened.
 
-No deployment, remote branch push or PR is included in this local design delivery.
+The follow-up's full unit run passed 1,103 tests across 238 files. Eight real-browser reveal cases passed, covering actual animation, once-only behavior, keyboard cancellation, reduced motion, Off and missing IntersectionObserver. A 38-case development run passed 37; its sole failure was WebKit's screenshot dimension limit on a long library. After waiting for fonts and explicitly capturing library/Guide viewports, that exact case passed unchanged functional assertions. The final static-font layout run and full production run are recorded in the task ledger and publication evidence. These supplement the historical staged results above; they do not retroactively change those runs.

@@ -248,9 +248,9 @@
   outline-color: var(--club-accent);
 }
 [data-edition='club'] :is(.lesson-heading h1, .club-panel h1) {
-  font-family: var(--club-font);
-  font-weight: 700;
-  letter-spacing: -0.04em;
+  font-family: var(--club-display);
+  font-weight: 600;
+  letter-spacing: -0.035em;
 }
 [data-edition='club']
   :is(.explanation, .stage-nav, .cube-panel[data-background], .scramble-form, .empty-solve) {

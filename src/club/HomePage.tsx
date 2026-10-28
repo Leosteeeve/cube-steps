@@ -1,6 +1,7 @@
 import { HeroCube } from './hero/HeroCube';
 import { ProgressStatus } from './learning/use-club-progress';
 import { useGuidanceTarget } from '../ui/guidance';
+import { SectionReveal } from './components/SectionReveal';
 
 export function HomePage({ resumeHref }: { resumeHref?: string }) {
   const start = useGuidanceTarget('home.start'),
@@ -43,7 +44,11 @@ export function HomePage({ resumeHref }: { resumeHref?: string }) {
           </div>
         </div>
       </section>
-      <section className="club-practice-spread club-container" aria-label="Inside the club">
+      <SectionReveal
+        as="section"
+        className="club-practice-spread club-container"
+        aria-label="Inside the club"
+      >
         <div className="club-cube-study">
           <div className="club-study-caption">
             <span>01 — The familiar 3 × 3</span>
@@ -81,8 +86,12 @@ export function HomePage({ resumeHref }: { resumeHref?: string }) {
           </dl>
           <ProgressStatus />
         </div>
-      </section>
-      <section className="club-pathways club-container" aria-labelledby="club-pathways-title">
+      </SectionReveal>
+      <SectionReveal
+        as="section"
+        className="club-pathways club-container"
+        aria-labelledby="club-pathways-title"
+      >
         <div className="club-section-heading">
           <div>
             <p className="club-kicker">Find your way in</p>
@@ -119,8 +128,8 @@ export function HomePage({ resumeHref }: { resumeHref?: string }) {
             </span>
           </a>
         </div>
-      </section>
-      <section className="club-tool-shelf" aria-labelledby="club-tools-title">
+      </SectionReveal>
+      <SectionReveal as="section" className="club-tool-shelf" aria-labelledby="club-tools-title">
         <div className="club-container club-tool-layout">
           <div>
             <p className="club-kicker">For the next scramble</p>
@@ -164,7 +173,7 @@ export function HomePage({ resumeHref }: { resumeHref?: string }) {
             </a>
           </div>
         </div>
-      </section>
+      </SectionReveal>
       <div ref={help} className="club-help-note club-container">
         <p>
           <strong>A hand getting started?</strong> Open Page tour for a short introduction, with

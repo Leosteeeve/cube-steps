@@ -23,6 +23,7 @@ for (const width of [375, 768, 1024, 1440]) {
       if (label === 'lesson') {
         await expect(page.getByRole('button', { name: 'Next move', exact: true })).toBeEnabled();
       }
+      await page.evaluate(() => document.fonts.ready);
       expect(
         await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
         label,
@@ -30,7 +31,9 @@ for (const width of [375, 768, 1024, 1440]) {
       await page.screenshot({
         path: `test-results/editorial-${label}-${width}-${info.project.name}.png`,
         // Long libraries and the written Guide exceed WebKit's capture limit.
-        fullPage: (await page.evaluate(() => document.documentElement.scrollHeight)) < 16000,
+        fullPage:
+          !['algorithms', 'guide'].includes(label) &&
+          (await page.evaluate(() => document.documentElement.scrollHeight)) < 16000,
       });
     }
     expect(errors).toEqual([]);

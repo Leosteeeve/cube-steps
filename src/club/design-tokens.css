@@ -1,9 +1,30 @@
 /* Club identity. Geometry stays in workspace.css; face colors stay in the renderer. */
 @font-face {
-  font-family: 'Manrope';
-  src: url('./fonts/manrope-latin-variable.woff2') format('woff2');
+  font-family: 'Instrument Sans';
+  src: url('./fonts/instrument-sans-latin-400.woff2') format('woff2');
   font-style: normal;
-  font-weight: 400 800;
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Instrument Sans';
+  src: url('./fonts/instrument-sans-latin-600.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Instrument Sans';
+  src: url('./fonts/instrument-sans-latin-700.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  src: url('./fonts/bricolage-grotesque-latin-600.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 600;
   font-display: swap;
 }
 @font-face {
@@ -24,7 +45,8 @@
   --club-accent-hover: #153e2c;
   --club-clay: #ad3f2d;
   --club-yellow: #ecd578;
-  --club-font: 'Manrope', Arial, sans-serif;
+  --club-font: 'Instrument Sans', Arial, sans-serif;
+  --club-display: 'Bricolage Grotesque', 'Instrument Sans', Arial, sans-serif;
   --club-mono: 'IBM Plex Mono', Consolas, monospace;
   --club-radius: 8px;
   --club-width: 1200px;
@@ -47,4 +69,10 @@
   font-family: var(--club-font);
   font-size: 16px;
   line-height: 1.65;
+}
+[data-edition='club'] h1 {
+  font-family: var(--club-display);
+  font-optical-sizing: auto;
+  font-weight: 600;
+  letter-spacing: -0.035em;
 }

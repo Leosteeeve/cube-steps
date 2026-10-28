@@ -7,8 +7,8 @@
   background: var(--club-surface);
 }
 [data-edition='club'] .club-panel h1 {
-  font-family: var(--club-font);
-  font-weight: 650;
+  font-family: var(--club-display);
+  font-weight: 600;
   font-size: 38px;
 }
 [data-edition='club'] .club-quiz fieldset {
@@ -147,8 +147,8 @@
   background: var(--soft);
 }
 [data-edition='club'] .lesson-heading h1 {
-  font-family: var(--club-font);
-  font-weight: 650;
+  font-family: var(--club-display);
+  font-weight: 600;
   letter-spacing: -1px;
 }
 [data-edition='club'] .player-area {

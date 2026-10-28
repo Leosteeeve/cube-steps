@@ -30,7 +30,7 @@ const dependencyText = `# Third-party notices\n\nCubeSteps original code and doc
 const fontText = `
 ## Club typography
 
-Manrope and IBM Plex Mono are self-hosted Latin WOFF2 subsets from Google Fonts, under the SIL Open Font License 1.1. The deployed site retains the [Manrope license](licenses/club-fonts/Manrope-OFL.txt) and [IBM Plex Mono license](licenses/club-fonts/IBMPlexMono-OFL.txt), including copyright notices. Sources: [Manrope](https://github.com/google/fonts/tree/main/ofl/manrope) and [IBM Plex Mono](https://github.com/google/fonts/tree/main/ofl/ibmplexmono). Font requests stay on this site's origin.
+Bricolage Grotesque, Instrument Sans and IBM Plex Mono are self-hosted Latin WOFF2 subsets from Google Fonts, under the SIL Open Font License 1.1. The deployed site retains the [Bricolage Grotesque license](licenses/club-fonts/BricolageGrotesque-OFL.txt), [Instrument Sans license](licenses/club-fonts/InstrumentSans-OFL.txt) and [IBM Plex Mono license](licenses/club-fonts/IBMPlexMono-OFL.txt), including copyright notices. Sources: [Bricolage Grotesque](https://github.com/google/fonts/tree/main/ofl/bricolagegrotesque), [Instrument Sans](https://github.com/google/fonts/tree/main/ofl/instrumentsans) and [IBM Plex Mono](https://github.com/google/fonts/tree/main/ofl/ibmplexmono). Font requests stay on this site's origin.
 `;
 const text = dependencyText + fontText;
 writeFileSync('public/THIRD_PARTY_NOTICES.md', text);
