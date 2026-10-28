@@ -63,7 +63,17 @@ export function useRouteInteraction(state: RouxLabSession) {
       !!held &&
       (held.routes.length !== state.routes.length ||
         held.routes.some((r, i) => r !== state.routes[i])),
-    refresh: () => setSnapshot(null),
+    // Keep the refresh control focused and hold the newly shown batch for further keyboard use.
+    refresh: () =>
+      setSnapshot(
+        focused.current
+          ? {
+              input: state.input,
+              routes: state.routes,
+              coverage: state.coverage,
+            }
+          : null,
+      ),
     interaction: {
       ref: region,
       onPointerDownCapture: (event: React.PointerEvent) => {

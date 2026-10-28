@@ -1,5 +1,39 @@
 import { test, expect } from '@playwright/test';
 import { dismissTutorialForTest } from './helpers/tutorial';
+
+test('Roux route refresh retains keyboard focus during streaming and activation', async ({
+  page,
+}, info) => {
+  test.setTimeout(90000);
+  await page.setViewportSize({ width: 390, height: 950 });
+  await page.goto('club/');
+  await dismissTutorialForTest(page);
+  await page.goto('club/#/roux-lab');
+  await page.getByLabel('Scramble sequence').fill("D2 F' R' D");
+  await page.getByRole('button', { name: 'Analyze cube', exact: true }).click();
+  const region = page.getByRole('region', { name: 'Roux routes' });
+  const compare = region.getByRole('button', { name: 'Compare this route', exact: true });
+  await compare.first().waitFor({ timeout: 35000 });
+  await compare.first().focus();
+  const refresh = region.getByRole('button', { name: 'Show latest routes', exact: true });
+  await expect(refresh).toHaveAttribute('aria-disabled', 'false', { timeout: 35000 });
+  await compare.last().focus();
+  await page.keyboard.press('Tab');
+  await expect(refresh).toBeFocused();
+  await page.keyboard.press('Enter');
+  await expect(refresh).toBeFocused();
+  await page.keyboard.press('Shift+Tab');
+  await expect(compare.last()).toBeFocused();
+  await page.keyboard.press('Tab');
+  await page.keyboard.press('Space');
+  await expect(refresh).toBeFocused();
+  await page.screenshot({ path: `test-results/roux-refresh-focus-${info.project.name}.png` });
+  await page.keyboard.press('Tab');
+  await expect(
+    page.getByRole('button', { name: 'Show basic LSE as a separate route', exact: true }),
+  ).toBeFocused();
+});
+
 for (const width of [1440, 390])
   test(`Roux A/B snapshots and shared player stay fixed at ${width}px`, async ({ page }, info) => {
     test.setTimeout(90000);

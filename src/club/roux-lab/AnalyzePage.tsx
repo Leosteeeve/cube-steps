@@ -175,32 +175,44 @@ export function AnalyzePage({
       <div className="roux-results">
         <section aria-label="Roux routes" ref={routeTarget}>
           {displayed.routes.length ? (
-            <div className="roux-route-cards" {...interaction}>
-              {displayed.routes.map((r) => (
-                <RouteSummary
-                  key={r.id}
-                  route={r}
-                  label={
-                    !recommendations.includes(r)
-                      ? 'PLAYBACK REFERENCE'
-                      : recommendations[0] === r
-                        ? 'CURRENT LEADING ROUTE'
-                        : 'ALTERNATIVE'
-                  }
-                  referenceOnly={!recommendations.includes(r)}
-                  currentEvidence={currentRouxEvidence(r, displayed.coverage?.frames ?? {})}
-                  selected={state.selectedId === r.id}
-                  onSelect={() => onSelect(r.id, r)}
-                  onCompare={() => onCompare(r.id, r)}
-                  comparisonSlot={
-                    state.comparison?.A.id === r.id || state.comparisonA?.id === r.id
-                      ? 'A'
-                      : state.comparison?.B.id === r.id
-                        ? 'B'
-                        : undefined
-                  }
-                />
-              ))}
+            <div {...interaction}>
+              <div className="roux-route-cards">
+                {displayed.routes.map((r) => (
+                  <RouteSummary
+                    key={r.id}
+                    route={r}
+                    label={
+                      !recommendations.includes(r)
+                        ? 'PLAYBACK REFERENCE'
+                        : recommendations[0] === r
+                          ? 'CURRENT LEADING ROUTE'
+                          : 'ALTERNATIVE'
+                    }
+                    referenceOnly={!recommendations.includes(r)}
+                    currentEvidence={currentRouxEvidence(r, displayed.coverage?.frames ?? {})}
+                    selected={state.selectedId === r.id}
+                    onSelect={() => onSelect(r.id, r)}
+                    onCompare={() => onCompare(r.id, r)}
+                    comparisonSlot={
+                      state.comparison?.A.id === r.id || state.comparisonA?.id === r.id
+                        ? 'A'
+                        : state.comparison?.B.id === r.id
+                          ? 'B'
+                          : undefined
+                    }
+                  />
+                ))}
+              </div>
+              <div className="roux-lab-actions">
+                <button
+                  aria-disabled={!pending}
+                  onClick={() => {
+                    if (pending) refresh();
+                  }}
+                >
+                  Show latest routes
+                </button>
+              </div>
             </div>
           ) : (
             <div className="roux-lab-card">
@@ -212,7 +224,6 @@ export function AnalyzePage({
               <p>No verified route yet. A stopped search does not mean the cube is invalid.</p>
             </div>
           )}
-          {pending && <button onClick={refresh}>Show latest routes</button>}
         </section>
       </div>
     </div>

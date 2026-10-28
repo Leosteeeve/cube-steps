@@ -2,6 +2,7 @@
 import '@testing-library/jest-dom/vitest';
 import { afterEach, expect, it, vi } from 'vitest';
 import { cleanup, fireEvent, render, screen, within } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { AnalyzePage } from './AnalyzePage';
 import { initialRouxLabSession, reduceRouxLabSession } from './session';
 import { rouxLabContext, fixtureRouxRoute } from '../../../tests/helpers/roux-lab-route';
@@ -61,6 +62,56 @@ it('preserves focused keyboard actions until focus leaves the route list', async
   expect(
     screen.getByRole('button', { name: 'Play full solve' }).closest('article'),
   ).toHaveAttribute('data-roux-route', view.replacement.id);
+});
+
+it('keeps keyboard focus on the refresh control through repeated streamed updates', async () => {
+  const user = userEvent.setup();
+  const view = await streamingPage();
+  await user.click(screen.getByRole('button', { name: 'Compare this route' }));
+  view.rerender(view.page({ ...view.state, routes: [view.replacement] }));
+  const refresh = screen.getByRole('button', { name: 'Show latest routes' });
+  await user.tab();
+  expect(refresh).toHaveFocus();
+  expect(refresh).toHaveAttribute('aria-disabled', 'false');
+  expect(
+    screen.getByRole('button', { name: 'Compare this route' }).closest('article'),
+  ).toHaveAttribute('data-roux-route', view.original.id);
+  await user.keyboard('{Enter}');
+  expect(refresh).toHaveFocus();
+  expect(refresh).toHaveAttribute('aria-disabled', 'true');
+  expect(
+    screen.getByRole('button', { name: 'Compare this route' }).closest('article'),
+  ).toHaveAttribute('data-roux-route', view.replacement.id);
+  view.rerender(view.page());
+  expect(refresh).toHaveFocus();
+  expect(refresh).toHaveAttribute('aria-disabled', 'false');
+  await user.keyboard(' ');
+  expect(refresh).toHaveFocus();
+  await user.tab({ shift: true });
+  const compare = screen.getByRole('button', { name: 'Compare this route' });
+  expect(compare).toHaveFocus();
+  expect(compare.closest('article')).toHaveAttribute('data-roux-route', view.original.id);
+});
+
+it('refreshes on keyboard exit without stealing focus from the next control', async () => {
+  const user = userEvent.setup();
+  const view = await streamingPage();
+  const outside = document.createElement('button');
+  outside.textContent = 'Following control';
+  document.body.append(outside);
+  try {
+    await user.click(screen.getByRole('button', { name: 'Compare this route' }));
+    view.rerender(view.page({ ...view.state, routes: [view.replacement] }));
+    await user.tab();
+    expect(screen.getByRole('button', { name: 'Show latest routes' })).toHaveFocus();
+    await user.tab();
+    expect(outside).toHaveFocus();
+    expect(
+      screen.getByRole('button', { name: 'Compare this route' }).closest('article'),
+    ).toHaveAttribute('data-roux-route', view.replacement.id);
+  } finally {
+    outside.remove();
+  }
 });
 
 it('cancels a pointer gesture without activation and drops retained routes when input resets', async () => {

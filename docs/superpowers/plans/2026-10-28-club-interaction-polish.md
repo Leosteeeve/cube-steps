@@ -32,6 +32,8 @@ Interfaces: existing club design tokens, motion preference, HomePage; no learnin
 
 ### Task 3: Review and publish
 
+Owner follow-up: resolve the previously deferred refresh-control focus issue before merging. Reproduce native Tab focus loss, keep the refresh action mounted inside the held interaction region, retain focus through Enter/Space and later batches, and verify leaving the region still releases the held routes. Run unit and Chromium/WebKit regression gates, review the added fix, then replace the publication head/check IDs before continuing. Earlier 737e02d publication was stopped before merge.
+
 1. Fresh-context whole-branch independent review against main; resolve actual blocking findings with regression evidence.
 2. Push one feature branch and create/attach one PR. Wait for all required checks on the exact reviewed head; inspect remote reviews.
 3. Merge only that head, dispatch Pages once with the established Preview inputs, wait main CI and Pages.
