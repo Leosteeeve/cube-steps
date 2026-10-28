@@ -10,7 +10,7 @@ export function HeroCube() {
   const canvas = useRef<HTMLCanvasElement>(null),
     container = useRef<HTMLDivElement>(null);
   const elapsed = useRef(0);
-  const [paused, setPaused] = useState(false),
+  const [paused, setPaused] = useState(true),
     [inView, setInView] = useState(() => typeof IntersectionObserver !== 'function'),
     [failed, setFailed] = useState(false);
   const motion = useMotion(),
@@ -60,7 +60,11 @@ export function HeroCube() {
       if (disposed) return;
       if (last !== undefined) elapsed.current += Math.max(0, now - last);
       last = now;
-      if (draw()) frame = requestAnimationFrame(tick);
+      if (elapsed.current >= 7000) {
+        elapsed.current = 0;
+        draw();
+        setPaused(true);
+      } else if (draw()) frame = requestAnimationFrame(tick);
     };
     const ready = draw();
     const observer =
@@ -81,20 +85,11 @@ export function HeroCube() {
   return (
     <div className="club-hero-art hero-motion" ref={container}>
       <div className="hero-illustration" aria-hidden="true">
-        <div className="club-orbit" />
         {failed ? (
           <img className="hero-canvas" src={fallback} alt="" />
         ) : (
           <canvas className="hero-canvas" ref={canvas} />
         )}
-        <span className="club-art-note club-note-top">
-          <small>A LITTLE CURIOSITY</small>
-          <strong>A whole new skill.</strong>
-        </span>
-        <span className="club-art-note club-note-bottom">
-          <small>YOUR FIRST MILESTONE</small>
-          <strong>✦ Build a white daisy</strong>
-        </span>
       </div>
       <div className="hero-motion-control">
         {!allowed ? (
@@ -105,7 +100,7 @@ export function HeroCube() {
           <span>Static illustration</span>
         ) : (
           <button type="button" onClick={() => setPaused((value) => !value)}>
-            {paused ? 'Play motion' : 'Pause motion'}
+            {paused ? 'Watch a turn' : 'Pause turn'}
           </button>
         )}
       </div>

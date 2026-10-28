@@ -34,16 +34,15 @@ test('club homepage fits phones and desktop with clear learning actions', async 
     await page.setViewportSize({ width, height: 900 });
     await page.goto('club/');
     await dismissTutorialForTest(page);
-    await expect(page.getByRole('heading', { name: 'One turn. A new possibility.' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Pick up a cube.' })).toBeVisible();
     await expect(page.getByRole('link', { name: 'Find my starting point' })).toHaveAttribute(
       'href',
       '#/find-your-route',
     );
-    await expect(page.getByRole('heading', { name: 'Better, together.' })).toBeVisible();
-    await expect(page.getByRole('link', { name: 'Join a lesson', exact: true })).toHaveAttribute(
-      'href',
-      '#/learn/notation',
-    );
+    await expect(page.getByRole('heading', { name: 'Start where you are.' })).toBeVisible();
+    await expect(
+      page.getByRole('link', { name: 'Start with the basics', exact: true }),
+    ).toHaveAttribute('href', '#/learn/notation');
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
       true,
     );

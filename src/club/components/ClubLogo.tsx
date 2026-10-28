@@ -13,7 +13,7 @@ export function ClubLogo({
       {!compact && (
         <span>
           <strong>Webb</strong>
-          <small>CUBING CLUB</small>
+          <small>Cubing Club</small>
         </span>
       )}
     </span>

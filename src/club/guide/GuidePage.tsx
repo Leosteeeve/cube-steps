@@ -17,18 +17,14 @@ export function GuidePage({ section }: { section?: GuideSectionId }) {
   return (
     <article className="club-guide">
       <header className="guide-heading">
-        <p className="club-kicker">YOUR WEBSITE COMPANION</p>
-        <h1>
-          A little guidance.
-          <br />
-          <em>A lot to discover.</em>
-        </h1>
+        <p className="club-kicker">Your website companion</p>
+        <h1>Get to know your tools.</h1>
         <p>Keep your cube nearby. Learn one thing, try it, then come back for the next.</p>
       </header>
       <GuideVideo />
       <div className="guide-layout">
         <nav className="guide-index" aria-label="Guide chapters">
-          <p>IN THIS GUIDE</p>
+          <p>In this guide</p>
           {GUIDE_CHAPTERS.map((c, i) => (
             <a
               key={c.id}

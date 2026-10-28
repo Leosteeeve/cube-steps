@@ -82,17 +82,32 @@ afterEach(() => {
   vi.restoreAllMocks();
   vi.unstubAllGlobals();
 });
+it('stays still until requested and ends one demonstration without looping', () => {
+  mount();
+  expect(frames.size).toBe(0);
+  fireEvent.click(screen.getByRole('button', { name: 'Watch a turn' }));
+  expect(frames.size).toBe(1);
+  tick(0);
+  tick(3000);
+  expect(screen.getByRole('button', { name: 'Pause turn' })).toBeVisible();
+  tick(7000);
+  expect(frames.size).toBe(0);
+  expect(screen.getByRole('button', { name: 'Watch a turn' })).toBeVisible();
+  tick(12000);
+  expect(frames.size).toBe(0);
+});
 it('pauses locally, suspends offscreen and avoids a hidden-frame backlog', () => {
   const { unmount } = mount();
+  fireEvent.click(screen.getByRole('button', { name: 'Watch a turn' }));
   tick(0);
   tick(3000);
   const last = draw.moveTo.mock.calls.at(-1);
-  fireEvent.click(screen.getByRole('button', { name: 'Pause motion' }));
+  fireEvent.click(screen.getByRole('button', { name: 'Pause turn' }));
   expect(frames.size).toBe(0);
   tick(9000);
   expect(draw.moveTo.mock.calls.at(-1)).toEqual(last);
   expect(localStorage.length).toBe(0);
-  fireEvent.click(screen.getByRole('button', { name: 'Play motion' }));
+  fireEvent.click(screen.getByRole('button', { name: 'Watch a turn' }));
   tick(10000);
   expect(draw.moveTo.mock.calls.at(-1)).toEqual(last);
   act(() => intersect([{ isIntersecting: false } as IntersectionObserverEntry]));
@@ -116,6 +131,7 @@ it('pauses locally, suspends offscreen and avoids a hidden-frame backlog', () =>
 });
 it('waits for the first visibility observation before starting any loop', () => {
   mount(false);
+  fireEvent.click(screen.getByRole('button', { name: 'Watch a turn' }));
   expect(frames.size).toBe(0);
   act(() => intersect([{ isIntersecting: false } as IntersectionObserverEntry]));
   expect(frames.size).toBe(0);
@@ -126,25 +142,27 @@ it('begins static under reduced motion and preserves a manual pause across visib
   reduced = true;
   mount();
   expect(frames.size).toBe(0);
-  expect(screen.queryByRole('button', { name: 'Play motion' })).toBeNull();
+  expect(screen.queryByRole('button', { name: 'Watch a turn' })).toBeNull();
   act(() => {
     reduced = false;
     media.forEach((f) => f());
   });
-  fireEvent.click(screen.getByRole('button', { name: 'Pause motion' }));
+  fireEvent.click(screen.getByRole('button', { name: 'Watch a turn' }));
+  fireEvent.click(screen.getByRole('button', { name: 'Pause turn' }));
   act(() => intersect([{ isIntersecting: false } as IntersectionObserverEntry]));
   act(() => intersect([{ isIntersecting: true } as IntersectionObserverEntry]));
   expect(frames.size).toBe(0);
-  fireEvent.click(screen.getByRole('button', { name: 'Play motion' }));
+  fireEvent.click(screen.getByRole('button', { name: 'Watch a turn' }));
   expect(frames.size).toBe(1);
 });
 it('resets to the assembled pose and does not offer Play when decoration is disabled', () => {
   mount();
   const assembled = draw.moveTo.mock.calls.at(-1);
+  fireEvent.click(screen.getByRole('button', { name: 'Watch a turn' }));
   tick(0);
   tick(3000);
   fireEvent.change(screen.getByLabelText('Decorative motion'), { target: { value: 'off' } });
-  expect(screen.queryByRole('button', { name: 'Play motion' })).not.toBeInTheDocument();
+  expect(screen.queryByRole('button', { name: 'Watch a turn' })).not.toBeInTheDocument();
   expect(screen.getByText('Decorative motion is off.')).toBeVisible();
   expect(draw.moveTo.mock.calls.at(-1)).toEqual(assembled);
   expect(frames.size).toBe(0);
@@ -164,7 +182,7 @@ it('retains a static vector fallback if canvas is unavailable or fails', () => {
   mount();
   expect(document.querySelector('img[src*="hero-static"]')).not.toBeNull();
   expect(frames.size).toBe(0);
-  expect(screen.queryByRole('button', { name: 'Pause motion' })).not.toBeInTheDocument();
+  expect(screen.queryByRole('button', { name: 'Pause turn' })).not.toBeInTheDocument();
 });
 it('handles a drawing failure without leaving an animation scheduled', () => {
   draw.fill.mockImplementationOnce(() => {

@@ -37,7 +37,7 @@
 }
 .roux-lab-status {
   margin: 1.5rem 0;
-  background: #eff5fc;
+  background: var(--soft);
 }
 .roux-lab-actions {
   display: flex;
@@ -49,19 +49,19 @@
 .roux-lab-actions button,
 .roux-lab-card button {
   min-height: 44px;
-  border: 1px solid #c6d5e6;
+  border: 1px solid var(--line);
   border-radius: 10px;
   padding: 0.6rem 0.9rem;
   background: #fff;
-  color: #163656;
+  color: var(--ink);
   cursor: pointer;
 }
 .roux-lab-card button[aria-pressed='true'] {
-  background: #e6efff;
-  border-color: #2966dd;
+  background: var(--soft);
+  border-color: var(--green);
 }
 .roux-lab-card button.primary-button {
-  background: #215bd8;
+  background: var(--green);
   color: white;
 }
 .roux-analyze-grid {
@@ -80,7 +80,7 @@
   resize: vertical;
   padding: 0.8rem;
   border-radius: 10px;
-  border: 1px solid #c6d5e6;
+  border: 1px solid var(--line);
 }
 .roux-orientations {
   border: 0;
@@ -184,13 +184,13 @@
   min-width: 0;
   font: inherit;
   padding: 0.65rem 0.75rem;
-  border: 1px solid #c6d6e9;
+  border: 1px solid var(--line);
   border-radius: 10px;
   background: #fff;
-  color: #153451;
+  color: var(--ink);
 }
 .roux-notebook fieldset {
-  border: 1px solid #dce6f5;
+  border: 1px solid var(--line);
   border-radius: 14px;
   padding: 1rem;
 }
@@ -234,7 +234,7 @@
   gap: 1rem;
 }
 .roux-history li {
-  border-top: 1px solid #dce6f5;
+  border-top: 1px solid var(--line);
   padding-top: 1rem;
 }
 .roux-history button {
@@ -242,7 +242,7 @@
 }
 .roux-card {
   background: #fff;
-  border: 1px solid #dce6f5;
+  border: 1px solid var(--line);
   border-radius: 20px;
   padding: 1.4rem;
   min-width: 0;

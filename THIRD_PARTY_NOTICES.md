@@ -27,3 +27,7 @@ The beginner teaching route references [J Perm](https://www.jperm.net/3x3). Less
 | tagged-tag | 1.0.0 | MIT | [license](public/licenses/tagged-tag-1.0.0/license) |
 | three | 0.170.0 | MIT | [LICENSE](public/licenses/three-0.170.0/LICENSE) |
 | type-fest | 5.10.0 | (MIT OR CC0-1.0) | [license-cc0](public/licenses/type-fest-5.10.0/license-cc0), [license-mit](public/licenses/type-fest-5.10.0/license-mit) |
+
+## Club typography
+
+Manrope and IBM Plex Mono are self-hosted Latin WOFF2 subsets from Google Fonts, under the SIL Open Font License 1.1. The deployed site retains the [Manrope license](public/licenses/club-fonts/Manrope-OFL.txt) and [IBM Plex Mono license](public/licenses/club-fonts/IBMPlexMono-OFL.txt), including copyright notices. Sources: [Manrope](https://github.com/google/fonts/tree/main/ofl/manrope) and [IBM Plex Mono](https://github.com/google/fonts/tree/main/ofl/ibmplexmono). Font requests stay on this site's origin.

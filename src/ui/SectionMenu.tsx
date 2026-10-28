@@ -45,6 +45,16 @@ export function SectionMenu({
         aria-controls={id}
         data-current={items.some(({ href }) => isCurrent(href)) || undefined}
         onClick={() => setOpen((value) => !value)}
+        onKeyDown={(event) => {
+          // Optional disclosure-navigation entry; Tab keeps its native behavior.
+          if (!open || (event.key !== 'ArrowDown' && event.key !== 'ArrowUp')) return;
+          const links = root.current?.querySelectorAll<HTMLAnchorElement>('.section-menu-panel a');
+          const destination = event.key === 'ArrowDown' ? links?.[0] : links?.[links.length - 1];
+          if (destination) {
+            event.preventDefault();
+            destination.focus();
+          }
+        }}
       >
         {label}
         <span aria-hidden="true" className="section-menu-chevron">
@@ -57,6 +67,13 @@ export function SectionMenu({
             key={href}
             href={href}
             aria-current={isCurrent(href) ? 'page' : undefined}
+            // Keep WebKit's mouse-down default from focusing the tabindex
+            // ancestor and closing the disclosure before this link's click.
+            onMouseDown={(event) => {
+              if (event.button !== 0) return;
+              event.preventDefault();
+              event.currentTarget.focus();
+            }}
             onClick={() => setOpen(false)}
           >
             {itemLabel}

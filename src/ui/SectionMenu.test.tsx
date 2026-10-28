@@ -11,6 +11,32 @@ const items = [
   { label: 'Timer', href: '#/timer' },
 ];
 
+it('offers arrow-key entry without replacing native Tab navigation', async () => {
+  const user = userEvent.setup();
+  render(<SectionMenu label="Practice" items={items} currentHref="#/" />);
+  const trigger = screen.getByRole('button', { name: 'Practice' });
+  trigger.focus();
+  await user.keyboard('{Enter}{ArrowDown}');
+  expect(screen.getByRole('link', { name: 'Moves' })).toHaveFocus();
+  await user.tab();
+  expect(screen.getByRole('link', { name: 'Timer' })).toHaveFocus();
+  await user.keyboard('{Escape}{Enter}{ArrowUp}');
+  expect(screen.getByRole('link', { name: 'Timer' })).toHaveFocus();
+});
+
+it('focuses a pressed link before WebKit can blur the disclosure to its ancestor', async () => {
+  const user = userEvent.setup();
+  render(<SectionMenu label="Practice" items={items} currentHref="#/" />);
+  const trigger = screen.getByRole('button', { name: 'Practice' });
+  await user.click(trigger);
+  const moves = screen.getByRole('link', { name: 'Moves' });
+  expect(fireEvent.mouseDown(moves, { button: 0 })).toBe(false);
+  expect(moves).toHaveFocus();
+  expect(trigger).toHaveAttribute('aria-expanded', 'true');
+  fireEvent.click(moves);
+  expect(trigger).toHaveAttribute('aria-expanded', 'false');
+});
+
 it('returns focus to the trigger on Escape and hides the destination list', async () => {
   const user = userEvent.setup();
   render(<SectionMenu label="Practice" items={items} currentHref="#/" />);

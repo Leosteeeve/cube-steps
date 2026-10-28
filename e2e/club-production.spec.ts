@@ -16,7 +16,7 @@ test('built club home stays lightweight and both editions retain their tools', a
   });
   await page.goto('club/');
   await dismissTutorialForTest(page);
-  await expect(page.getByRole('button', { name: 'Pause motion', exact: true })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Watch a turn', exact: true })).toBeVisible();
   await page.getByRole('link', { name: 'Find my starting point' }).click();
   await expect(page.getByRole('button', { name: 'Skip questions' })).toBeVisible();
   expect(

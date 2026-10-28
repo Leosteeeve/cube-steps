@@ -53,7 +53,7 @@ export function TimerPage({
       <TourEntry tourId="timer" ready={timerTutorialAllowed(state, history)} />
       <div className="timer-title">
         <div>
-          <p className="club-kicker">● YOUR PERSONAL PRACTICE SPACE</p>
+          <p className="club-kicker">Your practice desk</p>
           <h1>
             Your time.
             <br />

@@ -52,7 +52,7 @@ test('club questionnaire, practiced lessons and resume survive navigation and re
   );
   await page.getByRole('link', { name: 'Resume learning' }).click();
   await page.goBack();
-  await expect(page.getByRole('heading', { name: 'One turn. A new possibility.' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Pick up a cube.' })).toBeVisible();
   await page.goForward();
   await expect(
     page.getByRole('heading', { name: 'Build the white cross', exact: true }),

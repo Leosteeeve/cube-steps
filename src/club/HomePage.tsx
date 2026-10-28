@@ -1,6 +1,7 @@
 import { HeroCube } from './hero/HeroCube';
 import { ProgressStatus } from './learning/use-club-progress';
 import { useGuidanceTarget } from '../ui/guidance';
+
 export function HomePage({ resumeHref }: { resumeHref?: string }) {
   const start = useGuidanceTarget('home.start'),
     learn = useGuidanceTarget('home.learn'),
@@ -9,92 +10,170 @@ export function HomePage({ resumeHref }: { resumeHref?: string }) {
     help = useGuidanceTarget('home.help');
   return (
     <div className="club-home">
-      <section className="club-hero">
-        <div className="club-hero-copy">
-          <p className="club-kicker">● A PLACE FOR EVERY FIRST SOLVE</p>
-          <h1>
-            One turn.
-            <br />A new <em>possibility.</em>
-          </h1>
+      <section className="club-opening club-container" aria-labelledby="club-welcome-title">
+        <div className="club-masthead">
+          <p className="club-kicker">
+            Webb Cubing Club <span aria-hidden="true"> / </span> Learn, practice, repeat.
+          </p>
+          <span className="club-facelets" aria-hidden="true">
+            <i />
+            <i />
+            <i />
+            <i />
+            <i />
+            <i />
+          </span>
+        </div>
+        <h1 id="club-welcome-title">
+          Pick up <span>a cube.</span>
+        </h1>
+        <div className="club-opening-bottom">
           <p className="club-intro">
-            Your first solve starts with a little curiosity.
-            <br />
-            Learn at your pace. Get better together.
+            Your first solve. A move that finally makes sense. A few more tries before you put it
+            down.
           </p>
           <div className="club-actions">
             <a ref={start} className="club-primary" href={resumeHref ?? '#/find-your-route'}>
               {resumeHref ? 'Resume learning' : 'Find my starting point'}{' '}
               <span aria-hidden="true">↗</span>
             </a>
-            <a ref={learn} className="club-secondary" href="#/learn/notation">
-              Join a lesson
+            <a ref={learn} className="club-text-link" href="#/learn/notation">
+              Start with the basics <span aria-hidden="true">→</span>
             </a>
           </div>
-          <small>New to cubing? You’re in exactly the right place.</small>
         </div>
-        <HeroCube />
       </section>
-      <div className="club-home-progress">
-        <ProgressStatus />
-      </div>
-      <section className="club-together">
-        <div>
-          <small>LEARN IT. PRACTICE IT. SHARE IT.</small>
-          <h2>Better, together.</h2>
+      <section className="club-practice-spread club-container" aria-label="Inside the club">
+        <div className="club-cube-study">
+          <div className="club-study-caption">
+            <span>01 — The familiar 3 × 3</span>
+            <span className="club-notation" aria-hidden="true">
+              U · U′
+            </span>
+          </div>
+          <HeroCube />
+          <p>Same cube. A different way to see it.</p>
         </div>
-        <p>
-          Follow a lesson with the club.
-          <br />
-          Make it your own at home.
-        </p>
-        <a href="#/learn/notation">
-          Open a club lesson <span aria-hidden="true">↗</span>
-        </a>
-      </section>
-      <section className="club-welcome">
-        <div className="club-section-heading">
-          <h2>Make yourself at home.</h2>
-          <p>
-            ONE CLUB.
+        <div className="club-start-here">
+          <p className="club-kicker">A student-led cubing club</p>
+          <h2>
+            Figure it out.
             <br />
-            MANY STARTING POINTS.
+            One turn at a time.
+          </h2>
+          <p>
+            Follow the cube on screen, try the move in your hands, and come back to the parts that
+            need another look.
           </p>
+          <dl className="club-how-it-works">
+            <div>
+              <dt>See it</dt>
+              <dd>Watch a move from every angle.</dd>
+            </div>
+            <div>
+              <dt>Try it</dt>
+              <dd>Work through a solve, step by step.</dd>
+            </div>
+            <div>
+              <dt>Keep at it</dt>
+              <dd>Save your place. Practice at your pace.</dd>
+            </div>
+          </dl>
+          <ProgressStatus />
         </div>
-        <div className="club-home-cards">
+      </section>
+      <section className="club-pathways club-container" aria-labelledby="club-pathways-title">
+        <div className="club-section-heading">
+          <div>
+            <p className="club-kicker">Find your way in</p>
+            <h2 id="club-pathways-title">Start where you are.</h2>
+          </div>
+          <a className="club-text-link" href="#/find-your-route">
+            Not sure? Take the short quiz <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+        <div className="club-path-list">
+          <a href="#/learn/notation">
+            <span className="club-path-index">01</span>
+            <h3>I’m new to this.</h3>
+            <p>Learn the notation, then build your first solve layer by layer.</p>
+            <span className="club-path-action">
+              First-solve lessons <span aria-hidden="true">↗</span>
+            </span>
+          </a>
           <a href="#/find-your-route">
-            <small>01 / LEARN</small>
-            <span aria-hidden="true">↗</span>
-            <h3>Your first solve</h3>
-            <p>
-              Small lessons. Clear moves.
-              <br />A cube you can finally solve.
-            </p>
+            <span className="club-path-index">02</span>
+            <h3>I can solve. What’s next?</h3>
+            <p>Find a learning path that fits how you like to think and practice.</p>
+            <span className="club-path-action">
+              Find your route <span aria-hidden="true">↗</span>
+            </span>
           </a>
-          <a ref={moves} href="#/moves">
-            <small>02 / EXPLORE</small>
-            <span aria-hidden="true">↗</span>
-            <h3>Meet the moves</h3>
-            <p>
-              A letter. A turn. Now it clicks.
-              <br />
-              Watch, compare, and try it yourself.
-            </p>
-          </a>
-          <a ref={timer} href="#/timer">
-            <small>03 / PRACTICE</small>
-            <span aria-hidden="true">↗</span>
-            <h3>A little better, each time</h3>
-            <p>
-              Scramble, time, and see your progress.
-              <br />
-              Your own space to keep practicing.
-            </p>
+          <a href="#/lab">
+            <span className="club-path-index">03</span>
+            <h3>I want to look closer.</h3>
+            <p>Compare CFOP solves, inspect decisions, and keep a practice notebook.</p>
+            <span className="club-path-action">
+              Explore the Lab <span className="club-inline-status">Experimental</span>
+              <span aria-hidden="true">↗</span>
+            </span>
           </a>
         </div>
       </section>
-      <p ref={help} className="club-help-note">
-        Need a hand? Open Page tour for a short introduction, with Skip and Exit always available.
-      </p>
+      <section className="club-tool-shelf" aria-labelledby="club-tools-title">
+        <div className="club-container club-tool-layout">
+          <div>
+            <p className="club-kicker">For the next scramble</p>
+            <h2 id="club-tools-title">
+              A little practice
+              <br />
+              goes a long way.
+            </h2>
+            <p>No account needed. Your learning progress and timer history stay in this browser.</p>
+          </div>
+          <div className="club-tool-list">
+            <a ref={moves} href="#/moves">
+              <span className="club-tool-symbol" aria-hidden="true">
+                R′
+              </span>
+              <div>
+                <h3>Move Explorer</h3>
+                <p>A letter, a face, a turn. Watch how they connect.</p>
+              </div>
+              <span aria-hidden="true">↗</span>
+            </a>
+            <a ref={timer} href="#/timer">
+              <span className="club-tool-symbol" aria-hidden="true">
+                :00
+              </span>
+              <div>
+                <h3>Practice timer</h3>
+                <p>Generate a scramble. Time a solve. Review your own history.</p>
+              </div>
+              <span aria-hidden="true">↗</span>
+            </a>
+            <a href="#/algorithms">
+              <span className="club-tool-symbol" aria-hidden="true">
+                [ ]
+              </span>
+              <div>
+                <h3>Algorithm library</h3>
+                <p>Look up a case and follow the sequence on the cube.</p>
+              </div>
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </div>
+      </section>
+      <div ref={help} className="club-help-note club-container">
+        <p>
+          <strong>A hand getting started?</strong> Open Page tour for a short introduction, with
+          Skip and Exit always available.
+        </p>
+        <a className="club-text-link" href="#/guide">
+          Watch the website guide <span aria-hidden="true">↗</span>
+        </a>
+      </div>
     </div>
   );
 }
