@@ -14,9 +14,29 @@ for (const width of [1440, 390])
     await page.getByRole('button', { name: 'Analyze cube', exact: true }).click();
     const cards = page.getByRole('region', { name: 'Roux routes' }).locator('[data-roux-route]');
     await expect.poll(() => cards.count(), { timeout: 35000 }).toBeGreaterThanOrEqual(2);
-    // Resolve the currently available cards at click time: search may replace an
-    // unpinned candidate between a DOM read and the subsequent click.
-    await cards.getByRole('button', { name: 'Compare this route', exact: true }).first().click();
+    // Record the actual press target, then hold through multiple worker updates.
+    // The keyed card and the route it represents must survive until native click.
+    await page.getByRole('region', { name: 'Roux routes' }).evaluate((region) => {
+      region.addEventListener(
+        'pointerdown',
+        (event) => {
+          const card = (event.target as Element).closest('[data-roux-route]');
+          if (card)
+            region.setAttribute('data-pressed-route', card.getAttribute('data-roux-route')!);
+        },
+        { once: true },
+      );
+    });
+    await cards
+      .getByRole('button', { name: 'Compare this route', exact: true })
+      .first()
+      .click({ delay: 800 });
+    const pressed = await page
+      .getByRole('region', { name: 'Roux routes' })
+      .getAttribute('data-pressed-route');
+    await expect(
+      page.getByText('Route A is fixed. Choose a different route for B.', { exact: false }),
+    ).toBeVisible();
     await cards.getByRole('button', { name: 'Compare this route', exact: true }).first().click();
     await page
       .getByRole('navigation', { name: 'Roux Lab workspace' })
@@ -26,6 +46,7 @@ for (const width of [1440, 390])
     const a = await comparison.locator('[data-roux-route]').nth(0).getAttribute('data-roux-route'),
       b = await comparison.locator('[data-roux-route]').nth(1).getAttribute('data-roux-route');
     expect(a).not.toBe(b);
+    expect(a).toBe(pressed);
     await comparison
       .locator(`[data-roux-route="${a}"]`)
       .getByRole('button', { name: 'Play full solve' })

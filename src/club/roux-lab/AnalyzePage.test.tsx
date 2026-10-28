@@ -1,10 +1,92 @@
 // @vitest-environment jsdom
 import '@testing-library/jest-dom/vitest';
-import { expect, it } from 'vitest';
-import { render, screen, within } from '@testing-library/react';
+import { afterEach, expect, it, vi } from 'vitest';
+import { cleanup, fireEvent, render, screen, within } from '@testing-library/react';
 import { AnalyzePage } from './AnalyzePage';
 import { initialRouxLabSession, reduceRouxLabSession } from './session';
 import { rouxLabContext, fixtureRouxRoute } from '../../../tests/helpers/roux-lab-route';
+afterEach(cleanup);
+
+async function streamingPage() {
+  const { engine, assets } = await rouxLabContext();
+  const original = fixtureRouxRoute(engine, assets, 'white-blue');
+  const replacement = fixtureRouxRoute(engine, assets, 'white-red');
+  const state = {
+    ...initialRouxLabSession(),
+    input: original.input,
+    routes: [original],
+    status: 'searching' as const,
+  };
+  const onCompare = vi.fn(),
+    onSelect = vi.fn();
+  const page = (next = state) => (
+    <AnalyzePage
+      engine={engine}
+      state={next}
+      onStart={() => {}}
+      onEdit={() => {}}
+      onFrames={() => {}}
+      onSelect={onSelect}
+      onCompare={onCompare}
+    />
+  );
+  const result = render(page());
+  return { ...result, original, replacement, state, page, onCompare, onSelect };
+}
+
+it('keeps a pressed route mounted through a stream replacement and compares that exact snapshot', async () => {
+  const view = await streamingPage();
+  const pressed = screen.getByRole('button', { name: 'Compare this route' });
+  fireEvent.pointerDown(pressed, { pointerId: 1 });
+  view.rerender(view.page({ ...view.state, routes: [view.replacement] }));
+  expect(pressed).toBeInTheDocument();
+  expect(view.onCompare).not.toHaveBeenCalled();
+  fireEvent.pointerUp(pressed, { pointerId: 1 });
+  fireEvent.click(pressed);
+  expect(view.onCompare).toHaveBeenCalledExactlyOnceWith(view.original.id, view.original);
+  expect(
+    screen.getByRole('button', { name: 'Compare this route' }).closest('article'),
+  ).toHaveAttribute('data-roux-route', view.replacement.id);
+});
+
+it('preserves focused keyboard actions until focus leaves the route list', async () => {
+  const view = await streamingPage();
+  const button = screen.getByRole('button', { name: 'Play full solve' });
+  fireEvent.focus(button);
+  view.rerender(view.page({ ...view.state, routes: [view.replacement] }));
+  expect(button).toBeInTheDocument();
+  fireEvent.click(button);
+  expect(view.onSelect).toHaveBeenCalledExactlyOnceWith(view.original.id, view.original);
+  fireEvent.blur(button, { relatedTarget: document.body });
+  expect(
+    screen.getByRole('button', { name: 'Play full solve' }).closest('article'),
+  ).toHaveAttribute('data-roux-route', view.replacement.id);
+});
+
+it('cancels a pointer gesture without activation and drops retained routes when input resets', async () => {
+  const view = await streamingPage();
+  const button = screen.getByRole('button', { name: 'Compare this route' });
+  fireEvent.pointerDown(button, { pointerId: 1 });
+  view.rerender(view.page({ ...view.state, routes: [view.replacement] }));
+  fireEvent.pointerCancel(button, { pointerId: 1 });
+  expect(view.onCompare).not.toHaveBeenCalled();
+  const next = screen.getByRole('button', { name: 'Compare this route' });
+  expect(next.closest('article')).toHaveAttribute('data-roux-route', view.replacement.id);
+  fireEvent.focus(next);
+  view.rerender(view.page({ ...view.state, input: { ...view.original.input }, routes: [] }));
+  expect(screen.queryByRole('button', { name: 'Compare this route' })).not.toBeInTheDocument();
+});
+
+it('releases an abandoned drag outside the cards without selecting a route', async () => {
+  const view = await streamingPage();
+  fireEvent.pointerDown(screen.getByRole('button', { name: 'Compare this route' }));
+  view.rerender(view.page({ ...view.state, routes: [view.replacement] }));
+  fireEvent.pointerUp(document.body);
+  expect(view.onCompare).not.toHaveBeenCalled();
+  expect(
+    screen.getByRole('button', { name: 'Compare this route' }).closest('article'),
+  ).toHaveAttribute('data-roux-route', view.replacement.id);
+});
 it('labels an excluded selected route as a playable reference with current evidence', async () => {
   const { engine, assets } = await rouxLabContext(),
     baseline = fixtureRouxRoute(engine, assets);
