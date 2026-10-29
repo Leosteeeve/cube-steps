@@ -104,7 +104,7 @@ test('a rejected production lazy module has a visible reload recovery and usable
   await page.goto('club/#/moves');
   await expect(page.getByRole('alert')).toContainText('could not load');
   await page.getByRole('link', { name: 'Home', exact: true }).click();
-  await expect(page.getByRole('heading', { name: 'One turn. A new possibility.' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Pick up a cube.' })).toBeVisible();
   await page.getByRole('button', { name: 'Practice', exact: true }).click();
   await page.getByRole('link', { name: 'Moves', exact: true }).click();
   await expect(page.getByRole('button', { name: 'Reload move explorer' })).toBeVisible();
@@ -124,4 +124,7 @@ test('a rejected production lazy module has a visible reload recovery and usable
   expect(bad).toEqual([]);
 });
 
-test.beforeEach(async ({ page }) => { await page.goto('club/'); await dismissTutorialForTest(page); });
+test.beforeEach(async ({ page }) => {
+  await page.goto('club/');
+  await dismissTutorialForTest(page);
+});

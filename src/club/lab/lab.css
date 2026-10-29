@@ -2,7 +2,7 @@
   max-width: 1380px;
   margin: auto;
   padding: 36px 28px 48px;
-  background: #f8faff;
+  background: var(--club-paper);
   overflow-wrap: anywhere;
 }
 .lab-intro {
@@ -13,9 +13,7 @@
   margin-bottom: 24px;
 }
 .lab-intro h1 {
-  font:
-    46px/1.15 Georgia,
-    serif;
+  font: 650 46px/1.15 var(--club-font);
   letter-spacing: -1px;
   margin: 10px 0;
 }
@@ -26,7 +24,7 @@
   border-radius: 20px;
   padding: 8px 14px;
   white-space: nowrap;
-  font-size: 12px;
+  font-size: 14px;
 }
 .lab-tabs {
   display: flex;
@@ -54,7 +52,7 @@
   height: 24px;
   border-radius: 50%;
   background: var(--soft);
-  font-size: 12px;
+  font-size: 14px;
 }
 .lab-grid {
   display: grid;
@@ -99,7 +97,7 @@
   resize: vertical;
   font-family: monospace;
   min-height: 90px;
-  border: 1px solid #c9d5e5;
+  border: 1px solid var(--line);
   border-radius: 8px;
   padding: 10px;
 }
@@ -120,7 +118,7 @@
 }
 .lab-workspace button {
   min-height: 44px;
-  border: 1px solid #c9d5e5;
+  border: 1px solid var(--line);
   background: #fff;
   color: var(--ink);
   border-radius: 8px;
@@ -128,12 +126,12 @@
 }
 .lab-workspace button[aria-pressed='true'] {
   background: var(--soft);
-  border-color: #165dde;
+  border-color: var(--green);
 }
 .lab-workspace .primary-button {
-  background: #165dde;
+  background: var(--green);
   color: #fff;
-  border-color: #165dde;
+  border-color: var(--green);
 }
 .lab-analyze-button {
   width: 100%;
@@ -177,7 +175,7 @@
   background: #ff9529;
 }
 .lab-policy {
-  font-size: 12px;
+  font-size: 14px;
   border-top: 1px solid var(--line);
   padding-top: 16px;
 }
@@ -192,7 +190,7 @@
   margin: 0;
 }
 .lab-footnote {
-  font-size: 12px;
+  font-size: 14px;
   color: var(--muted);
   line-height: 1.65;
 }
@@ -205,7 +203,7 @@
   max-width: 300px;
 }
 .lab-net figcaption {
-  font-size: 12px;
+  font-size: 14px;
   text-transform: capitalize;
 }
 .lab-search-status {
@@ -216,7 +214,7 @@
   padding: 14px 18px;
   border: 1px solid var(--line);
   border-radius: 10px;
-  background: #edf4ff;
+  background: var(--soft);
   margin-bottom: 14px;
   font-size: 13px;
 }
@@ -238,7 +236,7 @@
   gap: 22px;
 }
 .lab-metrics dt {
-  font-size: 11px;
+  font-size: 13px;
   color: var(--muted);
 }
 .lab-metrics dd {
@@ -414,13 +412,13 @@
   min-width: 0;
   font: inherit;
   padding: 0.65rem 0.75rem;
-  border: 1px solid #c6d6e9;
+  border: 1px solid var(--line);
   border-radius: 10px;
   background: #fff;
-  color: #153451;
+  color: var(--ink);
 }
 .lab-notebook fieldset {
-  border: 1px solid #dce6f5;
+  border: 1px solid var(--line);
   border-radius: 14px;
   padding: 1rem;
 }
@@ -471,7 +469,7 @@
   gap: 1rem;
 }
 .lab-history li {
-  border-top: 1px solid #dce6f5;
+  border-top: 1px solid var(--line);
   padding-top: 1rem;
 }
 .lab-history button {
@@ -490,7 +488,7 @@
   display: grid;
   gap: 0.8rem;
   padding: 1rem;
-  border: 1px solid #dce6f5;
+  border: 1px solid var(--line);
   border-radius: 14px;
   min-width: 0;
 }
@@ -509,7 +507,7 @@
   max-width: 100%;
   min-width: 0;
   padding: 0.6rem;
-  border: 1px solid #c6d6e9;
+  border: 1px solid var(--line);
   border-radius: 10px;
 }
 .lab-transfer-actions {

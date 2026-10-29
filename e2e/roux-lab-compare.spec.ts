@@ -1,5 +1,39 @@
 import { test, expect } from '@playwright/test';
 import { dismissTutorialForTest } from './helpers/tutorial';
+
+test('Roux route refresh retains keyboard focus during streaming and activation', async ({
+  page,
+}, info) => {
+  test.setTimeout(90000);
+  await page.setViewportSize({ width: 390, height: 950 });
+  await page.goto('club/');
+  await dismissTutorialForTest(page);
+  await page.goto('club/#/roux-lab');
+  await page.getByLabel('Scramble sequence').fill("D2 F' R' D");
+  await page.getByRole('button', { name: 'Analyze cube', exact: true }).click();
+  const region = page.getByRole('region', { name: 'Roux routes' });
+  const compare = region.getByRole('button', { name: 'Compare this route', exact: true });
+  await compare.first().waitFor({ timeout: 35000 });
+  await compare.first().focus();
+  const refresh = region.getByRole('button', { name: 'Show latest routes', exact: true });
+  await expect(refresh).toHaveAttribute('aria-disabled', 'false', { timeout: 35000 });
+  await compare.last().focus();
+  await page.keyboard.press('Tab');
+  await expect(refresh).toBeFocused();
+  await page.keyboard.press('Enter');
+  await expect(refresh).toBeFocused();
+  await page.keyboard.press('Shift+Tab');
+  await expect(compare.last()).toBeFocused();
+  await page.keyboard.press('Tab');
+  await page.keyboard.press('Space');
+  await expect(refresh).toBeFocused();
+  await page.screenshot({ path: `test-results/roux-refresh-focus-${info.project.name}.png` });
+  await page.keyboard.press('Tab');
+  await expect(
+    page.getByRole('button', { name: 'Show basic LSE as a separate route', exact: true }),
+  ).toBeFocused();
+});
+
 for (const width of [1440, 390])
   test(`Roux A/B snapshots and shared player stay fixed at ${width}px`, async ({ page }, info) => {
     test.setTimeout(90000);
@@ -14,9 +48,29 @@ for (const width of [1440, 390])
     await page.getByRole('button', { name: 'Analyze cube', exact: true }).click();
     const cards = page.getByRole('region', { name: 'Roux routes' }).locator('[data-roux-route]');
     await expect.poll(() => cards.count(), { timeout: 35000 }).toBeGreaterThanOrEqual(2);
-    // Resolve the currently available cards at click time: search may replace an
-    // unpinned candidate between a DOM read and the subsequent click.
-    await cards.getByRole('button', { name: 'Compare this route', exact: true }).first().click();
+    // Record the actual press target, then hold through multiple worker updates.
+    // The keyed card and the route it represents must survive until native click.
+    await page.getByRole('region', { name: 'Roux routes' }).evaluate((region) => {
+      region.addEventListener(
+        'pointerdown',
+        (event) => {
+          const card = (event.target as Element).closest('[data-roux-route]');
+          if (card)
+            region.setAttribute('data-pressed-route', card.getAttribute('data-roux-route')!);
+        },
+        { once: true },
+      );
+    });
+    await cards
+      .getByRole('button', { name: 'Compare this route', exact: true })
+      .first()
+      .click({ delay: 800 });
+    const pressed = await page
+      .getByRole('region', { name: 'Roux routes' })
+      .getAttribute('data-pressed-route');
+    await expect(
+      page.getByText('Route A is fixed. Choose a different route for B.', { exact: false }),
+    ).toBeVisible();
     await cards.getByRole('button', { name: 'Compare this route', exact: true }).first().click();
     await page
       .getByRole('navigation', { name: 'Roux Lab workspace' })
@@ -26,6 +80,7 @@ for (const width of [1440, 390])
     const a = await comparison.locator('[data-roux-route]').nth(0).getAttribute('data-roux-route'),
       b = await comparison.locator('[data-roux-route]').nth(1).getAttribute('data-roux-route');
     expect(a).not.toBe(b);
+    expect(a).toBe(pressed);
     await comparison
       .locator(`[data-roux-route="${a}"]`)
       .getByRole('button', { name: 'Play full solve' })

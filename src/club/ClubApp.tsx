@@ -16,6 +16,7 @@ import { TourEntry } from './tutorial/TourEntry';
 import { tourForRoute } from './tutorial/catalog';
 import { createLabOwner } from './lab-owner';
 import { createRouxLabOwner } from './roux-lab/owner';
+import { SectionMenu } from '../ui/SectionMenu';
 const RouxLabWorkspace = lazy(() =>
   import('./roux-lab/RouxLabWorkspace').then((m) => ({ default: m.RouxLabWorkspace })),
 );
@@ -97,6 +98,7 @@ export function ClubApp() {
           ) && (
             <nav className="club-tools" aria-label="Learning tools">
               <a
+                aria-current={route.kind === 'learn' ? 'page' : undefined}
                 href={methodRoute(
                   'method' in route ? route.method : progress.selectedMethod,
                   'learn',
@@ -105,6 +107,7 @@ export function ClubApp() {
                 Lessons
               </a>
               <a
+                aria-current={route.kind === 'solve' ? 'page' : undefined}
                 href={methodRoute(
                   'method' in route ? route.method : progress.selectedMethod,
                   'solve',
@@ -112,23 +115,21 @@ export function ClubApp() {
               >
                 Solve your cube
               </a>
-              <a href="#/algorithms">
-                {'method' in route && route.method === 'roux-beginner'
-                  ? 'CFOP algorithms'
-                  : 'Algorithms'}
-              </a>
-              <a href="#/practice">
-                {'method' in route && route.method === 'roux-beginner'
-                  ? 'CFOP formula practice'
-                  : 'Formula practice'}
-              </a>
-              {'method' in route && route.method === 'roux-beginner' && (
-                <a href="#/guide/roux">Roux guide</a>
-              )}
-              <a href="#/moves">Move explorer</a>
-              <a href="#/cmll">CMLL library</a>
-              <a href="#/cmll-practice">CMLL practice</a>
               <a href="#/find-your-route">Find your route</a>
+              <SectionMenu
+                label="More tools"
+                currentHref={location.hash}
+                items={[
+                  { label: 'CFOP algorithms', href: '#/algorithms' },
+                  { label: 'CFOP formula practice', href: '#/practice' },
+                  { label: 'Move explorer', href: '#/moves' },
+                  { label: 'CMLL library', href: '#/cmll' },
+                  { label: 'CMLL practice', href: '#/cmll-practice' },
+                  ...('method' in route && route.method === 'roux-beginner'
+                    ? [{ label: 'Roux guide', href: '#/guide/roux' }]
+                    : []),
+                ]}
+              />
             </nav>
           )}
           {route.kind === 'home' ? (

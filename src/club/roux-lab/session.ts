@@ -47,7 +47,7 @@ export type RouxSessionEvent =
   | { type: 'adopt'; route: RouxRoute }
   | { type: 'load'; experiment: RouxExperiment }
   | { type: 'saved'; experiment: RouxExperiment }
-  | { type: 'compare'; id: string }
+  | { type: 'compare'; id: string; route?: RouxRoute }
   | { type: 'clear-comparison' }
   | { type: 'stop' }
   | { type: 'complete'; coverage: RouxCoverage }
@@ -141,8 +141,16 @@ export function reduceRouxLabSession(s: RouxLabSession, event: RouxSessionEvent)
     case 'clear-comparison':
       return { ...s, comparisonA: null, comparison: null };
     case 'compare': {
-      const route = s.routes.find((r) => r.id === event.id);
+      const route = event.route ?? s.routes.find((r) => r.id === event.id);
       if (!route) return s;
+      if (
+        event.route &&
+        (route.id !== event.id ||
+          !isVerifiedRouxRoute(route) ||
+          route.input.fingerprint !== s.input?.fingerprint ||
+          !s.settings.allowedFrames.includes(route.frameId))
+      )
+        return s;
       if (s.comparison || s.comparisonA?.id === route.id)
         return { ...s, comparison: null, comparisonA: s.comparison ? route : null };
       if (!s.comparisonA) return { ...s, comparisonA: route };

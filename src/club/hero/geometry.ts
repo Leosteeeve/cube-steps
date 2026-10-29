@@ -51,12 +51,18 @@ export function buildHeroMesh(): readonly HeroFace[] {
                   ) as unknown as Vec3,
               );
               const fill = !sticker
-                ? '#0b2c51'
-                : axis === 1 && sign === 1
-                  ? '#f8fbff'
+                ? '#27322d'
+                : axis === 1
+                  ? sign === 1
+                    ? '#fffdf3'
+                    : '#edcb43'
                   : axis === 0
-                    ? '#1c5093'
-                    : '#2c6aca';
+                    ? sign === 1
+                      ? '#c34a34'
+                      : '#e99532'
+                    : sign === 1
+                      ? '#3c805b'
+                      : '#346aa0';
               faces.push({
                 id: `${x},${y},${z}-${axis},${sign}-${sticker ? 'sticker' : 'body'}`,
                 cubie,

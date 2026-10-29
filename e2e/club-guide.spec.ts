@@ -19,9 +19,7 @@ test('Guide reads without engine assets, supports direct chapters and phone navi
       .getByRole('navigation', { name: 'Main navigation' })
       .getByRole('link', { name: 'Guide', exact: true })
       .click();
-    await expect(
-      page.getByRole('heading', { name: 'A little guidance. A lot to discover.' }),
-    ).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Get to know your tools.' })).toBeVisible();
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
       true,
     );

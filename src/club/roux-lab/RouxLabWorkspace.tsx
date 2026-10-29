@@ -193,8 +193,8 @@ function Body({
             edit(ids);
             setSaved(preferences.save(ids));
           }}
-          onSelect={(id) => dispatch({ type: 'select', id })}
-          onCompare={(id) => dispatch({ type: 'compare', id })}
+          onSelect={(_id, route) => dispatch({ type: 'adopt', route })}
+          onCompare={(id, route) => dispatch({ type: 'compare', id, route })}
         />
         {state.comparisonA && (
           <p role="status">

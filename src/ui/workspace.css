@@ -16,30 +16,19 @@
   --global-radius: var(--workspace-radius);
   background: #f7f9f6;
 }
-[data-edition='club'] {
-  --ink: #142d49;
-  --muted: #5d7088;
-  --green: #215bd8;
-  --soft: #eef3fc;
-  --line: #e1e8f1;
-  background: #fbfcfe;
-}
-[data-edition] .site-header,
-[data-edition] .club-header {
+[data-edition] .site-header {
   position: relative;
   z-index: 25;
   padding: 22px max(24px, calc((100vw - var(--workspace-width)) / 2));
   background: #fff;
   border-bottom: 1px solid var(--line);
 }
-[data-edition] .site-header nav,
-[data-edition] .club-header nav {
+[data-edition] .site-header nav {
   position: relative;
   gap: 4px;
   align-items: center;
 }
 [data-edition] .site-header nav > a,
-[data-edition] .club-header nav > a,
 [data-edition] .section-menu > button {
   display: inline-flex;
   justify-content: center;
@@ -175,53 +164,6 @@
 [data-edition] .empty-solve {
   padding: 40px 24px;
   border-radius: 18px;
-}
-[data-edition='club'] .club-hero {
-  max-width: 1280px;
-  padding: 76px 36px 64px;
-  gap: 50px;
-}
-[data-edition='club'] .club-hero h1 {
-  font-size: clamp(45px, 5.8vw, 80px);
-  line-height: 1.02;
-}
-[data-edition='club'] .club-intro {
-  font-size: 17px;
-  line-height: 1.8;
-}
-[data-edition='club'] .club-kicker {
-  font-size: 11px;
-  letter-spacing: 1.8px;
-}
-[data-edition='club'] .club-primary,
-[data-edition='club'] .club-secondary {
-  border-radius: 12px;
-  font-size: 14px;
-}
-[data-edition='club'] .club-home-cards > a {
-  border-radius: 20px;
-  padding: 30px;
-  border: 1px solid var(--line);
-  box-shadow: none;
-  background: #fff;
-}
-[data-edition='club'] .club-home-cards p {
-  font-size: 16px;
-}
-[data-edition='club'] .club-together {
-  border-radius: 22px;
-}
-[data-edition='club'] .club-tools {
-  border-bottom: 1px solid var(--line);
-}
-[data-edition='club'] .club-home .club-help-note {
-  max-width: 1220px;
-  margin: 24px auto;
-  padding-inline: 24px;
-}
-[data-edition='club'] main > .tour-entry,
-[data-edition='club'] main > [data-guidance-route] > .tour-entry {
-  padding-inline: 24px;
 }
 [data-edition] .notation-content,
 [data-edition] .face-card,
@@ -432,10 +374,6 @@
   font-size: 28px;
 }
 @media (max-width: 1000px) {
-  [data-edition='club'] .club-hero {
-    gap: 20px;
-    padding-inline: 26px;
-  }
   [data-edition] .player-area {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -452,17 +390,10 @@
   }
 }
 @media (max-width: 620px) {
-  [data-edition] .site-header,
-  [data-edition] .club-header {
+  [data-edition] .site-header {
     padding: 20px 20px 12px;
     gap: 18px;
   }
-  [data-edition] .club-header nav {
-    width: 100%;
-    justify-content: space-between;
-    gap: 0;
-  }
-  [data-edition] .club-header nav > a,
   [data-edition] .section-menu > button {
     padding-inline: 8px;
     font-size: 13px;
@@ -485,14 +416,8 @@
     flex-wrap: wrap;
     gap: 14px;
   }
-  [data-edition='club'] .club-hero {
-    padding: 46px 24px 30px;
-  }
   [data-edition='club'] .club-hero h1 {
     font-size: clamp(43px, 11vw, 64px);
-  }
-  [data-edition='club'] .club-intro {
-    font-size: 16px;
   }
   [data-edition='club'] .club-home-cards > a {
     padding: 24px;
@@ -517,4 +442,6 @@
   }
 }
 /* A gentle lift for the renderer; controls and dimmed target cues stay separate. */
-[data-edition] twisty-player { filter: brightness(1.16) saturate(1.08); }
+[data-edition] twisty-player {
+  filter: brightness(1.16) saturate(1.08);
+}

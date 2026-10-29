@@ -27,3 +27,7 @@ The beginner teaching route references [J Perm](https://www.jperm.net/3x3). Less
 | tagged-tag | 1.0.0 | MIT | [license](public/licenses/tagged-tag-1.0.0/license) |
 | three | 0.170.0 | MIT | [LICENSE](public/licenses/three-0.170.0/LICENSE) |
 | type-fest | 5.10.0 | (MIT OR CC0-1.0) | [license-cc0](public/licenses/type-fest-5.10.0/license-cc0), [license-mit](public/licenses/type-fest-5.10.0/license-mit) |
+
+## Club typography
+
+Bricolage Grotesque, Instrument Sans and IBM Plex Mono are self-hosted Latin WOFF2 subsets from Google Fonts, under the SIL Open Font License 1.1. The deployed site retains the [Bricolage Grotesque license](public/licenses/club-fonts/BricolageGrotesque-OFL.txt), [Instrument Sans license](public/licenses/club-fonts/InstrumentSans-OFL.txt) and [IBM Plex Mono license](public/licenses/club-fonts/IBMPlexMono-OFL.txt), including copyright notices. Sources: [Bricolage Grotesque](https://github.com/google/fonts/tree/main/ofl/bricolagegrotesque), [Instrument Sans](https://github.com/google/fonts/tree/main/ofl/instrumentsans) and [IBM Plex Mono](https://github.com/google/fonts/tree/main/ofl/ibmplexmono). Font requests stay on this site's origin.

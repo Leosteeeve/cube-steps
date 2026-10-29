@@ -10,6 +10,8 @@ import { OrientationPicker } from './OrientationPicker';
 import { RouteSummary } from './RouteSummary';
 import { useGuidanceTarget } from '../../ui/guidance';
 import { selectRouxRoutes, currentRouxEvidence } from '../../methods/roux-advanced/selection';
+import type { RouxRoute } from '../../roux-lab/types';
+import { useRouteInteraction } from './useRouteInteraction';
 export function AnalyzePage({
   engine,
   state,
@@ -24,8 +26,8 @@ export function AnalyzePage({
   onStart: (input: SolveInput) => void;
   onEdit: () => void;
   onFrames: (ids: readonly RouxFrameId[]) => void;
-  onSelect: (id: string) => void;
-  onCompare: (id: string) => void;
+  onSelect: (id: string, route: RouxRoute) => void;
+  onCompare: (id: string, route: RouxRoute) => void;
 }) {
   const [mode, setMode] = useState<'scramble' | 'colors'>('scramble'),
     [text, setText] = useState(''),
@@ -35,7 +37,8 @@ export function AnalyzePage({
     [randomizing, setRandomizing] = useState(false),
     generation = useRef(0);
   const busy = state.status === 'initializing' || state.status === 'searching';
-  const recommendations = selectRouxRoutes(state.routes, state.coverage?.frames ?? {}, 4);
+  const { displayed, pending, refresh, interaction } = useRouteInteraction(state);
+  const recommendations = selectRouxRoutes(displayed.routes, displayed.coverage?.frames ?? {}, 4);
   const inputTarget = useGuidanceTarget('roux-lab.input'),
     frameTarget = useGuidanceTarget('roux-lab.frames'),
     routeTarget = useGuidanceTarget('roux-lab.routes');
@@ -171,33 +174,45 @@ export function AnalyzePage({
       </aside>
       <div className="roux-results">
         <section aria-label="Roux routes" ref={routeTarget}>
-          {state.routes.length ? (
-            <div className="roux-route-cards">
-              {state.routes.map((r) => (
-                <RouteSummary
-                  key={r.id}
-                  route={r}
-                  label={
-                    !recommendations.includes(r)
-                      ? 'PLAYBACK REFERENCE'
-                      : recommendations[0] === r
-                        ? 'CURRENT LEADING ROUTE'
-                        : 'ALTERNATIVE'
-                  }
-                  referenceOnly={!recommendations.includes(r)}
-                  currentEvidence={currentRouxEvidence(r, state.coverage?.frames ?? {})}
-                  selected={state.selectedId === r.id}
-                  onSelect={() => onSelect(r.id)}
-                  onCompare={() => onCompare(r.id)}
-                  comparisonSlot={
-                    state.comparison?.A.id === r.id || state.comparisonA?.id === r.id
-                      ? 'A'
-                      : state.comparison?.B.id === r.id
-                        ? 'B'
-                        : undefined
-                  }
-                />
-              ))}
+          {displayed.routes.length ? (
+            <div {...interaction}>
+              <div className="roux-route-cards">
+                {displayed.routes.map((r) => (
+                  <RouteSummary
+                    key={r.id}
+                    route={r}
+                    label={
+                      !recommendations.includes(r)
+                        ? 'PLAYBACK REFERENCE'
+                        : recommendations[0] === r
+                          ? 'CURRENT LEADING ROUTE'
+                          : 'ALTERNATIVE'
+                    }
+                    referenceOnly={!recommendations.includes(r)}
+                    currentEvidence={currentRouxEvidence(r, displayed.coverage?.frames ?? {})}
+                    selected={state.selectedId === r.id}
+                    onSelect={() => onSelect(r.id, r)}
+                    onCompare={() => onCompare(r.id, r)}
+                    comparisonSlot={
+                      state.comparison?.A.id === r.id || state.comparisonA?.id === r.id
+                        ? 'A'
+                        : state.comparison?.B.id === r.id
+                          ? 'B'
+                          : undefined
+                    }
+                  />
+                ))}
+              </div>
+              <div className="roux-lab-actions">
+                <button
+                  aria-disabled={!pending}
+                  onClick={() => {
+                    if (pending) refresh();
+                  }}
+                >
+                  Show latest routes
+                </button>
+              </div>
             </div>
           ) : (
             <div className="roux-lab-card">

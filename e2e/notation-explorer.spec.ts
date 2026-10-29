@@ -17,7 +17,10 @@ for (const width of [360, 390, 768, 1024, 1440])
       'aria-current',
       'page',
     );
-    await expect(navigation.getByRole('link', { name: 'Timer', exact: true })).toHaveAttribute('href', '#/timer');
+    await expect(navigation.getByRole('link', { name: 'Timer', exact: true })).toHaveAttribute(
+      'href',
+      '#/timer',
+    );
     await page.keyboard.press('Escape');
     await renderNotationFrame(page);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
@@ -52,7 +55,7 @@ for (const width of [360, 390, 768, 1024, 1440])
     await page.reload();
     await expect(page.getByLabel('Selected move')).toHaveText('U');
     await page.getByRole('link', { name: 'Home', exact: true }).click();
-    await expect(page.getByRole('link', { name: /Meet the moves/ })).toHaveAttribute(
+    await expect(page.getByRole('link', { name: /^Move Explorer A letter/ })).toHaveAttribute(
       'href',
       '#/moves',
     );
@@ -107,7 +110,7 @@ test('reduced motion, WebGL fallback and recoverable lazy module failure', async
   await page.getByRole('button', { name: 'Reload move explorer' }).click();
   await expect(page.getByRole('img', { name: 'Before U', exact: true })).toBeVisible();
   await page.getByRole('link', { name: 'Home', exact: true }).click();
-  await expect(page.getByRole('heading', { name: 'One turn. A new possibility.' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Pick up a cube.' })).toBeVisible();
 });
 test('decoration off allows deliberate moves and explorer leaves stored learning data untouched', async ({
   page,
