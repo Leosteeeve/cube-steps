@@ -17,7 +17,7 @@
     "generate:cases": "node scripts/generate-case-setups.mts",
     "verify:cases": "node scripts/generate-case-setups.mts --verify",
     "test": "vitest run",
-    "test:unit": "vitest run src",
+    "test:unit": "vitest run src && node --test scripts/tutorial/crop-geometry.test.mjs",
     "test:roux": "vitest run src/methods/roux tests/roux-corner-coverage.test.ts tests/roux-stage-boundaries.test.ts --maxWorkers=1",
     "test:roux:coverage": "vitest run tests/roux-block-coverage.test.ts tests/roux-corner-coverage.test.ts tests/roux-lse-coverage.test.ts --maxWorkers=1",
     "test:roux:corpus": "vitest run tests/roux-corpus.test.ts tests/roux-color-input.test.ts --maxWorkers=1",

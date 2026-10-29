@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { createHash } from 'node:crypto';
-import accepted from '../docs/media/roux-refresh/film-manifest.json' with { type: 'json' };
+import accepted from '../docs/media/editorial-refresh/full-film-manifest.json' with { type: 'json' };
+import intro from '../docs/media/editorial-refresh/short-film-manifest.json' with { type: 'json' };
 
 test('Guide loads the film only on request and keeps written help available', async ({ page }) => {
   const mediaRequests: string[] = [];
@@ -25,7 +26,7 @@ test('Guide loads the film only on request and keeps written help available', as
   await watch.click();
   const video = page.locator('video');
   await expect(video).toBeVisible();
-  await expect(video).toHaveAttribute('src', /club-guide-video-v3\.mp4$/);
+  await expect(video).toHaveAttribute('src', /club-guide-video-v4\.mp4$/);
   await expect.poll(() => video.evaluate((v: HTMLVideoElement) => v.readyState)).toBeGreaterThan(1);
   expect(await video.evaluate((v: HTMLVideoElement) => v.duration)).toBeCloseTo(
     accepted.durationSeconds,
@@ -68,12 +69,10 @@ test('Guide loads the film only on request and keeps written help available', as
     );
   }
   await page.getByText('Read the on-screen guide', { exact: true }).click();
-  await expect(
-    page.getByText('History stays in this browser on this device.', { exact: false }),
-  ).toBeVisible();
+  await expect(page.getByText('History stays in this browser', { exact: false })).toBeVisible();
   await expect(page.getByText('Your turn. Keep your curiosity.', { exact: false })).toBeVisible();
   await expect(page.getByText('Full guide: open Guide', { exact: false })).toBeVisible();
-  const download = page.getByRole('link', { name: 'Download video (28 MB)' });
+  const download = page.getByRole('link', { name: 'Download video (23 MB)' });
   const response = await page.request.get((await download.getAttribute('href'))!);
   expect(response.ok()).toBe(true);
   expect(response.headers()['content-type']).toContain('video/mp4');
@@ -95,10 +94,67 @@ test('an unavailable film preserves the written Guide and a download alternative
     v.load();
   });
   await expect(page.getByRole('status')).toContainText('The video could not load');
-  await expect(page.getByRole('link', { name: 'Download video (28 MB)' })).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Download video (23 MB)' })).toBeVisible();
   await page
     .getByRole('navigation', { name: 'Guide chapters' })
     .getByRole('link', { name: /Read a move/ })
     .click();
   await expect(page.getByRole('heading', { name: 'Read a move, then try it' })).toBeFocused();
+});
+
+test('the introduction plays and seeks; keyboard switching unloads it without autoplay', async ({
+  page,
+}) => {
+  const errors: string[] = [];
+  page.on('pageerror', (error) => errors.push(error.message));
+  await page.goto('club/#/guide');
+  const choose = page.getByRole('button', { name: '30-second introduction', exact: true });
+  await choose.focus();
+  await page.keyboard.press('Space');
+  await expect(choose).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.locator('video')).toHaveCount(0);
+  await page.getByRole('button', { name: 'Watch the 30-second introduction' }).click();
+  const video = page.locator('video');
+  await expect.poll(() => video.evaluate((v: HTMLVideoElement) => v.readyState)).toBeGreaterThan(1);
+  expect(await video.evaluate((v: HTMLVideoElement) => v.duration)).toBeCloseTo(
+    intro.durationSeconds,
+    1,
+  );
+  await video.evaluate((v: HTMLVideoElement) => {
+    v.muted = true;
+    return v.play();
+  });
+  await expect
+    .poll(() => video.evaluate((v: HTMLVideoElement) => v.currentTime))
+    .toBeGreaterThan(0);
+  await expect
+    .poll(() =>
+      video.evaluate((v: HTMLVideoElement) => {
+        for (let i = 0; i < v.seekable.length; i++)
+          if (v.seekable.start(i) <= 27 && v.seekable.end(i) >= 27) return true;
+        return false;
+      }),
+    )
+    .toBe(true);
+  await video.evaluate((v: HTMLVideoElement) => {
+    v.pause();
+    v.currentTime = 27;
+  });
+  await expect.poll(() => video.evaluate((v: HTMLVideoElement) => v.seeking)).toBe(false);
+  expect(await video.evaluate((v: HTMLVideoElement) => v.currentTime)).toBeCloseTo(27, 0);
+  const download = page.getByRole('link', { name: 'Download video (2 MB)' });
+  const response = await page.request.get((await download.getAttribute('href'))!);
+  const bytes = await response.body();
+  expect(bytes.length).toBe(intro.bytes);
+  expect(createHash('sha256').update(bytes).digest('hex')).toBe(intro.sha256);
+  const range = await page.request.get((await download.getAttribute('href'))!, {
+    headers: { Range: 'bytes=0-1023' },
+  });
+  expect(range.status()).toBe(206);
+  expect((await range.body()).length).toBe(1024);
+  await page.getByRole('button', { name: '5-minute guide', exact: true }).focus();
+  await page.keyboard.press('Enter');
+  await expect(page.locator('video')).toHaveCount(0);
+  await expect(page.getByRole('button', { name: 'Watch the 5-minute guide' })).toBeVisible();
+  expect(errors).toEqual([]);
 });

@@ -1,207 +1,211 @@
 1
 00:00:00,000 --> 00:00:04,000
-One turn. A new possibility. Learn it here. Try it in your hands.
+Pick up a cube. Find your route. Learn a step. Make time to practise.
 
 2
 00:00:04,000 --> 00:00:10,000
-Start with one small step. You do not need to know how to solve yet. START HERE. No account needed. Pause whenever you want to try a step.
+Start with one small step. You do not need to know how to solve yet. [START HERE] No account needed. Pause whenever you want to try a step.
 
 3
 00:00:10,000 --> 00:00:16,000
 Find your starting point. Or join a lesson if you already know where to begin.
 
 4
-00:00:16,000 --> 00:00:21,000
-Choose your current level. Pick what you can do on your own today. FIND YOUR ROUTE. This is a recommendation, not a test. You can change routes later.
+00:00:16,000 --> 00:00:20,000
+Choose your current level. Pick what you can do on your own today. [FIND YOUR ROUTE] This is a recommendation, not a test. You can change routes later.
 
 5
-00:00:21,000 --> 00:00:26,000
-Choose a way of thinking. Layers and pairs, or blocks and the middle slice?
+00:00:20,000 --> 00:00:25,000
+How do you feel about memorising? Here, we prefer remembering fewer move sequences.
 
 6
-00:00:26,000 --> 00:00:31,000
-Be honest about your foundation. Roux routes are included when they fit your experience.
+00:00:25,000 --> 00:00:30,000
+How do you like to learn? Here, we like understanding why moves work.
 
 7
-00:00:31,000 --> 00:00:36,000
+00:00:30,000 --> 00:00:35,000
 Choose a goal. Here, we want a first independent solve.
 
 8
-00:00:36,000 --> 00:00:43,000
+00:00:35,000 --> 00:00:42,000
 Choose your practice habits. Short sessions count. At the club, at home, or both.
 
 9
-00:00:43,000 --> 00:00:52,000
-Read the reason for your route. This example starts with LBL. Open the first lesson when ready.
+00:00:42,000 --> 00:00:46,000
+Read the reason for your route. Start with LBL; Roux is a later option that fits these preferences.
 
 10
-00:00:52,000 --> 00:00:57,000
-Match the starting hold. Here: white on top, green in front. MEET THE MOVES. Read direction while looking straight at the face being turned.
+00:00:46,000 --> 00:00:52,000
+Open Start lesson when you are ready. Explore Roux later, once you can solve independently.
 
 11
+00:00:52,000 --> 00:00:57,000
+Match the starting hold. Here: white on top, green in front. [MEET THE MOVES] Read direction while looking straight at the face being turned.
+
+12
 00:00:57,000 --> 00:01:02,000
 U / D: up / down. L / R: left / right. F / B: front / back.
 
-12
+13
 00:01:02,000 --> 00:01:08,000
 Plain letter: clockwise 90°. A prime mark reverses it. A 2 means a half turn.
 
-13
+14
 00:01:08,000 --> 00:01:14,000
 Choose U′, then Direction view. Look straight at the upper face to judge its direction.
 
-14
+15
 00:01:14,000 --> 00:01:20,000
 Play the move. Watch the top layer, then copy it on your cube.
 
-15
+16
 00:01:20,000 --> 00:01:26,000
 Replay, or return to Holding view. Changing the camera changes your view, not the cube.
 
-16
-00:01:26,000 --> 00:01:32,000
-Build a white daisy. Put white petals around the yellow centre first. LEARN ONE STAGE. Prepared lesson example: set up your physical cube before copying its moves.
-
 17
+00:01:26,000 --> 00:01:32,000
+Build a white daisy. Put white petals around the yellow centre first. [LEARN ONE STAGE] Prepared lesson example: set up your physical cube before copying its moves.
+
+18
 00:01:32,000 --> 00:01:38,000
 Use the example setup. Open “Follow along with a physical cube”.
 
-18
+19
 00:01:38,000 --> 00:01:45,000
 Apply its scramble from solved. Start white-up, green-front. Pause the video to prepare.
 
-19
+20
 00:01:45,000 --> 00:01:50,000
 Return to the player. Read Observe, Prepare and Check the result.
 
-20
+21
 00:01:50,000 --> 00:01:56,000
 Try Next move. Copy one turn, then check what changed.
 
-21
+22
 00:01:56,000 --> 00:02:04,000
 Follow whole-cube rotations too. A shown x, y or z is a real regrip. Camera dragging is only a view change.
 
-22
-00:02:04,000 --> 00:02:09,000
-Start with a method you know. Choose LBL while learning your first independent solve. SOLVE YOUR CUBE. Prepared input example. The solution shown comes from the entered scramble.
-
 23
+00:02:04,000 --> 00:02:09,000
+Start with a method you know. Choose LBL while learning your first independent solve. [SOLVE YOUR CUBE] Prepared input example. The solution shown comes from the entered scramble.
+
+24
 00:02:09,000 --> 00:02:15,000
 Paste the scramble you used. Only use this option if that sequence was applied from solved.
 
-24
+25
 00:02:15,000 --> 00:02:21,000
 Choose Explain with LBL. The site checks and builds your teaching steps.
 
-25
+26
 00:02:21,000 --> 00:02:27,000
 Follow the solution player. Match the holding, then use Next move.
 
-26
+27
 00:02:27,000 --> 00:02:32,000
 Keep the physical cube in sync. A stage jump changes the display; it does not turn your cube.
 
-27
-00:02:32,000 --> 00:02:37,000
-Choose Enter colors. Follow the holding diagram for the current face. ENTER COLOURS. Input demonstration: this clip does not complete all six faces.
-
 28
+00:02:32,000 --> 00:02:37,000
+Choose Enter colors. Follow the holding diagram for the current face. [ENTER COLOURS] Input demonstration: this clip does not complete all six faces.
+
+29
 00:02:37,000 --> 00:02:42,000
 Pick a colour, then a sticker. Centres are fixed. Copy your actual cube.
 
-29
+30
 00:02:42,000 --> 00:02:46,000
 Continue through all six faces. Keep the top and front directions shown for each face.
 
-30
+31
 00:02:46,000 --> 00:02:50,000
 Review and Check colors. Finish every face and correct errors before solving.
 
-31
-00:02:50,000 --> 00:02:55,000
-Try to name the case. Study the diagram before you reveal the answer. FORMULA PRACTICE. CFOP practice is useful once you have learned the corresponding method.
-
 32
+00:02:50,000 --> 00:02:55,000
+Try to name the case. Study the diagram before you reveal the answer. [FORMULA PRACTICE] CFOP practice is useful once you have learned the corresponding method.
+
+33
 00:02:55,000 --> 00:03:00,000
 Show the solution. Check the holding and formula. Repeat when it feels familiar.
 
-33
-00:03:00,000 --> 00:03:06,000
-Scramble from solved. Start white-up, green-front and apply the printed moves. TIME YOUR PRACTICE. Timer control demonstration only. The short run shown is not a real solve.
-
 34
+00:03:00,000 --> 00:03:06,000
+Scramble from solved. Start white-up, green-front and apply the printed moves. [TIME YOUR PRACTICE] Timer control demonstration only. The short run shown is not a real solve.
+
+35
 00:03:06,000 --> 00:03:12,000
 Check the six-face diagram. Compare its stickers with your cube.
 
-35
+36
 00:03:12,000 --> 00:03:17,000
 Hold Space until Ready. Release to start the timer.
 
-36
+37
 00:03:17,000 --> 00:03:23,000
 Press again to stop. On a touch screen: hold, release, then tap to stop.
 
-37
+38
 00:03:23,000 --> 00:03:30,000
 Inspection is optional. Use the checkbox when you want inspection before timing.
 
-38
-00:03:30,000 --> 00:03:36,000
-Review your times and averages. ao5 and ao12 summarize five and twelve solves. YOUR PROGRESS. Sample records, not member results. History stays in this browser on this device.
-
 39
+00:03:30,000 --> 00:03:36,000
+Review your times and averages. ao5 and ao12 summarize five and twelve solves. [YOUR PROGRESS] Sample records, not member results. History stays in this browser on this device.
+
+40
 00:03:36,000 --> 00:03:42,000
 Correct a result when needed. Use +2 for a penalty or DNF for an unfinished solve.
 
-40
+41
 00:03:42,000 --> 00:03:48,000
 Export a backup. Keep CSV or JSON before clearing data or changing devices.
 
-41
-00:03:48,000 --> 00:03:54,000
-Roux builds two side blocks. It uses the middle slice instead of treating every layer separately. ANOTHER WAY TO THINK. Advanced Roux is Preview. Start with Beginner Roux if these ideas are new.
-
 42
+00:03:48,000 --> 00:03:54,000
+Roux builds two side blocks. It uses the middle slice instead of treating every layer separately. [ANOTHER WAY TO THINK] Advanced Roux is Preview. Start with Beginner Roux if these ideas are new.
+
+43
 00:03:54,000 --> 00:04:00,000
 Read the setup and block check. Different pieces can suggest a square, a pair, or another construction.
 
-43
+44
 00:04:00,000 --> 00:04:04,000
 Try one explained example. Follow the shown hold. M and M′ turn the middle slice.
 
-44
+45
 00:04:04,000 --> 00:04:08,000
 Progress at your own pace. The lessons and CMLL library explain the next stages.
 
-45
-00:04:08,000 --> 00:04:14,000
-Lab explores candidate routes. It can compare white or yellow bottoms and different left colours. ROUX LAB · EXPERIMENTAL. Search completed before this shot. Real verified route; original playback speed.
-
 46
+00:04:08,000 --> 00:04:14,000
+Lab explores candidate routes. It can compare white or yellow bottoms and different left colours. [ROUX LAB · EXPERIMENTAL] Search completed before this shot. Real verified route; original playback speed.
+
+47
 00:04:14,000 --> 00:04:20,000
 Read the recommendation carefully. Move counts and handling scores are references, not promises of speed.
 
-47
+48
 00:04:20,000 --> 00:04:26,000
 Follow the selected route. Use the player, then compare it with another on a physical cube.
 
-48
+49
 00:04:26,000 --> 00:04:32,000
 Keep notes about the feel. Trials help compare the same starting cube. Your records stay local.
 
-49
-00:04:32,000 --> 00:04:38,000
-Open Guide and pick a chapter. Find the instructions for the page you are using. HELP WHEN YOU NEED IT. Open Guide from the club navigation. Tours can be skipped or exited at any time.
-
 50
+00:04:32,000 --> 00:04:38,000
+Open Guide and pick a chapter. Find the instructions for the page you are using. [HELP WHEN YOU NEED IT] Open Guide from the club navigation. Tours can be skipped or exited at any time.
+
+51
 00:04:38,000 --> 00:04:44,000
 Expand Every control, explained. Look up a button without replaying the whole video.
 
-51
+52
 00:04:44,000 --> 00:04:50,000
 Try a page tour if you need it. Choose one thing to practise today, then try it with your cube.
 
-52
+53
 00:04:50,000 --> 00:05:00,000
-Your turn. Keep your curiosity. Learn it here. Try it in your hands. Full guide: open Guide.
+Bring your cube. Take your time. Your turn. Keep your curiosity. Full guide: open Guide.

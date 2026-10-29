@@ -1,0 +1,32 @@
+[
+  {
+    "start": 0,
+    "end": 3,
+    "text": "Pick up a cube. See a move. Try it in your hands."
+  },
+  {
+    "start": 3,
+    "end": 8,
+    "text": "See the turn. Move Explorer"
+  },
+  {
+    "start": 8,
+    "end": 14,
+    "text": "Try one step. Watch. Try. Check."
+  },
+  {
+    "start": 14,
+    "end": 19,
+    "text": "Make time to practise. Timer controls demo · not a real solve"
+  },
+  {
+    "start": 19,
+    "end": 25,
+    "text": "Find another way. Roux Lab · Experimental"
+  },
+  {
+    "start": 25,
+    "end": 30,
+    "text": "Your turn. Keep your curiosity. Full guide: open Guide"
+  }
+]

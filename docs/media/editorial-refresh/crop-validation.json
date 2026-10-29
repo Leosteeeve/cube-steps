@@ -1,0 +1,14 @@
+{
+  "equivalence": {
+    "samples": 8580,
+    "maxDelta": 1.1368683772161603e-13,
+    "equivalent": true
+  },
+  "captureCheck": {
+    "checked": 40,
+    "outside": []
+  },
+  "highlightWindow": "Every frame from 18 frames before each click through the click frame; 30 fps",
+  "tests": "Two deterministic old-lookup regressions failed first; all three geometry tests pass",
+  "filmBytesUnchanged": true
+}

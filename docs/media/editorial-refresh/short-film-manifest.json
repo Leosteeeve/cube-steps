@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "sourceRevision": "474b37100a2b4bb95013fed2f43575475ef890bc",
+  "durationSeconds": 30.016,
+  "frames": 900,
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "bytes": 2125415,
+  "sha256": "b30f26cae40e8af47932f8676f93ce495a707a9ea2839c0e4ebc84ffea0bf89d",
+  "voice": false,
+  "chapters": [
+    {
+      "start": 3,
+      "title": "See the turn."
+    },
+    {
+      "start": 8,
+      "title": "Try one step."
+    },
+    {
+      "start": 14,
+      "title": "Make time to practise."
+    },
+    {
+      "start": 19,
+      "title": "Find another way."
+    }
+  ],
+  "prompts": [
+    {
+      "start": 0,
+      "end": 3,
+      "text": "Pick up a cube. See a move. Try it in your hands."
+    },
+    {
+      "start": 3,
+      "end": 8,
+      "text": "See the turn. Move Explorer"
+    },
+    {
+      "start": 8,
+      "end": 14,
+      "text": "Try one step. Watch. Try. Check."
+    },
+    {
+      "start": 14,
+      "end": 19,
+      "text": "Make time to practise. Timer controls demo · not a real solve"
+    },
+    {
+      "start": 19,
+      "end": 25,
+      "text": "Find another way. Roux Lab · Experimental"
+    },
+    {
+      "start": 25,
+      "end": 30,
+      "text": "Your turn. Keep your curiosity. Full guide: open Guide"
+    }
+  ],
+  "credits": [
+    {
+      "name": "Origami — Scott Buckley",
+      "url": "https://www.scottbuckley.com.au/library/origami/",
+      "license": "CC BY 4.0",
+      "edits": "One excerpt trimmed from 00:12, reduced in level, with opening and closing fades; no interface effects"
+    }
+  ]
+}

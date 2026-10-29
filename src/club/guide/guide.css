@@ -101,6 +101,34 @@
   line-height: 1.6;
   color: var(--muted);
 }
+.guide-video-choice {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 20px 0 16px;
+}
+.guide-video-choice button {
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--club-paper);
+  color: var(--ink);
+  font: inherit;
+  cursor: pointer;
+}
+.guide-video-choice button[aria-pressed='true'] {
+  background: var(--club-accent);
+  border-color: var(--club-accent);
+  color: white;
+}
+.guide-video-choice button:hover {
+  border-color: var(--green);
+}
+.guide-video-choice button:focus-visible {
+  outline: 3px solid var(--green);
+  outline-offset: 3px;
+}
 .guide-video-meta p {
   margin: 0;
 }

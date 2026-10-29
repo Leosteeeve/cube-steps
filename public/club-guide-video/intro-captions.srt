@@ -1,0 +1,23 @@
+1
+00:00:00,000 --> 00:00:03,000
+Pick up a cube. See a move. Try it in your hands.
+
+2
+00:00:03,000 --> 00:00:08,000
+See the turn. Move Explorer
+
+3
+00:00:08,000 --> 00:00:14,000
+Try one step. Watch. Try. Check.
+
+4
+00:00:14,000 --> 00:00:19,000
+Make time to practise. Timer controls demo · not a real solve
+
+5
+00:00:19,000 --> 00:00:25,000
+Find another way. Roux Lab · Experimental
+
+6
+00:00:25,000 --> 00:00:30,000
+Your turn. Keep your curiosity. Full guide: open Guide
