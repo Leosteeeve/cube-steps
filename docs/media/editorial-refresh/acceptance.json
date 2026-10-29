@@ -1,0 +1,17 @@
+{
+  "status": "accepted",
+  "date": "2026-10-28",
+  "authorization": "Owner requested fixing crop checking and replacing both new videos, then PR, checks, merge, Pages and local synchronization.",
+  "films": {
+    "full": {
+      "bytes": 23077454,
+      "sha256": "1959f168bd73d86a82da8e450cc3ebe5d4260c86d7d8e3721823422e1c904926"
+    },
+    "short": {
+      "bytes": 2125415,
+      "sha256": "b30f26cae40e8af47932f8676f93ce495a707a9ea2839c0e4ebc84ffea0bf89d"
+    }
+  },
+  "solverAcceptanceChanged": false,
+  "physicalErgonomicsAccepted": false
+}

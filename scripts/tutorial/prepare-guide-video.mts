@@ -33,11 +33,20 @@ if (import.meta.main) {
   const asset: VideoAsset = JSON.parse(
     await readFile(new URL('./guide-video.json', import.meta.url), 'utf8'),
   );
+  const intro: VideoAsset = JSON.parse(
+    await readFile(new URL('./intro-video.json', import.meta.url), 'utf8'),
+  );
   await prepareGuideVideo(
     asset,
     fileURLToPath(
-      new URL('../../public/club-guide-video/club-guide-video-v3.mp4', import.meta.url),
+      new URL('../../public/club-guide-video/club-guide-video-v4.mp4', import.meta.url),
     ),
   );
-  console.log('Guide video verified.');
+  await prepareGuideVideo(
+    intro,
+    fileURLToPath(
+      new URL('../../public/club-guide-video/club-intro-video-v2.mp4', import.meta.url),
+    ),
+  );
+  console.log('Guide and introduction videos verified.');
 }

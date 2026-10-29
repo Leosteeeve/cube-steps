@@ -6,7 +6,7 @@ import { GuidePage } from './GuidePage';
 import { GuideImage } from './GuideImage';
 import { TutorialProvider } from '../tutorial/TutorialProvider';
 import { GUIDE_CHAPTERS } from './chapters';
-import acceptedFilm from '../../../docs/media/roux-refresh/film-manifest.json';
+import acceptedFilm from '../../../docs/media/editorial-refresh/full-film-manifest.json';
 afterEach(cleanup);
 it('waits for an explicit watch action and preserves written help when the accepted film fails', () => {
   render(
@@ -18,12 +18,12 @@ it('waits for an explicit watch action and preserves written help when the accep
   const download = screen.getByRole('link', {
     name: `Download video (${Math.round(acceptedFilm.bytes / 1_000_000)} MB)`,
   });
-  expect(download).toHaveAttribute('href', expect.stringMatching(/club-guide-video-v3\.mp4$/));
-  expect(download).toHaveAttribute('download', 'Webb-Cubing-Club-Guide-Roux-Refresh.mp4');
+  expect(download).toHaveAttribute('href', expect.stringMatching(/club-guide-video-v4\.mp4$/));
+  expect(download).toHaveAttribute('download', 'Webb-Cubing-Club-Guide-Editorial.mp4');
   const watch = screen.getByRole('button', { name: 'Watch the 5-minute guide' });
   expect(watch.querySelector('img')).toHaveAttribute(
     'src',
-    expect.stringMatching(/poster-v3\.webp$/),
+    expect.stringMatching(/poster-v4\.png$/),
   );
   fireEvent.click(watch);
   const video = document.querySelector('video')!;
@@ -39,6 +39,32 @@ it('waits for an explicit watch action and preserves written help when the accep
     'href',
     'https://www.scottbuckley.com.au/library/origami/',
   );
+});
+it('offers the short introduction without loading media and resets playback and errors when switching', () => {
+  render(
+    <TutorialProvider>
+      <GuidePage />
+    </TutorialProvider>,
+  );
+  fireEvent.click(screen.getByRole('button', { name: '30-second introduction' }));
+  expect(document.querySelector('video')).toBeNull();
+  expect(screen.getByRole('button', { name: '30-second introduction' })).toHaveAttribute(
+    'aria-pressed',
+    'true',
+  );
+  expect(screen.getByRole('link', { name: 'Download video (2 MB)' })).toHaveAttribute(
+    'href',
+    expect.stringMatching(/club-intro-video-v2\.mp4$/),
+  );
+  fireEvent.click(screen.getByRole('button', { name: 'Watch the 30-second introduction' }));
+  const intro = document.querySelector('video')!;
+  expect(intro).toHaveAttribute('src', expect.stringMatching(/club-intro-video-v2\.mp4$/));
+  fireEvent.error(intro);
+  expect(screen.getByRole('status')).toBeInTheDocument();
+  fireEvent.click(screen.getByRole('button', { name: '5-minute guide' }));
+  expect(document.querySelector('video')).toBeNull();
+  expect(screen.queryByRole('status')).toBeNull();
+  expect(screen.getByRole('button', { name: 'Watch the 5-minute guide' })).toBeInTheDocument();
 });
 it('opens Roux help with separate lessons and solver links', () => {
   render(
