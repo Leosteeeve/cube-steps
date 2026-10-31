@@ -78,7 +78,7 @@ The following full-page captures use the same viewport widths and fresh local pr
 - The first production run was intentionally interrupted after its 42 Chromium checks passed, so the screenshot-discovered dropdown fix could be included in a fresh final build. Its partial log is retained and is not counted as a complete suite.
 - The independent `npm test` attempt is **not reported as passing**. Its 8,000-route Advanced Roux corpus launches a literal worktree-local `node_modules/vitest/vitest.mjs`; dependencies here resolve from the primary checkout, so its children failed with `MODULE_NOT_FOUND` before replay. The broad run was stopped and its log retained. The dedicated unit command above passed; solver corpus re-proof is not part of this UI-only refinement. No test gate was edited or bypassed.
 
-Full output is retained in `validation/club-phase2-refinement/` outside the checkout: `unit-final.log`, `browser-final.log`, `production-final.log`, `build-final.log`, red regressions and screenshot observations. The fresh whole-branch review is the remaining final checkpoint.
+Full output is retained in `validation/club-phase2-refinement/` outside the checkout: `unit-final.log`, `browser-final.log`, `production-final.log`, `build-final.log`, red regressions and screenshot observations. A fresh, read-only whole-branch review of `0e8bdf4..4bff617` found no Critical, Important or actionable Minor issues. Its verdict was ready to merge within the documented verification limits; publication remains outside this phase. The complete review and scope rulings are preserved with the external evidence.
 
 ### Explicit limits
 
