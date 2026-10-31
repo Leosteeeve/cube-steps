@@ -56,7 +56,7 @@ export const TimerHistory = memo(function TimerHistory({
       </div>
       {!active.length ? (
         <div className="timer-empty">
-          <strong>A fresh start.</strong>
+          <strong>No completed solves yet.</strong>
           <p>Your completed solves will appear here.</p>
         </div>
       ) : (

@@ -101,6 +101,9 @@
   background: #ecece2;
   padding: 22px 28px 20px;
   border-right: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 [data-edition='club'] .club-study-caption {
   display: flex;
@@ -140,7 +143,7 @@
 }
 [data-edition='club'] .club-how-it-works > div {
   display: grid;
-  grid-template-columns: 100px 1fr;
+  grid-template-columns: minmax(90px, 0.8fr) 2fr;
   gap: 16px;
   border-top: 1px solid var(--line);
   padding-block: 13px;
@@ -168,17 +171,20 @@
 }
 [data-edition='club'] .club-path-list {
   border-top: 1px solid var(--ink);
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
-[data-edition='club'] .club-path-list > a {
+[data-edition='club'] .club-path-row {
   display: grid;
-  grid-template-columns: 40px 1fr 1fr 180px;
+  grid-template-columns: 32px 1.05fr 1.1fr minmax(180px, 0.8fr);
   align-items: center;
   gap: 26px;
   padding: 30px 12px;
   border-bottom: 1px solid var(--line);
   color: var(--ink);
 }
-[data-edition='club'] .club-path-list > a:hover {
+[data-edition='club'] .club-path-row:focus-within {
   background: var(--soft);
 }
 [data-edition='club'] .club-path-index {
@@ -200,10 +206,32 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 8px;
+  gap: 0 24px;
   color: var(--green);
   font-size: 14px;
   font-weight: 650;
+}
+[data-edition='club'] .club-path-action .club-text-link:hover {
+  text-decoration-color: currentColor;
+}
+[data-edition='club'] .club-lab-note {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 32px;
+  padding: 24px 12px 0;
+}
+[data-edition='club'] .club-lab-note p {
+  flex: 1 1 36ch;
+  max-width: 68ch;
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+}
+[data-edition='club'] .club-lab-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 24px;
 }
 [data-edition='club'] .club-inline-status {
   font-size: 13px;
@@ -282,7 +310,7 @@
     align-items: start;
     flex-shrink: 0;
   }
-  [data-edition='club'] .club-path-list > a {
+  [data-edition='club'] .club-path-row {
     grid-template-columns: 28px 1fr 1fr;
     gap: 20px;
   }
@@ -354,7 +382,7 @@
     flex-direction: column;
     gap: 12px;
   }
-  [data-edition='club'] .club-path-list > a {
+  [data-edition='club'] .club-path-row {
     grid-template-columns: 28px 1fr;
     gap: 10px 16px;
     padding: 24px 4px;

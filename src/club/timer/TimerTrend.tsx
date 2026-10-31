@@ -42,8 +42,8 @@ export const TimerTrend = memo(function TimerTrend({
       </div>
       {!points.length ? (
         <div className="timer-empty">
-          <strong>Your next chapter starts here.</strong>
-          <p>Complete a solve to see your progress.</p>
+          <strong>No times to plot yet.</strong>
+          <p>Complete a solve to start your chart.</p>
         </div>
       ) : (
         <>
@@ -120,7 +120,7 @@ export const TimerTrend = memo(function TimerTrend({
         </>
       )}
       <p className="timer-chart-note">
-        DNF and missing averages leave gaps. One solve is a moment. Look at the whole picture.
+        DNF results and unavailable averages leave gaps in the chart.
       </p>
     </section>
   );

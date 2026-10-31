@@ -81,7 +81,9 @@ export function ClubApp() {
                   ? 'guide'
                   : route.kind === 'lab' || route.kind === 'roux-lab'
                     ? 'lab'
-                    : 'learn'
+                    : ['learn', 'solve', 'quiz'].includes(route.kind)
+                      ? 'learn'
+                      : undefined
         }
         timerAvailable={true}
       />

@@ -5,7 +5,10 @@ export function ClubFooter() {
       <div className="club-footer-about">
         <strong>Webb Cubing Club</strong>
         <p>Learn a move. Share what clicks.</p>
-        <a href={import.meta.env.BASE_URL}>The CubeSteps toolkit ↗</a>
+        <p className="club-toolkit-context">
+          Our learning tools run on CubeSteps, the open-source cubing toolkit.
+        </p>
+        <a href={import.meta.env.BASE_URL}>Explore CubeSteps ↗</a>
       </div>
       <div className="club-footer-links">
         <a href="#/guide">Website guide</a>

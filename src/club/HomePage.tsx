@@ -14,7 +14,7 @@ export function HomePage({ resumeHref }: { resumeHref?: string }) {
       <section className="club-opening club-container" aria-labelledby="club-welcome-title">
         <div className="club-masthead">
           <p className="club-kicker">
-            Webb Cubing Club <span aria-hidden="true"> / </span> Learn, practice, repeat.
+            Webb Cubing Club <span aria-hidden="true"> / </span> A student-led club at Webb
           </p>
           <span className="club-facelets" aria-hidden="true">
             <i />
@@ -30,16 +30,13 @@ export function HomePage({ resumeHref }: { resumeHref?: string }) {
         </h1>
         <div className="club-opening-bottom">
           <p className="club-intro">
-            Your first solve. A move that finally makes sense. A few more tries before you put it
-            down.
+            Learn your first solve, share a different approach, or practice for a faster time.
+            There’s room to start wherever you are.
           </p>
           <div className="club-actions">
             <a ref={start} className="club-primary" href={resumeHref ?? '#/find-your-route'}>
               {resumeHref ? 'Resume learning' : 'Find my starting point'}{' '}
               <span aria-hidden="true">↗</span>
-            </a>
-            <a ref={learn} className="club-text-link" href="#/learn/notation">
-              Start with the basics <span aria-hidden="true">→</span>
             </a>
           </div>
         </div>
@@ -60,28 +57,28 @@ export function HomePage({ resumeHref }: { resumeHref?: string }) {
           <p>Same cube. A different way to see it.</p>
         </div>
         <div className="club-start-here">
-          <p className="club-kicker">A student-led cubing club</p>
+          <p className="club-kicker">Beyond the screen</p>
           <h2>
-            Figure it out.
+            Bring a cube.
             <br />
-            One turn at a time.
+            Work it out together.
           </h2>
           <p>
-            Follow the cube on screen, try the move in your hands, and come back to the parts that
-            need another look.
+            Our online practice space supports learning in club and at home. Bring a question, try a
+            move, and share what clicks.
           </p>
           <dl className="club-how-it-works">
             <div>
-              <dt>See it</dt>
-              <dd>Watch a move from every angle.</dd>
+              <dt>Learn</dt>
+              <dd>Take turns explaining a tricky step.</dd>
             </div>
             <div>
-              <dt>Try it</dt>
-              <dd>Work through a solve, step by step.</dd>
+              <dt>Compare</dt>
+              <dd>Try two ways to solve the same pieces.</dd>
             </div>
             <div>
-              <dt>Keep at it</dt>
-              <dd>Save your place. Practice at your pace.</dd>
+              <dt>Practice</dt>
+              <dd>Pick up a lesson or time a few solves at home.</dd>
             </div>
           </dl>
           <ProgressStatus />
@@ -101,38 +98,72 @@ export function HomePage({ resumeHref }: { resumeHref?: string }) {
             Not sure? Take the short quiz <span aria-hidden="true">↗</span>
           </a>
         </div>
-        <div className="club-path-list">
-          <a href="#/learn/notation">
-            <span className="club-path-index">01</span>
-            <h3>I’m new to this.</h3>
+        <ol className="club-path-list">
+          <li className="club-path-row">
+            <span className="club-path-index" aria-hidden="true">
+              01
+            </span>
+            <h3>I’m learning my first solve.</h3>
             <p>Learn the notation, then build your first solve layer by layer.</p>
-            <span className="club-path-action">
-              First-solve lessons <span aria-hidden="true">↗</span>
+            <div className="club-path-action">
+              <a ref={learn} className="club-text-link" href="#/learn/notation">
+                Start with the basics <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </li>
+          <li className="club-path-row">
+            <span className="club-path-index" aria-hidden="true">
+              02
             </span>
-          </a>
-          <a href="#/find-your-route">
-            <span className="club-path-index">02</span>
-            <h3>I can solve. What’s next?</h3>
-            <p>Find a learning path that fits how you like to think and practice.</p>
-            <span className="club-path-action">
-              Find your route <span aria-hidden="true">↗</span>
+            <h3>I can solve. Help me improve.</h3>
+            <p>
+              Learn more efficient moves: pair corners and edges with CFOP, or build blocks with
+              Roux.
+            </p>
+            <div className="club-path-action">
+              <a className="club-text-link" href="#/learn/cfop/intro">
+                Learn CFOP <span aria-hidden="true">→</span>
+              </a>
+              <a className="club-text-link" href="#/learn/roux/intro">
+                Learn Roux <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </li>
+          <li className="club-path-row">
+            <span className="club-path-index" aria-hidden="true">
+              03
             </span>
-          </a>
-          <a href="#/lab">
-            <span className="club-path-index">03</span>
-            <h3>I want to look closer.</h3>
-            <p>Compare CFOP solves, inspect decisions, and keep a practice notebook.</p>
-            <span className="club-path-action">
-              Explore the Lab <span className="club-inline-status">Experimental</span>
-              <span aria-hidden="true">↗</span>
-            </span>
-          </a>
+            <h3>I want focused practice.</h3>
+            <p>Train case recognition, or work on Roux’s last-layer corners (CMLL).</p>
+            <div className="club-path-action">
+              <a className="club-text-link" href="#/practice">
+                Recognition practice <span aria-hidden="true">→</span>
+              </a>
+              <a className="club-text-link" href="#/cmll-practice">
+                CMLL practice <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </li>
+        </ol>
+        <div className="club-lab-note">
+          <p>
+            <span className="club-inline-status">Experimental</span> Want to inspect a solve in
+            detail? Compare generated routes and explore decisions in the Labs.
+          </p>
+          <div className="club-lab-links">
+            <a className="club-text-link" href="#/lab">
+              CFOP Lab <span aria-hidden="true">↗</span>
+            </a>
+            <a className="club-text-link" href="#/roux-lab">
+              Roux Lab <span aria-hidden="true">↗</span>
+            </a>
+          </div>
         </div>
       </SectionReveal>
       <SectionReveal as="section" className="club-tool-shelf" aria-labelledby="club-tools-title">
         <div className="club-container club-tool-layout">
           <div>
-            <p className="club-kicker">For the next scramble</p>
+            <p className="club-kicker">The CubeSteps tools</p>
             <h2 id="club-tools-title">
               A little practice
               <br />
@@ -176,8 +207,8 @@ export function HomePage({ resumeHref }: { resumeHref?: string }) {
       </SectionReveal>
       <div ref={help} className="club-help-note club-container">
         <p>
-          <strong>A hand getting started?</strong> Open Page tour for a short introduction, with
-          Skip and Exit always available.
+          <strong>Need a hand getting started?</strong> Open Page tour for a short introduction,
+          with Skip and Exit always available.
         </p>
         <a className="club-text-link" href="#/guide">
           Watch the website guide <span aria-hidden="true">↗</span>
