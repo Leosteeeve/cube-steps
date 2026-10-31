@@ -129,6 +129,11 @@ test('homepage actions and menus reflow with content enlarged to 200 percent', a
     nav.getByRole('link', { name: 'Recognition practice', exact: true }),
   ).toBeInViewport();
   await page.keyboard.press('Escape');
+  await expect(nav.getByRole('button', { name: 'Practice', exact: true })).toHaveAttribute(
+    'aria-expanded',
+    'false',
+  );
+  await expect(nav.getByRole('button', { name: 'Practice', exact: true })).toBeFocused();
   const roux = page
     .getByRole('region', { name: 'Start where you are.' })
     .getByRole('link', { name: 'Learn Roux', exact: true });

@@ -44,7 +44,12 @@ export function SectionMenu({
         aria-expanded={open}
         aria-controls={id}
         data-current={items.some(({ href }) => isCurrent(href)) || undefined}
-        onClick={() => setOpen((value) => !value)}
+        onClick={(event) => {
+          // WebKit does not focus buttons on pointer activation. Keep the
+          // disclosure's Escape and Tab behavior available after any click.
+          event.currentTarget.focus();
+          setOpen((value) => !value);
+        }}
         onKeyDown={(event) => {
           // Optional disclosure-navigation entry; Tab keeps its native behavior.
           if (!open || (event.key !== 'ArrowDown' && event.key !== 'ArrowUp')) return;

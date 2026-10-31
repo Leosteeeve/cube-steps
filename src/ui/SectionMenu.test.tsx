@@ -11,6 +11,17 @@ const items = [
   { label: 'Timer', href: '#/timer' },
 ];
 
+it('focuses a click-opened disclosure when the browser does not focus buttons on click', () => {
+  render(<SectionMenu label="Practice" items={items} currentHref="#/" />);
+  const trigger = screen.getByRole('button', { name: 'Practice' });
+  // fireEvent preserves WebKit's click-without-focus condition.
+  fireEvent.click(trigger);
+  expect(trigger).toHaveFocus();
+  fireEvent.keyDown(document.activeElement!, { key: 'Escape' });
+  expect(trigger).toHaveAttribute('aria-expanded', 'false');
+  expect(screen.queryByRole('link', { name: 'Moves' })).toBeNull();
+});
+
 it('offers arrow-key entry without replacing native Tab navigation', async () => {
   const user = userEvent.setup();
   render(<SectionMenu label="Practice" items={items} currentHref="#/" />);
