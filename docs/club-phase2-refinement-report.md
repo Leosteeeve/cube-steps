@@ -82,7 +82,9 @@ Full output is retained in `validation/club-phase2-refinement/` outside the chec
 
 ### Explicit limits
 
+Publication follow-up: the owner subsequently authorized PR #23, merge after checks, deployment and local synchronization on October 31. The first PR CI passed 360 of 362 development browser cases; both failures were the same storage test selecting “CFOP Lab” globally after opening the navigation menu. The new homepage Experimental link made that locator ambiguous. This reproduced in both browsers. The test now scopes Home, Labs and CFOP Lab to Main navigation and checks the destination URL, retaining every storage assertion and timeout. All **24/24** focused development storage, entry and Phase 2 cases then passed, including the transaction fixtures. No product code or CI gate changed. Logs and traces are preserved with the publication evidence; final deployment still depends on the replacement commit's full CI and live verification.
+
 - Native Edge **200% browser zoom remains unverified**. The Windows computer-use tool stopped because it could not reliably establish the current browser URL. No further native UI control was attempted. Automated CSS zoom/reflow checks are a separate, narrower check and must not be called real browser zoom acceptance.
 - Screenshots are viewport evidence, not a claim that every lesson, screen-reader combination or physical touch device has been manually reviewed. No formal WCAG certification is claimed.
 - The approved films and their editable sources are unchanged; this small homepage copy/pathway refinement is not reflected in their recorded frames. No new video production was requested.
-- This branch is a local implementation for review. This Phase 2 brief did not request pushing, merging or deploying; the public site remains the previously published version.
+- The original Phase 2 brief ended at local review. Publication was separately authorized afterward; the publication receipt, rather than this implementation report, records the final deployment state.
