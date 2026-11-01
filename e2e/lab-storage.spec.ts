@@ -22,12 +22,11 @@ test('failed experiment saves survive Lab navigation and can be retried without 
   await page.getByRole('button', { name: 'Save experiment', exact: true }).click();
   await expect(page.getByText('Unsaved work — keep this tab open.')).toBeVisible();
   await expect(page.getByText('Experiment saved on this device.', { exact: true })).toHaveCount(0);
-  await page
-    .getByRole('navigation', { name: 'Main navigation' })
-    .getByRole('link', { name: 'Home', exact: true })
-    .click();
-  await page.getByRole('button', { name: 'Labs', exact: true }).click();
-  await page.getByRole('link', { name: 'CFOP Lab', exact: true }).click();
+  const navigation = page.getByRole('navigation', { name: 'Main navigation' });
+  await navigation.getByRole('link', { name: 'Home', exact: true }).click();
+  await navigation.getByRole('button', { name: 'Labs', exact: true }).click();
+  await navigation.getByRole('link', { name: 'CFOP Lab', exact: true }).click();
+  await expect(page).toHaveURL(/#\/lab$/);
   await expect(page.getByText('Unsaved work — keep this tab open.')).toBeVisible();
   await page.evaluate(() => ((window as any).failLabWrite = false));
   await page.getByRole('button', { name: 'Retry save', exact: true }).click();

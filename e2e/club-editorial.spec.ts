@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 import { dismissTutorialForTest } from './helpers/tutorial';
 
-for (const width of [375, 768, 1024, 1440]) {
+for (const width of [320, 375, 768, 1024, 1440]) {
   test(`club learning and practice surfaces fit ${width}`, async ({ page }, info) => {
     test.setTimeout(90000);
     await page.setViewportSize({ width, height: 1000 });

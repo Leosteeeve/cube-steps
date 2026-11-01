@@ -4,7 +4,7 @@ export function ClubHeader({
   active,
   timerAvailable,
 }: {
-  active: 'home' | 'moves' | 'learn' | 'timer' | 'guide' | 'lab';
+  active: 'home' | 'moves' | 'learn' | 'timer' | 'guide' | 'lab' | undefined;
   timerAvailable: boolean;
 }) {
   return (

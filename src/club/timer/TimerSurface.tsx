@@ -118,7 +118,7 @@ export function TimerSurface({
         <span aria-hidden="true">{display}</span>
       </button>
       <p id="timer-help">Hold for 0.3 seconds to arm. Release to start. Press to stop.</p>
-      <p className="timer-gentle">One solve is a moment. Enjoy the practice.</p>
+      <p className="timer-gentle">Check your cube against the scramble diagram before starting.</p>
     </div>
   );
 }

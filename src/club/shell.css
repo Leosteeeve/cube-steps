@@ -162,6 +162,10 @@
 [data-edition='club'] .club-footer p {
   margin: 6px 0;
 }
+[data-edition='club'] .club-footer .club-toolkit-context {
+  max-width: 34ch;
+  margin-top: 14px;
+}
 [data-edition='club'] .club-footer a {
   color: var(--green);
   text-decoration: underline;
