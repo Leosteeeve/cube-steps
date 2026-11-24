@@ -410,6 +410,27 @@
     gap: 8px;
   }
 }
+@media (max-width: 420px) {
+  .formula-index .index-practice {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+  .index-practice-title h2 {
+    grid-column: 1 / -1;
+  }
+  .formula-index .index-practice p {
+    grid-area: 2 / 1;
+    justify-self: start;
+    white-space: normal;
+  }
+  .index-practice-title button {
+    grid-area: 2 / 2;
+  }
+  .formula-index .index-practice .primary-button {
+    grid-row: 3;
+    grid-column: 1 / -1;
+    white-space: normal;
+  }
+}
 @media (max-width: 360px) {
   .index-selectors {
     gap: 7px;

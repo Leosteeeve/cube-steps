@@ -70,6 +70,15 @@ for (const width of [320, 390, 430, 768, 1024, 1440])
       if (label === 'library') {
         await page.getByRole('searchbox', { name: 'Search cases' }).fill('OLL 20');
         await expect(page.locator('.case-tile')).toHaveCount(1);
+        const practice = page.getByRole('complementary', { name: 'Practice selection' });
+        const panel = (await practice.boundingBox())!;
+        for (const name of ['Clear selection', 'Practice selected cases']) {
+          const action = practice.getByRole('button', { name, exact: true });
+          await expect(action).toBeVisible();
+          const box = (await action.boundingBox())!;
+          expect(box.x).toBeGreaterThanOrEqual(panel.x - 1);
+          expect(box.x + box.width).toBeLessThanOrEqual(panel.x + panel.width + 1);
+        }
       }
       if (label === 'solve')
         await page.getByRole('button', { name: 'Enter colors', exact: true }).click();
