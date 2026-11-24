@@ -4,6 +4,8 @@ import type { CubeEngine } from '../core/types';
 import * as solver from '../methods/lbl/solve';
 import { handleSolveRequest, handleSolveMessage } from './solve-request';
 import { GOLDEN_CASES } from '../../tests/fixtures/facelet-cases';
+import { seededScramble } from '../../tests/fixtures/lbl-cases';
+import { stateToFacelets } from '../core/facelets';
 let engine: CubeEngine;
 beforeAll(async () => {
   engine = await createCubeEngine();
@@ -155,6 +157,35 @@ it('returns complete sessions for both input kinds with copied provenance', () =
         engine.apply(engine.solved(), example.moves),
       ),
     ).toBe(true);
+  }
+});
+it('returns the same compact LBL lesson for a typed scramble and its entered colors', async () => {
+  const moves = seededScramble(1);
+  const initial = engine.apply(engine.solved(), moves);
+  const direct = solver.solveLBL(engine, initial);
+  if (!direct.ok) throw Error(direct.message);
+  for (const input of [
+    { kind: 'scramble', moves },
+    { kind: 'facelets', facelets: stateToFacelets(initial) },
+  ] as const) {
+    const reply = await handleSolveMessage(engine, {
+      requestId: 41,
+      method: 'lbl',
+      edition: 'club',
+      input,
+    });
+    if (!reply?.result.ok) throw Error('Missing LBL solution');
+    expect(reply.result.session.input).toEqual(input);
+    expect(reply.result.session.trace).toEqual(direct.trace);
+    const stage = reply.result.session.trace.stages.find((s) => s.id === 'middle-layer')!;
+    const insertion = stage.actions.find((a) =>
+      a.joined?.sources.some((s) => s.algorithmId === 'middle-left'),
+    );
+    expect(insertion?.moves.join(' ')).toBe("L' U L U F U' F'");
+    expect(insertion?.joined?.sources.map((s) => s.moves.join(' '))).toEqual([
+      'U',
+      "U' L' U L U F U' F'",
+    ]);
   }
 });
 it.each([null, {}, { requestId: -1 }, { requestId: 1.5 }, { requestId: '1' }])(

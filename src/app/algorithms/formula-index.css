@@ -1,0 +1,454 @@
+/* The two libraries share an atlas. Keep drill and case-detail layouts independent. */
+[data-edition] .formula-index {
+  --index-paper: var(--club-surface, #fffefa);
+  --index-wash: var(--club-wash, #edf2e9);
+  --index-accent: var(--club-accent, #245941);
+  --index-rule: var(--club-rule, #ccd6ca);
+  --index-display: var(--club-display, Georgia, serif);
+  --index-mono: var(--club-mono, ui-monospace, monospace);
+  width: 100%;
+  max-width: 1240px;
+  margin-inline: auto;
+  padding: clamp(24px, 4vw, 52px) clamp(16px, 4vw, 48px) 64px;
+  box-sizing: border-box;
+  color: var(--ink);
+}
+.formula-index .index-top {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 28%);
+  grid-template-areas: 'title practice' 'filters practice';
+  align-items: start;
+  gap: 20px clamp(24px, 6vw, 80px);
+}
+.index-heading {
+  grid-area: title;
+}
+.formula-index .index-kicker,
+.formula-index .index-id {
+  color: var(--index-accent);
+  font: 600 11px/1.4 var(--index-mono);
+  letter-spacing: 0.065em;
+  text-transform: uppercase;
+  margin: 0;
+}
+.formula-index .index-heading h1 {
+  margin: 7px 0 9px;
+  max-width: none;
+  font-family: var(--index-display);
+  font-size: clamp(35px, 4.5vw, 58px);
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: -0.05em;
+}
+.index-heading > p:last-child {
+  margin: 0;
+  color: var(--muted);
+  max-width: 59ch;
+  font-size: 15px;
+  line-height: 1.5;
+}
+.index-filters {
+  grid-area: filters;
+  min-width: 0;
+}
+.formula-index .index-search,
+.formula-index .index-selectors label {
+  display: grid;
+  min-width: 0;
+  gap: 4px;
+  font-family: inherit;
+  font-size: 13px;
+  line-height: 1.45;
+  font-weight: 600;
+}
+.index-search > span {
+  position: relative;
+  display: block;
+}
+.index-search svg {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--index-accent);
+}
+.formula-index .index-search input,
+.formula-index .index-selectors select {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  min-height: 44px;
+  padding: 8px 10px;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink);
+  background-color: var(--index-paper);
+  border: 1px solid var(--index-rule);
+  border-radius: 5px;
+}
+.formula-index .index-search input {
+  min-height: 48px;
+  padding-left: 45px;
+  border-color: var(--index-accent);
+}
+.index-selectors {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 10px;
+}
+.index-hold {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+.formula-index .index-practice {
+  grid-area: practice;
+  align-self: end;
+  padding: clamp(16px, 2vw, 24px);
+  background: var(--index-wash);
+  border-left: 3px solid var(--index-accent);
+  border-radius: 0 5px 5px 0;
+}
+.index-practice-title,
+.index-results,
+.index-results > div {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.index-practice-title,
+.index-results {
+  justify-content: space-between;
+  gap: 0 12px;
+}
+.formula-index .index-practice-title h2 {
+  margin: 0;
+  color: var(--ink);
+  font: 600 21px/1.25 var(--index-display);
+  letter-spacing: -0.04em;
+}
+.formula-index .index-practice p {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  margin: 9px 0 14px;
+  color: var(--muted);
+  font-size: 14px;
+}
+.index-practice p strong {
+  font: 600 38px/1 var(--index-display);
+  color: var(--index-accent);
+  letter-spacing: -0.055em;
+}
+.formula-index .index-practice .primary-button {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  min-height: 44px;
+  padding: 9px 15px;
+  border: 1px solid transparent;
+  background: var(--index-accent);
+  color: white;
+  border-radius: 5px;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 650;
+}
+.formula-index .index-practice .primary-button:disabled {
+  background: var(--index-paper);
+  border-color: var(--index-rule);
+  color: var(--muted);
+  opacity: 1;
+}
+.formula-index .index-text-button,
+.formula-index .index-select {
+  min-height: 44px;
+  padding: 4px 2px;
+  border: 0;
+  border-radius: 3px;
+  background: transparent;
+  color: var(--index-accent);
+  font: inherit;
+  font-size: 13px;
+  line-height: 1.3;
+  font-weight: 650;
+  text-underline-offset: 3px;
+}
+.formula-index .index-text-button {
+  text-decoration: underline;
+}
+.formula-index .index-select {
+  border: 1px solid var(--index-rule);
+  padding-inline: 12px;
+  background: var(--index-paper);
+}
+.formula-index button:disabled {
+  cursor: default;
+}
+.formula-index :is(.index-text-button, .index-select):disabled {
+  color: var(--muted);
+  opacity: 0.7;
+  text-decoration: none;
+}
+.formula-index :is(button, a, input, select):focus-visible {
+  outline: 3px solid var(--index-accent);
+  outline-offset: 3px;
+}
+.index-results {
+  margin-top: clamp(22px, 3.3vw, 42px);
+  border-top: 1px solid var(--index-rule);
+  padding-block: 9px;
+}
+.index-results > div {
+  gap: 0 15px;
+}
+.formula-index .index-results p {
+  margin: 0;
+  font-size: 15px;
+  color: var(--muted);
+}
+.index-results strong {
+  color: var(--ink);
+  font: 600 25px/1 var(--index-display);
+  letter-spacing: -0.045em;
+}
+.index-empty {
+  padding: 20px 0;
+  border-top: 1px solid var(--index-rule);
+}
+.index-empty h2 {
+  margin: 0;
+  font: 600 25px/1.25 var(--index-display);
+}
+.index-empty p {
+  margin: 6px 0;
+  color: var(--muted);
+}
+.index-cases {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px clamp(12px, 2vw, 24px);
+}
+.formula-index .index-cases .index-case {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  padding: 0;
+  border: 0;
+  border-top: 2px solid var(--index-rule);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  min-width: 0;
+}
+.formula-index .index-cases .index-case:has(input:checked) {
+  border-top-color: var(--index-accent);
+}
+.index-figure {
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  padding: 12px;
+  background: var(--index-paper);
+  border-bottom: 1px solid var(--index-rule);
+}
+.formula-index .index-figure .case-diagram {
+  display: block;
+  width: 100%;
+  height: clamp(134px, 13vw, 165px);
+  max-width: 220px;
+  overflow: visible;
+  margin: 0;
+}
+.formula-index .index-case-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+  padding: 14px 2px 0;
+}
+.formula-index .index-case .index-id {
+  min-height: 0;
+  font-size: 10px;
+  line-height: 1.4;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.formula-index .index-case h2 {
+  margin: 1px 0 0;
+  width: 100%;
+  font: 600 clamp(20px, 2vw, 26px)/1.15 var(--index-display);
+  letter-spacing: -0.035em;
+}
+.formula-index .index-case h2 a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 44px;
+  width: 100%;
+  padding: 0;
+  color: var(--ink);
+  font: inherit;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+.index-case h2 a span {
+  font: 500 17px/1 sans-serif;
+  color: var(--index-accent);
+}
+.formula-index .index-case h2 a:hover {
+  color: var(--index-accent);
+  text-decoration: underline;
+}
+.formula-index .index-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+  min-height: 44px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.index-check input {
+  flex: none;
+  margin: 0;
+  width: 16px;
+  height: 16px;
+  accent-color: var(--index-accent);
+}
+@media (max-width: 850px) {
+  .index-cases {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (max-width: 650px) {
+  .formula-index .index-top {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: 'title' 'filters' 'practice';
+    gap: 15px;
+  }
+  .formula-index .index-practice {
+    padding: 8px 12px 10px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0 14px;
+    align-items: center;
+  }
+  .index-practice-title {
+    display: contents;
+  }
+  .index-practice-title h2 {
+    grid-row: 1;
+    grid-column: 1;
+  }
+  .index-practice-title button {
+    grid-row: 2;
+    grid-column: 1;
+    justify-self: start;
+  }
+  .formula-index .index-practice p {
+    grid-row: 1;
+    grid-column: 2;
+    justify-self: end;
+    display: flex;
+    gap: 5px;
+    white-space: nowrap;
+    line-height: 1.4;
+    margin: 0;
+  }
+  .index-practice p strong {
+    font-size: 22px;
+  }
+  .formula-index .index-practice .primary-button {
+    grid-row: 2;
+    grid-column: 2;
+    font-size: 13px;
+    padding-inline: 10px;
+  }
+  .index-cases {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 520px) {
+  .cmll-page.formula-index .index-selectors {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+  }
+  .index-cases {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+  }
+  .formula-index .index-cases .index-case {
+    grid-template-columns: minmax(108px, 37%) minmax(0, 1fr);
+    grid-template-rows: auto;
+    align-items: stretch;
+  }
+  .index-figure {
+    border: 0;
+    padding: 7px;
+  }
+  .formula-index .index-figure .case-diagram {
+    height: auto;
+    max-height: 125px;
+  }
+  .formula-index .index-case-info {
+    align-self: center;
+    padding: 8px 0 3px 14px;
+  }
+  .index-results > div {
+    gap: 8px;
+  }
+}
+@media (max-width: 420px) {
+  .formula-index .index-practice {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+  .index-practice-title h2 {
+    grid-column: 1 / -1;
+  }
+  .formula-index .index-practice p {
+    grid-area: 2 / 1;
+    justify-self: start;
+    white-space: normal;
+  }
+  .index-practice-title button {
+    grid-area: 2 / 2;
+  }
+  .formula-index .index-practice .primary-button {
+    grid-row: 3;
+    grid-column: 1 / -1;
+    white-space: normal;
+  }
+}
+@media (max-width: 360px) {
+  .index-selectors {
+    gap: 7px;
+  }
+  .formula-index .index-selectors select {
+    padding-inline: 5px;
+    font-size: 14px;
+  }
+  .formula-index .index-practice {
+    column-gap: 4px;
+  }
+  .formula-index .index-practice .primary-button {
+    gap: 4px;
+  }
+  .formula-index .index-results > div {
+    gap: 5px;
+  }
+  .formula-index .index-results .index-select {
+    padding-inline: 6px;
+  }
+}

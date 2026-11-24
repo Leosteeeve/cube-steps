@@ -8,6 +8,7 @@ export function LessonLayout({
   selected,
   children,
   free = false,
+  stagesReady = true,
   onSelect,
   method = 'lbl',
   presentation,
@@ -15,6 +16,7 @@ export function LessonLayout({
   selected: string;
   children: ReactNode;
   free?: boolean;
+  stagesReady?: boolean;
   onSelect?: (id: StageId) => void;
   method?: MethodId;
   presentation?: 'club';
@@ -61,15 +63,15 @@ export function LessonLayout({
       <div className="nav-heading">
         <span className="eyebrow">
           {free
-            ? 'YOUR SOLUTION'
+            ? stagesReady
+              ? 'YOUR SOLUTION'
+              : 'METHOD OUTLINE'
             : method === 'cfop-advanced'
               ? 'THE ADVANCED PATH'
               : 'THE BEGINNER PATH'}
         </span>
         <h2>
-          {free
-            ? getMethod(method).stages.length + ' clear stages'
-            : 'A little progress.\nEvery step.'}
+          {free ? getMethod(method).stages.length + ' stages' : 'A little progress.\nEvery step.'}
         </h2>
       </div>
       <ol>
@@ -77,8 +79,11 @@ export function LessonLayout({
           <li key={lesson.id}>
             {free ? (
               <button
-                className={selected === lesson.id ? 'stage-link active' : 'stage-link'}
-                aria-current={selected === lesson.id ? 'step' : undefined}
+                disabled={!stagesReady}
+                className={
+                  stagesReady && selected === lesson.id ? 'stage-link active' : 'stage-link'
+                }
+                aria-current={stagesReady && selected === lesson.id ? 'step' : undefined}
                 onClick={() => onSelect?.(lesson.stageId!)}
               >
                 <span className="stage-index">{String(index + 1).padStart(2, '0')}</span>
@@ -103,15 +108,17 @@ export function LessonLayout({
           </li>
         ))}
       </ol>
-      <div className="club-note">
-        <span aria-hidden="true">✳</span>
-        <p>
-          Made for the moment
-          <br />
-          when it finally clicks.
-        </p>
-        <small>Bring your cube. Take your time.</small>
-      </div>
+      {!free && (
+        <div className="club-note">
+          <span aria-hidden="true">✳</span>
+          <p>
+            Made for the moment
+            <br />
+            when it finally clicks.
+          </p>
+          <small>Bring your cube. Take your time.</small>
+        </div>
+      )}
     </nav>
   );
   return (

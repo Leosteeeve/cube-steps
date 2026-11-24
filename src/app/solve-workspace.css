@@ -1,0 +1,290 @@
+.solve-heading h1 {
+  margin: 0;
+}
+.stage-nav .stage-link:disabled {
+  opacity: 1;
+  color: var(--muted);
+  cursor: default;
+}
+[data-edition='club'] .lesson-heading.solve-heading h1 {
+  font-size: clamp(2.35rem, 4.25vw, 4rem);
+  line-height: 1.05;
+  letter-spacing: -0.05em;
+}
+.solve-heading p {
+  margin: 0.5rem 0 0;
+}
+[data-edition] .scramble-form.solve-scramble {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(175px, 25%);
+  gap: clamp(18px, 3vw, 40px);
+  align-items: center;
+  padding: clamp(18px, 2.4vw, 32px);
+}
+.scramble-entry {
+  min-width: 0;
+}
+.solve-scramble .form-top {
+  gap: 0.75rem;
+}
+.solve-scramble .form-top label {
+  font-size: 1rem;
+  color: var(--ink);
+}
+.solve-scramble .form-top button {
+  font-size: 0.875rem;
+  min-height: 44px;
+}
+[data-edition] .solve-scramble textarea {
+  display: block;
+  font-family: var(--club-mono, monospace);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  min-height: 92px;
+  background: var(--club-paper, #f7f8f4);
+}
+.solve-scramble .form-bottom {
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.solve-scramble .form-bottom p {
+  font-size: 0.8125rem;
+  line-height: 1.55;
+}
+.solve-scramble .form-bottom .primary-button {
+  min-height: 46px;
+}
+.scramble-preview {
+  align-self: stretch;
+  display: grid;
+  align-content: center;
+  text-align: center;
+  min-width: 0;
+  padding: 12px;
+  background: var(--soft);
+  border-radius: var(--club-radius, 8px);
+}
+.scramble-preview h2 {
+  font-size: 0.9375rem;
+  margin: 0;
+}
+.scramble-preview .timer-net {
+  margin: 0.75rem 0 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+.scramble-preview .timer-net svg {
+  display: block;
+  margin: auto;
+  width: min(100%, 180px);
+  height: auto;
+}
+.scramble-preview .timer-net figcaption,
+.scramble-preview p {
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+.solve-notation-link {
+  font-size: 0.9rem;
+}
+.solve-notation-link a {
+  text-underline-offset: 0.24em;
+}
+[data-edition] .solution-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px clamp(16px, 3vw, 38px);
+  align-items: center;
+  padding-block: 14px;
+  border-block: 1px solid var(--line);
+  font-size: 1rem;
+  color: var(--ink);
+}
+.solve-result-title {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+.solve-result-title .success-dot {
+  background: var(--green);
+  width: 0.5rem;
+  height: 0.5rem;
+}
+.solve-totals {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 12px 20px;
+  margin: 0;
+}
+.solve-totals > div {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+.solve-totals dt {
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+.solve-totals dd {
+  margin: 0;
+  font: 600 1.4rem/1 var(--club-display, system-ui);
+  font-variant-numeric: tabular-nums;
+}
+[data-edition] .solution-summary details {
+  font-size: 0.875rem;
+  max-width: 100%;
+}
+.solution-summary details[open] {
+  flex-basis: 100%;
+  margin-left: 0;
+}
+.solution-summary code {
+  overflow-wrap: anywhere;
+}
+.solution-summary summary {
+  padding-block: 8px;
+}
+.solve-turn-cue {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-bottom: 14px;
+  margin-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+}
+.solve-turn-cue code {
+  min-width: 2ch;
+  color: var(--green);
+  font: 400 clamp(2rem, 3vw, 2.75rem)/1.05 var(--club-mono, monospace);
+}
+.solve-turn-cue strong,
+.solve-turn-cue span {
+  display: block;
+}
+.solve-turn-cue strong {
+  font-size: 1rem;
+  color: var(--ink);
+}
+.solve-turn-cue span {
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: var(--muted);
+}
+[data-solve-player] .nearby-moves {
+  justify-content: start;
+  flex-wrap: wrap;
+  overflow: visible;
+}
+[data-solve-player] .nearby-moves button {
+  border-radius: 6px;
+  font-family: var(--club-mono, monospace);
+}
+[data-solve-player] .playback-controls {
+  justify-content: start;
+  flex-wrap: wrap;
+}
+[data-solve-player] .playback-controls .icon-button {
+  width: auto;
+  padding-inline: 12px;
+  min-width: 44px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+[data-solve-player] .playback-controls .speed {
+  font-size: 0.8125rem;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+}
+[data-solve-player] .speed select {
+  min-height: 44px;
+  font-size: 0.875rem;
+}
+[data-solve-player] .move-range {
+  min-height: 24px;
+}
+[data-solve-player] .player-options {
+  flex-wrap: wrap;
+}
+[data-solve-player] .player-options :is(label, button) {
+  font-size: 0.8125rem;
+  min-height: 44px;
+}
+@media (max-width: 700px) {
+  [data-edition='club'] .solve-heading + .method-selector {
+    flex-wrap: wrap;
+    overflow: visible;
+    gap: 4px;
+    padding-bottom: 0;
+  }
+  [data-edition='club'] .solve-heading + .method-selector > span {
+    flex-basis: 100%;
+    padding: 0;
+  }
+  [data-edition='club'] .solve-heading + .method-selector a {
+    padding: 10px 9px;
+  }
+  [data-edition] .scramble-form.solve-scramble {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+  .scramble-preview {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    text-align: left;
+  }
+  .scramble-preview .timer-net {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0;
+  }
+  .scramble-preview .timer-net svg {
+    width: 98px;
+  }
+  .scramble-preview .timer-net figcaption {
+    max-width: 10ch;
+    line-height: 1.4;
+  }
+  .solve-scramble .form-bottom {
+    align-items: start;
+  }
+  [data-edition] .solution-summary details {
+    margin-left: 0;
+  }
+}
+@media (max-width: 400px) {
+  [data-solve-player] .playback-controls {
+    gap: 5px;
+  }
+  [data-solve-player] .playback-controls .play-button {
+    min-width: 56px;
+    gap: 4px;
+    padding: 0 8px;
+  }
+  [data-solve-player] .playback-controls .icon-button {
+    padding-inline: 6px;
+  }
+  [data-solve-player] .playback-controls .speed {
+    display: grid;
+    gap: 0;
+  }
+  [data-solve-player] .nearby-moves {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 6px;
+  }
+  [data-solve-player] .nearby-moves button {
+    width: 100%;
+    min-width: 0;
+    padding-inline: 0;
+  }
+  .scramble-preview h2 {
+    font-size: 0.875rem;
+  }
+}

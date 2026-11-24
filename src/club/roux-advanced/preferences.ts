@@ -1,3 +1,4 @@
+import type { CubeEngine } from '../../core/types';
 import { CMLL_CASE_IDS } from '../../methods/roux-advanced/cmll/ids';
 import { ROUX_FRAMES } from '../../methods/roux-advanced/frames';
 import type { RouxFrameId } from '../../methods/roux-advanced/types';
@@ -27,14 +28,28 @@ function valid(raw: unknown): raw is CmllPracticeSelection {
 export function createCmllPracticeStore(
   storage: () => Pick<Storage, 'getItem' | 'setItem'> = () => localStorage,
 ) {
-  return {
-    load(): { selection: CmllPracticeSelection; status: 'ready' | 'corrupt' | 'unavailable' } {
-      let text: string | null;
-      try {
-        text = storage().getItem(key);
-      } catch {
-        return { selection: defaults(), status: 'unavailable' };
+  type Status = 'ready' | 'corrupt' | 'unavailable';
+  let temporary:
+    | {
+        selection: CmllPracticeSelection;
+        stored: string | null | undefined;
+        status: 'corrupt' | 'unavailable';
       }
+    | undefined;
+  function read() {
+    try {
+      return storage().getItem(key);
+    } catch {
+      return undefined;
+    }
+  }
+  const store = {
+    load(): { selection: CmllPracticeSelection; status: Status } {
+      const text = read();
+      if (temporary && temporary.stored === text)
+        return { selection: temporary.selection, status: temporary.status };
+      temporary = undefined;
+      if (text === undefined) return { selection: defaults(), status: 'unavailable' };
       if (text === null) return { selection: defaults(), status: 'ready' };
       try {
         const raw: unknown = JSON.parse(text);
@@ -46,12 +61,37 @@ export function createCmllPracticeStore(
       if (!valid(selection)) return false;
       try {
         storage().setItem(key, JSON.stringify(selection));
+        temporary = undefined;
         return true;
       } catch {
+        temporary = { selection, stored: read(), status: 'unavailable' };
         return false;
       }
     },
+    openPractice(selection: CmllPracticeSelection) {
+      const current = store.load();
+      if (current.status !== 'ready') {
+        temporary = { selection, stored: read(), status: current.status };
+      } else if (
+        current.selection.frameId !== selection.frameId ||
+        current.selection.caseIds.length !== selection.caseIds.length ||
+        !selection.caseIds.every((id) => current.selection.caseIds.includes(id))
+      ) {
+        store.save(selection);
+      }
+    },
   };
+  return store;
+}
+
+const practiceStores = new WeakMap<CubeEngine, ReturnType<typeof createCmllPracticeStore>>();
+export function getCmllPracticeStore(engine: CubeEngine) {
+  let store = practiceStores.get(engine);
+  if (!store) {
+    store = createCmllPracticeStore();
+    practiceStores.set(engine, store);
+  }
+  return store;
 }
 export function pickCmllCase(
   selection: CmllPracticeSelection,

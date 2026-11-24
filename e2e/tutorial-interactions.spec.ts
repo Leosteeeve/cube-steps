@@ -6,6 +6,24 @@ import { enterFacelets } from './helpers/color-entry';
 async function next(page: import('@playwright/test').Page) {
   await page.getByRole('dialog').getByRole('button', { name: 'Next', exact: true }).click();
 }
+test('a completed solve opens its input for the page tour and restores the previous view', async ({
+  page,
+}) => {
+  await page.goto('club/#/solve');
+  await dismissTutorialForTest(page);
+  await page.getByLabel('Scramble sequence').fill('R U');
+  await page.getByRole('button', { name: 'Explain with LBL' }).click();
+  const edit = page.getByRole('button', { name: 'Edit cube input' });
+  await expect(edit).toHaveAttribute('aria-expanded', 'false');
+  await page.getByRole('button', { name: 'Page tour', exact: true }).click();
+  await expect(page.locator('[data-guidance="solve.input"]')).toBeVisible();
+  await next(page);
+  await expect(page.locator('[data-guidance="solve.validation"]')).toBeVisible();
+  await page.getByRole('button', { name: 'Exit tour' }).click();
+  await expect(edit).toHaveAttribute('aria-expanded', 'false');
+  await edit.click();
+  await expect(page.getByLabel('Scramble sequence')).toHaveValue('R U');
+});
 async function renderLessonFrame(page: import('@playwright/test').Page) {
   await page.locator('twisty-player').evaluate(async (player: any) => {
     for (const vantage of await player.experimentalCurrentVantages()) await vantage.render();

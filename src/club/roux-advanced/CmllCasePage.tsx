@@ -151,7 +151,7 @@ export function CmllCasePage({
     );
   return (
     <section className="cmll-page">
-      <a href="#/cmll">← All 42 CMLL cases</a>
+      <a href="#/cmll">← CMLL library</a>
       <h1>
         {group.family} · {group.label}
       </h1>

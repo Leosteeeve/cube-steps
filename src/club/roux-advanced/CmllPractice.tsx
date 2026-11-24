@@ -2,10 +2,10 @@ import { useState } from 'react';
 import type { CubeEngine } from '../../core/types';
 import type { Quarter } from '../../methods/roux-advanced/types';
 import { CMLL_CATALOG } from '../../methods/roux-advanced/cmll/catalog';
-import { createCmllPracticeStore, pickCmllCase, type CmllPracticeSelection } from './preferences';
+import { getCmllPracticeStore, pickCmllCase, type CmllPracticeSelection } from './preferences';
 import { CmllAnswer, CmllDiagram, CmllFrameSelect } from './CmllCasePage';
 export function CmllPractice({ engine }: { engine: CubeEngine }) {
-  const [store] = useState(createCmllPracticeStore),
+  const store = getCmllPracticeStore(engine),
     [saved] = useState(() => store.load());
   const [selection, setSelection] = useState(saved.selection),
     [storageMessage, setStorageMessage] = useState(
