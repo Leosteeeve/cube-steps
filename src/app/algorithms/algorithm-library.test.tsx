@@ -3,7 +3,7 @@ import '@testing-library/jest-dom/vitest';
 import { cleanup, fireEvent, render, screen } from '@testing-library/react';
 import { TestTour } from '../../club/tutorial/TestTour';
 import userEvent from '@testing-library/user-event';
-import { afterEach, beforeAll, expect, it, vi } from 'vitest';
+import { afterEach, beforeEach, expect, it, vi } from 'vitest';
 import { createCubeEngine } from '../../core/cube';
 import type { CubeEngine } from '../../core/types';
 import { ALGORITHM_REGISTRY as registry } from '../../algorithms/registry';
@@ -38,7 +38,7 @@ vi.mock('../../player/AlgorithmPlayer', () => ({
   ),
 }));
 let engine: CubeEngine;
-beforeAll(async () => {
+beforeEach(async () => {
   engine = await createCubeEngine();
 });
 afterEach(cleanup);
@@ -53,7 +53,9 @@ it('read-only library tour preserves filters and selected cases', async () => {
     </TestTour>,
   );
   await screen.findByRole('checkbox', { name: 'Select OLL 20' });
-  fireEvent.change(screen.getByLabelText('Search cases'), { target: { value: 'OLL 20' } });
+  fireEvent.change(screen.getByRole('searchbox', { name: 'Search cases' }), {
+    target: { value: 'OLL 20' },
+  });
   fireEvent.click(screen.getByRole('checkbox', { name: 'Select OLL 20' }));
   expect(document.querySelector('[data-guidance="algorithms.filters"]')).not.toBeNull();
   fireEvent.click(screen.getByRole('button', { name: 'Page tour' }));
@@ -61,7 +63,7 @@ it('read-only library tour preserves filters and selected cases', async () => {
   fireEvent.click(screen.getByRole('button', { name: 'Next' }));
   expect(document.querySelector('[data-guidance="algorithms.case"]')).not.toBeNull();
   fireEvent.click(screen.getByRole('button', { name: 'Exit tour' }));
-  expect(screen.getByLabelText('Search cases')).toHaveValue('OLL 20');
+  expect(screen.getByRole('searchbox', { name: 'Search cases' })).toHaveValue('OLL 20');
   expect(screen.getByRole('checkbox', { name: 'Select OLL 20' })).toBeChecked();
 });
 it('passes library preselection into the shared practice selection', async () => {
@@ -76,29 +78,33 @@ it('passes library preselection into the shared practice selection', async () =>
   practiceStore.save({ version: 1, caseIds: [], groupIds: [] });
 });
 it('filters_all_119_cases', async () => {
-  render(<AlgorithmLibraryPage engine={engine} />);
-  expect(await screen.findAllByRole('link', { name: /Explore / })).toHaveLength(119);
-  const user = userEvent.setup();
+  const { container } = render(<AlgorithmLibraryPage engine={engine} />);
+  const search = screen.getByRole('searchbox');
+  const familyControl = screen.getByRole('combobox', { name: 'Family' });
+  const groupControl = screen.getByRole('combobox', { name: 'Group' });
+  await screen.findByRole('link', { name: 'Explore F2L 01 →', hidden: true });
+  const listed = () => container.querySelectorAll('article a');
+  expect(listed()).toHaveLength(119);
   for (const [family, total] of [
     ['f2l', 41],
     ['oll', 57],
     ['pll', 21],
   ] as const) {
-    await user.selectOptions(screen.getByLabelText('Family'), family);
-    expect(screen.getAllByRole('link', { name: /Explore / })).toHaveLength(total);
+    fireEvent.change(familyControl, { target: { value: family } });
+    expect(listed()).toHaveLength(total);
     const group = Object.values(registry.cases).find((c) => c.family === family)!.group;
-    await user.selectOptions(screen.getByLabelText('Group'), group);
+    fireEvent.change(groupControl, { target: { value: group } });
     const expected = Object.values(registry.cases).filter(
       (c) => c.family === family && c.group === group,
     );
-    expect(screen.getAllByRole('link', { name: /Explore / })).toHaveLength(expected.length);
-    await user.type(screen.getByLabelText('Search cases'), expected[0].id);
-    expect(screen.getAllByRole('link', { name: /Explore / })).toHaveLength(1);
+    expect(listed()).toHaveLength(expected.length);
+    fireEvent.change(search, { target: { value: expected[0].id } });
+    expect(listed()).toHaveLength(1);
     expect(screen.getByRole('link', { name: /Explore / })).toHaveAttribute(
       'href',
       '#/algorithms/' + expected[0].id,
     );
-    await user.clear(screen.getByLabelText('Search cases'));
+    fireEvent.change(search, { target: { value: '' } });
   }
   expect(parseRoute('#/algorithms')).toEqual({ kind: 'algorithms' });
   expect(parseRoute('#/algorithms/oll-20')).toEqual({ kind: 'algorithm', caseId: 'oll-20' });
@@ -166,3 +172,36 @@ it.each(['not-a-case', 'constructor', 'toString', '__proto__'])(
     expect(screen.queryByTestId('clip')).not.toBeInTheDocument();
   },
 );
+it('matches compact and separated case IDs exactly and restores a draft after viewing details', async () => {
+  practiceStore.save({ version: 1, caseIds: [], groupIds: [] });
+  const page = render(<AlgorithmLibraryPage engine={engine} />);
+  const search = screen.getByRole('searchbox');
+  for (const spelling of ['OLL27', 'OLL 27', 'oll-27', 'OLL2']) {
+    fireEvent.change(search, { target: { value: spelling } });
+    const links = await screen.findAllByRole('link', { name: /Explore / });
+    expect(links).toHaveLength(1);
+    expect(links[0]).toHaveAttribute(
+      'href',
+      spelling === 'OLL2' ? '#/algorithms/oll-02' : '#/algorithms/oll-27',
+    );
+  }
+  fireEvent.change(search, { target: { value: 'OLL27' } });
+  fireEvent.change(screen.getByLabelText('Family'), { target: { value: 'oll' } });
+  fireEvent.click(screen.getByRole('checkbox', { name: 'Select OLL 27', hidden: true }));
+  expect(practiceStore.load().selection.caseIds).toEqual([]);
+  page.unmount();
+  render(<AlgorithmLibraryPage engine={engine} />);
+  expect(screen.getByRole('searchbox')).toHaveValue('OLL27');
+  expect(screen.getByLabelText('Family')).toHaveValue('oll');
+  expect(
+    await screen.findByRole('checkbox', { name: 'Select OLL 27', hidden: true }),
+  ).toBeChecked();
+  fireEvent.change(screen.getByRole('searchbox'), { target: { value: 'OLL101' } });
+  expect(screen.getByRole('status')).toHaveTextContent('0 cases');
+  fireEvent.click(screen.getByRole('button', { name: 'Clear filters' }));
+  expect(screen.getByRole('status', { hidden: true })).toHaveTextContent('119 cases');
+  fireEvent.change(screen.getByRole('searchbox'), { target: { value: 'OLL27' } });
+  expect(screen.getByRole('checkbox', { name: 'Select OLL 27', hidden: true })).toBeChecked();
+  fireEvent.click(screen.getByRole('button', { name: 'Clear selection' }));
+  expect(screen.getByRole('checkbox', { name: 'Select OLL 27', hidden: true })).not.toBeChecked();
+});

@@ -1,4 +1,5 @@
 import { verifyTrace } from '../shared/verification';
+import { compactTeachingTrace } from '../shared/compact-trace';
 import { LBL_RUNTIME } from './definition';
 import type { CubeEngine, CubeState, SolveLimits, SolveResult } from '../../core/types';
 import { createTraceBuilder, RuleError } from './trace';
@@ -35,7 +36,7 @@ export function solveLBL(
       if (!result.ok) return result;
       trace.endStage();
     }
-    const result = trace.finish();
+    const result = compactTeachingTrace(engine, trace.finish(), LBL_RUNTIME);
     verifyTrace(engine, result, LBL_RUNTIME);
     return { ok: true, trace: result };
   } catch (error) {

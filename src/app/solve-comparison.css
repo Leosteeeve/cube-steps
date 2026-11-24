@@ -1,0 +1,126 @@
+.compare-launch,
+.solve-comparison button {
+  color: var(--club-accent);
+  font: inherit;
+  font-weight: 650;
+  padding: 0.5rem 0.8rem;
+  min-height: 40px;
+  border: 1px solid var(--club-rule);
+  background: var(--club-surface);
+  border-radius: 5px;
+  cursor: pointer;
+}
+.compare-launch {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  margin: 0.85rem 0 1.25rem;
+  border-color: var(--club-accent);
+}
+.solve-comparison {
+  margin: 1rem 0 1.5rem;
+  padding: clamp(16px, 2.5vw, 26px);
+  border: 1px solid var(--club-rule);
+  border-top: 3px solid var(--club-accent);
+  background: var(--club-surface);
+  color: var(--club-ink);
+}
+.compare-heading,
+.compare-route header,
+.compare-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.75rem;
+}
+.compare-heading {
+  justify-content: space-between;
+}
+.compare-heading h2,
+.compare-route h3 {
+  margin: 0;
+  line-height: 1.15;
+}
+.compare-heading h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+.solve-comparison p {
+  margin: 0.55rem 0 1rem;
+  line-height: 1.45;
+  color: var(--club-muted);
+}
+.compare-routes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  border-block: 1px solid var(--club-rule);
+  gap: 1rem;
+}
+.compare-route {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+  padding: 1rem 0;
+}
+.compare-route header {
+  align-items: baseline;
+}
+.compare-route h3 {
+  font-size: 1.15rem;
+}
+.compare-route header span {
+  color: var(--club-muted);
+  font-size: 0.8rem;
+}
+.compare-metrics {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem 1.2rem;
+  margin: 0.8rem 0 0.55rem;
+}
+.compare-metrics div {
+  display: flex;
+  flex-direction: column-reverse;
+}
+.compare-metrics dt {
+  font-size: 0.77rem;
+  color: var(--club-muted);
+}
+.compare-metrics dd {
+  margin: 0;
+  font: 600 1.35rem/1.2 var(--club-mono);
+}
+.compare-metrics div:first-child dd {
+  color: var(--club-accent);
+}
+.compare-route button {
+  margin-top: auto;
+}
+.compare-route button[aria-pressed='true'] {
+  background: var(--club-wash);
+  border-color: var(--club-accent);
+}
+.solve-comparison .compare-hold,
+.solve-comparison .compare-note {
+  font-size: 0.86rem;
+}
+.solve-comparison .compare-hold {
+  margin: 0 0 0.8rem;
+}
+.compare-actions:empty {
+  display: none;
+}
+.solve-comparison button:hover,
+.compare-launch:hover {
+  background: var(--club-wash);
+}
+@media (max-width: 540px) {
+  .compare-routes {
+    gap: 0;
+  }
+  .compare-route + .compare-route {
+    border-top: 1px solid var(--club-rule);
+  }
+}

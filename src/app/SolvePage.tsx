@@ -1,10 +1,15 @@
-import { useEffect, useId, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useId, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import type { CubeEngine, SolveSession, StageId, MethodId } from '../core/types';
 import { parseScramble } from '../core/notation';
 import { CubePlayer } from '../player/CubePlayer';
+import type { SolvePlaybackBookmark } from '../player/PlaybackView';
+import { SolveComparison, useSolveComparison } from './solve-comparison';
 import { createSolveClient } from './solve-client';
 import { LessonLayout } from './LessonLayout';
-import { validateFacelets, type FaceletValidation } from '../core/facelets';
+import { stateToFacelets, validateFacelets, type FaceletValidation } from '../core/facelets';
+import { ScrambleNet } from '../club/timer/ScrambleNet';
+import { summarizeTraceMoves } from './solve-comparison-metrics';
+import './solve-workspace.css';
 import { ColorEntry } from './color-entry/ColorEntry';
 import { FaceOverview } from './color-entry/FaceOverview';
 import { createDraftState, reduceDraft, type DraftAction } from './color-entry/draft';
@@ -13,7 +18,7 @@ import { useEdition } from './edition';
 import { FACE_ENTRY_ORDER } from '../core/facelet-layout';
 import { getMethodInfo as getMethod } from '../methods/info';
 import { MethodSelector } from './MethodSelector';
-import { useGuidanceTarget } from '../ui/guidance';
+import { useGuidanceScope, useGuidanceTarget } from '../ui/guidance';
 import type { RouxFrameId } from '../methods/roux-advanced/types';
 export function SolvePage({
   engine,
@@ -52,6 +57,15 @@ export function SolvePage({
   const [storageAvailable, setStorageAvailable] = useState(recovered.available);
   const [mode, setMode] = useState<'scramble' | 'colors'>('scramble');
   const [inputExpanded, setInputExpanded] = useState(true);
+  const [tourShowsInput, setTourShowsInput] = useState(false);
+  useGuidanceScope(
+    'solve-input',
+    useCallback(() => {
+      setTourShowsInput(true);
+      return { restore() {}, dispose: () => setTourShowsInput(false) };
+    }, []),
+  );
+  const showInput = inputExpanded || tourShowsInput;
   const inputPanelId = useId(),
     inputToggle = useRef<HTMLButtonElement>(null);
   const [validation, setValidation] = useState<{
@@ -78,8 +92,17 @@ export function SolvePage({
     setStage(firstStage);
     setActive(firstStage);
   }, [client, method, firstStage, framesKey]);
-  const parsedDraft = mode === 'scramble' ? parseScramble(text) : null;
+  const parsedDraft = useMemo(
+    () => (mode === 'scramble' ? parseScramble(text) : null),
+    [mode, text],
+  );
+  const startingDiagram = useMemo(() => {
+    // Long pastes can still be solved by the worker without blocking typing to draw a preview.
+    if (!parsedDraft?.ok || parsedDraft.moves.length > 256) return null;
+    return stateToFacelets(engine.apply(engine.solved(), parsedDraft.moves));
+  }, [engine, parsedDraft]);
   const session = storedSession?.trace.method === method ? storedSession : null;
+  const metrics = useMemo(() => session && summarizeTraceMoves(session.trace), [session]);
   useLayoutEffect(() => {
     if (session) inputToggle.current?.focus();
   }, [session]);
@@ -96,6 +119,12 @@ export function SolvePage({
       : recordedInput.kind === 'scramble' &&
         parsedDraft?.ok &&
         parsedDraft.moves.join(' ') === recordedInput.moves.join(' '));
+  const comparisonSource =
+    edition === 'club' && inputMatches && !busy && !randomizing ? session : null;
+  const comparison = useSolveComparison(comparisonSource, rouxOptions?.allowedFrames);
+  const preview = comparisonSource ? comparison.preview : null;
+  const originalBookmark = useRef<SolvePlaybackBookmark | null>(null);
+  const comparisonPlayerId = useId();
   useEffect(() => {
     setStorageAvailable(store.save(draft.draft));
   }, [store, draft.draft]);
@@ -228,15 +257,24 @@ export function SolvePage({
   return (
     <LessonLayout
       free
+      stagesReady={!!session}
       presentation={edition === 'club' ? 'club' : undefined}
-      method={method}
-      selected={active}
+      method={preview?.session.trace.method ?? method}
+      selected={preview?.active ?? active}
       onSelect={(id) => {
+        if (preview) {
+          comparison.seek(id);
+          return;
+        }
         setStage(id);
         setStageRequestId((value) => value + 1);
         setActive(id);
       }}
     >
+      <header className="lesson-heading solve-heading">
+        <h1>Solve your cube.</h1>
+        <p>Choose your method, set up your cube and follow the turns at your own pace.</p>
+      </header>
       <MethodSelector method={method} kind="solve" />
       {store.isProtected() && (
         <p role="status">
@@ -251,26 +289,21 @@ export function SolvePage({
           </button>
         </p>
       )}
-      <div className="lesson-heading">
-        <span className="eyebrow">YOUR CUBE. THE SAME METHOD.</span>
-        <h1>A clear path for your cube.</h1>
-        <p>Get a complete {presentation.label} solution, with a reason behind every move.</p>
-      </div>
       <section className="solve-input-panel" aria-label="Starting cube">
         {session && (
           <button
             ref={inputToggle}
             className="input-disclosure"
             type="button"
-            aria-expanded={inputExpanded}
+            aria-expanded={showInput}
             aria-controls={inputPanelId}
             onClick={() => setInputExpanded((value) => !value)}
           >
-            {inputExpanded ? 'Hide cube input' : 'Edit cube input'}
-            <span aria-hidden="true">{inputExpanded ? '−' : '+'}</span>
+            {showInput ? 'Hide cube input' : 'Edit cube input'}
+            <span aria-hidden="true">{showInput ? '−' : '+'}</span>
           </button>
         )}
-        <div id={inputPanelId} hidden={!!session && !inputExpanded}>
+        <div id={inputPanelId} hidden={!!session && !showInput}>
           <div
             ref={mode === 'scramble' ? inputTarget : undefined}
             className="input-mode-switch"
@@ -312,56 +345,70 @@ export function SolvePage({
             </>
           ) : (
             <form
-              className="scramble-form"
+              className="scramble-form solve-scramble"
               onSubmit={(e) => {
                 e.preventDefault();
                 void solve();
               }}
             >
-              <div className="form-top">
-                <label htmlFor="scramble">Scramble sequence</label>
-                <button
-                  type="button"
-                  className="text-button"
-                  disabled={randomizing}
-                  onClick={() => void random()}
-                >
-                  {randomizing ? 'Generating…' : 'Random scramble'}{' '}
-                  <span aria-hidden="true">↝</span>
-                </button>
-              </div>
-              <textarea
-                id="scramble"
-                value={text}
-                onChange={(e) => updateText(e.target.value)}
-                placeholder="R U R' U' F2…"
-                spellCheck={false}
-                rows={2}
-                aria-describedby="scramble-help"
-              />
-              <div className="form-bottom">
-                <p ref={!error ? validationTarget : undefined} id="scramble-help">
-                  Start solved, white up & green front. Use U D L R F B with ′ or 2.
-                  <br />
-                  Leave blank to explore an already solved cube.
-                </p>
-                <button className="primary-button" type="submit" disabled={busy || randomizing}>
-                  {busy ? 'Finding your steps…' : `Explain with ${presentation.label}`}{' '}
-                  <span aria-hidden="true">→</span>
-                </button>
-                {busy && (
+              <div className="scramble-entry">
+                <div className="form-top">
+                  <label htmlFor="scramble">Scramble sequence</label>
                   <button
                     type="button"
-                    onClick={() => {
-                      epoch.current++;
-                      client.cancel();
-                      setBusy(false);
-                    }}
+                    className="text-button"
+                    disabled={randomizing}
+                    onClick={() => void random()}
                   >
-                    Cancel
+                    {randomizing ? 'Generating…' : 'Random scramble'}{' '}
+                    <span aria-hidden="true">↝</span>
                   </button>
-                )}
+                </div>
+                <textarea
+                  id="scramble"
+                  value={text}
+                  onChange={(e) => updateText(e.target.value)}
+                  placeholder="R U R' U' F2…"
+                  spellCheck={false}
+                  rows={2}
+                  aria-describedby="scramble-help"
+                />
+                <div className="form-bottom">
+                  <p ref={!error ? validationTarget : undefined} id="scramble-help">
+                    Use U D L R F B with ′ or 2.
+                    <br />
+                    Leave blank to explore a solved cube.
+                  </p>
+                  <button className="primary-button" type="submit" disabled={busy || randomizing}>
+                    {busy ? 'Finding your steps…' : `Explain with ${presentation.label}`}{' '}
+                    <span aria-hidden="true">→</span>
+                  </button>
+                  {busy && (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        epoch.current++;
+                        client.cancel();
+                        setBusy(false);
+                      }}
+                    >
+                      Cancel
+                    </button>
+                  )}
+                </div>
               </div>
+              <aside className="scramble-preview" aria-label="Scramble preview">
+                <h2>Starting position</h2>
+                {startingDiagram ? (
+                  <ScrambleNet facelets={startingDiagram} label="Starting cube diagram" />
+                ) : (
+                  <p>
+                    {parsedDraft?.ok
+                      ? 'Preview paused for long sequences. You can still solve this scramble.'
+                      : 'Check the notation to preview your cube.'}
+                  </p>
+                )}
+              </aside>
             </form>
           )}
         </div>
@@ -375,8 +422,22 @@ export function SolvePage({
       {session ? (
         <>
           <div className="solution-summary">
-            <span className="success-dot" /> Verified {getMethod(session.trace.method).label}{' '}
-            solution{' '}
+            <div className="solve-result-title">
+              <span className="success-dot" aria-hidden="true" />
+              <strong>Verified {getMethod(session.trace.method).label} solution</strong>
+            </div>
+            {metrics && (
+              <dl className="solve-totals" aria-label="Solution move counts">
+                <div>
+                  <dt>Turns</dt>
+                  <dd>{metrics.turns}</dd>
+                </div>
+                <div>
+                  <dt>Cube rotations</dt>
+                  <dd>{metrics.rotations}</dd>
+                </div>
+              </dl>
+            )}
             <details>
               <summary>
                 {session.input.kind === 'scramble'
@@ -414,28 +475,31 @@ export function SolvePage({
               The draft has changed. The solution below still uses its saved input.
             </p>
           )}
-          <div ref={explanationTarget}>
+          {comparisonSource && (
+            <SolveComparison comparison={comparison} playerId={comparisonPlayerId} />
+          )}
+          <div
+            ref={explanationTarget}
+            id={comparisonPlayerId}
+            tabIndex={-1}
+            role="group"
+            aria-label={getMethod(preview?.session.trace.method ?? method).label + ' steps'}
+          >
             <CubePlayer
+              key={preview ? 'compare-' + preview.session.trace.method : 'original'}
               engine={engine}
-              session={session}
-              stage={stage}
-              stageRequestId={stageRequestId}
-              onStageChange={setActive}
+              session={preview?.session ?? session}
+              stage={preview?.stage ?? stage}
+              stageRequestId={preview?.requestId ?? stageRequestId}
+              onStageChange={preview ? comparison.setActive : setActive}
+              bookmark={edition === 'club' && !preview ? originalBookmark : undefined}
             />
           </div>
         </>
       ) : (
-        <div className="empty-solve">
-          <div className="empty-cube" aria-hidden="true">
-            ▧
-          </div>
-          <h2>A clear path from scrambled to solved.</h2>
-          <p>
-            Enter your cube’s colors, paste a scramble, or generate a new one. Then follow the same
-            formulas taught in the course.
-          </p>
-          <a href="#/learn/notation">New to cube notation? Start here →</a>
-        </div>
+        <p className="solve-notation-link">
+          <a href="#/learn/notation">Learn how to read cube notation →</a>
+        </p>
       )}
     </LessonLayout>
   );

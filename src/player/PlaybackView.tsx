@@ -7,9 +7,10 @@ import {
   useMemo,
   useRef,
   useState,
+  type RefObject,
 } from 'react';
 import { useGuidanceAction, useGuidanceScope, useGuidanceTarget } from '../ui/guidance';
-import type { CubeEngine } from '../core/types';
+import type { CubeEngine, SolveSession } from '../core/types';
 import type { MethodRuntime, MethodPresentation } from '../methods/contracts';
 import type { PlaybackSource, PlaybackSectionId } from './playback-source';
 import { ALGORITHM_REGISTRY } from '../algorithms/registry';
@@ -23,6 +24,7 @@ import {
 import { createCubingAdapter } from './cubing-adapter';
 import { RegripGuide } from './RegripGuide';
 import { CubeStage } from './CubeStage';
+import { SolveTurnCue } from './SolveTurnCue';
 import { createCubeViewStore, type CubeViewPreferences } from './view-preferences';
 import { CubeNet } from './CubeNet';
 import { targetFacelets } from './target-view';
@@ -38,6 +40,11 @@ const stageTitle = (id: string) =>
 export interface PlaybackHandle {
   pause(): void;
 }
+export interface SolvePlaybackBookmark {
+  session: SolveSession;
+  requestId?: number;
+  position: SourcePlaybackSnapshot;
+}
 interface Props {
   engine: CubeEngine;
   source: PlaybackSource;
@@ -47,6 +54,7 @@ interface Props {
   caseId?: string;
   onHandle?: (handle: PlaybackHandle | null) => void;
   onPosition?: (position: SourcePlaybackSnapshot) => void;
+  bookmark?: RefObject<SolvePlaybackBookmark | null>;
 }
 export function PlaybackView({
   engine,
@@ -57,6 +65,7 @@ export function PlaybackView({
   caseId,
   onHandle,
   onPosition,
+  bookmark,
 }: Props) {
   const viewStore = useMemo(() => createCubeViewStore(() => localStorage), []);
   const [view, setView] = useState(() => viewStore.load());
@@ -154,6 +163,8 @@ export function PlaybackView({
     positionCallback = useRef(onPosition);
   handleCallback.current = onHandle;
   positionCallback.current = onPosition;
+  const requestRef = useRef(sectionRequestId);
+  requestRef.current = sectionRequestId;
   // Install each replacement controller before the positioning effect below.
   useLayoutEffect(() => {
     if ((needsAdvanced && !assets) || (needsAdvancedRoux && !rouxPrepared)) {
@@ -230,13 +241,29 @@ export function PlaybackView({
       cancelled = true;
       clearTimeout(initializationTimer);
       unsubscribe();
+      if (bookmark && source.kind === 'solve') {
+        bookmark.current = {
+          session: source.session,
+          requestId: requestRef.current,
+          position: player.snapshot(),
+        };
+      }
       player.dispose();
       adapter?.dispose();
       if (adapterRef.current === adapter) adapterRef.current = null;
       controller.current = null;
       handleCallback.current?.(null);
     };
-  }, [engine, source, assets, needsAdvanced, needsAdvancedRoux, rouxPrepared, assetError]);
+  }, [
+    engine,
+    source,
+    assets,
+    needsAdvanced,
+    needsAdvancedRoux,
+    rouxPrepared,
+    assetError,
+    bookmark,
+  ]);
   // Position the lesson before enabled controls can accept the first user input.
   useLayoutEffect(() => {
     const restored = restoredSection.current;
@@ -249,6 +276,15 @@ export function PlaybackView({
       )
         return;
     }
+    const saved = bookmark?.current;
+    if (
+      source.kind === 'solve' &&
+      saved?.session === source.session &&
+      saved.requestId === sectionRequestId
+    ) {
+      controller.current?.restorePaused(saved.position);
+      return;
+    }
     if (section) controller.current?.seekSection(section);
     if (caseId) {
       const action = controller.current?.timeline.actions.find(
@@ -256,9 +292,7 @@ export function PlaybackView({
       );
       if (action) controller.current?.seekMove(action.start);
     }
-  }, [engine, source, section, sectionRequestId, ready, caseId, assets]);
-  const requestRef = useRef(sectionRequestId);
-  requestRef.current = sectionRequestId;
+  }, [engine, source, section, sectionRequestId, ready, caseId, assets, bookmark]);
   useGuidanceScope(
     'shared-playback',
     useCallback(() => {
@@ -311,11 +345,19 @@ export function PlaybackView({
     (part) =>
       s && range && s.moveIndex - range.start >= part.start && s.moveIndex - range.start < part.end,
   );
-  const repetitions = action?.repetition
-    ? player?.timeline.actions.filter(
-        (a) => a.action.repetition?.group === action.repetition?.group,
-      ).length
-    : undefined;
+  const repetitionCounts = useMemo(() => {
+    const counts = new Map<string, number>();
+    for (const item of player?.timeline.actions ?? []) {
+      for (const sourceAction of item.action.joined?.sources ?? [item.action]) {
+        if (sourceAction.repetition) {
+          const group = sourceAction.repetition.group;
+          counts.set(group, (counts.get(group) ?? 0) + 1);
+        }
+      }
+    }
+    return counts;
+  }, [player]);
+  const repetitions = action?.repetition && repetitionCounts.get(action.repetition.group);
   const nearbyStart = s ? Math.max(0, Math.min(s.moveIndex - 2, s.total - 5)) : 0;
   const netFacelets = useMemo(
     () => (s ? stateToFacelets(s.boundaryState) : null),
@@ -327,7 +369,7 @@ export function PlaybackView({
   );
   const centers = s ? engine.observe(s.boundaryState).centers : null;
   return (
-    <div className="player-area">
+    <div className="player-area" data-solve-player={source.kind === 'solve' ? true : undefined}>
       <section
         className="cube-panel"
         aria-label="Cube player"
@@ -379,6 +421,9 @@ export function PlaybackView({
             />
           )}
           <div ref={controlsTarget} className="playback-toolbar">
+            {source.kind === 'solve' && s?.currentMove && !currentStage?.skipReason && (
+              <SolveTurnCue move={s.currentMove} />
+            )}
             {s && player && s.total > 0 && (
               <ol className="nearby-moves" aria-label="Nearby moves">
                 {player.timeline.moves.slice(nearbyStart, nearbyStart + 5).map((move, offset) => {
@@ -406,7 +451,7 @@ export function PlaybackView({
                 disabled={!ready || !s || (s.moveIndex === 0 && s.progress === 0)}
                 onClick={() => player?.step(-1)}
               >
-                ←
+                {source.kind === 'solve' ? 'Prev' : '←'}
               </button>
               <button
                 className="play-button"
@@ -428,7 +473,7 @@ export function PlaybackView({
                   if (player.snapshot().moveIndex > before) emit({ name: 'player-next' });
                 }}
               >
-                →
+                {source.kind === 'solve' ? 'Next' : '→'}
               </button>
               <label className="speed">
                 Speed
@@ -542,7 +587,7 @@ export function PlaybackView({
             )}
             {currentStage?.id === 'white-cross' && (
               <h3 className="notice">
-                {action.ruleId.startsWith('cross-')
+                {(action.joined?.sources[0] ?? action).ruleId.startsWith('cross-')
                   ? '2 · Match and lower each petal'
                   : '1 · Build the daisy'}
               </h3>
@@ -617,10 +662,19 @@ export function PlaybackView({
                               ? 'Whole-cube rotation'
                               : 'Setup'}
                         </strong>
+                        {source.repetition && (
+                          <span>
+                            {' '}
+                            · Repetition {source.repetition.index} of{' '}
+                            {repetitionCounts.get(source.repetition.group)}
+                          </span>
+                        )}
                         <p>
                           <code>{source.moves.join(' ').replaceAll("'", '′')}</code>
                         </p>
+                        <p>{source.recognition}</p>
                         <p>{source.explanation}</p>
+                        <p>{source.checkpoint.description}</p>
                       </li>
                     ))}
                   </ol>

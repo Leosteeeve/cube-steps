@@ -69,6 +69,18 @@ function seed() {
     }),
   );
 }
+it('shows the entered scramble on the input diagram and removes a stale diagram for invalid input', async () => {
+  const user = userEvent.setup();
+  render(<SolvePage engine={engine} />);
+  const input = screen.getByLabelText('Scramble sequence');
+  const solved = screen.getByRole('img', { name: 'Starting cube diagram' }).innerHTML;
+  await user.type(input, 'R U');
+  expect(screen.getByRole('img', { name: 'Starting cube diagram' }).innerHTML).not.toBe(solved);
+  await user.type(input, '?');
+  expect(screen.queryByRole('img', { name: 'Starting cube diagram' })).not.toBeInTheDocument();
+  await user.clear(input);
+  expect(screen.getByRole('img', { name: 'Starting cube diagram' }).innerHTML).toBe(solved);
+});
 it('snapshots Advanced Roux frames and cancels a pending request when they change', async () => {
   client.solveScramble.mockImplementation(() => new Promise(() => {}));
   const onChange = vi.fn();

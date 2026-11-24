@@ -1,7 +1,7 @@
-import { useMemo } from 'react';
+import { useMemo, type RefObject } from 'react';
 import type { CubeEngine, SolveSession, StageId } from '../core/types';
 import type { PlaybackSource } from './playback-source';
-import { PlaybackView } from './PlaybackView';
+import { PlaybackView, type SolvePlaybackBookmark } from './PlaybackView';
 import { getMethod } from '../methods/registry';
 interface Props {
   engine: CubeEngine;
@@ -10,6 +10,7 @@ interface Props {
   stageRequestId?: number;
   onStageChange?: (id: StageId) => void;
   caseId?: string;
+  bookmark?: RefObject<SolvePlaybackBookmark | null>;
 }
 export function CubePlayer({
   engine,
@@ -18,6 +19,7 @@ export function CubePlayer({
   stageRequestId,
   onStageChange,
   caseId,
+  bookmark,
 }: Props) {
   const source = useMemo<PlaybackSource>(() => ({ kind: 'solve', session }), [session]);
   return (
@@ -27,6 +29,7 @@ export function CubePlayer({
       section={stage}
       sectionRequestId={stageRequestId}
       caseId={caseId}
+      bookmark={bookmark}
       onSectionChange={(id) => {
         const stage = getMethod(session.trace.method).stages.find((s) => s.id === id);
         if (stage) onStageChange?.(stage.id);

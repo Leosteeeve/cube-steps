@@ -1,11 +1,12 @@
 import { beforeAll, expect, it } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { createCubeEngine } from '../../core/cube';
-import type { CubeEngine, SolveTrace } from '../../core/types';
+import type { CubeEngine, CubeState, SolveTrace } from '../../core/types';
 import { seededScramble } from '../../../tests/fixtures/lbl-cases';
 import { loadTestRouxAssets } from '../../../tests/helpers/roux';
 import { solveRoux } from '../roux/solve';
 import { solveCFOP } from '../cfop/solve';
+import { solveLBL } from '../lbl/solve';
 import { solveAdvancedCFOP } from '../advanced/solve';
 import type { RouxAssets } from '../roux/assets';
 let engine: CubeEngine, roux: RouxAssets;
@@ -20,6 +21,12 @@ beforeAll(async () => {
   engine = await createCubeEngine();
   roux = await loadTestRouxAssets();
 });
+const solve = {
+  lbl: (input: CubeState) => solveLBL(engine, input),
+  roux: (input: CubeState) => solveRoux(engine, input, roux),
+  cfop: (input: CubeState) => solveCFOP(engine, input),
+  advanced: (input: CubeState) => solveAdvancedCFOP(engine, input, advanced),
+};
 function repeatedStates(trace: SolveTrace) {
   const loops: string[] = [];
   for (const stage of trace.stages) {
@@ -39,6 +46,7 @@ function repeatedStates(trace: SolveTrace) {
   return loops;
 }
 it.each([
+  ...Array.from({ length: 32 }, (_, index) => ['lbl', index + 1] as const),
   ['roux', 1],
   ['roux', 5],
   ['cfop', 4],
@@ -49,12 +57,7 @@ it.each([
   '%s seed %i does not send the learner back to an already visited state',
   (name, seed) => {
     const input = engine.apply(engine.solved(), seededScramble(seed));
-    const result =
-      name === 'roux'
-        ? solveRoux(engine, input, roux)
-        : name === 'cfop'
-          ? solveCFOP(engine, input)
-          : solveAdvancedCFOP(engine, input, advanced);
+    const result = solve[name](input);
     if (!result.ok) throw Error(result.message);
     expect(repeatedStates(result.trace)).toEqual([]);
     for (const stage of result.trace.stages) {

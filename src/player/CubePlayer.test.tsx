@@ -5,12 +5,19 @@ import { afterEach, expect, it, vi } from 'vitest';
 import { createCubeEngine } from '../core/cube';
 import { solveLBL } from '../methods/lbl/solve';
 import { CubePlayer } from './CubePlayer';
+import { SolveTurnCue } from './SolveTurnCue';
 import { createCubingAdapter } from './cubing-adapter';
 vi.mock('./cubing-adapter', () => ({ createCubingAdapter: vi.fn() }));
 afterEach(() => {
   cleanup();
   vi.useRealTimers();
   vi.unstubAllGlobals();
+});
+it('names the physical axis for half-turn regrips', () => {
+  const view = render(<SolveTurnCue move="x2" />);
+  expect(screen.getByText(/half turn about the left–right axis/i)).toBeVisible();
+  view.rerender(<SolveTurnCue move="z2" />);
+  expect(screen.getByText(/half turn about the front–back axis/i)).toBeVisible();
 });
 it('keeps verified 2D stepping available when 3D initialization never finishes', async () => {
   const engine = await createCubeEngine();
